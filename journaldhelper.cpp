@@ -1,3 +1,8 @@
+/*
+    SPDX-License-Identifier: LGPL-2.1-or-later
+    SPDX-FileCopyrightText: Andreas Cord-Landwehr <cordlandwehr@kde.org>
+*/
+
 #include "journaldhelper.h"
 #include <QDebug>
 
@@ -19,6 +24,9 @@ QVector<QString> JournaldHelper::queryUnique(Field field) const
 
     std::string fieldString;
     switch(field) {
+    case Field::MESSAGE:
+        fieldString = "MESSAGE";
+        break;
     case Field::_BOOT_ID:
         fieldString = "_BOOT_ID";
         break;

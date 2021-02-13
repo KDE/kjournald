@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: BSD-3-Clause
+# SPDX-FileCopyrightText: Andreas Cord-Landwehr <cordlandwehr@kde.org>
+
 cmake_minimum_required(VERSION 3.14)
 
 project(journald-browser LANGUAGES CXX)
