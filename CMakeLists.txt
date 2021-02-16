@@ -25,6 +25,7 @@ add_executable(journald-browser
     loggingcategories.cpp
     journaldhelper.cpp
     journaldviewmodel.cpp
+    journalduniquequerymodel.cpp
     qml.qrc
 )
 

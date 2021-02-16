@@ -9,6 +9,7 @@
 #include <QDebug>
 #include "journaldhelper.h"
 #include "journaldviewmodel.h"
+#include "journalduniquequerymodel.h"
 
 int main(int argc, char *argv[])
 {
@@ -17,6 +18,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     qmlRegisterType<JournaldViewModel>("systemd", 1, 0, "JournaldViewModel");
+    qmlRegisterType<JournaldUniqueQueryModel>("systemd", 1, 0, "JournaldUniqueQueryModel");
 
 //    JournaldHelper helper;
 //    qDebug() << helper.queryUnique(JournaldHelper::Field::_BOOT_ID);
