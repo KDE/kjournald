@@ -57,3 +57,63 @@ QVector<QString> JournaldHelper::queryUnique(const Journal &journal, Field field
     }
     return dataList;
 }
+
+QVector<JournaldHelper::BootInfo> JournaldHelper::queryOrderedBootIds(const Journal &journal)
+{
+    QVector<JournaldHelper::BootInfo> boots;
+
+    QVector<QString> bootIds = JournaldHelper::queryUnique(journal, Field::_BOOT_ID);
+
+    sd_journal * sdJournal = journal.sdJournal();
+    for (const QString &id : bootIds) {
+        int result = -1;
+        uint64_t time;
+
+        sd_journal_flush_matches(sdJournal);
+        QString filterExpression = "_BOOT_ID=" + id;
+        result = sd_journal_add_match(sdJournal, filterExpression.toStdString().c_str(), 0);
+        if (result < 0) {
+            qCritical() << "Failed add filter:" << strerror(-result);
+            continue ;
+        }
+
+        QDateTime since;
+        result = sd_journal_seek_head(sdJournal);
+        if (result < 0) {
+            qCritical() << "Failed to seek head:" << strerror(-result);
+            continue ;
+        }
+        result = sd_journal_next(sdJournal);
+        if (result < 0) {
+            qCritical() << "Failed to obtain first entry:" << strerror(-result);
+            continue ;
+        }
+        result = sd_journal_get_realtime_usec(sdJournal, &time);
+        if (result == 0) {
+            since.setMSecsSinceEpoch(time / 1000);
+        }
+
+        QDateTime until;
+        result = sd_journal_seek_tail(sdJournal);
+        if (result < 0) {
+            qCritical() << "Failed to seek tail:" << strerror(-result);
+            continue ;
+        }
+        result = sd_journal_next(sdJournal);
+        if (result < 0) {
+            qCritical() << "Failed to obtain first entry:" << strerror(-result);
+        }
+        result = sd_journal_get_realtime_usec(sdJournal, &time);
+        if (result == 0) {
+            until.setMSecsSinceEpoch(time / 1000);
+        }
+
+        boots << BootInfo{ id, since, until };
+    }
+
+    std::sort(boots.begin(), boots.end(), [](const JournaldHelper::BootInfo &lhs, const JournaldHelper::BootInfo &rhs) {
+        return lhs.mSince < rhs.mUntil;
+    });
+
+    return boots;
+}

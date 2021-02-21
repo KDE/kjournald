@@ -22,9 +22,11 @@ int main(int argc, char *argv[])
     qmlRegisterType<JournaldUniqueQueryModel>("systemd", 1, 0, "JournaldUniqueQueryModel");
     qmlRegisterType<FieldFilterProxyModel>("systemd", 1, 0, "FieldFilterProxyModel");
 
-//    JournaldHelper helper;
-//    qDebug() << helper.queryUnique(JournaldHelper::Field::_BOOT_ID);
-//    qDebug() << helper.queryUnique(JournaldHelper::Field::_SYSTEMD_UNIT);
+    Journal journal("/opt/workspace/journald-browser/TESTDATA/journal/");
+    auto boots = JournaldHelper::queryOrderedBootIds(journal);
+    for (const auto &boot: boots) {
+        qDebug() << boot.mBootId << boot.mSince << boot.mUntil;
+    }
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));

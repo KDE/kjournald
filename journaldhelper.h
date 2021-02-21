@@ -7,11 +7,18 @@
 #define JOURNALDHELPER_H
 
 #include "journal.h"
+#include <QDateTime>
 #include <QVector>
 
 class JournaldHelper
 {
 public:
+    struct BootInfo {
+        QString mBootId;
+        QDateTime mSince;
+        QDateTime mUntil;
+    };
+
     enum class Field {
         // user fields
         MESSAGE,
@@ -29,10 +36,14 @@ public:
         _SYSTEMD_OWNER_UID
     };
 
-    JournaldHelper();
-    ~JournaldHelper();
-
     static QVector<QString> queryUnique(const Journal &journal, Field field);
+
+    /**
+     * @brief Query boot information for @p journal
+     *
+     * @return ordered list of boots (first is earliest boot in time)
+     */
+    static QVector<BootInfo> queryOrderedBootIds(const Journal &journal);
 };
 
 #endif // JOURNALDHELPER_H
