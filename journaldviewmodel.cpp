@@ -159,7 +159,7 @@ int JournaldViewModel::columnCount(const QModelIndex &parent) const
 
 QVariant JournaldViewModel::data(const QModelIndex &index, int role) const
 {
-    if (d->mLog.count() <= index.row()) {
+    if (index.row() < 0 || d->mLog.count() <= index.row()) {
         return QVariant();
     }
     switch (role) {

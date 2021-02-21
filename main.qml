@@ -9,13 +9,43 @@ import QtQuick.Controls 2.12
 import systemd 1.0
 
 Window {
-    width: 640
-    height: 480
+    width: 800
+    height: 640
     visible: true
 
     Row {
-        anchors.fill: parent
+        id: topMenu
+        height: 42
+        width: parent.width
+        Label {
+            anchors {
+                verticalCenter: parent.verticalCenter
+            }
+            text: "Boot ID: "
+            font.pixelSize: 16
+        }
+        ComboBox {
+            id: bootIdComboBox
+            width: 300
+            property var bootId: [ ];
+            model: bootModel
+            textRole: "field"
+            valueRole: "field"
+            onActivated: {
+                bootId = [ currentValue ]
+            }
+        }
+    }
+
+    Row {
+        anchors {
+            top: topMenu.bottom
+        }
+        width: parent.width
+        height: parent.height - topMenu.height
+
         Column {
+            id: unitColumn
             height: parent.height
             width: Math.min(parent.width * 0.3, 300)
             Button {
@@ -38,7 +68,7 @@ Window {
         }
         ListView {
             height: parent.height
-            width: parent.width * 0.7
+            width: parent.width - unitColumn.width
             model: journalModel
             delegate: Rectangle
             {
@@ -89,11 +119,18 @@ Window {
         field: "_SYSTEMD_UNIT"
     }
 
+    JournaldUniqueQueryModel {
+        id: bootModel
+        journalPath: "/opt/workspace/journald-browser/TESTDATA/journal/"
+        field: "_BOOT_ID"
+    }
+
     JournaldViewModel {
         id: journalModel
         // file journal currently broken
         journalPath: "/opt/workspace/journald-browser/TESTDATA/journal/"
         systemdUnitFilter: unitModel.selectedEntries
+        bootFilter: bootIdComboBox.bootId
     }
 }
 
