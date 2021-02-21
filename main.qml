@@ -15,17 +15,27 @@ Window {
 
     Row {
         anchors.fill: parent
-        ListView {
+        Column {
             height: parent.height
-            width: parent.width * 0.3
-            model: unitModel
-            delegate: CheckBox {
-                checked: model.selected
-                text: model.field
-                onCheckStateChanged: model.selected = checkState
+            width: Math.min(parent.width * 0.3, 300)
+            Button {
+                id: selectNoneButton
+                text: "Select None"
+                onClicked: {
+                    unitModel.setAllSelectionStates(false)
+                }
+            }
+            ListView {
+                height: parent.height - selectNoneButton.height
+                width: parent.width
+                model: unitModel
+                delegate: CheckBox {
+                    checked: model.selected
+                    text: model.field
+                    onCheckStateChanged: model.selected = checkState
+                }
             }
         }
-
         ListView {
             height: parent.height
             width: parent.width * 0.7

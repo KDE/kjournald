@@ -61,6 +61,8 @@ public:
 
     QStringList selectedEntries() const;
 
+    Q_INVOKABLE void setAllSelectionStates(bool selected);
+
 Q_SIGNALS:
     void selectedEntriesChanged();
 

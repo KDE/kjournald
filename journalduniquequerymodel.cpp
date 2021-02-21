@@ -194,3 +194,11 @@ QStringList JournaldUniqueQueryModel::selectedEntries() const
 
     return entries;
 }
+
+void JournaldUniqueQueryModel::setAllSelectionStates(bool selected)
+{
+    for (int i = 0; i < d->mEntries.size(); ++i) {
+        d->mEntries[i].second = selected;
+    }
+    Q_EMIT dataChanged(createIndex(0, 0), createIndex(d->mEntries.size() - 1, 0));
+}
