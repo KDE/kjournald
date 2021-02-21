@@ -24,6 +24,7 @@ add_executable(journald-browser
     main.cpp
     loggingcategories.cpp
     fieldfilterproxymodel.cpp
+    journal.cpp
     journaldhelper.cpp
     journaldviewmodel.cpp
     journalduniquequerymodel.cpp

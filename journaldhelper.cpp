@@ -4,18 +4,10 @@
 */
 
 #include "journaldhelper.h"
+#include <systemd/sd-journal.h>
 #include <QDebug>
 
-JournaldHelper::JournaldHelper()
-{
-    int result;
-    result = sd_journal_open(&mJournal, SD_JOURNAL_LOCAL_ONLY);
-    if (result < 0) {
-        qCritical() << "Failed to open journal:" << strerror(-result);
-    }
-}
-
-QVector<QString> JournaldHelper::queryUnique(Field field) const
+QVector<QString> JournaldHelper::queryUnique(const Journal &journal, Field field)
 {
     QVector<QString> dataList;
     const void *data;
@@ -53,20 +45,15 @@ QVector<QString> JournaldHelper::queryUnique(Field field) const
         break;
     }
 
-    result = sd_journal_query_unique(mJournal, fieldString.c_str());
+    result = sd_journal_query_unique(journal.sdJournal(), fieldString.c_str());
     if (result < 0) {
         qCritical() << "Failed to query journal:" << strerror(-result);
         return dataList;
     }
     const int fieldLength = fieldString.length() + 1;
-    SD_JOURNAL_FOREACH_UNIQUE(mJournal, data, length) {
+    SD_JOURNAL_FOREACH_UNIQUE(journal.sdJournal(), data, length) {
         QString dataStr = static_cast<const char*>(data);
         dataList << dataStr.remove(0, fieldLength);
     }
     return dataList;
-}
-
-JournaldHelper::~JournaldHelper()
-{
-    sd_journal_close(mJournal);
 }

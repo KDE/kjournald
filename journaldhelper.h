@@ -6,7 +6,7 @@
 #ifndef JOURNALDHELPER_H
 #define JOURNALDHELPER_H
 
-#include <systemd/sd-journal.h>
+#include "journal.h"
 #include <QVector>
 
 class JournaldHelper
@@ -32,10 +32,7 @@ public:
     JournaldHelper();
     ~JournaldHelper();
 
-    QVector<QString> queryUnique(Field field) const;
-
-private:
-    sd_journal *mJournal{ nullptr };
+    static QVector<QString> queryUnique(const Journal &journal, Field field);
 };
 
 #endif // JOURNALDHELPER_H
