@@ -5,8 +5,10 @@
 
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
 #include <systemd/sd-journal.h>
 #include <QDebug>
+#include "bootmodel.h"
 #include "journaldhelper.h"
 #include "journaldviewmodel.h"
 #include "journalduniquequerymodel.h"
@@ -21,12 +23,9 @@ int main(int argc, char *argv[])
     qmlRegisterType<JournaldViewModel>("systemd", 1, 0, "JournaldViewModel");
     qmlRegisterType<JournaldUniqueQueryModel>("systemd", 1, 0, "JournaldUniqueQueryModel");
     qmlRegisterType<FieldFilterProxyModel>("systemd", 1, 0, "FieldFilterProxyModel");
+    qmlRegisterUncreatableType<BootModel>("systemd", 1, 0, "BootModel", "Backend only object");
 
-    Journal journal("/opt/workspace/journald-browser/TESTDATA/journal/");
-    auto boots = JournaldHelper::queryOrderedBootIds(journal);
-    for (const auto &boot: boots) {
-        qDebug() << boot.mBootId << boot.mSince << boot.mUntil;
-    }
+    BootModel bootModel("/opt/workspace/journald-browser/TESTDATA/journal/");
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));
@@ -36,6 +35,7 @@ int main(int argc, char *argv[])
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
     engine.load(url);
+    engine.rootContext()->setContextProperty("g_bootModel", &bootModel);
 
     return app.exec();
 }

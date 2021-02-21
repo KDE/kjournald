@@ -28,9 +28,9 @@ Window {
             id: bootIdComboBox
             width: 300
             property var bootId: [ ];
-            model: bootModel
-            textRole: "field"
-            valueRole: "field"
+            model: g_bootModel
+            textRole: "displayshort"
+            valueRole: "_BOOT_ID"
             onActivated: {
                 bootId = [ currentValue ]
             }
