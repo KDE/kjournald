@@ -10,6 +10,7 @@
 #include "journaldhelper.h"
 #include "journaldviewmodel.h"
 #include "journalduniquequerymodel.h"
+#include "fieldfilterproxymodel.h"
 
 int main(int argc, char *argv[])
 {
@@ -19,6 +20,7 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<JournaldViewModel>("systemd", 1, 0, "JournaldViewModel");
     qmlRegisterType<JournaldUniqueQueryModel>("systemd", 1, 0, "JournaldUniqueQueryModel");
+    qmlRegisterType<FieldFilterProxyModel>("systemd", 1, 0, "FieldFilterProxyModel");
 
 //    JournaldHelper helper;
 //    qDebug() << helper.queryUnique(JournaldHelper::Field::_BOOT_ID);

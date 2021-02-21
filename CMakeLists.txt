@@ -23,6 +23,7 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick REQUIRED)
 add_executable(journald-browser
     main.cpp
     loggingcategories.cpp
+    fieldfilterproxymodel.cpp
     journaldhelper.cpp
     journaldviewmodel.cpp
     journalduniquequerymodel.cpp

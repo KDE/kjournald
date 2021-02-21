@@ -28,7 +28,7 @@ Window {
         ListView {
             height: parent.height
             width: parent.width * 0.7
-            model: journalModel
+            model: filteredJournalModel
             delegate: Rectangle
             {
                 color: model.index % 2 === 0 ? "#efefef" : "#ffffff"
@@ -76,6 +76,13 @@ Window {
         id: unitModel
         journalPath: "/opt/workspace/journald-browser/TESTDATA/journal/"
         field: "_SYSTEMD_UNIT"
+    }
+
+    FieldFilterProxyModel {
+        id: filteredJournalModel
+        source: journalModel
+        field: "_SYSTEMD_UNIT"
+        filterString: ""
     }
 
     JournaldViewModel {

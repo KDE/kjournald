@@ -1,0 +1,51 @@
+#ifndef FIELDFILTERPROXYMODEL_H
+#define FIELDFILTERPROXYMODEL_H
+
+#include <qsortfilterproxymodel.h>
+#include <qqmlparserstatus.h>
+#include <qjsvalue.h>
+#include "journaldviewmodel.h"
+
+class FieldFilterProxyModel : public QSortFilterProxyModel, public QQmlParserStatus
+{
+    Q_OBJECT
+    Q_INTERFACES(QQmlParserStatus)
+
+    Q_PROPERTY(int count READ count NOTIFY countChanged)
+    Q_PROPERTY(QObject *source READ source WRITE setSource)
+
+    Q_PROPERTY(QString field WRITE setField)
+    Q_PROPERTY(QString filterString READ filterString WRITE setFilterString´)
+
+public:
+    explicit FieldFilterProxyModel(QObject *parent = 0);
+
+    QObject *source() const;
+    void setSource(QObject *source);
+
+    void setField(const QString &field);
+
+    QString filterString() const;
+    void setFilterString(const QString &filter);
+
+    int count() const;
+    Q_INVOKABLE QJSValue get(int index) const;
+
+    void classBegin() override;
+    void componentComplete() override;
+
+Q_SIGNALS:
+    void countChanged();
+
+protected:
+    int roleKey(const QByteArray &role) const;
+    QHash<int, QByteArray> roleNames() const override;
+    bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const override;
+
+private:
+    bool mComplete;
+    JournaldViewModel::Roles mFilterRole;
+    QString mFilter;
+};
+
+#endif // FIELDFILTERPROXYMODEL_H
