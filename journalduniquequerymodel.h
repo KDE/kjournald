@@ -16,10 +16,12 @@ class JournaldUniqueQueryModel : public QAbstractItemModel
     Q_OBJECT
     Q_PROPERTY(QString journalPath WRITE setJournaldPath RESET loadSystemJournal)
     Q_PROPERTY(QString field WRITE setField)
+    Q_PROPERTY(QStringList selectedEntries READ selectedEntries NOTIFY selectedEntriesChanged)
 
 public:
     enum Roles {
-        FIELD = Qt::UserRole + 1
+        FIELD = Qt::UserRole + 1,
+        SELECTED //!< supports UI integration by storing checked
     };
 
     explicit JournaldUniqueQueryModel(QObject *parent = nullptr);
@@ -55,6 +57,12 @@ public:
     int columnCount(const QModelIndex &parent = QModelIndex()) const override;
 
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+    Q_INVOKABLE bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override;
+
+    QStringList selectedEntries() const;
+
+Q_SIGNALS:
+    void selectedEntriesChanged();
 
 private:
     std::unique_ptr<JournaldUniqueQueryModelPrivate> d;

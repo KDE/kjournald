@@ -47,6 +47,7 @@ bool JournaldViewModelPrivate::openJournalFromPath(const QString &journalPath)
         qCCritical(journald) << "Could not open journal:" << strerror(-result);
         return false;
     }
+
     return true;
 }
 
@@ -82,11 +83,33 @@ void JournaldViewModel::setJournaldPath(const QString &path)
 void JournaldViewModel::seekHead()
 {
     int result{ 0 };
+
+    // reset all filters
+    sd_journal_flush_matches(d->mJournal);
+
+    for (const QString &unit: d->mSystemdUnitFilter) {
+        QString filterExpression = "_SYSTEMD_UNIT=" + unit;
+        result = sd_journal_add_match(d->mJournal, filterExpression.toStdString().c_str(), 0);
+        if (result < 0) {
+            qCritical() << "Failed to set journal filter:" << strerror(-result) << filterExpression;
+        }
+    }
+    for (const QString &boot: d->mBootFilter) {
+        QString filterExpression = "_BOOT_ID=" + boot;
+        result = sd_journal_add_match(d->mJournal, filterExpression.toStdString().c_str(), 0);
+        if (result < 0) {
+            qCritical() << "Failed to set journal filter:" << strerror(-result) << filterExpression;
+        }
+    }
+
     result = sd_journal_seek_head(d->mJournal);
     if (result < 0) {
         qCritical() << "Failed to seek head:" << strerror(-result);
         return;
     }
+
+    // clear all data which are in limbo with new head
+    d->mLog.clear();
 }
 
 QHash<int,QByteArray> JournaldViewModel::roleNames() const
@@ -204,4 +227,20 @@ void JournaldViewModel::fetchMore(const QModelIndex &parent)
     beginInsertRows(QModelIndex(), d->mLog.size(), d->mLog.size() + chunk.size());
     d->mLog.append(chunk);
     endInsertRows();
+}
+
+void JournaldViewModel::setSystemdUnitFilter(const QStringList &systemdUnitFilter)
+{
+    d->mSystemdUnitFilter = systemdUnitFilter;
+    beginResetModel();
+    seekHead();
+    endResetModel();
+}
+
+void JournaldViewModel::setBootFilter(const QStringList &bootFilter)
+{
+    d->mBootFilter = bootFilter;
+    beginResetModel();
+    seekHead();
+    endResetModel();
 }

@@ -20,15 +20,16 @@ Window {
             width: parent.width * 0.3
             model: unitModel
             delegate: CheckBox {
-                checked: true
+                checked: model.selected
                 text: model.field
+                onCheckStateChanged: model.selected = checkState
             }
         }
 
         ListView {
             height: parent.height
             width: parent.width * 0.7
-            model: filteredJournalModel
+            model: journalModel
             delegate: Rectangle
             {
                 color: model.index % 2 === 0 ? "#efefef" : "#ffffff"
@@ -78,17 +79,11 @@ Window {
         field: "_SYSTEMD_UNIT"
     }
 
-    FieldFilterProxyModel {
-        id: filteredJournalModel
-        source: journalModel
-        field: "_SYSTEMD_UNIT"
-        filterString: ""
-    }
-
     JournaldViewModel {
         id: journalModel
         // file journal currently broken
         journalPath: "/opt/workspace/journald-browser/TESTDATA/journal/"
+        systemdUnitFilter: unitModel.selectedEntries
     }
 }
 

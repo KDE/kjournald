@@ -15,6 +15,8 @@ class JournaldViewModel : public QAbstractItemModel
 {
     Q_OBJECT
     Q_PROPERTY(QString journalPath WRITE setJournaldPath RESET loadSystemJournal)
+    Q_PROPERTY(QStringList systemdUnitFilter WRITE setSystemdUnitFilter)
+    Q_PROPERTY(QStringList bootFilter WRITE setBootFilter)
 
 public:
     enum Roles {
@@ -64,6 +66,10 @@ public:
     bool canFetchMore(const QModelIndex &parent) const override;
 
     void fetchMore(const QModelIndex &parent) override;
+
+    void setSystemdUnitFilter(const QStringList &systemdUnitFilter);
+
+    void setBootFilter(const QStringList &bootFilter);
 
 private:
     std::unique_ptr<JournaldViewModelPrivate> d;

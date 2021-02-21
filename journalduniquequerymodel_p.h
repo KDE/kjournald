@@ -22,7 +22,7 @@ public:
 
     sd_journal *mJournal{ nullptr };
     QString mFieldString;
-    QVector<QString> mEntries;
+    QVector<std::pair<QString, bool>> mEntries;
 };
 
 #endif // JOURNALDUNIQUEQUERYMODEL_P_H

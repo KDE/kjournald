@@ -31,6 +31,8 @@ public:
 
     sd_journal *mJournal{ nullptr };
     QVector<LogEntry> mLog;
+    QStringList mSystemdUnitFilter;
+    QStringList mBootFilter;
 };
 
 #endif // JOURNALDVIEWMODEL_P_H

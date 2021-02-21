@@ -8,6 +8,7 @@
 #include "loggingcategories.h"
 #include <QDebug>
 #include <QDir>
+#include <memory>
 
 JournaldUniqueQueryModelPrivate::~JournaldUniqueQueryModelPrivate()
 {
@@ -57,7 +58,7 @@ void JournaldUniqueQueryModelPrivate::runQuery()
     }
     mEntries.clear();
 
-    QVector<QString> dataList;
+    QVector<std::pair<QString, bool>> dataList;
     const void *data;
     size_t length;
     int result = sd_journal_query_unique(mJournal, mFieldString.toStdString().c_str());
@@ -68,7 +69,7 @@ void JournaldUniqueQueryModelPrivate::runQuery()
     const int fieldLength = mFieldString.length() + 1;
     SD_JOURNAL_FOREACH_UNIQUE(mJournal, data, length) {
         QString dataStr = static_cast<const char*>(data);
-        dataList << dataStr.remove(0, fieldLength);
+        dataList << std::pair<QString, bool>{ dataStr.remove(0, fieldLength), true };
     }
     mEntries = dataList;
 }
@@ -77,6 +78,7 @@ JournaldUniqueQueryModel::JournaldUniqueQueryModel(QObject *parent)
     : QAbstractItemModel(parent)
     , d(new JournaldUniqueQueryModelPrivate)
 {
+    connect(this, &QAbstractItemModel::dataChanged, this, &JournaldUniqueQueryModel::selectedEntriesChanged);
     beginResetModel();
     d->openJournal();
     d->runQuery();
@@ -87,6 +89,7 @@ JournaldUniqueQueryModel::JournaldUniqueQueryModel(const QString &journalPath, Q
     : QAbstractItemModel(parent)
     , d(new JournaldUniqueQueryModelPrivate)
 {
+    connect(this, &QAbstractItemModel::dataChanged, this, &JournaldUniqueQueryModel::selectedEntriesChanged);
     beginResetModel();
     d->openJournalFromPath(journalPath);
     d->runQuery();
@@ -115,6 +118,7 @@ QHash<int,QByteArray> JournaldUniqueQueryModel::roleNames() const
 {
     QHash<int,QByteArray> roles;
     roles[JournaldUniqueQueryModel::FIELD] = "field";
+    roles[JournaldUniqueQueryModel::SELECTED] = "selected";
     return roles;
 }
 
@@ -155,7 +159,38 @@ QVariant JournaldUniqueQueryModel::data(const QModelIndex &index, int role) cons
     case Qt::DisplayRole:
         Q_FALLTHROUGH();
     case JournaldUniqueQueryModel::Roles::FIELD:
-        return d->mEntries.at(index.row());
+        return d->mEntries.at(index.row()).first;
+    case JournaldUniqueQueryModel::Roles::SELECTED:
+        return QVariant::fromValue<bool>(d->mEntries.at(index.row()).second);
     }
     return QVariant();
+}
+
+bool JournaldUniqueQueryModel::setData(const QModelIndex &index, const QVariant &value, int role)
+{
+    if (d->mEntries.count() <= index.row()) {
+        return false;
+    }
+    if (role == JournaldUniqueQueryModel::Roles::SELECTED) {
+        if (d->mEntries.at(index.row()).second == value.toBool()) {
+            return true;
+        } else {
+            d->mEntries[index.row()].second = value.toBool();
+            Q_EMIT dataChanged(index, index);
+            return true;
+        }
+    }
+    return QAbstractItemModel::setData(index, value, role);
+}
+
+QStringList JournaldUniqueQueryModel::selectedEntries() const
+{
+    QStringList entries;
+    for (const auto &entry : d->mEntries) {
+        if (entry.second == true) {
+            entries << entry.first;
+        }
+    }
+
+    return entries;
 }
