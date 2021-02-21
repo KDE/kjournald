@@ -115,20 +115,12 @@ Window {
 
     JournaldUniqueQueryModel {
         id: unitModel
-        journalPath: "/opt/workspace/journald-browser/TESTDATA/journal/"
+        journalPath: g_path
         field: "_SYSTEMD_UNIT"
     }
-
-    JournaldUniqueQueryModel {
-        id: bootModel
-        journalPath: "/opt/workspace/journald-browser/TESTDATA/journal/"
-        field: "_BOOT_ID"
-    }
-
     JournaldViewModel {
         id: journalModel
-        // file journal currently broken
-        journalPath: "/opt/workspace/journald-browser/TESTDATA/journal/"
+        journalPath: g_path
         systemdUnitFilter: unitModel.selectedEntries
         bootFilter: bootIdComboBox.bootId
     }

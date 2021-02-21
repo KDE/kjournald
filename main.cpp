@@ -6,6 +6,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <QCommandLineParser>
 #include <systemd/sd-journal.h>
 #include <QDebug>
 #include "bootmodel.h"
@@ -25,7 +26,23 @@ int main(int argc, char *argv[])
     qmlRegisterType<FieldFilterProxyModel>("systemd", 1, 0, "FieldFilterProxyModel");
     qmlRegisterUncreatableType<BootModel>("systemd", 1, 0, "BootModel", "Backend only object");
 
-    BootModel bootModel("/opt/workspace/journald-browser/TESTDATA/journal/");
+
+    QCommandLineParser parser;
+    parser.setApplicationDescription("Journald Log Viewer");
+    parser.addHelpOption();
+    parser.addVersionOption();
+    parser.addPositionalArgument("path", "Path to Journald DB");
+    parser.process(app);
+
+    const QStringList args = parser.positionalArguments();
+    if (args.size() < 1) {
+        qCritical() << "Path to DB missing";
+        return 1;
+    }
+    //TODO check if path is reasonable
+    const QString path = args.at(0);
+
+    BootModel bootModel(path);
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));
@@ -34,8 +51,9 @@ int main(int argc, char *argv[])
         if (!obj && url == objUrl)
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
-    engine.load(url);
     engine.rootContext()->setContextProperty("g_bootModel", &bootModel);
+    engine.rootContext()->setContextProperty("g_path", path);
+    engine.load(url);
 
     return app.exec();
 }
