@@ -140,6 +140,8 @@ QVariant JournaldViewModel::data(const QModelIndex &index, int role) const
         return QVariant();
     }
     switch (role) {
+    case Qt::DisplayRole:
+        Q_FALLTHROUGH();
     case JournaldViewModel::Roles::MESSAGE:
         return d->mLog.at(index.row()).mMessage;
     case JournaldViewModel::Roles::DATE:

@@ -152,6 +152,8 @@ QVariant JournaldUniqueQueryModel::data(const QModelIndex &index, int role) cons
         return QVariant();
     }
     switch (role) {
+    case Qt::DisplayRole:
+        Q_FALLTHROUGH();
     case JournaldUniqueQueryModel::Roles::FIELD:
         return d->mEntries.at(index.row());
     }
