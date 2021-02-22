@@ -38,7 +38,7 @@ Journal::~Journal()
     d->mJournal = nullptr;
 }
 
-sd_journal * Journal::sdJournal() const
+sd_journal *Journal::sdJournal() const
 {
     return d->mJournal;
 }

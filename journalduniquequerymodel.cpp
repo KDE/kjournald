@@ -27,7 +27,7 @@ void JournaldUniqueQueryModelPrivate::closeJournal()
 bool JournaldUniqueQueryModelPrivate::openJournal()
 {
     closeJournal();
-    //TODO allow custom selection of journal type
+    // TODO allow custom selection of journal type
     int result = sd_journal_open(&mJournal, SD_JOURNAL_LOCAL_ONLY);
     if (result < 0) {
         qCCritical(journald) << "Could not open journal:" << strerror(-result);
@@ -67,9 +67,10 @@ void JournaldUniqueQueryModelPrivate::runQuery()
         return;
     }
     const int fieldLength = mFieldString.length() + 1;
-    SD_JOURNAL_FOREACH_UNIQUE(mJournal, data, length) {
-        QString dataStr = static_cast<const char*>(data);
-        dataList << std::pair<QString, bool>{ dataStr.remove(0, fieldLength), true };
+    SD_JOURNAL_FOREACH_UNIQUE(mJournal, data, length)
+    {
+        QString dataStr = static_cast<const char *>(data);
+        dataList << std::pair<QString, bool>{dataStr.remove(0, fieldLength), true};
     }
     mEntries = dataList;
 }
@@ -114,9 +115,9 @@ void JournaldUniqueQueryModel::setField(const QString &fieldString)
     endResetModel();
 }
 
-QHash<int,QByteArray> JournaldUniqueQueryModel::roleNames() const
+QHash<int, QByteArray> JournaldUniqueQueryModel::roleNames() const
 {
-    QHash<int,QByteArray> roles;
+    QHash<int, QByteArray> roles;
     roles[JournaldUniqueQueryModel::FIELD] = "field";
     roles[JournaldUniqueQueryModel::SELECTED] = "selected";
     return roles;

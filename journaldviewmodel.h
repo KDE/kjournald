@@ -19,13 +19,7 @@ class JournaldViewModel : public QAbstractItemModel
     Q_PROPERTY(QStringList bootFilter WRITE setBootFilter)
 
 public:
-    enum Roles {
-        MESSAGE = Qt::UserRole + 1,
-        DATE,
-        PRIORITY,
-        _SYSTEMD_UNIT,
-        _BOOT_ID
-    };
+    enum Roles { MESSAGE = Qt::UserRole + 1, DATE, PRIORITY, _SYSTEMD_UNIT, _BOOT_ID };
 
     explicit JournaldViewModel(QObject *parent = nullptr);
 
@@ -48,14 +42,13 @@ public:
 
     void seekHead();
 
-    QHash<int,QByteArray> roleNames() const override;
+    QHash<int, QByteArray> roleNames() const override;
 
     // Header:
     QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
 
     // Basic functionality:
-    QModelIndex index(int row, int column,
-                      const QModelIndex &parent = QModelIndex()) const override;
+    QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;
     QModelIndex parent(const QModelIndex &index) const override;
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;

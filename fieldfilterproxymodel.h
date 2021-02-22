@@ -6,10 +6,10 @@
 #ifndef FIELDFILTERPROXYMODEL_H
 #define FIELDFILTERPROXYMODEL_H
 
-#include <qsortfilterproxymodel.h>
-#include <qqmlparserstatus.h>
-#include <qjsvalue.h>
 #include "journaldviewmodel.h"
+#include <qjsvalue.h>
+#include <qqmlparserstatus.h>
+#include <qsortfilterproxymodel.h>
 
 class FieldFilterProxyModel : public QSortFilterProxyModel, public QQmlParserStatus
 {

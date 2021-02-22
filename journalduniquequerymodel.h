@@ -47,10 +47,9 @@ public:
 
     void setField(const QString &fieldString);
 
-    QHash<int,QByteArray> roleNames() const override;
+    QHash<int, QByteArray> roleNames() const override;
 
-    QModelIndex index(int row, int column,
-                      const QModelIndex &parent = QModelIndex()) const override;
+    QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;
     QModelIndex parent(const QModelIndex &index) const override;
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;

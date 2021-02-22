@@ -11,7 +11,7 @@
 class JournalPrivate
 {
 public:
-    mutable sd_journal *mJournal{ nullptr };
+    mutable sd_journal *mJournal{nullptr};
 };
 
 #endif // JOURNAL_H

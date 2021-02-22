@@ -15,12 +15,7 @@ class BootModel : public QAbstractItemModel
 {
     Q_OBJECT
 public:
-    enum Roles {
-        _BOOT_ID = Qt::UserRole + 1,
-        SINCE,
-        UNTIL,
-        DISPLAY_SHORT
-    };
+    enum Roles { _BOOT_ID = Qt::UserRole + 1, SINCE, UNTIL, DISPLAY_SHORT };
 
     explicit BootModel(QObject *parent = nullptr);
 
@@ -39,7 +34,7 @@ public:
 
     void setJournaldPath(const QString &path);
 
-    QHash<int,QByteArray> roleNames() const override;
+    QHash<int, QByteArray> roleNames() const override;
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     int columnCount(const QModelIndex &parent = QModelIndex()) const override;

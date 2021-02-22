@@ -6,14 +6,13 @@
 #ifndef JOURNALDVIEWMODEL_P_H
 #define JOURNALDVIEWMODEL_P_H
 
-#include <memory>
-#include <systemd/sd-journal.h>
+#include <QDateTime>
 #include <QString>
 #include <QVector>
-#include <QDateTime>
+#include <memory>
+#include <systemd/sd-journal.h>
 
-struct LogEntry
-{
+struct LogEntry {
     QDateTime mDate;
     QString mMessage;
     QString mSystemdUnit;
@@ -29,7 +28,7 @@ public:
     bool openJournal();
     bool openJournalFromPath(const QString &directory);
 
-    sd_journal *mJournal{ nullptr };
+    sd_journal *mJournal{nullptr};
     QVector<LogEntry> mLog;
     QStringList mSystemdUnitFilter;
     QStringList mBootFilter;

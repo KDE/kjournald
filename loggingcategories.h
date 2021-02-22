@@ -3,7 +3,6 @@
     SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 */
 
-
 #ifndef LOGGINGCATEGORIES_H
 #define LOGGINGCATEGORIES_H
 

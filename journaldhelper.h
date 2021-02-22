@@ -24,7 +24,9 @@ public:
         MESSAGE,
         MESSAGE_ID,
         PRIORITY,
-        CODE_FILE, CODE_LINE, CODE_FUNC,
+        CODE_FILE,
+        CODE_LINE,
+        CODE_FUNC,
         // trusted fields
         _BOOT_ID,
         _SYSTEMD_CGROUP,

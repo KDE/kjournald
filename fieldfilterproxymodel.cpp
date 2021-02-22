@@ -12,7 +12,7 @@
 FieldFilterProxyModel::FieldFilterProxyModel(QObject *parent)
     : QSortFilterProxyModel(parent)
     , mComplete(false)
-    , mFilterRole{ JournaldViewModel::Roles::_SYSTEMD_UNIT }
+    , mFilterRole{JournaldViewModel::Roles::_SYSTEMD_UNIT}
 {
     connect(this, &QSortFilterProxyModel::rowsInserted, this, &FieldFilterProxyModel::countChanged);
     connect(this, &QSortFilterProxyModel::rowsRemoved, this, &FieldFilterProxyModel::countChanged);
@@ -38,17 +38,13 @@ void FieldFilterProxyModel::setField(const QString &field)
     JournaldViewModel::Roles role = mFilterRole;
     if (field == "_SYSTEMD_UNIT") {
         role = JournaldViewModel::Roles::_SYSTEMD_UNIT;
-    }
-    else if (field == "MESSAGE") {
+    } else if (field == "MESSAGE") {
         role = JournaldViewModel::Roles::MESSAGE;
-    }
-    else if (field == "PRIORITY") {
+    } else if (field == "PRIORITY") {
         role = JournaldViewModel::Roles::PRIORITY;
-    }
-    else if (field == "_BOOT_ID") {
+    } else if (field == "_BOOT_ID") {
         role = JournaldViewModel::Roles::_BOOT_ID;
-    }
-    else if (field == "DATE") {
+    } else if (field == "DATE") {
         role = JournaldViewModel::Roles::DATE;
     }
     if (role == mFilterRole) {

@@ -36,7 +36,7 @@ public:
      * This pointer can be nullptr if an error during opening of journal occured. Test
      * with @s isValid() before using.
      */
-    sd_journal * sdJournal() const;
+    sd_journal *sdJournal() const;
 
     /**
      * @brief returns true if and only if the sd_journal pointer is valid

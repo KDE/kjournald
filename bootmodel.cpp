@@ -31,9 +31,9 @@ BootModel::BootModel(const QString &journalPath, QObject *parent)
 
 BootModel::~BootModel() = default;
 
-QHash<int,QByteArray> BootModel::roleNames() const
+QHash<int, QByteArray> BootModel::roleNames() const
 {
-    QHash<int,QByteArray> roles;
+    QHash<int, QByteArray> roles;
     roles[BootModel::_BOOT_ID] = "_BOOT_ID";
     roles[BootModel::SINCE] = "since";
     roles[BootModel::UNTIL] = "until";

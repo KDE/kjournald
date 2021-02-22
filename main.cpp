@@ -3,17 +3,17 @@
     SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 */
 
+#include "bootmodel.h"
+#include "fieldfilterproxymodel.h"
+#include "journaldhelper.h"
+#include "journalduniquequerymodel.h"
+#include "journaldviewmodel.h"
+#include <QCommandLineParser>
+#include <QDebug>
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include <QCommandLineParser>
 #include <systemd/sd-journal.h>
-#include <QDebug>
-#include "bootmodel.h"
-#include "journaldhelper.h"
-#include "journaldviewmodel.h"
-#include "journalduniquequerymodel.h"
-#include "fieldfilterproxymodel.h"
 
 int main(int argc, char *argv[])
 {
@@ -38,18 +38,22 @@ int main(int argc, char *argv[])
         qCritical() << "Path to DB missing";
         return 1;
     }
-    //TODO check if path is reasonable
+    // TODO check if path is reasonable
     const QString path = args.at(0);
 
     BootModel bootModel(path);
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));
-    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
-                     &app, [url](QObject *obj, const QUrl &objUrl) {
-        if (!obj && url == objUrl)
-            QCoreApplication::exit(-1);
-    }, Qt::QueuedConnection);
+    QObject::connect(
+        &engine,
+        &QQmlApplicationEngine::objectCreated,
+        &app,
+        [url](QObject *obj, const QUrl &objUrl) {
+            if (!obj && url == objUrl)
+                QCoreApplication::exit(-1);
+        },
+        Qt::QueuedConnection);
     engine.rootContext()->setContextProperty("g_bootModel", &bootModel);
     engine.rootContext()->setContextProperty("g_path", path);
     engine.load(url);

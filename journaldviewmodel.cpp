@@ -26,7 +26,7 @@ void JournaldViewModelPrivate::closeJournal()
 bool JournaldViewModelPrivate::openJournal()
 {
     closeJournal();
-    //TODO allow custom selection of journal type
+    // TODO allow custom selection of journal type
     int result = sd_journal_open(&mJournal, SD_JOURNAL_LOCAL_ONLY);
     if (result < 0) {
         qCCritical(journald) << "Could not open journal:" << strerror(-result);
@@ -82,19 +82,19 @@ void JournaldViewModel::setJournaldPath(const QString &path)
 
 void JournaldViewModel::seekHead()
 {
-    int result{ 0 };
+    int result{0};
 
     // reset all filters
     sd_journal_flush_matches(d->mJournal);
 
-    for (const QString &unit: d->mSystemdUnitFilter) {
+    for (const QString &unit : d->mSystemdUnitFilter) {
         QString filterExpression = "_SYSTEMD_UNIT=" + unit;
         result = sd_journal_add_match(d->mJournal, filterExpression.toStdString().c_str(), 0);
         if (result < 0) {
             qCritical() << "Failed to set journal filter:" << strerror(-result) << filterExpression;
         }
     }
-    for (const QString &boot: d->mBootFilter) {
+    for (const QString &boot : d->mBootFilter) {
         QString filterExpression = "_BOOT_ID=" + boot;
         result = sd_journal_add_match(d->mJournal, filterExpression.toStdString().c_str(), 0);
         if (result < 0) {
@@ -112,9 +112,9 @@ void JournaldViewModel::seekHead()
     d->mLog.clear();
 }
 
-QHash<int,QByteArray> JournaldViewModel::roleNames() const
+QHash<int, QByteArray> JournaldViewModel::roleNames() const
 {
-    QHash<int,QByteArray> roles;
+    QHash<int, QByteArray> roles;
     roles[JournaldViewModel::DATE] = "date";
     roles[JournaldViewModel::MESSAGE] = "message";
     roles[JournaldViewModel::PRIORITY] = "priority";
@@ -181,14 +181,14 @@ QVariant JournaldViewModel::data(const QModelIndex &index, int role) const
 
 bool JournaldViewModel::canFetchMore(const QModelIndex &parent) const
 {
-    //TODO
+    // TODO
     return true;
 }
 
 void JournaldViewModel::fetchMore(const QModelIndex &parent)
 {
     Q_UNUSED(parent);
-    const int readChunkSize { 500 };
+    const int readChunkSize{500};
     int counter = 0;
     QVector<LogEntry> chunk;
     while (sd_journal_next(d->mJournal) > 0 && counter < readChunkSize) {
@@ -196,7 +196,7 @@ void JournaldViewModel::fetchMore(const QModelIndex &parent)
         const char *data;
         size_t length;
         uint64_t time;
-        int result{ 1 };
+        int result{1};
 
         LogEntry entry;
 
