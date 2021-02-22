@@ -91,7 +91,7 @@ Window {
             model: journalModel
             delegate: Rectangle
             {
-                color: model.index % 2 === 0 ? "#efefef" : "#ffffff"
+                color: model.unitcolor
                 width: parent.width
                 height: messageText.height
                 Text {

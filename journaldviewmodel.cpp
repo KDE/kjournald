@@ -8,6 +8,8 @@
 #include "loggingcategories.h"
 #include <QDebug>
 #include <QDir>
+#include <QColor>
+#include <QRandomGenerator>
 
 JournaldViewModelPrivate::~JournaldViewModelPrivate()
 {
@@ -49,6 +51,15 @@ bool JournaldViewModelPrivate::openJournalFromPath(const QString &journalPath)
     }
 
     return true;
+}
+
+QColor JournaldViewModelPrivate::unitColor(const QString &unit)
+{
+    if (!mUnitToColorMap.contains(unit)) {
+        int hue = QRandomGenerator::global()->bounded(255);
+        mUnitToColorMap[unit] = QColor::fromHsl(hue, 150, 220);
+    }
+    return mUnitToColorMap.value(unit);
 }
 
 JournaldViewModel::JournaldViewModel(QObject *parent)
@@ -120,6 +131,7 @@ QHash<int, QByteArray> JournaldViewModel::roleNames() const
     roles[JournaldViewModel::PRIORITY] = "priority";
     roles[JournaldViewModel::_SYSTEMD_UNIT] = "systemdunit";
     roles[JournaldViewModel::_BOOT_ID] = "bootid";
+    roles[JournaldViewModel::UNIT_COLOR] = "unitcolor";
     return roles;
 }
 
@@ -175,6 +187,8 @@ QVariant JournaldViewModel::data(const QModelIndex &index, int role) const
         return d->mLog.at(index.row()).mSystemdUnit;
     case JournaldViewModel::Roles::PRIORITY:
         return d->mLog.at(index.row()).mPriority;
+    case JournaldViewModel::Roles::UNIT_COLOR:
+        return d->unitColor(d->mLog.at(index.row()).mSystemdUnit);
     }
     return QVariant();
 }

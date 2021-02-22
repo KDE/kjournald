@@ -9,6 +9,8 @@
 #include <QDateTime>
 #include <QString>
 #include <QVector>
+#include <QHash>
+#include <QColor>
 #include <memory>
 #include <systemd/sd-journal.h>
 
@@ -27,11 +29,13 @@ public:
     void closeJournal();
     bool openJournal();
     bool openJournalFromPath(const QString &directory);
+    QColor unitColor(const QString &unit);
 
     sd_journal *mJournal{nullptr};
     QVector<LogEntry> mLog;
     QStringList mSystemdUnitFilter;
     QStringList mBootFilter;
+    QHash<QString, QColor> mUnitToColorMap;
 };
 
 #endif // JOURNALDVIEWMODEL_P_H

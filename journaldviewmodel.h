@@ -19,7 +19,7 @@ class JournaldViewModel : public QAbstractItemModel
     Q_PROPERTY(QStringList bootFilter WRITE setBootFilter)
 
 public:
-    enum Roles { MESSAGE = Qt::UserRole + 1, DATE, PRIORITY, _SYSTEMD_UNIT, _BOOT_ID };
+    enum Roles { MESSAGE = Qt::UserRole + 1, DATE, PRIORITY, _SYSTEMD_UNIT, _BOOT_ID, UNIT_COLOR };
 
     explicit JournaldViewModel(QObject *parent = nullptr);
 
