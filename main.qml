@@ -30,9 +30,10 @@ Window {
             property var bootId: [ ];
             model: g_bootModel
             textRole: "displayshort"
-            valueRole: "_BOOT_ID"
+//            valueRole: "_BOOT_ID" // elegant solution but not doable with Qt 5.12
             onActivated: {
-                bootId = [ currentValue ]
+                bootId = [ g_bootModel.bootId(currentIndex) ]
+//                bootId = [ currentValue ]
             }
         }
     }
@@ -125,4 +126,3 @@ Window {
         bootFilter: bootIdComboBox.bootId
     }
 }
-

@@ -26,7 +26,6 @@ int main(int argc, char *argv[])
     qmlRegisterType<FieldFilterProxyModel>("systemd", 1, 0, "FieldFilterProxyModel");
     qmlRegisterUncreatableType<BootModel>("systemd", 1, 0, "BootModel", "Backend only object");
 
-
     QCommandLineParser parser;
     parser.setApplicationDescription("Journald Log Viewer");
     parser.addHelpOption();

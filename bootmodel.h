@@ -13,6 +13,7 @@ class BootModelPrivate;
 
 class BootModel : public QAbstractItemModel
 {
+    Q_OBJECT
 public:
     enum Roles {
         _BOOT_ID = Qt::UserRole + 1,
@@ -48,6 +49,11 @@ public:
     QModelIndex parent(const QModelIndex &index) const override;
 
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+
+    /**
+     * @brief Convenience method to support Qt 5.12's ComboxBox
+     */
+    Q_INVOKABLE QString bootId(int row) const;
 
 private:
     std::unique_ptr<BootModelPrivate> d;

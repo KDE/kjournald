@@ -86,3 +86,11 @@ QVariant BootModel::data(const QModelIndex &index, int role) const
 
     return QVariant();
 }
+
+QString BootModel::bootId(int row) const
+{
+    if (row < 0 || row >= d->mBootInfo.size()) {
+        return QString();
+    }
+    return d->mBootInfo.at(row).mBootId;
+}
