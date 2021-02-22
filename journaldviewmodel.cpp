@@ -178,7 +178,7 @@ QVariant JournaldViewModel::data(const QModelIndex &index, int role) const
     case Qt::DisplayRole:
         Q_FALLTHROUGH();
     case JournaldViewModel::Roles::MESSAGE:
-        return d->mLog.at(index.row()).mMessage;
+        return QString(d->mLog.at(index.row()).mMessage).remove("\u001B[96m").remove("\u001B[0m").remove("\u001B[93m").remove("\u001B[31m");
     case JournaldViewModel::Roles::DATE:
         return d->mLog.at(index.row()).mDate;
     case JournaldViewModel::Roles::_BOOT_ID:
