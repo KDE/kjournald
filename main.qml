@@ -13,27 +13,35 @@ Window {
     height: 640
     visible: true
 
-    Row {
+    Rectangle {
         id: topMenu
         height: 42
         width: parent.width
-        Label {
+        z: 1 // put on top of list view
+        color: "#cccccc"
+        Row {
             anchors {
-                verticalCenter: parent.verticalCenter
+                fill: parent
+                leftMargin: 5
             }
-            text: "Boot ID: "
-            font.pixelSize: 16
-        }
-        ComboBox {
-            id: bootIdComboBox
-            width: 300
-            property var bootId: [ ];
-            model: g_bootModel
-            textRole: "displayshort"
-//            valueRole: "_BOOT_ID" // elegant solution but not doable with Qt 5.12
-            onActivated: {
-                bootId = [ g_bootModel.bootId(currentIndex) ]
-//                bootId = [ currentValue ]
+            Label {
+                anchors {
+                    verticalCenter: parent.verticalCenter
+                }
+                text: "Boot ID: "
+                font.pixelSize: 16
+            }
+            ComboBox {
+                id: bootIdComboBox
+                width: 300
+                property var bootId: [ ];
+                model: g_bootModel
+                textRole: "displayshort"
+    //            valueRole: "_BOOT_ID" // elegant solution but not doable with Qt 5.12
+                onActivated: {
+                    bootId = [ g_bootModel.bootId(currentIndex) ]
+    //                bootId = [ currentValue ]
+                }
             }
         }
     }
@@ -49,14 +57,24 @@ Window {
             id: unitColumn
             height: parent.height
             width: Math.min(parent.width * 0.3, 300)
-            Button {
-                id: selectNoneButton
-                text: "Select None"
-                onClicked: {
-                    unitModel.setAllSelectionStates(false)
+            Row {
+                Button {
+                    id: selectNoneButton
+                    text: "Select None"
+                    onClicked: {
+                        unitModel.setAllSelectionStates(false)
+                    }
+                }
+                Button {
+                    id: selectAllButton
+                    text: "Select All"
+                    onClicked: {
+                        unitModel.setAllSelectionStates(true)
+                    }
                 }
             }
             ListView {
+                z: -1
                 height: parent.height - selectNoneButton.height
                 width: parent.width
                 model: unitModel
@@ -85,13 +103,13 @@ Window {
                     text: Qt.formatTime(model.date, "HH:mm:ss.zzz") + " " + model.message
                     color: {
                         switch(model.priority) {
-                        case 0: return "#ff0000" // emergency
-                        case 1: return "#cc0000" // alert
-                        case 2: return "#cc5200" // critical
-                        case 3: return "#00ff00" // error
-                        case 4: return "#cc9c00" // warning
-                        case 5: return "#015eff" // notice
-                        case 6: return "#015e39" // information
+                        case 0: return "#700293" // emergency (violet)
+                        case 1: return "#930269" // alert
+                        case 2: return "#930202" // critical
+                        case 3: return "#ff0000" // error (red)
+                        case 4: return "#cc9c00" // warning (orange)
+                        case 5: return "#015eff" // notice (blue)
+                        case 6: return "#029346" // information (green)
                         case 7: return "#000000" // debug
                         }
                     }
