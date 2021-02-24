@@ -20,6 +20,7 @@ Window {
         z: 1 // put on top of list view
         color: "#cccccc"
         Row {
+            spacing: 20
             anchors {
                 fill: parent
                 leftMargin: 5
@@ -28,7 +29,7 @@ Window {
                 anchors {
                     verticalCenter: parent.verticalCenter
                 }
-                text: "Boot ID: "
+                text: "Boot ID:"
                 font.pixelSize: 16
             }
             ComboBox {
@@ -41,6 +42,58 @@ Window {
                 onActivated: {
                     bootId = [ g_bootModel.bootId(currentIndex) ]
     //                bootId = [ currentValue ]
+                }
+            }
+            Label {
+                anchors {
+                    verticalCenter: parent.verticalCenter
+                }
+                text: "Priority:"
+                font.pixelSize: 16
+            }
+            ComboBox {
+                id: priorityComboBox
+                ListModel {
+                    id: priorityModel
+                    ListElement{
+                        text: "emergency"
+                        value: 0
+                    }
+                    ListElement{
+                        text: "alert"
+                        value: 1
+                    }
+                    ListElement{
+                        text: "critical"
+                        value: 2
+                    }
+                    ListElement{
+                        text: "error"
+                        value: 3
+                    }
+                    ListElement{
+                        text: "warning"
+                        value: 4
+                    }
+                    ListElement{
+                        text: "notice"
+                        value: 5
+                    }
+                    ListElement{
+                        text: "info"
+                        value: 6
+                    }
+                    ListElement{
+                        text: "debug"
+                        value: 7
+                    }
+                }
+
+                currentIndex: 5
+                model: priorityModel
+                textRole: "text"
+                onActivated: {
+                    journalModel.priorityFilter = priorityModel.get(currentIndex).value
                 }
             }
         }

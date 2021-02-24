@@ -112,6 +112,13 @@ void JournaldViewModel::seekHead()
             qCritical() << "Failed to set journal filter:" << strerror(-result) << filterExpression;
         }
     }
+    for (int i = 0; i <= d->mPriorityFilter; ++i) {
+        QString filterExpression = "PRIORITY=" + QString::number(i);
+        result = sd_journal_add_match(d->mJournal, filterExpression.toStdString().c_str(), 0);
+        if (result < 0) {
+            qCritical() << "Failed to set journal filter:" << strerror(-result) << filterExpression;
+        }
+    }
 
     result = sd_journal_seek_head(d->mJournal);
     if (result < 0) {
@@ -255,6 +262,14 @@ void JournaldViewModel::setBootFilter(const QStringList &bootFilter)
 {
     d->mBootFilter = bootFilter;
     beginResetModel();
+    seekHead();
+    endResetModel();
+}
+
+void JournaldViewModel::setPriorityFilter(int priority)
+{
+    beginResetModel();
+    d->mPriorityFilter = priority;
     seekHead();
     endResetModel();
 }

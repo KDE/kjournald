@@ -17,6 +17,7 @@ class JournaldViewModel : public QAbstractItemModel
     Q_PROPERTY(QString journalPath WRITE setJournaldPath RESET loadSystemJournal)
     Q_PROPERTY(QStringList systemdUnitFilter WRITE setSystemdUnitFilter)
     Q_PROPERTY(QStringList bootFilter WRITE setBootFilter)
+    Q_PROPERTY(int priorityFilter WRITE setPriorityFilter)
 
 public:
     enum Roles { MESSAGE = Qt::UserRole + 1, DATE, PRIORITY, _SYSTEMD_UNIT, _BOOT_ID, UNIT_COLOR };
@@ -63,6 +64,8 @@ public:
     void setSystemdUnitFilter(const QStringList &systemdUnitFilter);
 
     void setBootFilter(const QStringList &bootFilter);
+
+    void setPriorityFilter(int);
 
 private:
     std::unique_ptr<JournaldViewModelPrivate> d;

@@ -35,6 +35,7 @@ public:
     QVector<LogEntry> mLog;
     QStringList mSystemdUnitFilter;
     QStringList mBootFilter;
+    int mPriorityFilter{ 0 };
     QHash<QString, QColor> mUnitToColorMap;
 };
 
