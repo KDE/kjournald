@@ -129,6 +129,10 @@ Window {
                     }
                 }
             }
+            ScrollBar.vertical: ScrollBar {
+                policy: ScrollBar.AlwaysOn
+                active: ScrollBar.AlwaysOn
+            }
         }
     }
 
