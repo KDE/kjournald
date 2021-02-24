@@ -39,7 +39,7 @@ Window {
                 model: g_bootModel
                 textRole: "displayshort"
     //            valueRole: "_BOOT_ID" // elegant solution but not doable with Qt 5.12
-                onActivated: {
+                onCurrentIndexChanged: {
                     bootId = [ g_bootModel.bootId(currentIndex) ]
     //                bootId = [ currentValue ]
                 }
@@ -53,6 +53,7 @@ Window {
             }
             ComboBox {
                 id: priorityComboBox
+                property int priority: 5
                 ListModel {
                     id: priorityModel
                     ListElement{
@@ -92,8 +93,8 @@ Window {
                 currentIndex: 5
                 model: priorityModel
                 textRole: "text"
-                onActivated: {
-                    journalModel.priorityFilter = priorityModel.get(currentIndex).value
+                onCurrentIndexChanged: {
+                    priorityComboBox.priority = priorityModel.get(currentIndex).value
                 }
             }
         }
@@ -199,5 +200,6 @@ Window {
         journalPath: g_path
         systemdUnitFilter: unitModel.selectedEntries
         bootFilter: bootIdComboBox.bootId
+        priorityFilter: priorityComboBox.priority
     }
 }

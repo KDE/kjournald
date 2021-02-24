@@ -93,7 +93,7 @@ void JournaldViewModel::setJournaldPath(const QString &path)
 
 void JournaldViewModel::seekHead()
 {
-    int result{0};
+    int result{ 0 };
 
     // reset all filters
     sd_journal_flush_matches(d->mJournal);
@@ -126,6 +126,7 @@ void JournaldViewModel::seekHead()
         return;
     }
 
+    d->canFetchMore = true;
     // clear all data which are in limbo with new head
     d->mLog.clear();
 }
@@ -202,18 +203,20 @@ QVariant JournaldViewModel::data(const QModelIndex &index, int role) const
 
 bool JournaldViewModel::canFetchMore(const QModelIndex &parent) const
 {
-    // TODO
-    return true;
+    return d->canFetchMore;
 }
 
 void JournaldViewModel::fetchMore(const QModelIndex &parent)
 {
     Q_UNUSED(parent);
     const int readChunkSize{500};
-    int counter = 0;
     QVector<LogEntry> chunk;
-    while (sd_journal_next(d->mJournal) > 0 && counter < readChunkSize) {
-        ++counter;
+    for (int counter = 0; counter < readChunkSize; ++counter) {
+        // obtain more data, 1 for success, 0 if reached end
+        if (sd_journal_next(d->mJournal) <= 0) {
+            d->canFetchMore = false;
+            break;
+        }
         const char *data;
         size_t length;
         uint64_t time;
@@ -252,17 +255,19 @@ void JournaldViewModel::fetchMore(const QModelIndex &parent)
 
 void JournaldViewModel::setSystemdUnitFilter(const QStringList &systemdUnitFilter)
 {
-    d->mSystemdUnitFilter = systemdUnitFilter;
     beginResetModel();
+    d->mSystemdUnitFilter = systemdUnitFilter;
     seekHead();
+    fetchMore(QModelIndex());
     endResetModel();
 }
 
 void JournaldViewModel::setBootFilter(const QStringList &bootFilter)
 {
-    d->mBootFilter = bootFilter;
     beginResetModel();
+    d->mBootFilter = bootFilter;
     seekHead();
+    fetchMore(QModelIndex());
     endResetModel();
 }
 
@@ -271,5 +276,6 @@ void JournaldViewModel::setPriorityFilter(int priority)
     beginResetModel();
     d->mPriorityFilter = priority;
     seekHead();
+    fetchMore(QModelIndex());
     endResetModel();
 }
