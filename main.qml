@@ -46,6 +46,11 @@ ApplicationWindow {
         width: parent.width
         z: 1 // put on top of list view
         color: "#cccccc"
+
+        // forward page key events to listview
+        Keys.forwardTo: [ viewRoot ]
+        focus: true
+
         Row {
             spacing: 20
             anchors {
@@ -80,7 +85,7 @@ ApplicationWindow {
             }
             ComboBox {
                 id: priorityComboBox
-                property int priority: 5
+                property int priority: 6
                 ListModel {
                     id: priorityModel
                     ListElement{
@@ -156,6 +161,10 @@ ApplicationWindow {
         width: parent.width
         height: parent.height - topMenu.height
 
+        // forward page key events to listview
+        Keys.forwardTo: [ viewRoot ]
+        focus: true
+
         Column {
             id: unitColumn
             height: parent.height
@@ -190,10 +199,12 @@ ApplicationWindow {
         }
         ListView {
             id: viewRoot
-
+            highlightMoveDuration: 10
             height: parent.height
             width: parent.width - unitColumn.width
             model: journalModel
+            focus: true
+            Component.onCompleted: forceActiveFocus()
             delegate: Rectangle
             {
                 color: model.unitcolor
@@ -229,6 +240,18 @@ ApplicationWindow {
             ScrollBar.vertical: ScrollBar {
                 policy: ScrollBar.AlwaysOn
                 active: ScrollBar.AlwaysOn
+            }
+            TextMetrics {
+                id: messageIdMetrics
+                text: "Example Log message"
+            }
+            Keys.onPressed: {
+                if (event.key === Qt.Key_PageDown) {
+                    viewRoot.currentIndex = Math.min(count - 1, currentIndex + Math.floor(viewRoot.height / messageIdMetrics.height))
+                }
+                if (event.key === Qt.Key_PageUp) {
+                    viewRoot.currentIndex = Math.max(0, currentIndex - Math.floor(viewRoot.height / messageIdMetrics.height))
+                }
             }
         }
     }
