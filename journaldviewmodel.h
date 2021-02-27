@@ -74,6 +74,11 @@ public:
 
     void setPriorityFilter(int priority);
 
+    /**
+     * @return row index of searched string
+     */
+    Q_INVOKABLE int search(const QString &searchString, int startRow);
+
 Q_SIGNALS:
     void journaldPathChanged();
     void kernelFilterChanged();

@@ -252,6 +252,12 @@ ApplicationWindow {
                 if (event.key === Qt.Key_PageUp) {
                     viewRoot.currentIndex = Math.max(0, currentIndex - Math.floor(viewRoot.height / messageIdMetrics.height))
                 }
+                if (event.key === Qt.Key_F3) {
+                    var index = journalModel.search(hightlightTextField.text, viewRoot.currentIndex + 1)
+                    if (index >= 0) {
+                        viewRoot.currentIndex = index
+                    }
+                }
             }
         }
     }

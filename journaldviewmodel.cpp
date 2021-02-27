@@ -309,3 +309,19 @@ bool JournaldViewModel::kernelFilter() const
 {
     return d->mShowKernelMessages;
 }
+
+int JournaldViewModel::search(const QString &searchString, int startRow)
+{
+    int row = startRow;
+    while (row < d->mLog.size()) {
+        if (d->mLog.at(row).mMessage.contains(searchString)) {
+            return row;
+        }
+        ++row;
+        if (row == d->mLog.size() && d->canFetchMore) { // if end is reached, try to fetch more
+             fetchMore(QModelIndex());
+        }
+    }
+    return -1;
+}
+
