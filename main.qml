@@ -135,6 +135,17 @@ ApplicationWindow {
                 checked: journalModel.kernelFilter
                 onCheckedChanged: journalModel.kernelFilter = checked
             }
+            Label {
+                anchors {
+                    verticalCenter: parent.verticalCenter
+                }
+                text: "Highlight:"
+                font.pixelSize: 16
+            }
+            TextField {
+                id: hightlightTextField
+                text: ""
+            }
         }
     }
 
@@ -178,6 +189,8 @@ ApplicationWindow {
             }
         }
         ListView {
+            id: viewRoot
+
             height: parent.height
             width: parent.width - unitColumn.width
             model: journalModel
@@ -186,25 +199,17 @@ ApplicationWindow {
                 color: model.unitcolor
                 width: parent.width
                 height: messageText.height
-                Text {
+                LogLine {
                     id: messageText
                     anchors {
                         left: parent.left
                         right: parent.right
                     }
-                    text: Qt.formatTime(model.date, "HH:mm:ss.zzz") + " " + model.message
-                    color: {
-                        switch(model.priority) {
-                        case 0: return "#700293" // emergency (violet)
-                        case 1: return "#930269" // alert
-                        case 2: return "#930202" // critical
-                        case 3: return "#ff0000" // error (red)
-                        case 4: return "#cc9c00" // warning (orange)
-                        case 5: return "#015eff" // notice (blue)
-                        case 6: return "#029346" // information (green)
-                        case 7: return "#000000" // debug
-                        }
-                    }
+                    date: model.date
+                    priority: model.priority
+                    message: model.message
+                    highlight: hightlightTextField.text
+
                     Rectangle {
                         anchors.right: parent.right
                         width: unitInfo.width + 8
