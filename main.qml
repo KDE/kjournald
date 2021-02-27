@@ -124,6 +124,17 @@ ApplicationWindow {
                     priorityComboBox.priority = priorityModel.get(currentIndex).value
                 }
             }
+            Label {
+                anchors {
+                    verticalCenter: parent.verticalCenter
+                }
+                text: "Kernel Log:"
+                font.pixelSize: 16
+            }
+            CheckBox {
+                checked: journalModel.kernelFilter
+                onCheckedChanged: journalModel.kernelFilter = checked
+            }
         }
     }
 

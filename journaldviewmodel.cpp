@@ -124,6 +124,10 @@ void JournaldViewModel::seekHead()
             qCritical() << "Failed to set journal filter:" << strerror(-result) << filterExpression;
         }
     }
+    if (d->mShowKernelMessages) {
+        result = sd_journal_add_disjunction(d->mJournal);
+        result = sd_journal_add_match(d->mJournal, "_TRANSPORT=kernel", 0);
+    }
 
     result = sd_journal_seek_head(d->mJournal);
     if (result < 0) {
@@ -278,9 +282,30 @@ void JournaldViewModel::setBootFilter(const QStringList &bootFilter)
 
 void JournaldViewModel::setPriorityFilter(int priority)
 {
+    if (d->mPriorityFilter == priority) {
+        return;
+    }
     beginResetModel();
     d->mPriorityFilter = priority;
     seekHead();
     fetchMore(QModelIndex());
     endResetModel();
+}
+
+void JournaldViewModel::setKernelFilter(bool showKernelMessages)
+{
+    if (d->mShowKernelMessages == showKernelMessages) {
+        return;
+    }
+    beginResetModel();
+    d->mShowKernelMessages = showKernelMessages;
+    seekHead();
+    fetchMore(QModelIndex());
+    endResetModel();
+    Q_EMIT kernelFilterChanged();
+}
+
+bool JournaldViewModel::kernelFilter() const
+{
+    return d->mShowKernelMessages;
 }

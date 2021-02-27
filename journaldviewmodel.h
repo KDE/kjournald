@@ -17,6 +17,8 @@ class JournaldViewModel : public QAbstractItemModel
     Q_PROPERTY(QString journalPath WRITE setJournaldPath READ journaldPath RESET loadSystemJournal NOTIFY journaldPathChanged)
     Q_PROPERTY(QStringList systemdUnitFilter WRITE setSystemdUnitFilter)
     Q_PROPERTY(QStringList bootFilter WRITE setBootFilter)
+    /** if set to true, Kernel messages are added to the log output **/
+    Q_PROPERTY(bool kernelFilter WRITE setKernelFilter READ kernelFilter NOTIFY kernelFilterChanged)
     Q_PROPERTY(int priorityFilter WRITE setPriorityFilter)
 
 public:
@@ -67,10 +69,14 @@ public:
 
     void setBootFilter(const QStringList &bootFilter);
 
-    void setPriorityFilter(int);
+    void setKernelFilter(bool showKernelMessages);
+    bool kernelFilter() const;
+
+    void setPriorityFilter(int priority);
 
 Q_SIGNALS:
     void journaldPathChanged();
+    void kernelFilterChanged();
 
 private:
     std::unique_ptr<JournaldViewModelPrivate> d;

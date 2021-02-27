@@ -38,6 +38,7 @@ public:
     QStringList mSystemdUnitFilter;
     QStringList mBootFilter;
     int mPriorityFilter{ 0 };
+    bool mShowKernelMessages{ false };
     QHash<QString, QColor> mUnitToColorMap;
 };
 
