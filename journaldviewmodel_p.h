@@ -32,7 +32,8 @@ public:
     QColor unitColor(const QString &unit);
 
     bool canFetchMore{ true }; // indicates if end of journal is reached
-    sd_journal *mJournal{nullptr};
+    QString mJournalPath;
+    sd_journal *mJournal{ nullptr };
     QVector<LogEntry> mLog;
     QStringList mSystemdUnitFilter;
     QStringList mBootFilter;

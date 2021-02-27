@@ -6,12 +6,39 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
+import QtQuick.Dialogs 1.0
 import systemd 1.0
 
-Window {
+ApplicationWindow {
     width: 800
     height: 640
     visible: true
+
+    menuBar: MenuBar {
+        Menu {
+            title: "File"
+            MenuItem {
+                text: "Open Folder"
+                onClicked: {
+                    fileDialog.folder = journalModel.journalPath
+                    fileDialog.open()
+                }
+            }
+            MenuItem {
+                text: "Close"
+                onClicked: Qt.quit()
+            }
+        }
+    }
+
+    FileDialog {
+        id: fileDialog
+        title: "Select journal folder"
+        selectFolder: true
+        onAccepted: {
+            journalModel.journalPath = fileDialog.fileUrl
+        }
+    }
 
     Rectangle {
         id: topMenu

@@ -71,13 +71,11 @@ JournaldViewModel::JournaldViewModel(QObject *parent)
     endResetModel();
 }
 
-JournaldViewModel::JournaldViewModel(const QString &journalPath, QObject *parent)
+JournaldViewModel::JournaldViewModel(const QString &path, QObject *parent)
     : QAbstractItemModel(parent)
     , d(new JournaldViewModelPrivate)
 {
-    beginResetModel();
-    d->openJournalFromPath(journalPath);
-    endResetModel();
+    setJournaldPath(path);
 }
 
 JournaldViewModel::~JournaldViewModel() = default;
@@ -89,6 +87,13 @@ void JournaldViewModel::setJournaldPath(const QString &path)
     seekHead();
     fetchMore(QModelIndex());
     endResetModel();
+    d->mJournalPath = path;
+    Q_EMIT journaldPathChanged();
+}
+
+QString JournaldViewModel::journaldPath() const
+{
+    return d->mJournalPath;
 }
 
 void JournaldViewModel::seekHead()

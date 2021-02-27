@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QGuiApplication app(argc, argv);
+    app.setOrganizationName("KDE");
 
     qmlRegisterType<JournaldViewModel>("systemd", 1, 0, "JournaldViewModel");
     qmlRegisterType<JournaldUniqueQueryModel>("systemd", 1, 0, "JournaldUniqueQueryModel");

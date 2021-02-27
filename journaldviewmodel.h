@@ -14,7 +14,7 @@ class JournaldViewModelPrivate;
 class JournaldViewModel : public QAbstractItemModel
 {
     Q_OBJECT
-    Q_PROPERTY(QString journalPath WRITE setJournaldPath RESET loadSystemJournal)
+    Q_PROPERTY(QString journalPath WRITE setJournaldPath READ journaldPath RESET loadSystemJournal NOTIFY journaldPathChanged)
     Q_PROPERTY(QStringList systemdUnitFilter WRITE setSystemdUnitFilter)
     Q_PROPERTY(QStringList bootFilter WRITE setBootFilter)
     Q_PROPERTY(int priorityFilter WRITE setPriorityFilter)
@@ -38,6 +38,8 @@ public:
     ~JournaldViewModel();
 
     void setJournaldPath(const QString &path);
+
+    QString journaldPath() const;
 
     void loadSystemJournal();
 
@@ -66,6 +68,9 @@ public:
     void setBootFilter(const QStringList &bootFilter);
 
     void setPriorityFilter(int);
+
+Q_SIGNALS:
+    void journaldPathChanged();
 
 private:
     std::unique_ptr<JournaldViewModelPrivate> d;
