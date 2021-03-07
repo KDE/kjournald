@@ -220,6 +220,7 @@ ApplicationWindow {
                     priority: model.priority
                     message: model.message
                     highlight: hightlightTextField.text
+                    modelProxy: viewRoot.model
 
                     Rectangle {
                         anchors.right: parent.right

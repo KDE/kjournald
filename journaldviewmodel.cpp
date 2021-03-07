@@ -232,7 +232,6 @@ void JournaldViewModel::fetchMore(const QModelIndex &parent)
         int result{1};
 
         LogEntry entry;
-
         result = sd_journal_get_realtime_usec(d->mJournal, &time);
         if (result == 0) {
             entry.mDate.setMSecsSinceEpoch(time / 1000);
@@ -325,3 +324,11 @@ int JournaldViewModel::search(const QString &searchString, int startRow)
     return -1;
 }
 
+QString JournaldViewModel::formatTime(const QDateTime &datetime, bool utc) const
+{
+    if (utc) {
+        return datetime.toUTC().time().toString("HH:mm:ss.zzz");
+    } else {
+        return datetime.time().toString("HH:mm:ss.zzz");
+    }
+}

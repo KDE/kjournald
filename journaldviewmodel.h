@@ -79,6 +79,14 @@ public:
      */
     Q_INVOKABLE int search(const QString &searchString, int startRow);
 
+    /**
+     * @brief Format time into string
+     * @param datetime the datetime object
+     * @param utc if set to true, the string will be UTC time, otherwise according to the current local
+     * @return formatted string
+     */
+    Q_INVOKABLE QString formatTime(const QDateTime &datetime, bool utc) const;
+
 Q_SIGNALS:
     void journaldPathChanged();
     void kernelFilterChanged();
