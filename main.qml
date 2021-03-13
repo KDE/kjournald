@@ -14,6 +14,22 @@ ApplicationWindow {
     height: 640
     visible: true
 
+    function copyViewToClipbaord() {
+        var startIndex = viewRoot.indexAt(1, viewRoot.contentY)
+        var endIndex = viewRoot.indexAt(1, viewRoot.contentY + viewRoot.height);
+        if (endIndex < 0) {
+            endIndex = journalModel.rowCount()
+        }
+        var content = ""
+        for (var i = startIndex; i < endIndex; ++i) {
+            content += journalModel.formatTime(journalModel.data(journalModel.index(i, 0), JournaldViewModel.DATE), true) + " UTC "
+                        + journalModel.data(journalModel.index(i, 0), JournaldViewModel.SYSTEMD_UNIT) + " "
+                        + journalModel.data(journalModel.index(i, 0), JournaldViewModel.MESSAGE) + "\n"
+        }
+        clipboard.setText(content)
+        console.log("view content copied")
+    }
+
     menuBar: MenuBar {
         Menu {
             title: "File"
@@ -23,6 +39,10 @@ ApplicationWindow {
                     fileDialog.folder = journalModel.journalPath
                     fileDialog.open()
                 }
+            }
+            MenuItem {
+                text: "Copy Log Output"
+                onClicked: copyViewToClipbaord()
             }
             MenuItem {
                 text: "Close"
@@ -259,6 +279,9 @@ ApplicationWindow {
                         viewRoot.currentIndex = index
                     }
                 }
+                if (event.key === Qt.Key_C && (event.modifiers & Qt.ControlModifier)) {
+                    copyViewToClipbaord()
+                }
             }
         }
     }
@@ -274,5 +297,8 @@ ApplicationWindow {
         systemdUnitFilter: unitModel.selectedEntries
         bootFilter: bootIdComboBox.bootId
         priorityFilter: priorityComboBox.priority
+    }
+    ClipboardProxy {
+        id: clipboard
     }
 }

@@ -23,6 +23,7 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick REQUIRED)
 add_executable(journald-browser
     main.cpp
     bootmodel.cpp
+    clipboardproxy.cpp
     loggingcategories.cpp
     fieldfilterproxymodel.cpp
     journal.cpp

@@ -22,7 +22,8 @@ class JournaldViewModel : public QAbstractItemModel
     Q_PROPERTY(int priorityFilter WRITE setPriorityFilter)
 
 public:
-    enum Roles { MESSAGE = Qt::UserRole + 1, DATE, PRIORITY, _SYSTEMD_UNIT, _BOOT_ID, UNIT_COLOR };
+    enum Roles { MESSAGE = Qt::UserRole + 1, DATE, PRIORITY, SYSTEMD_UNIT, BOOT_ID, UNIT_COLOR };
+    Q_ENUM(Roles);
 
     explicit JournaldViewModel(QObject *parent = nullptr);
 

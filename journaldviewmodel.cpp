@@ -146,8 +146,8 @@ QHash<int, QByteArray> JournaldViewModel::roleNames() const
     roles[JournaldViewModel::DATE] = "date";
     roles[JournaldViewModel::MESSAGE] = "message";
     roles[JournaldViewModel::PRIORITY] = "priority";
-    roles[JournaldViewModel::_SYSTEMD_UNIT] = "systemdunit";
-    roles[JournaldViewModel::_BOOT_ID] = "bootid";
+    roles[JournaldViewModel::SYSTEMD_UNIT] = "systemdunit";
+    roles[JournaldViewModel::BOOT_ID] = "bootid";
     roles[JournaldViewModel::UNIT_COLOR] = "unitcolor";
     return roles;
 }
@@ -198,9 +198,9 @@ QVariant JournaldViewModel::data(const QModelIndex &index, int role) const
         return QString(d->mLog.at(index.row()).mMessage).remove("\u001B[96m").remove("\u001B[0m").remove("\u001B[93m").remove("\u001B[31m");
     case JournaldViewModel::Roles::DATE:
         return d->mLog.at(index.row()).mDate;
-    case JournaldViewModel::Roles::_BOOT_ID:
+    case JournaldViewModel::Roles::BOOT_ID:
         return d->mLog.at(index.row()).mBootId;
-    case JournaldViewModel::Roles::_SYSTEMD_UNIT:
+    case JournaldViewModel::Roles::SYSTEMD_UNIT:
         return d->mLog.at(index.row()).mSystemdUnit;
     case JournaldViewModel::Roles::PRIORITY:
         return d->mLog.at(index.row()).mPriority;

@@ -4,6 +4,7 @@
 */
 
 #include "bootmodel.h"
+#include "clipboardproxy.h"
 #include "fieldfilterproxymodel.h"
 #include "journaldhelper.h"
 #include "journalduniquequerymodel.h"
@@ -25,6 +26,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<JournaldViewModel>("systemd", 1, 0, "JournaldViewModel");
     qmlRegisterType<JournaldUniqueQueryModel>("systemd", 1, 0, "JournaldUniqueQueryModel");
     qmlRegisterType<FieldFilterProxyModel>("systemd", 1, 0, "FieldFilterProxyModel");
+    qmlRegisterType<ClipboardProxy>("systemd", 1, 0, "ClipboardProxy");
     qmlRegisterUncreatableType<BootModel>("systemd", 1, 0, "BootModel", "Backend only object");
 
     QCommandLineParser parser;
