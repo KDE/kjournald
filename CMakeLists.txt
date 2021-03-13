@@ -40,3 +40,4 @@ PRIVATE
     Qt${QT_VERSION_MAJOR}::Quick
     ${SYSTEMD_LIBRARIES}
 )
+install(TARGETS journald-browser DESTINATION bin)
