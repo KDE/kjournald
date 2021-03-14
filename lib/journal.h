@@ -13,6 +13,13 @@
 class JournalPrivate;
 class sd_journal;
 
+/**
+ * @brief The Journal class encapsulates an sd_journal object
+ *
+ * @note The journald documentation specifically says that using the same sd_journal object in multiple
+ * queries (or models in this case) might have side effects; even though there are none at the moment. Thus,
+ * ensure that the same Journal object is only used for one model.
+ */
 class KJOURNALD_EXPORT Journal
 {
 public:

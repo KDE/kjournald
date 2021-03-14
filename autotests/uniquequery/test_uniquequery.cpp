@@ -39,6 +39,13 @@ void TestUniqueQuery::boots()
     model.setField(JournaldHelper::Field::BOOT_ID);
     QCOMPARE(model.fieldString(), "_BOOT_ID");
     QCOMPARE(model.rowCount(), 3);
+
+    // check one example value
+    QStringList values;
+    for (int i = 0; i < model.rowCount(); ++i) {
+        values.append(model.data(model.index(i, 0), JournaldUniqueQueryModel::FIELD).toString());
+    }
+    QVERIFY(values.contains("2dbe99dd855049af8f2865c5da2b8fda"));
 }
 
 void TestUniqueQuery::systemdUnits()
@@ -51,6 +58,12 @@ void TestUniqueQuery::systemdUnits()
     model.setField(JournaldHelper::Field::SYSTEMD_UNIT);
     QCOMPARE(model.fieldString(), "_SYSTEMD_UNIT");
     QCOMPARE(model.rowCount(), 17);
+
+    QStringList values;
+    for (int i = 0; i < model.rowCount(); ++i) {
+        values.append(model.data(model.index(i, 0), JournaldUniqueQueryModel::FIELD).toString());
+    }
+    QVERIFY(values.contains("systemd-journald.service"));
 }
 
 QTEST_GUILESS_MAIN(TestUniqueQuery);

@@ -13,6 +13,18 @@
 
 class JournaldUniqueQueryModelPrivate;
 
+/**
+ * @brief The JournaldUniqueQueryModel class provides an item model abstraction for journald queryunique API
+ *
+ * This class is useful when creating a list model for contents like:
+ * - boot ids in specific journal database
+ * - systemd units in specific journal database
+ * - priorities in specific journal database
+ *
+ * The model can be create from an arbitrary local journald database by defining a path or from the
+ * system's default journal. Values can either be set by @a setFieldString for arbitrary values or in a
+ * typesafe manner via @a setField for most common fields.
+ */
 class KJOURNALD_EXPORT JournaldUniqueQueryModel : public QAbstractItemModel
 {
     Q_OBJECT
@@ -25,6 +37,7 @@ public:
         FIELD = Qt::UserRole + 1,
         SELECTED //!< supports UI integration by storing checked
     };
+    Q_ENUM(Roles)
 
     explicit JournaldUniqueQueryModel(QObject *parent = nullptr);
 
@@ -42,16 +55,19 @@ public:
     ~JournaldUniqueQueryModel() override;
 
     /**
-     * Reset model by reading from a new journal DB
+     * Reset model by reading from a new journald database
      *
      * @param path The path to directory that obtains the journald DB, usually ending with "journal".
      * @return true if path could be found and opened, otherwise false
      */
     bool setJournaldPath(const QString &path);
 
+    /**
+     * Switch to local system's default journald database
+     *
+     * For details regarding preference, see journald documentation.
+     */
     void setSystemJournal();
-
-    void seekHead();
 
     /**
      * Set field for which unique query shall be run
@@ -75,15 +91,36 @@ public:
      */
     QString fieldString() const;
 
+    /**
+     * @copydoc QAbstractItemModel::rolesNames()
+     */
     QHash<int, QByteArray> roleNames() const override;
 
+    /**
+     * @copydoc QAbstractItemModel::index()
+     */
     QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;
+
+    /**
+     * @copydoc QAbstractItemModel::parent()
+     */
     QModelIndex parent(const QModelIndex &index) const override;
 
+    /**
+     * @copydoc QAbstractItemModel::rowCount()
+     */
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
+
+    /**
+     * @copydoc QAbstractItemModel::columnCount()
+     */
     int columnCount(const QModelIndex &parent = QModelIndex()) const override;
 
+    /**
+     * @copydoc QAbstractItemModel::data()
+     */
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+
     Q_INVOKABLE bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override;
 
     QStringList selectedEntries() const;
