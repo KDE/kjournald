@@ -10,8 +10,9 @@
 #include <qjsvalue.h>
 #include <qqmlparserstatus.h>
 #include <qsortfilterproxymodel.h>
+#include "kjournald_export.h"
 
-class FieldFilterProxyModel : public QSortFilterProxyModel, public QQmlParserStatus
+class KJOURNALD_EXPORT FieldFilterProxyModel : public QSortFilterProxyModel, public QQmlParserStatus
 {
     Q_OBJECT
     Q_INTERFACES(QQmlParserStatus)

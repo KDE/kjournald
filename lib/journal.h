@@ -8,11 +8,12 @@
 
 #include <QString>
 #include <memory>
+#include "kjournald_export.h"
 
 class JournalPrivate;
 class sd_journal;
 
-class Journal
+class KJOURNALD_EXPORT Journal
 {
 public:
     /**

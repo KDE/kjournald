@@ -8,10 +8,11 @@
 
 #include <QAbstractItemModel>
 #include <memory>
+#include "kjournald_export.h"
 
 class JournaldViewModelPrivate;
 
-class JournaldViewModel : public QAbstractItemModel
+class KJOURNALD_EXPORT JournaldViewModel : public QAbstractItemModel
 {
     Q_OBJECT
     Q_PROPERTY(QString journalPath WRITE setJournaldPath READ journaldPath RESET loadSystemJournal NOTIFY journaldPathChanged)

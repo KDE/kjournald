@@ -9,6 +9,7 @@
 #include <QDebug>
 #include <QDir>
 #include <memory>
+#include "kjournald_export.h"
 
 JournaldUniqueQueryModelPrivate::~JournaldUniqueQueryModelPrivate()
 {

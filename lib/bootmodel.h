@@ -8,10 +8,11 @@
 
 #include <QAbstractItemModel>
 #include <memory>
+#include "kjournald_export.h"
 
 class BootModelPrivate;
 
-class BootModel : public QAbstractItemModel
+class KJOURNALD_EXPORT BootModel : public QAbstractItemModel
 {
     Q_OBJECT
 public:

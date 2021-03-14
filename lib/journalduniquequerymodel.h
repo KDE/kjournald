@@ -8,10 +8,11 @@
 
 #include <QAbstractItemModel>
 #include <memory>
+#include "kjournald_export.h"
 
 class JournaldUniqueQueryModelPrivate;
 
-class JournaldUniqueQueryModel : public QAbstractItemModel
+class KJOURNALD_EXPORT JournaldUniqueQueryModel : public QAbstractItemModel
 {
     Q_OBJECT
     Q_PROPERTY(QString journalPath WRITE setJournaldPath RESET loadSystemJournal)

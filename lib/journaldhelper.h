@@ -9,8 +9,9 @@
 #include "journal.h"
 #include <QDateTime>
 #include <QVector>
+#include "kjournald_export.h"
 
-class JournaldHelper
+class KJOURNALD_EXPORT JournaldHelper
 {
 public:
     struct BootInfo {

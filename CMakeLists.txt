@@ -3,16 +3,17 @@
 
 cmake_minimum_required(VERSION 3.10)
 
-project(journald-browser LANGUAGES CXX)
+project(kjournald LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
-
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+include(FeatureSummary)
+include(GenerateExportHeader)
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(SYSTEMD REQUIRED libsystemd)
@@ -20,25 +21,5 @@ pkg_check_modules(SYSTEMD REQUIRED libsystemd)
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick REQUIRED)
 
-add_executable(journald-browser
-    main.cpp
-    bootmodel.cpp
-    clipboardproxy.cpp
-    loggingcategories.cpp
-    fieldfilterproxymodel.cpp
-    journal.cpp
-    journaldhelper.cpp
-    journaldviewmodel.cpp
-    journalduniquequerymodel.cpp
-    qml.qrc
-)
-
-target_compile_definitions(journald-browser
-    PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
-target_link_libraries(journald-browser
-PRIVATE
-    Qt${QT_VERSION_MAJOR}::Core
-    Qt${QT_VERSION_MAJOR}::Quick
-    ${SYSTEMD_LIBRARIES}
-)
-install(TARGETS journald-browser DESTINATION bin)
+add_subdirectory(lib)
+add_subdirectory(browser)
