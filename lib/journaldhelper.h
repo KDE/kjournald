@@ -10,9 +10,11 @@
 #include <QDateTime>
 #include <QVector>
 #include "kjournald_export.h"
+#include <QObject>
 
 class KJOURNALD_EXPORT JournaldHelper
 {
+    Q_GADGET
 public:
     struct BootInfo {
         QString mBootId;
@@ -29,15 +31,16 @@ public:
         CODE_LINE,
         CODE_FUNC,
         // trusted fields
-        _BOOT_ID,
-        _SYSTEMD_CGROUP,
-        _SYSTEMD_SLICE,
-        _SYSTEMD_UNIT,
-        _SYSTEMD_USER_UNIT,
-        _SYSTEMD_USER_SLICE,
-        _SYSTEMD_SESSION,
-        _SYSTEMD_OWNER_UID
+        BOOT_ID,
+        SYSTEMD_CGROUP,
+        SYSTEMD_SLICE,
+        SYSTEMD_UNIT,
+        SYSTEMD_USER_UNIT,
+        SYSTEMD_USER_SLICE,
+        SYSTEMD_SESSION,
+        SYSTEMD_OWNER_UID
     };
+    Q_ENUM(Field)
 
     static QVector<QString> queryUnique(const Journal &journal, Field field);
 
@@ -47,6 +50,8 @@ public:
      * @return ordered list of boots (first is earliest boot in time)
      */
     static QVector<BootInfo> queryOrderedBootIds(const Journal &journal);
+
+    static QString mapField(Field field);
 };
 
 #endif // JOURNALDHELPER_H

@@ -8,6 +8,7 @@
 
 #include <QAbstractItemModel>
 #include <memory>
+#include "journaldhelper.h"
 #include "kjournald_export.h"
 
 class JournaldUniqueQueryModelPrivate;
@@ -15,8 +16,8 @@ class JournaldUniqueQueryModelPrivate;
 class KJOURNALD_EXPORT JournaldUniqueQueryModel : public QAbstractItemModel
 {
     Q_OBJECT
-    Q_PROPERTY(QString journalPath WRITE setJournaldPath RESET loadSystemJournal)
-    Q_PROPERTY(QString field WRITE setField)
+    Q_PROPERTY(QString journalPath WRITE setJournaldPath RESET setSystemJournal)
+    Q_PROPERTY(QString field WRITE setFieldString)
     Q_PROPERTY(QStringList selectedEntries READ selectedEntries NOTIFY selectedEntriesChanged)
 
 public:
@@ -38,7 +39,7 @@ public:
      */
     JournaldUniqueQueryModel(const QString &journalPath, QObject *parent = nullptr);
 
-    ~JournaldUniqueQueryModel();
+    ~JournaldUniqueQueryModel() override;
 
     /**
      * Reset model by reading from a new journal DB
@@ -48,11 +49,31 @@ public:
      */
     bool setJournaldPath(const QString &path);
 
-    void loadSystemJournal();
+    void setSystemJournal();
 
     void seekHead();
 
-    void setField(const QString &fieldString);
+    /**
+     * Set field for which unique query shall be run
+     *
+     * This method allows defining an arbitrary string as query string. The most common fields are available
+     * by type-safe @a setField setter. Examples for the argument are "_SYSTEMD_UNIT", "PRIORITY", "_BOOT_ID".
+     *
+     * @param fieldString the string that names the field
+     */
+    void setFieldString(const QString &fieldString);
+
+    /**
+     * Set field for which unique query shall be run
+     *
+     * @param field enum for field for which query shall be run
+     */
+    void setField(JournaldHelper::Field field);
+
+    /**
+     * @return the currently set field string
+     */
+    QString fieldString() const;
 
     QHash<int, QByteArray> roleNames() const override;
 

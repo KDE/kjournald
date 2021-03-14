@@ -120,12 +120,22 @@ bool JournaldUniqueQueryModel::setJournaldPath(const QString &path)
     return success;
 }
 
-void JournaldUniqueQueryModel::setField(const QString &fieldString)
+void JournaldUniqueQueryModel::setField(JournaldHelper::Field field)
+{
+    setFieldString(JournaldHelper::mapField(field));
+}
+
+void JournaldUniqueQueryModel::setFieldString(const QString &fieldString)
 {
     beginResetModel();
     d->mFieldString = fieldString;
     d->runQuery();
     endResetModel();
+}
+
+QString JournaldUniqueQueryModel::fieldString() const
+{
+    return d->mFieldString;
 }
 
 QHash<int, QByteArray> JournaldUniqueQueryModel::roleNames() const
@@ -136,7 +146,7 @@ QHash<int, QByteArray> JournaldUniqueQueryModel::roleNames() const
     return roles;
 }
 
-void JournaldUniqueQueryModel::loadSystemJournal()
+void JournaldUniqueQueryModel::setSystemJournal()
 {
     beginResetModel();
     d->openJournal();
