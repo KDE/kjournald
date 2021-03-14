@@ -12,6 +12,8 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+enable_testing()
+
 include(FeatureSummary)
 include(GenerateExportHeader)
 
@@ -19,7 +21,8 @@ find_package(PkgConfig REQUIRED)
 pkg_check_modules(SYSTEMD REQUIRED libsystemd)
 
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick Test REQUIRED)
 
 add_subdirectory(lib)
 add_subdirectory(browser)
+add_subdirectory(autotests)

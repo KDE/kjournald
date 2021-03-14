@@ -108,12 +108,16 @@ JournaldUniqueQueryModel::JournaldUniqueQueryModel(const QString &journalPath, Q
 
 JournaldUniqueQueryModel::~JournaldUniqueQueryModel() = default;
 
-void JournaldUniqueQueryModel::setJournaldPath(const QString &path)
+bool JournaldUniqueQueryModel::setJournaldPath(const QString &path)
 {
+    bool success{ true };
     beginResetModel();
-    d->openJournalFromPath(path);
-    d->runQuery();
+    success = d->openJournalFromPath(path);
+    if (success) {
+        d->runQuery();
+    }
     endResetModel();
+    return success;
 }
 
 void JournaldUniqueQueryModel::setField(const QString &fieldString)

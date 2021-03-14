@@ -40,7 +40,13 @@ public:
 
     ~JournaldUniqueQueryModel();
 
-    void setJournaldPath(const QString &path);
+    /**
+     * Reset model by reading from a new journal DB
+     *
+     * @param path The path to directory that obtains the journald DB, usually ending with "journal".
+     * @return true if path could be found and opened, otherwise false
+     */
+    bool setJournaldPath(const QString &path);
 
     void loadSystemJournal();
 
