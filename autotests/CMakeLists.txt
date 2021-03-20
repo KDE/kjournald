@@ -7,3 +7,4 @@ add_custom_target(extract_testdata
 )
 
 add_subdirectory(uniquequery)
+add_subdirectory(viewmodel)

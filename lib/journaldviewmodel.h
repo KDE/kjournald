@@ -15,12 +15,15 @@ class JournaldViewModelPrivate;
 class KJOURNALD_EXPORT JournaldViewModel : public QAbstractItemModel
 {
     Q_OBJECT
-    Q_PROPERTY(QString journalPath WRITE setJournaldPath READ journaldPath RESET loadSystemJournal NOTIFY journaldPathChanged)
+    Q_PROPERTY(QString journalPath WRITE setJournaldPath READ journaldPath RESET setSystemJournal NOTIFY journaldPathChanged)
     Q_PROPERTY(QStringList systemdUnitFilter WRITE setSystemdUnitFilter)
     Q_PROPERTY(QStringList bootFilter WRITE setBootFilter)
     /** if set to true, Kernel messages are added to the log output **/
     Q_PROPERTY(bool kernelFilter WRITE setKernelFilter READ kernelFilter NOTIFY kernelFilterChanged)
-    Q_PROPERTY(int priorityFilter WRITE setPriorityFilter)
+    /**
+     * Configure model to only provide messages with stated priority or higher. Default: no filter is set.
+     **/
+    Q_PROPERTY(int priorityFilter WRITE setPriorityFilter RESET resetPriorityFilter)
 
 public:
     enum Roles { MESSAGE = Qt::UserRole + 1, DATE, PRIORITY, SYSTEMD_UNIT, BOOT_ID, UNIT_COLOR };
@@ -39,16 +42,34 @@ public:
      */
     JournaldViewModel(const QString &journalPath, QObject *parent = nullptr);
 
-    ~JournaldViewModel();
+    /**
+     * destroys JournaldViewModel
+     */
+    ~JournaldViewModel() override;
 
-    void setJournaldPath(const QString &path);
+    /**
+     * Reset model by reading from a new journald database
+     *
+     * @param path The path to directory that obtains the journald DB, usually ending with "journal".
+     * @return true if path could be found and opened, otherwise false
+     */
+    bool setJournaldPath(const QString &path);
 
+    /**
+     * @return currently set journal path or empty string if none is set
+     */
     QString journaldPath() const;
 
-    void loadSystemJournal();
+    /**
+     * Switch to local system's default journald database
+     *
+     * For details regarding preference, see journald documentation.
+     */
+    void setSystemJournal();
 
-    void seekHead();
-
+    /**
+     * @copydoc QAbstractItemModel::rolesNames()
+     */
     QHash<int, QByteArray> roleNames() const override;
 
     // Header:
@@ -58,13 +79,29 @@ public:
     QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;
     QModelIndex parent(const QModelIndex &index) const override;
 
+    /**
+     * @copydoc QAbstractItemModel::rowCount()
+     */
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
+
+    /**
+     * @copydoc QAbstractItemModel::columnCount()
+     */
     int columnCount(const QModelIndex &parent = QModelIndex()) const override;
 
+    /**
+     * @copydoc QAbstractItemModel::data()
+     */
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
+    /**
+     * @copydoc QAbstractItemModel::canFetchMore()
+     */
     bool canFetchMore(const QModelIndex &parent) const override;
 
+    /**
+     * @copydoc QAbstractItemModel::fetchMore()
+     */
     void fetchMore(const QModelIndex &parent) override;
 
     void setSystemdUnitFilter(const QStringList &systemdUnitFilter);
@@ -74,7 +111,19 @@ public:
     void setKernelFilter(bool showKernelMessages);
     bool kernelFilter() const;
 
+    /**
+     * @brief Filter messages such that only messages with this and higher priority are provided
+     *
+     * @note Non-systemd services may not follow systemd's priority values
+     *
+     * @param priority the minimal priority for messages that shall be provided by model
+     */
     void setPriorityFilter(int priority);
+
+    /**
+     * @brief Discard priority filter and display all messages
+     */
+    void resetPriorityFilter();
 
     /**
      * @return row index of searched string

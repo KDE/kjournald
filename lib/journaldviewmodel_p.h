@@ -12,6 +12,7 @@
 #include <QHash>
 #include <QColor>
 #include <memory>
+#include <optional>
 #include <systemd/sd-journal.h>
 
 struct LogEntry {
@@ -30,6 +31,7 @@ public:
     bool openJournal();
     bool openJournalFromPath(const QString &directory);
     QColor unitColor(const QString &unit);
+    void seekHead();
 
     bool canFetchMore{ true }; // indicates if end of journal is reached
     QString mJournalPath;
@@ -37,7 +39,7 @@ public:
     QVector<LogEntry> mLog;
     QStringList mSystemdUnitFilter;
     QStringList mBootFilter;
-    int mPriorityFilter{ 0 };
+    std::optional<int> mPriorityFilter;
     bool mShowKernelMessages{ false };
     QHash<QString, QColor> mUnitToColorMap;
 };

@@ -5,4 +5,4 @@
 
 #include "loggingcategories.h"
 
-Q_LOGGING_CATEGORY(journald, "systemd.journal");
+Q_LOGGING_CATEGORY(journald, "systemd.journal", QtWarningMsg);

@@ -40,8 +40,9 @@ bool JournaldViewModelPrivate::openJournal()
 bool JournaldViewModelPrivate::openJournalFromPath(const QString &journalPath)
 {
     closeJournal();
+    qCDebug(journald) << "Open journal from path:" << journalPath;
     if (!QDir().exists(journalPath)) {
-        qCCritical(journald) << "Journal directory does not exists, abort opening";
+        qCCritical(journald) << "Journal directory does not exist, abort opening";
         return false;
     }
     int result = sd_journal_open_directory(&mJournal, journalPath.toStdString().c_str(), 0 /* no flags, directory defines type */);
@@ -62,6 +63,53 @@ QColor JournaldViewModelPrivate::unitColor(const QString &unit)
     return mUnitToColorMap.value(unit);
 }
 
+
+void JournaldViewModelPrivate::seekHead()
+{
+    int result{ 0 };
+
+    // reset all filters
+    sd_journal_flush_matches(mJournal);
+
+    for (const QString &unit : mSystemdUnitFilter) {
+        QString filterExpression = "_SYSTEMD_UNIT=" + unit;
+        result = sd_journal_add_match(mJournal, filterExpression.toStdString().c_str(), 0);
+        if (result < 0) {
+            qCCritical(journald) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
+        }
+    }
+    for (const QString &boot : mBootFilter) {
+        QString filterExpression = "_BOOT_ID=" + boot;
+        result = sd_journal_add_match(mJournal, filterExpression.toStdString().c_str(), 0);
+        if (result < 0) {
+            qCCritical(journald) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
+        }
+    }
+    if (mPriorityFilter.has_value()) {
+        for (int i = 0; i <= mPriorityFilter; ++i) {
+            QString filterExpression = "PRIORITY=" + QString::number(i);
+            result = sd_journal_add_match(mJournal, filterExpression.toStdString().c_str(), 0);
+            if (result < 0) {
+                qCCritical(journald()) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
+            }
+        }
+    }
+    if (mShowKernelMessages) {
+        result = sd_journal_add_disjunction(mJournal);
+        result = sd_journal_add_match(mJournal, "_TRANSPORT=kernel", 0);
+    }
+
+    result = sd_journal_seek_head(mJournal);
+    if (result < 0) {
+        qCCritical(journald) << "Failed to seek head:" << strerror(-result);
+        return;
+    }
+
+    canFetchMore = true;
+    // clear all data which are in limbo with new head
+    mLog.clear();
+}
+
 JournaldViewModel::JournaldViewModel(QObject *parent)
     : QAbstractItemModel(parent)
     , d(new JournaldViewModelPrivate)
@@ -80,64 +128,24 @@ JournaldViewModel::JournaldViewModel(const QString &path, QObject *parent)
 
 JournaldViewModel::~JournaldViewModel() = default;
 
-void JournaldViewModel::setJournaldPath(const QString &path)
+bool JournaldViewModel::setJournaldPath(const QString &path)
 {
+    bool success{ true };
     beginResetModel();
-    d->openJournalFromPath(path);
-    seekHead();
-    fetchMore(QModelIndex());
+    success = d->openJournalFromPath(path);
+    if (success) {
+        d->seekHead();
+        fetchMore(QModelIndex());
+    }
     endResetModel();
     d->mJournalPath = path;
     Q_EMIT journaldPathChanged();
+    return success;
 }
 
 QString JournaldViewModel::journaldPath() const
 {
     return d->mJournalPath;
-}
-
-void JournaldViewModel::seekHead()
-{
-    int result{ 0 };
-
-    // reset all filters
-    sd_journal_flush_matches(d->mJournal);
-
-    for (const QString &unit : d->mSystemdUnitFilter) {
-        QString filterExpression = "_SYSTEMD_UNIT=" + unit;
-        result = sd_journal_add_match(d->mJournal, filterExpression.toStdString().c_str(), 0);
-        if (result < 0) {
-            qCritical() << "Failed to set journal filter:" << strerror(-result) << filterExpression;
-        }
-    }
-    for (const QString &boot : d->mBootFilter) {
-        QString filterExpression = "_BOOT_ID=" + boot;
-        result = sd_journal_add_match(d->mJournal, filterExpression.toStdString().c_str(), 0);
-        if (result < 0) {
-            qCritical() << "Failed to set journal filter:" << strerror(-result) << filterExpression;
-        }
-    }
-    for (int i = 0; i <= d->mPriorityFilter; ++i) {
-        QString filterExpression = "PRIORITY=" + QString::number(i);
-        result = sd_journal_add_match(d->mJournal, filterExpression.toStdString().c_str(), 0);
-        if (result < 0) {
-            qCritical() << "Failed to set journal filter:" << strerror(-result) << filterExpression;
-        }
-    }
-    if (d->mShowKernelMessages) {
-        result = sd_journal_add_disjunction(d->mJournal);
-        result = sd_journal_add_match(d->mJournal, "_TRANSPORT=kernel", 0);
-    }
-
-    result = sd_journal_seek_head(d->mJournal);
-    if (result < 0) {
-        qCritical() << "Failed to seek head:" << strerror(-result);
-        return;
-    }
-
-    d->canFetchMore = true;
-    // clear all data which are in limbo with new head
-    d->mLog.clear();
 }
 
 QHash<int, QByteArray> JournaldViewModel::roleNames() const
@@ -152,7 +160,7 @@ QHash<int, QByteArray> JournaldViewModel::roleNames() const
     return roles;
 }
 
-void JournaldViewModel::loadSystemJournal()
+void JournaldViewModel::setSystemJournal()
 {
     beginResetModel();
     d->openJournal();
@@ -218,6 +226,7 @@ bool JournaldViewModel::canFetchMore(const QModelIndex &parent) const
 void JournaldViewModel::fetchMore(const QModelIndex &parent)
 {
     Q_UNUSED(parent);
+    qCDebug(journald) << "Fetch more data";
     const int readChunkSize{500};
     QVector<LogEntry> chunk;
     for (int counter = 0; counter < readChunkSize; ++counter) {
@@ -265,7 +274,7 @@ void JournaldViewModel::setSystemdUnitFilter(const QStringList &systemdUnitFilte
 {
     beginResetModel();
     d->mSystemdUnitFilter = systemdUnitFilter;
-    seekHead();
+    d->seekHead();
     fetchMore(QModelIndex());
     endResetModel();
 }
@@ -274,19 +283,28 @@ void JournaldViewModel::setBootFilter(const QStringList &bootFilter)
 {
     beginResetModel();
     d->mBootFilter = bootFilter;
-    seekHead();
+    d->seekHead();
     fetchMore(QModelIndex());
     endResetModel();
 }
 
 void JournaldViewModel::setPriorityFilter(int priority)
 {
-    if (d->mPriorityFilter == priority) {
+    if (d->mPriorityFilter.has_value() && d->mPriorityFilter.value() == priority) {
         return;
     }
     beginResetModel();
     d->mPriorityFilter = priority;
-    seekHead();
+    d->seekHead();
+    fetchMore(QModelIndex());
+    endResetModel();
+}
+
+void JournaldViewModel::resetPriorityFilter()
+{
+    beginResetModel();
+    d->mPriorityFilter.reset();
+    d->seekHead();
     fetchMore(QModelIndex());
     endResetModel();
 }
@@ -298,7 +316,7 @@ void JournaldViewModel::setKernelFilter(bool showKernelMessages)
     }
     beginResetModel();
     d->mShowKernelMessages = showKernelMessages;
-    seekHead();
+    d->seekHead();
     fetchMore(QModelIndex());
     endResetModel();
     Q_EMIT kernelFilterChanged();
