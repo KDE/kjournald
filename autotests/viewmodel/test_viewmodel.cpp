@@ -11,6 +11,7 @@
 #include <QTemporaryDir>
 #include <QTemporaryFile>
 #include "journaldviewmodel.h"
+#include "journaldviewmodel_p.h"
 #include "../testdatalocation.h"
 
 // note: this test request several data from a real example journald database
@@ -33,24 +34,24 @@ void TestViewModel::journalAccess()
 
 void TestViewModel::rowAccess()
 {
+    // used unfiltered journal and check first two lines
     JournaldViewModel model;
     QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
-
-    // access unfilter log
     QVERIFY(model.rowCount() > 0);
 
-//    model.setFieldString("_BOOT_ID");
-//    QCOMPARE(model.fieldString(), "_BOOT_ID");
-//    model.setField(JournaldHelper::Field::BOOT_ID);
-//    QCOMPARE(model.fieldString(), "_BOOT_ID");
-//    QCOMPARE(model.rowCount(), 3);
+    std::vector<LogEntry> expectedData{
+        {QDateTime::fromString("2021-03-13T16:23:01.464", Qt::ISODateWithMs), QString(), "System clock time unset or jumped backwards, restoring from recorded timestamp: Sat 2021-03-13 15:23:01 UTC", "systemd-timesyncd.service", "68f2e61d061247d8a8ba0b8d53a97a52", 6},
+        {QDateTime::fromString("2021-03-13T16:23:01.592", Qt::ISODateWithMs), QString(), "uvcvideo: Found UVC 1.00 device FHD Camera Microphone (1bcf:28c4)", QString(), "68f2e61d061247d8a8ba0b8d53a97a52", 6}
+    };
 
-//    // check one example value
-//    QStringList values;
-//    for (int i = 0; i < model.rowCount(); ++i) {
-//        values.append(model.data(model.index(i, 0), JournaldUniqueQueryModel::FIELD).toString());
-//    }
-//    QVERIFY(values.contains("2dbe99dd855049af8f2865c5da2b8fda"));
+    for (int i = 0; i < expectedData.size(); ++i) {
+        QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::DATE), expectedData.at(i).mDate);
+        QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::MESSAGE_ID), expectedData.at(i).mId);
+        QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::MESSAGE), expectedData.at(i).mMessage);
+        QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::PRIORITY), expectedData.at(i).mPriority);
+        QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::SYSTEMD_UNIT), expectedData.at(i).mSystemdUnit);
+        QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::BOOT_ID), expectedData.at(i).mBootId);
+    }
 }
 
 /*

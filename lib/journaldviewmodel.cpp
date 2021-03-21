@@ -152,6 +152,7 @@ QHash<int, QByteArray> JournaldViewModel::roleNames() const
 {
     QHash<int, QByteArray> roles;
     roles[JournaldViewModel::DATE] = "date";
+    roles[JournaldViewModel::MESSAGE_ID] = "id";
     roles[JournaldViewModel::MESSAGE] = "message";
     roles[JournaldViewModel::PRIORITY] = "priority";
     roles[JournaldViewModel::SYSTEMD_UNIT] = "systemdunit";
@@ -204,6 +205,8 @@ QVariant JournaldViewModel::data(const QModelIndex &index, int role) const
         Q_FALLTHROUGH();
     case JournaldViewModel::Roles::MESSAGE:
         return QString(d->mLog.at(index.row()).mMessage).remove("\u001B[96m").remove("\u001B[0m").remove("\u001B[93m").remove("\u001B[31m");
+    case JournaldViewModel::Roles::MESSAGE_ID:
+        return QString(d->mLog.at(index.row()).mId);
     case JournaldViewModel::Roles::DATE:
         return d->mLog.at(index.row()).mDate;
     case JournaldViewModel::Roles::BOOT_ID:
@@ -249,6 +252,10 @@ void JournaldViewModel::fetchMore(const QModelIndex &parent)
         result = sd_journal_get_data(d->mJournal, "MESSAGE", (const void **)&data, &length);
         if (result == 0) {
             entry.mMessage = QString::fromUtf8((const char *)data, length).section(QChar::fromLatin1('='), 1);
+        }
+        result = sd_journal_get_data(d->mJournal, "MESSAGE_ID", (const void **)&data, &length);
+        if (result == 0) {
+            entry.mId = QString::fromUtf8((const char *)data, length).section(QChar::fromLatin1('='), 1);
         }
         result = sd_journal_get_data(d->mJournal, "_SYSTEMD_UNIT", (const void **)&data, &length);
         if (result == 0) {

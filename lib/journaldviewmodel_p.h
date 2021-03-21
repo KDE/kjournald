@@ -17,6 +17,7 @@
 
 struct LogEntry {
     QDateTime mDate;
+    QString mId;
     QString mMessage;
     QString mSystemdUnit;
     QString mBootId;

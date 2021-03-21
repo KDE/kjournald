@@ -40,6 +40,7 @@ class KJOURNALD_EXPORT JournaldViewModel : public QAbstractItemModel
 public:
     enum Roles {
         MESSAGE = Qt::UserRole + 1, //!< journal entry's message text
+        MESSAGE_ID, //!< ID of log entry in journald DB (might not exist for non systemd services)
         DATE, //!< date of journal entry
         PRIORITY, //!< priority of journal entry
         SYSTEMD_UNIT, //!< systemd unit name of journal entry
