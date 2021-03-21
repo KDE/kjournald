@@ -322,7 +322,7 @@ void JournaldViewModel::setKernelFilter(bool showKernelMessages)
     Q_EMIT kernelFilterChanged();
 }
 
-bool JournaldViewModel::kernelFilter() const
+bool JournaldViewModel::isKernelFilterEnabled() const
 {
     return d->mShowKernelMessages;
 }

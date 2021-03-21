@@ -12,21 +12,40 @@
 
 class JournaldViewModelPrivate;
 
+/**
+ * @brief Item model class that provides convienence access to journald database
+ *
+ * This QAbstractItemModel derived class provides a model/view abstraction for the journald API
+ * with the goal to ease integration in Qt based applications.
+ */
 class KJOURNALD_EXPORT JournaldViewModel : public QAbstractItemModel
 {
     Q_OBJECT
     Q_PROPERTY(QString journalPath WRITE setJournaldPath READ journaldPath RESET setSystemJournal NOTIFY journaldPathChanged)
+    /**
+     * Configure model to only provide messages for stated systemd units
+     */
     Q_PROPERTY(QStringList systemdUnitFilter WRITE setSystemdUnitFilter)
+    /**
+     * Configure model to only provide messages for stated boot ids.
+     */
     Q_PROPERTY(QStringList bootFilter WRITE setBootFilter)
     /** if set to true, Kernel messages are added to the log output **/
-    Q_PROPERTY(bool kernelFilter WRITE setKernelFilter READ kernelFilter NOTIFY kernelFilterChanged)
+    Q_PROPERTY(bool kernelFilter WRITE setKernelFilter READ isKernelFilterEnabled NOTIFY kernelFilterChanged)
     /**
      * Configure model to only provide messages with stated priority or higher. Default: no filter is set.
      **/
     Q_PROPERTY(int priorityFilter WRITE setPriorityFilter RESET resetPriorityFilter)
 
 public:
-    enum Roles { MESSAGE = Qt::UserRole + 1, DATE, PRIORITY, SYSTEMD_UNIT, BOOT_ID, UNIT_COLOR };
+    enum Roles {
+        MESSAGE = Qt::UserRole + 1, //!< journal entry's message text
+        DATE, //!< date of journal entry
+        PRIORITY, //!< priority of journal entry
+        SYSTEMD_UNIT, //!< systemd unit name of journal entry
+        BOOT_ID, //!< boot ID of journal entry
+        UNIT_COLOR //!< convenience rainbow color that is hashed for systemd unit
+    };
     Q_ENUM(Roles);
 
     explicit JournaldViewModel(QObject *parent = nullptr);
@@ -72,11 +91,21 @@ public:
      */
     QHash<int, QByteArray> roleNames() const override;
 
-    // Header:
+    /**
+     * @copydoc QAbstractItemModel::headerData()
+     *
+     * @note NOT IMPLEMENTED YET
+     */
     QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
 
-    // Basic functionality:
+    /**
+     * @copydoc QAbstractItemModel::index()
+     */
     QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;
+
+    /**
+     * @copydoc QAbstractItemModel::parent()
+     */
     QModelIndex parent(const QModelIndex &index) const override;
 
     /**
@@ -104,12 +133,39 @@ public:
      */
     void fetchMore(const QModelIndex &parent) override;
 
+    /**
+     * @brief Configure for which systemd units messages shall be shown
+     *
+     * If no unit is configured, this filter is deactivated. The given values are compared
+     * to the _SYSTEMD_UNIT journal value.
+     *
+     * @param systemdUnitFilter list of system units
+     */
     void setSystemdUnitFilter(const QStringList &systemdUnitFilter);
 
+    /**
+     * @brief Configure for which boots messages shall be shown
+     *
+     * If no boot id is configured, this filter is deactivated. The given values are compared
+     * to the _BOOT_ID journal value.
+     *
+     * @param bootFilter list of boot ids
+     */
     void setBootFilter(const QStringList &bootFilter);
 
+    /**
+     * @brief Configure if Kernel messages shall be included in model
+     *
+     * Per default, Kernel messages are deactivated.
+     *
+     * @param showKernelMessages parameter that defines if Kernel messages shall be shown
+     */
     void setKernelFilter(bool showKernelMessages);
-    bool kernelFilter() const;
+
+    /**
+     * @return true if Kernel messages are included in model, otherwise false
+     */
+    bool isKernelFilterEnabled() const;
 
     /**
      * @brief Filter messages such that only messages with this and higher priority are provided
@@ -139,7 +195,13 @@ public:
     Q_INVOKABLE QString formatTime(const QDateTime &datetime, bool utc) const;
 
 Q_SIGNALS:
+    /**
+     * Signal is emitted when journald DB path is changed
+     */
     void journaldPathChanged();
+    /**
+     * Signal is emitted when Kernel message filter is changed
+     */
     void kernelFilterChanged();
 
 private:
