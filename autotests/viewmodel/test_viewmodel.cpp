@@ -54,23 +54,37 @@ void TestViewModel::rowAccess()
     }
 }
 
-/*
-void TestUniqueQuery::systemdUnits()
+void TestViewModel::bootFilter()
 {
-    JournaldUniqueQueryModel model;
+    JournaldViewModel model;
     QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
 
-    model.setFieldString("_SYSTEMD_UNIT");
-    QCOMPARE(model.fieldString(), "_SYSTEMD_UNIT");
-    model.setField(JournaldHelper::Field::SYSTEMD_UNIT);
-    QCOMPARE(model.fieldString(), "_SYSTEMD_UNIT");
-    QCOMPARE(model.rowCount(), 17);
+    // select only second boot
+    model.setBootFilter({mBoots.at(1)});
+    QVERIFY(model.rowCount() > 0);
+    QCOMPARE(model.data(model.index(0, 0), JournaldViewModel::BOOT_ID), mBoots.at(1));
 
-    QStringList values;
-    for (int i = 0; i < model.rowCount(); ++i) {
-        values.append(model.data(model.index(i, 0), JournaldUniqueQueryModel::FIELD).toString());
+    // select only first boot
+    model.setBootFilter({mBoots.at(0)});
+    QVERIFY(model.rowCount() > 0);
+    QCOMPARE(model.data(model.index(0, 0), JournaldViewModel::BOOT_ID), mBoots.at(0));
+
+    // select first and second boot
+    bool firstBootFound = false;
+    bool secondBootFound = false;
+    model.setBootFilter({mBoots.at(0), mBoots.at(1)});
+    while (model.canFetchMore(QModelIndex())) {
+        model.fetchMore(QModelIndex());
     }
-    QVERIFY(values.contains("systemd-journald.service"));
-}*/
+    QVERIFY(model.rowCount() > 0);
+    for (int i = 0; i < model.rowCount(); ++i)  {
+        const QString boot = model.data(model.index(i, 0), JournaldViewModel::BOOT_ID).toString();
+        firstBootFound |= boot == mBoots.at(0);
+        secondBootFound |= boot == mBoots.at(1);
+        QVERIFY(boot == mBoots.at(0) || boot == mBoots.at(1));
+    }
+    QVERIFY(firstBootFound);
+    QVERIFY(secondBootFound);
+}
 
 QTEST_GUILESS_MAIN(TestViewModel);

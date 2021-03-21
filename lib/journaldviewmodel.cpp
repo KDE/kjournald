@@ -71,6 +71,9 @@ void JournaldViewModelPrivate::seekHead()
     // reset all filters
     sd_journal_flush_matches(mJournal);
 
+    // in the following a logical expression with with the following content is created:
+    // (unit_1 OR unit_2 OR unit...) AND (boot_1 OR boot...) AND (priority_1 OR prio...) AND (kernel-no OR (?kernel-yes))
+
     for (const QString &unit : mSystemdUnitFilter) {
         QString filterExpression = "_SYSTEMD_UNIT=" + unit;
         result = sd_journal_add_match(mJournal, filterExpression.toStdString().c_str(), 0);
