@@ -41,7 +41,7 @@ void TestViewModel::rowAccess()
 
     std::vector<LogEntry> expectedData{
         {QDateTime::fromString("2021-03-13T16:23:01.464", Qt::ISODateWithMs), QString(), "System clock time unset or jumped backwards, restoring from recorded timestamp: Sat 2021-03-13 15:23:01 UTC", "systemd-timesyncd.service", "68f2e61d061247d8a8ba0b8d53a97a52", 6},
-        {QDateTime::fromString("2021-03-13T16:23:01.592", Qt::ISODateWithMs), QString(), "uvcvideo: Found UVC 1.00 device FHD Camera Microphone (1bcf:28c4)", QString(), "68f2e61d061247d8a8ba0b8d53a97a52", 6}
+        {QDateTime::fromString("2021-03-13T16:23:01.592", Qt::ISODateWithMs), QString(), "klogd started: BusyBox v1.31.1 ()", QString("busybox-klogd.service"), "68f2e61d061247d8a8ba0b8d53a97a52", 5}
     };
 
     for (int i = 0; i < expectedData.size(); ++i) {
@@ -85,6 +85,71 @@ void TestViewModel::bootFilter()
     }
     QVERIFY(firstBootFound);
     QVERIFY(secondBootFound);
+}
+
+void TestViewModel::unitFilter()
+{
+    JournaldViewModel model;
+    QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
+
+    // select single service
+    model.setSystemdUnitFilter({ "systemd-networkd.service" });
+    QVERIFY(model.rowCount() > 0);
+    QCOMPARE(model.data(model.index(0, 0), JournaldViewModel::SYSTEMD_UNIT), "systemd-networkd.service");
+
+    // test mulitple services
+    QStringList testSystemdUnitNames {
+        "init.scope",
+        "dbus.service",
+        "systemd-networkd.service"
+    };
+    QStringList notFoundUnits = testSystemdUnitNames;
+    model.setSystemdUnitFilter(testSystemdUnitNames);
+
+    while (model.canFetchMore(QModelIndex())) {
+        model.fetchMore(QModelIndex());
+    }
+    QVERIFY(model.rowCount() > 0);
+    for (int i = 0; i < model.rowCount(); ++i)  {
+        const QString unit = model.data(model.index(i, 0), JournaldViewModel::SYSTEMD_UNIT).toString();
+        notFoundUnits.removeOne(unit);
+        QVERIFY(testSystemdUnitNames.contains(unit));
+    }
+    QVERIFY(notFoundUnits.isEmpty());
+}
+
+void TestViewModel::showKernelMessages()
+{
+    const QString arbitraryKernelMessage = "usb 1-1.1: 3:1: cannot get freq at ep 0x86";
+
+    JournaldViewModel model;
+    QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
+
+    // check that not contains Kernel message
+    model.setKernelFilter(false);
+    QVERIFY(model.rowCount() > 0);
+    while (model.canFetchMore(QModelIndex())) {
+        model.fetchMore(QModelIndex());
+    }
+    for (int i = 0; i < model.rowCount(); ++i)  {
+        const QString message = model.data(model.index(i, 0), JournaldViewModel::MESSAGE).toString();
+        QVERIFY(arbitraryKernelMessage != message);
+    }
+
+    // check that Kernel messages are containted
+    model.setKernelFilter(true);
+    QVERIFY(model.rowCount() > 0);
+    while (model.canFetchMore(QModelIndex())) {
+        model.fetchMore(QModelIndex());
+    }
+    bool found{ false };
+    for (int i = 0; i < model.rowCount(); ++i)  {
+        const QString message = model.data(model.index(i, 0), JournaldViewModel::MESSAGE).toString();
+        if (arbitraryKernelMessage == message) {
+            found = true;
+        }
+    }
+    QVERIFY(found);
 }
 
 QTEST_GUILESS_MAIN(TestViewModel);

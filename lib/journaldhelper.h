@@ -38,7 +38,8 @@ public:
         SYSTEMD_USER_UNIT,
         SYSTEMD_USER_SLICE,
         SYSTEMD_SESSION,
-        SYSTEMD_OWNER_UID
+        SYSTEMD_OWNER_UID,
+        TRANSPORT
     };
     Q_ENUM(Field)
 

@@ -72,8 +72,42 @@ void JournaldViewModelPrivate::seekHead()
     sd_journal_flush_matches(mJournal);
 
     // in the following a logical expression with with the following content is created:
-    // (unit_1 OR unit_2 OR unit...) AND (boot_1 OR boot...) AND (priority_1 OR prio...) AND (kernel-no OR (?kernel-yes))
+    // ((?kernel-messages) OR (non-kernel-tranport) AND (unit_1 OR unit_2 OR unit...)) AND (boot_1 OR boot...) AND (priority_1 OR prio...)
 
+    // see journal-fields documentation regarding list of valid transports
+    QStringList kernelTransports {
+        "audit",
+        "driver",
+        "kernel"
+    };
+    QStringList nonKernelTransports {
+        "syslog",
+        "journal",
+        "stdout"
+    };
+    if (mShowKernelMessages) {
+        for (const QString &transport : kernelTransports) {
+            QString filterExpression = "_TRANSPORT=" + transport;
+            result = sd_journal_add_match(mJournal, filterExpression.toStdString().c_str(), 0);
+            if (result < 0) {
+                qCCritical(journald) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
+            }
+        }
+    }
+    result = sd_journal_add_disjunction(mJournal);
+
+    // special case handling where for messages that are missing a _TRANSPORT entry and otherwise might be missing in log output
+    if (!mShowKernelMessages) {
+        for (const QString &transport : nonKernelTransports) {
+            QString filterExpression = "_TRANSPORT=" + transport;
+            result = sd_journal_add_match(mJournal, filterExpression.toStdString().c_str(), 0);
+            if (result < 0) {
+                qCCritical(journald) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
+            }
+        }
+    }
+
+    // filter units
     for (const QString &unit : mSystemdUnitFilter) {
         QString filterExpression = "_SYSTEMD_UNIT=" + unit;
         result = sd_journal_add_match(mJournal, filterExpression.toStdString().c_str(), 0);
@@ -81,6 +115,8 @@ void JournaldViewModelPrivate::seekHead()
             qCCritical(journald) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
         }
     }
+
+    // filter boots
     for (const QString &boot : mBootFilter) {
         QString filterExpression = "_BOOT_ID=" + boot;
         result = sd_journal_add_match(mJournal, filterExpression.toStdString().c_str(), 0);
@@ -96,10 +132,6 @@ void JournaldViewModelPrivate::seekHead()
                 qCCritical(journald()) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
             }
         }
-    }
-    if (mShowKernelMessages) {
-        result = sd_journal_add_disjunction(mJournal);
-        result = sd_journal_add_match(mJournal, "_TRANSPORT=kernel", 0);
     }
 
     result = sd_journal_seek_head(mJournal);

@@ -136,6 +136,9 @@ QVector<JournaldHelper::BootInfo> JournaldHelper::queryOrderedBootIds(const Jour
      case Field::SYSTEMD_USER_UNIT:
          fieldString = "_SYSTEMD_USER_UNIT";
          break;
+     case Field::TRANSPORT:
+         fieldString = "_TRANSPORT";
+         break;
      }
      return fieldString;
  }
