@@ -6,9 +6,9 @@
 #ifndef BOOTMODEL_H
 #define BOOTMODEL_H
 
+#include "kjournald_export.h"
 #include <QAbstractItemModel>
 #include <memory>
-#include "kjournald_export.h"
 
 class BootModelPrivate;
 

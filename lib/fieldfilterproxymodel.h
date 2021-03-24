@@ -7,10 +7,10 @@
 #define FIELDFILTERPROXYMODEL_H
 
 #include "journaldviewmodel.h"
+#include "kjournald_export.h"
 #include <qjsvalue.h>
 #include <qqmlparserstatus.h>
 #include <qsortfilterproxymodel.h>
-#include "kjournald_export.h"
 
 class KJOURNALD_EXPORT FieldFilterProxyModel : public QSortFilterProxyModel, public QQmlParserStatus
 {

@@ -4,14 +4,14 @@
 */
 
 #include "test_uniquequery.h"
-#include <QTest>
-#include <QVector>
+#include "../testdatalocation.h"
+#include "journalduniquequerymodel.h"
 #include <QDebug>
 #include <QDir>
 #include <QTemporaryDir>
 #include <QTemporaryFile>
-#include "journalduniquequerymodel.h"
-#include "../testdatalocation.h"
+#include <QTest>
+#include <QVector>
 
 // note: this test request several data from a real example journald database
 //       you can check them by using "journalctl -D journal" and requesting the values

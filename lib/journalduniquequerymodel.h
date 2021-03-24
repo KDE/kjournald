@@ -6,10 +6,10 @@
 #ifndef JOURNALDUNIQUEQUERYMODEL_H
 #define JOURNALDUNIQUEQUERYMODEL_H
 
-#include <QAbstractItemModel>
-#include <memory>
 #include "journaldhelper.h"
 #include "kjournald_export.h"
+#include <QAbstractItemModel>
+#include <memory>
 
 class JournaldUniqueQueryModelPrivate;
 

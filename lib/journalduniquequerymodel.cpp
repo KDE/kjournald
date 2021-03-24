@@ -5,11 +5,11 @@
 
 #include "journalduniquequerymodel.h"
 #include "journalduniquequerymodel_p.h"
+#include "kjournald_export.h"
 #include "loggingcategories.h"
 #include <QDebug>
 #include <QDir>
 #include <memory>
-#include "kjournald_export.h"
 
 JournaldUniqueQueryModelPrivate::~JournaldUniqueQueryModelPrivate()
 {
@@ -110,7 +110,7 @@ JournaldUniqueQueryModel::~JournaldUniqueQueryModel() = default;
 
 bool JournaldUniqueQueryModel::setJournaldPath(const QString &path)
 {
-    bool success{ true };
+    bool success{true};
     beginResetModel();
     success = d->openJournalFromPath(path);
     if (success) {

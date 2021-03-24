@@ -6,10 +6,10 @@
 #ifndef LOCALJOURNAL_H
 #define LOCALJOURNAL_H
 
-#include <QString>
-#include <memory>
 #include "ijournal.h"
 #include "kjournald_export.h"
+#include <QString>
+#include <memory>
 
 class LocalJournalPrivate;
 class sd_journal;

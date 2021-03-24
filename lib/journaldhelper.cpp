@@ -90,55 +90,55 @@ QVector<JournaldHelper::BootInfo> JournaldHelper::queryOrderedBootIds(const Loca
     return boots;
 }
 
- QString JournaldHelper::mapField(Field field)
- {
-     QString fieldString;
-     switch (field) {
-     case Field::MESSAGE:
-         fieldString = "MESSAGE";
-         break;
-     case Field::BOOT_ID:
-         fieldString = "_BOOT_ID";
-         break;
-     case Field::CODE_FILE:
-         fieldString = "CODE_FILE";
-         break;
-     case Field::CODE_FUNC:
-         fieldString = "CODE_FUNC";
-         break;
-     case Field::CODE_LINE:
-         fieldString = "CODE_LINE";
-         break;
-     case Field::PRIORITY:
-         fieldString = "PRIORITY";
-         break;
-     case Field::MESSAGE_ID:
-         fieldString = "MESSAGE_ID";
-         break;
-     case Field::SYSTEMD_CGROUP:
-         fieldString = "_SYSTEMD_CGROUP";
-         break;
-     case Field::SYSTEMD_OWNER_UID:
-         fieldString = "_SYSTEMD_OWNER_UID";
-         break;
-     case Field::SYSTEMD_SESSION:
-         fieldString = "_SYSTEMD_SESSION";
-         break;
-     case Field::SYSTEMD_SLICE:
-         fieldString = "_SYSTEMD_SLICE";
-         break;
-     case Field::SYSTEMD_UNIT:
-         fieldString = "_SYSTEMD_UNIT";
-         break;
-     case Field::SYSTEMD_USER_SLICE:
-         fieldString = "_SYSTEMD_USER_SLICE";
-         break;
-     case Field::SYSTEMD_USER_UNIT:
-         fieldString = "_SYSTEMD_USER_UNIT";
-         break;
-     case Field::TRANSPORT:
-         fieldString = "_TRANSPORT";
-         break;
-     }
-     return fieldString;
- }
+QString JournaldHelper::mapField(Field field)
+{
+    QString fieldString;
+    switch (field) {
+    case Field::MESSAGE:
+        fieldString = "MESSAGE";
+        break;
+    case Field::BOOT_ID:
+        fieldString = "_BOOT_ID";
+        break;
+    case Field::CODE_FILE:
+        fieldString = "CODE_FILE";
+        break;
+    case Field::CODE_FUNC:
+        fieldString = "CODE_FUNC";
+        break;
+    case Field::CODE_LINE:
+        fieldString = "CODE_LINE";
+        break;
+    case Field::PRIORITY:
+        fieldString = "PRIORITY";
+        break;
+    case Field::MESSAGE_ID:
+        fieldString = "MESSAGE_ID";
+        break;
+    case Field::SYSTEMD_CGROUP:
+        fieldString = "_SYSTEMD_CGROUP";
+        break;
+    case Field::SYSTEMD_OWNER_UID:
+        fieldString = "_SYSTEMD_OWNER_UID";
+        break;
+    case Field::SYSTEMD_SESSION:
+        fieldString = "_SYSTEMD_SESSION";
+        break;
+    case Field::SYSTEMD_SLICE:
+        fieldString = "_SYSTEMD_SLICE";
+        break;
+    case Field::SYSTEMD_UNIT:
+        fieldString = "_SYSTEMD_UNIT";
+        break;
+    case Field::SYSTEMD_USER_SLICE:
+        fieldString = "_SYSTEMD_USER_SLICE";
+        break;
+    case Field::SYSTEMD_USER_UNIT:
+        fieldString = "_SYSTEMD_USER_UNIT";
+        break;
+    case Field::TRANSPORT:
+        fieldString = "_TRANSPORT";
+        break;
+    }
+    return fieldString;
+}

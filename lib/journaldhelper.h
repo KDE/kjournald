@@ -6,11 +6,11 @@
 #ifndef JOURNALDHELPER_H
 #define JOURNALDHELPER_H
 
+#include "kjournald_export.h"
 #include "localjournal.h"
 #include <QDateTime>
-#include <QVector>
-#include "kjournald_export.h"
 #include <QObject>
+#include <QVector>
 
 class KJOURNALD_EXPORT JournaldHelper
 {

@@ -4,15 +4,15 @@
 */
 
 #include "test_viewmodel.h"
-#include <QTest>
-#include <QVector>
+#include "../testdatalocation.h"
+#include "journaldviewmodel.h"
+#include "journaldviewmodel_p.h"
 #include <QDebug>
 #include <QDir>
 #include <QTemporaryDir>
 #include <QTemporaryFile>
-#include "journaldviewmodel.h"
-#include "journaldviewmodel_p.h"
-#include "../testdatalocation.h"
+#include <QTest>
+#include <QVector>
 
 // note: this test request several data from a real example journald database
 //       you can check them by using "journalctl -D journal" and requesting the values
@@ -39,10 +39,18 @@ void TestViewModel::rowAccess()
     QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
     QVERIFY(model.rowCount() > 0);
 
-    std::vector<LogEntry> expectedData{
-        {QDateTime::fromString("2021-03-13T16:23:01.464", Qt::ISODateWithMs), QString(), "System clock time unset or jumped backwards, restoring from recorded timestamp: Sat 2021-03-13 15:23:01 UTC", "systemd-timesyncd.service", "68f2e61d061247d8a8ba0b8d53a97a52", 6},
-        {QDateTime::fromString("2021-03-13T16:23:01.592", Qt::ISODateWithMs), QString(), "klogd started: BusyBox v1.31.1 ()", QString("busybox-klogd.service"), "68f2e61d061247d8a8ba0b8d53a97a52", 5}
-    };
+    std::vector<LogEntry> expectedData{{QDateTime::fromString("2021-03-13T16:23:01.464", Qt::ISODateWithMs),
+                                        QString(),
+                                        "System clock time unset or jumped backwards, restoring from recorded timestamp: Sat 2021-03-13 15:23:01 UTC",
+                                        "systemd-timesyncd.service",
+                                        "68f2e61d061247d8a8ba0b8d53a97a52",
+                                        6},
+                                       {QDateTime::fromString("2021-03-13T16:23:01.592", Qt::ISODateWithMs),
+                                        QString(),
+                                        "klogd started: BusyBox v1.31.1 ()",
+                                        QString("busybox-klogd.service"),
+                                        "68f2e61d061247d8a8ba0b8d53a97a52",
+                                        5}};
 
     for (int i = 0; i < expectedData.size(); ++i) {
         QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::DATE), expectedData.at(i).mDate);
@@ -77,7 +85,7 @@ void TestViewModel::bootFilter()
         model.fetchMore(QModelIndex());
     }
     QVERIFY(model.rowCount() > 0);
-    for (int i = 0; i < model.rowCount(); ++i)  {
+    for (int i = 0; i < model.rowCount(); ++i) {
         const QString boot = model.data(model.index(i, 0), JournaldViewModel::BOOT_ID).toString();
         firstBootFound |= boot == mBoots.at(0);
         secondBootFound |= boot == mBoots.at(1);
@@ -93,16 +101,12 @@ void TestViewModel::unitFilter()
     QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
 
     // select single service
-    model.setSystemdUnitFilter({ "systemd-networkd.service" });
+    model.setSystemdUnitFilter({"systemd-networkd.service"});
     QVERIFY(model.rowCount() > 0);
     QCOMPARE(model.data(model.index(0, 0), JournaldViewModel::SYSTEMD_UNIT), "systemd-networkd.service");
 
     // test mulitple services
-    QStringList testSystemdUnitNames {
-        "init.scope",
-        "dbus.service",
-        "systemd-networkd.service"
-    };
+    QStringList testSystemdUnitNames{"init.scope", "dbus.service", "systemd-networkd.service"};
     QStringList notFoundUnits = testSystemdUnitNames;
     model.setSystemdUnitFilter(testSystemdUnitNames);
 
@@ -110,7 +114,7 @@ void TestViewModel::unitFilter()
         model.fetchMore(QModelIndex());
     }
     QVERIFY(model.rowCount() > 0);
-    for (int i = 0; i < model.rowCount(); ++i)  {
+    for (int i = 0; i < model.rowCount(); ++i) {
         const QString unit = model.data(model.index(i, 0), JournaldViewModel::SYSTEMD_UNIT).toString();
         notFoundUnits.removeOne(unit);
         QVERIFY(testSystemdUnitNames.contains(unit));
@@ -131,7 +135,7 @@ void TestViewModel::showKernelMessages()
     while (model.canFetchMore(QModelIndex())) {
         model.fetchMore(QModelIndex());
     }
-    for (int i = 0; i < model.rowCount(); ++i)  {
+    for (int i = 0; i < model.rowCount(); ++i) {
         const QString message = model.data(model.index(i, 0), JournaldViewModel::MESSAGE).toString();
         QVERIFY(arbitraryKernelMessage != message);
     }
@@ -142,8 +146,8 @@ void TestViewModel::showKernelMessages()
     while (model.canFetchMore(QModelIndex())) {
         model.fetchMore(QModelIndex());
     }
-    bool found{ false };
-    for (int i = 0; i < model.rowCount(); ++i)  {
+    bool found{false};
+    for (int i = 0; i < model.rowCount(); ++i) {
         const QString message = model.data(model.index(i, 0), JournaldViewModel::MESSAGE).toString();
         if (arbitraryKernelMessage == message) {
             found = true;

@@ -7,11 +7,11 @@
 #define JOURNALDVIEWMODEL_P_H
 
 #include "ijournal.h"
+#include <QColor>
 #include <QDateTime>
+#include <QHash>
 #include <QString>
 #include <QVector>
-#include <QHash>
-#include <QColor>
 #include <memory>
 #include <optional>
 #include <systemd/sd-journal.h>
@@ -31,13 +31,13 @@ public:
     QColor unitColor(const QString &unit);
     void seekHead();
 
-    bool canFetchMore{ true }; // indicates if end of journal is reached
+    bool canFetchMore{true}; // indicates if end of journal is reached
     std::unique_ptr<IJournal> mJournal;
     QVector<LogEntry> mLog;
     QStringList mSystemdUnitFilter;
     QStringList mBootFilter;
     std::optional<int> mPriorityFilter;
-    bool mShowKernelMessages{ false };
+    bool mShowKernelMessages{false};
     QHash<QString, QColor> mUnitToColorMap;
 };
 

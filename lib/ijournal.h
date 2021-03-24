@@ -6,8 +6,8 @@
 #ifndef IJOURNAL_H
 #define IJOURNAL_H
 
-#include <QString>
 #include "kjournald_export.h"
+#include <QString>
 
 class sd_journal;
 

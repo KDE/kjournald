@@ -5,11 +5,11 @@
 
 #include "journaldviewmodel.h"
 #include "journaldviewmodel_p.h"
-#include "loggingcategories.h"
 #include "localjournal.h"
+#include "loggingcategories.h"
+#include <QColor>
 #include <QDebug>
 #include <QDir>
-#include <QColor>
 #include <QRandomGenerator>
 
 QColor JournaldViewModelPrivate::unitColor(const QString &unit)
@@ -21,7 +21,6 @@ QColor JournaldViewModelPrivate::unitColor(const QString &unit)
     return mUnitToColorMap.value(unit);
 }
 
-
 void JournaldViewModelPrivate::seekHead()
 {
     if (!mJournal->isValid()) {
@@ -29,7 +28,7 @@ void JournaldViewModelPrivate::seekHead()
         return;
     }
 
-    int result{ 0 };
+    int result{0};
 
     // reset all filters
     sd_journal_flush_matches(mJournal->sdJournal());
@@ -38,16 +37,8 @@ void JournaldViewModelPrivate::seekHead()
     // ((?kernel-messages) OR (non-kernel-tranport) AND (unit_1 OR unit_2 OR unit...)) AND (boot_1 OR boot...) AND (priority_1 OR prio...)
 
     // see journal-fields documentation regarding list of valid transports
-    QStringList kernelTransports {
-        "audit",
-        "driver",
-        "kernel"
-    };
-    QStringList nonKernelTransports {
-        "syslog",
-        "journal",
-        "stdout"
-    };
+    QStringList kernelTransports{"audit", "driver", "kernel"};
+    QStringList nonKernelTransports{"syslog", "journal", "stdout"};
     if (mShowKernelMessages) {
         for (const QString &transport : kernelTransports) {
             QString filterExpression = "_TRANSPORT=" + transport;
@@ -126,7 +117,7 @@ JournaldViewModel::~JournaldViewModel() = default;
 
 bool JournaldViewModel::setJournaldPath(const QString &path)
 {
-    bool success{ true };
+    bool success{true};
     beginResetModel();
     d->mJournal = std::make_unique<LocalJournal>(path);
     success = d->mJournal->isValid();
@@ -153,7 +144,7 @@ QHash<int, QByteArray> JournaldViewModel::roleNames() const
 
 bool JournaldViewModel::setSystemJournal()
 {
-    bool success{ true };
+    bool success{true};
     beginResetModel();
     d->mJournal = std::make_unique<LocalJournal>();
     success = d->mJournal->isValid();
@@ -344,7 +335,7 @@ int JournaldViewModel::search(const QString &searchString, int startRow)
         }
         ++row;
         if (row == d->mLog.size() && d->canFetchMore) { // if end is reached, try to fetch more
-             fetchMore(QModelIndex());
+            fetchMore(QModelIndex());
         }
     }
     return -1;

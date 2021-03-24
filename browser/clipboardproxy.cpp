@@ -4,8 +4,8 @@
 */
 
 #include "clipboardproxy.h"
-#include <QGuiApplication>
 #include <QClipboard>
+#include <QGuiApplication>
 
 void ClipboardProxy::setText(const QString &text)
 {
