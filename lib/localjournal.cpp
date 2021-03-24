@@ -23,7 +23,7 @@ LocalJournal::LocalJournal(const QString &path)
     : d(new LocalJournalPrivate)
 {
     if (!QDir().exists(path)) {
-        qCCritical(journald) << "Journal directory does not exists, abort opening";
+        qCCritical(journald) << "Journal directory does not exist, abort opening" << path;
         return;
     }
     int result = sd_journal_open_directory(&d->mJournal, path.toStdString().c_str(), 0 /* no flags, directory defines type */);

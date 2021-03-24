@@ -61,7 +61,20 @@ public:
      */
     ~BootModel() override;
 
-    void setJournaldPath(const QString &path);
+    /**
+     * Reset model by reading from a new journald database
+     *
+     * @param path The path to directory that obtains the journald DB, usually ending with "journal".
+     * @return true if path could be found and opened, otherwise false
+     */
+    bool setJournaldPath(const QString &path);
+
+    /**
+     * Switch to local system's default journald database
+     *
+     * For details regarding preference, see journald documentation.
+     */
+    void setSystemJournal();
 
     /**
      * @copydoc QAbstractItemModel::roleNames()

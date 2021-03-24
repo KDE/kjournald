@@ -5,6 +5,7 @@
 
 #include "bootmodel.h"
 #include "clipboardproxy.h"
+#include "sessionconfig.h"
 #include "fieldfilterproxymodel.h"
 #include "journaldhelper.h"
 #include "journalduniquequerymodel.h"
@@ -28,23 +29,45 @@ int main(int argc, char *argv[])
     qmlRegisterType<FieldFilterProxyModel>("systemd", 1, 0, "FieldFilterProxyModel");
     qmlRegisterType<ClipboardProxy>("systemd", 1, 0, "ClipboardProxy");
     qmlRegisterUncreatableType<BootModel>("systemd", 1, 0, "BootModel", "Backend only object");
+    qmlRegisterUncreatableType<SessionConfig>("systemd", 1, 0, "SessionConfig", "Backend only object");
 
     QCommandLineParser parser;
     parser.setApplicationDescription("Journald Log Viewer");
     parser.addHelpOption();
     parser.addVersionOption();
-    parser.addPositionalArgument("path", "Path to Journald DB");
+    const QCommandLineOption pathOption("D", "Path to journald database folder", "path");
+    parser.addOption(pathOption);
     parser.process(app);
 
-    const QStringList args = parser.positionalArguments();
-    if (args.size() < 1) {
-        qCritical() << "Path to DB missing";
-        return 1;
-    }
-    // TODO check if path is reasonable
-    const QString path = args.at(0);
+    SessionConfig sessionConfig;
+    BootModel bootModel;
+    JournaldUniqueQueryModel unitModel;
+    unitModel.setField(JournaldHelper::Field::SYSTEMD_UNIT);
 
-    BootModel bootModel(path);
+    QObject::connect(&sessionConfig, &SessionConfig::modeChanged, &sessionConfig, [&sessionConfig, &bootModel, &unitModel](SessionConfig::Mode mode) {
+        switch(mode) {
+        case SessionConfig::Mode::SYSTEM:
+            bootModel.setSystemJournal();
+            unitModel.setSystemJournal();
+            break;
+        case SessionConfig::Mode::LOCALFOLDER:
+            bootModel.setJournaldPath(sessionConfig.localJournalPath());
+            unitModel.setJournaldPath(sessionConfig.localJournalPath());
+            break;
+        }
+    });
+    QObject::connect(&sessionConfig, &SessionConfig::localJournalPathChanged, &sessionConfig, [&sessionConfig, &bootModel, &unitModel]() {
+        bootModel.setJournaldPath(sessionConfig.localJournalPath());
+        unitModel.setJournaldPath(sessionConfig.localJournalPath());
+    });
+
+    if (parser.isSet(pathOption)) {
+        const QString path = parser.value(pathOption);
+        bootModel.setJournaldPath(path);
+        unitModel.setJournaldPath(path);
+        sessionConfig.setLocalJournalPath(path);
+        sessionConfig.setMode(SessionConfig::Mode::LOCALFOLDER);
+    }
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/Main.qml"));
@@ -58,7 +81,8 @@ int main(int argc, char *argv[])
         },
         Qt::QueuedConnection);
     engine.rootContext()->setContextProperty("g_bootModel", &bootModel);
-    engine.rootContext()->setContextProperty("g_path", path);
+    engine.rootContext()->setContextProperty("g_unitModel", &unitModel);
+    engine.rootContext()->setContextProperty("g_config", &sessionConfig);
     engine.load(url);
 
     return app.exec();

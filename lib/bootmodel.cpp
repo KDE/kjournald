@@ -40,6 +40,27 @@ BootModel::BootModel(std::unique_ptr<IJournal> journal, QObject *parent)
 
 BootModel::~BootModel() = default;
 
+bool BootModel::setJournaldPath(const QString &path)
+{
+    bool success{true};
+    beginResetModel();
+    d->mJournal = std::make_unique<LocalJournal>(path);
+    success = d->mJournal->isValid();
+    if (success) {
+        d->mBootInfo = JournaldHelper::queryOrderedBootIds(*d->mJournal.get());
+    }
+    endResetModel();
+    return success;
+}
+
+void BootModel::setSystemJournal()
+{
+    beginResetModel();
+    d->mJournal = std::make_unique<LocalJournal>();
+    d->mBootInfo = JournaldHelper::queryOrderedBootIds(*d->mJournal.get());
+    endResetModel();
+}
+
 QHash<int, QByteArray> BootModel::roleNames() const
 {
     QHash<int, QByteArray> roles;

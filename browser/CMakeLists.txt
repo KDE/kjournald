@@ -9,6 +9,7 @@ include_directories(
 add_executable(journald-browser
     main.cpp
     clipboardproxy.cpp
+    sessionconfig.cpp
     qml.qrc
 )
 

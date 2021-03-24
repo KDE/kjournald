@@ -18,13 +18,13 @@ ApplicationWindow {
         var startIndex = viewRoot.indexAt(1, viewRoot.contentY)
         var endIndex = viewRoot.indexAt(1, viewRoot.contentY + viewRoot.height);
         if (endIndex < 0) {
-            endIndex = journalModel.rowCount()
+            endIndex = g_journalModel.rowCount()
         }
         var content = ""
         for (var i = startIndex; i < endIndex; ++i) {
-            content += journalModel.formatTime(journalModel.data(journalModel.index(i, 0), JournaldViewModel.DATE), true) + " UTC "
-                        + journalModel.data(journalModel.index(i, 0), JournaldViewModel.SYSTEMD_UNIT) + " "
-                        + journalModel.data(journalModel.index(i, 0), JournaldViewModel.MESSAGE) + "\n"
+            content += g_journalModel.formatTime(g_journalModel.data(g_journalModel.index(i, 0), JournaldViewModel.DATE), true) + " UTC "
+                        + g_journalModel.data(g_journalModel.index(i, 0), JournaldViewModel.SYSTEMD_UNIT) + " "
+                        + g_journalModel.data(g_journalModel.index(i, 0), JournaldViewModel.MESSAGE) + "\n"
         }
         clipboard.setText(content)
         console.log("view content copied")
@@ -34,19 +34,28 @@ ApplicationWindow {
         Menu {
             title: "File"
             MenuItem {
-                text: "Open Folder"
-                onClicked: {
-                    fileDialog.folder = journalModel.journalPath
-                    fileDialog.open()
-                }
-            }
-            MenuItem {
                 text: "Copy Log Output"
                 onClicked: copyViewToClipbaord()
             }
             MenuItem {
                 text: "Close"
                 onClicked: Qt.quit()
+            }
+        }
+        Menu {
+            title: "Journal"
+            MenuItem {
+                text: "Use default journal"
+                onClicked: {
+                    g_config.sessionMode = SessionConfig.SYSTEM
+                }
+            }
+            MenuItem {
+                text: "Open from folder"
+                onClicked: {
+                    fileDialog.folder = g_config.localJournalPath
+                    fileDialog.open()
+                }
             }
         }
     }
@@ -56,7 +65,8 @@ ApplicationWindow {
         title: "Select journal folder"
         selectFolder: true
         onAccepted: {
-            journalModel.journalPath = fileDialog.fileUrl
+            g_config.localJournalPath = fileDialog.fileUrl
+            g_config.sessionMode = SessionConfig.LOCALFOLDER
         }
     }
 
@@ -157,8 +167,8 @@ ApplicationWindow {
                 font.pixelSize: 16
             }
             CheckBox {
-                checked: journalModel.kernelFilter
-                onCheckedChanged: journalModel.kernelFilter = checked
+                checked: g_journalModel.kernelFilter
+                onCheckedChanged: g_journalModel.kernelFilter = checked
             }
             Label {
                 anchors {
@@ -194,14 +204,14 @@ ApplicationWindow {
                     id: selectNoneButton
                     text: "Select None"
                     onClicked: {
-                        unitModel.setAllSelectionStates(false)
+                        g_unitModel.setAllSelectionStates(false)
                     }
                 }
                 Button {
                     id: selectAllButton
                     text: "Select All"
                     onClicked: {
-                        unitModel.setAllSelectionStates(true)
+                        g_unitModel.setAllSelectionStates(true)
                     }
                 }
             }
@@ -209,7 +219,7 @@ ApplicationWindow {
                 z: -1
                 height: parent.height - selectNoneButton.height
                 width: parent.width
-                model: unitModel
+                model: g_unitModel
                 delegate: CheckBox {
                     checked: model.selected
                     text: model.field
@@ -222,7 +232,7 @@ ApplicationWindow {
             highlightMoveDuration: 10
             height: parent.height
             width: parent.width - unitColumn.width
-            model: journalModel
+            model: g_journalModel
             focus: true
             Component.onCompleted: forceActiveFocus()
             delegate: Rectangle
@@ -274,7 +284,7 @@ ApplicationWindow {
                     viewRoot.currentIndex = Math.max(0, currentIndex - Math.floor(viewRoot.height / messageIdMetrics.height))
                 }
                 if (event.key === Qt.Key_F3) {
-                    var index = journalModel.search(hightlightTextField.text, viewRoot.currentIndex + 1)
+                    var index = g_journalModel.search(hightlightTextField.text, viewRoot.currentIndex + 1)
                     if (index >= 0) {
                         viewRoot.currentIndex = index
                     }
@@ -286,15 +296,10 @@ ApplicationWindow {
         }
     }
 
-    JournaldUniqueQueryModel {
-        id: unitModel
-        journalPath: g_path
-        field: "_SYSTEMD_UNIT"
-    }
     JournaldViewModel {
-        id: journalModel
-        journalPath: g_path
-        systemdUnitFilter: unitModel.selectedEntries
+        id: g_journalModel
+        journalPath: g_config.sessionMode === SessionConfig.LOCALFOLDER ? g_config.localJournalPath : undefined
+        systemdUnitFilter: g_unitModel.selectedEntries
         bootFilter: bootIdComboBox.bootId
         priorityFilter: priorityComboBox.priority
     }
