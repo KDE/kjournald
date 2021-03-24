@@ -50,10 +50,15 @@ public:
     };
     Q_ENUM(Roles);
 
+    /**
+     * @brief Construct model from the default local journald database
+     *
+     * @param parent the QObject parent
+     */
     explicit JournaldViewModel(QObject *parent = nullptr);
 
     /**
-     * @brief Create model from a specific journal database
+     * @brief Construct model from a specific journal database
      *
      * This constructor works similar to "journalctl -D" and allows to use a custom path to the
      * journald database.
@@ -64,7 +69,7 @@ public:
     JournaldViewModel(const QString &journalPath, QObject *parent = nullptr);
 
     /**
-     * @brief Create model for given journal object
+     * @brief Construct model for given journal object
      *
      * @note API requires a unique_ptr because journald documentation explicitly states that (even though it works
      * at the moment) one cannot assume that using differen requests for the same journal has no side effects.
@@ -77,7 +82,7 @@ public:
     JournaldViewModel(std::unique_ptr<IJournal> journal, QObject *parent = nullptr);
 
     /**
-     * destroys JournaldViewModel
+     * Destroys JournaldViewModel
      */
     ~JournaldViewModel() override;
 

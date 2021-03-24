@@ -13,10 +13,10 @@ class BootModelPrivate
 public:
     using BootInfo = JournaldHelper::BootInfo;
 
-    explicit BootModelPrivate(std::unique_ptr<LocalJournal> journal);
+    explicit BootModelPrivate(std::unique_ptr<IJournal> journal);
 
     QVector<BootInfo> mBootInfo;
-    std::unique_ptr<LocalJournal> mJournal;
+    std::unique_ptr<IJournal> mJournal;
 };
 
 #endif // JOURNAL_H

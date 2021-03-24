@@ -6,7 +6,7 @@
 #include "bootmodel.h"
 #include "bootmodel_p.h"
 
-BootModelPrivate::BootModelPrivate(std::unique_ptr<LocalJournal> journal)
+BootModelPrivate::BootModelPrivate(std::unique_ptr<IJournal> journal)
     : mJournal(std::move(journal))
 {
 }
@@ -20,9 +20,18 @@ BootModel::BootModel(QObject *parent)
     endResetModel();
 }
 
-BootModel::BootModel(const QString &journalPath, QObject *parent)
+BootModel::BootModel(const QString &journaldPath, QObject *parent)
     : QAbstractItemModel(parent)
-    , d(new BootModelPrivate(std::make_unique<LocalJournal>(journalPath)))
+    , d(new BootModelPrivate(std::make_unique<LocalJournal>(journaldPath)))
+{
+    beginResetModel();
+    d->mBootInfo = JournaldHelper::queryOrderedBootIds(*d->mJournal.get());
+    endResetModel();
+}
+
+BootModel::BootModel(std::unique_ptr<IJournal> journal, QObject *parent)
+    : QAbstractItemModel(parent)
+    , d(new BootModelPrivate(std::move(journal)))
 {
     beginResetModel();
     d->mBootInfo = JournaldHelper::queryOrderedBootIds(*d->mJournal.get());
@@ -34,7 +43,7 @@ BootModel::~BootModel() = default;
 QHash<int, QByteArray> BootModel::roleNames() const
 {
     QHash<int, QByteArray> roles;
-    roles[BootModel::_BOOT_ID] = "_BOOT_ID";
+    roles[BootModel::BOOT_ID] = "_BOOT_ID";
     roles[BootModel::SINCE] = "since";
     roles[BootModel::UNTIL] = "until";
     roles[BootModel::DISPLAY_SHORT] = "displayshort";
@@ -70,7 +79,7 @@ QVariant BootModel::data(const QModelIndex &index, int role) const
     switch (role) {
     case Qt::DisplayRole:
         Q_FALLTHROUGH();
-    case BootModel::_BOOT_ID:
+    case BootModel::BOOT_ID:
         return d->mBootInfo.at(index.row()).mBootId;
     case BootModel::SINCE:
         return d->mBootInfo.at(index.row()).mSince;
