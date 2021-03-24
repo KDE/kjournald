@@ -8,6 +8,7 @@
 
 #include <QAbstractItemModel>
 #include <memory>
+#include <ijournal.h>
 #include "kjournald_export.h"
 
 class JournaldViewModelPrivate;
@@ -21,7 +22,7 @@ class JournaldViewModelPrivate;
 class KJOURNALD_EXPORT JournaldViewModel : public QAbstractItemModel
 {
     Q_OBJECT
-    Q_PROPERTY(QString journalPath WRITE setJournaldPath READ journaldPath RESET setSystemJournal NOTIFY journaldPathChanged)
+    Q_PROPERTY(QString journalPath WRITE setJournaldPath RESET setSystemJournal)
     /**
      * Configure model to only provide messages for stated systemd units
      */
@@ -63,6 +64,19 @@ public:
     JournaldViewModel(const QString &journalPath, QObject *parent = nullptr);
 
     /**
+     * @brief Create model for given journal object
+     *
+     * @note API requires a unique_ptr because journald documentation explicitly states that (even though it works
+     * at the moment) one cannot assume that using differen requests for the same journal has no side effects.
+     * A prominent example would be to use the same journal object for unique query requests and for obtaining the log
+     * content.
+     *
+     * @param journal object that contains a journald database object
+     * @param parent the QObject parent
+     */
+    JournaldViewModel(std::unique_ptr<IJournal> journal, QObject *parent = nullptr);
+
+    /**
      * destroys JournaldViewModel
      */
     ~JournaldViewModel() override;
@@ -76,16 +90,12 @@ public:
     bool setJournaldPath(const QString &path);
 
     /**
-     * @return currently set journal path or empty string if none is set
-     */
-    QString journaldPath() const;
-
-    /**
      * Switch to local system's default journald database
      *
      * For details regarding preference, see journald documentation.
+     * @return true if journal was loaded correctly
      */
-    void setSystemJournal();
+    bool setSystemJournal();
 
     /**
      * @copydoc QAbstractItemModel::rolesNames()
@@ -196,10 +206,6 @@ public:
     Q_INVOKABLE QString formatTime(const QDateTime &datetime, bool utc) const;
 
 Q_SIGNALS:
-    /**
-     * Signal is emitted when journald DB path is changed
-     */
-    void journaldPathChanged();
     /**
      * Signal is emitted when Kernel message filter is changed
      */

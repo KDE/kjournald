@@ -8,6 +8,7 @@
 
 #include <QString>
 #include <memory>
+#include "ijournal.h"
 #include "kjournald_export.h"
 
 class JournalPrivate;
@@ -20,7 +21,7 @@ class sd_journal;
  * queries (or models in this case) might have side effects; even though there are none at the moment. Thus,
  * ensure that the same Journal object is only used for one model.
  */
-class KJOURNALD_EXPORT Journal
+class KJOURNALD_EXPORT Journal : public IJournal
 {
 public:
     /**
@@ -36,7 +37,7 @@ public:
     /**
      * @brief Destroys the journal wrapper
      */
-    ~Journal();
+    ~Journal() override;
 
     /**
      * @brief Getter for raw sd_journal pointer
@@ -44,12 +45,12 @@ public:
      * This pointer can be nullptr if an error during opening of journal occured. Test
      * with @s isValid() before using.
      */
-    sd_journal *sdJournal() const;
+    sd_journal *sdJournal() const override;
 
     /**
      * @brief returns true if and only if the sd_journal pointer is valid
      */
-    bool isValid() const;
+    bool isValid() const override;
 
 private:
     std::unique_ptr<JournalPrivate> d;

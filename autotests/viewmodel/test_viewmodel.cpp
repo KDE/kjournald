@@ -25,11 +25,11 @@ void TestViewModel::journalAccess()
     // test failure handling for invalid journal
     QTemporaryFile invalidJournal; // file is surely invalid
     QCOMPARE(model.setJournaldPath(invalidJournal.fileName()), false);
-    QCOMPARE(model.journaldPath(), QString());
+    QCOMPARE(model.rowCount(), 0);
 
     // use extracted journal
     QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
-    QCOMPARE(model.journaldPath(), JOURNAL_LOCATION);
+    QVERIFY(model.rowCount() > 0);
 }
 
 void TestViewModel::rowAccess()

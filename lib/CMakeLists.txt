@@ -5,6 +5,7 @@ set(kjournald_SRCS
     bootmodel.cpp
     loggingcategories.cpp
     fieldfilterproxymodel.cpp
+    ijournal.h
     journal.cpp
     journaldhelper.cpp
     journaldviewmodel.cpp
@@ -14,6 +15,7 @@ set(kjournald_SRCS
 set(kjournald_HDRS
     bootmodel.h
     fieldfilterproxymodel.h
+    ijournal.h
     journal.h
     journaldhelper.h
     journaldviewmodel.h

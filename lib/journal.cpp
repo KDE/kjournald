@@ -15,7 +15,7 @@ Journal::Journal()
     int result;
     result = sd_journal_open(&d->mJournal, SD_JOURNAL_LOCAL_ONLY);
     if (result < 0) {
-        qCritical() << "Failed to open journal:" << strerror(-result);
+        qCCritical(journald) << "Failed to open journal:" << strerror(-result);
     }
 }
 
