@@ -119,6 +119,7 @@ bool JournaldViewModel::setJournaldPath(const QString &path)
 {
     bool success{true};
     beginResetModel();
+    d->mLog.clear();
     d->mJournal = std::make_unique<LocalJournal>(path);
     success = d->mJournal->isValid();
     if (success) {
@@ -146,6 +147,7 @@ bool JournaldViewModel::setSystemJournal()
 {
     bool success{true};
     beginResetModel();
+    d->mLog.clear();
     d->mJournal = std::make_unique<LocalJournal>();
     success = d->mJournal->isValid();
     if (success) {
