@@ -6,7 +6,7 @@
 #ifndef JOURNALDHELPER_H
 #define JOURNALDHELPER_H
 
-#include "journal.h"
+#include "localjournal.h"
 #include <QDateTime>
 #include <QVector>
 #include "kjournald_export.h"
@@ -43,14 +43,14 @@ public:
     };
     Q_ENUM(Field)
 
-    static QVector<QString> queryUnique(const Journal &journal, Field field);
+    static QVector<QString> queryUnique(const LocalJournal &journal, Field field);
 
     /**
      * @brief Query boot information for @p journal
      *
      * @return ordered list of boots (first is earliest boot in time)
      */
-    static QVector<BootInfo> queryOrderedBootIds(const Journal &journal);
+    static QVector<BootInfo> queryOrderedBootIds(const LocalJournal &journal);
 
     static QString mapField(Field field);
 };

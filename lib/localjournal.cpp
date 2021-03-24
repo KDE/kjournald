@@ -3,14 +3,14 @@
     SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 */
 
-#include "journal.h"
-#include "journal_p.h"
+#include "localjournal.h"
+#include "localjournal_p.h"
 #include "loggingcategories.h"
 #include <QDir>
 #include <systemd/sd-journal.h>
 
-Journal::Journal()
-    : d(new JournalPrivate)
+LocalJournal::LocalJournal()
+    : d(new LocalJournalPrivate)
 {
     int result;
     result = sd_journal_open(&d->mJournal, SD_JOURNAL_LOCAL_ONLY);
@@ -19,8 +19,8 @@ Journal::Journal()
     }
 }
 
-Journal::Journal(const QString &path)
-    : d(new JournalPrivate)
+LocalJournal::LocalJournal(const QString &path)
+    : d(new LocalJournalPrivate)
 {
     if (!QDir().exists(path)) {
         qCCritical(journald) << "Journal directory does not exists, abort opening";
@@ -32,18 +32,18 @@ Journal::Journal(const QString &path)
     }
 }
 
-Journal::~Journal()
+LocalJournal::~LocalJournal()
 {
     sd_journal_close(d->mJournal);
     d->mJournal = nullptr;
 }
 
-sd_journal *Journal::sdJournal() const
+sd_journal *LocalJournal::sdJournal() const
 {
     return d->mJournal;
 }
 
-bool Journal::isValid() const
+bool LocalJournal::isValid() const
 {
     return d->mJournal != nullptr;
 }

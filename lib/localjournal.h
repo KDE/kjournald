@@ -3,41 +3,44 @@
     SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 */
 
-#ifndef JOURNAL_H
-#define JOURNAL_H
+#ifndef LOCALJOURNAL_H
+#define LOCALJOURNAL_H
 
 #include <QString>
 #include <memory>
 #include "ijournal.h"
 #include "kjournald_export.h"
 
-class JournalPrivate;
+class LocalJournalPrivate;
 class sd_journal;
 
 /**
- * @brief The Journal class encapsulates an sd_journal object
+ * @brief The LocalJournal class encapsulates a local sd_journal object
+ *
+ * Local journal in this sense means a journald database that can be access via direct file access, i.e.
+ * where operations can be performed directly on the database files.
  *
  * @note The journald documentation specifically says that using the same sd_journal object in multiple
  * queries (or models in this case) might have side effects; even though there are none at the moment. Thus,
  * ensure that the same Journal object is only used for one model.
  */
-class KJOURNALD_EXPORT Journal : public IJournal
+class KJOURNALD_EXPORT LocalJournal : public IJournal
 {
 public:
     /**
      * @brief Construct journal object for system journald DB
      */
-    explicit Journal();
+    explicit LocalJournal();
 
     /**
      * @brief Construct journal object from journald DB at path @p path
      */
-    Journal(const QString &path);
+    LocalJournal(const QString &path);
 
     /**
      * @brief Destroys the journal wrapper
      */
-    ~Journal() override;
+    ~LocalJournal() override;
 
     /**
      * @brief Getter for raw sd_journal pointer
@@ -53,7 +56,7 @@ public:
     bool isValid() const override;
 
 private:
-    std::unique_ptr<JournalPrivate> d;
+    std::unique_ptr<LocalJournalPrivate> d;
 };
 
 #endif // JOURNAL_H

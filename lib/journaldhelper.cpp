@@ -7,7 +7,7 @@
 #include <QDebug>
 #include <systemd/sd-journal.h>
 
-QVector<QString> JournaldHelper::queryUnique(const Journal &journal, Field field)
+QVector<QString> JournaldHelper::queryUnique(const LocalJournal &journal, Field field)
 {
     QVector<QString> dataList;
     const void *data;
@@ -30,7 +30,7 @@ QVector<QString> JournaldHelper::queryUnique(const Journal &journal, Field field
     return dataList;
 }
 
-QVector<JournaldHelper::BootInfo> JournaldHelper::queryOrderedBootIds(const Journal &journal)
+QVector<JournaldHelper::BootInfo> JournaldHelper::queryOrderedBootIds(const LocalJournal &journal)
 {
     QVector<JournaldHelper::BootInfo> boots;
 

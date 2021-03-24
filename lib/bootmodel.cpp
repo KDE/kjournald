@@ -6,14 +6,14 @@
 #include "bootmodel.h"
 #include "bootmodel_p.h"
 
-BootModelPrivate::BootModelPrivate(std::unique_ptr<Journal> journal)
+BootModelPrivate::BootModelPrivate(std::unique_ptr<LocalJournal> journal)
     : mJournal(std::move(journal))
 {
 }
 
 BootModel::BootModel(QObject *parent)
     : QAbstractItemModel(parent)
-    , d(new BootModelPrivate(std::make_unique<Journal>()))
+    , d(new BootModelPrivate(std::make_unique<LocalJournal>()))
 {
     beginResetModel();
     d->mBootInfo = JournaldHelper::queryOrderedBootIds(*d->mJournal.get());
@@ -22,7 +22,7 @@ BootModel::BootModel(QObject *parent)
 
 BootModel::BootModel(const QString &journalPath, QObject *parent)
     : QAbstractItemModel(parent)
-    , d(new BootModelPrivate(std::make_unique<Journal>(journalPath)))
+    , d(new BootModelPrivate(std::make_unique<LocalJournal>(journalPath)))
 {
     beginResetModel();
     d->mBootInfo = JournaldHelper::queryOrderedBootIds(*d->mJournal.get());

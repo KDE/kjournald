@@ -3,15 +3,15 @@
     SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 */
 
-#ifndef JOURNAL_PRIVATE_H
-#define JOURNAL_PRIVATE_H
+#ifndef LOCALJOURNAL_PRIVATE_H
+#define LOCALJOURNAL_PRIVATE_H
 
 #include <systemd/sd-journal.h>
 
-class JournalPrivate
+class LocalJournalPrivate
 {
 public:
     mutable sd_journal *mJournal{nullptr};
 };
 
-#endif // JOURNAL_H
+#endif // LOCALJOURNAL_H

@@ -6,7 +6,7 @@
 #include "journaldviewmodel.h"
 #include "journaldviewmodel_p.h"
 #include "loggingcategories.h"
-#include "journal.h"
+#include "localjournal.h"
 #include <QDebug>
 #include <QDir>
 #include <QColor>
@@ -128,7 +128,7 @@ bool JournaldViewModel::setJournaldPath(const QString &path)
 {
     bool success{ true };
     beginResetModel();
-    d->mJournal = std::make_unique<Journal>(path);
+    d->mJournal = std::make_unique<LocalJournal>(path);
     success = d->mJournal->isValid();
     if (success) {
         d->seekHead();
@@ -155,7 +155,7 @@ bool JournaldViewModel::setSystemJournal()
 {
     bool success{ true };
     beginResetModel();
-    d->mJournal = std::make_unique<Journal>();
+    d->mJournal = std::make_unique<LocalJournal>();
     success = d->mJournal->isValid();
     if (success) {
         d->seekHead();
