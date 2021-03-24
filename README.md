@@ -25,6 +25,7 @@ The browser provides a single window overview that can be configured to show a d
     - copy current view (CTRL+C)
     - key-based navigation (PAGE_DOWN, PAGE_UP)
     - highlight search strings
+- use "journald-browser -D <path>" to directly open specific database folder
 
 ## Dependencies
 - Qt::Core, Qt::Quick
