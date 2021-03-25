@@ -278,10 +278,14 @@ ApplicationWindow {
             }
             Keys.onPressed: {
                 if (event.key === Qt.Key_PageDown) {
-                    viewRoot.currentIndex = Math.min(count - 1, currentIndex + Math.floor(viewRoot.height / messageIdMetrics.height))
+                    if (contentHeight > viewRoot.height) {
+                        viewRoot.contentY = Math.min(contentHeight - viewRoot.height, viewRoot.contentY + viewRoot.height * 0.9)
+                    } else {
+                        viewRoot.contentY = 0
+                    }
                 }
                 if (event.key === Qt.Key_PageUp) {
-                    viewRoot.currentIndex = Math.max(0, currentIndex - Math.floor(viewRoot.height / messageIdMetrics.height))
+                    viewRoot.contentY = Math.max(0, viewRoot.contentY - viewRoot.height * 0.9)
                 }
                 if (event.key === Qt.Key_F3) {
                     var index = g_journalModel.search(hightlightTextField.text, viewRoot.currentIndex + 1)
