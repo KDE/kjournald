@@ -14,7 +14,6 @@ set(kjournald_SRCS
 
 set(kjournald_HDRS
     bootmodel.h
-    fieldfilterproxymodel.h
     ijournal.h
     localjournal.h
     journaldhelper.h
