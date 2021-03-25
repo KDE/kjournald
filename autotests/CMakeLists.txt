@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: BSD-3-Clause
+# SPDX-FileCopyrightText: Andreas Cord-Landwehr <cordlandwehr@kde.org>
+
 configure_file(testdatalocation.h.inc testdatalocation.h)
 
 add_custom_target(extract_testdata

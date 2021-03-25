@@ -4,6 +4,10 @@ This project aims to provide an abstraction of the systemd's journald API in ter
 
 Additional to the library, the project provides a reference implementation of the API, called "journald-browser" which might provide value of itself. The focus though is the library's API.
 
+## License
+- SPDX-License-Identifier: LGPL-2.1-or-later OR MIT
+- SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
+
 ## Library Features
 - abstraction for unique query API, which can obtain unique values like list of all boot IDs, list of all units.
 - QAbstractItemModel for list of boots
