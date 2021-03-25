@@ -103,6 +103,14 @@ public:
     bool setSystemJournal();
 
     /**
+     * Reset model by using given journal object
+     *
+     * @param journal The journald access wrapper
+     * @return true if path could be opened, otherwise false
+     */
+    bool setJournal(std::unique_ptr<IJournal> journal);
+
+    /**
      * @copydoc QAbstractItemModel::rolesNames()
      */
     QHash<int, QByteArray> roleNames() const override;

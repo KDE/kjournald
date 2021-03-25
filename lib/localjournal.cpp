@@ -16,6 +16,10 @@ LocalJournal::LocalJournal()
     result = sd_journal_open(&d->mJournal, SD_JOURNAL_LOCAL_ONLY);
     if (result < 0) {
         qCCritical(journald) << "Failed to open journal:" << strerror(-result);
+    } else {
+        d->mFd = sd_journal_get_fd(d->mJournal);
+        d->mJournalSocketNotifier = std::make_unique<QSocketNotifier>(d->mFd, QSocketNotifier::Read);
+        connect(d->mJournalSocketNotifier.get(), &QSocketNotifier::activated, this, &LocalJournal::handleJournalDescriptorUpdate);
     }
 }
 
@@ -46,4 +50,15 @@ sd_journal *LocalJournal::sdJournal() const
 bool LocalJournal::isValid() const
 {
     return d->mJournal != nullptr;
+}
+
+void LocalJournal::handleJournalDescriptorUpdate()
+{
+    // reset descriptor
+    QFile file;
+    file.open(d->mFd, QIODevice::ReadOnly);
+    file.readAll();
+    file.close();
+    qCDebug(journald()) << "FD updated";
+    Q_EMIT journalUpdated();
 }

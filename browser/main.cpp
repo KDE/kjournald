@@ -5,11 +5,11 @@
 
 #include "bootmodel.h"
 #include "clipboardproxy.h"
-#include "sessionconfig.h"
 #include "fieldfilterproxymodel.h"
 #include "journaldhelper.h"
 #include "journalduniquequerymodel.h"
 #include "journaldviewmodel.h"
+#include "sessionconfig.h"
 #include <QCommandLineParser>
 #include <QDebug>
 #include <QGuiApplication>
@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
     unitModel.setField(JournaldHelper::Field::SYSTEMD_UNIT);
 
     QObject::connect(&sessionConfig, &SessionConfig::modeChanged, &sessionConfig, [&sessionConfig, &bootModel, &unitModel](SessionConfig::Mode mode) {
-        switch(mode) {
+        switch (mode) {
         case SessionConfig::Mode::SYSTEM:
             bootModel.setSystemJournal();
             unitModel.setSystemJournal();

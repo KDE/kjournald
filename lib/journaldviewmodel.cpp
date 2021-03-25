@@ -115,19 +115,32 @@ JournaldViewModel::JournaldViewModel(const QString &path, QObject *parent)
 
 JournaldViewModel::~JournaldViewModel() = default;
 
-bool JournaldViewModel::setJournaldPath(const QString &path)
+bool JournaldViewModel::setJournal(std::unique_ptr<IJournal> journal)
 {
     bool success{true};
     beginResetModel();
     d->mLog.clear();
-    d->mJournal = std::make_unique<LocalJournal>(path);
+    d->mJournal = std::move(journal);
     success = d->mJournal->isValid();
     if (success) {
         d->seekHead();
         fetchMore(QModelIndex());
     }
     endResetModel();
+    connect(d->mJournal.get(), &IJournal::journalUpdated, this, [=]() {
+        d->canFetchMore = true;
+    });
     return success;
+}
+
+bool JournaldViewModel::setJournaldPath(const QString &path)
+{
+    return setJournal(std::make_unique<LocalJournal>(path));
+}
+
+bool JournaldViewModel::setSystemJournal()
+{
+    return setJournal(std::make_unique<LocalJournal>());
 }
 
 QHash<int, QByteArray> JournaldViewModel::roleNames() const
@@ -141,21 +154,6 @@ QHash<int, QByteArray> JournaldViewModel::roleNames() const
     roles[JournaldViewModel::BOOT_ID] = "bootid";
     roles[JournaldViewModel::UNIT_COLOR] = "unitcolor";
     return roles;
-}
-
-bool JournaldViewModel::setSystemJournal()
-{
-    bool success{true};
-    beginResetModel();
-    d->mLog.clear();
-    d->mJournal = std::make_unique<LocalJournal>();
-    success = d->mJournal->isValid();
-    if (success) {
-        d->seekHead();
-        fetchMore(QModelIndex());
-    }
-    endResetModel();
-    return success;
 }
 
 QVariant JournaldViewModel::headerData(int section, Qt::Orientation orientation, int role) const

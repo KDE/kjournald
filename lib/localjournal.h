@@ -55,6 +55,9 @@ public:
      */
     bool isValid() const override;
 
+private
+    Q_SLOT : void handleJournalDescriptorUpdate();
+
 private:
     std::unique_ptr<LocalJournalPrivate> d;
 };

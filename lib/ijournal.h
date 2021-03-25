@@ -7,6 +7,7 @@
 #define IJOURNAL_H
 
 #include "kjournald_export.h"
+#include <QObject>
 #include <QString>
 
 class sd_journal;
@@ -14,8 +15,9 @@ class sd_journal;
 /**
  * @brief Interface class for passing journal do model
  */
-class KJOURNALD_EXPORT IJournal
+class KJOURNALD_EXPORT IJournal : public QObject
 {
+    Q_OBJECT
 public:
     /**
      * @brief Construct journal object for system journald DB
@@ -39,6 +41,9 @@ public:
      * @brief returns true if and only if the sd_journal pointer is valid
      */
     virtual bool isValid() const = 0;
+
+Q_SIGNALS:
+    void journalUpdated();
 };
 
 #endif // IJOURNAL_H
