@@ -34,7 +34,27 @@ void JournaldViewModelPrivate::seekHead()
     sd_journal_flush_matches(mJournal->sdJournal());
 
     // in the following a logical expression with with the following content is created:
-    // ((?kernel-messages) OR (non-kernel-tranport) AND (unit_1 OR unit_2 OR unit...)) AND (boot_1 OR boot...) AND (priority_1 OR prio...)
+    // AND (boot_1 OR boot...) AND (priority_1 OR prio...) AND ((?kernel-messages) OR (non-kernel-tranport) AND (unit_1 OR unit_2 OR unit...))
+    // filter boots
+    for (const QString &boot : mBootFilter) {
+        QString filterExpression = "_BOOT_ID=" + boot;
+        result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toStdString().c_str(), 0);
+        if (result < 0) {
+            qCCritical(journald) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
+        }
+    }
+    if (mPriorityFilter.has_value()) {
+        for (int i = 0; i <= mPriorityFilter; ++i) {
+            QString filterExpression = "PRIORITY=" + QString::number(i);
+            result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toStdString().c_str(), 0);
+            if (result < 0) {
+                qCCritical(journald()) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
+            }
+        }
+    }
+
+    // boot and priority filter shall always be enforced
+    result = sd_journal_add_conjunction(mJournal->sdJournal());
 
     // see journal-fields documentation regarding list of valid transports
     QStringList kernelTransports{"audit", "driver", "kernel"};
@@ -67,24 +87,6 @@ void JournaldViewModelPrivate::seekHead()
         result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toStdString().c_str(), 0);
         if (result < 0) {
             qCCritical(journald) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
-        }
-    }
-
-    // filter boots
-    for (const QString &boot : mBootFilter) {
-        QString filterExpression = "_BOOT_ID=" + boot;
-        result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toStdString().c_str(), 0);
-        if (result < 0) {
-            qCCritical(journald) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
-        }
-    }
-    if (mPriorityFilter.has_value()) {
-        for (int i = 0; i <= mPriorityFilter; ++i) {
-            QString filterExpression = "PRIORITY=" + QString::number(i);
-            result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toStdString().c_str(), 0);
-            if (result < 0) {
-                qCCritical(journald()) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
-            }
         }
     }
 
