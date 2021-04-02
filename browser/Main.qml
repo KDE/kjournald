@@ -278,14 +278,24 @@ ApplicationWindow {
             }
             Keys.onPressed: {
                 if (event.key === Qt.Key_PageDown) {
-                    if (contentHeight > viewRoot.height) {
-                        viewRoot.contentY = Math.min(contentHeight - viewRoot.height, viewRoot.contentY + viewRoot.height * 0.9)
-                    } else {
-                        viewRoot.contentY = 0
+                    if (event.modifiers & Qt.ControlModifier) {
+                        viewRoot.positionViewAtEnd()
+                    }
+                    else {
+                        if (contentHeight > viewRoot.height) {
+                            viewRoot.contentY = Math.min(contentHeight - viewRoot.height, viewRoot.contentY + viewRoot.height * 0.9)
+                        } else {
+                            viewRoot.contentY = 0
+                        }
                     }
                 }
                 if (event.key === Qt.Key_PageUp) {
-                    viewRoot.contentY = Math.max(0, viewRoot.contentY - viewRoot.height * 0.9)
+                    if (event.modifiers & Qt.ControlModifier) {
+                        viewRoot.positionViewAtBeginning()
+                    }
+                    else {
+                        viewRoot.contentY = Math.max(0, viewRoot.contentY - viewRoot.height * 0.9)
+                    }
                 }
                 if (event.key === Qt.Key_F3) {
                     var index = g_journalModel.search(hightlightTextField.text, viewRoot.currentIndex + 1)

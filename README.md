@@ -27,7 +27,11 @@ The browser provides a single window overview that can be configured to show a d
     - time available as UTC
 - browsing
     - copy current view (CTRL+C)
-    - key-based navigation (PAGE_DOWN, PAGE_UP)
+    - key-based navigation
+        - scroll forward: PAGE_DOWN
+        - scroll backward: PAGE_UP
+        - scroll to most recent entry: CTRL+PAGE_DOWN
+        - scroll to oldest entry: CTRL+PAGE_UP
     - highlight search strings
 - use "journald-browser -D <path>" to directly open specific database folder
 
