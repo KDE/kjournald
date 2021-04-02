@@ -218,6 +218,22 @@ public:
      */
     Q_INVOKABLE QString formatTime(const QDateTime &datetime, bool utc) const;
 
+    /**
+     * @brief Reset model and start reading from head
+     *
+     * This method can be used to position the log at the beginning and clearing all existing
+     * data in the log cache.
+     */
+    Q_INVOKABLE void seekHead();
+
+    /**
+     * @brief Reset model and start reading from tail
+     *
+     * This method can be used to position the log at the end and clearing all existing
+     * data in the log cache.
+     */
+    Q_INVOKABLE void seekTail();
+
 Q_SIGNALS:
     /**
      * Signal is emitted when Kernel message filter is changed

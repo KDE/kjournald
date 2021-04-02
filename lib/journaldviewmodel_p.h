@@ -28,10 +28,48 @@ struct LogEntry {
 class JournaldViewModelPrivate
 {
 public:
-    QColor unitColor(const QString &unit);
-    void seekHead();
+    enum class Direction {
+        TOWARDS_HEAD,
+        TOWARDS_TAIL,
+    };
 
-    bool canFetchMore{true}; // indicates if end of journal is reached
+    QColor unitColor(const QString &unit);
+    /**
+     * reapply all filters and seek journal at head
+     * ensure to guard this call with beginModelReset and endModelReset
+     */
+    void resetJournal();
+
+    /**
+     * Seek head of journal and already position at first entry with
+     * sd_journal_next().
+     *
+     * @note this call also updates all internal cursors (for window head/tail) as well
+     * as the internal state if head/tail are reached.
+     */
+    void seekHeadAndMakeCurrent();
+
+    /**
+     * Seek tail of journal and already position at first entry with
+     * sd_journal_next().
+     *
+     * @note this call also updates all internal cursors (for window head/tail) as well
+     * as the internal state if head/tail are reached.
+     */
+    void seekTailAndMakeCurrent();
+
+    /**
+     * fetch data from current cursor position in forwards direction if @p forwards
+     * is true, otherwards backwards in time
+     * @note depending on the direction, the method relies on correctly initialized head and tail
+     * cursors and upon calling sets the current entry to the respective cursor.
+     *
+     * @note it is responsibility of the caller to ensure that data entries are not
+     * placed twice into the journal. this means, only call this method after a model
+     * reset and then only in the respective direction
+     */
+    QVector<LogEntry> readEntries(Direction direction);
+
     std::unique_ptr<IJournal> mJournal;
     QVector<LogEntry> mLog;
     QStringList mSystemdUnitFilter;
@@ -39,6 +77,10 @@ public:
     std::optional<int> mPriorityFilter;
     bool mShowKernelMessages{false};
     QHash<QString, QColor> mUnitToColorMap;
+    bool mHeadCursorReached{ false };
+    bool mTailCursorReached{ false };
+    char * mWindowHeadCursor{ nullptr };
+    char * mWindowTailCursor{ nullptr };
 };
 
 #endif // JOURNALDVIEWMODEL_P_H

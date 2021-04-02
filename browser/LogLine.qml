@@ -12,6 +12,7 @@ Item {
     property int priority
     property string highlight
     property QtObject modelProxy
+    property int index
 
     implicitWidth: text.implicitWidth
     implicitHeight: text.implicitHeight
@@ -26,6 +27,7 @@ Item {
         anchors.fill: parent
 
         text: modelProxy.formatTime(root.date, true) + " " + root.message
+//        text: root.index + " " + modelProxy.formatTime(root.date, true) + " " + root.message // alternativ output for debugging
         color: {
             switch(root.priority) {
             case 0: return "#700293" // emergency (violet)

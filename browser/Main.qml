@@ -238,7 +238,7 @@ ApplicationWindow {
             delegate: Rectangle
             {
                 color: model.unitcolor
-                width: parent.width
+                width: viewRoot.width
                 height: messageText.height
                 LogLine {
                     id: messageText
@@ -246,6 +246,7 @@ ApplicationWindow {
                         left: parent.left
                         right: parent.right
                     }
+                    index: model.index
                     date: model.date
                     priority: model.priority
                     message: model.message
@@ -277,30 +278,53 @@ ApplicationWindow {
                 text: "Example Log message"
             }
             Keys.onPressed: {
+                var currentIndex = viewRoot.indexAt(1, viewRoot.contentY + 1) // 1 pixel right and down to really get the first item in view
+                var scrollIndexSkip = Math.floor( 0.9 * viewRoot.height / 30) // hard-coded estimate of one line log height
                 if (event.key === Qt.Key_PageDown) {
                     if (event.modifiers & Qt.ControlModifier) {
+                        // model provides just a sliding window over the journal, fetch tail data first
+                        g_journalModel.seekTail()
                         viewRoot.positionViewAtEnd()
                     }
                     else {
-                        if (contentHeight > viewRoot.height) {
-                            viewRoot.contentY = Math.min(contentHeight - viewRoot.height, viewRoot.contentY + viewRoot.height * 0.9)
+                        if (viewRoot.contentHeight - viewRoot.originY > viewRoot.height) {
+                            if (viewRoot.contentY - viewRoot.originY + 2 * viewRoot.height >= viewRoot.contentHeight) {
+                                // enforce fetching here such that it does not happen implictly during calculation the new contentY
+                                g_journalModel.fetchMore(g_journalModel.index(0, 0))
+                            }
+                            positionViewAtIndex(currentIndex + scrollIndexSkip, ListView.Beginning)
                         } else {
-                            viewRoot.contentY = 0
+                            viewRoot.contentY = viewRoot.originY
                         }
                     }
                 }
                 if (event.key === Qt.Key_PageUp) {
                     if (event.modifiers & Qt.ControlModifier) {
+                        // model provides just a sliding window over the journal, fetch head data first
+                        g_journalModel.seekHead()
                         viewRoot.positionViewAtBeginning()
                     }
                     else {
-                        viewRoot.contentY = Math.max(0, viewRoot.contentY - viewRoot.height * 0.9)
+                        if (viewRoot.contentHeight - viewRoot.originY > viewRoot.height) {
+                            if (viewRoot.contentY - viewRoot.originY <= 3 * viewRoot.height) {
+                                // enforce fetching here such that it does not happen implictly during calculation the new contentY
+                                g_journalModel.fetchMore(g_journalModel.index(0, 0))
+
+                                // update currentIndex, because it has changed when rows added at top
+                                viewRoot.forceLayout()
+                                currentIndex = viewRoot.indexAt(1, viewRoot.contentY + 1)
+                            }
+                            positionViewAtIndex(currentIndex - scrollIndexSkip, ListView.Beginning)
+                        } else {
+                            viewRoot.contentY = viewRoot.originY
+                        }
                     }
                 }
                 if (event.key === Qt.Key_F3) {
                     var index = g_journalModel.search(hightlightTextField.text, viewRoot.currentIndex + 1)
                     if (index >= 0) {
                         viewRoot.currentIndex = index
+                        positionViewAtIndex(index, ListView.Beginning)
                     }
                 }
                 if (event.key === Qt.Key_C && (event.modifiers & Qt.ControlModifier)) {

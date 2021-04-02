@@ -21,7 +21,7 @@ QColor JournaldViewModelPrivate::unitColor(const QString &unit)
     return mUnitToColorMap.value(unit);
 }
 
-void JournaldViewModelPrivate::seekHead()
+void JournaldViewModelPrivate::resetJournal()
 {
     if (!mJournal->isValid()) {
         qCWarning(journald()) << "Skipping seek head, no valid journal open";
@@ -90,15 +90,142 @@ void JournaldViewModelPrivate::seekHead()
         }
     }
 
-    result = sd_journal_seek_head(mJournal->sdJournal());
+    seekHeadAndMakeCurrent();
+    // clear all data which are in limbo with new head
+    mLog.clear();
+}
+
+QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
+{
+    const int readChunkSize{500};
+    int result{0};
+    QVector<LogEntry> chunk;
+    if (!mJournal->isValid()) {
+        qCWarning(journald) << "Skipping data fetch, no valid journal opened";
+        return chunk;
+    }
+    if (direction == JournaldViewModelPrivate::Direction::TOWARDS_TAIL) {
+        result = sd_journal_seek_cursor(mJournal->sdJournal(), mWindowTailCursor);
+    } else {
+        result = sd_journal_seek_cursor(mJournal->sdJournal(), mWindowHeadCursor);
+    }
+    if (result < 0) {
+        qCCritical(journald()) << "Failed seeking cursor" << strerror(-result);
+        return {};
+    }
+
+    for (int counter = 0; counter < readChunkSize; ++counter) {
+        const char *data;
+        size_t length;
+        uint64_t time;
+        int result{1};
+
+        // obtain more data, 1 for success, 0 if reached end
+        if (direction == Direction::TOWARDS_TAIL) {
+            if (sd_journal_next(mJournal->sdJournal()) <= 0) {
+                mTailCursorReached = true;
+                qCDebug(journald) << "obtained journal until tail, stop reading";
+                break;
+            }
+        } else {
+            if (sd_journal_previous(mJournal->sdJournal()) <= 0) {
+                mHeadCursorReached = true;
+                qCDebug(journald) << "obtained journal until head, stop reading";
+                break;
+            }
+        }
+
+        LogEntry entry;
+        result = sd_journal_get_realtime_usec(mJournal->sdJournal(), &time);
+        if (result == 0) {
+            entry.mDate.setMSecsSinceEpoch(time / 1000);
+        }
+
+        result = sd_journal_get_data(mJournal->sdJournal(), "MESSAGE", (const void **)&data, &length);
+        if (result == 0) {
+            entry.mMessage = QString::fromUtf8((const char *)data, length).section(QChar::fromLatin1('='), 1);
+        }
+        result = sd_journal_get_data(mJournal->sdJournal(), "MESSAGE_ID", (const void **)&data, &length);
+        if (result == 0) {
+            entry.mId = QString::fromUtf8((const char *)data, length).section(QChar::fromLatin1('='), 1);
+        }
+        result = sd_journal_get_data(mJournal->sdJournal(), "_SYSTEMD_UNIT", (const void **)&data, &length);
+        if (result == 0) {
+            entry.mSystemdUnit = QString::fromUtf8((const char *)data, length).section(QChar::fromLatin1('='), 1);
+        }
+        result = sd_journal_get_data(mJournal->sdJournal(), "_BOOT_ID", (const void **)&data, &length);
+        if (result == 0) {
+            entry.mBootId = QString::fromUtf8((const char *)data, length).section(QChar::fromLatin1('='), 1);
+        }
+        result = sd_journal_get_data(mJournal->sdJournal(), "PRIORITY", (const void **)&data, &length);
+        if (result == 0) {
+            entry.mPriority = QString::fromUtf8((const char *)data, length).section(QChar::fromLatin1('='), 1).toInt();
+        }
+
+        if (direction == Direction::TOWARDS_TAIL) {
+            chunk.append(std::move(entry));
+        } else {
+            chunk.prepend(std::move(entry));
+        }
+    }
+
+    // update head/tail cursor depending on direction
+    if (direction == Direction::TOWARDS_TAIL) {
+        int result = sd_journal_get_cursor(mJournal->sdJournal(), &mWindowTailCursor);
+        if (result < 0) {
+            qCCritical(journald()) << "Failed to obtain tail cursor" << strerror(-result);
+            mWindowTailCursor = nullptr;
+        }
+    } else {
+        int result = sd_journal_get_cursor(mJournal->sdJournal(), &mWindowHeadCursor);
+        if (result < 0) {
+            qCCritical(journald()) << "Failed to obtain head cursor";
+            mWindowHeadCursor = nullptr;
+        }
+    }
+    return chunk;
+}
+
+void JournaldViewModelPrivate::seekHeadAndMakeCurrent()
+{
+    qCDebug(journald) << "seek head and make current";
+    int result = sd_journal_seek_head(mJournal->sdJournal());
     if (result < 0) {
         qCCritical(journald) << "Failed to seek head:" << strerror(-result);
         return;
     }
+    mHeadCursorReached = true;
+    mTailCursorReached = false;
+    if (sd_journal_next(mJournal->sdJournal()) <= 0) {
+        mTailCursorReached = true;
+    }
+    result = sd_journal_get_cursor(mJournal->sdJournal(), &mWindowHeadCursor);
+    if (result < 0) {
+        qCCritical(journald()) << "Failed to obtain head/tail cursor";
+        mWindowHeadCursor = nullptr;
+    }
+    mWindowTailCursor = mWindowHeadCursor;
+}
 
-    canFetchMore = true;
-    // clear all data which are in limbo with new head
-    mLog.clear();
+void JournaldViewModelPrivate::seekTailAndMakeCurrent()
+{
+    qCDebug(journald) << "seek tail and make current";
+    int result = sd_journal_seek_tail(mJournal->sdJournal());
+    if (result < 0) {
+        qCCritical(journald) << "Failed to seek head:" << strerror(-result);
+        return;
+    }
+    mHeadCursorReached = false;
+    mTailCursorReached = true;
+    if (sd_journal_previous(mJournal->sdJournal()) <= 0) {
+        mHeadCursorReached = true;
+    }
+    result = sd_journal_get_cursor(mJournal->sdJournal(), &mWindowTailCursor);
+    if (result < 0) {
+        qCCritical(journald()) << "Failed to obtain head/tail cursor";
+        mWindowTailCursor = nullptr;
+    }
+    mWindowHeadCursor = mWindowTailCursor;
 }
 
 JournaldViewModel::JournaldViewModel(QObject *parent)
@@ -125,12 +252,13 @@ bool JournaldViewModel::setJournal(std::unique_ptr<IJournal> journal)
     d->mJournal = std::move(journal);
     success = d->mJournal->isValid();
     if (success) {
-        d->seekHead();
+        d->resetJournal();
         fetchMore(QModelIndex());
     }
     endResetModel();
     connect(d->mJournal.get(), &IJournal::journalUpdated, this, [=]() {
-        d->canFetchMore = true;
+        //TODO check that model actual represents the current boot
+        d->mTailCursorReached = false;
     });
     return success;
 }
@@ -213,69 +341,65 @@ QVariant JournaldViewModel::data(const QModelIndex &index, int role) const
 
 bool JournaldViewModel::canFetchMore(const QModelIndex &parent) const
 {
-    return d->canFetchMore;
+    return !(d->mHeadCursorReached && d->mTailCursorReached);
 }
 
 void JournaldViewModel::fetchMore(const QModelIndex &parent)
 {
-    if (!d->mJournal->isValid()) {
-        qCWarning(journald) << "Skipping data fetch, no valid journal opened";
-        return;
-    }
+    // increase window in both directions, since QAbstractIdemModel::fetchMore cannot
+    // provide any indication of the direction. yet, this is not a real problem,
+    // because by design usually the head or tail are already reached because that is
+    // where we begin reading the log
     Q_UNUSED(parent);
-    qCDebug(journald) << "Fetch more data";
-    const int readChunkSize{500};
-    QVector<LogEntry> chunk;
-    for (int counter = 0; counter < readChunkSize; ++counter) {
-        // obtain more data, 1 for success, 0 if reached end
-        if (sd_journal_next(d->mJournal->sdJournal()) <= 0) {
-            d->canFetchMore = false;
-            break;
-        }
-        const char *data;
-        size_t length;
-        uint64_t time;
-        int result{1};
-
-        LogEntry entry;
-        result = sd_journal_get_realtime_usec(d->mJournal->sdJournal(), &time);
-        if (result == 0) {
-            entry.mDate.setMSecsSinceEpoch(time / 1000);
-        }
-
-        result = sd_journal_get_data(d->mJournal->sdJournal(), "MESSAGE", (const void **)&data, &length);
-        if (result == 0) {
-            entry.mMessage = QString::fromUtf8((const char *)data, length).section(QChar::fromLatin1('='), 1);
-        }
-        result = sd_journal_get_data(d->mJournal->sdJournal(), "MESSAGE_ID", (const void **)&data, &length);
-        if (result == 0) {
-            entry.mId = QString::fromUtf8((const char *)data, length).section(QChar::fromLatin1('='), 1);
-        }
-        result = sd_journal_get_data(d->mJournal->sdJournal(), "_SYSTEMD_UNIT", (const void **)&data, &length);
-        if (result == 0) {
-            entry.mSystemdUnit = QString::fromUtf8((const char *)data, length).section(QChar::fromLatin1('='), 1);
-        }
-        result = sd_journal_get_data(d->mJournal->sdJournal(), "_BOOT_ID", (const void **)&data, &length);
-        if (result == 0) {
-            entry.mBootId = QString::fromUtf8((const char *)data, length).section(QChar::fromLatin1('='), 1);
-        }
-        result = sd_journal_get_data(d->mJournal->sdJournal(), "PRIORITY", (const void **)&data, &length);
-        if (result == 0) {
-            entry.mPriority = QString::fromUtf8((const char *)data, length).section(QChar::fromLatin1('='), 1).toInt();
-        }
-
-        chunk.append(std::move(entry));
+    if (!d->mTailCursorReached) {
+        QVector<LogEntry> chunk = d->readEntries(JournaldViewModelPrivate::Direction::TOWARDS_TAIL);
+        beginInsertRows(QModelIndex(), 0, chunk.size() - 1);
+        d->mLog.append(chunk);
+        endInsertRows();
+        qCDebug(journald) << "read towards tail" << chunk.size();
     }
-    beginInsertRows(QModelIndex(), d->mLog.size(), d->mLog.size() + chunk.size());
-    d->mLog.append(chunk);
-    endInsertRows();
+    if (!d->mHeadCursorReached) {
+        QVector<LogEntry> chunk = d->readEntries(JournaldViewModelPrivate::Direction::TOWARDS_HEAD);
+        beginInsertRows(QModelIndex(), d->mLog.size(), d->mLog.size() + chunk.size() - 1);
+        d->mLog = chunk << d->mLog; //TODO find more performant way than constructing a new vector every time
+        endInsertRows();
+        qCDebug(journald) << "read towards head" << chunk.size();
+    }
+}
+
+void JournaldViewModel::seekHead()
+{
+    beginResetModel();
+    d->mLog.clear();
+    if (d->mJournal && d->mJournal->isValid()) {
+        d->seekHeadAndMakeCurrent();
+        QVector<LogEntry> chunk = d->readEntries(JournaldViewModelPrivate::Direction::TOWARDS_TAIL);
+        d->mLog = chunk;
+    } else {
+        qCCritical(journald()) << "Cannot seek head of invalid journal";
+    }
+    endResetModel();
+}
+
+void JournaldViewModel::seekTail()
+{
+    beginResetModel();
+    d->mLog.clear();
+    if (d->mJournal && d->mJournal->isValid()) {
+        d->seekTailAndMakeCurrent();
+        QVector<LogEntry> chunk = d->readEntries(JournaldViewModelPrivate::Direction::TOWARDS_HEAD);
+        d->mLog = chunk;
+    } else {
+        qCCritical(journald()) << "Cannot seek head of invalid journal";
+    }
+    endResetModel();
 }
 
 void JournaldViewModel::setSystemdUnitFilter(const QStringList &systemdUnitFilter)
 {
     beginResetModel();
     d->mSystemdUnitFilter = systemdUnitFilter;
-    d->seekHead();
+    d->resetJournal();
     fetchMore(QModelIndex());
     endResetModel();
 }
@@ -284,7 +408,7 @@ void JournaldViewModel::setBootFilter(const QStringList &bootFilter)
 {
     beginResetModel();
     d->mBootFilter = bootFilter;
-    d->seekHead();
+    d->resetJournal();
     fetchMore(QModelIndex());
     endResetModel();
 }
@@ -296,7 +420,7 @@ void JournaldViewModel::setPriorityFilter(int priority)
     }
     beginResetModel();
     d->mPriorityFilter = priority;
-    d->seekHead();
+    d->resetJournal();
     fetchMore(QModelIndex());
     endResetModel();
 }
@@ -305,7 +429,7 @@ void JournaldViewModel::resetPriorityFilter()
 {
     beginResetModel();
     d->mPriorityFilter.reset();
-    d->seekHead();
+    d->resetJournal();
     fetchMore(QModelIndex());
     endResetModel();
 }
@@ -317,7 +441,7 @@ void JournaldViewModel::setKernelFilter(bool showKernelMessages)
     }
     beginResetModel();
     d->mShowKernelMessages = showKernelMessages;
-    d->seekHead();
+    d->resetJournal();
     fetchMore(QModelIndex());
     endResetModel();
     Q_EMIT kernelFilterChanged();
@@ -336,7 +460,7 @@ int JournaldViewModel::search(const QString &searchString, int startRow)
             return row;
         }
         ++row;
-        if (row == d->mLog.size() && d->canFetchMore) { // if end is reached, try to fetch more
+        if (row == d->mLog.size() && canFetchMore(QModelIndex())) { // if end is reached, try to fetch more
             fetchMore(QModelIndex());
         }
     }
