@@ -282,6 +282,7 @@ ApplicationWindow {
                 var scrollIndexSkip = Math.floor( 0.9 * viewRoot.height / 30) // hard-coded estimate of one line log height
                 if (event.key === Qt.Key_PageDown) {
                     if (event.modifiers & Qt.ControlModifier) {
+                        return // TODO disable scroll to journal tail for now, because of subsequent scrolling when scrolling over tail
                         // model provides just a sliding window over the journal, fetch tail data first
                         g_journalModel.seekTail()
                         viewRoot.positionViewAtEnd()
@@ -291,6 +292,9 @@ ApplicationWindow {
                             if (viewRoot.contentY - viewRoot.originY + 2 * viewRoot.height >= viewRoot.contentHeight) {
                                 // enforce fetching here such that it does not happen implictly during calculation the new contentY
                                 g_journalModel.fetchMore(g_journalModel.index(0, 0))
+
+                                // update currentIndex, because it has changed when rows added at top
+                                currentIndex = viewRoot.indexAt(1, viewRoot.contentY + 1)
                             }
                             positionViewAtIndex(currentIndex + scrollIndexSkip, ListView.Beginning)
                         } else {
