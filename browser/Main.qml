@@ -311,7 +311,6 @@ ApplicationWindow {
                                 g_journalModel.fetchMore(g_journalModel.index(0, 0))
 
                                 // update currentIndex, because it has changed when rows added at top
-                                viewRoot.forceLayout()
                                 currentIndex = viewRoot.indexAt(1, viewRoot.contentY + 1)
                             }
                             positionViewAtIndex(currentIndex - scrollIndexSkip, ListView.Beginning)
