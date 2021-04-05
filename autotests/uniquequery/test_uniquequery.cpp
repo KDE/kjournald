@@ -6,11 +6,11 @@
 #include "test_uniquequery.h"
 #include "../testdatalocation.h"
 #include "journalduniquequerymodel.h"
+#include <QAbstractItemModelTester>
 #include <QDebug>
 #include <QDir>
 #include <QTemporaryDir>
 #include <QTemporaryFile>
-#include <QAbstractItemModelTester>
 #include <QTest>
 #include <QVector>
 

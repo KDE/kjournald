@@ -258,7 +258,7 @@ bool JournaldViewModel::setJournal(std::unique_ptr<IJournal> journal)
     }
     endResetModel();
     connect(d->mJournal.get(), &IJournal::journalUpdated, this, [=]() {
-        //TODO check that model actual represents the current boot
+        // TODO check that model actual represents the current boot
         d->mTailCursorReached = false;
     });
     return success;
@@ -380,7 +380,7 @@ void JournaldViewModel::fetchMoreLogEntries()
         QVector<LogEntry> chunk = d->readEntries(JournaldViewModelPrivate::Direction::TOWARDS_HEAD);
         if (chunk.size() > 0) {
             beginInsertRows(QModelIndex(), 0, chunk.size() - 1);
-            d->mLog = chunk << d->mLog; //TODO find more performant way than constructing a new vector every time
+            d->mLog = chunk << d->mLog; // TODO find more performant way than constructing a new vector every time
             endInsertRows();
             qCDebug(journald) << "read towards head" << chunk.size();
         }

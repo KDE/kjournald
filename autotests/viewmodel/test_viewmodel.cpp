@@ -7,9 +7,9 @@
 #include "../testdatalocation.h"
 #include "journaldviewmodel.h"
 #include "journaldviewmodel_p.h"
+#include <QAbstractItemModelTester>
 #include <QDebug>
 #include <QDir>
-#include <QAbstractItemModelTester>
 #include <QTemporaryDir>
 #include <QTemporaryFile>
 #include <QTest>

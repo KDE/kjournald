@@ -7,11 +7,11 @@
 #define JOURNALDVIEWMODEL_P_H
 
 #include "ijournal.h"
+#include <QAtomicInt>
 #include <QColor>
 #include <QDateTime>
 #include <QHash>
 #include <QString>
-#include <QAtomicInt>
 #include <QVector>
 #include <memory>
 #include <optional>
@@ -78,11 +78,11 @@ public:
     std::optional<int> mPriorityFilter;
     bool mShowKernelMessages{false};
     QHash<QString, QColor> mUnitToColorMap;
-    bool mHeadCursorReached{ false };
-    bool mTailCursorReached{ false };
-    char * mWindowHeadCursor{ nullptr };
-    char * mWindowTailCursor{ nullptr };
-    QAtomicInt mActiveFetchOperations{ 0 };
+    bool mHeadCursorReached{false};
+    bool mTailCursorReached{false};
+    char *mWindowHeadCursor{nullptr};
+    char *mWindowTailCursor{nullptr};
+    QAtomicInt mActiveFetchOperations{0};
 };
 
 #endif // JOURNALDVIEWMODEL_P_H
