@@ -107,9 +107,9 @@ QVariant BootModel::data(const QModelIndex &index, int role) const
     case BootModel::UNTIL:
         return d->mBootInfo.at(index.row()).mUntil;
     case BootModel::DISPLAY_SHORT:
-        const QString sinceTime = d->mBootInfo.at(index.row()).mSince.toString("hh:mm");
-        const QString sinceDate = d->mBootInfo.at(index.row()).mSince.toString("yyyy-MM-dd");
-        const QString untilTime = d->mBootInfo.at(index.row()).mUntil.toString("hh:mm");
+        const QString sinceTime = d->mBootInfo.at(index.row()).mSince.toUTC().toString("hh:mm");
+        const QString sinceDate = d->mBootInfo.at(index.row()).mSince.toUTC().toString("yyyy-MM-dd");
+        const QString untilTime = d->mBootInfo.at(index.row()).mUntil.toUTC().toString("hh:mm");
         const QString id = d->mBootInfo.at(index.row()).mBootId.left(10);
         return QString("%1 %2-%3 [%4...]").arg(sinceDate).arg(sinceTime).arg(untilTime).arg(id);
     }
