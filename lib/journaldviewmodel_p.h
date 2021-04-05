@@ -11,6 +11,7 @@
 #include <QColor>
 #include <QDateTime>
 #include <QHash>
+#include <QRandomGenerator>
 #include <QString>
 #include <QVector>
 #include <memory>
@@ -83,6 +84,8 @@ public:
     char *mWindowHeadCursor{nullptr};
     char *mWindowTailCursor{nullptr};
     QAtomicInt mActiveFetchOperations{0};
+
+    static QRandomGenerator sFixedSeedGenerator;
 };
 
 #endif // JOURNALDVIEWMODEL_P_H

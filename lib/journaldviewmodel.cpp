@@ -13,10 +13,12 @@
 #include <QRandomGenerator>
 #include <QThread>
 
+QRandomGenerator JournaldViewModelPrivate::sFixedSeedGenerator{ 1 }; // used fixed seed to ensure that colors for same units never change
+
 QColor JournaldViewModelPrivate::unitColor(const QString &unit)
 {
     if (!mUnitToColorMap.contains(unit)) {
-        int hue = QRandomGenerator::global()->bounded(255);
+        int hue = sFixedSeedGenerator.bounded(255);
         mUnitToColorMap[unit] = QColor::fromHsl(hue, 150, 220);
     }
     return mUnitToColorMap.value(unit);
