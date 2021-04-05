@@ -279,10 +279,9 @@ ApplicationWindow {
             }
             Keys.onPressed: {
                 var currentIndex = viewRoot.indexAt(1, viewRoot.contentY + 1) // 1 pixel right and down to really get the first item in view
-                var scrollIndexSkip = Math.floor( 0.9 * viewRoot.height / 30) // hard-coded estimate of one line log height
+                var scrollIndexSkip = Math.floor(0.9 * viewRoot.height / 30) // hard-coded estimate of one line log height
                 if (event.key === Qt.Key_PageDown) {
                     if (event.modifiers & Qt.ControlModifier) {
-                        return // TODO disable scroll to journal tail for now, because of subsequent scrolling when scrolling over tail
                         // model provides just a sliding window over the journal, fetch tail data first
                         g_journalModel.seekTail()
                         viewRoot.positionViewAtEnd()
@@ -290,18 +289,22 @@ ApplicationWindow {
                     else {
                         if (viewRoot.contentHeight - viewRoot.originY > viewRoot.height) {
                             if (viewRoot.contentY - viewRoot.originY + 2 * viewRoot.height >= viewRoot.contentHeight) {
-                                // enforce fetching here such that it does not happen implictly during calculation the new contentY
+                                // enforce fetching here such that it does not happen implicitly during calculation the new contentY
                                 g_journalModel.fetchMore(g_journalModel.index(0, 0))
-
-                                // update currentIndex, because it has changed when rows added at top
-                                currentIndex = viewRoot.indexAt(1, viewRoot.contentY + 1)
+                                viewRoot.forceLayout()
                             }
-                            positionViewAtIndex(currentIndex + scrollIndexSkip, ListView.Beginning)
+                            // update currentIndex, because it has changed when rows added at top
+                            currentIndex = viewRoot.indexAt(1, viewRoot.contentY + 1)
+                            positionViewAtIndex(Math.min(viewRoot.count, currentIndex + scrollIndexSkip), ListView.Beginning)
                         } else {
                             viewRoot.contentY = viewRoot.originY
                         }
                     }
                 }
+                if (event.key === Qt.Key_End) {
+                    viewRoot.positionViewAtEnd()
+                }
+
                 if (event.key === Qt.Key_PageUp) {
                     if (event.modifiers & Qt.ControlModifier) {
                         // model provides just a sliding window over the journal, fetch head data first
@@ -313,11 +316,11 @@ ApplicationWindow {
                             if (viewRoot.contentY - viewRoot.originY <= 3 * viewRoot.height) {
                                 // enforce fetching here such that it does not happen implictly during calculation the new contentY
                                 g_journalModel.fetchMore(g_journalModel.index(0, 0))
-
-                                // update currentIndex, because it has changed when rows added at top
-                                currentIndex = viewRoot.indexAt(1, viewRoot.contentY + 1)
+                                viewRoot.forceLayout()
                             }
-                            positionViewAtIndex(currentIndex - scrollIndexSkip, ListView.Beginning)
+                            // update currentIndex, because it has changed when rows added at top
+                            currentIndex = viewRoot.indexAt(1, viewRoot.contentY + 1)
+                            positionViewAtIndex(Math.max(0, currentIndex - scrollIndexSkip), ListView.Beginning)
                         } else {
                             viewRoot.contentY = viewRoot.originY
                         }

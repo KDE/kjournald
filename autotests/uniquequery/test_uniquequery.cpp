@@ -10,6 +10,7 @@
 #include <QDir>
 #include <QTemporaryDir>
 #include <QTemporaryFile>
+#include <QAbstractItemModelTester>
 #include <QTest>
 #include <QVector>
 
@@ -20,6 +21,7 @@
 void TestUniqueQuery::journalAccess()
 {
     JournaldUniqueQueryModel model;
+    QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
 
     // test failure handling for invalid journal
     QTemporaryFile invalidJournal; // file is surely invalid
@@ -32,6 +34,7 @@ void TestUniqueQuery::journalAccess()
 void TestUniqueQuery::boots()
 {
     JournaldUniqueQueryModel model;
+    QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
     QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
 
     model.setFieldString("_BOOT_ID");
@@ -51,6 +54,7 @@ void TestUniqueQuery::boots()
 void TestUniqueQuery::systemdUnits()
 {
     JournaldUniqueQueryModel model;
+    QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
     QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
 
     model.setFieldString("_SYSTEMD_UNIT");

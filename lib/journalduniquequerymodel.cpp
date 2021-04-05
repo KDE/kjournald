@@ -166,7 +166,12 @@ QModelIndex JournaldUniqueQueryModel::parent(const QModelIndex &index) const
 
 int JournaldUniqueQueryModel::rowCount(const QModelIndex &parent) const
 {
-    return d->mEntries.size();
+    // model represents a list and has has no children
+    if (!parent.isValid()) {
+        return d->mEntries.size();
+    } else {
+        return 0;
+    }
 }
 
 int JournaldUniqueQueryModel::columnCount(const QModelIndex &parent) const

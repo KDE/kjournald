@@ -11,6 +11,7 @@
 #include <QDateTime>
 #include <QHash>
 #include <QString>
+#include <QAtomicInt>
 #include <QVector>
 #include <memory>
 #include <optional>
@@ -81,6 +82,7 @@ public:
     bool mTailCursorReached{ false };
     char * mWindowHeadCursor{ nullptr };
     char * mWindowTailCursor{ nullptr };
+    QAtomicInt mActiveFetchOperations{ 0 };
 };
 
 #endif // JOURNALDVIEWMODEL_P_H

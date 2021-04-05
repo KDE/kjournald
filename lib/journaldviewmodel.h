@@ -234,6 +234,12 @@ public:
      */
     Q_INVOKABLE void seekTail();
 
+private Q_SLOTS:
+    /**
+     * Decoupled fetching for log entries that can enforce sequence of fetching calls.
+     */
+    void fetchMoreLogEntries();
+
 Q_SIGNALS:
     /**
      * Signal is emitted when Kernel message filter is changed

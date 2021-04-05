@@ -9,6 +9,7 @@
 #include "journaldviewmodel_p.h"
 #include <QDebug>
 #include <QDir>
+#include <QAbstractItemModelTester>
 #include <QTemporaryDir>
 #include <QTemporaryFile>
 #include <QTest>
@@ -21,6 +22,7 @@
 void TestViewModel::journalAccess()
 {
     JournaldViewModel model;
+    QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
 
     // test failure handling for invalid journal
     QTemporaryFile invalidJournal; // file is surely invalid
@@ -36,6 +38,7 @@ void TestViewModel::rowAccess()
 {
     // used unfiltered journal and check first two lines
     JournaldViewModel model;
+    QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
     QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
     QVERIFY(model.rowCount() > 0);
 
@@ -65,6 +68,7 @@ void TestViewModel::rowAccess()
 void TestViewModel::bootFilter()
 {
     JournaldViewModel model;
+    QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
     QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
 
     // select only second boot
@@ -98,6 +102,7 @@ void TestViewModel::bootFilter()
 void TestViewModel::unitFilter()
 {
     JournaldViewModel model;
+    QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
     QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
 
     // select single service
@@ -127,6 +132,7 @@ void TestViewModel::showKernelMessages()
     const QString arbitraryKernelMessage = "usb 1-1.1: 3:1: cannot get freq at ep 0x86";
 
     JournaldViewModel model;
+    QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
     QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
 
     // check that not contains Kernel message

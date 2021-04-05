@@ -11,6 +11,7 @@
 #include <QDebug>
 #include <QDir>
 #include <QRandomGenerator>
+#include <QThread>
 
 QColor JournaldViewModelPrivate::unitColor(const QString &unit)
 {
@@ -253,7 +254,7 @@ bool JournaldViewModel::setJournal(std::unique_ptr<IJournal> journal)
     success = d->mJournal->isValid();
     if (success) {
         d->resetJournal();
-        fetchMore(QModelIndex());
+        fetchMoreLogEntries();
     }
     endResetModel();
     connect(d->mJournal.get(), &IJournal::journalUpdated, this, [=]() {
@@ -305,7 +306,12 @@ QModelIndex JournaldViewModel::parent(const QModelIndex &index) const
 
 int JournaldViewModel::rowCount(const QModelIndex &parent) const
 {
-    return d->mLog.size();
+    // model represents a list and has has no children
+    if (!parent.isValid()) {
+        return d->mLog.size();
+    } else {
+        return 0;
+    }
 }
 
 int JournaldViewModel::columnCount(const QModelIndex &parent) const
@@ -346,25 +352,40 @@ bool JournaldViewModel::canFetchMore(const QModelIndex &parent) const
 
 void JournaldViewModel::fetchMore(const QModelIndex &parent)
 {
+    fetchMoreLogEntries();
+}
+
+void JournaldViewModel::fetchMoreLogEntries()
+{
+    // guard against possible multi-threaded fetching access from QML engine while a fetch is not yet completed
+    int instance = d->mActiveFetchOperations.fetchAndAddRelaxed(1);
+    if (instance != 0) {
+        qWarning() << "Skipping fetch operation, already one in progress";
+        return;
+    }
     // increase window in both directions, since QAbstractIdemModel::fetchMore cannot
     // provide any indication of the direction. yet, this is not a real problem,
     // because by design usually the head or tail are already reached because that is
     // where we begin reading the log
-    Q_UNUSED(parent);
-    if (!d->mTailCursorReached) {
+    if (!d->mTailCursorReached) { // append to log
         QVector<LogEntry> chunk = d->readEntries(JournaldViewModelPrivate::Direction::TOWARDS_TAIL);
-        beginInsertRows(QModelIndex(), 0, chunk.size() - 1);
-        d->mLog.append(chunk);
-        endInsertRows();
-        qCDebug(journald) << "read towards tail" << chunk.size();
+        if (chunk.size() > 0) {
+            beginInsertRows(QModelIndex(), d->mLog.size(), d->mLog.size() + chunk.size() - 1);
+            d->mLog.append(chunk);
+            endInsertRows();
+            qCDebug(journald) << "read towards tail" << chunk.size();
+        }
     }
-    if (!d->mHeadCursorReached) {
+    if (!d->mHeadCursorReached) { // prepend to log
         QVector<LogEntry> chunk = d->readEntries(JournaldViewModelPrivate::Direction::TOWARDS_HEAD);
-        beginInsertRows(QModelIndex(), d->mLog.size(), d->mLog.size() + chunk.size() - 1);
-        d->mLog = chunk << d->mLog; //TODO find more performant way than constructing a new vector every time
-        endInsertRows();
-        qCDebug(journald) << "read towards head" << chunk.size();
+        if (chunk.size() > 0) {
+            beginInsertRows(QModelIndex(), 0, chunk.size() - 1);
+            d->mLog = chunk << d->mLog; //TODO find more performant way than constructing a new vector every time
+            endInsertRows();
+            qCDebug(journald) << "read towards head" << chunk.size();
+        }
     }
+    d->mActiveFetchOperations = 0;
 }
 
 void JournaldViewModel::seekHead()
@@ -400,7 +421,7 @@ void JournaldViewModel::setSystemdUnitFilter(const QStringList &systemdUnitFilte
     beginResetModel();
     d->mSystemdUnitFilter = systemdUnitFilter;
     d->resetJournal();
-    fetchMore(QModelIndex());
+    fetchMoreLogEntries();
     endResetModel();
 }
 
@@ -409,7 +430,7 @@ void JournaldViewModel::setBootFilter(const QStringList &bootFilter)
     beginResetModel();
     d->mBootFilter = bootFilter;
     d->resetJournal();
-    fetchMore(QModelIndex());
+    fetchMoreLogEntries();
     endResetModel();
 }
 
@@ -421,7 +442,7 @@ void JournaldViewModel::setPriorityFilter(int priority)
     beginResetModel();
     d->mPriorityFilter = priority;
     d->resetJournal();
-    fetchMore(QModelIndex());
+    fetchMoreLogEntries();
     endResetModel();
 }
 
@@ -430,7 +451,7 @@ void JournaldViewModel::resetPriorityFilter()
     beginResetModel();
     d->mPriorityFilter.reset();
     d->resetJournal();
-    fetchMore(QModelIndex());
+    fetchMoreLogEntries();
     endResetModel();
 }
 
@@ -442,7 +463,7 @@ void JournaldViewModel::setKernelFilter(bool showKernelMessages)
     beginResetModel();
     d->mShowKernelMessages = showKernelMessages;
     d->resetJournal();
-    fetchMore(QModelIndex());
+    fetchMoreLogEntries();
     endResetModel();
     Q_EMIT kernelFilterChanged();
 }
