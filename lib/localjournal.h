@@ -55,6 +55,12 @@ public:
      */
     bool isValid() const override;
 
+    /**
+     * @return ID for the current boot of the system
+     * @note this is the value from
+     */
+    QString currentBootId() const;
+
 private
     Q_SLOT : void handleJournalDescriptorUpdate();
 

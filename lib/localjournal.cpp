@@ -9,6 +9,18 @@
 #include <QDir>
 #include <systemd/sd-journal.h>
 
+LocalJournalPrivate::LocalJournalPrivate()
+{
+    QFile file(QLatin1String("/proc/sys/kernel/random/boot_id"));
+    if (file.open(QIODevice::ReadOnly | QFile::Text)) {
+        QTextStream stream(&file);
+        // example value: "918581c5-a27a-4ac6-9f37-c160fd20d1b5"
+        mCurrentBootId = stream.readAll().trimmed().remove('-');
+    } else {
+        qCWarning(journald) << "Could not obtain ID of current boot";
+    }
+}
+
 LocalJournal::LocalJournal()
     : d(new LocalJournalPrivate)
 {
@@ -52,6 +64,11 @@ bool LocalJournal::isValid() const
     return d->mJournal != nullptr;
 }
 
+QString LocalJournal::currentBootId() const
+{
+    return d->mCurrentBootId;
+}
+
 void LocalJournal::handleJournalDescriptorUpdate()
 {
     // reset descriptor
@@ -59,6 +76,6 @@ void LocalJournal::handleJournalDescriptorUpdate()
     file.open(d->mFd, QIODevice::ReadOnly);
     file.readAll();
     file.close();
-    qCDebug(journald()) << "FD updated";
-    Q_EMIT journalUpdated();
+    qCDebug(journald()) << "Local journal FD updated";
+    Q_EMIT journalUpdated(d->mCurrentBootId);
 }

@@ -259,9 +259,14 @@ bool JournaldViewModel::setJournal(std::unique_ptr<IJournal> journal)
         fetchMoreLogEntries();
     }
     endResetModel();
-    connect(d->mJournal.get(), &IJournal::journalUpdated, this, [=]() {
-        // TODO check that model actual represents the current boot
-        d->mTailCursorReached = false;
+    connect(d->mJournal.get(), &IJournal::journalUpdated, this, [=](const QString &bootId) {
+        if (!d->mBootFilter.contains(bootId)) {
+            return;
+        }
+        if (d->mTailCursorReached) {
+            d->mTailCursorReached = false;
+            fetchMoreLogEntries();
+        }
     });
     return success;
 }

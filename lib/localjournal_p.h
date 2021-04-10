@@ -14,8 +14,10 @@
 class LocalJournalPrivate
 {
 public:
+    LocalJournalPrivate();
     mutable sd_journal *mJournal{nullptr};
     qintptr mFd{0};
+    QString mCurrentBootId;
     std::unique_ptr<QSocketNotifier> mJournalSocketNotifier;
 };
 

@@ -43,7 +43,11 @@ public:
     virtual bool isValid() const = 0;
 
 Q_SIGNALS:
-    void journalUpdated();
+    /**
+     * @brief signal is fired when new entries are added to the journal
+     * @param bootId the ID for the boot to which entries are added
+     */
+    void journalUpdated(const QString &bootId);
 };
 
 #endif // IJOURNAL_H
