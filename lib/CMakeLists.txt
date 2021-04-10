@@ -32,8 +32,15 @@ PRIVATE
     Qt5::Quick
     ${SYSTEMD_LIBRARIES}
 )
-install(TARGETS kjournald DESTINATION lib)
-install(FILES ${kjournald_HDRS}
+target_include_directories(kjournald PUBLIC
+      $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/>
+      $<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}>
+)
+
+install(TARGETS kjournald DESTINATION ${KDE_INSTALL_LIBDIR})
+
+install(FILES
+    ${kjournald_HDRS}
     ${CMAKE_CURRENT_BINARY_DIR}/kjournald_export.h
-    DESTINATION lib/kjournald
+    DESTINATION ${KDE_INSTALL_INCLUDEDIR}
 )

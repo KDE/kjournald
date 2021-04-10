@@ -1,20 +1,8 @@
 # SPDX-License-Identifier: BSD-3-Clause
 # SPDX-FileCopyrightText: Andreas Cord-Landwehr <cordlandwehr@kde.org>
 
-include_directories(
-    ${CMAKE_SOURCE_DIR}/lib
-    ${CMAKE_BINARY_DIR}/lib
-)
-
-set(test_SRCS
+ecm_add_test(
     test_uniquequery.cpp
+    LINK_LIBRARIES Qt5::Core Qt5::Quick Qt5::Test kjournald
+    TEST_NAME test_uniquequery
 )
-add_executable(test_uniquequery ${test_SRCS})
-target_link_libraries(test_uniquequery
-PRIVATE
-    Qt5::Core
-    Qt5::Quick
-    Qt5::Test
-    kjournald
-)
-add_test(uniquequery test_uniquequery)

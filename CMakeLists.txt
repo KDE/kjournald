@@ -19,8 +19,11 @@ set_package_properties(ECM PROPERTIES
     DESCRIPTION "Extra CMake Modules."
     URL "https://invent.kde.org/frameworks/extra-cmake-modules")
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
+include(ECMAddTests)
 include(ECMEnableSanitizers)
 include(ECMCoverageOption)
+include(KDEInstallDirs)
+include(KDECMakeSettings)
 
 enable_testing()
 

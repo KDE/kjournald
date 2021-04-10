@@ -9,5 +9,6 @@ add_custom_target(extract_testdata
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
 )
 
+add_subdirectory(localjournal)
 add_subdirectory(uniquequery)
 add_subdirectory(viewmodel)
