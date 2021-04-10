@@ -1,21 +1,28 @@
 # SPDX-License-Identifier: BSD-3-Clause
 # SPDX-FileCopyrightText: Andreas Cord-Landwehr <cordlandwehr@kde.org>
 
-cmake_minimum_required(VERSION 3.10)
-
 project(kjournald LANGUAGES CXX)
 
+cmake_minimum_required(VERSION 3.10)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-enable_testing()
-
 include(FeatureSummary)
 include(GenerateExportHeader)
+
+find_package(ECM 5.44.0 NO_MODULE)
+set_package_properties(ECM PROPERTIES
+    TYPE REQUIRED
+    DESCRIPTION "Extra CMake Modules."
+    URL "https://invent.kde.org/frameworks/extra-cmake-modules")
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
+include(ECMEnableSanitizers)
+include(ECMCoverageOption)
+
+enable_testing()
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(SYSTEMD REQUIRED libsystemd)
