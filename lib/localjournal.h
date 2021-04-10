@@ -61,6 +61,12 @@ public:
      */
     QString currentBootId() const;
 
+    /**
+     * @brief Get file system usage of journal
+     * @return size of journal in bytes
+     */
+    uint64_t usage() const;
+
 private
     Q_SLOT : void handleJournalDescriptorUpdate();
 
