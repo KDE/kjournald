@@ -7,6 +7,7 @@ set(kjournald_SRCS
     fieldfilterproxymodel.cpp
     ijournal.h
     localjournal.cpp
+    journaldexportreader.cpp
     journaldhelper.cpp
     journaldviewmodel.cpp
     journalduniquequerymodel.cpp
