@@ -6,16 +6,15 @@
 #ifndef JOURNALDEXPORTREADER_H
 #define JOURNALDEXPORTREADER_H
 
+#include "kjournald_export.h"
 #include <QObject>
 #include <QTextStream>
 
 class QIODevice;
 
-class JournaldExportReader : public QObject
+class KJOURNALD_EXPORT JournaldExportReader : public QObject
 {
     Q_OBJECT
-
-
 public:
     using LogEntry = QHash<QString, QString>;
 
@@ -25,7 +24,7 @@ public:
     LogEntry entry() const;
 
 private:
-    QIODevice *mDevice{nullptr};
+    QIODevice *mDevice{};
     LogEntry mCurrentEntry;
 };
 #endif

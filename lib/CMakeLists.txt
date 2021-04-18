@@ -11,6 +11,7 @@ set(kjournald_SRCS
     journaldhelper.cpp
     journaldviewmodel.cpp
     journalduniquequerymodel.cpp
+    systemdjournalremote.cpp
 )
 
 set(kjournald_HDRS
@@ -20,6 +21,7 @@ set(kjournald_HDRS
     journaldhelper.h
     journaldviewmodel.h
     journalduniquequerymodel.h
+    systemdjournalremote.h
 )
 
 add_library(kjournald SHARED
