@@ -18,5 +18,6 @@ private Q_SLOTS:
     void exportFormatReaderBinaryMessageAccess();
 
     void systemdJournalRemoteJournalFromFile();
+    void systemdJournalRemoteJournalFromLocalhost();
 };
 #endif

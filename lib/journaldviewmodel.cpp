@@ -13,7 +13,7 @@
 #include <QRandomGenerator>
 #include <QThread>
 
-QRandomGenerator JournaldViewModelPrivate::sFixedSeedGenerator{ 1 }; // used fixed seed to ensure that colors for same units never change
+QRandomGenerator JournaldViewModelPrivate::sFixedSeedGenerator{1}; // used fixed seed to ensure that colors for same units never change
 
 QColor JournaldViewModelPrivate::unitColor(const QString &unit)
 {

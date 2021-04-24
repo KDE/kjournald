@@ -49,14 +49,12 @@ bool JournaldExportReader::readNext()
             QString fieldId = line;
             char output[8]; // size stored as uint64_6 = 8 bytes in little endian
             int size = mDevice->read(output, 8);
-            //FIXME initial logic to convert value, but result is not correct
+            // FIXME initial logic to convert value, but result is not correct
             uint64_t binaryBlobSize = le64toh(reinterpret_cast<uint64_t>(output));
 
             qCWarning(journald()) << "binary messages not yet supported";
             break;
         }
-
-
     }
 
     return true;

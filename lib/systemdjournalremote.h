@@ -28,6 +28,11 @@ public:
     SystemdJournalRemote(const QString &filePath);
 
     /**
+     * @brief Construct journal object form file containing logs in systemd's journal export format
+     */
+    SystemdJournalRemote(const QString &url, const QString &port);
+
+    /**
      * @brief Destroys the journal wrapper
      */
     ~SystemdJournalRemote() override;
@@ -50,6 +55,9 @@ public:
      * @return size of journal in bytes
      */
     uint64_t usage() const;
+
+private Q_SLOTS:
+    void handleJournalFileCreated(const QString &path);
 
 private:
     std::unique_ptr<SystemdJournalRemotePrivate> d;

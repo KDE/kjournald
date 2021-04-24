@@ -71,7 +71,7 @@ QString LocalJournal::currentBootId() const
 
 uint64_t LocalJournal::usage() const
 {
-    uint64_t size{ 0 };
+    uint64_t size{0};
     int res = sd_journal_get_usage(d->mJournal, &size);
     if (res < 0) {
         qCCritical(journald) << "Could not obtain journal size:" << strerror(-res);

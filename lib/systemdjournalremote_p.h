@@ -6,9 +6,10 @@
 #ifndef SYSTEMDJOURNALREMOTE_PRIVATE_H
 #define SYSTEMDJOURNALREMOTE_PRIVATE_H
 
-#include <QTemporaryFile>
+#include <QFileSystemWatcher>
 #include <QProcess>
 #include <QString>
+#include <QTemporaryDir>
 #include <memory>
 #include <systemd/sd-journal.h>
 
@@ -17,9 +18,11 @@ class SystemdJournalRemotePrivate
 public:
     SystemdJournalRemotePrivate();
     bool sanityCheckForSystemdJournalRemoveExec() const;
+    QString journalFile() const;
 
     mutable sd_journal *mJournal{nullptr};
-    QTemporaryFile mJournalFile;
+    QTemporaryDir mTemporyJournalDir;
+    QFileSystemWatcher mTemporaryJournalDirWatcher;
     QProcess mJournalRemoteProcess;
     const QString mSystemdJournalRemoteExec = "/lib/systemd/systemd-journal-remote";
 };
