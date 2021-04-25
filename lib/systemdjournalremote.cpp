@@ -12,9 +12,7 @@
 #include <QProcess>
 #include <QThread>
 
-SystemdJournalRemotePrivate::SystemdJournalRemotePrivate()
-{
-}
+SystemdJournalRemotePrivate::SystemdJournalRemotePrivate() = default;
 
 bool SystemdJournalRemotePrivate::sanityCheckForSystemdJournalRemoveExec() const
 {
@@ -76,7 +74,7 @@ void SystemdJournalRemote::handleJournalFileCreated(const QString &path)
 {
     qCDebug(journald) << "handleJournaldFileCreated in path:" << path;
 
-    if (!QDir().exists(d->journalFile())) {
+    if (path.isEmpty() || !QDir().exists(d->journalFile())) {
         qCCritical(journald) << "Journal directory does not exist, abort opening" << d->journalFile();
         return;
     }
@@ -90,6 +88,8 @@ void SystemdJournalRemote::handleJournalFileCreated(const QString &path)
         qCCritical(journald) << "Could not open journal:" << strerror(-result);
     }
     delete[] files;
+
+    Q_EMIT journalFileChanged();
 }
 
 SystemdJournalRemote::SystemdJournalRemote(const QString &url, const QString &port)
@@ -124,6 +124,11 @@ SystemdJournalRemote::~SystemdJournalRemote()
     d->mJournalRemoteProcess.waitForFinished();
     sd_journal_close(d->mJournal);
     d->mJournal = nullptr;
+}
+
+QString SystemdJournalRemote::journalFile() const
+{
+    return d->journalFile();
 }
 
 sd_journal *SystemdJournalRemote::sdJournal() const

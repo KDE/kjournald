@@ -21,6 +21,8 @@ class QIODevice;
  */
 class KJOURNALD_EXPORT SystemdJournalRemote : public IJournal
 {
+    Q_OBJECT
+    Q_PROPERTY(QString journalFile READ journalFile NOTIFY journalFileChanged)
 public:
     /**
      * @brief Construct journal object form file containing logs in systemd's journal export format
@@ -36,6 +38,15 @@ public:
      * @brief Destroys the journal wrapper
      */
     ~SystemdJournalRemote() override;
+
+    /**
+     * @brief Path to journal file that temporarily stores data from remote journal
+     *
+     * @note the lifetime of this file is bound to the lifetime of the SystemJournalRemote object that
+     * relays the remote data to the file.
+     * @return path to the journald ".journal" file
+     */
+    QString journalFile() const;
 
     /**
      * @brief Getter for raw sd_journal pointer
@@ -55,6 +66,9 @@ public:
      * @return size of journal in bytes
      */
     uint64_t usage() const;
+
+Q_SIGNALS:
+    void journalFileChanged();
 
 private Q_SLOTS:
     void handleJournalFileCreated(const QString &path);

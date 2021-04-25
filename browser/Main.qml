@@ -45,16 +45,22 @@ ApplicationWindow {
         Menu {
             title: "Journal"
             MenuItem {
-                text: "Use default journal"
+                text: "Open default journal"
                 onClicked: {
                     g_config.sessionMode = SessionConfig.SYSTEM
                 }
             }
             MenuItem {
-                text: "Open from folder"
+                text: "Open journal from folder"
                 onClicked: {
                     fileDialog.folder = g_config.localJournalPath
                     fileDialog.open()
+                }
+            }
+            MenuItem {
+                text: "Open remote journal stream"
+                onClicked: {
+                    remoteJournalDialog.open()
                 }
             }
         }
@@ -67,6 +73,16 @@ ApplicationWindow {
         onAccepted: {
             g_config.localJournalPath = fileDialog.fileUrl
             g_config.sessionMode = SessionConfig.LOCALFOLDER
+        }
+    }
+
+    RemoteJournalConfigDialog {
+        id: remoteJournalDialog
+        onAccepted: {
+            console.log("set remote journal to: " + url + ":" + port)
+            g_config.remoteJournalPort = remoteJournalDialog.port
+            g_config.remoteJournalUrl = remoteJournalDialog.url
+            g_config.sessionMode = SessionConfig.REMOTE
         }
     }
 
@@ -342,7 +358,7 @@ ApplicationWindow {
 
     JournaldViewModel {
         id: g_journalModel
-        journalPath: g_config.sessionMode === SessionConfig.LOCALFOLDER ? g_config.localJournalPath : undefined
+        journalPath: g_config.sessionMode === SessionConfig.LOCALFOLDER || g_config.sessionMode === SessionConfig.REMOTE ? g_config.localJournalPath : undefined
         systemdUnitFilter: g_unitModel.selectedEntries
         bootFilter: bootIdComboBox.bootId
         priorityFilter: priorityComboBox.priority

@@ -40,8 +40,8 @@ bool JournaldUniqueQueryModelPrivate::openJournal()
 bool JournaldUniqueQueryModelPrivate::openJournalFromPath(const QString &journalPath)
 {
     closeJournal();
-    if (!QDir().exists(journalPath)) {
-        qCCritical(journald) << "Journal directory does not exists, abort opening";
+    if (journalPath.isEmpty() || !QDir().exists(journalPath)) {
+        qCCritical(journald) << "Journal directory does not exist, abort opening";
         return false;
     }
     int result = sd_journal_open_directory(&mJournal, journalPath.toStdString().c_str(), 0 /* no flags, directory defines type */);

@@ -6,5 +6,6 @@
     <qresource prefix="/">
         <file>Main.qml</file>
         <file>LogLine.qml</file>
+        <file>RemoteJournalConfigDialog.qml</file>
     </qresource>
 </RCC>

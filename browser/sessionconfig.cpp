@@ -5,6 +5,7 @@
 
 #include "sessionconfig.h"
 #include "loggingcategories.h"
+#include <QFileInfo>
 
 SessionConfig::Mode SessionConfig::mode() const
 {
@@ -17,7 +18,8 @@ void SessionConfig::setMode(SessionConfig::Mode mode)
         return;
     }
     mMode = mode;
-    emit modeChanged(mode);
+
+    Q_EMIT modeChanged(mode);
 }
 
 void SessionConfig::setLocalJournalPath(const QString &path)
@@ -29,14 +31,55 @@ void SessionConfig::setLocalJournalPath(const QString &path)
         resolvedPath.remove(0, 7);
     }
 
-    if (resolvedPath == mPath) {
+    if (resolvedPath == mJournalPath) {
         return;
     }
-    mPath = resolvedPath;
-    emit localJournalPathChanged();
+    mJournalPath = resolvedPath;
+    Q_EMIT localJournalPathChanged();
+}
+
+void SessionConfig::setRemoteJournalUrl(const QString &url)
+{
+    if (url == mRemoteJournalUrl) {
+        return;
+    }
+    mRemoteJournalUrl = url;
+    Q_EMIT remoteJournalUrlChanged();
+    initRemoteJournal();
+}
+
+QString SessionConfig::remoteJournalUrl() const
+{
+    return mRemoteJournalUrl;
+}
+
+void SessionConfig::setRemoteJournalPort(quint32 port)
+{
+    if (port == mRemoteJournalPort) {
+        return;
+    }
+    mRemoteJournalPort = port;
+    Q_EMIT remoteJournalPortChanged();
+    initRemoteJournal();
+}
+
+quint32 SessionConfig::remoteJournalPort() const
+{
+    return mRemoteJournalPort;
 }
 
 QString SessionConfig::localJournalPath() const
 {
-    return mPath;
+    return mJournalPath;
+}
+
+void SessionConfig::initRemoteJournal()
+{
+    if (mRemoteJournalUrl.isEmpty() || mRemoteJournalPort == 0) {
+        return;
+    }
+    mRemoteJournal = std::make_unique<SystemdJournalRemote>(mRemoteJournalUrl, QString::number(mRemoteJournalPort));
+    connect(mRemoteJournal.get(), &SystemdJournalRemote::journalFileChanged, [=](){
+        setLocalJournalPath(QFileInfo(mRemoteJournal->journalFile()).absolutePath());
+    });
 }

@@ -50,6 +50,9 @@ int main(int argc, char *argv[])
             bootModel.setSystemJournal();
             unitModel.setSystemJournal();
             break;
+        case SessionConfig::Mode::REMOTE:
+            // remote is handle like a local access
+            Q_FALLTHROUGH();
         case SessionConfig::Mode::LOCALFOLDER:
             bootModel.setJournaldPath(sessionConfig.localJournalPath());
             unitModel.setJournaldPath(sessionConfig.localJournalPath());

@@ -42,9 +42,21 @@ LocalJournal::LocalJournal(const QString &path)
         qCCritical(journald) << "Journal directory does not exist, abort opening" << path;
         return;
     }
-    int result = sd_journal_open_directory(&d->mJournal, path.toStdString().c_str(), 0 /* no flags, directory defines type */);
-    if (result < 0) {
-        qCCritical(journald) << "Could not open journal:" << strerror(-result);
+    if (QFileInfo(path).isDir()) {
+        int result = sd_journal_open_directory(&d->mJournal, path.toStdString().c_str(), 0 /* no flags, directory defines type */);
+        if (result < 0) {
+            qCCritical(journald) << "Could not open journal:" << strerror(-result);
+        }
+    } else if (QFileInfo(path).isFile()) {
+        const char **files = new const char *[1];
+        QByteArray journalPath = path.toLocal8Bit();
+        files[0] = journalPath.data();
+
+        int result = sd_journal_open_files(&d->mJournal, files, 0 /* no flags, directory defines type */);
+        if (result < 0) {
+            qCCritical(journald) << "Could not open journal:" << strerror(-result);
+        }
+        delete[] files;
     }
 }
 
