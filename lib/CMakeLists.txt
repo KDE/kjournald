@@ -40,7 +40,9 @@ target_include_directories(kjournald PUBLIC
       $<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}>
 )
 
-install(TARGETS kjournald DESTINATION ${KDE_INSTALL_LIBDIR})
+install(TARGETS kjournald
+    EXPORT KJournaldTargets
+    DESTINATION ${KDE_INSTALL_LIBDIR})
 
 install(FILES
     ${kjournald_HDRS}

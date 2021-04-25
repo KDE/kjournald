@@ -12,6 +12,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 include(FeatureSummary)
 include(GenerateExportHeader)
+include(CMakePackageConfigHelpers)
 
 find_package(ECM 5.44.0 NO_MODULE)
 set_package_properties(ECM PROPERTIES
@@ -30,9 +31,24 @@ enable_testing()
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(SYSTEMD REQUIRED libsystemd)
 
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick Test REQUIRED)
+set(REQUIRED_QT_VERSION 5.12.0)
+find_package(Qt5 ${REQUIRED_QT_VERSION} COMPONENTS Core Quick Test REQUIRED)
 
 add_subdirectory(lib)
 add_subdirectory(browser)
 add_subdirectory(autotests)
+
+set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KJournald")
+configure_package_config_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/KJournaldConfig.cmake.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/KJournaldConfig.cmake"
+    INSTALL_DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
+)
+
+install(EXPORT KJournaldTargets
+        DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
+        FILE KJournaldTargets.cmake
+        NAMESPACE KF5::)
+
+
+feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
