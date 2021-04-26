@@ -30,8 +30,13 @@ LocalJournal::LocalJournal()
         qCCritical(journald) << "Failed to open journal:" << strerror(-result);
     } else {
         d->mFd = sd_journal_get_fd(d->mJournal);
-        d->mJournalSocketNotifier = std::make_unique<QSocketNotifier>(d->mFd, QSocketNotifier::Read);
-        connect(d->mJournalSocketNotifier.get(), &QSocketNotifier::activated, this, &LocalJournal::handleJournalDescriptorUpdate);
+        if (d->mFd > 0) {
+            d->mJournalSocketNotifier = std::make_unique<QSocketNotifier>(d->mFd, QSocketNotifier::Read);
+            connect(d->mJournalSocketNotifier.get(), &QSocketNotifier::activated, this, &LocalJournal::handleJournalDescriptorUpdate);
+        } else {
+            qCWarning(journald) << "Could not create FD" << strerror(-d->mFd);
+            d->mFd = 0;
+        }
     }
 }
 
