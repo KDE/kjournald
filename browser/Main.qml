@@ -51,7 +51,14 @@ ApplicationWindow {
                 }
             }
             MenuItem {
-                text: "Open journal from folder"
+                text: "Open from folder"
+                onClicked: {
+                    folderDialog.folder = g_config.localJournalPath
+                    folderDialog.open()
+                }
+            }
+            MenuItem {
+                text: "Open from file"
                 onClicked: {
                     fileDialog.folder = g_config.localJournalPath
                     fileDialog.open()
@@ -67,9 +74,19 @@ ApplicationWindow {
     }
 
     FileDialog {
-        id: fileDialog
+        id: folderDialog
         title: "Select journal folder"
         selectFolder: true
+        onAccepted: {
+            g_config.localJournalPath = folderDialog.fileUrl
+            g_config.sessionMode = SessionConfig.LOCALFOLDER
+        }
+    }
+
+    FileDialog {
+        id: fileDialog
+        title: "Select journal file"
+        nameFilters: [ "Journal files (*.journal)", "All files (*)" ]
         onAccepted: {
             g_config.localJournalPath = fileDialog.fileUrl
             g_config.sessionMode = SessionConfig.LOCALFOLDER

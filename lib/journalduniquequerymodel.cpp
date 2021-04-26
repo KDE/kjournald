@@ -9,6 +9,7 @@
 #include "loggingcategories.h"
 #include <QDebug>
 #include <QDir>
+#include <QString>
 #include <memory>
 
 JournaldUniqueQueryModelPrivate::~JournaldUniqueQueryModelPrivate()
@@ -37,18 +38,31 @@ bool JournaldUniqueQueryModelPrivate::openJournal()
     return true;
 }
 
-bool JournaldUniqueQueryModelPrivate::openJournalFromPath(const QString &journalPath)
+bool JournaldUniqueQueryModelPrivate::openJournalFromPath(const QString &path)
 {
     closeJournal();
-    if (journalPath.isEmpty() || !QDir().exists(journalPath)) {
+    if (path.isEmpty() || !QDir().exists(path)) {
         qCCritical(journald) << "Journal directory does not exist, abort opening";
         return false;
     }
-    int result = sd_journal_open_directory(&mJournal, journalPath.toStdString().c_str(), 0 /* no flags, directory defines type */);
-    if (result < 0) {
-        qCCritical(journald) << "Could not open journal:" << strerror(-result);
-        return false;
+    if (QFileInfo(path).isDir()) {
+        int result = sd_journal_open_directory(&mJournal, path.toStdString().c_str(), 0 /* no flags, directory defines type */);
+        if (result < 0) {
+            qCCritical(journald) << "Could not open journal:" << strerror(-result);
+            return false;
+        }
+    } else if (QFileInfo(path).isFile()) {
+        const char **files = new const char *[1];
+        QByteArray journalPath = path.toLocal8Bit();
+        files[0] = journalPath.data();
+
+        int result = sd_journal_open_files(&mJournal, files, 0 /* no flags, directory defines type */);
+        if (result < 0) {
+            qCCritical(journald) << "Could not open journal:" << strerror(-result);
+        }
+        delete[] files;
     }
+
     return true;
 }
 
