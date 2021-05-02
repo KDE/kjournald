@@ -13,6 +13,16 @@ Additional to the library, the project provides a reference implementation of th
 - QAbstractItemModel for list of boots
 - QAbstractItemModel for full journald DB with filter options per boot and unit
 
+### Library Usage
+
+In your CMakeLists.txt, add:
+
+```
+find_package(KJournald 0.0.1)
+target_link_libraries(mycoolapp
+    PUBLIC kjournald)
+```
+
 ## journald-browser Features
 The browser provides a single window overview that can be configured to show a desired combination of systemd units and their prioritized messages.
 
