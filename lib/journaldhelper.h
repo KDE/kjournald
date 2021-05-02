@@ -16,10 +16,13 @@ class KJOURNALD_EXPORT JournaldHelper
 {
     Q_GADGET
 public:
+    /**
+     * @brief Basic information of a boot
+     */
     struct BootInfo {
-        QString mBootId;
-        QDateTime mSince;
-        QDateTime mUntil;
+        QString mBootId; //!< unique identifier of the boot
+        QDateTime mSince; //!< time of oldest log entry for the specific boot
+        QDateTime mUntil; //!< time of newest log entry for the specific boot
     };
 
     /**
@@ -45,7 +48,7 @@ public:
         SYSTEMD_USER_SLICE,
         SYSTEMD_SESSION,
         SYSTEMD_OWNER_UID,
-        TRANSPORT
+        TRANSPORT,
     };
     Q_ENUM(Field)
 

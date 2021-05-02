@@ -46,7 +46,7 @@ public:
         PRIORITY, //!< priority of journal entry
         SYSTEMD_UNIT, //!< systemd unit name of journal entry
         BOOT_ID, //!< boot ID of journal entry
-        UNIT_COLOR //!< convenience rainbow color that is hashed for systemd unit
+        UNIT_COLOR, //!< convenience rainbow color that is hashed for systemd unit
     };
     Q_ENUM(Roles);
 

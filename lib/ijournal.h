@@ -13,7 +13,7 @@
 class sd_journal;
 
 /**
- * @brief Interface class for passing journal do model
+ * @brief Interface class for all journal types
  */
 class KJOURNALD_EXPORT IJournal : public QObject
 {
@@ -39,6 +39,8 @@ public:
 
     /**
      * @brief returns true if and only if the sd_journal pointer is valid
+     *
+     * This method shall be used to check of the journal is ready to be used
      */
     virtual bool isValid() const = 0;
 

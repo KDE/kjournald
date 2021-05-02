@@ -35,7 +35,7 @@ class KJOURNALD_EXPORT JournaldUniqueQueryModel : public QAbstractItemModel
 public:
     enum Roles {
         FIELD = Qt::UserRole + 1,
-        SELECTED //!< supports UI integration by storing checked
+        SELECTED, //!< supports UI integration by storing checked
     };
     Q_ENUM(Roles)
 
@@ -52,6 +52,9 @@ public:
      */
     JournaldUniqueQueryModel(const QString &journalPath, QObject *parent = nullptr);
 
+    /**
+     * @brief Destroys the JournaldUniqueQueryModel object
+     */
     ~JournaldUniqueQueryModel() override;
 
     /**
@@ -121,10 +124,19 @@ public:
      */
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
+    /**
+     * @copydoc QAbstractItemModel::setData()
+     */
     Q_INVOKABLE bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override;
 
+    /**
+     * @return list of entries that have the "selected" value checked
+     */
     QStringList selectedEntries() const;
 
+    /**
+     * @brief set selected state of all entryies to value @param selected
+     */
     Q_INVOKABLE void setAllSelectionStates(bool selected);
 
 Q_SIGNALS:
