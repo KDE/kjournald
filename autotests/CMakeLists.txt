@@ -2,8 +2,8 @@
 # SPDX-FileCopyrightText: Andreas Cord-Landwehr <cordlandwehr@kde.org>
 
 configure_file(testdatalocation.h.inc testdatalocation.h)
-configure_file(journalexportformat_example.txt journalexportformat_example.txt COPYONLY)
-configure_file(journalexportformat_binary_example.txt journalexportformat_binary_example.txt COPYONLY)
+configure_file(journalexportformat_example.export journalexportformat_example.export COPYONLY)
+configure_file(journalexportformat_binary_example.export journalexportformat_binary_example.export COPYONLY)
 
 add_custom_target(extract_testdata
     ALL
