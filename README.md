@@ -18,9 +18,9 @@ Additional to the library, the project provides a reference implementation of th
 In your CMakeLists.txt, add:
 
 ```
-find_package(KJournald 0.0.1)
+find_package(KJournald 0.0.2)
 target_link_libraries(mycoolapp
-    PUBLIC kjournald)
+    PUBLIC KJournald)
 ```
 
 ## journald-browser Features

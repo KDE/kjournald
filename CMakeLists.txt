@@ -2,7 +2,7 @@
 # SPDX-FileCopyrightText: Andreas Cord-Landwehr <cordlandwehr@kde.org>
 
 project(kjournald LANGUAGES CXX)
-set(KJOURNALD_VERSION 0.0.1)
+set(KJOURNALD_VERSION 0.0.2)
 
 cmake_minimum_required(VERSION 3.10)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -24,8 +24,16 @@ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 include(ECMAddTests)
 include(ECMEnableSanitizers)
 include(ECMCoverageOption)
+include(ECMSetupVersion)
 include(KDEInstallDirs)
 include(KDECMakeSettings)
+
+ecm_setup_version(${KJOURNALD_VERSION}
+    VARIABLE_PREFIX KJOURNALD
+    VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/kjournald_version.h"
+    PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KJournaldConfigVersion.cmake"
+    SOVERSION 0
+)
 
 enable_testing()
 
@@ -45,17 +53,21 @@ configure_package_config_file(
     "${CMAKE_CURRENT_BINARY_DIR}/KJournaldConfig.cmake"
     INSTALL_DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
 )
-write_basic_package_version_file(
-    "${CMAKE_CURRENT_BINARY_DIR}/KJournaldConfigVersion.cmake"
-    VERSION ${KJOURNALD_VERSION}
-    COMPATIBILITY SameMinorVersion # API still changes a lot, better caution about compatibility; TODO set to MAJOR
-)
 
 install(
     FILES
         "${CMAKE_CURRENT_BINARY_DIR}/KJournaldConfig.cmake"
         "${CMAKE_CURRENT_BINARY_DIR}/KJournaldConfigVersion.cmake"
-    DESTINATION "${CMAKECONFIG_INSTALL_DIR}")
+    DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
+    COMPONENT Devel
+)
+
+install(
+    FILES
+        ${CMAKE_CURRENT_BINARY_DIR}/kjournald_version.h
+    DESTINATION ${KDE_INSTALL_INCLUDEDIR}
+    COMPONENT Devel
+)
 
 install(EXPORT KJournaldTargets
         DESTINATION "${CMAKECONFIG_INSTALL_DIR}"

@@ -39,6 +39,11 @@ target_include_directories(kjournald PUBLIC
       $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/>
       $<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}>
 )
+set_target_properties(kjournald PROPERTIES
+    VERSION ${KJOURNALD_VERSION_STRING}
+    SOVERSION ${KJOURNALD_SOVERSION}
+    EXPORT_NAME KJournald
+)
 
 install(TARGETS kjournald
     EXPORT KJournaldTargets
