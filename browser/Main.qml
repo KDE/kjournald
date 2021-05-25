@@ -34,24 +34,15 @@ ApplicationWindow {
         Menu {
             title: "File"
             MenuItem {
-                text: "Copy Log Output"
-                onClicked: copyViewToClipbaord()
-            }
-            MenuItem {
-                text: "Close"
-                onClicked: Qt.quit()
-            }
-        }
-        Menu {
-            title: "Journal"
-            MenuItem {
-                text: "Open default journal"
+                text: "Open system journal"
+                icon.name: "document-open"
                 onClicked: {
                     g_config.sessionMode = SessionConfig.SYSTEM
                 }
             }
             MenuItem {
                 text: "Open from folder"
+                icon.name: "document-open"
                 onClicked: {
                     folderDialog.folder = g_config.localJournalPath
                     folderDialog.open()
@@ -59,6 +50,7 @@ ApplicationWindow {
             }
             MenuItem {
                 text: "Open from file"
+                icon.name: "document-open"
                 onClicked: {
                     fileDialog.folder = g_config.localJournalPath
                     fileDialog.open()
@@ -66,9 +58,26 @@ ApplicationWindow {
             }
             MenuItem {
                 text: "Open remote journal stream"
+                icon.name: "document-import"
                 onClicked: {
                     remoteJournalDialog.open()
                 }
+            }
+
+            MenuSeparator { }
+
+            MenuItem {
+                text: "Close"
+                icon.name: "application-exit"
+                onClicked: Qt.quit()
+            }
+        }
+        Menu {
+            title: "Current Journal"
+            MenuItem {
+                text: "Copy Log Output"
+                icon.name: "edit-copy"
+                onClicked: copyViewToClipbaord()
             }
         }
     }
