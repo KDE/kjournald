@@ -75,9 +75,20 @@ ApplicationWindow {
         Menu {
             title: "Current Journal"
             MenuItem {
-                text: "Copy Log Output"
+                text: "Copy current view"
                 icon.name: "edit-copy"
                 onClicked: copyViewToClipbaord()
+            }
+        }
+        Menu {
+            title: "View"
+            MenuItem {
+                text: "Enforce UTC"
+                checkable: true
+                checked: g_config.displayUtcTime
+                onClicked: {
+                    g_config.displayUtcTime = !g_config.displayUtcTime
+                }
             }
         }
     }

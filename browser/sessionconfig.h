@@ -22,6 +22,7 @@ class SessionConfig : public QObject
     Q_PROPERTY(QString localJournalPath READ localJournalPath WRITE setLocalJournalPath NOTIFY localJournalPathChanged)
     Q_PROPERTY(QString remoteJournalUrl READ remoteJournalUrl WRITE setRemoteJournalUrl NOTIFY remoteJournalUrlChanged)
     Q_PROPERTY(quint32 remoteJournalPort READ remoteJournalPort WRITE setRemoteJournalPort NOTIFY remoteJournalPortChanged)
+    Q_PROPERTY(bool displayUtcTime READ isDisplayUtcTime WRITE setDisplayUtcTime NOTIFY displayUtcTimeChanged)
 
 public:
     enum class Mode {
@@ -47,11 +48,16 @@ public:
 
     quint32 remoteJournalPort() const;
 
+    void setDisplayUtcTime(bool enforceUtc);
+
+    bool isDisplayUtcTime() const;
+
 Q_SIGNALS:
     void modeChanged(Mode mode);
     void localJournalPathChanged();
     void remoteJournalUrlChanged();
     void remoteJournalPortChanged();
+    void displayUtcTimeChanged(bool enforceUtc);
 
 private:
     void initRemoteJournal();
@@ -60,6 +66,7 @@ private:
     QString mJournalPath;
     QString mRemoteJournalUrl;
     quint32 mRemoteJournalPort{ 0 };
+    bool mDisplayUtcTime{ true };
     std::unique_ptr<SystemdJournalRemote> mRemoteJournal;
 
 };

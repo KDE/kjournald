@@ -26,7 +26,7 @@ Item {
         id: text
         anchors.fill: parent
 
-        text: modelProxy.formatTime(root.date, true) + " " + root.message
+        text: modelProxy.formatTime(root.date, g_config.displayUtcTime) + " " + root.message
 //        text: root.index + " " + modelProxy.formatTime(root.date, true) + " " + root.message // alternativ output for debugging
         color: {
             switch(root.priority) {

@@ -22,6 +22,20 @@ void SessionConfig::setMode(SessionConfig::Mode mode)
     Q_EMIT modeChanged(mode);
 }
 
+void SessionConfig::setDisplayUtcTime(bool enforceUtc)
+{
+    if (enforceUtc == mDisplayUtcTime) {
+        return;
+    }
+    mDisplayUtcTime = enforceUtc;
+    Q_EMIT displayUtcTimeChanged(enforceUtc);
+}
+
+bool SessionConfig::isDisplayUtcTime() const
+{
+    return mDisplayUtcTime;
+}
+
 void SessionConfig::setLocalJournalPath(const QString &path)
 {
     qCDebug(journald) << "Open path" << path;
