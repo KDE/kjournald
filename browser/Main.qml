@@ -287,6 +287,11 @@ ApplicationWindow {
                 delegate: CheckBox {
                     checked: model.selected
                     text: model.field
+                    width: unitColumn.width
+                    hoverEnabled: true
+                    ToolTip.delay: 1000
+                    ToolTip.visible: hovered
+                    ToolTip.text: model.field
                     onCheckStateChanged: model.selected = checkState
                 }
                 ScrollBar.vertical: ScrollBar {
