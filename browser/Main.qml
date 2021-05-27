@@ -319,6 +319,10 @@ ApplicationWindow {
             width: parent.width - unitColumn.width
             ListView {
                 id: viewRoot
+
+                readonly property bool logEntriesAvailable: viewRoot.count > 0 && (g_unitModel.selectedEntries.length > 0 || g_journalModel.kernelFilter)
+
+                visible: viewRoot.logEntriesAvailable
                 highlightMoveDuration: 10
                 anchors.fill: parent
                 model: g_journalModel
@@ -431,7 +435,7 @@ ApplicationWindow {
             Text {
                 anchors.centerIn: parent
                 text: "No log entries apply to current filter selection"
-                visible: viewRoot.count === 0
+                visible: !viewRoot.logEntriesAvailable
             }
         }
     }

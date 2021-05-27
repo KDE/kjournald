@@ -320,11 +320,10 @@ QModelIndex JournaldViewModel::parent(const QModelIndex &index) const
 int JournaldViewModel::rowCount(const QModelIndex &parent) const
 {
     // model represents a list and has has no children
-    if (!parent.isValid()) {
-        return d->mLog.size();
-    } else {
+    if (parent.isValid()) {
         return 0;
     }
+    return d->mLog.size();
 }
 
 int JournaldViewModel::columnCount(const QModelIndex &parent) const
