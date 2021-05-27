@@ -84,10 +84,10 @@ ApplicationWindow {
             title: "View"
 
             Menu {
-                title: "Time Display"
+                title: "Timestamp Display"
 
                 MenuItem {
-                    text: "Local Time"
+                    text: "Localized Realtime"
                     checkable: true
                     checked: g_config.timeDisplay === SessionConfig.LOCALTIME
                     onTriggered: {
@@ -95,7 +95,7 @@ ApplicationWindow {
                     }
                 }
                 MenuItem {
-                    text: "UTC"
+                    text: "UTC Realtime"
                     checkable: true
                     checked: g_config.timeDisplay === SessionConfig.UTC
                     onTriggered: {
@@ -103,7 +103,7 @@ ApplicationWindow {
                     }
                 }
                 MenuItem {
-                    text: "Monotonic Clock"
+                    text: "Monotonic Time"
                     checkable: true
                     checked: g_config.timeDisplay === SessionConfig.MONOTONIC_TIMESTAMP
                     onTriggered: {
@@ -237,17 +237,6 @@ ApplicationWindow {
                 anchors {
                     verticalCenter: parent.verticalCenter
                 }
-                text: "Kernel Log:"
-                font.pixelSize: 16
-            }
-            CheckBox {
-                checked: g_journalModel.kernelFilter
-                onCheckedChanged: g_journalModel.kernelFilter = checked
-            }
-            Label {
-                anchors {
-                    verticalCenter: parent.verticalCenter
-                }
                 text: "Highlight:"
                 font.pixelSize: 16
             }
@@ -273,9 +262,26 @@ ApplicationWindow {
             id: unitColumn
             height: parent.height
             width: Math.min(parent.width * 0.3, 300)
+            Rectangle {
+                height: kernelFilterCheckbox.height + 1
+                width: parent.width
+                CheckBox {
+                    id: kernelFilterCheckbox
+                    text: "Kernel Log"
+                    checked: g_journalModel.kernelFilter
+                    onCheckedChanged: g_journalModel.kernelFilter = checked
+                }
+                Rectangle {
+                    width: parent.width
+                    height: 1
+                    anchors.bottom: parent.bottom
+                    color: "#cccccc"
+                }
+            }
+
             ListView {
                 z: -1
-                height: parent.height - checkboxControls.height
+                height: parent.height - checkboxControls.height - kernelFilterCheckbox.height
                 width: parent.width
                 model: g_unitSortProxyModel
                 delegate: CheckBox {
