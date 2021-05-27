@@ -15,6 +15,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <QSortFilterProxyModel>
 #include <systemd/sd-journal.h>
 
 int main(int argc, char *argv[])
@@ -44,22 +45,34 @@ int main(int argc, char *argv[])
     JournaldUniqueQueryModel unitModel;
     unitModel.setField(JournaldHelper::Field::SYSTEMD_UNIT);
 
-    QObject::connect(&sessionConfig, &SessionConfig::modeChanged, &sessionConfig, [&sessionConfig, &bootModel, &unitModel](SessionConfig::Mode mode) {
-        switch (mode) {
-        case SessionConfig::Mode::SYSTEM:
-            bootModel.setSystemJournal();
-            unitModel.setSystemJournal();
-            break;
-        case SessionConfig::Mode::REMOTE:
-            // remote is handle like a local access
-            Q_FALLTHROUGH();
-        case SessionConfig::Mode::LOCALFOLDER:
-            bootModel.setJournaldPath(sessionConfig.localJournalPath());
-            unitModel.setJournaldPath(sessionConfig.localJournalPath());
-            break;
-        }
+    QSortFilterProxyModel unitSortProxyModel;
+    unitSortProxyModel.setSourceModel(&unitModel);
+    unitSortProxyModel.setSortCaseSensitivity(Qt::CaseInsensitive);
+    unitSortProxyModel.setSortRole(JournaldUniqueQueryModel::FIELD);
+    QObject::connect(&unitModel, &JournaldUniqueQueryModel::modelReset, [&unitSortProxyModel]() {
+        unitSortProxyModel.sort(0);
     });
-    QObject::connect(&sessionConfig, &SessionConfig::localJournalPathChanged, &sessionConfig, [&sessionConfig, &bootModel, &unitModel]() {
+    unitSortProxyModel.sort(0);
+
+    QObject::connect(&sessionConfig,
+                     &SessionConfig::modeChanged,
+                     &sessionConfig,
+                     [&sessionConfig, &bootModel, &unitModel, &unitSortProxyModel](SessionConfig::Mode mode) {
+                         switch (mode) {
+                         case SessionConfig::Mode::SYSTEM:
+                             bootModel.setSystemJournal();
+                             unitModel.setSystemJournal();
+                             break;
+                         case SessionConfig::Mode::REMOTE:
+                             // remote is handle like a local access
+                             Q_FALLTHROUGH();
+                         case SessionConfig::Mode::LOCALFOLDER:
+                             bootModel.setJournaldPath(sessionConfig.localJournalPath());
+                             unitModel.setJournaldPath(sessionConfig.localJournalPath());
+                             break;
+                         }
+                     });
+    QObject::connect(&sessionConfig, &SessionConfig::localJournalPathChanged, &sessionConfig, [&sessionConfig, &bootModel, &unitModel, &unitSortProxyModel]() {
         bootModel.setJournaldPath(sessionConfig.localJournalPath());
         unitModel.setJournaldPath(sessionConfig.localJournalPath());
     });
@@ -85,6 +98,7 @@ int main(int argc, char *argv[])
         Qt::QueuedConnection);
     engine.rootContext()->setContextProperty("g_bootModel", &bootModel);
     engine.rootContext()->setContextProperty("g_unitModel", &unitModel);
+    engine.rootContext()->setContextProperty("g_unitSortProxyModel", &unitSortProxyModel);
     engine.rootContext()->setContextProperty("g_config", &sessionConfig);
     engine.load(url);
 

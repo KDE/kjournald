@@ -272,7 +272,7 @@ ApplicationWindow {
                 z: -1
                 height: parent.height - selectNoneButton.height
                 width: parent.width
-                model: g_unitModel
+                model: g_unitSortProxyModel
                 delegate: CheckBox {
                     checked: model.selected
                     text: model.field
