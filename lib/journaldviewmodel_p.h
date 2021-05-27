@@ -20,12 +20,12 @@
 
 struct LogEntry {
     QDateTime mDate;
-    quint64 mMonotonicTimestamp;
+    quint64 mMonotonicTimestamp{0};
     QString mId;
     QString mMessage;
     QString mSystemdUnit;
     QString mBootId;
-    int mPriority;
+    int mPriority{0};
 };
 
 class JournaldViewModelPrivate
