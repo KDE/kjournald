@@ -252,25 +252,9 @@ ApplicationWindow {
             id: unitColumn
             height: parent.height
             width: Math.min(parent.width * 0.3, 300)
-            Row {
-                Button {
-                    id: selectNoneButton
-                    text: "Select None"
-                    onClicked: {
-                        g_unitModel.setAllSelectionStates(false)
-                    }
-                }
-                Button {
-                    id: selectAllButton
-                    text: "Select All"
-                    onClicked: {
-                        g_unitModel.setAllSelectionStates(true)
-                    }
-                }
-            }
             ListView {
                 z: -1
-                height: parent.height - selectNoneButton.height
+                height: parent.height - checkboxControls.height
                 width: parent.width
                 model: g_unitSortProxyModel
                 delegate: CheckBox {
@@ -278,117 +262,148 @@ ApplicationWindow {
                     text: model.field
                     onCheckStateChanged: model.selected = checkState
                 }
+                ScrollBar.vertical: ScrollBar {
+                    policy: ScrollBar.AlwaysOn
+                    active: ScrollBar.AlwaysOn
+                }
+            }
+            Rectangle {
+                color: "#ffffff"
+                width: parent.width
+                height: checkboxControls.height
+                Row {
+                    id: checkboxControls
+                    Button {
+                        id: selectNoneButton
+                        text: "Check/uncheck all"
+                        icon.name: "checkbox"
+                        property bool selectAll: true
+                        onClicked: {
+                            selectAll = !selectAll
+                            g_unitModel.setAllSelectionStates(selectAll)
+                        }
+                    }
+                }
             }
         }
-        ListView {
-            id: viewRoot
-            highlightMoveDuration: 10
+        Rectangle {
+            color: "#ffffff"
             height: parent.height
             width: parent.width - unitColumn.width
-            model: g_journalModel
-            focus: true
-            Component.onCompleted: forceActiveFocus()
-            delegate: Rectangle
-            {
-                color: model.unitcolor
-                width: viewRoot.width
-                height: messageText.height
-                LogLine {
-                    id: messageText
-                    anchors {
-                        left: parent.left
-                        right: parent.right
-                    }
-                    index: model.index
-                    date: model.date
-                    priority: model.priority
-                    message: model.message
-                    highlight: hightlightTextField.text
-                    modelProxy: viewRoot.model
+            ListView {
+                id: viewRoot
+                highlightMoveDuration: 10
+                anchors.fill: parent
+                model: g_journalModel
+                focus: true
+                Component.onCompleted: forceActiveFocus()
+                delegate: Rectangle
+                {
+                    color: model.unitcolor
+                    width: viewRoot.width
+                    height: messageText.height
+                    LogLine {
+                        id: messageText
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+                        index: model.index
+                        date: model.date
+                        priority: model.priority
+                        message: model.message
+                        highlight: hightlightTextField.text
+                        modelProxy: viewRoot.model
 
-                    Rectangle {
-                        anchors.right: parent.right
-                        width: unitInfo.width + 8
-                        height: unitInfo.height
-                        color: "#ffffff"
-                        Text {
-                            id: unitInfo
-                            anchors {
-                                right: parent.right
-                                rightMargin: 4
+                        Rectangle {
+                            anchors.right: parent.right
+                            width: unitInfo.width + 8
+                            height: unitInfo.height
+                            color: "#ffffff"
+                            Text {
+                                id: unitInfo
+                                anchors {
+                                    right: parent.right
+                                    rightMargin: 4
+                                }
+                                text: model.systemdunit
                             }
-                            text: model.systemdunit
                         }
                     }
                 }
-            }
-            ScrollBar.vertical: ScrollBar {
-                policy: ScrollBar.AlwaysOn
-                active: ScrollBar.AlwaysOn
-            }
-            TextMetrics {
-                id: messageIdMetrics
-                text: "Example Log message"
-            }
-            Keys.onPressed: {
-                var currentIndex = viewRoot.indexAt(1, viewRoot.contentY + 1) // 1 pixel right and down to really get the first item in view
-                var scrollIndexSkip = Math.floor(0.9 * viewRoot.height / 30) // hard-coded estimate of one line log height
-                if (event.key === Qt.Key_PageDown) {
-                    if (event.modifiers & Qt.ControlModifier) {
-                        // model provides just a sliding window over the journal, fetch tail data first
-                        g_journalModel.seekTail()
+                ScrollBar.vertical: ScrollBar {
+                    policy: ScrollBar.AlwaysOn
+                    active: ScrollBar.AlwaysOn
+                }
+                TextMetrics {
+                    id: messageIdMetrics
+                    text: "Example Log message"
+                }
+                Keys.onPressed: {
+                    var currentIndex = viewRoot.indexAt(1, viewRoot.contentY + 1) // 1 pixel right and down to really get the first item in view
+                    var scrollIndexSkip = Math.floor(0.9 * viewRoot.height / 30) // hard-coded estimate of one line log height
+                    if (event.key === Qt.Key_PageDown) {
+                        if (event.modifiers & Qt.ControlModifier) {
+                            // model provides just a sliding window over the journal, fetch tail data first
+                            g_journalModel.seekTail()
+                            viewRoot.positionViewAtEnd()
+                        }
+                        else {
+                            if (viewRoot.contentHeight - viewRoot.originY > viewRoot.height) {
+                                if (viewRoot.contentY - viewRoot.originY + 2 * viewRoot.height >= viewRoot.contentHeight) {
+                                    // enforce fetching here such that it does not happen implicitly during calculation the new contentY
+                                    g_journalModel.fetchMore(g_journalModel.index(0, 0))
+                                    viewRoot.forceLayout()
+                                }
+                                // update currentIndex, because it has changed when rows added at top
+                                currentIndex = viewRoot.indexAt(1, viewRoot.contentY + 1)
+                                positionViewAtIndex(Math.min(viewRoot.count, currentIndex + scrollIndexSkip), ListView.Beginning)
+                            } else {
+                                viewRoot.contentY = viewRoot.originY
+                            }
+                        }
+                    }
+                    if (event.key === Qt.Key_End) {
                         viewRoot.positionViewAtEnd()
                     }
-                    else {
-                        if (viewRoot.contentHeight - viewRoot.originY > viewRoot.height) {
-                            if (viewRoot.contentY - viewRoot.originY + 2 * viewRoot.height >= viewRoot.contentHeight) {
-                                // enforce fetching here such that it does not happen implicitly during calculation the new contentY
-                                g_journalModel.fetchMore(g_journalModel.index(0, 0))
-                                viewRoot.forceLayout()
-                            }
-                            // update currentIndex, because it has changed when rows added at top
-                            currentIndex = viewRoot.indexAt(1, viewRoot.contentY + 1)
-                            positionViewAtIndex(Math.min(viewRoot.count, currentIndex + scrollIndexSkip), ListView.Beginning)
-                        } else {
-                            viewRoot.contentY = viewRoot.originY
-                        }
-                    }
-                }
-                if (event.key === Qt.Key_End) {
-                    viewRoot.positionViewAtEnd()
-                }
 
-                if (event.key === Qt.Key_PageUp) {
-                    if (event.modifiers & Qt.ControlModifier) {
-                        // model provides just a sliding window over the journal, fetch head data first
-                        g_journalModel.seekHead()
-                        viewRoot.positionViewAtBeginning()
-                    }
-                    else {
-                        if (viewRoot.contentHeight - viewRoot.originY > viewRoot.height) {
-                            if (viewRoot.contentY - viewRoot.originY <= 3 * viewRoot.height) {
-                                // enforce fetching here such that it does not happen implictly during calculation the new contentY
-                                g_journalModel.fetchMore(g_journalModel.index(0, 0))
-                                viewRoot.forceLayout()
+                    if (event.key === Qt.Key_PageUp) {
+                        if (event.modifiers & Qt.ControlModifier) {
+                            // model provides just a sliding window over the journal, fetch head data first
+                            g_journalModel.seekHead()
+                            viewRoot.positionViewAtBeginning()
+                        }
+                        else {
+                            if (viewRoot.contentHeight - viewRoot.originY > viewRoot.height) {
+                                if (viewRoot.contentY - viewRoot.originY <= 3 * viewRoot.height) {
+                                    // enforce fetching here such that it does not happen implictly during calculation the new contentY
+                                    g_journalModel.fetchMore(g_journalModel.index(0, 0))
+                                    viewRoot.forceLayout()
+                                }
+                                // update currentIndex, because it has changed when rows added at top
+                                currentIndex = viewRoot.indexAt(1, viewRoot.contentY + 1)
+                                positionViewAtIndex(Math.max(0, currentIndex - scrollIndexSkip), ListView.Beginning)
+                            } else {
+                                viewRoot.contentY = viewRoot.originY
                             }
-                            // update currentIndex, because it has changed when rows added at top
-                            currentIndex = viewRoot.indexAt(1, viewRoot.contentY + 1)
-                            positionViewAtIndex(Math.max(0, currentIndex - scrollIndexSkip), ListView.Beginning)
-                        } else {
-                            viewRoot.contentY = viewRoot.originY
                         }
                     }
-                }
-                if (event.key === Qt.Key_F3) {
-                    var index = g_journalModel.search(hightlightTextField.text, viewRoot.currentIndex + 1)
-                    if (index >= 0) {
-                        viewRoot.currentIndex = index
-                        positionViewAtIndex(index, ListView.Beginning)
+                    if (event.key === Qt.Key_F3) {
+                        var index = g_journalModel.search(hightlightTextField.text, viewRoot.currentIndex + 1)
+                        if (index >= 0) {
+                            viewRoot.currentIndex = index
+                            positionViewAtIndex(index, ListView.Beginning)
+                        }
+                    }
+                    if (event.key === Qt.Key_C && (event.modifiers & Qt.ControlModifier)) {
+                        copyViewToClipbaord()
                     }
                 }
-                if (event.key === Qt.Key_C && (event.modifiers & Qt.ControlModifier)) {
-                    copyViewToClipbaord()
-                }
+            }
+            Text {
+                anchors.centerIn: parent
+                text: "No log entries apply to current filter selection"
+                visible: viewRoot.count === 0
             }
         }
     }
