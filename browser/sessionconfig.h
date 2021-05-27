@@ -6,8 +6,8 @@
 #ifndef SESSIONCONFIG_H
 #define SESSIONCONFIG_H
 
-#include <QObject>
 #include "systemdjournalremote.h"
+#include <QObject>
 
 /**
  * @brief Central config for current session
@@ -22,7 +22,7 @@ class SessionConfig : public QObject
     Q_PROPERTY(QString localJournalPath READ localJournalPath WRITE setLocalJournalPath NOTIFY localJournalPathChanged)
     Q_PROPERTY(QString remoteJournalUrl READ remoteJournalUrl WRITE setRemoteJournalUrl NOTIFY remoteJournalUrlChanged)
     Q_PROPERTY(quint32 remoteJournalPort READ remoteJournalPort WRITE setRemoteJournalPort NOTIFY remoteJournalPortChanged)
-    Q_PROPERTY(bool displayUtcTime READ isDisplayUtcTime WRITE setDisplayUtcTime NOTIFY displayUtcTimeChanged)
+    Q_PROPERTY(SessionConfig::TimeDisplay timeDisplay READ timeDisplay WRITE setTimeDisplay NOTIFY timeDisplayChanged)
 
 public:
     enum class Mode {
@@ -31,6 +31,13 @@ public:
         REMOTE, //!< reading from remote port
     };
     Q_ENUM(Mode);
+
+    enum class TimeDisplay {
+        LOCALTIME, //!< display time as local time
+        UTC, //!< display time as UTC time
+        MONOTONIC_TIMESTAMP //!< display monotonic timestamp
+    };
+    Q_ENUM(TimeDisplay);
 
     void setMode(Mode mode);
 
@@ -48,16 +55,16 @@ public:
 
     quint32 remoteJournalPort() const;
 
-    void setDisplayUtcTime(bool enforceUtc);
+    void setTimeDisplay(TimeDisplay format);
 
-    bool isDisplayUtcTime() const;
+    TimeDisplay timeDisplay() const;
 
 Q_SIGNALS:
     void modeChanged(Mode mode);
     void localJournalPathChanged();
     void remoteJournalUrlChanged();
     void remoteJournalPortChanged();
-    void displayUtcTimeChanged(bool enforceUtc);
+    void timeDisplayChanged();
 
 private:
     void initRemoteJournal();
@@ -65,10 +72,9 @@ private:
     Mode mMode{Mode::SYSTEM};
     QString mJournalPath;
     QString mRemoteJournalUrl;
-    quint32 mRemoteJournalPort{ 0 };
-    bool mDisplayUtcTime{ true };
+    quint32 mRemoteJournalPort{0};
+    TimeDisplay mTimeDisplayFormat{TimeDisplay::UTC};
     std::unique_ptr<SystemdJournalRemote> mRemoteJournal;
-
 };
 
 #endif // SESSIONCONFIG_H

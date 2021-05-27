@@ -43,12 +43,14 @@ void TestViewModel::rowAccess()
     QVERIFY(model.rowCount() > 0);
 
     std::vector<LogEntry> expectedData{{QDateTime::fromString("2021-03-13T16:23:01.464", Qt::ISODateWithMs),
+                                        4050458,
                                         QString(),
                                         "System clock time unset or jumped backwards, restoring from recorded timestamp: Sat 2021-03-13 15:23:01 UTC",
                                         "systemd-timesyncd.service",
                                         "68f2e61d061247d8a8ba0b8d53a97a52",
                                         6},
                                        {QDateTime::fromString("2021-03-13T16:23:01.592", Qt::ISODateWithMs),
+                                        4178254,
                                         QString(),
                                         "klogd started: BusyBox v1.31.1 ()",
                                         QString("busybox-klogd.service"),
@@ -57,6 +59,7 @@ void TestViewModel::rowAccess()
 
     for (int i = 0; i < expectedData.size(); ++i) {
         QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::DATE), expectedData.at(i).mDate);
+        QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::MONOTONIC_TIMESTAMP), expectedData.at(i).mMonotonicTimestamp);
         QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::MESSAGE_ID), expectedData.at(i).mId);
         QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::MESSAGE), expectedData.at(i).mMessage);
         QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::PRIORITY), expectedData.at(i).mPriority);

@@ -43,6 +43,7 @@ public:
         MESSAGE = Qt::UserRole + 1, //!< journal entry's message text
         MESSAGE_ID, //!< ID of log entry in journald DB (might not exist for non systemd services)
         DATE, //!< date of journal entry
+        MONOTONIC_TIMESTAMP, //!< monotonic timestamp in miliseconds´ for journal entry
         PRIORITY, //!< priority of journal entry
         SYSTEMD_UNIT, //!< systemd unit name of journal entry
         BOOT_ID, //!< boot ID of journal entry

@@ -36,14 +36,14 @@ ApplicationWindow {
             MenuItem {
                 text: "Open system journal"
                 icon.name: "document-open"
-                onClicked: {
+                onTriggered: {
                     g_config.sessionMode = SessionConfig.SYSTEM
                 }
             }
             MenuItem {
                 text: "Open from folder"
                 icon.name: "document-open"
-                onClicked: {
+                onTriggered: {
                     folderDialog.folder = g_config.localJournalPath
                     folderDialog.open()
                 }
@@ -51,7 +51,7 @@ ApplicationWindow {
             MenuItem {
                 text: "Open from file"
                 icon.name: "document-open"
-                onClicked: {
+                onTriggered: {
                     fileDialog.folder = g_config.localJournalPath
                     fileDialog.open()
                 }
@@ -59,7 +59,7 @@ ApplicationWindow {
             MenuItem {
                 text: "Open remote journal stream"
                 icon.name: "document-import"
-                onClicked: {
+                onTriggered: {
                     remoteJournalDialog.open()
                 }
             }
@@ -69,7 +69,7 @@ ApplicationWindow {
             MenuItem {
                 text: "Close"
                 icon.name: "application-exit"
-                onClicked: Qt.quit()
+                onTriggered: Qt.quit()
             }
         }
         Menu {
@@ -77,17 +77,38 @@ ApplicationWindow {
             MenuItem {
                 text: "Copy current view"
                 icon.name: "edit-copy"
-                onClicked: copyViewToClipbaord()
+                onTriggered: copyViewToClipbaord()
             }
         }
         Menu {
             title: "View"
-            MenuItem {
-                text: "Enforce UTC"
-                checkable: true
-                checked: g_config.displayUtcTime
-                onClicked: {
-                    g_config.displayUtcTime = !g_config.displayUtcTime
+
+            Menu {
+                title: "Time Display"
+
+                MenuItem {
+                    text: "Local Time"
+                    checkable: true
+                    checked: g_config.timeDisplay === SessionConfig.LOCALTIME
+                    onTriggered: {
+                        g_config.timeDisplay = SessionConfig.LOCALTIME
+                    }
+                }
+                MenuItem {
+                    text: "UTC"
+                    checkable: true
+                    checked: g_config.timeDisplay === SessionConfig.UTC
+                    onTriggered: {
+                        g_config.timeDisplay = SessionConfig.UTC
+                    }
+                }
+                MenuItem {
+                    text: "Monotonic Clock"
+                    checkable: true
+                    checked: g_config.timeDisplay === SessionConfig.MONOTONIC_TIMESTAMP
+                    onTriggered: {
+                        g_config.timeDisplay = SessionConfig.MONOTONIC_TIMESTAMP
+                    }
                 }
             }
         }
@@ -310,6 +331,7 @@ ApplicationWindow {
                         }
                         index: model.index
                         date: model.date
+                        monotonicTimestamp: model.monotonictimestamp
                         priority: model.priority
                         message: model.message
                         highlight: hightlightTextField.text

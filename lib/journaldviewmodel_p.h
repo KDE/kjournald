@@ -20,6 +20,7 @@
 
 struct LogEntry {
     QDateTime mDate;
+    quint64 mMonotonicTimestamp;
     QString mId;
     QString mMessage;
     QString mSystemdUnit;

@@ -4,11 +4,13 @@
 */
 
 import QtQuick 2.0
+import systemd 1.0
 
 Item {
     id: root
     property string message
     property date date
+    property var monotonicTimestamp // unsigned int 64
     property int priority
     property string highlight
     property QtObject modelProxy
@@ -25,8 +27,15 @@ Item {
     Text {
         id: text
         anchors.fill: parent
-
-        text: modelProxy.formatTime(root.date, g_config.displayUtcTime) + " " + root.message
+        readonly property string timeString: {
+            switch (g_config.timeDisplay) {
+            case SessionConfig.UTC: return modelProxy.formatTime(root.date, true);
+            case SessionConfig.LOCALTIME: return modelProxy.formatTime(root.date, false);
+            case SessionConfig.MONOTONIC_TIMESTAMP: return (root.monotonicTimestamp / 1000).toFixed(3) // display miliseconds
+            }
+            return ""
+        }
+        text: timeString + " " + root.message
 //        text: root.index + " " + modelProxy.formatTime(root.date, true) + " " + root.message // alternativ output for debugging
         color: {
             switch(root.priority) {

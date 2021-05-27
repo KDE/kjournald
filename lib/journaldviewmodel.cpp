@@ -143,6 +143,11 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
         if (result == 0) {
             entry.mDate.setMSecsSinceEpoch(time / 1000);
         }
+        sd_id128_t bootId; // currently unused
+        result = sd_journal_get_monotonic_usec(mJournal->sdJournal(), &time, &bootId);
+        if (result == 0) {
+            entry.mMonotonicTimestamp = time;
+        }
 
         result = sd_journal_get_data(mJournal->sdJournal(), "MESSAGE", (const void **)&data, &length);
         if (result == 0) {
@@ -285,6 +290,7 @@ QHash<int, QByteArray> JournaldViewModel::roleNames() const
 {
     QHash<int, QByteArray> roles;
     roles[JournaldViewModel::DATE] = "date";
+    roles[JournaldViewModel::MONOTONIC_TIMESTAMP] = "monotonictimestamp";
     roles[JournaldViewModel::MESSAGE_ID] = "id";
     roles[JournaldViewModel::MESSAGE] = "message";
     roles[JournaldViewModel::PRIORITY] = "priority";
@@ -340,6 +346,8 @@ QVariant JournaldViewModel::data(const QModelIndex &index, int role) const
         return QString(d->mLog.at(index.row()).mId);
     case JournaldViewModel::Roles::DATE:
         return d->mLog.at(index.row()).mDate;
+    case JournaldViewModel::Roles::MONOTONIC_TIMESTAMP:
+        return d->mLog.at(index.row()).mMonotonicTimestamp;
     case JournaldViewModel::Roles::BOOT_ID:
         return d->mLog.at(index.row()).mBootId;
     case JournaldViewModel::Roles::SYSTEMD_UNIT:

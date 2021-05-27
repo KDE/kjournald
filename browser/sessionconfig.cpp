@@ -22,18 +22,18 @@ void SessionConfig::setMode(SessionConfig::Mode mode)
     Q_EMIT modeChanged(mode);
 }
 
-void SessionConfig::setDisplayUtcTime(bool enforceUtc)
+void SessionConfig::setTimeDisplay(SessionConfig::TimeDisplay format)
 {
-    if (enforceUtc == mDisplayUtcTime) {
+    if (format == mTimeDisplayFormat) {
         return;
     }
-    mDisplayUtcTime = enforceUtc;
-    Q_EMIT displayUtcTimeChanged(enforceUtc);
+    mTimeDisplayFormat = format;
+    Q_EMIT timeDisplayChanged();
 }
 
-bool SessionConfig::isDisplayUtcTime() const
+SessionConfig::TimeDisplay SessionConfig::timeDisplay() const
 {
-    return mDisplayUtcTime;
+    return mTimeDisplayFormat;
 }
 
 void SessionConfig::setLocalJournalPath(const QString &path)
@@ -93,7 +93,7 @@ void SessionConfig::initRemoteJournal()
         return;
     }
     mRemoteJournal = std::make_unique<SystemdJournalRemote>(mRemoteJournalUrl, QString::number(mRemoteJournalPort));
-    connect(mRemoteJournal.get(), &SystemdJournalRemote::journalFileChanged, [=](){
+    connect(mRemoteJournal.get(), &SystemdJournalRemote::journalFileChanged, [=]() {
         setLocalJournalPath(QFileInfo(mRemoteJournal->journalFile()).absolutePath());
     });
 }
