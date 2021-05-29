@@ -13,6 +13,7 @@
 #include <QCommandLineParser>
 #include <QDebug>
 #include <QGuiApplication>
+#include <QIcon>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QSortFilterProxyModel>
@@ -23,6 +24,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QGuiApplication app(argc, argv);
+    QGuiApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("utilities-log-viewer")));
     app.setOrganizationName("KDE");
 
     qmlRegisterType<JournaldViewModel>("systemd", 1, 0, "JournaldViewModel");

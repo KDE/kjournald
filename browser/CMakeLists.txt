@@ -23,3 +23,5 @@ PUBLIC
     kjournald
 )
 install(TARGETS journald-browser DESTINATION bin)
+install(PROGRAMS org.kde.journald-browser.desktop  DESTINATION ${KDE_INSTALL_APPDIR})
+install(FILES org.kde.journald-browser.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
