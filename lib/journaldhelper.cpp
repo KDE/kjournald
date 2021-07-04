@@ -124,6 +124,9 @@ QString JournaldHelper::mapField(Field field)
     case Field::MESSAGE_ID:
         fieldString = "MESSAGE_ID";
         break;
+    case Field::EXE:
+        fieldString = "_EXE";
+        break;
     case Field::SYSTEMD_CGROUP:
         fieldString = "_SYSTEMD_CGROUP";
         break;

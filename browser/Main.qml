@@ -111,6 +111,26 @@ ApplicationWindow {
                     }
                 }
             }
+            Menu {
+                title: "Filter"
+
+                MenuItem {
+                    text: "Systemd Unit"
+                    checkable: true
+                    checked: g_config.filterCriterium === SessionConfig.SYSTEMD_UNIT
+                    onTriggered: {
+                        g_config.filterCriterium = SessionConfig.SYSTEMD_UNIT
+                    }
+                }
+                MenuItem {
+                    text: "Executable"
+                    checkable: true
+                    checked: g_config.filterCriterium === SessionConfig.EXECUTABLE
+                    onTriggered: {
+                        g_config.filterCriterium = SessionConfig.EXECUTABLE
+                    }
+                }
+            }
         }
     }
 
@@ -283,7 +303,7 @@ ApplicationWindow {
                 z: -1
                 height: parent.height - checkboxControls.height - kernelFilterCheckbox.height
                 width: parent.width
-                model: g_unitSortProxyModel
+                model: g_config.filterCriterium === SessionConfig.SYSTEMD_UNIT ? g_unitSortProxyModel : g_executableSortProxyModel
                 delegate: CheckBox {
                     checked: model.selected
                     text: model.field
@@ -312,7 +332,15 @@ ApplicationWindow {
                         property bool selectAll: true
                         onClicked: {
                             selectAll = !selectAll
-                            g_unitModel.setAllSelectionStates(selectAll)
+                            if (g_config.filterCriterium === SessionConfig.SYSTEMD_UNIT) {
+                                g_unitModel.setAllSelectionStates(selectAll)
+                            }
+                            else if (g_config.filterCriterium === SessionConfig.EXECUTABLE) {
+                                g_executableModel.setAllSelectionStates(selectAll)
+                            }
+                            else {
+                                console.warn("unhandled check-all type")
+                            }
                         }
                     }
                 }
@@ -325,7 +353,7 @@ ApplicationWindow {
             ListView {
                 id: viewRoot
 
-                readonly property bool logEntriesAvailable: viewRoot.count > 0 && (g_unitModel.selectedEntries.length > 0 || g_journalModel.kernelFilter)
+                readonly property bool logEntriesAvailable: viewRoot.count > 0 && (g_unitModel.selectedEntries.length > 0 || g_executableModel.selectedEntries.length > 0 || g_journalModel.kernelFilter)
 
                 visible: viewRoot.logEntriesAvailable
                 highlightMoveDuration: 10
@@ -449,6 +477,7 @@ ApplicationWindow {
         id: g_journalModel
         journalPath: g_config.sessionMode === SessionConfig.LOCALFOLDER || g_config.sessionMode === SessionConfig.REMOTE ? g_config.localJournalPath : undefined
         systemdUnitFilter: g_unitModel.selectedEntries
+        exeFilter: g_executableModel.selectedEntries
         bootFilter: bootIdComboBox.bootId
         priorityFilter: priorityComboBox.priority
     }

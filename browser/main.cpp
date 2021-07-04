@@ -44,9 +44,9 @@ int main(int argc, char *argv[])
 
     SessionConfig sessionConfig;
     BootModel bootModel;
+
     JournaldUniqueQueryModel unitModel;
     unitModel.setField(JournaldHelper::Field::SYSTEMD_UNIT);
-
     QSortFilterProxyModel unitSortProxyModel;
     unitSortProxyModel.setSourceModel(&unitModel);
     unitSortProxyModel.setSortCaseSensitivity(Qt::CaseInsensitive);
@@ -56,14 +56,26 @@ int main(int argc, char *argv[])
     });
     unitSortProxyModel.sort(0);
 
+    JournaldUniqueQueryModel executableModel;
+    executableModel.setField(JournaldHelper::Field::EXE);
+    QSortFilterProxyModel executableSortProxyModel;
+    executableSortProxyModel.setSourceModel(&executableModel);
+    executableSortProxyModel.setSortCaseSensitivity(Qt::CaseInsensitive);
+    executableSortProxyModel.setSortRole(JournaldUniqueQueryModel::FIELD);
+    QObject::connect(&executableModel, &JournaldUniqueQueryModel::modelReset, [&executableSortProxyModel]() {
+        executableSortProxyModel.sort(0);
+    });
+    executableSortProxyModel.sort(0);
+
     QObject::connect(&sessionConfig,
                      &SessionConfig::modeChanged,
                      &sessionConfig,
-                     [&sessionConfig, &bootModel, &unitModel, &unitSortProxyModel](SessionConfig::Mode mode) {
+                     [&sessionConfig, &bootModel, &unitModel, &executableModel](SessionConfig::Mode mode) {
                          switch (mode) {
                          case SessionConfig::Mode::SYSTEM:
                              bootModel.setSystemJournal();
                              unitModel.setSystemJournal();
+                             executableModel.setSystemJournal();
                              break;
                          case SessionConfig::Mode::REMOTE:
                              // remote is handle like a local access
@@ -71,18 +83,21 @@ int main(int argc, char *argv[])
                          case SessionConfig::Mode::LOCALFOLDER:
                              bootModel.setJournaldPath(sessionConfig.localJournalPath());
                              unitModel.setJournaldPath(sessionConfig.localJournalPath());
+                             executableModel.setJournaldPath(sessionConfig.localJournalPath());
                              break;
                          }
                      });
-    QObject::connect(&sessionConfig, &SessionConfig::localJournalPathChanged, &sessionConfig, [&sessionConfig, &bootModel, &unitModel, &unitSortProxyModel]() {
+    QObject::connect(&sessionConfig, &SessionConfig::localJournalPathChanged, &sessionConfig, [&sessionConfig, &bootModel, &unitModel, &executableModel]() {
         bootModel.setJournaldPath(sessionConfig.localJournalPath());
         unitModel.setJournaldPath(sessionConfig.localJournalPath());
+        executableModel.setJournaldPath(sessionConfig.localJournalPath());
     });
 
     if (parser.isSet(pathOption)) {
         const QString path = parser.value(pathOption);
         bootModel.setJournaldPath(path);
         unitModel.setJournaldPath(path);
+        executableModel.setJournaldPath(path);
         sessionConfig.setLocalJournalPath(path);
         sessionConfig.setMode(SessionConfig::Mode::LOCALFOLDER);
     }
@@ -101,6 +116,8 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("g_bootModel", &bootModel);
     engine.rootContext()->setContextProperty("g_unitModel", &unitModel);
     engine.rootContext()->setContextProperty("g_unitSortProxyModel", &unitSortProxyModel);
+    engine.rootContext()->setContextProperty("g_executableModel", &executableModel);
+    engine.rootContext()->setContextProperty("g_executableSortProxyModel", &executableSortProxyModel);
     engine.rootContext()->setContextProperty("g_config", &sessionConfig);
     engine.load(url);
 

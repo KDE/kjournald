@@ -36,6 +36,20 @@ SessionConfig::TimeDisplay SessionConfig::timeDisplay() const
     return mTimeDisplayFormat;
 }
 
+void SessionConfig::setFilterCriterium(FilterCriterium criterium)
+{
+    if (criterium == mFilterCriterium) {
+        return;
+    }
+    mFilterCriterium = criterium;
+    Q_EMIT filterCriteriumChanged();
+}
+
+SessionConfig::FilterCriterium SessionConfig::filterCriterium() const
+{
+    return mFilterCriterium;
+}
+
 void SessionConfig::setLocalJournalPath(const QString &path)
 {
     qCDebug(journald) << "Open path" << path;

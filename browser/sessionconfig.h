@@ -23,6 +23,7 @@ class SessionConfig : public QObject
     Q_PROPERTY(QString remoteJournalUrl READ remoteJournalUrl WRITE setRemoteJournalUrl NOTIFY remoteJournalUrlChanged)
     Q_PROPERTY(quint32 remoteJournalPort READ remoteJournalPort WRITE setRemoteJournalPort NOTIFY remoteJournalPortChanged)
     Q_PROPERTY(SessionConfig::TimeDisplay timeDisplay READ timeDisplay WRITE setTimeDisplay NOTIFY timeDisplayChanged)
+    Q_PROPERTY(SessionConfig::FilterCriterium filterCriterium READ filterCriterium WRITE setFilterCriterium NOTIFY filterCriteriumChanged)
 
 public:
     enum class Mode {
@@ -38,6 +39,12 @@ public:
         MONOTONIC_TIMESTAMP //!< display monotonic timestamp
     };
     Q_ENUM(TimeDisplay);
+
+    enum class FilterCriterium {
+        SYSTEMD_UNIT, //!< filter by systemd unit to which the log belongs
+        EXECUTABLE, //!< filter by executable name to which the log belogs
+    };
+    Q_ENUM(FilterCriterium);
 
     void setMode(Mode mode);
 
@@ -59,12 +66,17 @@ public:
 
     TimeDisplay timeDisplay() const;
 
+    void setFilterCriterium(FilterCriterium criterium);
+
+    FilterCriterium filterCriterium() const;
+
 Q_SIGNALS:
     void modeChanged(Mode mode);
     void localJournalPathChanged();
     void remoteJournalUrlChanged();
     void remoteJournalPortChanged();
     void timeDisplayChanged();
+    void filterCriteriumChanged();
 
 private:
     void initRemoteJournal();
@@ -74,6 +86,7 @@ private:
     QString mRemoteJournalUrl;
     quint32 mRemoteJournalPort{0};
     TimeDisplay mTimeDisplayFormat{TimeDisplay::UTC};
+    FilterCriterium mFilterCriterium{FilterCriterium::SYSTEMD_UNIT};
     std::unique_ptr<SystemdJournalRemote> mRemoteJournal;
 };
 

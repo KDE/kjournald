@@ -41,6 +41,7 @@ public:
         CODE_FUNC,
         // trusted fields
         BOOT_ID,
+        EXE,
         SYSTEMD_CGROUP,
         SYSTEMD_SLICE,
         SYSTEMD_UNIT,
