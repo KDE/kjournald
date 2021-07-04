@@ -48,6 +48,7 @@ void TestViewModel::rowAccess()
                                         "System clock time unset or jumped backwards, restoring from recorded timestamp: Sat 2021-03-13 15:23:01 UTC",
                                         "systemd-timesyncd.service",
                                         "68f2e61d061247d8a8ba0b8d53a97a52",
+                                        "/lib/systemd/systemd-timesyncd",
                                         6},
                                        {QDateTime::fromString("2021-03-13T16:23:01.592", Qt::ISODateWithMs),
                                         4178254,
@@ -55,6 +56,7 @@ void TestViewModel::rowAccess()
                                         "klogd started: BusyBox v1.31.1 ()",
                                         QString("busybox-klogd.service"),
                                         "68f2e61d061247d8a8ba0b8d53a97a52",
+                                        "/bin/busybox.nosuid",
                                         5}};
 
     for (int i = 0; i < expectedData.size(); ++i) {
@@ -65,6 +67,7 @@ void TestViewModel::rowAccess()
         QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::PRIORITY), expectedData.at(i).mPriority);
         QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::SYSTEMD_UNIT), expectedData.at(i).mSystemdUnit);
         QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::BOOT_ID), expectedData.at(i).mBootId);
+        QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::EXE), expectedData.at(i).mExe);
     }
 }
 

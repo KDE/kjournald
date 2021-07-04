@@ -25,6 +25,7 @@ struct LogEntry {
     QString mMessage;
     QString mSystemdUnit;
     QString mBootId;
+    QString mExe;
     int mPriority{0};
 };
 
@@ -76,6 +77,7 @@ public:
     std::unique_ptr<IJournal> mJournal;
     QVector<LogEntry> mLog;
     QStringList mSystemdUnitFilter;
+    QStringList mExeFilter;
     QStringList mBootFilter;
     std::optional<int> mPriorityFilter;
     bool mShowKernelMessages{false};

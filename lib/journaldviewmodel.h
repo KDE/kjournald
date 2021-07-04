@@ -25,13 +25,19 @@ class KJOURNALD_EXPORT JournaldViewModel : public QAbstractItemModel
     Q_PROPERTY(QString journalPath WRITE setJournaldPath RESET setSystemJournal)
     /**
      * Configure model to only provide messages for stated systemd units
-     */
+     **/
     Q_PROPERTY(QStringList systemdUnitFilter WRITE setSystemdUnitFilter)
     /**
      * Configure model to only provide messages for stated boot ids.
-     */
+     **/
     Q_PROPERTY(QStringList bootFilter WRITE setBootFilter)
-    /** if set to true, Kernel messages are added to the log output **/
+    /**
+     * Configure model to only show messages of stated executables (see journald '_EXE' field)
+     **/
+    Q_PROPERTY(QStringList exeFilter WRITE setExeFilter)
+    /**
+     * if set to true, Kernel messages are added to the log output
+     **/
     Q_PROPERTY(bool kernelFilter WRITE setKernelFilter READ isKernelFilterEnabled NOTIFY kernelFilterChanged)
     /**
      * Configure model to only provide messages with stated priority or higher. Default: no filter is set.
@@ -43,11 +49,12 @@ public:
         MESSAGE = Qt::UserRole + 1, //!< journal entry's message text
         MESSAGE_ID, //!< ID of log entry in journald DB (might not exist for non systemd services)
         DATE, //!< date of journal entry
-        MONOTONIC_TIMESTAMP, //!< monotonic timestamp in miliseconds´ for journal entry
+        MONOTONIC_TIMESTAMP, //!< monotonic timestamp in miliseconds for journal entry
         PRIORITY, //!< priority of journal entry
         SYSTEMD_UNIT, //!< systemd unit name of journal entry
         BOOT_ID, //!< boot ID of journal entry
         UNIT_COLOR, //!< convenience rainbow color that is hashed for systemd unit
+        EXE, //!< executable path, when available; field "_EXE"
     };
     Q_ENUM(Roles);
 
@@ -177,6 +184,16 @@ public:
      * @param bootFilter list of boot ids
      */
     void setBootFilter(const QStringList &bootFilter);
+
+    /**
+     * @brief Configure for which executable messages shall be shown
+     *
+     * If no executable is configured, this filter is deactivated. The given values are compared
+     * to the _EXE journal value.
+     *
+     * @param exeFilter list of executable paths
+     */
+    void setExeFilter(const QStringList &exeFilter);
 
     /**
      * @brief Configure if Kernel messages shall be included in model

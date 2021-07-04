@@ -93,6 +93,15 @@ void JournaldViewModelPrivate::resetJournal()
         }
     }
 
+    // filter executable
+    for (const QString &executable : mExeFilter) {
+        QString filterExpression = "_EXE=" + executable;
+        result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toStdString().c_str(), 0);
+        if (result < 0) {
+            qCCritical(journald) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
+        }
+    }
+
     seekHeadAndMakeCurrent();
     // clear all data which are in limbo with new head
     mLog.clear();
@@ -164,6 +173,10 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
         result = sd_journal_get_data(mJournal->sdJournal(), "_BOOT_ID", (const void **)&data, &length);
         if (result == 0) {
             entry.mBootId = QString::fromUtf8((const char *)data, length).section(QChar::fromLatin1('='), 1);
+        }
+        result = sd_journal_get_data(mJournal->sdJournal(), "_EXE", (const void **)&data, &length);
+        if (result == 0) {
+            entry.mExe = QString::fromUtf8((const char *)data, length).section(QChar::fromLatin1('='), 1);
         }
         result = sd_journal_get_data(mJournal->sdJournal(), "PRIORITY", (const void **)&data, &length);
         if (result == 0) {
@@ -353,6 +366,8 @@ QVariant JournaldViewModel::data(const QModelIndex &index, int role) const
         return d->mLog.at(index.row()).mSystemdUnit;
     case JournaldViewModel::Roles::PRIORITY:
         return d->mLog.at(index.row()).mPriority;
+    case JournaldViewModel::Roles::EXE:
+        return d->mLog.at(index.row()).mExe;
     case JournaldViewModel::Roles::UNIT_COLOR:
         return d->unitColor(d->mLog.at(index.row()).mSystemdUnit);
     }
@@ -443,6 +458,15 @@ void JournaldViewModel::setBootFilter(const QStringList &bootFilter)
 {
     beginResetModel();
     d->mBootFilter = bootFilter;
+    d->resetJournal();
+    fetchMoreLogEntries();
+    endResetModel();
+}
+
+void JournaldViewModel::setExeFilter(const QStringList &exeFilter)
+{
+    beginResetModel();
+    d->mExeFilter = exeFilter;
     d->resetJournal();
     fetchMoreLogEntries();
     endResetModel();
