@@ -1,3 +1,12 @@
+/*
+    SPDX-License-Identifier: LGPL-2.1-or-later OR MIT
+    SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
+*/
+
+import QtQuick 2.12
+import QtQuick.Controls 2.12
+import systemd 1.0
+
 MenuBar {
     Menu {
         title: "File"

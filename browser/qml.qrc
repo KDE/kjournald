@@ -7,5 +7,6 @@
         <file>Main.qml</file>
         <file>LogLine.qml</file>
         <file>RemoteJournalConfigDialog.qml</file>
+        <file>TopMenuBar.qml</file>
     </qresource>
 </RCC>
