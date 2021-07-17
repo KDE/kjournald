@@ -12,6 +12,8 @@
 #include <QDir>
 #include <QRandomGenerator>
 #include <QThread>
+#include <algorithm>
+#include <iterator>
 
 QRandomGenerator JournaldViewModelPrivate::sFixedSeedGenerator{1}; // used fixed seed to ensure that colors for same units never change
 
@@ -524,6 +526,27 @@ int JournaldViewModel::search(const QString &searchString, int startRow)
         }
     }
     return -1;
+}
+
+int JournaldViewModel::closestIndexForData(const QDateTime &datetime)
+{
+    if (d->mLog.isEmpty()) {
+        return -1;
+    }
+    if (datetime > d->mLog.last().mDate) {
+        return d->mLog.size() - 1;
+    }
+
+    auto it = std::lower_bound(d->mLog.cbegin(), d->mLog.cend(), datetime, [](const LogEntry &entry, const QDateTime &needle) {
+        return entry.mDate < needle;
+    });
+
+    if (it == d->mLog.cend()) {
+        return -1;
+    } else {
+        std::size_t index = std::distance(d->mLog.cbegin(), it);
+        return index;
+    }
 }
 
 QString JournaldViewModel::formatTime(const QDateTime &datetime, bool utc) const

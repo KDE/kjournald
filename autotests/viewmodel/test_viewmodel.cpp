@@ -168,4 +168,27 @@ void TestViewModel::showKernelMessages()
     QVERIFY(found);
 }
 
+void TestViewModel::closestIndexForDateComputation()
+{
+    JournaldViewModel model;
+    QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
+    QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
+
+    QDateTime firstLogEntryDateTime = model.data(model.index(0, 0), JournaldViewModel::DATE).toDateTime();
+    QDateTime lastLogEntryDateTime = model.data(model.index(model.rowCount() - 1, 0), JournaldViewModel::DATE).toDateTime();
+
+    // check for first row in model
+    QCOMPARE(model.closestIndexForData(firstLogEntryDateTime), 0);
+
+    // check one day before first entry
+    QCOMPARE(model.closestIndexForData(firstLogEntryDateTime.addDays(-1)), 0);
+
+    // check one day after last entry
+    QCOMPARE(model.closestIndexForData(lastLogEntryDateTime.addDays(1)), model.rowCount() - 1);
+
+    // check for last row in model
+    // last few entries have the exact same date, we default to the first
+    QCOMPARE(model.closestIndexForData(lastLogEntryDateTime), 1496);
+}
+
 QTEST_GUILESS_MAIN(TestViewModel);

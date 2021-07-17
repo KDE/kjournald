@@ -252,6 +252,16 @@ public:
      */
     Q_INVOKABLE void seekTail();
 
+    /**
+     * @brief Return closest index row for given date
+     *
+     * This method always returns a valid index then the model is not empty. If the model is empty,
+     * return value is -1;
+     *
+     * @return row index for closest entry
+     */
+    Q_INVOKABLE int closestIndexForData(const QDateTime &datetime);
+
 private Q_SLOTS:
     /**
      * Decoupled fetching for log entries that can enforce sequence of fetching calls.
