@@ -156,6 +156,13 @@ public:
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
     /**
+     * @brief Convenience method that returns date for a given model row
+     * @param indexRow the index row
+     * @return the QDateItem object for the entry found
+     */
+    Q_INVOKABLE QDateTime datetime(int indexRow) const;
+
+    /**
      * @copydoc QAbstractItemModel::canFetchMore()
      */
     bool canFetchMore(const QModelIndex &parent) const override;

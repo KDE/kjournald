@@ -251,7 +251,21 @@ ApplicationWindow {
             ListView {
                 id: viewRoot
 
+                readonly property date currentIndexDateTime: g_journalModel.datetime(viewRoot.indexAt(1, viewRoot.contentY + viewRoot.height / 2))
                 readonly property bool logEntriesAvailable: viewRoot.count > 0 && (g_unitModel.selectedEntries.length > 0 || g_executableModel.selectedEntries.length > 0 || g_journalModel.kernelFilter)
+
+                Connections {
+                    target: g_journalModel
+                    property date lastDateInFocus
+                    function onModelAboutToBeReset() {
+                        lastDateInFocus = viewRoot.currentIndexDateTime
+                        console.log("remember last date in focus: " + lastDateInFocus)
+                    }
+                    function onModelReset() {
+                        console.log("apply")
+                        viewRoot.currentIndex = g_journalModel.closestIndexForData(lastDateInFocus)
+                    }
+                }
 
                 visible: viewRoot.logEntriesAvailable
                 highlightMoveDuration: 10

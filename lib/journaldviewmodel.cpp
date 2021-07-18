@@ -376,6 +376,11 @@ QVariant JournaldViewModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
+QDateTime JournaldViewModel::datetime(int indexRow) const
+{
+    return data(index(indexRow, 0), JournaldViewModel::Roles::DATE).toDateTime();
+}
+
 bool JournaldViewModel::canFetchMore(const QModelIndex &parent) const
 {
     return !(d->mHeadCursorReached && d->mTailCursorReached);
