@@ -3,9 +3,9 @@
     SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 */
 
-import QtQuick 2.12
-import QtQuick.Window 2.12
-import QtQuick.Controls 2.12
+import QtQuick 2.15
+import QtQuick.Window 2.15
+import QtQuick.Controls 2.15
 import QtQuick.Dialogs 1.0
 import systemd 1.0
 
@@ -76,10 +76,12 @@ ApplicationWindow {
                 property var bootId: [ ];
                 model: g_bootModel
                 textRole: "displayshort"
-    //            valueRole: "_BOOT_ID" // elegant solution but not doable with Qt 5.12
+                valueRole: "_BOOT_ID"
                 onCurrentIndexChanged: {
-                    bootId = [ g_bootModel.bootId(currentIndex) ]
-    //                bootId = [ currentValue ]
+                    bootId = [ currentValue ]
+                }
+                Component.onCompleted: {
+                    bootId = [ currentValue ]
                 }
             }
             Label {

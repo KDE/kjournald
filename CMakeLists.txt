@@ -2,9 +2,9 @@
 # SPDX-FileCopyrightText: Andreas Cord-Landwehr <cordlandwehr@kde.org>
 
 project(kjournald LANGUAGES CXX)
-set(KJOURNALD_VERSION 0.0.2)
+set(KJOURNALD_VERSION 0.0.3)
 
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.16)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -40,7 +40,7 @@ enable_testing()
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(SYSTEMD REQUIRED libsystemd)
 
-set(REQUIRED_QT_VERSION 5.12.0)
+set(REQUIRED_QT_VERSION 5.15.0)
 find_package(Qt5 ${REQUIRED_QT_VERSION} COMPONENTS Core Quick Test REQUIRED)
 
 add_subdirectory(lib)
