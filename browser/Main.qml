@@ -14,22 +14,6 @@ ApplicationWindow {
     height: 640
     visible: true
 
-    function copyViewToClipbaord() {
-        var startIndex = viewRoot.indexAt(1, viewRoot.contentY)
-        var endIndex = viewRoot.indexAt(1, viewRoot.contentY + viewRoot.height);
-        if (endIndex < 0) {
-            endIndex = g_journalModel.rowCount()
-        }
-        var content = ""
-        for (var i = startIndex; i < endIndex; ++i) {
-            content += g_journalModel.formatTime(g_journalModel.data(g_journalModel.index(i, 0), JournaldViewModel.DATE), true) + " UTC "
-                        + g_journalModel.data(g_journalModel.index(i, 0), JournaldViewModel.SYSTEMD_UNIT) + " "
-                        + g_journalModel.data(g_journalModel.index(i, 0), JournaldViewModel.MESSAGE) + "\n"
-        }
-        clipboard.setText(content)
-        console.log("view content copied")
-    }
-
     menuBar: TopMenuBar {}
 
     FileDialog {
@@ -70,7 +54,7 @@ ApplicationWindow {
         color: "#cccccc"
 
         // forward page key events to listview
-        Keys.forwardTo: [ viewRoot ]
+        Keys.forwardTo: [ logView ]
         focus: true
 
         Row {
@@ -173,7 +157,7 @@ ApplicationWindow {
         height: parent.height - topMenu.height
 
         // forward page key events to listview
-        Keys.forwardTo: [ viewRoot ]
+        Keys.forwardTo: [ logView ]
         focus: true
 
         Column {
@@ -248,139 +232,20 @@ ApplicationWindow {
             color: "#ffffff"
             height: parent.height
             width: parent.width - unitColumn.width
-            ListView {
-                id: viewRoot
-
-                readonly property date currentIndexDateTime: g_journalModel.datetime(viewRoot.indexAt(1, viewRoot.contentY + viewRoot.height / 2))
-                readonly property bool logEntriesAvailable: viewRoot.count > 0 && (g_unitModel.selectedEntries.length > 0 || g_executableModel.selectedEntries.length > 0 || g_journalModel.kernelFilter)
-
-                Connections {
-                    target: g_journalModel
-                    property date lastDateInFocus
-                    function onModelAboutToBeReset() {
-                        lastDateInFocus = viewRoot.currentIndexDateTime
-                        console.log("remember last date in focus: " + lastDateInFocus)
-                    }
-                    function onModelReset() {
-                        console.log("apply")
-                        viewRoot.currentIndex = g_journalModel.closestIndexForData(lastDateInFocus)
-                    }
-                }
-
-                visible: viewRoot.logEntriesAvailable
-                highlightMoveDuration: 10
+            LogView {
+                id: logView
                 anchors.fill: parent
-                model: g_journalModel
-                focus: true
-                Component.onCompleted: forceActiveFocus()
-                delegate: Rectangle
-                {
-                    color: model.unitcolor
-                    width: viewRoot.width
-                    height: messageText.height
-                    LogLine {
-                        id: messageText
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
-                        index: model.index
-                        date: model.date
-                        monotonicTimestamp: model.monotonictimestamp
-                        priority: model.priority
-                        message: model.message
-                        highlight: hightlightTextField.text
-                        modelProxy: viewRoot.model
-
-                        Rectangle {
-                            anchors.right: parent.right
-                            width: unitInfo.width + 8
-                            height: unitInfo.height
-                            color: "#ffffff"
-                            Text {
-                                id: unitInfo
-                                anchors {
-                                    right: parent.right
-                                    rightMargin: 4
-                                }
-                                text: model.systemdunit
-                            }
-                        }
-                    }
-                }
-                ScrollBar.vertical: ScrollBar {
-                    policy: ScrollBar.AlwaysOn
-                    active: ScrollBar.AlwaysOn
-                }
-                TextMetrics {
-                    id: messageIdMetrics
-                    text: "Example Log message"
-                }
-                Keys.onPressed: {
-                    var currentIndex = viewRoot.indexAt(1, viewRoot.contentY + 1) // 1 pixel right and down to really get the first item in view
-                    var scrollIndexSkip = Math.floor(0.9 * viewRoot.height / 30) // hard-coded estimate of one line log height
-                    if (event.key === Qt.Key_PageDown) {
-                        if (event.modifiers & Qt.ControlModifier) {
-                            // model provides just a sliding window over the journal, fetch tail data first
-                            g_journalModel.seekTail()
-                            viewRoot.positionViewAtEnd()
-                        }
-                        else {
-                            if (viewRoot.contentHeight - viewRoot.originY > viewRoot.height) {
-                                if (viewRoot.contentY - viewRoot.originY + 2 * viewRoot.height >= viewRoot.contentHeight) {
-                                    // enforce fetching here such that it does not happen implicitly during calculation the new contentY
-                                    g_journalModel.fetchMore(g_journalModel.index(0, 0))
-                                    viewRoot.forceLayout()
-                                }
-                                // update currentIndex, because it has changed when rows added at top
-                                currentIndex = viewRoot.indexAt(1, viewRoot.contentY + 1)
-                                positionViewAtIndex(Math.min(viewRoot.count, currentIndex + scrollIndexSkip), ListView.Beginning)
-                            } else {
-                                viewRoot.contentY = viewRoot.originY
-                            }
-                        }
-                    }
-                    if (event.key === Qt.Key_End) {
-                        viewRoot.positionViewAtEnd()
-                    }
-
-                    if (event.key === Qt.Key_PageUp) {
-                        if (event.modifiers & Qt.ControlModifier) {
-                            // model provides just a sliding window over the journal, fetch head data first
-                            g_journalModel.seekHead()
-                            viewRoot.positionViewAtBeginning()
-                        }
-                        else {
-                            if (viewRoot.contentHeight - viewRoot.originY > viewRoot.height) {
-                                if (viewRoot.contentY - viewRoot.originY <= 3 * viewRoot.height) {
-                                    // enforce fetching here such that it does not happen implictly during calculation the new contentY
-                                    g_journalModel.fetchMore(g_journalModel.index(0, 0))
-                                    viewRoot.forceLayout()
-                                }
-                                // update currentIndex, because it has changed when rows added at top
-                                currentIndex = viewRoot.indexAt(1, viewRoot.contentY + 1)
-                                positionViewAtIndex(Math.max(0, currentIndex - scrollIndexSkip), ListView.Beginning)
-                            } else {
-                                viewRoot.contentY = viewRoot.originY
-                            }
-                        }
-                    }
-                    if (event.key === Qt.Key_F3) {
-                        var index = g_journalModel.search(hightlightTextField.text, viewRoot.currentIndex + 1)
-                        if (index >= 0) {
-                            viewRoot.currentIndex = index
-                            positionViewAtIndex(index, ListView.Beginning)
-                        }
-                    }
-                    if (event.key === Qt.Key_C && (event.modifiers & Qt.ControlModifier)) {
-                        copyViewToClipbaord()
-                    }
+                journalModel: g_journalModel
+                visible: count > 0
+                onTextCopied: {
+                    clipboard.setText(text)
+                    console.log("view content copied")
                 }
             }
             Text {
                 anchors.centerIn: parent
                 text: "No log entries apply to current filter selection"
-                visible: !viewRoot.logEntriesAvailable
+                visible: !(logView.count > 0 && (g_unitModel.selectedEntries.length > 0 || g_executableModel.selectedEntries.length > 0 || root.journalModel.kernelFilter))
             }
         }
     }
