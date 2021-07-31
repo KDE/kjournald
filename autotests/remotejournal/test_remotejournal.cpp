@@ -80,45 +80,46 @@ void TestRemoteJournal::exportFormatReaderBinaryMessageAccess()
         JournaldExportReader::LogEntry entry = reader.entry();
 
         std::vector<std::pair<QString, QString>> testValues = {
-            {"__CURSOR", "s=bcce4fb8ffcb40e9a6e05eee8b7831bf;i=5ef603;b=ec25d6795f0645619ddac9afdef453ee;m=545242e7049;t=50f1202"},
-            {"__REALTIME_TIMESTAMP", "1423944916375353"},
-            {"__MONOTONIC_TIMESTAMP", "5794517905481"},
-            {"_BOOT_ID", "ec25d6795f0645619ddac9afdef453ee"},
+            {"__CURSOR", "s=4801b45403ee41f9bfc72b56ef154ecf;i=1799;b=750d24b817364f5ebc286c0b32df2ad0;m=a4d22d016;t=5c8678d812639;x=8420cef2a679132b"},
+            {"__REALTIME_TIMESTAMP", "1627721964791353"},
+            {"__MONOTONIC_TIMESTAMP", "44243800086"},
+            {"_BOOT_ID", "750d24b817364f5ebc286c0b32df2ad0"},
             {"_TRANSPORT", "journal"},
-            {"_UID", "1001"},
-            {"_GID", "1001"},
+            {"_UID", "1000"},
+            {"_GID", "1000"},
             {"_CAP_EFFECTIVE", "0"},
-            {"_SYSTEMD_OWNER_UID", "1001"},
-            {"_SYSTEMD_SLICE", "user-1001.slice"},
-            {"_MACHINE_ID", "5833158886a8445e801d437313d25eff"},
-            {"_HOSTNAME", "bupkis"},
-            {"_AUDIT_LOGINUID", "1001"},
-            {"_SELINUX_CONTEXT", "unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023"},
+            {"_SELINUX_CONTEXT", "unconfined\n"}, // FIXME until here it work, empty line not noticesd as binary blob
+            {"_AUDIT_LOGINUID", "1000"},
+            {"_SYSTEMD_OWNER_UID", "1000"},
+            {"_SYSTEMD_UNIT", "user@1000.service"},
+            {"_SYSTEMD_SLICE", "user-1000.slice"},
+            {"_MACHINE_ID", "83a52f20bd334d7f82cb6c7db0b85681"},
+            {"_HOSTNAME", "behemoth"},
+            {"_SYSTEMD_USER_SLICE", "app.slice"},
+            {"_AUDIT_SESSION", "3"},
+            {"_SYSTEMD_CGROUP", "/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.kde.yakuake-c0faec5b95cf49f6b49d3eb582fa7991.scope"},
+            {"_SYSTEMD_USER_UNIT", "app-org.kde.yakuake-c0faec5b95cf49f6b49d3eb582fa7991.scope"},
+            {"_SYSTEMD_INVOCATION_ID", "d8ff5db7d38e4274a5744b388a816ac6"},
+            {"MESSAGE", "foo\nbar"},
+            {"CODE_FILE", "<string>"},
             {"CODE_LINE", "1"},
             {"CODE_FUNC", "<module>"},
             {"SYSLOG_IDENTIFIER", "python3"},
             {"_COMM", "python3"},
-            {"_EXE", "/usr/bin/python3.4"},
-            {"_AUDIT_SESSION", "35898"},
-            {"_SYSTEMD_CGROUP", "/user.slice/user-1001.slice/session-35898.scope"},
-            {"_SYSTEMD_SESSION", "35898"},
-            {"_SYSTEMD_UNIT", "session-35898.scope"},
-            // FIXME not supported yet and currently binary reading breaks stream
-            //            {"MESSAGE", "foo\nbar"},
-            //            {"CODE_FILE", "<string>"},
-            //            {"_PID", "16853"},
-            //            {"_CMDLINE", "python3 -c from systemd import journal; journal.send(\"foo\\nbar\")"},
-            //            {"_SOURCE_REALTIME_TIMESTAMP", "1423944916372858"},
+            {"_EXE", "/usr/bin/python3.9"},
+            {"_CMDLINE", "python3 -c from systemd import journal; journal.send(\"foo\\nbar\")"},
+            {"_PID", "19336"},
+            {"_SOURCE_REALTIME_TIMESTAMP", "1627721964791314"},
         };
 
         for (const auto &testEntry : testValues) {
-            qDebug() << testEntry;
+            qDebug() << "check for entry:" << testEntry;
             QVERIFY(entry.contains(testEntry.first));
             QCOMPARE(entry.value(testEntry.first), testEntry.second);
         }
     }
 
-    //    QVERIFY(reader.atEnd());
+    QVERIFY(reader.atEnd());
 }
 
 void TestRemoteJournal::systemdJournalRemoteJournalFromFile()
