@@ -403,7 +403,8 @@ void JournaldViewModel::fetchMoreLogEntries()
     // provide any indication of the direction. yet, this is not a real problem,
     // because by design usually the head or tail are already reached because that is
     // where we begin reading the log
-    if (!d->mTailCursorReached) { // append to log
+
+    { // append to log
         QVector<LogEntry> chunk = d->readEntries(JournaldViewModelPrivate::Direction::TOWARDS_TAIL);
         if (chunk.size() > 0) {
             beginInsertRows(QModelIndex(), d->mLog.size(), d->mLog.size() + chunk.size() - 1);
@@ -412,7 +413,8 @@ void JournaldViewModel::fetchMoreLogEntries()
             qCDebug(journald) << "read towards tail" << chunk.size();
         }
     }
-    if (!d->mHeadCursorReached) { // prepend to log
+
+    { // prepend to log
         QVector<LogEntry> chunk = d->readEntries(JournaldViewModelPrivate::Direction::TOWARDS_HEAD);
         if (chunk.size() > 0) {
             beginInsertRows(QModelIndex(), 0, chunk.size() - 1);
