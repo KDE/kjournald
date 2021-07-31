@@ -238,6 +238,7 @@ ApplicationWindow {
                 id: logView
                 anchors.fill: parent
                 journalModel: g_journalModel
+                snapToFollowMode: true
                 visible: count > 0
                 onTextCopied: {
                     clipboard.setText(text)

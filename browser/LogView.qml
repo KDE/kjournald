@@ -5,17 +5,35 @@
 
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+import QtQml 2.15
 import systemd 1.0
 
 ListView {
     id: root
 
+    /**
+     * journalModel the JournaldViewModel object that shall be visualized
+     */
     required property JournaldViewModel journalModel
+
+    /**
+     * if set to true then scrolling to the end of the view enables automatic following of the journal when it increases
+     * @note this requires a journald DB that supports this behavior (e.g. a local journal, which has an FD notifier)
+     * @note runtime changes of this property are not supported, i.e. follow mode is only activated after the next move
+     * of the content
+     */
+    property bool snapToFollowMode: false
+
+    property bool __followMode: false
+    onContentYChanged: {
+        if (snapToFollowMode === true) {
+            root.__followMode = root.atYEnd
+        }
+    }
 
     readonly property date currentIndexDateTime: root.journalModel.datetime(root.indexAt(1, root.contentY + root.height / 2))
 
     signal textCopied(string text)
-
 
     Connections {
         target: root.journalModel
@@ -26,12 +44,19 @@ ListView {
         function onModelReset() {
             root.currentIndex = root.journalModel.closestIndexForData(lastDateInFocus)
         }
+        function onRowsInserted(parent, first, last) {
+            if (root.__followMode === true) {
+                root.positionViewAtEnd()
+            }
+        }
     }
 
     highlightMoveDuration: 10
     model: root.journalModel
     focus: true
-    Component.onCompleted: forceActiveFocus()
+    Component.onCompleted: {
+        forceActiveFocus()
+    }
     delegate: Rectangle
     {
         color: model.unitcolor
