@@ -10,6 +10,7 @@
 #include <QColor>
 #include <QDebug>
 #include <QDir>
+#include <QMutex>
 #include <QRandomGenerator>
 #include <QThread>
 #include <algorithm>
@@ -43,7 +44,7 @@ void JournaldViewModelPrivate::resetJournal()
     // filter boots
     for (const QString &boot : mBootFilter) {
         QString filterExpression = "_BOOT_ID=" + boot;
-        result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toStdString().c_str(), 0);
+        result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
         if (result < 0) {
             qCCritical(journald) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
         }
@@ -51,7 +52,7 @@ void JournaldViewModelPrivate::resetJournal()
     if (mPriorityFilter.has_value()) {
         for (int i = 0; i <= mPriorityFilter; ++i) {
             QString filterExpression = "PRIORITY=" + QString::number(i);
-            result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toStdString().c_str(), 0);
+            result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
             if (result < 0) {
                 qCCritical(journald()) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
             }
@@ -67,7 +68,7 @@ void JournaldViewModelPrivate::resetJournal()
     if (mShowKernelMessages) {
         for (const QString &transport : kernelTransports) {
             QString filterExpression = "_TRANSPORT=" + transport;
-            result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toStdString().c_str(), 0);
+            result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
             if (result < 0) {
                 qCCritical(journald) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
             }
@@ -79,7 +80,7 @@ void JournaldViewModelPrivate::resetJournal()
     if (!mShowKernelMessages) {
         for (const QString &transport : nonKernelTransports) {
             QString filterExpression = "_TRANSPORT=" + transport;
-            result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toStdString().c_str(), 0);
+            result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
             if (result < 0) {
                 qCCritical(journald) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
             }
@@ -89,7 +90,7 @@ void JournaldViewModelPrivate::resetJournal()
     // filter units
     for (const QString &unit : mSystemdUnitFilter) {
         QString filterExpression = "_SYSTEMD_UNIT=" + unit;
-        result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toStdString().c_str(), 0);
+        result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
         if (result < 0) {
             qCCritical(journald) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
         }
@@ -98,7 +99,7 @@ void JournaldViewModelPrivate::resetJournal()
     // filter executable
     for (const QString &executable : mExeFilter) {
         QString filterExpression = "_EXE=" + executable;
-        result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toStdString().c_str(), 0);
+        result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
         if (result < 0) {
             qCCritical(journald) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
         }
@@ -111,6 +112,9 @@ void JournaldViewModelPrivate::resetJournal()
 
 QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
 {
+    static QMutex mutex;
+    QMutexLocker locker(&mutex);
+
     const int readChunkSize{500};
     int result{0};
     QVector<LogEntry> chunk;
@@ -118,36 +122,78 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
         qCWarning(journald) << "Skipping data fetch, no valid journal opened";
         return chunk;
     }
-    if (direction == JournaldViewModelPrivate::Direction::TOWARDS_TAIL) {
-        result = sd_journal_seek_cursor(mJournal->sdJournal(), mWindowTailCursor);
+    if (direction == Direction::TOWARDS_TAIL) {
+        if (mLog.size() > 0) {
+            QString cursor = mLog.last().mCursor;
+            // note: seek cursor does not make it current, but a subsequenct sd_journal_next is required
+            result = sd_journal_seek_cursor(mJournal->sdJournal(), cursor.toLocal8Bit().constData());
+            if (result < 0) {
+                qCWarning(journald()) << "seeking cursor but could not be found" << strerror(-result);
+            }
+            result = sd_journal_next(mJournal->sdJournal());
+            if (result == 0) {
+                mTailCursorReached = true;
+                return {};
+            }
+            result = sd_journal_test_cursor(mJournal->sdJournal(), cursor.toLocal8Bit().constData());
+            if (result <= 0) {
+                qCCritical(journald()) << "current position does not match expected cursor:" << cursor;
+                if (result < 0) {
+                    qCCritical(journald()) << "cursor test failed:" << strerror(-result);
+                }
+                return {};
+            }
+            // read first entry after cursor
+            result = sd_journal_next(mJournal->sdJournal());
+            if (result == 0) {
+                mTailCursorReached = true;
+                return {};
+            }
+        } else {
+            sd_journal_seek_head(mJournal->sdJournal());
+            sd_journal_next(mJournal->sdJournal());
+        }
+    } else if (direction == Direction::TOWARDS_HEAD) {
+        if (mLog.size() > 0) {
+            QString cursor = mLog.first().mCursor;
+            result = sd_journal_seek_cursor(mJournal->sdJournal(), cursor.toLocal8Bit().constData());
+            if (result < 0) {
+                qCWarning(journald()) << "seeking cursor but could not be found" << strerror(-result);
+            }
+            result = sd_journal_previous(mJournal->sdJournal());
+            if (result == 0) {
+                mHeadCursorReached = true;
+                return {};
+            }
+            result = sd_journal_test_cursor(mJournal->sdJournal(), cursor.toLocal8Bit().constData());
+            if (result <= 0) {
+                qCCritical(journald()) << "current position does not match expected cursor:" << cursor;
+                if (result < 0) {
+                    qCCritical(journald()) << "cursor test failed:" << strerror(-result);
+                }
+                return {};
+            }
+            // read first entry before cursor
+            result = sd_journal_previous(mJournal->sdJournal());
+            if (result == 0) {
+                mHeadCursorReached = true;
+                return {};
+            }
+        } else {
+            sd_journal_seek_tail(mJournal->sdJournal());
+            sd_journal_previous(mJournal->sdJournal());
+        }
     } else {
-        result = sd_journal_seek_cursor(mJournal->sdJournal(), mWindowHeadCursor);
-    }
-    if (result < 0) {
-        qCCritical(journald()) << "Failed seeking cursor" << strerror(-result);
+        qCCritical(journald()) << "Jumping into the journal's middle, not supported";
         return {};
     }
 
+    // at this point, the journal is guaranteed to point to the first valid entry
     for (int counter = 0; counter < readChunkSize; ++counter) {
-        const char *data;
+        char *data;
         size_t length;
         uint64_t time;
         int result{1};
-
-        // obtain more data, 1 for success, 0 if reached end
-        if (direction == Direction::TOWARDS_TAIL) {
-            if (sd_journal_next(mJournal->sdJournal()) <= 0) {
-                mTailCursorReached = true;
-                qCDebug(journald) << "obtained journal until tail, stop reading";
-                break;
-            }
-        } else {
-            if (sd_journal_previous(mJournal->sdJournal()) <= 0) {
-                mHeadCursorReached = true;
-                qCDebug(journald) << "obtained journal until head, stop reading";
-                break;
-            }
-        }
 
         LogEntry entry;
         result = sd_journal_get_realtime_usec(mJournal->sdJournal(), &time);
@@ -159,7 +205,6 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
         if (result == 0) {
             entry.mMonotonicTimestamp = time;
         }
-
         result = sd_journal_get_data(mJournal->sdJournal(), "MESSAGE", (const void **)&data, &length);
         if (result == 0) {
             entry.mMessage = QString::fromUtf8((const char *)data, length).section(QChar::fromLatin1('='), 1);
@@ -184,26 +229,31 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
         if (result == 0) {
             entry.mPriority = QString::fromUtf8((const char *)data, length).section(QChar::fromLatin1('='), 1).toInt();
         }
+        result = sd_journal_get_cursor(mJournal->sdJournal(), &data);
+        if (result == 0) {
+            entry.mCursor = QString::fromUtf8(data);
+        }
 
         if (direction == Direction::TOWARDS_TAIL) {
             chunk.append(std::move(entry));
         } else {
             chunk.prepend(std::move(entry));
         }
-    }
 
-    // update head/tail cursor depending on direction
-    if (direction == Direction::TOWARDS_TAIL) {
-        int result = sd_journal_get_cursor(mJournal->sdJournal(), &mWindowTailCursor);
-        if (result < 0) {
-            qCCritical(journald()) << "Failed to obtain tail cursor" << strerror(-result);
-            mWindowTailCursor = nullptr;
-        }
-    } else {
-        int result = sd_journal_get_cursor(mJournal->sdJournal(), &mWindowHeadCursor);
-        if (result < 0) {
-            qCCritical(journald()) << "Failed to obtain head cursor";
-            mWindowHeadCursor = nullptr;
+        // obtain more data, 1 for success, 0 if reached end
+        if (direction == Direction::TOWARDS_TAIL) {
+            result = sd_journal_next(mJournal->sdJournal());
+            if (result == 0) {
+                mTailCursorReached = true;
+                qCDebug(journald) << "obtained journal until tail, stop reading";
+                break;
+            }
+        } else {
+            if (sd_journal_previous(mJournal->sdJournal()) <= 0) {
+                mHeadCursorReached = true;
+                qCDebug(journald) << "obtained journal until head, stop reading";
+                break;
+            }
         }
     }
     return chunk;
@@ -222,12 +272,6 @@ void JournaldViewModelPrivate::seekHeadAndMakeCurrent()
     if (sd_journal_next(mJournal->sdJournal()) <= 0) {
         mTailCursorReached = true;
     }
-    result = sd_journal_get_cursor(mJournal->sdJournal(), &mWindowHeadCursor);
-    if (result < 0) {
-        qCCritical(journald()) << "Failed to obtain head/tail cursor";
-        mWindowHeadCursor = nullptr;
-    }
-    mWindowTailCursor = mWindowHeadCursor;
 }
 
 void JournaldViewModelPrivate::seekTailAndMakeCurrent()
@@ -243,12 +287,6 @@ void JournaldViewModelPrivate::seekTailAndMakeCurrent()
     if (sd_journal_previous(mJournal->sdJournal()) <= 0) {
         mHeadCursorReached = true;
     }
-    result = sd_journal_get_cursor(mJournal->sdJournal(), &mWindowTailCursor);
-    if (result < 0) {
-        qCCritical(journald()) << "Failed to obtain head/tail cursor";
-        mWindowTailCursor = nullptr;
-    }
-    mWindowHeadCursor = mWindowTailCursor;
 }
 
 JournaldViewModel::JournaldViewModel(QObject *parent)
@@ -312,6 +350,7 @@ QHash<int, QByteArray> JournaldViewModel::roleNames() const
     roles[JournaldViewModel::SYSTEMD_UNIT] = "systemdunit";
     roles[JournaldViewModel::BOOT_ID] = "bootid";
     roles[JournaldViewModel::UNIT_COLOR] = "unitcolor";
+    roles[JournaldViewModel::CURSOR] = "cursor";
     return roles;
 }
 
@@ -372,6 +411,8 @@ QVariant JournaldViewModel::data(const QModelIndex &index, int role) const
         return d->mLog.at(index.row()).mExe;
     case JournaldViewModel::Roles::UNIT_COLOR:
         return d->unitColor(d->mLog.at(index.row()).mSystemdUnit);
+    case JournaldViewModel::Roles::CURSOR:
+        return d->mLog.at(index.row()).mCursor;
     }
     return QVariant();
 }

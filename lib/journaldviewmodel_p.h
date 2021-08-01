@@ -27,6 +27,7 @@ struct LogEntry {
     QString mBootId;
     QString mExe;
     int mPriority{0};
+    QString mCursor;
 };
 
 class JournaldViewModelPrivate
@@ -84,8 +85,6 @@ public:
     QHash<QString, QColor> mUnitToColorMap;
     bool mHeadCursorReached{false};
     bool mTailCursorReached{false};
-    char *mWindowHeadCursor{nullptr};
-    char *mWindowTailCursor{nullptr};
     QAtomicInt mActiveFetchOperations{0};
 
     static QRandomGenerator sFixedSeedGenerator;

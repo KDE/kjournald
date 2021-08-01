@@ -42,6 +42,7 @@ void TestViewModel::rowAccess()
     QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
     QVERIFY(model.rowCount() > 0);
 
+    // journalctl -b -2 -D . -o json | head -n2
     std::vector<LogEntry> expectedData{{QDateTime::fromString("2021-03-13T16:23:01.464", Qt::ISODateWithMs),
                                         4050458,
                                         QString(),
@@ -60,7 +61,7 @@ void TestViewModel::rowAccess()
                                         5}};
 
     for (int i = 0; i < expectedData.size(); ++i) {
-        QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::DATE), expectedData.at(i).mDate);
+        QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::DATE).toDateTime(), expectedData.at(i).mDate);
         QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::MONOTONIC_TIMESTAMP), expectedData.at(i).mMonotonicTimestamp);
         QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::MESSAGE_ID), expectedData.at(i).mId);
         QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::MESSAGE), expectedData.at(i).mMessage);
@@ -135,7 +136,9 @@ void TestViewModel::unitFilter()
 
 void TestViewModel::showKernelMessages()
 {
-    const QString arbitraryKernelMessage = "usb 1-1.1: 3:1: cannot get freq at ep 0x86";
+    // obtained string with:
+    // journalctl -b -0 -k -D . -o cat | head -n1
+    const QString arbitraryKernelMessage = "brcmfmac: brcmf_fw_alloc_request: using brcm/brcmfmac43455-sdio for chip BCM4345/6";
 
     JournaldViewModel model;
     QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
@@ -188,7 +191,29 @@ void TestViewModel::closestIndexForDateComputation()
 
     // check for last row in model
     // last few entries have the exact same date, we default to the first
-    QCOMPARE(model.closestIndexForData(lastLogEntryDateTime), 1496);
+    QCOMPARE(model.closestIndexForData(lastLogEntryDateTime), model.rowCount() - 1);
+}
+
+void TestViewModel::readFullJournal()
+{
+    JournaldViewModel model;
+    QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
+    QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
+    model.setBootFilter({mBoots.at(0)});
+    model.setKernelFilter(true);
+
+    qDebug().noquote() << "check with:"
+                       << "journalctl -b" << mBoots.at(0);
+
+    // note: limit chosed big enough such that this fetches the full size of the journal, size is 47
+    model.fetchMore(QModelIndex());
+
+    // check agains previous implementation bug that lead to duplication of first and last log line with every
+    // read attempt
+    int rows = model.rowCount();
+    model.fetchMore(QModelIndex());
+
+    QCOMPARE(model.rowCount(), rows);
 }
 
 QTEST_GUILESS_MAIN(TestViewModel);

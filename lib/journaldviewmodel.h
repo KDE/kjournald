@@ -55,6 +55,7 @@ public:
         BOOT_ID, //!< boot ID of journal entry
         UNIT_COLOR, //!< convenience rainbow color that is hashed for systemd unit
         EXE, //!< executable path, when available; field "_EXE"
+        CURSOR, //!< journald internal unique identifier for a log entry
     };
     Q_ENUM(Roles);
 
