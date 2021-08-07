@@ -64,7 +64,7 @@ void BootModel::setSystemJournal()
 QHash<int, QByteArray> BootModel::roleNames() const
 {
     QHash<int, QByteArray> roles;
-    roles[BootModel::BOOT_ID] = "_BOOT_ID";
+    roles[BootModel::BOOT_ID] = "bootid";
     roles[BootModel::SINCE] = "since";
     roles[BootModel::UNTIL] = "until";
     roles[BootModel::DISPLAY_SHORT] = "displayshort";

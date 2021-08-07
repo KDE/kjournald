@@ -73,16 +73,9 @@ ApplicationWindow {
             ComboBox {
                 id: bootIdComboBox
                 width: 300
-                property var bootId: [ ];
                 model: g_bootModel
                 textRole: "displayshort"
-                valueRole: "_BOOT_ID"
-                onCurrentIndexChanged: {
-                    bootId = [ currentValue ]
-                }
-                Component.onCompleted: {
-                    bootId = [ currentValue ]
-                }
+                valueRole: "bootid"
             }
             Label {
                 anchors {
@@ -258,7 +251,7 @@ ApplicationWindow {
         journalPath: g_config.sessionMode === SessionConfig.LOCALFOLDER || g_config.sessionMode === SessionConfig.REMOTE ? g_config.localJournalPath : undefined
         systemdUnitFilter: g_unitModel.selectedEntries
         exeFilter: g_executableModel.selectedEntries
-        bootFilter: bootIdComboBox.bootId
+        bootFilter: bootIdComboBox.currentValue
         priorityFilter: priorityComboBox.priority
     }
     ClipboardProxy {
