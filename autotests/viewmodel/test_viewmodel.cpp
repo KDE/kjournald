@@ -216,4 +216,53 @@ void TestViewModel::readFullJournal()
     QCOMPARE(model.rowCount(), rows);
 }
 
+void TestViewModel::resetModelHeadAndTailCursorTest()
+{
+    JournaldViewModel model;
+    QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
+    QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
+
+    struct Cursors {
+        QString mHead;
+        QString mTail;
+    };
+
+    std::vector<Cursors> cursors = {
+        {"s=c485fef5d17c4272a4a539c4e4708f9e;i=191;b=68f2e61d061247d8a8ba0b8d53a97a52;m=3dce1a;t=5bd6c979f361b;x=766655f78763a257",
+         "s=c485fef5d17c4272a4a539c4e4708f9e;i=52b;b=68f2e61d061247d8a8ba0b8d53a97a52;m=312c5fa4;t=5bd6cc9746a62;x=fd8582373d87d313"},
+        {"s=df3342d6d57b442da21c78027d3991f8;i=191;b=27acae2fe35a40ac93f9c7732c0b8e59;m=3e2dc9;t=5bd6cc97083b1;x=d775661eeb273df0",
+         "s=f1a33fced0cb4d2bb629fb2bd70d1326;i=48e;b=27acae2fe35a40ac93f9c7732c0b8e59;m=67f0d79;t=5bd6cd098ce95;x=c20fdd57f02ca4c5"}};
+
+    // use model and set boot 0
+    model.setBootFilter({mBoots.at(0)});
+    // boot has 925 non-kernel log entries, fetching once with chunk size 500 gets all
+    model.fetchMore(QModelIndex());
+    // journalctl -b 68f2e61d061247d8a8ba0b8d53a97a52 -D . -o json|head -n1
+    QCOMPARE(model.data(model.index(0, 0), JournaldViewModel::CURSOR), cursors.at(0).mHead);
+    // journalctl -b 27acae2fe35a40ac93f9c7732c0b8e59 -D . -o json|tail # then look for first message without driver or kernel TRANSPORT
+    QCOMPARE(model.data(model.index(model.rowCount() - 1, 0), JournaldViewModel::CURSOR), cursors.at(0).mTail);
+    // invoke tail seeking
+    model.seekTail();
+    QCOMPARE(model.data(model.index(0, 0), JournaldViewModel::CURSOR), cursors.at(0).mHead);
+    QCOMPARE(model.data(model.index(model.rowCount() - 1, 0), JournaldViewModel::CURSOR), cursors.at(0).mTail);
+    model.seekHead();
+    QCOMPARE(model.data(model.index(0, 0), JournaldViewModel::CURSOR), cursors.at(0).mHead);
+    QCOMPARE(model.data(model.index(model.rowCount() - 1, 0), JournaldViewModel::CURSOR), cursors.at(0).mTail);
+
+    // use model and set boot 1
+    model.setBootFilter({mBoots.at(1)});
+    // journalctl -b 27acae2fe35a40ac93f9c7732c0b8e59 -D . -o json|head -n1
+    QCOMPARE(model.data(model.index(0, 0), JournaldViewModel::CURSOR), cursors.at(1).mHead);
+    // journalctl -b 27acae2fe35a40ac93f9c7732c0b8e59 -D . -o json|tail -n1
+    QCOMPARE(model.data(model.index(model.rowCount() - 1, 0), JournaldViewModel::CURSOR), cursors.at(1).mTail);
+
+    // invoke tail seeking
+    model.seekTail();
+    QCOMPARE(model.data(model.index(0, 0), JournaldViewModel::CURSOR), cursors.at(1).mHead);
+    QCOMPARE(model.data(model.index(model.rowCount() - 1, 0), JournaldViewModel::CURSOR), cursors.at(1).mTail);
+    model.seekHead();
+    QCOMPARE(model.data(model.index(0, 0), JournaldViewModel::CURSOR), cursors.at(1).mHead);
+    QCOMPARE(model.data(model.index(model.rowCount() - 1, 0), JournaldViewModel::CURSOR), cursors.at(1).mTail);
+}
+
 QTEST_GUILESS_MAIN(TestViewModel);

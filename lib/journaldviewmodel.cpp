@@ -42,7 +42,7 @@ void JournaldViewModelPrivate::resetJournal()
     // in the following a logical expression with with the following content is created:
     // AND (boot_1 OR boot...) AND (priority_1 OR prio...) AND ((?kernel-messages) OR (non-kernel-tranport) AND (unit_1 OR unit_2 OR unit...))
     // filter boots
-    for (const QString &boot : mBootFilter) {
+    for (const QString &boot : qAsConst(mBootFilter)) {
         QString filterExpression = "_BOOT_ID=" + boot;
         result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
         if (result < 0) {
@@ -88,7 +88,7 @@ void JournaldViewModelPrivate::resetJournal()
     }
 
     // filter units
-    for (const QString &unit : mSystemdUnitFilter) {
+    for (const QString &unit : qAsConst(mSystemdUnitFilter)) {
         QString filterExpression = "_SYSTEMD_UNIT=" + unit;
         result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
         if (result < 0) {
@@ -97,7 +97,7 @@ void JournaldViewModelPrivate::resetJournal()
     }
 
     // filter executable
-    for (const QString &executable : mExeFilter) {
+    for (const QString &executable : qAsConst(mExeFilter)) {
         QString filterExpression = "_EXE=" + executable;
         result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
         if (result < 0) {
@@ -150,8 +150,7 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
                 return {};
             }
         } else {
-            sd_journal_seek_head(mJournal->sdJournal());
-            sd_journal_next(mJournal->sdJournal());
+            seekHeadAndMakeCurrent();
         }
     } else if (direction == Direction::TOWARDS_HEAD) {
         if (mLog.size() > 0) {
@@ -180,8 +179,7 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
                 return {};
             }
         } else {
-            sd_journal_seek_tail(mJournal->sdJournal());
-            sd_journal_previous(mJournal->sdJournal());
+            seekTailAndMakeCurrent();
         }
     } else {
         qCCritical(journald()) << "Jumping into the journal's middle, not supported";

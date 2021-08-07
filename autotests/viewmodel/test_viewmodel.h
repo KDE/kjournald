@@ -20,9 +20,13 @@ private Q_SLOTS:
     void showKernelMessages();
     void closestIndexForDateComputation();
     /**
-     * @brief check that exactly the full size of the journal is read and not more
+     * Check that exactly the full size of the journal is read and not more
      */
     void readFullJournal();
+    /**
+     * Reset model by changing the boot ID and and test that cursor for head/tail are updated accordingly
+     */
+    void resetModelHeadAndTailCursorTest();
 
 private:
     const QStringList mBoots{"68f2e61d061247d8a8ba0b8d53a97a52", "27acae2fe35a40ac93f9c7732c0b8e59", "2dbe99dd855049af8f2865c5da2b8fda"};
