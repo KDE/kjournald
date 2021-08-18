@@ -74,7 +74,7 @@ QVector<JournaldHelper::BootInfo> JournaldHelper::queryOrderedBootIds(const IJou
             qCCritical(journald) << "Failed to seek tail:" << strerror(-result);
             continue;
         }
-        result = sd_journal_next(sdJournal);
+        result = sd_journal_previous(sdJournal);
         if (result < 0) {
             qCCritical(journald) << "Failed to obtain first entry:" << strerror(-result);
         }
@@ -153,4 +153,12 @@ QString JournaldHelper::mapField(Field field)
         break;
     }
     return fieldString;
+}
+
+QDebug operator<<(QDebug debug, const JournaldHelper::BootInfo &bootInfo)
+{
+    QDebugStateSaver saver(debug);
+    debug.noquote() << bootInfo.mBootId << ':' << bootInfo.mSince.toString(Qt::DateFormat::ISODateWithMs) << '-'
+                    << bootInfo.mUntil.toString(Qt::DateFormat::ISODateWithMs);
+    return debug;
 }

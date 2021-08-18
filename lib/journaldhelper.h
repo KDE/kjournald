@@ -9,6 +9,7 @@
 #include "kjournald_export.h"
 #include "localjournal.h"
 #include <QDateTime>
+#include <QDebugStateSaver>
 #include <QObject>
 #include <QVector>
 
@@ -84,5 +85,7 @@ public:
      */
     static QString mapField(Field field);
 };
+
+QDebug operator<<(QDebug debug, const JournaldHelper::BootInfo &bootInfo);
 
 #endif // JOURNALDHELPER_H
