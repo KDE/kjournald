@@ -31,6 +31,17 @@ ListView {
         }
     }
 
+    /**
+     * when new log entries are added, there is a delay between the update of the model (see rowsInserted) and that the
+     * visual delagates were created; this approach ensures that on any size change a check is performed if scolling
+     * needs to continue to the end
+     */
+    onContentHeightChanged: {
+        if (root.__followMode === true) {
+            root.positionViewAtEnd()
+        }
+    }
+
     readonly property date currentIndexDateTime: root.journalModel.datetime(root.indexAt(1, root.contentY + root.height / 2))
 
     signal textCopied(string text)
@@ -43,11 +54,6 @@ ListView {
         }
         function onModelReset() {
             root.currentIndex = root.journalModel.closestIndexForData(lastDateInFocus)
-        }
-        function onRowsInserted(parent, first, last) {
-            if (root.__followMode === true) {
-                root.positionViewAtEnd()
-            }
         }
     }
 
