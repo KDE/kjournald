@@ -37,8 +37,12 @@ public:
         TOWARDS_HEAD,
         TOWARDS_TAIL,
     };
+    enum class COLOR_TYPE {
+        LOG_ENTRY,
+        UNIT,
+    };
 
-    QColor unitColor(const QString &unit);
+    QColor unitColor(const QString &unit, COLOR_TYPE = COLOR_TYPE::LOG_ENTRY);
     /**
      * reapply all filters and seek journal at head
      * ensure to guard this call with beginModelReset and endModelReset
@@ -82,7 +86,7 @@ public:
     QStringList mBootFilter;
     std::optional<int> mPriorityFilter;
     bool mShowKernelMessages{false};
-    QHash<QString, QColor> mUnitToColorMap;
+    QHash<QString, std::pair<QColor, QColor>> mUnitToColorMap;
     bool mHeadCursorReached{false};
     bool mTailCursorReached{false};
     QAtomicInt mActiveFetchOperations{0};

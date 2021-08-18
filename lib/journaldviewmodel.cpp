@@ -18,13 +18,20 @@
 
 QRandomGenerator JournaldViewModelPrivate::sFixedSeedGenerator{1}; // used fixed seed to ensure that colors for same units never change
 
-QColor JournaldViewModelPrivate::unitColor(const QString &unit)
+QColor JournaldViewModelPrivate::unitColor(const QString &unit, COLOR_TYPE colorType)
 {
-    if (!mUnitToColorMap.contains(unit)) {
+    const auto key = unit;
+    if (!mUnitToColorMap.contains(key)) {
         int hue = sFixedSeedGenerator.bounded(255);
-        mUnitToColorMap[unit] = QColor::fromHsl(hue, 150, 220);
+        QColor logEntry = QColor::fromHsl(hue, 200, 220);
+        QColor unit = QColor::fromHsl(hue, 220, 150);
+        mUnitToColorMap[key] = std::make_pair(logEntry, unit);
     }
-    return mUnitToColorMap.value(unit);
+    if (colorType == COLOR_TYPE::LOG_ENTRY) {
+        return mUnitToColorMap.value(key).first;
+    } else {
+        return mUnitToColorMap.value(key).second;
+    }
 }
 
 void JournaldViewModelPrivate::resetJournal()
@@ -348,6 +355,7 @@ QHash<int, QByteArray> JournaldViewModel::roleNames() const
     roles[JournaldViewModel::SYSTEMD_UNIT] = "systemdunit";
     roles[JournaldViewModel::BOOT_ID] = "bootid";
     roles[JournaldViewModel::UNIT_COLOR] = "unitcolor";
+    roles[JournaldViewModel::UNIT_COLOR_DARK] = "unitcolordark";
     roles[JournaldViewModel::CURSOR] = "cursor";
     return roles;
 }
@@ -409,6 +417,8 @@ QVariant JournaldViewModel::data(const QModelIndex &index, int role) const
         return d->mLog.at(index.row()).mExe;
     case JournaldViewModel::Roles::UNIT_COLOR:
         return d->unitColor(d->mLog.at(index.row()).mSystemdUnit);
+    case JournaldViewModel::Roles::UNIT_COLOR_DARK:
+        return d->unitColor(d->mLog.at(index.row()).mSystemdUnit, JournaldViewModelPrivate::COLOR_TYPE::UNIT);
     case JournaldViewModel::Roles::CURSOR:
         return d->mLog.at(index.row()).mCursor;
     }

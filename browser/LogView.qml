@@ -108,7 +108,7 @@ ListView {
                 anchors.right: parent.right
                 width: unitInfo.width + 8
                 height: unitInfo.height
-                color: "#ffffff"
+                color: model.unitcolordark
                 Text {
                     id: unitInfo
                     anchors {
