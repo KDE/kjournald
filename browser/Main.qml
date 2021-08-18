@@ -72,9 +72,9 @@ ApplicationWindow {
             }
             ComboBox {
                 id: bootIdComboBox
-                width: 300
+                width: Math.max(300, implicitContentWidth)
                 model: g_bootModel
-                textRole: "displayshort"
+                textRole: g_config.timeDisplay === SessionConfig.UTC ? "displayshort_utc" : "displayshort_localtime"
                 valueRole: "bootid"
             }
             Label {

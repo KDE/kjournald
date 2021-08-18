@@ -67,7 +67,8 @@ QHash<int, QByteArray> BootModel::roleNames() const
     roles[BootModel::BOOT_ID] = "bootid";
     roles[BootModel::SINCE] = "since";
     roles[BootModel::UNTIL] = "until";
-    roles[BootModel::DISPLAY_SHORT] = "displayshort";
+    roles[BootModel::DISPLAY_SHORT_UTC] = "displayshort_utc";
+    roles[BootModel::DISPLAY_SHORT_LOCALTIME] = "displayshort_localtime";
     return roles;
 }
 
@@ -106,12 +107,10 @@ QVariant BootModel::data(const QModelIndex &index, int role) const
         return d->mBootInfo.at(index.row()).mSince;
     case BootModel::UNTIL:
         return d->mBootInfo.at(index.row()).mUntil;
-    case BootModel::DISPLAY_SHORT:
-        const QString sinceTime = d->mBootInfo.at(index.row()).mSince.toUTC().toString("hh:mm");
-        const QString sinceDate = d->mBootInfo.at(index.row()).mSince.toUTC().toString("yyyy-MM-dd");
-        const QString untilTime = d->mBootInfo.at(index.row()).mUntil.toUTC().toString("hh:mm");
-        const QString id = d->mBootInfo.at(index.row()).mBootId.left(10);
-        return QString("%1 %2-%3 [%4...]").arg(sinceDate, sinceTime, untilTime, id);
+    case BootModel::DISPLAY_SHORT_UTC:
+        return d->prettyPrintBoot(d->mBootInfo.at(index.row()), BootModelPrivate::TIME_FORMAT::UTC);
+    case BootModel::DISPLAY_SHORT_LOCALTIME:
+        return d->prettyPrintBoot(d->mBootInfo.at(index.row()), BootModelPrivate::TIME_FORMAT::LOCALTIME);
     }
 
     return QVariant();
