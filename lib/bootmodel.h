@@ -19,7 +19,7 @@ class BootModelPrivate;
  * This QAbstractItemModel derived class provides a model/view abstraction for information of all
  * boots provided by a given journald database.
  */
-class KJOURNALD_EXPORT BootModel : public QAbstractItemModel
+class KJOURNALD_EXPORT BootModel : public QAbstractListModel
 {
     Q_OBJECT
 public:

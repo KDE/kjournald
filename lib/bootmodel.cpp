@@ -12,7 +12,7 @@ BootModelPrivate::BootModelPrivate(std::unique_ptr<IJournal> journal)
 }
 
 BootModel::BootModel(QObject *parent)
-    : QAbstractItemModel(parent)
+    : QAbstractListModel(parent)
     , d(new BootModelPrivate(std::make_unique<LocalJournal>()))
 {
     beginResetModel();
@@ -21,7 +21,7 @@ BootModel::BootModel(QObject *parent)
 }
 
 BootModel::BootModel(const QString &journaldPath, QObject *parent)
-    : QAbstractItemModel(parent)
+    : QAbstractListModel(parent)
     , d(new BootModelPrivate(std::make_unique<LocalJournal>(journaldPath)))
 {
     beginResetModel();
@@ -30,7 +30,7 @@ BootModel::BootModel(const QString &journaldPath, QObject *parent)
 }
 
 BootModel::BootModel(std::unique_ptr<IJournal> journal, QObject *parent)
-    : QAbstractItemModel(parent)
+    : QAbstractListModel(parent)
     , d(new BootModelPrivate(std::move(journal)))
 {
     beginResetModel();
@@ -111,7 +111,7 @@ QVariant BootModel::data(const QModelIndex &index, int role) const
         const QString sinceDate = d->mBootInfo.at(index.row()).mSince.toUTC().toString("yyyy-MM-dd");
         const QString untilTime = d->mBootInfo.at(index.row()).mUntil.toUTC().toString("hh:mm");
         const QString id = d->mBootInfo.at(index.row()).mBootId.left(10);
-        return QString("%1 %2-%3 [%4...]").arg(sinceDate).arg(sinceTime).arg(untilTime).arg(id);
+        return QString("%1 %2-%3 [%4...]").arg(sinceDate, sinceTime, untilTime, id);
     }
 
     return QVariant();
