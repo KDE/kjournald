@@ -249,8 +249,8 @@ ApplicationWindow {
     JournaldViewModel {
         id: g_journalModel
         journalPath: g_config.sessionMode === SessionConfig.LOCALFOLDER || g_config.sessionMode === SessionConfig.REMOTE ? g_config.localJournalPath : undefined
-        systemdUnitFilter: g_unitModel.selectedEntries
-        exeFilter: g_executableModel.selectedEntries
+        systemdUnitFilter: g_config.filterCriterium === SessionConfig.SYSTEMD_UNIT ? g_unitModel.selectedEntries : []
+        exeFilter: g_config.filterCriterium === SessionConfig.EXECUTABLE ? g_executableModel.selectedEntries : []
         bootFilter: bootIdComboBox.currentValue
         priorityFilter: priorityComboBox.priority
     }
