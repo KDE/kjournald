@@ -61,6 +61,7 @@ void JournaldViewModelPrivate::resetJournal()
 
     // boot and priority filter shall always be enforced
     result = sd_journal_add_conjunction(mJournal->sdJournal());
+    Q_ASSERT(result >= 0);
 
     // see journal-fields documentation regarding list of valid transports
     QStringList kernelTransports{"audit", "driver", "kernel"};
@@ -75,6 +76,7 @@ void JournaldViewModelPrivate::resetJournal()
         }
     }
     result = sd_journal_add_disjunction(mJournal->sdJournal());
+    Q_ASSERT(result >= 0);
 
     // special case handling where for messages that are missing a _TRANSPORT entry and otherwise might be missing in log output
     if (!mShowKernelMessages) {
@@ -105,6 +107,7 @@ void JournaldViewModelPrivate::resetJournal()
         }
     }
 
+    mTailCursorReached = false;
     seekHeadAndMakeCurrent();
     // clear all data which are in limbo with new head
     mLog.clear();
@@ -192,7 +195,6 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
         size_t length;
         uint64_t time;
         int result{1};
-
         LogEntry entry;
         result = sd_journal_get_realtime_usec(mJournal->sdJournal(), &time);
         if (result == 0) {
@@ -265,11 +267,10 @@ void JournaldViewModelPrivate::seekHeadAndMakeCurrent()
         qCCritical(journald) << "Failed to seek head:" << strerror(-result);
         return;
     }
-    mHeadCursorReached = true;
-    mTailCursorReached = false;
     if (sd_journal_next(mJournal->sdJournal()) <= 0) {
-        mTailCursorReached = true;
+        qCWarning(journald) << "could not make head entry current";
     }
+    mHeadCursorReached = true;
 }
 
 void JournaldViewModelPrivate::seekTailAndMakeCurrent()
@@ -280,11 +281,10 @@ void JournaldViewModelPrivate::seekTailAndMakeCurrent()
         qCCritical(journald) << "Failed to seek head:" << strerror(-result);
         return;
     }
-    mHeadCursorReached = false;
-    mTailCursorReached = true;
     if (sd_journal_previous(mJournal->sdJournal()) <= 0) {
-        mHeadCursorReached = true;
+        qCWarning(journald) << "could not make tail entry current";
     }
+    mTailCursorReached = true;
 }
 
 JournaldViewModel::JournaldViewModel(QObject *parent)
