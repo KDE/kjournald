@@ -44,7 +44,29 @@ ListView {
 
     readonly property date currentIndexDateTime: root.journalModel.datetime(root.indexAt(1, root.contentY + root.height / 2))
 
+    /**
+     * Event is fired when log text is obtained for using in clipboard
+     */
     signal textCopied(string text)
+
+    /**
+     * Copy all log entries from the visible part of the view.
+     * The result of this copy operation will be provided with the @see textCopied signal
+     */
+    function copyTextFromView() {
+        var startIndex = root.indexAt(1, root.contentY)
+        var endIndex = root.indexAt(1, root.contentY + root.height);
+        if (endIndex < 0) {
+            endIndex = root.journalModel.rowCount()
+        }
+        var content = ""
+        for (var i = startIndex; i < endIndex; ++i) {
+            content += root.journalModel.formatTime(root.journalModel.data(root.journalModel.index(i, 0), JournaldViewModel.DATE), true) + " UTC "
+                        + root.journalModel.data(root.journalModel.index(i, 0), JournaldViewModel.SYSTEMD_UNIT) + " "
+                        + root.journalModel.data(root.journalModel.index(i, 0), JournaldViewModel.MESSAGE) + "\n"
+        }
+        root.textCopied(content)
+    }
 
     Connections {
         target: root.journalModel
@@ -163,18 +185,7 @@ ListView {
             }
         }
         if (event.key === Qt.Key_C && (event.modifiers & Qt.ControlModifier)) {
-            var startIndex = root.indexAt(1, root.contentY)
-            var endIndex = root.indexAt(1, root.contentY + root.height);
-            if (endIndex < 0) {
-                endIndex = root.journalModel.rowCount()
-            }
-            var content = ""
-            for (var i = startIndex; i < endIndex; ++i) {
-                content += root.journalModel.formatTime(root.journalModel.data(root.journalModel.index(i, 0), JournaldViewModel.DATE), true) + " UTC "
-                            + root.journalModel.data(root.journalModel.index(i, 0), JournaldViewModel.SYSTEMD_UNIT) + " "
-                            + root.journalModel.data(root.journalModel.index(i, 0), JournaldViewModel.MESSAGE) + "\n"
-            }
-            root.textCopied(content)
+            root.copyTextFromView()
         }
     }
 }

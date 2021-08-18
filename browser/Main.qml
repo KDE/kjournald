@@ -14,7 +14,9 @@ ApplicationWindow {
     height: 640
     visible: true
 
-    menuBar: TopMenuBar {}
+    menuBar: TopMenuBar {
+        onCopyViewToClipboard: logView.copyTextFromView()
+    }
 
     FileDialog {
         id: folderDialog

@@ -8,6 +8,7 @@ import QtQuick.Controls 2.15
 import systemd 1.0
 
 MenuBar {
+    signal copyViewToClipboard()
     Menu {
         title: "File"
         MenuItem {
@@ -54,7 +55,7 @@ MenuBar {
         MenuItem {
             text: "Copy current view"
             icon.name: "edit-copy"
-            onTriggered: copyViewToClipbaord()
+            onTriggered: copyViewToClipboard()
         }
     }
     Menu {
