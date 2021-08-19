@@ -7,6 +7,7 @@ import QtQuick 2.15
 import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Dialogs 1.0
+import QtQuick.Layouts 1.15
 import systemd 1.0
 
 ApplicationWindow {
@@ -18,73 +19,30 @@ ApplicationWindow {
         onCopyViewToClipboard: logView.copyTextFromView()
     }
 
-    FileDialog {
-        id: folderDialog
-        title: "Select journal folder"
-        selectFolder: true
-        onAccepted: {
-            g_config.localJournalPath = folderDialog.fileUrl
-            g_config.sessionMode = SessionConfig.LOCALFOLDER
-        }
-    }
-
-    FileDialog {
-        id: fileDialog
-        title: "Select journal file"
-        nameFilters: [ "Journal files (*.journal)", "All files (*)" ]
-        onAccepted: {
-            g_config.localJournalPath = fileDialog.fileUrl
-            g_config.sessionMode = SessionConfig.LOCALFOLDER
-        }
-    }
-
-    RemoteJournalConfigDialog {
-        id: remoteJournalDialog
-        onAccepted: {
-            console.log("set remote journal to: " + url + ":" + port)
-            g_config.remoteJournalPort = remoteJournalDialog.port
-            g_config.remoteJournalUrl = remoteJournalDialog.url
-            g_config.sessionMode = SessionConfig.REMOTE
-        }
-    }
-
-    Rectangle {
-        id: topMenu
-        height: 42
-        width: parent.width
-        z: 1 // put on top of list view
-        color: "#cccccc"
-
-        // forward page key events to listview
-        Keys.forwardTo: [ logView ]
-        focus: true
-
-        Row {
-            spacing: 20
+    header: ToolBar {
+        RowLayout {
             anchors {
                 fill: parent
-                leftMargin: 5
+                leftMargin: 10
             }
+            // forward page key events to listview
+            Keys.forwardTo: [ logView ]
+            focus: true
+
             Label {
-                anchors {
-                    verticalCenter: parent.verticalCenter
-                }
-                text: "Boot ID:"
-                font.pixelSize: 16
+                text: "Boot:"
             }
             ComboBox {
                 id: bootIdComboBox
-                width: Math.max(300, implicitContentWidth)
+                implicitWidth: Math.max(300, implicitContentWidth)
                 model: g_bootModel
                 textRole: g_config.timeDisplay === SessionConfig.UTC ? "displayshort_utc" : "displayshort_localtime"
                 valueRole: "bootid"
             }
+            ToolSeparator {}
+
             Label {
-                anchors {
-                    verticalCenter: parent.verticalCenter
-                }
                 text: "Priority:"
-                font.pixelSize: 16
             }
             ComboBox {
                 id: priorityComboBox
@@ -132,26 +90,52 @@ ApplicationWindow {
                     priorityComboBox.priority = priorityModel.get(currentIndex).value
                 }
             }
+            ToolSeparator {}
+
             Label {
-                anchors {
-                    verticalCenter: parent.verticalCenter
-                }
                 text: "Highlight:"
-                font.pixelSize: 16
             }
             TextField {
                 id: hightlightTextField
                 text: ""
             }
+
+            Item { Layout.fillWidth: true }
+        }
+    }
+
+    FileDialog {
+        id: folderDialog
+        title: "Select journal folder"
+        selectFolder: true
+        onAccepted: {
+            g_config.localJournalPath = folderDialog.fileUrl
+            g_config.sessionMode = SessionConfig.LOCALFOLDER
+        }
+    }
+
+    FileDialog {
+        id: fileDialog
+        title: "Select journal file"
+        nameFilters: [ "Journal files (*.journal)", "All files (*)" ]
+        onAccepted: {
+            g_config.localJournalPath = fileDialog.fileUrl
+            g_config.sessionMode = SessionConfig.LOCALFOLDER
+        }
+    }
+
+    RemoteJournalConfigDialog {
+        id: remoteJournalDialog
+        onAccepted: {
+            console.log("set remote journal to: " + url + ":" + port)
+            g_config.remoteJournalPort = remoteJournalDialog.port
+            g_config.remoteJournalUrl = remoteJournalDialog.url
+            g_config.sessionMode = SessionConfig.REMOTE
         }
     }
 
     Row {
-        anchors {
-            top: topMenu.bottom
-        }
-        width: parent.width
-        height: parent.height - topMenu.height
+        anchors.fill: parent
 
         // forward page key events to listview
         Keys.forwardTo: [ logView ]
