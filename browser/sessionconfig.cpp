@@ -7,6 +7,19 @@
 #include "loggingcategories.h"
 #include <QFileInfo>
 
+SessionConfig::SessionConfig(QObject *parent)
+    : QObject(parent)
+{
+    mTimeDisplayFormat = mSettings.value("browser/timedisplay").value<TimeDisplay>();
+    mFilterCriterium = mSettings.value("browser/filtercriterium").value<FilterCriterium>();
+}
+
+SessionConfig::~SessionConfig()
+{
+    qCDebug(journald()) << "Sync configuration";
+    mSettings.sync();
+}
+
 SessionConfig::Mode SessionConfig::mode() const
 {
     return mMode;
@@ -28,6 +41,7 @@ void SessionConfig::setTimeDisplay(SessionConfig::TimeDisplay format)
         return;
     }
     mTimeDisplayFormat = format;
+    mSettings.setValue("browser/timedisplay", QVariant::fromValue(static_cast<uint8_t>(format)));
     Q_EMIT timeDisplayChanged();
 }
 
@@ -42,6 +56,7 @@ void SessionConfig::setFilterCriterium(FilterCriterium criterium)
         return;
     }
     mFilterCriterium = criterium;
+    mSettings.setValue("browser/filtercriterium", QVariant::fromValue(static_cast<uint8_t>(criterium)));
     Q_EMIT filterCriteriumChanged();
 }
 

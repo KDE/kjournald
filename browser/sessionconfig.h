@@ -8,6 +8,7 @@
 
 #include "systemdjournalremote.h"
 #include <QObject>
+#include <QSettings>
 
 /**
  * @brief Central config for current session
@@ -33,18 +34,21 @@ public:
     };
     Q_ENUM(Mode);
 
-    enum class TimeDisplay {
+    enum class TimeDisplay : uint8_t {
         LOCALTIME, //!< display time as local time
         UTC, //!< display time as UTC time
         MONOTONIC_TIMESTAMP //!< display monotonic timestamp
     };
     Q_ENUM(TimeDisplay);
 
-    enum class FilterCriterium {
+    enum class FilterCriterium : uint8_t {
         SYSTEMD_UNIT, //!< filter by systemd unit to which the log belongs
         EXECUTABLE, //!< filter by executable name to which the log belogs
     };
     Q_ENUM(FilterCriterium);
+
+    explicit SessionConfig(QObject *parent = nullptr);
+    ~SessionConfig() override;
 
     void setMode(Mode mode);
 
@@ -88,6 +92,7 @@ private:
     TimeDisplay mTimeDisplayFormat{TimeDisplay::UTC};
     FilterCriterium mFilterCriterium{FilterCriterium::SYSTEMD_UNIT};
     std::unique_ptr<SystemdJournalRemote> mRemoteJournal;
+    QSettings mSettings;
 };
 
 #endif // SESSIONCONFIG_H
