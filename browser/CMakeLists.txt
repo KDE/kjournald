@@ -6,22 +6,22 @@ include_directories(
     ${CMAKE_BINARY_DIR}/lib
 )
 
-add_executable(journald-browser
+add_executable(kjournaldbrowser
     main.cpp
     clipboardproxy.cpp
     sessionconfig.cpp
     qml.qrc
 )
 
-target_compile_definitions(journald-browser
+target_compile_definitions(kjournaldbrowser
     PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 
-target_link_libraries(journald-browser
+target_link_libraries(kjournaldbrowser
 PUBLIC
     Qt5::Core
     Qt5::Quick
     kjournald
 )
-install(TARGETS journald-browser DESTINATION bin)
-install(PROGRAMS org.kde.journald-browser.desktop  DESTINATION ${KDE_INSTALL_APPDIR})
-install(FILES org.kde.journald-browser.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
+install(TARGETS kjournaldbrowser DESTINATION bin)
+install(PROGRAMS org.kde.kjournaldbrowser.desktop  DESTINATION ${KDE_INSTALL_APPDIR})
+install(FILES org.kde.kjournaldbrowser.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})

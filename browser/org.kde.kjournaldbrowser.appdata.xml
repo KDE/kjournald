@@ -4,7 +4,7 @@ SPDX-FileCopyrightText: none
 SPDX-License-Identifier: CC0-1.0
 -->
 <component type="desktop">
-  <id>org.kde.journald-browser.desktop</id>
+  <id>org.kde.kjournaldbrowser.desktop</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>LGPL-2.1-or-later OR MIT</project_license>
   <name>Journald Browser</name>
@@ -74,6 +74,6 @@ SPDX-License-Identifier: CC0-1.0
   <url type="donation">https://www.kde.org/community/donations/?app=kjournald&amp;source=appdata</url>
   <project_group>KDE</project_group>
   <provides>
-    <binary>journald-browser</binary>
+    <binary>kjournaldbrowser</binary>
   </provides>
 </component>
