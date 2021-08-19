@@ -72,8 +72,6 @@ SPDX-License-Identifier: CC0-1.0
   <url type="homepage">https://invent.kde.org/libraries/kjournald</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kjournald</url>
   <url type="donation">https://www.kde.org/community/donations/?app=kjournald&amp;source=appdata</url>
-  <screenshots>
-  </screenshots>
   <project_group>KDE</project_group>
   <provides>
     <binary>journald-browser</binary>
