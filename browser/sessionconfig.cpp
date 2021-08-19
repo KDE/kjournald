@@ -65,6 +65,20 @@ SessionConfig::FilterCriterium SessionConfig::filterCriterium() const
     return mFilterCriterium;
 }
 
+void SessionConfig::setViewMode(ViewMode mode)
+{
+    if (mode == mViewMode) {
+        return;
+    }
+    mViewMode = mode;
+    Q_EMIT viewModeChanged();
+}
+
+SessionConfig::ViewMode SessionConfig::viewMode() const
+{
+    return mViewMode;
+}
+
 void SessionConfig::setLocalJournalPath(const QString &path)
 {
     qCDebug(journald) << "Open path" << path;

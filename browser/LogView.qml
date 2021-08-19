@@ -24,7 +24,49 @@ ListView {
      */
     property bool snapToFollowMode: false
 
+    readonly property date currentIndexDateTime: root.journalModel.datetime(root.indexAt(1, root.contentY + root.height / 2))
+
+    /**
+     * @private
+     * indicates internal state of log viewer if it follows the end of the log
+     */
     property bool __followMode: false
+
+    /**
+     * if set to yes, then mouse interaction with view lead to text selection and not browsing
+     */
+    property bool textSelectionMode: false
+
+    /**
+     * Event is fired when log text is obtained for using in clipboard
+     */
+    signal textCopied(string text)
+
+    /**
+     * Copy all log entries from the visible part of the view.
+     * The result of this copy operation will be provided with the @see textCopied signal
+     */
+    function copyTextFromView(from, to) {
+        var startIndex = Math.min(from, to)
+        var endIndex = Math.max(from, to)
+        if (endIndex < 0) {
+            endIndex = root.journalModel.rowCount()
+        }
+        var content = ""
+        for (var i = startIndex; i <= endIndex; ++i) {
+            // TODO print date/time information with user selected time zone
+            content += root.journalModel.formatTime(root.journalModel.data(root.journalModel.index(i, 0), JournaldViewModel.DATETIME), true) + " UTC "
+                        + root.journalModel.data(root.journalModel.index(i, 0), JournaldViewModel.SYSTEMD_UNIT) + " "
+                        + root.journalModel.data(root.journalModel.index(i, 0), JournaldViewModel.MESSAGE) + "\n"
+        }
+        root.textCopied(content)
+    }
+
+    highlightMoveDuration: 10
+    model: root.journalModel
+    focus: true
+    interactive: textSelectionMode === false
+
     onContentYChanged: {
         if (snapToFollowMode === true) {
             root.__followMode = root.atYEnd
@@ -42,32 +84,6 @@ ListView {
         }
     }
 
-    readonly property date currentIndexDateTime: root.journalModel.datetime(root.indexAt(1, root.contentY + root.height / 2))
-
-    /**
-     * Event is fired when log text is obtained for using in clipboard
-     */
-    signal textCopied(string text)
-
-    /**
-     * Copy all log entries from the visible part of the view.
-     * The result of this copy operation will be provided with the @see textCopied signal
-     */
-    function copyTextFromView() {
-        var startIndex = root.indexAt(1, root.contentY)
-        var endIndex = root.indexAt(1, root.contentY + root.height);
-        if (endIndex < 0) {
-            endIndex = root.journalModel.rowCount()
-        }
-        var content = ""
-        for (var i = startIndex; i < endIndex; ++i) {
-            content += root.journalModel.formatTime(root.journalModel.data(root.journalModel.index(i, 0), JournaldViewModel.DATETIME), true) + " UTC "
-                        + root.journalModel.data(root.journalModel.index(i, 0), JournaldViewModel.SYSTEMD_UNIT) + " "
-                        + root.journalModel.data(root.journalModel.index(i, 0), JournaldViewModel.MESSAGE) + "\n"
-        }
-        root.textCopied(content)
-    }
-
     Connections {
         target: root.journalModel
         property date lastDateInFocus
@@ -79,15 +95,19 @@ ListView {
         }
     }
 
-    highlightMoveDuration: 10
-    model: root.journalModel
-    focus: true
     Component.onCompleted: {
         forceActiveFocus()
     }
     delegate: Rectangle
     {
-        color: model.unitcolor
+        color: {
+            if (textSelectionHandler.selectionActive
+                && model.index >= Math.min(textSelectionHandler.startIndex, textSelectionHandler.temporaryEndIndex)
+                && model.index <= Math.max(textSelectionHandler.startIndex, textSelectionHandler.temporaryEndIndex)) {
+                return "#cccccc"
+            }
+            return model.unitcolor
+        }
         width: root.width
         height: messageText.height
         LogLine {
@@ -142,6 +162,30 @@ ListView {
     ScrollBar.vertical: ScrollBar {
         policy: ScrollBar.AlwaysOn
         active: ScrollBar.AlwaysOn
+    }
+
+    MouseArea {
+        id: textSelectionHandler
+        property bool selectionActive
+        property int startIndex: 0
+        property int temporaryEndIndex: 0 // current mouse position's index
+        anchors.fill: parent
+        enabled: textSelectionMode === true
+        onPressed: {
+            startIndex = root.indexAt(mouseX, mouseY + root.contentY - root.originY)
+            temporaryEndIndex = startIndex
+            selectionActive = true
+        }
+        onPositionChanged: {
+            temporaryEndIndex = root.indexAt(mouseX, mouseY + root.contentY - root.originY)
+        }
+        onReleased: {
+            copyTextFromView(startIndex, root.indexAt(mouseX, mouseY + root.contentY - root.originY))
+            selectionActive = false
+        }
+        onCanceled: {
+            selectionActive = false
+        }
     }
 
     Keys.onPressed: {
@@ -201,7 +245,7 @@ ListView {
             }
         }
         if (event.key === Qt.Key_C && (event.modifiers & Qt.ControlModifier)) {
-            root.copyTextFromView()
+            root.copyTextFromView(root.indexAt(1, root.contentY), root.indexAt(1, root.contentY + root.height))
         }
     }
 }

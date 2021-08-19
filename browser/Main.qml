@@ -100,6 +100,26 @@ ApplicationWindow {
                 text: ""
             }
 
+            ToolSeparator {}
+            ToolButton {
+                text: "Browse"
+                icon.name: "transform-browse"
+                checkable: true
+                checked: g_config.viewMode === SessionConfig.BROWSE
+                onClicked: {
+                    g_config.viewMode = SessionConfig.BROWSE
+                }
+            }
+            ToolButton {
+                text: "Select"
+                icon.name: "edit-select-text"
+                checkable: true
+                checked: g_config.viewMode === SessionConfig.SELECT
+                onClicked: {
+                    g_config.viewMode = SessionConfig.SELECT
+                }
+            }
+
             Item { Layout.fillWidth: true }
         }
     }
@@ -218,6 +238,7 @@ ApplicationWindow {
                 anchors.fill: parent
                 journalModel: g_journalModel
                 snapToFollowMode: true
+                textSelectionMode: g_config.viewMode === SessionConfig.SELECT
                 visible: count > 0
                 onTextCopied: {
                     clipboard.setText(text)
