@@ -15,6 +15,13 @@ include(FeatureSummary)
 include(GenerateExportHeader)
 include(CMakePackageConfigHelpers)
 
+add_definitions(
+    -DQT_DISABLE_DEPRECATED_BEFORE=0x050e00
+    -DQT_DEPRECATED_WARNINGS_SINCE=0x060000
+    -DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055600
+    -DKF_DEPRECATED_WARNINGS_SINCE=0x060000
+)
+
 find_package(ECM 5.44.0 NO_MODULE)
 set_package_properties(ECM PROPERTIES
     TYPE REQUIRED
