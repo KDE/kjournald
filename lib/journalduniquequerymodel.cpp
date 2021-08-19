@@ -92,6 +92,7 @@ void JournaldUniqueQueryModelPrivate::runQuery()
         if (dataStr.endsWith(QLatin1String("\u0002"))) {
             dataStr = dataStr.left(dataStr.length() - QString(QLatin1String("\u0002")).length());
         }
+        dataStr = JournaldHelper::cleanupString(dataStr);
         dataList << std::pair<QString, bool>{dataStr, true};
     }
 

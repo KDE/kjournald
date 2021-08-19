@@ -157,7 +157,25 @@ QString JournaldHelper::mapField(Field field)
 
 QString JournaldHelper::cleanupString(const QString &string)
 {
-    return string;
+    QString cleaned;
+    cleaned.reserve(string.size());
+    int i = 0;
+    while (i < string.size()) {
+        if (i + 3 >= string.size() || string.at(i) != QLatin1Char('\\') || string.at(i + 1) != QLatin1Char('x')) {
+            cleaned.append(string.at(i));
+            ++i;
+            continue;
+        } else {
+            // handle ascii escape sequence, eg. "\x2d" for "-"
+            bool ok;
+            auto character = QChar::fromLatin1(string.midRef(i + 2, 2).toUInt(&ok, 16));
+            Q_ASSERT(ok);
+            cleaned.append(character);
+            i += 4;
+            continue;
+        }
+    }
+    return cleaned;
 }
 
 QDebug operator<<(QDebug debug, const JournaldHelper::BootInfo &bootInfo)

@@ -4,6 +4,7 @@
 */
 
 #include "journaldviewmodel.h"
+#include "journaldhelper.h"
 #include "journaldviewmodel_p.h"
 #include "localjournal.h"
 #include "loggingcategories.h"
@@ -223,7 +224,7 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
         }
         result = sd_journal_get_data(mJournal->sdJournal(), "_SYSTEMD_UNIT", (const void **)&data, &length);
         if (result == 0) {
-            entry.mSystemdUnit = QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1);
+            entry.mSystemdUnit = JournaldHelper::cleanupString(QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1));
         }
         result = sd_journal_get_data(mJournal->sdJournal(), "_BOOT_ID", (const void **)&data, &length);
         if (result == 0) {
