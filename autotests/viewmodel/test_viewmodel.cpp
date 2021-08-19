@@ -61,7 +61,7 @@ void TestViewModel::rowAccess()
                                         5}};
 
     for (int i = 0; i < expectedData.size(); ++i) {
-        QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::DATE).toDateTime(), expectedData.at(i).mDate);
+        QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::DATETIME).toDateTime(), expectedData.at(i).mDate);
         QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::MONOTONIC_TIMESTAMP), expectedData.at(i).mMonotonicTimestamp);
         QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::MESSAGE_ID), expectedData.at(i).mId);
         QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::MESSAGE), expectedData.at(i).mMessage);
@@ -177,8 +177,8 @@ void TestViewModel::closestIndexForDateComputation()
     QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
     QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
 
-    QDateTime firstLogEntryDateTime = model.data(model.index(0, 0), JournaldViewModel::DATE).toDateTime();
-    QDateTime lastLogEntryDateTime = model.data(model.index(model.rowCount() - 1, 0), JournaldViewModel::DATE).toDateTime();
+    QDateTime firstLogEntryDateTime = model.data(model.index(0, 0), JournaldViewModel::DATETIME).toDateTime();
+    QDateTime lastLogEntryDateTime = model.data(model.index(model.rowCount() - 1, 0), JournaldViewModel::DATETIME).toDateTime();
 
     // check for first row in model
     QCOMPARE(model.closestIndexForData(firstLogEntryDateTime), 0);

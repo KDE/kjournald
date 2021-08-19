@@ -348,6 +348,7 @@ QHash<int, QByteArray> JournaldViewModel::roleNames() const
 {
     QHash<int, QByteArray> roles;
     roles[JournaldViewModel::DATE] = "date";
+    roles[JournaldViewModel::DATETIME] = "datetime";
     roles[JournaldViewModel::MONOTONIC_TIMESTAMP] = "monotonictimestamp";
     roles[JournaldViewModel::MESSAGE_ID] = "id";
     roles[JournaldViewModel::MESSAGE] = "message";
@@ -404,6 +405,8 @@ QVariant JournaldViewModel::data(const QModelIndex &index, int role) const
     case JournaldViewModel::Roles::MESSAGE_ID:
         return QString(d->mLog.at(index.row()).mId);
     case JournaldViewModel::Roles::DATE:
+        return d->mLog.at(index.row()).mDate.date();
+    case JournaldViewModel::Roles::DATETIME:
         return d->mLog.at(index.row()).mDate;
     case JournaldViewModel::Roles::MONOTONIC_TIMESTAMP:
         return d->mLog.at(index.row()).mMonotonicTimestamp;

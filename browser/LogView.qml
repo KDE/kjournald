@@ -61,7 +61,7 @@ ListView {
         }
         var content = ""
         for (var i = startIndex; i < endIndex; ++i) {
-            content += root.journalModel.formatTime(root.journalModel.data(root.journalModel.index(i, 0), JournaldViewModel.DATE), true) + " UTC "
+            content += root.journalModel.formatTime(root.journalModel.data(root.journalModel.index(i, 0), JournaldViewModel.DATETIME), true) + " UTC "
                         + root.journalModel.data(root.journalModel.index(i, 0), JournaldViewModel.SYSTEMD_UNIT) + " "
                         + root.journalModel.data(root.journalModel.index(i, 0), JournaldViewModel.MESSAGE) + "\n"
         }
@@ -97,7 +97,7 @@ ListView {
                 right: parent.right
             }
             index: model.index
-            date: model.date
+            date: model.datetime
             monotonicTimestamp: model.monotonictimestamp
             priority: model.priority
             message: model.message
@@ -120,14 +120,30 @@ ListView {
             }
         }
     }
-    ScrollBar.vertical: ScrollBar {
-        policy: ScrollBar.AlwaysOn
-        active: ScrollBar.AlwaysOn
-    }
     TextMetrics {
         id: messageIdMetrics
         text: "Example Log message"
     }
+
+    // separate log by days
+    section.property: "date"
+    section.criteria: ViewSection.FullString
+    section.delegate: Rectangle {
+        id: sectionContainer
+        width: parent.width
+        height: dateSectionText.height
+        Text {
+            id: dateSectionText
+            text: Qt.formatDate(section, "dddd, yyyy-MM-dd")
+            font.pixelSize: 20
+        }
+    }
+
+    ScrollBar.vertical: ScrollBar {
+        policy: ScrollBar.AlwaysOn
+        active: ScrollBar.AlwaysOn
+    }
+
     Keys.onPressed: {
         var currentIndex = root.indexAt(1, root.contentY + 1) // 1 pixel right and down to really get the first item in view
         var scrollIndexSkip = Math.floor(0.9 * root.height / 30) // hard-coded estimate of one line log height
