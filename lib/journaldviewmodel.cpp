@@ -12,6 +12,7 @@
 #include <QDir>
 #include <QMutex>
 #include <QRandomGenerator>
+#include <QTextDecoder>
 #include <QThread>
 #include <algorithm>
 #include <iterator>
@@ -214,27 +215,27 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
         }
         result = sd_journal_get_data(mJournal->sdJournal(), "MESSAGE", (const void **)&data, &length);
         if (result == 0) {
-            entry.mMessage = QString::fromUtf8((const char *)data, length).section(QChar::fromLatin1('='), 1);
+            entry.mMessage = QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1);
         }
         result = sd_journal_get_data(mJournal->sdJournal(), "MESSAGE_ID", (const void **)&data, &length);
         if (result == 0) {
-            entry.mId = QString::fromUtf8((const char *)data, length).section(QChar::fromLatin1('='), 1);
+            entry.mId = QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1);
         }
         result = sd_journal_get_data(mJournal->sdJournal(), "_SYSTEMD_UNIT", (const void **)&data, &length);
         if (result == 0) {
-            entry.mSystemdUnit = QString::fromUtf8((const char *)data, length).section(QChar::fromLatin1('='), 1);
+            entry.mSystemdUnit = QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1);
         }
         result = sd_journal_get_data(mJournal->sdJournal(), "_BOOT_ID", (const void **)&data, &length);
         if (result == 0) {
-            entry.mBootId = QString::fromUtf8((const char *)data, length).section(QChar::fromLatin1('='), 1);
+            entry.mBootId = QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1);
         }
         result = sd_journal_get_data(mJournal->sdJournal(), "_EXE", (const void **)&data, &length);
         if (result == 0) {
-            entry.mExe = QString::fromUtf8((const char *)data, length).section(QChar::fromLatin1('='), 1);
+            entry.mExe = QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1);
         }
         result = sd_journal_get_data(mJournal->sdJournal(), "PRIORITY", (const void **)&data, &length);
         if (result == 0) {
-            entry.mPriority = QString::fromUtf8((const char *)data, length).section(QChar::fromLatin1('='), 1).toInt();
+            entry.mPriority = QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1).toInt();
         }
         result = sd_journal_get_cursor(mJournal->sdJournal(), &data);
         if (result == 0) {
