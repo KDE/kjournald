@@ -53,14 +53,14 @@ bool JournaldExportReader::readNext()
 
     mCurrentEntry.clear();
     while (!mDevice->atEnd()) {
-        QString line = mDevice->readLine().trimmed();
+        QString line = QString::fromLocal8Bit(mDevice->readLine().trimmed());
         // empty line = beginning of new log entry
         if (line.isEmpty()) {
             break; // found break in log entry
         }
 
         // if line does not contain "=" then switch to binary reading mode
-        int separatorIndex = line.indexOf('=');
+        int separatorIndex = line.indexOf(QLatin1Char('='));
         if (separatorIndex > 0) {
             mCurrentEntry[line.left(separatorIndex)] = line.right(line.length() - separatorIndex - 1).trimmed();
         } else {
@@ -73,7 +73,7 @@ bool JournaldExportReader::readNext()
             if (bytes != 8) {
                 qCWarning(journald()) << "Journal entry read that has unexpected number of bytes (8 bytes expected)" << bytes;
             }
-            mCurrentEntry[fieldId] = mDevice->read(le64toh(size.uint64));
+            mCurrentEntry[fieldId] = QString::fromLocal8Bit(mDevice->read(le64toh(size.uint64)));
             // read line break after binary content, such that reader points to next line
             mDevice->read(1);
         }

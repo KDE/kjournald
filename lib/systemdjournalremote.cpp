@@ -33,7 +33,7 @@ bool SystemdJournalRemotePrivate::sanityCheckForSystemdJournalRemoveExec() const
 
 QString SystemdJournalRemotePrivate::journalFile() const
 {
-    return mTemporyJournalDir.path() + "/" + "remote.journal";
+    return mTemporyJournalDir.path() + QLatin1String("/remote.journal");
 }
 
 // TODO additional access can easily be implemented by using systemd-journal-remote CLI:
@@ -51,7 +51,7 @@ SystemdJournalRemote::SystemdJournalRemote(const QString &filePath)
     if (!QFile::exists(filePath)) {
         qCCritical(journald()) << "Provided export journal file format does not exists, no journal created" << filePath;
     }
-    if (!filePath.endsWith("export")) {
+    if (!filePath.endsWith(QLatin1String("export"))) {
         qCWarning(journald()) << "Provided export file has uncommon file ending that is not \".export\":" << filePath;
     }
 
@@ -60,7 +60,7 @@ SystemdJournalRemote::SystemdJournalRemote(const QString &filePath)
     d->mJournalRemoteProcess.setProcessChannelMode(QProcess::ForwardedChannels);
     d->sanityCheckForSystemdJournalRemoveExec();
     // command structure: systemd-journal-remote --output=foo.journal foo.export
-    d->mJournalRemoteProcess.start(d->mSystemdJournalRemoteExec, QStringList() << "--output=" + d->journalFile() << filePath);
+    d->mJournalRemoteProcess.start(d->mSystemdJournalRemoteExec, QStringList() << QLatin1String("--output=") + d->journalFile() << filePath);
     d->mJournalRemoteProcess.waitForStarted();
 
     connect(&d->mTemporaryJournalDirWatcher,
@@ -95,7 +95,7 @@ void SystemdJournalRemote::handleJournalFileCreated(const QString &path)
 SystemdJournalRemote::SystemdJournalRemote(const QString &url, const QString &port)
     : d(new SystemdJournalRemotePrivate)
 {
-    if (!(url.startsWith("https://") || url.startsWith("http://"))) {
+    if (!(url.startsWith(QLatin1String("https://")) || url.startsWith(QLatin1String("http://")))) {
         qCWarning(journald()) << "URL seems not begin a valid URL, no http/https prefix:" << url;
     }
     d->mTemporaryJournalDirWatcher.addPath(d->mTemporyJournalDir.path());
@@ -103,7 +103,8 @@ SystemdJournalRemote::SystemdJournalRemote(const QString &url, const QString &po
     d->sanityCheckForSystemdJournalRemoveExec();
     // command structure /lib/systemd/systemd-journal-remote --url http://127.0.0.1 -o /tmp/asdf.journal --split-mode=none
     d->mJournalRemoteProcess.start(d->mSystemdJournalRemoteExec,
-                                   QStringList() << "--output=" + d->journalFile() << "--url=" + url + ':' + port << "--split-mode=none");
+                                   QStringList() << QLatin1String("--output=") + d->journalFile() << QLatin1String("--url=") + url + QLatin1Char(':') + port
+                                                 << QLatin1String("--split-mode=none"));
     d->mJournalRemoteProcess.waitForStarted();
 
     connect(&d->mTemporaryJournalDirWatcher,

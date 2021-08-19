@@ -15,7 +15,7 @@ LocalJournalPrivate::LocalJournalPrivate()
     if (file.open(QIODevice::ReadOnly | QFile::Text)) {
         QTextStream stream(&file);
         // example value: "918581c5-a27a-4ac6-9f37-c160fd20d1b5"
-        mCurrentBootId = stream.readAll().trimmed().remove('-');
+        mCurrentBootId = stream.readAll().trimmed().remove(QLatin1Char('-'));
     } else {
         qCWarning(journald) << "Could not obtain ID of current boot";
     }

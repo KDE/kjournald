@@ -24,7 +24,7 @@ public:
     QTemporaryDir mTemporyJournalDir;
     QFileSystemWatcher mTemporaryJournalDirWatcher;
     QProcess mJournalRemoteProcess;
-    const QString mSystemdJournalRemoteExec = "/lib/systemd/systemd-journal-remote";
+    const QString mSystemdJournalRemoteExec = QLatin1String("/lib/systemd/systemd-journal-remote");
 };
 
 #endif

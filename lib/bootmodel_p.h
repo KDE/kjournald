@@ -35,20 +35,20 @@ QString BootModelPrivate::prettyPrintBoot(const BootInfo &bootInfo, TIME_FORMAT 
     QString untilDate;
 
     if (format == TIME_FORMAT::UTC) {
-        sinceTime = bootInfo.mSince.toUTC().toString("hh:mm");
-        sinceDate = bootInfo.mSince.toUTC().toString("yyyy-MM-dd");
-        untilTime = bootInfo.mUntil.toUTC().toString("hh:mm");
-        untilDate = bootInfo.mUntil.toUTC().toString("yyyy-MM-dd");
+        sinceTime = bootInfo.mSince.toUTC().toString(QLatin1String("hh:mm"));
+        sinceDate = bootInfo.mSince.toUTC().toString(QLatin1String("yyyy-MM-dd"));
+        untilTime = bootInfo.mUntil.toUTC().toString(QLatin1String("hh:mm"));
+        untilDate = bootInfo.mUntil.toUTC().toString(QLatin1String("yyyy-MM-dd"));
     } else {
-        sinceTime = bootInfo.mSince.toString("hh:mm");
-        sinceDate = bootInfo.mSince.toString("yyyy-MM-dd");
-        untilTime = bootInfo.mUntil.toString("hh:mm");
-        untilDate = bootInfo.mUntil.toString("yyyy-MM-dd");
+        sinceTime = bootInfo.mSince.toString(QLatin1String("hh:mm"));
+        sinceDate = bootInfo.mSince.toString(QLatin1String("yyyy-MM-dd"));
+        untilTime = bootInfo.mUntil.toString(QLatin1String("hh:mm"));
+        untilDate = bootInfo.mUntil.toString(QLatin1String("yyyy-MM-dd"));
     }
     if (sinceDate == untilDate) {
-        return QString("%1 %2-%3 [%4...]").arg(sinceDate, sinceTime, untilTime, id);
+        return QString(QLatin1String("%1 %2-%3 [%4...]")).arg(sinceDate, sinceTime, untilTime, id);
     } else {
-        return QString("%1 %2-%3 %4 [%5...]").arg(sinceDate, sinceTime, untilDate, untilTime, id);
+        return QString(QLatin1String("%1 %2-%3 %4 [%5...]")).arg(sinceDate, sinceTime, untilDate, untilTime, id);
     }
 }
 

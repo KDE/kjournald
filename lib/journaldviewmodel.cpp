@@ -51,7 +51,7 @@ void JournaldViewModelPrivate::resetJournal()
     // AND (boot_1 OR boot...) AND (priority_1 OR prio...) AND ((?kernel-messages) OR (non-kernel-tranport) AND (unit_1 OR unit_2 OR unit...))
     // filter boots
     for (const QString &boot : qAsConst(mBootFilter)) {
-        QString filterExpression = "_BOOT_ID=" + boot;
+        QString filterExpression = QLatin1String("_BOOT_ID=") + boot;
         result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
         if (result < 0) {
             qCCritical(journald) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
@@ -59,7 +59,7 @@ void JournaldViewModelPrivate::resetJournal()
     }
     if (mPriorityFilter.has_value()) {
         for (int i = 0; i <= mPriorityFilter; ++i) {
-            QString filterExpression = "PRIORITY=" + QString::number(i);
+            QString filterExpression = QLatin1String("PRIORITY=") + QString::number(i);
             result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
             if (result < 0) {
                 qCCritical(journald()) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
@@ -72,11 +72,11 @@ void JournaldViewModelPrivate::resetJournal()
     Q_ASSERT(result >= 0);
 
     // see journal-fields documentation regarding list of valid transports
-    QStringList kernelTransports{"audit", "driver", "kernel"};
-    QStringList nonKernelTransports{"syslog", "journal", "stdout"};
+    QStringList kernelTransports{QLatin1String("audit"), QLatin1String("driver"), QLatin1String("kernel")};
+    QStringList nonKernelTransports{QLatin1String("syslog"), QLatin1String("journal"), QLatin1String("stdout")};
     if (mShowKernelMessages) {
         for (const QString &transport : kernelTransports) {
-            QString filterExpression = "_TRANSPORT=" + transport;
+            QString filterExpression = QLatin1String("_TRANSPORT=") + transport;
             result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
             if (result < 0) {
                 qCCritical(journald) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
@@ -89,7 +89,7 @@ void JournaldViewModelPrivate::resetJournal()
     // special case handling where for messages that are missing a _TRANSPORT entry and otherwise might be missing in log output
     if (!mShowKernelMessages) {
         for (const QString &transport : nonKernelTransports) {
-            QString filterExpression = "_TRANSPORT=" + transport;
+            QString filterExpression = QLatin1String("_TRANSPORT=") + transport;
             result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
             if (result < 0) {
                 qCCritical(journald) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
@@ -99,7 +99,7 @@ void JournaldViewModelPrivate::resetJournal()
 
     // filter units
     for (const QString &unit : qAsConst(mSystemdUnitFilter)) {
-        QString filterExpression = "_SYSTEMD_UNIT=" + unit;
+        QString filterExpression = QLatin1String("_SYSTEMD_UNIT=") + unit;
         result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
         if (result < 0) {
             qCCritical(journald) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
@@ -108,7 +108,7 @@ void JournaldViewModelPrivate::resetJournal()
 
     // filter executable
     for (const QString &executable : qAsConst(mExeFilter)) {
-        QString filterExpression = "_EXE=" + executable;
+        QString filterExpression = QLatin1String("_EXE=") + executable;
         result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
         if (result < 0) {
             qCCritical(journald) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
@@ -402,7 +402,12 @@ QVariant JournaldViewModel::data(const QModelIndex &index, int role) const
     case Qt::DisplayRole:
         Q_FALLTHROUGH();
     case JournaldViewModel::Roles::MESSAGE:
-        return QString(d->mLog.at(index.row()).mMessage).remove("\u001B[96m").remove("\u001B[0m").remove("\u001B[93m").remove("\u001B[31m");
+        // TODO add handling for arbitrary color codes
+        return QString(d->mLog.at(index.row()).mMessage)
+            .remove(QLatin1String("\u001B[96m"))
+            .remove(QLatin1String("\u001B[0m"))
+            .remove(QLatin1String("\u001B[93m"))
+            .remove(QLatin1String("\u001B[31m"));
     case JournaldViewModel::Roles::MESSAGE_ID:
         return QString(d->mLog.at(index.row()).mId);
     case JournaldViewModel::Roles::DATE:
@@ -612,8 +617,8 @@ int JournaldViewModel::closestIndexForData(const QDateTime &datetime)
 QString JournaldViewModel::formatTime(const QDateTime &datetime, bool utc) const
 {
     if (utc) {
-        return datetime.toUTC().time().toString("HH:mm:ss.zzz");
+        return datetime.toUTC().time().toString(QLatin1String("HH:mm:ss.zzz"));
     } else {
-        return datetime.time().toString("HH:mm:ss.zzz");
+        return datetime.time().toString(QLatin1String("HH:mm:ss.zzz"));
     }
 }

@@ -84,13 +84,13 @@ void JournaldUniqueQueryModelPrivate::runQuery()
     const int fieldLength = mFieldString.length() + 1;
     SD_JOURNAL_FOREACH_UNIQUE(mJournal, data, length)
     {
-        QString dataStr = static_cast<const char *>(data);
+        QString dataStr = QString::fromLocal8Bit(static_cast<const char *>(data));
         dataStr = dataStr.remove(0, fieldLength);
-        if (dataStr.endsWith("\u0001")) {
-            dataStr = dataStr.left(dataStr.length() - QString("\u0001").length());
+        if (dataStr.endsWith(QLatin1String("\u0001"))) {
+            dataStr = dataStr.left(dataStr.length() - QString(QLatin1String("\u0001")).length());
         }
-        if (dataStr.endsWith("\u0002")) {
-            dataStr = dataStr.left(dataStr.length() - QString("\u0002").length());
+        if (dataStr.endsWith(QLatin1String("\u0002"))) {
+            dataStr = dataStr.left(dataStr.length() - QString(QLatin1String("\u0002")).length());
         }
         dataList << std::pair<QString, bool>{dataStr, true};
     }

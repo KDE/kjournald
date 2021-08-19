@@ -36,15 +36,15 @@ void FieldFilterProxyModel::setSource(QObject *source)
 void FieldFilterProxyModel::setField(const QString &field)
 {
     JournaldViewModel::Roles role = mFilterRole;
-    if (field == "_SYSTEMD_UNIT") {
+    if (field == QLatin1String("_SYSTEMD_UNIT")) {
         role = JournaldViewModel::Roles::SYSTEMD_UNIT;
-    } else if (field == "MESSAGE") {
+    } else if (field == QLatin1String("MESSAGE")) {
         role = JournaldViewModel::Roles::MESSAGE;
-    } else if (field == "PRIORITY") {
+    } else if (field == QLatin1String("PRIORITY")) {
         role = JournaldViewModel::Roles::PRIORITY;
-    } else if (field == "_BOOT_ID") {
+    } else if (field == QLatin1String("_BOOT_ID")) {
         role = JournaldViewModel::Roles::BOOT_ID;
-    } else if (field == "DATE") {
+    } else if (field == QLatin1String("DATE")) {
         role = JournaldViewModel::Roles::DATE;
     }
     if (role == mFilterRole) {

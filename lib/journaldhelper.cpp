@@ -25,7 +25,7 @@ QVector<QString> JournaldHelper::queryUnique(const IJournal &journal, Field fiel
     const int fieldLength = fieldString.length() + 1;
     SD_JOURNAL_FOREACH_UNIQUE(journal.sdJournal(), data, length)
     {
-        QString dataStr = static_cast<const char *>(data);
+        QString dataStr = QString::fromLocal8Bit(static_cast<const char *>(data));
         dataList << dataStr.remove(0, fieldLength);
     }
     return dataList;
@@ -43,7 +43,7 @@ QVector<JournaldHelper::BootInfo> JournaldHelper::queryOrderedBootIds(const IJou
         uint64_t time{0};
 
         sd_journal_flush_matches(sdJournal);
-        QString filterExpression = "_BOOT_ID=" + id;
+        QString filterExpression = QLatin1String("_BOOT_ID=") + id;
         result = sd_journal_add_match(sdJournal, filterExpression.toStdString().c_str(), filterExpression.length());
         if (result < 0) {
             qCCritical(journald) << "Failed add filter:" << strerror(-result);
@@ -104,55 +104,60 @@ QString JournaldHelper::mapField(Field field)
     QString fieldString;
     switch (field) {
     case Field::MESSAGE:
-        fieldString = "MESSAGE";
+        fieldString = QLatin1String("MESSAGE");
         break;
     case Field::BOOT_ID:
-        fieldString = "_BOOT_ID";
+        fieldString = QLatin1String("_BOOT_ID");
         break;
     case Field::CODE_FILE:
-        fieldString = "CODE_FILE";
+        fieldString = QLatin1String("CODE_FILE");
         break;
     case Field::CODE_FUNC:
-        fieldString = "CODE_FUNC";
+        fieldString = QLatin1String("CODE_FUNC");
         break;
     case Field::CODE_LINE:
-        fieldString = "CODE_LINE";
+        fieldString = QLatin1String("CODE_LINE");
         break;
     case Field::PRIORITY:
-        fieldString = "PRIORITY";
+        fieldString = QLatin1String("PRIORITY");
         break;
     case Field::MESSAGE_ID:
-        fieldString = "MESSAGE_ID";
+        fieldString = QLatin1String("MESSAGE_ID");
         break;
     case Field::EXE:
-        fieldString = "_EXE";
+        fieldString = QLatin1String("_EXE");
         break;
     case Field::SYSTEMD_CGROUP:
-        fieldString = "_SYSTEMD_CGROUP";
+        fieldString = QLatin1String("_SYSTEMD_CGROUP");
         break;
     case Field::SYSTEMD_OWNER_UID:
-        fieldString = "_SYSTEMD_OWNER_UID";
+        fieldString = QLatin1String("_SYSTEMD_OWNER_UID");
         break;
     case Field::SYSTEMD_SESSION:
-        fieldString = "_SYSTEMD_SESSION";
+        fieldString = QLatin1String("_SYSTEMD_SESSION");
         break;
     case Field::SYSTEMD_SLICE:
-        fieldString = "_SYSTEMD_SLICE";
+        fieldString = QLatin1String("_SYSTEMD_SLICE");
         break;
     case Field::SYSTEMD_UNIT:
-        fieldString = "_SYSTEMD_UNIT";
+        fieldString = QLatin1String("_SYSTEMD_UNIT");
         break;
     case Field::SYSTEMD_USER_SLICE:
-        fieldString = "_SYSTEMD_USER_SLICE";
+        fieldString = QLatin1String("_SYSTEMD_USER_SLICE");
         break;
     case Field::SYSTEMD_USER_UNIT:
-        fieldString = "_SYSTEMD_USER_UNIT";
+        fieldString = QLatin1String("_SYSTEMD_USER_UNIT");
         break;
     case Field::TRANSPORT:
-        fieldString = "_TRANSPORT";
+        fieldString = QLatin1String("_TRANSPORT");
         break;
     }
     return fieldString;
+}
+
+QString JournaldHelper::cleanupString(const QString &string)
+{
+    return string;
 }
 
 QDebug operator<<(QDebug debug, const JournaldHelper::BootInfo &bootInfo)

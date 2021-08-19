@@ -84,6 +84,13 @@ public:
      * @return string representation of enum
      */
     static QString mapField(Field field);
+
+    /**
+     * @brief Cleanup typical decorations from strings as found in journald databases
+     * @param string the string to process
+     * @return cleaned string
+     */
+    static QString cleanupString(const QString &string);
 };
 
 QDebug operator<<(QDebug debug, const JournaldHelper::BootInfo &bootInfo);
