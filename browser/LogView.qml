@@ -169,7 +169,6 @@ ListView {
         property bool selectionActive
         property int startIndex: 0
         property int temporaryEndIndex: 0 // current mouse position's index
-        onTemporaryEndIndexChanged: console.log(temporaryEndIndex)
         anchors.fill: parent
         enabled: textSelectionMode === true
         onPressed: {
