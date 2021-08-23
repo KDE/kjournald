@@ -28,6 +28,7 @@ SPDX-License-Identifier: CC0-1.0
   <name xml:lang="sv">Journald-bläddrare</name>
   <name xml:lang="uk">Навігатор для Journald</name>
   <name xml:lang="x-test">xxJournald Browserxx</name>
+  <name xml:lang="zh-CN">Journald 浏览器</name>
   <summary>Browser for journald databases</summary>
   <summary xml:lang="ca">Navegador per a bases de dades de journald</summary>
   <summary xml:lang="ca-valencia">Navegador per a bases de dades de journald</summary>
@@ -48,6 +49,7 @@ SPDX-License-Identifier: CC0-1.0
   <summary xml:lang="sv">Bläddrare för journald-databaser</summary>
   <summary xml:lang="uk">Навігатор для баз даних journald</summary>
   <summary xml:lang="x-test">xxBrowser for journald databasesxx</summary>
+  <summary xml:lang="zh-CN">journald 数据库浏览器</summary>
   <description>
     <p>Journald-browser is a reference implementation of the kjournald library and provides a flexible tool to browse in local, remote and offline journald databases.</p>
     <p xml:lang="ca">El Navegador de Journald és una implementació de referència de la biblioteca kjournald i proporciona una eina flexible per a navegar per les bases de dades de journald locals, remotes i fora de línia.</p>
@@ -68,6 +70,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="sv">Journald-bläddraren är en referensimplementering av kjournald-biblioteket och tillhandahåller ett flexibelt verktyg för att bläddra i lokala databaser, fjärrdatabaser, och nedkopplade databaser.</p>
     <p xml:lang="uk">«Навігатор для Journald» — еталонна реалізація бібліотеки kjournald. Він надає у ваше розпорядження гнучкий інструмент для навігації локальними, віддаленими та автономними базами даних journald.</p>
     <p xml:lang="x-test">xxJournald-browser is a reference implementation of the kjournald library and provides a flexible tool to browse in local, remote and offline journald databases.xx</p>
+    <p xml:lang="zh-CN">Journald-browser 是 kjournald 程序库的参考实现程序，它提供了一套灵活浏览本机、远程和离线 journald 数据库的工具。</p>
   </description>
   <url type="homepage">https://invent.kde.org/libraries/kjournald</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kjournald</url>
