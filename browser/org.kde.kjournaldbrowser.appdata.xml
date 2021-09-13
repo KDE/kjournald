@@ -22,6 +22,7 @@ SPDX-License-Identifier: CC0-1.0
   <name xml:lang="it">Navigatore journald</name>
   <name xml:lang="ko">Journald 탐색기</name>
   <name xml:lang="nl">Browser van journald</name>
+  <name xml:lang="pl">Przeglądarka Journald</name>
   <name xml:lang="pt">Navegador do Journald</name>
   <name xml:lang="pt-BR">Navegador do journald</name>
   <name xml:lang="sk">Prehliadač Journald</name>
@@ -44,6 +45,7 @@ SPDX-License-Identifier: CC0-1.0
   <summary xml:lang="it">Navigatore per i database di journald</summary>
   <summary xml:lang="ko">journald 데이터베이스 탐색기</summary>
   <summary xml:lang="nl">Browser voor journald-databases</summary>
+  <summary xml:lang="pl">Przeglądarka dla baz danych journald</summary>
   <summary xml:lang="pt">Navegador das bases de dados do Journald</summary>
   <summary xml:lang="pt-BR">Navegador para os bancos de dados journald</summary>
   <summary xml:lang="sk">Prehliadať pre databázy Journald</summary>
@@ -67,6 +69,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="it">Journald-browser è un'implementazione di riferimento della libreria kjournald e fornisce uno strumento flessibile per navigare nei database journald locali, remoti e non in linea.</p>
     <p xml:lang="ko">Journald-browser는 kjournald 라이브러리의 참조 구현이며 로컬, 원격, 오프라인 journamd 데이터베이스를 탐색할 수 있는 유연한 도구입니다.</p>
     <p xml:lang="nl">Journald-browser is een referentie implementatie van de kjournald bibliotheek en biedt een flexibel hulpmiddel om te bladeren in lokale journald-databases of op afstand en offline.</p>
+    <p xml:lang="pl">Przeglądarka Journald jest wzorcową implementacją biblioteki kjournald i dostarcza elastycznego narzędzia do przeglądania baz danych journald lokalnych, zdalnych i odłączonych od sieci.</p>
     <p xml:lang="pt">O Journald-browser é uma implementação de referência da biblioteca 'kjournald' e oferece uma ferramenta flexível para navegar pelas bases de dados locais, remotas e arquivadas do 'journald'.</p>
     <p xml:lang="pt-BR">O Journald-browser é uma implementação de referência da biblioteca kjournald e fornece uma ferramenta flexível para navegar nos bancos de dados local, remoto e offline.</p>
     <p xml:lang="sl">Brskalnik journald je referenčna izvedba knjižnice kjournald in nudi prilagodljivo orodje za brskanje po lokalnih, oddaljenih in nepovezanih podatkovnih baza journald.</p>
