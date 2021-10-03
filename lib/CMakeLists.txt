@@ -33,7 +33,7 @@ target_link_libraries(kjournald
 PRIVATE
     Qt5::Core
     Qt5::Quick
-    ${SYSTEMD_LIBRARIES}
+    PkgConfig::SYSTEMD
 )
 set_property(TARGET kjournald APPEND PROPERTY COMPILE_DEFINITIONS QT_NO_CAST_FROM_ASCII QT_NO_CAST_TO_ASCII)
 target_include_directories(kjournald PUBLIC
