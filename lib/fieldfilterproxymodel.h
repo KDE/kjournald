@@ -21,7 +21,6 @@ class KJOURNALD_EXPORT FieldFilterProxyModel : public QSortFilterProxyModel, pub
     Q_PROPERTY(QObject *source READ source WRITE setSource)
 
     Q_PROPERTY(QString field WRITE setField)
-    Q_PROPERTY(QString filterString READ filterString WRITE setFilterString´)
 
 public:
     explicit FieldFilterProxyModel(QObject *parent = 0);

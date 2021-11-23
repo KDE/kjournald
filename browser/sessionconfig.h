@@ -86,7 +86,7 @@ public:
     ViewMode viewMode() const;
 
 Q_SIGNALS:
-    void modeChanged(Mode mode);
+    void modeChanged(SessionConfig::Mode mode);
     void localJournalPathChanged();
     void remoteJournalUrlChanged();
     void remoteJournalPortChanged();

@@ -230,7 +230,7 @@ bool JournaldUniqueQueryModel::setData(const QModelIndex &index, const QVariant 
 QStringList JournaldUniqueQueryModel::selectedEntries() const
 {
     QStringList entries;
-    for (const auto &entry : d->mEntries) {
+    for (const auto &entry : qAsConst(d->mEntries)) {
         if (entry.second == true) {
             entries << entry.first;
         }
