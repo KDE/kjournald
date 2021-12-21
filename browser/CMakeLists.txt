@@ -9,6 +9,7 @@ include_directories(
 add_executable(kjournaldbrowser
     main.cpp
     clipboardproxy.cpp
+    flattenedfiltercriteriaproxymodel.cpp
     sessionconfig.cpp
     qml.qrc
 )

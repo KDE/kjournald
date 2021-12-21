@@ -7,6 +7,8 @@ target_sources(kjournald PRIVATE
     bootmodel.cpp
     bootmodel.h
     bootmodel_p.h
+    colorizer.cpp
+    colorizer.h
     loggingcategories.cpp
     loggingcategories.h
     fieldfilterproxymodel.cpp
@@ -15,6 +17,9 @@ target_sources(kjournald PRIVATE
     localjournal.cpp
     localjournal.h
     localjournal_p.h
+    filtercriteriamodel.cpp
+    filtercriteriamodel.h
+    filtercriteriamodel_p.h
     journaldexportreader.cpp
     journaldexportreader.h
     journaldhelper.cpp

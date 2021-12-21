@@ -4,6 +4,7 @@
 */
 
 #include "journaldviewmodel.h"
+#include "colorizer.h"
 #include "journaldhelper.h"
 #include "journaldviewmodel_p.h"
 #include "localjournal.h"
@@ -17,24 +18,6 @@
 #include <QThread>
 #include <algorithm>
 #include <iterator>
-
-QRandomGenerator JournaldViewModelPrivate::sFixedSeedGenerator{1}; // used fixed seed to ensure that colors for same units never change
-
-QColor JournaldViewModelPrivate::unitColor(const QString &unit, COLOR_TYPE colorType)
-{
-    const auto key = unit;
-    if (!mUnitToColorMap.contains(key)) {
-        int hue = sFixedSeedGenerator.bounded(255);
-        QColor logEntry = QColor::fromHsl(hue, 200, 220);
-        QColor unit = QColor::fromHsl(hue, 220, 150);
-        mUnitToColorMap[key] = std::make_pair(logEntry, unit);
-    }
-    if (colorType == COLOR_TYPE::LOG_ENTRY) {
-        return mUnitToColorMap.value(key).first;
-    } else {
-        return mUnitToColorMap.value(key).second;
-    }
-}
 
 void JournaldViewModelPrivate::resetJournal()
 {
@@ -426,9 +409,9 @@ QVariant JournaldViewModel::data(const QModelIndex &index, int role) const
     case JournaldViewModel::Roles::EXE:
         return d->mLog.at(index.row()).mExe;
     case JournaldViewModel::Roles::UNIT_COLOR:
-        return d->unitColor(d->mLog.at(index.row()).mSystemdUnit);
+        return Colorizer::color(d->mLog.at(index.row()).mSystemdUnit, Colorizer::COLOR_TYPE::BACKGROUND);
     case JournaldViewModel::Roles::UNIT_COLOR_DARK:
-        return d->unitColor(d->mLog.at(index.row()).mSystemdUnit, JournaldViewModelPrivate::COLOR_TYPE::UNIT);
+        return Colorizer::color(d->mLog.at(index.row()).mSystemdUnit, Colorizer::COLOR_TYPE::FOREGROUND);
     case JournaldViewModel::Roles::CURSOR:
         return d->mLog.at(index.row()).mCursor;
     }
@@ -542,6 +525,7 @@ void JournaldViewModel::setExeFilter(const QStringList &exeFilter)
 
 void JournaldViewModel::setPriorityFilter(int priority)
 {
+    qCDebug(journald()) << "Set priority filter to:" << priority;
     if (d->mPriorityFilter.has_value() && d->mPriorityFilter.value() == priority) {
         return;
     }

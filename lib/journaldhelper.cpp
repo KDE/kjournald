@@ -188,7 +188,10 @@ QString JournaldHelper::cleanupString(const QString &string)
     cleaned.reserve(string.size());
     int i = 0;
     while (i < string.size()) {
-        if (i + 3 >= string.size() || string.at(i) != QLatin1Char('\\') || string.at(i + 1) != QLatin1Char('x')) {
+        if (string.at(i) == QLatin1Char('\u0001')) { // skip certain unicode characters
+            ++i;
+            continue;
+        } else if (i + 3 >= string.size() || string.at(i) != QLatin1Char('\\') || string.at(i + 1) != QLatin1Char('x')) {
             cleaned.append(string.at(i));
             ++i;
             continue;

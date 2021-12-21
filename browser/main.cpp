@@ -6,6 +6,8 @@
 #include "bootmodel.h"
 #include "clipboardproxy.h"
 #include "fieldfilterproxymodel.h"
+#include "filtercriteriamodel.h"
+#include "flattenedfiltercriteriaproxymodel.h"
 #include "journaldhelper.h"
 #include "journalduniquequerymodel.h"
 #include "journaldviewmodel.h"
@@ -31,6 +33,8 @@ int main(int argc, char *argv[])
     qmlRegisterType<JournaldUniqueQueryModel>("systemd", 1, 0, "JournaldUniqueQueryModel");
     qmlRegisterType<FieldFilterProxyModel>("systemd", 1, 0, "FieldFilterProxyModel");
     qmlRegisterType<ClipboardProxy>("systemd", 1, 0, "ClipboardProxy");
+    qmlRegisterType<FlattenedFilterCriteriaProxyModel>("systemd", 1, 0, "FlattenedFilterCriteriaProxyModel");
+    qmlRegisterUncreatableType<FilterCriteriaModel>("systemd", 1, 0, "FilterCriteriaModel", "Backend only object");
     qmlRegisterUncreatableType<BootModel>("systemd", 1, 0, "BootModel", "Backend only object");
     qmlRegisterUncreatableType<SessionConfig>("systemd", 1, 0, "SessionConfig", "Backend only object");
 
@@ -67,15 +71,18 @@ int main(int argc, char *argv[])
     });
     executableSortProxyModel.sort(0);
 
+    FilterCriteriaModel filterCriteriaModel;
+
     QObject::connect(&sessionConfig,
                      &SessionConfig::modeChanged,
                      &sessionConfig,
-                     [&sessionConfig, &bootModel, &unitModel, &executableModel](SessionConfig::Mode mode) {
+                     [&sessionConfig, &bootModel, &unitModel, &executableModel, &filterCriteriaModel](SessionConfig::Mode mode) {
                          switch (mode) {
                          case SessionConfig::Mode::SYSTEM:
                              bootModel.setSystemJournal();
                              unitModel.setSystemJournal();
                              executableModel.setSystemJournal();
+                             filterCriteriaModel.setSystemJournal();
                              break;
                          case SessionConfig::Mode::REMOTE:
                              // remote is handle like a local access
@@ -84,14 +91,19 @@ int main(int argc, char *argv[])
                              bootModel.setJournaldPath(sessionConfig.localJournalPath());
                              unitModel.setJournaldPath(sessionConfig.localJournalPath());
                              executableModel.setJournaldPath(sessionConfig.localJournalPath());
+                             filterCriteriaModel.setJournaldPath(sessionConfig.localJournalPath());
                              break;
                          }
                      });
-    QObject::connect(&sessionConfig, &SessionConfig::localJournalPathChanged, &sessionConfig, [&sessionConfig, &bootModel, &unitModel, &executableModel]() {
-        bootModel.setJournaldPath(sessionConfig.localJournalPath());
-        unitModel.setJournaldPath(sessionConfig.localJournalPath());
-        executableModel.setJournaldPath(sessionConfig.localJournalPath());
-    });
+    QObject::connect(&sessionConfig,
+                     &SessionConfig::localJournalPathChanged,
+                     &sessionConfig,
+                     [&sessionConfig, &bootModel, &unitModel, &executableModel, &filterCriteriaModel]() {
+                         bootModel.setJournaldPath(sessionConfig.localJournalPath());
+                         unitModel.setJournaldPath(sessionConfig.localJournalPath());
+                         executableModel.setJournaldPath(sessionConfig.localJournalPath());
+                         filterCriteriaModel.setJournaldPath(sessionConfig.localJournalPath());
+                     });
 
     if (parser.isSet(pathOption)) {
         const QString path = parser.value(pathOption);
@@ -119,6 +131,8 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("g_executableModel", &executableModel);
     engine.rootContext()->setContextProperty("g_executableSortProxyModel", &executableSortProxyModel);
     engine.rootContext()->setContextProperty("g_config", &sessionConfig);
+    engine.rootContext()->setContextProperty("g_filterModel", &filterCriteriaModel);
+
     engine.load(url);
 
     return app.exec();

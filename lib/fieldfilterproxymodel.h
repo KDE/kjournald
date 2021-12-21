@@ -19,7 +19,6 @@ class KJOURNALD_EXPORT FieldFilterProxyModel : public QSortFilterProxyModel, pub
 
     Q_PROPERTY(int count READ count NOTIFY countChanged)
     Q_PROPERTY(QObject *source READ source WRITE setSource)
-
     Q_PROPERTY(QString field WRITE setField)
 
 public:
