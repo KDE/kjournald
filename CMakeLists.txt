@@ -2,7 +2,7 @@
 # SPDX-FileCopyrightText: Andreas Cord-Landwehr <cordlandwehr@kde.org>
 
 project(kjournald LANGUAGES CXX)
-set(KJOURNALD_VERSION 0.0.3)
+set(KJOURNALD_VERSION 0.0.4)
 
 cmake_minimum_required(VERSION 3.16)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
