@@ -31,6 +31,33 @@ QVector<QString> JournaldHelper::queryUnique(const IJournal &journal, Field fiel
     return dataList;
 }
 
+QVector<QString> JournaldHelper::queryUnique(std::shared_ptr<IJournal> journal, Field field)
+{
+    if (!journal) {
+        return {};
+    }
+
+    QVector<QString> dataList;
+    const void *data;
+    size_t length;
+    int result;
+
+    std::string fieldString = mapField(field).toStdString();
+
+    result = sd_journal_query_unique(journal->sdJournal(), fieldString.c_str());
+    if (result < 0) {
+        qCritical() << "Failed to query journal:" << strerror(-result);
+        return dataList;
+    }
+    const int fieldLength = fieldString.length() + 1;
+    SD_JOURNAL_FOREACH_UNIQUE(journal->sdJournal(), data, length)
+    {
+        QString dataStr = QString::fromLocal8Bit(static_cast<const char *>(data));
+        dataList << dataStr.remove(0, fieldLength);
+    }
+    return dataList;
+}
+
 QVector<JournaldHelper::BootInfo> JournaldHelper::queryOrderedBootIds(const IJournal &journal)
 {
     QVector<JournaldHelper::BootInfo> boots;

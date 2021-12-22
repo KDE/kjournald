@@ -71,6 +71,11 @@ public:
     static QVector<QString> queryUnique(const IJournal &journal, Field field);
 
     /**
+     * @copydoc JournaldHelper::queryUnique
+     */
+    static QVector<QString> queryUnique(std::shared_ptr<IJournal> journal, Field field);
+
+    /**
      * @brief Query boot information for @p journal
      *
      * @return ordered list of boots (first is earliest boot in time)
