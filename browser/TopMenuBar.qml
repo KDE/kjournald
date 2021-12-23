@@ -90,7 +90,7 @@ MenuBar {
             }
         }
         Menu {
-            title: "Filter"
+            title: "Display"
 
             MenuItem {
                 text: "Systemd Unit"

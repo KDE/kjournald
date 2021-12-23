@@ -246,6 +246,8 @@ ApplicationWindow {
                 id: logView
                 anchors.fill: parent
                 journalModel: g_journalModel
+                displayRoleRight: g_config.filterCriterium === SessionConfig.SYSTEMD_UNIT ?
+                                      JournaldViewModel.SYSTEMD_UNIT : JournaldViewModel.EXE
                 snapToFollowMode: true
                 textSelectionMode: g_config.viewMode === SessionConfig.SELECT
                 visible: count > 0

@@ -339,6 +339,7 @@ QHash<int, QByteArray> JournaldViewModel::roleNames() const
     roles[JournaldViewModel::MESSAGE] = "message";
     roles[JournaldViewModel::PRIORITY] = "priority";
     roles[JournaldViewModel::SYSTEMD_UNIT] = "systemdunit";
+    roles[JournaldViewModel::EXE] = "exe";
     roles[JournaldViewModel::BOOT_ID] = "bootid";
     roles[JournaldViewModel::UNIT_COLOR] = "unitcolor";
     roles[JournaldViewModel::UNIT_COLOR_DARK] = "unitcolordark";

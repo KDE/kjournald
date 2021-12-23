@@ -24,6 +24,8 @@ ListView {
      */
     property bool snapToFollowMode: false
 
+    property int displayRoleRight: JournaldViewModel.SYSTEMD_UNIT
+
     readonly property date currentIndexDateTime: root.journalModel.datetime(root.indexAt(1, root.contentY + root.height / 2))
 
     /**
@@ -126,16 +128,22 @@ ListView {
 
             Rectangle {
                 anchors.right: parent.right
-                width: unitInfo.width + 8
-                height: unitInfo.height
+                width: groupInfo.width + 8
+                height: groupInfo.height
                 color: model.unitcolordark
                 Text {
-                    id: unitInfo
+                    id: groupInfo
                     anchors {
                         right: parent.right
                         rightMargin: 4
                     }
-                    text: model.systemdunit
+                    text: {
+                        switch (displayRoleRight) {
+                        case JournaldViewModel.SYSTEMD_UNIT: return model.systemdunit
+                        case JournaldViewModel.EXE: return model.exe
+                        }
+                        return ""
+                    }
                 }
             }
         }
