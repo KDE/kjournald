@@ -67,7 +67,7 @@ void TestFilterCriteriaModel::standaloneTestSystemdUnitSelectionOptions()
         QVERIFY(categoryIndex.isValid());
         QVERIFY(model.hasChildren(categoryIndex));
         // value from first position
-        QCOMPARE(model.data(model.index(0, 0, categoryIndex), FilterCriteriaModel::Roles::TEXT).toString(), "ModemManager.service");
+        QCOMPARE(model.data(model.index(0, 0, categoryIndex), FilterCriteriaModel::Roles::TEXT).toString(), "busybox-klogd.service");
     }
 }
 
@@ -84,7 +84,7 @@ void TestFilterCriteriaModel::standaloneTestExeSelectionOptions()
     {
         const auto container = model.entries(FilterCriteriaModel::Category::EXE);
         QVERIFY(std::any_of(container.cbegin(), container.cend(), [=](std::pair<QString, bool> value) {
-            return value.first == "/usr/bin/login"; // arbitrary service from test journal
+            return value.first == "/lib/systemd/systemd"; // arbitrary service from test journal
         }));
     }
 
@@ -99,7 +99,7 @@ void TestFilterCriteriaModel::standaloneTestExeSelectionOptions()
         QVERIFY(categoryIndex.isValid());
         QVERIFY(model.hasChildren(categoryIndex));
         // value from first position
-        QCOMPARE(model.data(model.index(0, 0, categoryIndex), FilterCriteriaModel::Roles::TEXT).toString(), "/opt/Element/element-desktop");
+        QCOMPARE(model.data(model.index(0, 0, categoryIndex), FilterCriteriaModel::Roles::TEXT).toString(), "/bin/bash.bash");
         // all elements are selected initially
         QCOMPARE(model.data(model.index(0, 0, categoryIndex), FilterCriteriaModel::Roles::SELECTED).toBool(), true);
     }
@@ -118,7 +118,7 @@ void TestFilterCriteriaModel::standaloneTestPrioritySelectionOptions()
     { // direct access
         const auto container = model.entries(FilterCriteriaModel::Category::PRIORITY);
         QVERIFY(std::any_of(container.cbegin(), container.cend(), [=](std::pair<QString, bool> value) {
-            return value.first == QString::number(5); // arbitrary service from test journal
+            return value.first == QString::number(2); // arbitrary priority from test journal
         }));
     }
 
@@ -133,7 +133,7 @@ void TestFilterCriteriaModel::standaloneTestPrioritySelectionOptions()
         QVERIFY(categoryIndex.isValid());
         QVERIFY(model.hasChildren(categoryIndex));
         // at first position expect priority '0' / emergency level
-        QCOMPARE(model.data(model.index(0, 0, categoryIndex), FilterCriteriaModel::Roles::TEXT).toString(), "0");
+        QCOMPARE(model.data(model.index(0, 0, categoryIndex), FilterCriteriaModel::Roles::DATA).toString(), "0");
     }
 }
 

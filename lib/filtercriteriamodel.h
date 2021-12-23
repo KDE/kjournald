@@ -160,7 +160,7 @@ public:
     Q_INVOKABLE bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override;
 
     /**
-     * @brief Convenience method for access to list of all entries of @p categorie with their selected states
+     * @brief Convenience method for access to list of all entries' data of @p category with their selected states
      */
     QVector<std::pair<QString, bool>> entries(FilterCriteriaModel::Category category) const;
 

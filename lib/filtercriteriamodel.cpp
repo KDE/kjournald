@@ -375,7 +375,7 @@ QVector<std::pair<QString, bool>> FilterCriteriaModel::entries(FilterCriteriaMod
 
     for (int i = 0; i < d->mRootItem->child(static_cast<int>(category))->childCount(); ++i) {
         values.append(
-            std::make_pair<QString, bool>(d->mRootItem->child(static_cast<int>(category))->child(i)->data(FilterCriteriaModel::TEXT).toString(), false));
+            std::make_pair<QString, bool>(d->mRootItem->child(static_cast<int>(category))->child(i)->data(FilterCriteriaModel::DATA).toString(), false));
     }
     return values;
 }
