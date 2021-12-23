@@ -5,14 +5,15 @@
 
 #include "containertesthelpertest.h"
 #include "../containertesthelper.h"
-#include <QTest>
 #include <QSet>
+#include <QTest>
 #include <algorithm>
 
 void ContainerTestHelperTest::testContainerTestChecks()
 {
     QVector<int> a = {1, 1, 2, 3, 5, 8, 13, 21};
     QSet<int> b = {1, 4, 9, 16, 25};
+    QSet<int> c = {4, 9};
 
     // ContainerEq(container)
     // compare container a with b
@@ -41,7 +42,8 @@ void ContainerTestHelperTest::testContainerTestChecks()
     QVERIFY(!std::all_of(a.cbegin(), a.cend(), [=](int value) {
         return b.contains(value);
     }));
-    CONTAINER_IS_SUBSET_OF(a, b);
+    // check that c is subset of b
+    CONTAINER_IS_SUBSET_OF(c, b);
 }
 
 QTEST_MAIN(ContainerTestHelperTest)
