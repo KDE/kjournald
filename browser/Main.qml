@@ -109,7 +109,7 @@ ApplicationWindow {
         }
     }
 
-    Row {
+    SplitView {
         anchors.fill: parent
 
         // forward page key events to listview
