@@ -90,7 +90,7 @@ MenuBar {
             }
         }
         Menu {
-            title: "Display"
+            title: "Colorize"
 
             MenuItem {
                 text: "Systemd Unit"

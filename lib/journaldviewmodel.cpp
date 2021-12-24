@@ -341,8 +341,10 @@ QHash<int, QByteArray> JournaldViewModel::roleNames() const
     roles[JournaldViewModel::SYSTEMD_UNIT] = "systemdunit";
     roles[JournaldViewModel::EXE] = "exe";
     roles[JournaldViewModel::BOOT_ID] = "bootid";
-    roles[JournaldViewModel::UNIT_COLOR] = "unitcolor";
-    roles[JournaldViewModel::UNIT_COLOR_DARK] = "unitcolordark";
+    roles[JournaldViewModel::SYSTEMD_UNIT_COLOR_BACKGROUND] = "systemdunitcolor_background";
+    roles[JournaldViewModel::SYSTEMD_UNIT_COLOR_FOREGROUND] = "systemdunitcolor_foreground";
+    roles[JournaldViewModel::EXE_COLOR_BACKGROUND] = "execolor_background";
+    roles[JournaldViewModel::EXE_COLOR_FOREGROUND] = "execolor_foreground";
     roles[JournaldViewModel::CURSOR] = "cursor";
     return roles;
 }
@@ -384,8 +386,6 @@ QVariant JournaldViewModel::data(const QModelIndex &index, int role) const
         return QVariant();
     }
     switch (role) {
-    case Qt::DisplayRole:
-        Q_FALLTHROUGH();
     case JournaldViewModel::Roles::MESSAGE:
         // TODO add handling for arbitrary color codes
         return QString(d->mLog.at(index.row()).mMessage)
@@ -409,10 +409,14 @@ QVariant JournaldViewModel::data(const QModelIndex &index, int role) const
         return d->mLog.at(index.row()).mPriority;
     case JournaldViewModel::Roles::EXE:
         return d->mLog.at(index.row()).mExe;
-    case JournaldViewModel::Roles::UNIT_COLOR:
+    case JournaldViewModel::Roles::SYSTEMD_UNIT_COLOR_BACKGROUND:
         return Colorizer::color(d->mLog.at(index.row()).mSystemdUnit, Colorizer::COLOR_TYPE::BACKGROUND);
-    case JournaldViewModel::Roles::UNIT_COLOR_DARK:
+    case JournaldViewModel::Roles::SYSTEMD_UNIT_COLOR_FOREGROUND:
         return Colorizer::color(d->mLog.at(index.row()).mSystemdUnit, Colorizer::COLOR_TYPE::FOREGROUND);
+    case JournaldViewModel::Roles::EXE_COLOR_BACKGROUND:
+        return Colorizer::color(d->mLog.at(index.row()).mExe, Colorizer::COLOR_TYPE::BACKGROUND);
+    case JournaldViewModel::Roles::EXE_COLOR_FOREGROUND:
+        return Colorizer::color(d->mLog.at(index.row()).mExe, Colorizer::COLOR_TYPE::FOREGROUND);
     case JournaldViewModel::Roles::CURSOR:
         return d->mLog.at(index.row()).mCursor;
     }

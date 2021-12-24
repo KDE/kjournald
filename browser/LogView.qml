@@ -108,7 +108,11 @@ ListView {
                 && model.index <= Math.max(textSelectionHandler.startIndex, textSelectionHandler.temporaryEndIndex)) {
                 return "#cccccc"
             }
-            return model.unitcolor
+            switch (displayRoleRight) {
+            case JournaldViewModel.SYSTEMD_UNIT: return model ? model.systemdunitcolor_background : "#ffffff"
+            case JournaldViewModel.EXE: return model ? model.execolor_background : "#ffffff"
+            }
+            return "#ffffff"
         }
         width: root.width
         height: messageText.height
@@ -128,15 +132,23 @@ ListView {
 
             Rectangle {
                 anchors.right: parent.right
-                width: groupInfo.width + 8
-                height: groupInfo.height
-                color: model.unitcolordark
+                width: categoryInfo.width + 8
+                height: categoryInfo.height
+                radius: 4
+                color: {
+                    switch (displayRoleRight) {
+                    case JournaldViewModel.SYSTEMD_UNIT: return model ? model.systemdunitcolor_foreground : "#ffffff"
+                    case JournaldViewModel.EXE: return model ? model.execolor_foreground : "#ffffff"
+                    }
+                    return "#ffffff"
+                }
                 Text {
-                    id: groupInfo
+                    id: categoryInfo
                     anchors {
                         right: parent.right
                         rightMargin: 4
                     }
+                    width: Math.min(implicitWidth, 0.5 * messageText.width)
                     text: {
                         switch (displayRoleRight) {
                         case JournaldViewModel.SYSTEMD_UNIT: return model.systemdunit
@@ -144,6 +156,7 @@ ListView {
                         }
                         return ""
                     }
+                    elide: Text.ElideLeft
                 }
             }
         }

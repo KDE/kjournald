@@ -46,16 +46,18 @@ class KJOURNALD_EXPORT JournaldViewModel : public QAbstractItemModel
 
 public:
     enum Roles {
-        MESSAGE = Qt::UserRole + 1, //!< journal entry's message text
-        MESSAGE_ID, //!< ID of log entry in journald DB (might not exist for non systemd services)
+        MESSAGE = Qt::DisplayRole, //!< journal entry's message text
+        MESSAGE_ID = Qt::UserRole + 1, //!< ID of log entry in journald DB (might not exist for non systemd services)
         DATE, //!< date of journal entry
         DATETIME, //!< date and time of journal entry
         MONOTONIC_TIMESTAMP, //!< monotonic timestamp in miliseconds for journal entry
         PRIORITY, //!< priority of journal entry
         SYSTEMD_UNIT, //!< systemd unit name of journal entry
         BOOT_ID, //!< boot ID of journal entry
-        UNIT_COLOR, //!< convenience rainbow color that is hashed for systemd unit, lighter variant
-        UNIT_COLOR_DARK, //!< convenience rainbow color that is hashed for systemd unit, darker variant
+        SYSTEMD_UNIT_COLOR_BACKGROUND, //!< convenience rainbow color that is hashed for systemd unit, lighter variant
+        SYSTEMD_UNIT_COLOR_FOREGROUND, //!< convenience rainbow color that is hashed for systemd unit, darker variant
+        EXE_COLOR_BACKGROUND, //!< convenience rainbow color that is hashed for the process, lighter variant
+        EXE_COLOR_FOREGROUND, //!< convenience rainbow color that is hashed for the process, darker variant
         EXE, //!< executable path, when available; field "_EXE"
         CURSOR, //!< journald internal unique identifier for a log entry
     };

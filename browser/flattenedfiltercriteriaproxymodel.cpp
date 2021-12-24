@@ -3,8 +3,8 @@
     SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 */
 
-#include "colorizer.h"
 #include "flattenedfiltercriteriaproxymodel.h"
+#include "colorizer.h"
 #include "filtercriteriamodel.h"
 #include <QDebug>
 
@@ -84,7 +84,7 @@ QVariant FlattenedFilterCriteriaProxyModel::data(const QModelIndex &index, int r
         case FilterCriteriaModel::Category::SYSTEMD_UNIT:
             return FlattenedFilterCriteriaProxyModel::DelgateType::CHECKBOX_COLORED;
         case FilterCriteriaModel::Category::EXE:
-            return FlattenedFilterCriteriaProxyModel::DelgateType::CHECKBOX;
+            return FlattenedFilterCriteriaProxyModel::DelgateType::CHECKBOX_COLORED;
         case FilterCriteriaModel::Category::TRANSPORT:
             return FlattenedFilterCriteriaProxyModel::DelgateType::CHECKBOX;
         }
