@@ -109,6 +109,11 @@ ApplicationWindow {
         }
     }
 
+    FlattenedFilterCriteriaProxyModel {
+        id: flatFilterSelection
+        sourceModel: g_filterModel
+    }
+
     SplitView {
         anchors.fill: parent
 
@@ -116,124 +121,114 @@ ApplicationWindow {
         Keys.forwardTo: [logView]
         focus: true
 
-        Column {
-            id: unitColumn
+        ScrollView {
             height: parent.height
-            width: Math.min(parent.width * 0.3, 300)
+            ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+            SplitView.preferredWidth: 300
 
-            FlattenedFilterCriteriaProxyModel {
-                id: flatFilterSelection
-                sourceModel: g_filterModel
-            }
-
-            ScrollView {
-                height: parent.height
+            Column {
                 width: parent.width
-                ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+                ButtonGroup{ id: priorityGroup }
+                Repeater {
+                    id: rootElements
+                    model: flatFilterSelection
 
-                Column {
-                    ButtonGroup{ id: priorityGroup }
-                    Repeater {
-                        id: rootElements
-                        model: flatFilterSelection
-
-                        Component {
-                            id: firstLevelComponent
-                            ItemDelegate {
-                                height: 20 + children.height
-                                property var model
-                                text:  model.text
-                                onClicked: model.expanded = !model.expanded
-                            }
+                    Component {
+                        id: firstLevelComponent
+                        ItemDelegate {
+                            height: 20 + children.height
+                            property var model
+                            text:  model.text
+                            onClicked: model.expanded = !model.expanded
                         }
-                        Component {
-                            id: secondLevelCheckboxComponent
-                            CheckBox {
-                                property var model
-                                height: 20 + children.height
-                                text: model ? model.text : ""
-                                leftPadding: 20
-                                onCheckedChanged: model.selected = checked
-                                onModelChanged: if (model) { checked = model.selected }
+                    }
+                    Component {
+                        id: secondLevelCheckboxComponent
+                        CheckBox {
+                            property var model
+                            height: 20 + children.height
+                            text: model ? model.text : ""
+                            leftPadding: 20
+                            onCheckedChanged: model.selected = checked
+                            onModelChanged: if (model) { checked = model.selected }
 
-                                ToolTip.delay: 1000
-                                ToolTip.timeout: 5000
-                                ToolTip.visible: hovered
-                                ToolTip.text: model !== null ? model.longtext : ""
-                            }
+                            ToolTip.delay: 1000
+                            ToolTip.timeout: 5000
+                            ToolTip.visible: hovered
+                            ToolTip.text: model !== null ? model.longtext : ""
                         }
-                        Component {
-                            id: secondLevelCheckboxColorCodeComponent
-                            CheckBox {
-                                id: control
-                                property var model
-                                height: 20 + children.height
-                                text: model ? model.text : ""
-                                leftPadding: 20
-                                onCheckedChanged: model.selected = checked
-                                onModelChanged: if (model) { checked = model.selected }
+                    }
+                    Component {
+                        id: secondLevelCheckboxColorCodeComponent
+                        CheckBox {
+                            id: control
+                            property var model
+                            height: 20 + children.height
+                            text: model ? model.text : ""
+                            leftPadding: 20
+                            onCheckedChanged: model.selected = checked
+                            onModelChanged: if (model) { checked = model.selected }
 
-                                ToolTip.delay: 1000
-                                ToolTip.timeout: 5000
-                                ToolTip.visible: hovered
-                                ToolTip.text: model !== null ? model.longtext : ""
+                            ToolTip.delay: 1000
+                            ToolTip.timeout: 5000
+                            ToolTip.visible: hovered
+                            ToolTip.text: model !== null ? model.longtext : ""
 
-                                contentItem: Row {
-                                    leftPadding: control.indicator && !control.mirrored ? control.indicator.width + control.spacing : 0
-                                    rightPadding: control.indicator && control.mirrored ? control.indicator.width + control.spacing : 0
-                                    spacing: 6
+                            contentItem: Row {
+                                leftPadding: control.indicator && !control.mirrored ? control.indicator.width + control.spacing : 0
+                                rightPadding: control.indicator && control.mirrored ? control.indicator.width + control.spacing : 0
+                                spacing: 6
 
-                                    Rectangle {
-                                        width: 24
-                                        height: 24
-                                        radius: 4
-                                        color: model ? model.color : "#FF0000"
-                                    }
+                                Rectangle {
+                                    width: 24
+                                    height: 24
+                                    radius: 4
+                                    color: model ? model.color : "#FF0000"
+                                }
 
-                                    Text {
-                                        text: control.text
-                                        font: control.font
-                                        color: control.palette.windowText
-                                    }
+                                Text {
+                                    text: control.text
+                                    font: control.font
+                                    color: control.palette.windowText
                                 }
                             }
                         }
-                        Component {
-                            id: secondLevelRadiobuttonComponent
-                            RadioButton {
-                                property var model
-                                height: 20 + children.height
-                                text: model ? model.text : ""
-                                leftPadding: 20
-                                onCheckedChanged: model.selected = checked
-                                onModelChanged: if (model) { checked = model.selected }
-                                ButtonGroup.group: priorityGroup
+                    }
+                    Component {
+                        id: secondLevelRadiobuttonComponent
+                        RadioButton {
+                            property var model
+                            height: 20 + children.height
+                            text: model ? model.text : ""
+                            leftPadding: 20
+                            onCheckedChanged: model.selected = checked
+                            onModelChanged: if (model) { checked = model.selected }
+                            ButtonGroup.group: priorityGroup
 
-                                ToolTip.delay: 1000
-                                ToolTip.timeout: 5000
-                                ToolTip.visible: hovered
-                                ToolTip.text: model !== null ? model.longtext : ""
-                            }
+                            ToolTip.delay: 1000
+                            ToolTip.timeout: 5000
+                            ToolTip.visible: hovered
+                            ToolTip.text: model !== null ? model.longtext : ""
                         }
-                        Loader {
-                            sourceComponent: {
-                                if (model.indentation === 0) {
-                                    return firstLevelComponent;
-                                }
-                                if (model.type === FlattenedFilterCriteriaProxyModel.CHECKBOX) {
-                                    return secondLevelCheckboxComponent
-                                }
-                                if (model.type === FlattenedFilterCriteriaProxyModel.CHECKBOX_COLORED) {
-                                    return secondLevelCheckboxColorCodeComponent
-                                }
-                                if (model.type === FlattenedFilterCriteriaProxyModel.RADIOBUTTON) {
-                                    return secondLevelRadiobuttonComponent
-                                }
-                                console.warn("fallback due to unknown type: " + model.type)
+                    }
+                    Loader {
+                        sourceComponent: {
+                            if (model.indentation === 0) {
                                 return firstLevelComponent;
                             }
-                            onLoaded: item.model = model // pass model reference to item
+                            if (model.type === FlattenedFilterCriteriaProxyModel.CHECKBOX) {
+                                return secondLevelCheckboxComponent
+                            }
+                            if (model.type === FlattenedFilterCriteriaProxyModel.CHECKBOX_COLORED) {
+                                return secondLevelCheckboxColorCodeComponent
+                            }
+                            if (model.type === FlattenedFilterCriteriaProxyModel.RADIOBUTTON) {
+                                return secondLevelRadiobuttonComponent
+                            }
+                            console.warn("fallback due to unknown type: " + model.type)
+                            return firstLevelComponent;
                         }
+                        onLoaded: item.model = model // pass model reference to item
                     }
                 }
             }
@@ -241,7 +236,7 @@ ApplicationWindow {
         Rectangle {
             color: "#ffffff"
             height: parent.height
-            width: parent.width - unitColumn.width
+            SplitView.fillWidth: true
             LogView {
                 id: logView
                 anchors.fill: parent
