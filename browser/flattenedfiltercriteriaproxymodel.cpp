@@ -6,6 +6,7 @@
 #include "flattenedfiltercriteriaproxymodel.h"
 #include "colorizer.h"
 #include "filtercriteriamodel.h"
+#include "loggingcategories.h"
 #include <QDebug>
 
 QHash<int, QByteArray> FlattenedFilterCriteriaProxyModel::roleNames() const
@@ -23,10 +24,15 @@ QHash<int, QByteArray> FlattenedFilterCriteriaProxyModel::roleNames() const
 
 void FlattenedFilterCriteriaProxyModel::setSourceModel(QAbstractItemModel *model)
 {
+    if (mSourceModel) {
+        disconnect(mSourceModel, &QAbstractItemModel::dataChanged, this, &FlattenedFilterCriteriaProxyModel::handleSourceModelDataChanged);
+    }
+
     // TODO add assert that this model only handles two level hierarchies
     beginResetModel();
     mMapToSourceIndex.clear();
     mSourceModel = model;
+    connect(mSourceModel, &QAbstractItemModel::dataChanged, this, &FlattenedFilterCriteriaProxyModel::handleSourceModelDataChanged);
 
     // top level items
     for (int i = 0; i < mSourceModel->rowCount(); ++i) {
@@ -38,6 +44,22 @@ void FlattenedFilterCriteriaProxyModel::setSourceModel(QAbstractItemModel *model
 QAbstractItemModel *FlattenedFilterCriteriaProxyModel::sourceModel() const
 {
     return mSourceModel;
+}
+
+void FlattenedFilterCriteriaProxyModel::handleSourceModelDataChanged(const QModelIndex &sourceTopLeft,
+                                                                     const QModelIndex &sourceBottomRight,
+                                                                     const QVector<int> &roles)
+{
+    if (sourceTopLeft != sourceBottomRight) {
+        qCWarning(journald) << "Data change ignored, currently only single line updates are implemented";
+        return;
+    }
+    for (int i = 0; i < mMapToSourceIndex.size(); ++i) {
+        if (mMapToSourceIndex.at(i).mSourceIndex == sourceTopLeft) {
+            Q_EMIT dataChanged(index(i, 0), index(i, 0));
+            return;
+        }
+    }
 }
 
 int FlattenedFilterCriteriaProxyModel::rowCount(const QModelIndex &parent) const
@@ -125,7 +147,16 @@ bool FlattenedFilterCriteriaProxyModel::setData(const QModelIndex &index, const 
     }
 
     if (role == FlattenedFilterCriteriaProxyModel::Roles::SELECTED) {
-        mSourceModel->setData(mMapToSourceIndex.at(index.row()).mSourceIndex, value, FilterCriteriaModel::Roles::SELECTED);
+        const QModelIndex sourceIndex = mMapToSourceIndex.at(index.row()).mSourceIndex;
+        const int childrenCount = mSourceModel->rowCount(sourceIndex);
+        const auto category = mSourceModel->data(sourceIndex, FilterCriteriaModel::Roles::CATEGORY).value<FilterCriteriaModel::Category>();
+        // detect first level elements and clear selelection if they are unselected
+        if (childrenCount > 0 && value == false && (category == FilterCriteriaModel::SYSTEMD_UNIT || category == FilterCriteriaModel::EXE)) {
+            for (int i = 0; i < childrenCount; ++i) {
+                mSourceModel->setData(mSourceModel->index(i, 0, sourceIndex), false, FilterCriteriaModel::Roles::SELECTED);
+            }
+        }
+        mSourceModel->setData(sourceIndex, value, FilterCriteriaModel::Roles::SELECTED);
         Q_EMIT dataChanged(index, index);
     }
 

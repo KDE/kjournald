@@ -127,14 +127,14 @@ void FilterCriteriaModelPrivate::rebuildModel()
 {
     mRootItem = std::make_unique<SelectionEntry>();
     {
-        auto parent = std::make_shared<SelectionEntry>(QLatin1String("Transport"), QVariant(), FilterCriteriaModel::Category::TRANSPORT, true, mRootItem);
+        auto parent = std::make_shared<SelectionEntry>(QLatin1String("Transport"), QVariant(), FilterCriteriaModel::Category::TRANSPORT, false, mRootItem);
         mRootItem->appendChild(parent);
         mRootItem->child(FilterCriteriaModel::Category::TRANSPORT)
             ->appendChild(std::move(
                 std::make_unique<SelectionEntry>(QLatin1String("Kernel"), QLatin1String("kernel"), FilterCriteriaModel::Category::TRANSPORT, false, parent)));
     }
     {
-        auto parent = std::make_shared<SelectionEntry>(QLatin1String("Priority"), QVariant(), FilterCriteriaModel::Category::PRIORITY, true, mRootItem);
+        auto parent = std::make_shared<SelectionEntry>(QLatin1String("Priority"), QVariant(), FilterCriteriaModel::Category::PRIORITY, false, mRootItem);
         mRootItem->appendChild(parent);
         for (int i = 0; i <= 7; ++i) {
             mRootItem->child(FilterCriteriaModel::Category::PRIORITY)
@@ -146,7 +146,7 @@ void FilterCriteriaModelPrivate::rebuildModel()
         }
     }
     {
-        auto parent = std::make_shared<SelectionEntry>(QLatin1String("Systemd"), QVariant(), FilterCriteriaModel::Category::SYSTEMD_UNIT, true, mRootItem);
+        auto parent = std::make_shared<SelectionEntry>(QLatin1String("Systemd"), QVariant(), FilterCriteriaModel::Category::SYSTEMD_UNIT, false, mRootItem);
         mRootItem->appendChild(parent);
         QVector<QString> units = JournaldHelper::queryUnique(mJournal, JournaldHelper::Field::SYSTEMD_UNIT);
         std::sort(std::begin(units), std::end(units), [](const QString &a, const QString &b) {
@@ -155,11 +155,11 @@ void FilterCriteriaModelPrivate::rebuildModel()
         for (const auto &unit : std::as_const(units)) {
             mRootItem->child(FilterCriteriaModel::Category::SYSTEMD_UNIT)
                 ->appendChild(std::move(
-                    std::make_unique<SelectionEntry>(JournaldHelper::cleanupString(unit), unit, FilterCriteriaModel::Category::SYSTEMD_UNIT, true, parent)));
+                    std::make_unique<SelectionEntry>(JournaldHelper::cleanupString(unit), unit, FilterCriteriaModel::Category::SYSTEMD_UNIT, false, parent)));
         }
     }
     {
-        auto parent = std::make_shared<SelectionEntry>(QLatin1String("Process"), QVariant(), FilterCriteriaModel::Category::EXE, true, mRootItem);
+        auto parent = std::make_shared<SelectionEntry>(QLatin1String("Process"), QVariant(), FilterCriteriaModel::Category::EXE, false, mRootItem);
         mRootItem->appendChild(parent);
         QVector<QString> exes = JournaldHelper::queryUnique(mJournal, JournaldHelper::Field::EXE);
         std::sort(std::begin(exes), std::end(exes), [](const QString &a, const QString &b) {
@@ -168,7 +168,7 @@ void FilterCriteriaModelPrivate::rebuildModel()
         for (const auto &exe : std::as_const(exes)) {
             mRootItem->child(FilterCriteriaModel::Category::EXE)
                 ->appendChild(
-                    std::move(std::make_unique<SelectionEntry>(JournaldHelper::cleanupString(exe), exe, FilterCriteriaModel::Category::EXE, true, parent)));
+                    std::move(std::make_unique<SelectionEntry>(JournaldHelper::cleanupString(exe), exe, FilterCriteriaModel::Category::EXE, false, parent)));
         }
     }
 }
@@ -356,8 +356,34 @@ bool FilterCriteriaModel::setData(const QModelIndex &index, const QVariant &valu
         if (result && category == FilterCriteriaModel::Category::PRIORITY && static_cast<FilterCriteriaModel::Roles>(role) == SELECTED && result) {
             Q_EMIT priorityFilterChanged(index.row());
         } else if (result && category == FilterCriteriaModel::Category::SYSTEMD_UNIT) {
+            // for checkable entries update parent's selected state
+            if (value.toBool() == true) {
+                setData(index.parent(), true, FilterCriteriaModel::Roles::SELECTED);
+            } else {
+                const auto parent = static_cast<SelectionEntry *>(index.parent().internalPointer());
+                if (parent) {
+                    bool hasSelectedSibling{false};
+                    for (int i = 0; i < parent->childCount(); ++i) {
+                        hasSelectedSibling = hasSelectedSibling && parent->child(i)->data(SELECTED).toBool();
+                    }
+                    setData(index.parent(), hasSelectedSibling, FilterCriteriaModel::Roles::SELECTED);
+                }
+            }
             Q_EMIT systemdUnitFilterChanged();
         } else if (result && category == FilterCriteriaModel::Category::EXE) {
+            // for checkable entries update parent's selected state
+            if (value.toBool() == true) {
+                setData(index.parent(), true, FilterCriteriaModel::Roles::SELECTED);
+            } else {
+                const auto parent = static_cast<SelectionEntry *>(index.parent().internalPointer());
+                if (parent) {
+                    bool hasSelectedSibling{false};
+                    for (int i = 0; i < parent->childCount(); ++i) {
+                        hasSelectedSibling = hasSelectedSibling && parent->child(i)->data(SELECTED).toBool();
+                    }
+                    setData(index.parent(), hasSelectedSibling, FilterCriteriaModel::Roles::SELECTED);
+                }
+            }
             Q_EMIT exeFilterChanged();
         } else if (result && category == FilterCriteriaModel::Category::TRANSPORT) {
             Q_EMIT kernelFilterChanged();

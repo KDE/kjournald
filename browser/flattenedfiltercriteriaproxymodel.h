@@ -28,7 +28,7 @@ class FlattenedFilterCriteriaProxyModel : public QAbstractListModel
     /**
      * FilterCriteriaModel, which holds data of this proxy model
      */
-    Q_PROPERTY(QAbstractItemModel * sourceModel READ sourceModel WRITE setSourceModel NOTIFY sourceModelChanged);
+    Q_PROPERTY(QAbstractItemModel *sourceModel READ sourceModel WRITE setSourceModel NOTIFY sourceModelChanged);
 
 public:
     /** model roles **/
@@ -48,6 +48,7 @@ public:
         CHECKBOX,
         CHECKBOX_COLORED,
         RADIOBUTTON,
+        UNSELECT_OPTION,
     };
     Q_ENUM(DelgateType)
 
@@ -64,7 +65,7 @@ public:
     /**
      * @return current sourde model of proxy
      */
-    QAbstractItemModel * sourceModel() const;
+    QAbstractItemModel *sourceModel() const;
 
     /**
      * @copydoc QAbstractItemModel::rowCount()
@@ -95,6 +96,9 @@ public:
      * @copydoc QAbstractItemModel::setData()
      */
     bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override;
+
+private Q_SLOTS:
+    void handleSourceModelDataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QVector<int> &roles);
 
 Q_SIGNALS:
     /**

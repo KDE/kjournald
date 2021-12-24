@@ -4,7 +4,7 @@
 */
 
 import QtQuick 2.15
-import systemd 1.0
+import kjournald 1.0
 
 Item {
     id: root

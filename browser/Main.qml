@@ -8,7 +8,7 @@ import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Dialogs 1.0
 import QtQuick.Layouts 1.15
-import systemd 1.0
+import kjournald 1.0
 
 // only for initial testing of tree model
 import QtQuick.Controls 1.4 as QQC1

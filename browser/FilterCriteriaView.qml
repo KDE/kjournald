@@ -16,11 +16,19 @@ Column {
 
         Component {
             id: firstLevelComponent
-            ItemDelegate {
-                height: 20 + children.height
+            Column {
                 property var model
-                text:  model.text
-                onClicked: model.expanded = !model.expanded
+                ItemDelegate {
+                    text:  model.text
+                    onClicked: model.expanded = !model.expanded
+                }
+                ItemDelegate { // clear button for checkbox selection
+                    visible: model.expanded && model.selected
+                    leftPadding: 20
+                    icon.name: "arrow-left"
+                    text: "Clear"
+                    onClicked: model.selected = false
+                }
             }
         }
         Component {
@@ -30,8 +38,8 @@ Column {
                 height: 20 + children.height
                 text: model ? model.text : ""
                 leftPadding: 20
-                onCheckedChanged: model.selected = checked
-                onModelChanged: if (model) { checked = model.selected }
+                checked: model ? model.selected : false
+                onCheckedChanged: if (model.selected !== checked) model.selected = checked
 
                 ToolTip.delay: 1000
                 ToolTip.timeout: 5000
@@ -47,8 +55,8 @@ Column {
                 height: 20 + children.height
                 text: model ? model.text : ""
                 leftPadding: 20
-                onCheckedChanged: model.selected = checked
-                onModelChanged: if (model) { checked = model.selected }
+                checked: model ? model.selected : false
+                onCheckedChanged: if (model.selected !== checked) model.selected = checked
 
                 ToolTip.delay: 1000
                 ToolTip.timeout: 5000
