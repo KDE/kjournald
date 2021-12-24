@@ -29,14 +29,14 @@ int main(int argc, char *argv[])
     QGuiApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("utilities-log-viewer")));
     app.setOrganizationName("KDE");
 
-    qmlRegisterType<JournaldViewModel>("systemd", 1, 0, "JournaldViewModel");
-    qmlRegisterType<JournaldUniqueQueryModel>("systemd", 1, 0, "JournaldUniqueQueryModel");
-    qmlRegisterType<FieldFilterProxyModel>("systemd", 1, 0, "FieldFilterProxyModel");
-    qmlRegisterType<ClipboardProxy>("systemd", 1, 0, "ClipboardProxy");
-    qmlRegisterType<FlattenedFilterCriteriaProxyModel>("systemd", 1, 0, "FlattenedFilterCriteriaProxyModel");
-    qmlRegisterUncreatableType<FilterCriteriaModel>("systemd", 1, 0, "FilterCriteriaModel", "Backend only object");
-    qmlRegisterUncreatableType<BootModel>("systemd", 1, 0, "BootModel", "Backend only object");
-    qmlRegisterUncreatableType<SessionConfig>("systemd", 1, 0, "SessionConfig", "Backend only object");
+    qmlRegisterType<JournaldViewModel>("kjournald", 1, 0, "JournaldViewModel");
+    qmlRegisterType<JournaldUniqueQueryModel>("kjournald", 1, 0, "JournaldUniqueQueryModel");
+    qmlRegisterType<FieldFilterProxyModel>("kjournald", 1, 0, "FieldFilterProxyModel");
+    qmlRegisterType<ClipboardProxy>("kjournald", 1, 0, "ClipboardProxy");
+    qmlRegisterType<FlattenedFilterCriteriaProxyModel>("kjournald", 1, 0, "FlattenedFilterCriteriaProxyModel");
+    qmlRegisterUncreatableType<FilterCriteriaModel>("kjournald", 1, 0, "FilterCriteriaModel", "Backend only object");
+    qmlRegisterUncreatableType<BootModel>("kjournald", 1, 0, "BootModel", "Backend only object");
+    qmlRegisterUncreatableType<SessionConfig>("kjournald", 1, 0, "SessionConfig", "Backend only object");
 
     QCommandLineParser parser;
     parser.setApplicationDescription("Journald Log Viewer");
