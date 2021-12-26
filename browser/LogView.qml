@@ -193,7 +193,7 @@ ListView {
         anchors.fill: parent
         enabled: textSelectionMode === true
         onPressed: {
-            startIndex = root.indexAt(mouseX, mouseY + root.contentY - root.originY)
+            startIndex = root.indexAt(mouseX, mouseY + root.contentY)
             if (startIndex === -1) { // when drag started at section header
                 return
             }
@@ -201,7 +201,7 @@ ListView {
             selectionActive = true
         }
         onPositionChanged: {
-            var newIndex = root.indexAt(mouseX, mouseY + root.contentY - root.originY)
+            var newIndex = root.indexAt(mouseX, mouseY + root.contentY)
             if (newIndex !== -1) {
                 temporaryEndIndex = newIndex
             }
