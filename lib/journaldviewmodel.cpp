@@ -145,7 +145,9 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
                 return {};
             }
         } else {
-            seekHeadAndMakeCurrent();
+            if (!seekHeadAndMakeCurrent()) {
+                return {};
+            }
         }
     } else if (direction == Direction::TOWARDS_HEAD) {
         if (mLog.size() > 0) {
@@ -174,7 +176,9 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
                 return {};
             }
         } else {
-            seekTailAndMakeCurrent();
+            if (!seekTailAndMakeCurrent()) {
+                return {};
+            }
         }
     } else {
         qCCritical(journald()) << "Jumping into the journal's middle, not supported";
@@ -248,35 +252,40 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
             }
         }
     }
+
     return chunk;
 }
 
-void JournaldViewModelPrivate::seekHeadAndMakeCurrent()
+bool JournaldViewModelPrivate::seekHeadAndMakeCurrent()
 {
     qCDebug(journald) << "seek head and make current";
     int result = sd_journal_seek_head(mJournal->sdJournal());
     if (result < 0) {
         qCCritical(journald) << "Failed to seek head:" << strerror(-result);
-        return;
+        return false;
     }
     if (sd_journal_next(mJournal->sdJournal()) <= 0) {
         qCWarning(journald) << "could not make head entry current";
+        return false;
     }
     mHeadCursorReached = true;
+    return true;
 }
 
-void JournaldViewModelPrivate::seekTailAndMakeCurrent()
+bool JournaldViewModelPrivate::seekTailAndMakeCurrent()
 {
     qCDebug(journald) << "seek tail and make current";
     int result = sd_journal_seek_tail(mJournal->sdJournal());
     if (result < 0) {
         qCCritical(journald) << "Failed to seek head:" << strerror(-result);
-        return;
+        return false;
     }
     if (sd_journal_previous(mJournal->sdJournal()) <= 0) {
         qCWarning(journald) << "could not make tail entry current";
+        return false;
     }
     mTailCursorReached = true;
+    return true;
 }
 
 JournaldViewModel::JournaldViewModel(QObject *parent)
