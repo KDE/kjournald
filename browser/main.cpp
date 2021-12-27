@@ -12,6 +12,7 @@
 #include "journalduniquequerymodel.h"
 #include "journaldviewmodel.h"
 #include "sessionconfig.h"
+#include <KLocalizedString>
 #include <QCommandLineParser>
 #include <QDebug>
 #include <QGuiApplication>
@@ -24,10 +25,10 @@
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-
     QGuiApplication app(argc, argv);
     QGuiApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("utilities-log-viewer")));
     app.setOrganizationName("KDE");
+    KLocalizedString::setApplicationDomain("kjournald");
 
     qmlRegisterType<JournaldViewModel>("kjournald", 1, 0, "JournaldViewModel");
     qmlRegisterType<JournaldUniqueQueryModel>("kjournald", 1, 0, "JournaldUniqueQueryModel");
@@ -115,6 +116,7 @@ int main(int argc, char *argv[])
     }
 
     QQmlApplicationEngine engine;
+    engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
     const QUrl url(QStringLiteral("qrc:/Main.qml"));
     QObject::connect(
         &engine,

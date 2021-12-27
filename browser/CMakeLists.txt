@@ -21,6 +21,7 @@ target_link_libraries(kjournaldbrowser
 PUBLIC
     Qt5::Core
     Qt5::Quick
+    KF5::I18n
     kjournald
 )
 install(TARGETS kjournaldbrowser DESTINATION bin)

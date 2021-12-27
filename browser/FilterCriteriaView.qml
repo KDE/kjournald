@@ -26,7 +26,7 @@ Column {
                     visible: model.expanded && model.selected
                     leftPadding: 20
                     icon.name: "arrow-left"
-                    text: "Clear"
+                    text: i18n("Clear")
                     onClicked: model.selected = false
                 }
             }

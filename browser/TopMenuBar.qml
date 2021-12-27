@@ -10,16 +10,16 @@ import kjournald 1.0
 MenuBar {
     signal copyViewToClipboard()
     Menu {
-        title: "File"
+        title: i18n("File")
         MenuItem {
-            text: "Open system journal"
+            text: i18n("Open system journal")
             icon.name: "document-open"
             onTriggered: {
                 g_config.sessionMode = SessionConfig.SYSTEM
             }
         }
         MenuItem {
-            text: "Open from folder"
+            text: i18n("Open from folder")
             icon.name: "document-open"
             onTriggered: {
                 folderDialog.folder = g_config.localJournalPath
@@ -27,7 +27,7 @@ MenuBar {
             }
         }
         MenuItem {
-            text: "Open from file"
+            text: i18n("Open from file")
             icon.name: "document-open"
             onTriggered: {
                 fileDialog.folder = g_config.localJournalPath
@@ -35,7 +35,7 @@ MenuBar {
             }
         }
         MenuItem {
-            text: "Open remote journal stream"
+            text: i18n("Open remote journal stream")
             icon.name: "document-import"
             onTriggered: {
                 remoteJournalDialog.open()
@@ -45,13 +45,13 @@ MenuBar {
         MenuSeparator { }
 
         MenuItem {
-            text: "Close"
+            text: i18n("Close")
             icon.name: "application-exit"
             onTriggered: Qt.quit()
         }
     }
     Menu {
-        title: "Current Journal"
+        title: i18n("Current Journal")
         MenuItem {
             text: "Copy current view"
             icon.name: "edit-copy"
@@ -59,13 +59,13 @@ MenuBar {
         }
     }
     Menu {
-        title: "View"
+        title: i18n("View")
 
         Menu {
-            title: "Timestamp Display"
+            title: i18n("Timestamp Display")
 
             MenuItem {
-                text: "Localized Realtime"
+                text: i18n("Localized Realtime")
                 checkable: true
                 checked: g_config.timeDisplay === SessionConfig.LOCALTIME
                 onTriggered: {
@@ -73,7 +73,7 @@ MenuBar {
                 }
             }
             MenuItem {
-                text: "UTC Realtime"
+                text: i18n("UTC Realtime")
                 checkable: true
                 checked: g_config.timeDisplay === SessionConfig.UTC
                 onTriggered: {
@@ -81,7 +81,7 @@ MenuBar {
                 }
             }
             MenuItem {
-                text: "Monotonic Time"
+                text: i18n("Monotonic Time")
                 checkable: true
                 checked: g_config.timeDisplay === SessionConfig.MONOTONIC_TIMESTAMP
                 onTriggered: {
@@ -90,10 +90,10 @@ MenuBar {
             }
         }
         Menu {
-            title: "Colorize"
+            title: i18n("Colorize")
 
             MenuItem {
-                text: "Systemd Unit"
+                text: i18n("Systemd Unit")
                 checkable: true
                 checked: g_config.filterCriterium === SessionConfig.SYSTEMD_UNIT
                 onTriggered: {
@@ -101,7 +101,7 @@ MenuBar {
                 }
             }
             MenuItem {
-                text: "Executable"
+                text: i18n("Executable")
                 checkable: true
                 checked: g_config.filterCriterium === SessionConfig.EXECUTABLE
                 onTriggered: {

@@ -33,7 +33,7 @@ ApplicationWindow {
             focus: true
 
             Label {
-                text: "Boot:"
+                text: i18n("Boot:")
             }
             ComboBox {
                 id: bootIdComboBox
@@ -46,7 +46,7 @@ ApplicationWindow {
             ToolSeparator {}
 
             Label {
-                text: "Highlight:"
+                text: i18n("Highlight:")
             }
             TextField {
                 id: hightlightTextField
@@ -55,7 +55,7 @@ ApplicationWindow {
 
             ToolSeparator {}
             ToolButton {
-                text: "Browse"
+                text: i18n("Browse")
                 icon.name: "transform-browse"
                 checkable: true
                 checked: g_config.viewMode === SessionConfig.BROWSE
@@ -64,7 +64,7 @@ ApplicationWindow {
                 }
             }
             ToolButton {
-                text: "Select"
+                text: i18n("Select")
                 icon.name: "edit-select-text"
                 checkable: true
                 checked: g_config.viewMode === SessionConfig.SELECT
@@ -81,7 +81,7 @@ ApplicationWindow {
 
     FileDialog {
         id: folderDialog
-        title: "Select journal folder"
+        title: i18n("Select journal folder")
         selectFolder: true
         onAccepted: {
             g_config.localJournalPath = folderDialog.fileUrl
@@ -91,8 +91,8 @@ ApplicationWindow {
 
     FileDialog {
         id: fileDialog
-        title: "Select journal file"
-        nameFilters: ["Journal files (*.journal)", "All files (*)"]
+        title: i18n("Select journal file")
+        nameFilters: [i18n("Journal files (*.journal)"), i18n("All files (*)")]
         onAccepted: {
             g_config.localJournalPath = fileDialog.fileUrl
             g_config.sessionMode = SessionConfig.LOCALFOLDER
@@ -150,7 +150,7 @@ ApplicationWindow {
             }
             Text {
                 anchors.centerIn: parent
-                text: "No log entries apply to current filter selection"
+                text: i18n("No log entries apply to current filter selection")
                 visible: !(logView.count > 0
                            && (g_unitModel.selectedEntries.length > 0
                                || g_executableModel.selectedEntries.length > 0

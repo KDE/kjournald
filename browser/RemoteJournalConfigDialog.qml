@@ -14,7 +14,7 @@ Dialog {
     readonly property string url : urlTextField.text
     readonly property int port : portSpinbox.value
 
-    title: "Configure Remote Journal Server"
+    title: i18n("Configure Remote Journal Server")
     standardButtons: Dialog.Ok | Dialog.Cancel
     width: 300
     height: 200
@@ -28,7 +28,7 @@ Dialog {
 
         // first line
         Text {
-            text: "Url:"
+            text: i18n("Url:")
         }
         TextField {
             id: urlTextField
@@ -37,7 +37,7 @@ Dialog {
 
         // second line
         Text {
-            text: "Port:"
+            text: i18n("Port:")
         }
         SpinBox {
             id: portSpinbox

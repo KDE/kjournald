@@ -16,7 +16,7 @@ include(GenerateExportHeader)
 include(CMakePackageConfigHelpers)
 
 add_definitions(
-    -DQT_DISABLE_DEPRECATED_BEFORE=0x050e00
+    -DQT_DISABLE_DEPRECATED_BEFORE=0x051500
     -DQT_DEPRECATED_WARNINGS_SINCE=0x060000
     -DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055600
     -DKF_DEPRECATED_WARNINGS_SINCE=0x060000
@@ -42,13 +42,17 @@ ecm_setup_version(${KJOURNALD_VERSION}
     SOVERSION 0
 )
 
-enable_testing()
+find_package(KF5 5.44.0 REQUIRED COMPONENTS
+    I18n
+)
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(SYSTEMD REQUIRED IMPORTED_TARGET libsystemd)
 
 set(REQUIRED_QT_VERSION 5.15.0)
 find_package(Qt5 ${REQUIRED_QT_VERSION} COMPONENTS Core Quick Test REQUIRED)
+
+enable_testing()
 
 add_subdirectory(lib)
 add_subdirectory(browser)
@@ -79,5 +83,7 @@ install(
 install(EXPORT KJournaldTargets
         DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
         FILE KJournaldTargets.cmake)
+
+ki18n_install(po)
 
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
