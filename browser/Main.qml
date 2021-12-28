@@ -130,8 +130,7 @@ ApplicationWindow {
                 width: parent.width
             }
         }
-        Rectangle {
-            color: "#ffffff"
+        Item {
             height: parent.height
             SplitView.fillWidth: true
             LogView {

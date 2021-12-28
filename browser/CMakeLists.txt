@@ -21,6 +21,7 @@ target_link_libraries(kjournaldbrowser
 PUBLIC
     Qt5::Core
     Qt5::Quick
+    Qt5::QuickControls2
     KF5::I18n
     kjournald
 )
