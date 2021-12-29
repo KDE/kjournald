@@ -364,7 +364,7 @@ bool FilterCriteriaModel::setData(const QModelIndex &index, const QVariant &valu
                 if (parent) {
                     bool hasSelectedSibling{false};
                     for (int i = 0; i < parent->childCount(); ++i) {
-                        hasSelectedSibling = hasSelectedSibling && parent->child(i)->data(SELECTED).toBool();
+                        hasSelectedSibling = hasSelectedSibling || parent->child(i)->data(SELECTED).toBool();
                     }
                     setData(index.parent(), hasSelectedSibling, FilterCriteriaModel::Roles::SELECTED);
                 }
@@ -379,7 +379,7 @@ bool FilterCriteriaModel::setData(const QModelIndex &index, const QVariant &valu
                 if (parent) {
                     bool hasSelectedSibling{false};
                     for (int i = 0; i < parent->childCount(); ++i) {
-                        hasSelectedSibling = hasSelectedSibling && parent->child(i)->data(SELECTED).toBool();
+                        hasSelectedSibling = hasSelectedSibling || parent->child(i)->data(SELECTED).toBool();
                     }
                     setData(index.parent(), hasSelectedSibling, FilterCriteriaModel::Roles::SELECTED);
                 }

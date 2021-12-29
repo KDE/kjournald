@@ -6,6 +6,8 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQml 2.15
+import org.kde.kirigami 2.2 as Kirigami
+import QtQuick.Controls.Material 2.0
 import kjournald 1.0
 
 ListView {
@@ -106,7 +108,7 @@ ListView {
             if (textSelectionHandler.selectionActive
                 && model.index >= Math.min(textSelectionHandler.startIndex, textSelectionHandler.temporaryEndIndex)
                 && model.index <= Math.max(textSelectionHandler.startIndex, textSelectionHandler.temporaryEndIndex)) {
-                return "#cccccc"
+                return Material.listHighlightColor
             }
             switch (displayRoleRight) {
             case JournaldViewModel.SYSTEMD_UNIT: return model ? model.systemdunitcolor_background : "#ffffff"
@@ -130,11 +132,11 @@ ListView {
             highlight: hightlightTextField.text
             modelProxy: root.model
 
-            Rectangle {
+            Rectangle { // right side information
                 anchors.right: parent.right
                 width: categoryInfo.width + 8
                 height: categoryInfo.height
-                radius: 4
+                radius: 0
                 color: {
                     switch (displayRoleRight) {
                     case JournaldViewModel.SYSTEMD_UNIT: return model ? model.systemdunitcolor_foreground : "#ffffff"
@@ -148,15 +150,20 @@ ListView {
                         right: parent.right
                         rightMargin: 4
                     }
-                    width: Math.min(implicitWidth, 0.5 * messageText.width)
+                    width: Math.max(Math.min(implicitWidth, 0.5 * messageText.width), 12)
                     text: {
                         switch (displayRoleRight) {
-                        case JournaldViewModel.SYSTEMD_UNIT: return model.systemdunit
-                        case JournaldViewModel.EXE: return model.exe
+                        case JournaldViewModel.SYSTEMD_UNIT:
+                            return categoryInfoHoverHandler.hovered ? model.systemdunit : model.systemdunit_changed_substring
+                        case JournaldViewModel.EXE:
+                            return categoryInfoHoverHandler.hovered ? model.exe : model.exe_changed_substring
                         }
                         return ""
                     }
                     elide: Text.ElideLeft
+                }
+                HoverHandler {
+                    id: categoryInfoHoverHandler
                 }
             }
         }
@@ -169,14 +176,23 @@ ListView {
     // separate log by days
     section.property: "date"
     section.criteria: ViewSection.FullString
-    section.delegate: Rectangle {
+    section.delegate: Kirigami.Heading {
         id: sectionContainer
         width: parent.width
-        height: dateSectionText.height
-        Text {
-            id: dateSectionText
-            text: Qt.formatDate(section, "dddd, yyyy-MM-dd")
-            font.pixelSize: 20
+        text: Qt.formatDate(section, "dddd, yyyy-MM-dd")
+
+        rightPadding: 24
+        horizontalAlignment: Text.AlignRight
+        padding: Kirigami.Units.smallSpacing
+        level: 2
+        color: Kirigami.Theme.disabledTextColor
+        background: Rectangle {
+            color: Kirigami.Theme.backgroundColor
+        }
+        Kirigami.Separator {
+            anchors.bottom: parent.bottom
+            width: parent.width
+            height: 1
         }
     }
 

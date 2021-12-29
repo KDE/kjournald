@@ -104,17 +104,22 @@ QVariant FlattenedFilterCriteriaProxyModel::data(const QModelIndex &index, int r
         case FilterCriteriaModel::Category::PRIORITY:
             return FlattenedFilterCriteriaProxyModel::DelgateType::RADIOBUTTON;
         case FilterCriteriaModel::Category::SYSTEMD_UNIT:
-            return FlattenedFilterCriteriaProxyModel::DelgateType::CHECKBOX_COLORED;
+            return FlattenedFilterCriteriaProxyModel::DelgateType::CHECKBOX;
         case FilterCriteriaModel::Category::EXE:
-            return FlattenedFilterCriteriaProxyModel::DelgateType::CHECKBOX_COLORED;
+            return FlattenedFilterCriteriaProxyModel::DelgateType::CHECKBOX;
         case FilterCriteriaModel::Category::TRANSPORT:
             return FlattenedFilterCriteriaProxyModel::DelgateType::CHECKBOX;
         }
         return QVariant::fromValue(FlattenedFilterCriteriaProxyModel::DelgateType::SECTION);
     }
-    case FlattenedFilterCriteriaProxyModel::COLOR:
+    case FlattenedFilterCriteriaProxyModel::COLOR: {
+        if (mSourceModel->data(mMapToSourceIndex.at(index.row()).mSourceIndex, FilterCriteriaModel::Roles::CATEGORY)
+            == FilterCriteriaModel::Category::TRANSPORT) {
+            return QColor(Qt::black);
+        }
         return Colorizer::color(mSourceModel->data(mMapToSourceIndex.at(index.row()).mSourceIndex, FilterCriteriaModel::Roles::DATA).toString(),
                                 Colorizer::COLOR_TYPE::FOREGROUND);
+    }
     }
 
     return QVariant();

@@ -55,6 +55,7 @@ find_package(Qt5 ${REQUIRED_QT_VERSION} REQUIRED COMPONENTS
     Quick
     QuickControls2
     Test
+    Widgets
 )
 
 enable_testing()

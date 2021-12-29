@@ -13,22 +13,28 @@
 #include "journaldviewmodel.h"
 #include "sessionconfig.h"
 #include <KLocalizedString>
+#include <QApplication>
 #include <QCommandLineParser>
 #include <QDebug>
-#include <QGuiApplication>
 #include <QIcon>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <QQuickStyle>
 #include <QSortFilterProxyModel>
 #include <systemd/sd-journal.h>
 
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-    QGuiApplication app(argc, argv);
+    QApplication app(argc, argv);
     QGuiApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("utilities-log-viewer")));
     app.setOrganizationName("KDE");
     KLocalizedString::setApplicationDomain("kjournald");
+
+    // use org.kde.desktop style unless another style is forced
+    if (qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE")) {
+        QQuickStyle::setStyle(QStringLiteral("org.kde.desktop"));
+    }
 
     qmlRegisterType<JournaldViewModel>("kjournald", 1, 0, "JournaldViewModel");
     qmlRegisterType<JournaldUniqueQueryModel>("kjournald", 1, 0, "JournaldUniqueQueryModel");

@@ -348,7 +348,9 @@ QHash<int, QByteArray> JournaldViewModel::roleNames() const
     roles[JournaldViewModel::MESSAGE] = "message";
     roles[JournaldViewModel::PRIORITY] = "priority";
     roles[JournaldViewModel::SYSTEMD_UNIT] = "systemdunit";
+    roles[JournaldViewModel::SYSTEMD_UNIT_CHANGED_SUBSTRING] = "systemdunit_changed_substring";
     roles[JournaldViewModel::EXE] = "exe";
+    roles[JournaldViewModel::EXE_CHANGED_SUBSTRING] = "exe_changed_substring";
     roles[JournaldViewModel::BOOT_ID] = "bootid";
     roles[JournaldViewModel::SYSTEMD_UNIT_COLOR_BACKGROUND] = "systemdunitcolor_background";
     roles[JournaldViewModel::SYSTEMD_UNIT_COLOR_FOREGROUND] = "systemdunitcolor_foreground";
@@ -414,10 +416,24 @@ QVariant JournaldViewModel::data(const QModelIndex &index, int role) const
         return d->mLog.at(index.row()).mBootId;
     case JournaldViewModel::Roles::SYSTEMD_UNIT:
         return d->mLog.at(index.row()).mSystemdUnit;
+    case JournaldViewModel::Roles::SYSTEMD_UNIT_CHANGED_SUBSTRING: {
+        QString unit = d->mLog.at(index.row()).mSystemdUnit;
+        if (index.row() != 0) {
+            unit.remove(d->mLog.at(index.row() - 1).mSystemdUnit);
+        }
+        return unit;
+    }
     case JournaldViewModel::Roles::PRIORITY:
         return d->mLog.at(index.row()).mPriority;
     case JournaldViewModel::Roles::EXE:
         return d->mLog.at(index.row()).mExe;
+    case JournaldViewModel::Roles::EXE_CHANGED_SUBSTRING: {
+        QString exe = d->mLog.at(index.row()).mExe;
+        if (index.row() != 0) {
+            exe.remove(d->mLog.at(index.row() - 1).mExe);
+        }
+        return exe;
+    }
     case JournaldViewModel::Roles::SYSTEMD_UNIT_COLOR_BACKGROUND:
         return Colorizer::color(d->mLog.at(index.row()).mSystemdUnit, Colorizer::COLOR_TYPE::BACKGROUND);
     case JournaldViewModel::Roles::SYSTEMD_UNIT_COLOR_FOREGROUND:

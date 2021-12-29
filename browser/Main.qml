@@ -8,12 +8,10 @@ import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Dialogs 1.0
 import QtQuick.Layouts 1.15
+import org.kde.kirigami 2.2 as Kirigami
 import kjournald 1.0
 
-// only for initial testing of tree model
-import QtQuick.Controls 1.4 as QQC1
-
-ApplicationWindow {
+Kirigami.ApplicationWindow {
     width: 800
     height: 640
     visible: true
@@ -121,13 +119,22 @@ ApplicationWindow {
         Keys.forwardTo: [logView]
         focus: true
 
-        ScrollView {
+        Rectangle {
+            id: drawerColumn
             height: parent.height
-            ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
-            SplitView.preferredWidth: 300
+            SplitView.preferredWidth: 250
+            Kirigami.Theme.colorSet: Kirigami.Theme.View
+            Kirigami.Theme.inherit: false
+            color: Kirigami.Theme.backgroundColor
 
-            FilterCriteriaView {
-                width: parent.width
+            ScrollView {
+                anchors.fill: parent
+                ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+                ScrollBar.vertical.policy: ScrollBar.AlwaysOn
+
+                FilterCriteriaView {
+                    width: drawerColumn.width - 20
+                }
             }
         }
         Item {
@@ -150,6 +157,7 @@ ApplicationWindow {
             Text {
                 anchors.centerIn: parent
                 text: i18n("No log entries apply to current filter selection")
+                color: Kirigami.Theme.textColor
                 visible: !(logView.count > 0
                            && (g_unitModel.selectedEntries.length > 0
                                || g_executableModel.selectedEntries.length > 0

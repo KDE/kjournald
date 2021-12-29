@@ -22,6 +22,7 @@ PUBLIC
     Qt5::Core
     Qt5::Quick
     Qt5::QuickControls2
+    Qt5::Widgets # because of QApplication and QQC2 style integration
     KF5::I18n
     kjournald
 )

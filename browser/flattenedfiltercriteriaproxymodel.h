@@ -46,7 +46,6 @@ public:
     enum DelgateType {
         SECTION,
         CHECKBOX,
-        CHECKBOX_COLORED,
         RADIOBUTTON,
         UNSELECT_OPTION,
     };

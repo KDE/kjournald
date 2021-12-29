@@ -5,10 +5,13 @@
 
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.3
 import QtQml 2.15
+import org.kde.kirigami 2.2 as Kirigami
 import kjournald 1.0
 
 Column {
+    id: root
     ButtonGroup{ id: priorityGroup }
     Repeater {
         id: rootElements
@@ -18,82 +21,99 @@ Column {
             id: firstLevelComponent
             Column {
                 property var model
-                ItemDelegate {
-                    text:  model.text
+                Kirigami.AbstractListItem {
                     onClicked: model.expanded = !model.expanded
+                    contentItem: RowLayout {
+                        Label {
+                            text: model.text
+                            textFormat: Text.PlainText
+                            elide: Text.ElideRight
+                            Layout.fillWidth: true
+                        }
+                        Kirigami.Icon {
+                            Layout.preferredWidth: 16
+                            Layout.preferredHeight: 16
+                            source: model.expanded ? "collapse" : "expand"
+                        }
+                    }
                 }
-                ItemDelegate { // clear button for checkbox selection
+                Kirigami.AbstractListItem { // clear button for checkbox selection
                     visible: model.expanded && model.selected
                     leftPadding: 20
-                    icon.name: "arrow-left"
-                    text: i18n("Clear")
                     onClicked: model.selected = false
+                    contentItem: RowLayout {
+                        Label {
+                            text: i18n("Clear")
+                            Layout.fillWidth: true
+                        }
+                        Kirigami.Icon {
+                            Layout.preferredWidth: 16
+                            Layout.preferredHeight: 16
+                            source: "edit-clear"
+                        }
+                    }
                 }
             }
         }
         Component {
             id: secondLevelCheckboxComponent
-            CheckBox {
-                property var model
-                height: 20 + children.height
-                text: model ? model.text : ""
-                leftPadding: 20
-                checked: model ? model.selected : false
-                onCheckedChanged: if (model.selected !== checked) model.selected = checked
-
-                ToolTip.delay: 1000
-                ToolTip.timeout: 5000
-                ToolTip.visible: hovered
-                ToolTip.text: model !== null ? model.longtext : ""
-            }
-        }
-        Component {
-            id: secondLevelCheckboxColorCodeComponent
-            CheckBox {
+            Kirigami.AbstractListItem {
                 id: control
                 property var model
-                height: 20 + children.height
+                readonly property bool selected: model.selected
+                onSelectedChanged: checkbox.checked = control.selected
                 text: model ? model.text : ""
                 leftPadding: 20
-                checked: model ? model.selected : false
-                onCheckedChanged: if (model.selected !== checked) model.selected = checked
+                onClicked: model.selected = !model.selected
 
+                contentItem: RowLayout {
+                    Label {
+                        text: model ? model.text : ""
+                        textFormat: Text.PlainText
+                        elide: Text.ElideRight
+                        Layout.fillWidth: true
+                    }
+                    ColoredCheckbox {
+                        id: checkbox
+                        color: model ? model.color : Kirigami.Theme.textColor
+                        checked: model ? model.selected : false
+                        onCheckedChanged: if (model.selected !== checked) model.selected = checked
+                    }
+                }
                 ToolTip.delay: 1000
                 ToolTip.timeout: 5000
                 ToolTip.visible: hovered
                 ToolTip.text: model !== null ? model.longtext : ""
-
-                contentItem: Row {
-                    leftPadding: control.indicator && !control.mirrored ? control.indicator.width + control.spacing : 0
-                    rightPadding: control.indicator && control.mirrored ? control.indicator.width + control.spacing : 0
-                    spacing: 6
-
-                    Rectangle {
-                        width: 24
-                        height: 24
-                        radius: 4
-                        color: model ? model.color : "#FF0000"
-                    }
-
-                    Text {
-                        text: control.text
-                        font: control.font
-                        color: control.palette.windowText
-                    }
-                }
             }
         }
         Component {
             id: secondLevelRadiobuttonComponent
-            RadioButton {
+            Kirigami.AbstractListItem {
+                id: control
                 property var model
-                height: 20 + children.height
+                readonly property bool selected: model.selected
+                onSelectedChanged: radiobox.checked = control.selected
                 text: model ? model.text : ""
                 leftPadding: 20
-                onCheckedChanged: model.selected = checked
-                onModelChanged: if (model) { checked = model.selected }
-                ButtonGroup.group: priorityGroup
+                onClicked: model.selected = !model.selected
 
+                contentItem: RowLayout {
+                    Label {
+                        text: model ? model.text : ""
+                        textFormat: Text.PlainText
+                        elide: Text.ElideRight
+                        Layout.fillWidth: true
+                    }
+
+                    RadioButton {
+                        id: radiobox
+                        checked: model ? model.selected : false
+                        spacing: 0
+                        onCheckedChanged: if (model.selected !== checked) model.selected = checked
+                        ButtonGroup.group: priorityGroup
+                    }
+
+                }
                 ToolTip.delay: 1000
                 ToolTip.timeout: 5000
                 ToolTip.visible: hovered
@@ -101,15 +121,13 @@ Column {
             }
         }
         Loader {
+            width: root.width
             sourceComponent: {
                 if (model.indentation === 0) {
                     return firstLevelComponent;
                 }
                 if (model.type === FlattenedFilterCriteriaProxyModel.CHECKBOX) {
                     return secondLevelCheckboxComponent
-                }
-                if (model.type === FlattenedFilterCriteriaProxyModel.CHECKBOX_COLORED) {
-                    return secondLevelCheckboxColorCodeComponent
                 }
                 if (model.type === FlattenedFilterCriteriaProxyModel.RADIOBUTTON) {
                     return secondLevelRadiobuttonComponent

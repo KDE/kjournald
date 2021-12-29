@@ -4,6 +4,7 @@
 */
 
 import QtQuick 2.15
+import QtQuick.Controls.Material 2.0
 import kjournald 1.0
 
 Item {
@@ -15,38 +16,49 @@ Item {
     property string highlight
     property QtObject modelProxy
     property int index
+    readonly property bool __isHighlighted : highlight !== "" && message.includes(root.highlight)
 
     implicitWidth: text.implicitWidth
     implicitHeight: text.implicitHeight
 
     Rectangle {
-        visible: highlight !== "" && message.includes(root.highlight)
+        visible: root.__isHighlighted
         anchors.fill: parent
-        color: "#ffff00"
+        color: Material.highlightedButtonColor
     }
-    Text {
-        id: text
-        anchors.fill: parent
-        readonly property string timeString: {
-            switch (g_config.timeDisplay) {
-            case SessionConfig.UTC: return modelProxy.formatTime(root.date, true);
-            case SessionConfig.LOCALTIME: return modelProxy.formatTime(root.date, false);
-            case SessionConfig.MONOTONIC_TIMESTAMP: return (root.monotonicTimestamp / 1000).toFixed(3) // display miliseconds
+    Row {
+        spacing: 4
+        Text {
+            readonly property string timeString: {
+                switch (g_config.timeDisplay) {
+                case SessionConfig.UTC: return modelProxy.formatTime(root.date, true);
+                case SessionConfig.LOCALTIME: return modelProxy.formatTime(root.date, false);
+                case SessionConfig.MONOTONIC_TIMESTAMP: return (root.monotonicTimestamp / 1000).toFixed(3) // display miliseconds
+                }
+                return ""
             }
-            return ""
+            color: root.__isHighlighted ? Material.primaryHighlightedTextColor : Material.iconDisabledColor
+            text: timeString
         }
-        text: timeString + " " + root.message
-//        text: root.index + " " + modelProxy.formatTime(root.date, true) + " " + root.message // alternativ output for debugging
-        color: {
-            switch(root.priority) {
-            case 0: return "#700293" // emergency (violet)
-            case 1: return "#930269" // alert
-            case 2: return "#930202" // critical
-            case 3: return "#ff0000" // error (red)
-            case 4: return "#cc9c00" // warning (orange)
-            case 5: return "#015eff" // notice (blue)
-            case 6: return "#029346" // information (green)
-            case 7: return "#000000" // debug
+
+        Text {
+            id: text
+            text: root.message
+            color: {
+                if (root.__isHighlighted) {
+                    return Material.primaryHighlightedTextColor
+                }
+
+                switch(root.priority) {
+                case 0: return "#700293" // emergency (violet)
+                case 1: return "#930269" // alert
+                case 2: return "#930202" // critical
+                case 3: return "#ff0000" // error (red)
+                case 4: return "#cc9c00" // warning (orange)
+                case 5: return "#015eff" // notice (blue)
+                case 6: return "#029346" // information (green)
+                case 7: return "#000000" // debug
+                }
             }
         }
     }

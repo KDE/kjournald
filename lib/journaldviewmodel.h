@@ -53,12 +53,14 @@ public:
         MONOTONIC_TIMESTAMP, //!< monotonic timestamp in miliseconds for journal entry
         PRIORITY, //!< priority of journal entry
         SYSTEMD_UNIT, //!< systemd unit name of journal entry
+        SYSTEMD_UNIT_CHANGED_SUBSTRING, //!< changed part of systemd unit string when compared to previous line
         BOOT_ID, //!< boot ID of journal entry
         SYSTEMD_UNIT_COLOR_BACKGROUND, //!< convenience rainbow color that is hashed for systemd unit, lighter variant
         SYSTEMD_UNIT_COLOR_FOREGROUND, //!< convenience rainbow color that is hashed for systemd unit, darker variant
         EXE_COLOR_BACKGROUND, //!< convenience rainbow color that is hashed for the process, lighter variant
         EXE_COLOR_FOREGROUND, //!< convenience rainbow color that is hashed for the process, darker variant
         EXE, //!< executable path, when available; field "_EXE"
+        EXE_CHANGED_SUBSTRING, //!< changed part of EXE string when compared to previous line
         CURSOR, //!< journald internal unique identifier for a log entry
     };
     Q_ENUM(Roles);

@@ -6,5 +6,6 @@
         <file>TopMenuBar.qml</file>
         <file>LogView.qml</file>
         <file>FilterCriteriaView.qml</file>
+        <file>ColoredCheckbox.qml</file>
     </qresource>
 </RCC>
