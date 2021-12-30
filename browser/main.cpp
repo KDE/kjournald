@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
     KLocalizedString::setApplicationDomain("kjournald");
     KAboutData aboutData(QStringLiteral("kjournald"),
                          i18nc("@title Displayed program name", "KJournald Browser"),
-                         "0.0.3",
+                         "0.0.4",
                          i18nc("@title KAboutData: short program description", "Viewer for Journald logs"),
                          KAboutLicense::LGPL_V2_1,
                          i18nc("@info:credit", "(c) 2021 The KJournald Developers"),
