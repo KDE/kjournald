@@ -60,7 +60,7 @@ Column {
             Kirigami.AbstractListItem {
                 id: control
                 property var model
-                readonly property bool selected: model.selected
+                readonly property bool selected: model ? model.selected : false
                 onSelectedChanged: checkbox.checked = control.selected
                 text: model ? model.text : ""
                 leftPadding: 20
@@ -91,7 +91,7 @@ Column {
             Kirigami.AbstractListItem {
                 id: control
                 property var model
-                readonly property bool selected: model.selected
+                readonly property bool selected: model ? model.selected : false
                 onSelectedChanged: radiobox.checked = control.selected
                 text: model ? model.text : ""
                 leftPadding: 20
