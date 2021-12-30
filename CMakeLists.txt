@@ -43,6 +43,7 @@ ecm_setup_version(${KJOURNALD_VERSION}
 )
 
 find_package(KF5 5.44.0 REQUIRED COMPONENTS
+    CoreAddons
     I18n
 )
 

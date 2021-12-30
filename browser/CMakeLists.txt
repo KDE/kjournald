@@ -7,6 +7,7 @@ include_directories(
 )
 
 add_executable(kjournaldbrowser
+    aboutproxy.cpp
     main.cpp
     clipboardproxy.cpp
     flattenedfiltercriteriaproxymodel.cpp
@@ -24,6 +25,7 @@ PUBLIC
     Qt5::QuickControls2
     Qt5::Widgets # because of QApplication and QQC2 style integration
     KF5::I18n
+    KF5::CoreAddons
     kjournald
 )
 install(TARGETS kjournaldbrowser DESTINATION bin)

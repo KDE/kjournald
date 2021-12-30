@@ -110,4 +110,15 @@ MenuBar {
             }
         }
     }
+    Menu {
+        title: i18n("Help")
+        MenuItem {
+            text: i18n("About")
+            icon.name: "help-about"
+            onTriggered: {
+                aboutDialog.visible = true
+                aboutDialog.open()
+            }
+        }
+    }
 }

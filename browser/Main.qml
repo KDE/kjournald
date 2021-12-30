@@ -6,9 +6,9 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
-import QtQuick.Dialogs 1.0
+import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.15
-import org.kde.kirigami 2.2 as Kirigami
+import org.kde.kirigami 2.6 as Kirigami
 import kjournald 1.0
 
 Kirigami.ApplicationWindow {
@@ -94,6 +94,24 @@ Kirigami.ApplicationWindow {
         onAccepted: {
             g_config.localJournalPath = fileDialog.fileUrl
             g_config.sessionMode = SessionConfig.LOCALFOLDER
+        }
+    }
+
+    Dialog {
+        id: aboutDialog
+        visible: false
+        modality: Qt.NonModal
+        standardButtons: StandardButton.Close
+
+        ColumnLayout {
+            width: 500
+            Kirigami.AboutPage {
+                AboutProxy {
+                    id: aboutProxy
+                }
+                anchors.fill: parent
+                aboutData: aboutProxy.aboutData
+            }
         }
     }
 
