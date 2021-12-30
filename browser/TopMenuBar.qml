@@ -5,10 +5,12 @@
 
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+import org.kde.kirigami 2.15 as Kirigami
 import kjournald 1.0
 
 MenuBar {
     signal copyViewToClipboard()
+    Kirigami.Theme.colorSet: Kirigami.Theme.Header
     Menu {
         title: i18n("File")
         MenuItem {
