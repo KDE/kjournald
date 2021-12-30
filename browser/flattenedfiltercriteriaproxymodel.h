@@ -48,6 +48,7 @@ public:
         CHECKBOX,
         RADIOBUTTON,
         UNSELECT_OPTION,
+        FIRST_LEVEL,
     };
     Q_ENUM(DelgateType)
 

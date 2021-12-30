@@ -11,7 +11,7 @@ import QtQuick.Layouts 1.15
 import org.kde.kirigami 2.6 as Kirigami
 import kjournald 1.0
 
-Kirigami.ApplicationWindow {
+Kirigami.AbstractApplicationWindow {
     width: 800
     height: 640
     visible: true
@@ -131,33 +131,34 @@ Kirigami.ApplicationWindow {
     }
 
     SplitView {
+        id: splitView
         anchors.fill: parent
 
         // forward page key events to listview
         Keys.forwardTo: [logView]
         focus: true
 
-        Rectangle {
-            id: drawerColumn
-            height: parent.height
+        ScrollView {
+            id: scrollView
+            SplitView.fillHeight: true
             SplitView.preferredWidth: 250
             Kirigami.Theme.colorSet: Kirigami.Theme.View
             Kirigami.Theme.inherit: false
-            color: Kirigami.Theme.backgroundColor
+            ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
 
-            ScrollView {
-                anchors.fill: parent
-                ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
-                ScrollBar.vertical.policy: ScrollBar.AlwaysOn
+            FilterCriteriaView {
+            }
 
-                FilterCriteriaView {
-                    width: drawerColumn.width - 20
-                }
+            data: Kirigami.Separator {
+                height: splitView.height
+                anchors.right: scrollView.right
             }
         }
+
         Item {
             height: parent.height
             SplitView.fillWidth: true
+            SplitView.fillHeight: true
             LogView {
                 id: logView
                 anchors.fill: parent

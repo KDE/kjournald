@@ -100,6 +100,9 @@ QVariant FlattenedFilterCriteriaProxyModel::data(const QModelIndex &index, int r
     case FlattenedFilterCriteriaProxyModel::Roles::INDENTATION:
         return mMapToSourceIndex.at(index.row()).mIndentation;
     case FlattenedFilterCriteriaProxyModel::Roles::TYPE: {
+        if (mMapToSourceIndex.at(index.row()).mIndentation == 0) {
+            return FlattenedFilterCriteriaProxyModel::DelgateType::FIRST_LEVEL;
+        }
         switch (mSourceModel->data(mMapToSourceIndex.at(index.row()).mSourceIndex, FilterCriteriaModel::Roles::CATEGORY).toInt()) {
         case FilterCriteriaModel::Category::PRIORITY:
             return FlattenedFilterCriteriaProxyModel::DelgateType::RADIOBUTTON;
