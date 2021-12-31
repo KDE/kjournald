@@ -102,14 +102,17 @@ Kirigami.AbstractApplicationWindow {
         visible: false
         modality: Qt.NonModal
         standardButtons: StandardButton.Close
+        width: 600
+        height: 450
 
         ColumnLayout {
-            width: 500
+            anchors.fill: parent
             Kirigami.AboutPage {
                 AboutProxy {
                     id: aboutProxy
                 }
-                anchors.fill: parent
+                Layout.fillWidth: true
+                Layout.fillHeight: true
                 aboutData: aboutProxy.aboutData
             }
         }
