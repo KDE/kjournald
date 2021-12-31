@@ -17,6 +17,7 @@ BootModel::BootModel(QObject *parent)
 {
     beginResetModel();
     d->mBootInfo = JournaldHelper::queryOrderedBootIds(*d->mJournal.get());
+    d->sort(Qt::SortOrder::DescendingOrder);
     endResetModel();
 }
 
@@ -26,6 +27,7 @@ BootModel::BootModel(const QString &journaldPath, QObject *parent)
 {
     beginResetModel();
     d->mBootInfo = JournaldHelper::queryOrderedBootIds(*d->mJournal.get());
+    d->sort(Qt::SortOrder::DescendingOrder);
     endResetModel();
 }
 
@@ -35,6 +37,7 @@ BootModel::BootModel(std::unique_ptr<IJournal> journal, QObject *parent)
 {
     beginResetModel();
     d->mBootInfo = JournaldHelper::queryOrderedBootIds(*d->mJournal.get());
+    d->sort(Qt::SortOrder::DescendingOrder);
     endResetModel();
 }
 
@@ -48,6 +51,7 @@ bool BootModel::setJournaldPath(const QString &path)
     success = d->mJournal->isValid();
     if (success) {
         d->mBootInfo = JournaldHelper::queryOrderedBootIds(*d->mJournal.get());
+        d->sort(Qt::SortOrder::DescendingOrder);
     }
     endResetModel();
     return success;
@@ -58,6 +62,7 @@ void BootModel::setSystemJournal()
     beginResetModel();
     d->mJournal = std::make_unique<LocalJournal>();
     d->mBootInfo = JournaldHelper::queryOrderedBootIds(*d->mJournal.get());
+    d->sort(Qt::SortOrder::DescendingOrder);
     endResetModel();
 }
 
@@ -65,6 +70,7 @@ QHash<int, QByteArray> BootModel::roleNames() const
 {
     QHash<int, QByteArray> roles;
     roles[BootModel::BOOT_ID] = "bootid";
+    roles[BootModel::CURRENT] = "current";
     roles[BootModel::SINCE] = "since";
     roles[BootModel::UNTIL] = "until";
     roles[BootModel::DISPLAY_SHORT_UTC] = "displayshort_utc";
@@ -99,8 +105,6 @@ QVariant BootModel::data(const QModelIndex &index, int role) const
         return QVariant();
     }
     switch (role) {
-    case Qt::DisplayRole:
-        Q_FALLTHROUGH();
     case BootModel::BOOT_ID:
         return d->mBootInfo.at(index.row()).mBootId;
     case BootModel::SINCE:
@@ -111,6 +115,8 @@ QVariant BootModel::data(const QModelIndex &index, int role) const
         return d->prettyPrintBoot(d->mBootInfo.at(index.row()), BootModelPrivate::TIME_FORMAT::UTC);
     case BootModel::DISPLAY_SHORT_LOCALTIME:
         return d->prettyPrintBoot(d->mBootInfo.at(index.row()), BootModelPrivate::TIME_FORMAT::LOCALTIME);
+    case BootModel::CURRENT:
+        return QVariant::fromValue<bool>(d->mJournal->currentBootId() == d->mBootInfo.at(index.row()).mBootId);
     }
 
     return QVariant();

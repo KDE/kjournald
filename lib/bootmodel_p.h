@@ -22,6 +22,8 @@ public:
 
     static QString prettyPrintBoot(const BootInfo &bootInfo, TIME_FORMAT format);
 
+    void sort(Qt::SortOrder order);
+
     QVector<BootInfo> mBootInfo;
     std::unique_ptr<IJournal> mJournal;
 };
@@ -50,6 +52,17 @@ QString BootModelPrivate::prettyPrintBoot(const BootInfo &bootInfo, TIME_FORMAT 
     } else {
         return QString(QLatin1String("%1 %2-%3 %4 [%5...]")).arg(sinceDate, sinceTime, untilDate, untilTime, id);
     }
+}
+
+void BootModelPrivate::sort(Qt::SortOrder order)
+{
+    std::sort(std::begin(mBootInfo), std::end(mBootInfo), [order](const BootInfo &left, const BootInfo &right) {
+        if (order == Qt::AscendingOrder) {
+            return left.mSince <= right.mSince;
+        } else {
+            return left.mSince > right.mSince;
+        }
+    });
 }
 
 #endif // JOURNAL_H

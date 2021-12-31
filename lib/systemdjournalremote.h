@@ -62,6 +62,11 @@ public:
     bool isValid() const override;
 
     /**
+     * @copydoc IJournal::currentBootId()
+     */
+    QString currentBootId() const override;
+
+    /**
      * @brief Get file system usage of journal
      * @return size of journal in bytes
      */

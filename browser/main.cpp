@@ -72,7 +72,6 @@ int main(int argc, char *argv[])
 
     SessionConfig sessionConfig;
     BootModel bootModel;
-
     FilterCriteriaModel filterCriteriaModel;
 
     QObject::connect(&sessionConfig, &SessionConfig::modeChanged, &sessionConfig, [&sessionConfig, &bootModel, &filterCriteriaModel](SessionConfig::Mode mode) {

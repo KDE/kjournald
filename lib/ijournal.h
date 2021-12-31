@@ -44,6 +44,11 @@ public:
      */
     virtual bool isValid() const = 0;
 
+    /**
+     * @return ID for the current boot (b0) of the system, empty string if none is current
+     */
+    virtual QString currentBootId() const = 0;
+
 Q_SIGNALS:
     /**
      * @brief signal is fired when new entries are added to the journal

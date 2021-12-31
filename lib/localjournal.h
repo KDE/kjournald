@@ -57,10 +57,9 @@ public:
     bool isValid() const override;
 
     /**
-     * @return ID for the current boot of the system
-     * @note this is the value from
+     * @copydoc IJournal::currentBootId()
      */
-    QString currentBootId() const;
+    QString currentBootId() const override;
 
     /**
      * @brief Get file system usage of journal

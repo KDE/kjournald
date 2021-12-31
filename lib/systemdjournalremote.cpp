@@ -142,6 +142,12 @@ bool SystemdJournalRemote::isValid() const
     return d->mJournal != nullptr;
 }
 
+QString SystemdJournalRemote::currentBootId() const
+{
+    qCWarning(journald()) << "Access to remote journal boot ID is not implemented";
+    return QString();
+}
+
 uint64_t SystemdJournalRemote::usage() const
 {
     uint64_t size{0};

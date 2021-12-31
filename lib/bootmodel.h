@@ -24,11 +24,12 @@ class KJOURNALD_EXPORT BootModel : public QAbstractListModel
     Q_OBJECT
 public:
     enum Roles {
-        BOOT_ID = Qt::UserRole + 1, //!< the journald ID of the boot
-        SINCE, //!< the time of the earliest log entry for the boot
+        BOOT_ID = Qt::DisplayRole, //!< the journald ID of the boot
+        SINCE = Qt::UserRole + 1, //!< the time of the earliest log entry for the boot
         UNTIL, //!< the time of the latest log entry for the boot
         DISPLAY_SHORT_UTC, //!< compact representation of the boot ID with all of its information: date, since-time, until-time, abbreviated hash
         DISPLAY_SHORT_LOCALTIME, //!< compact representation of the boot ID with all of its information: date, since-time, until-time, abbreviated hash
+        CURRENT, //!< boolen role the tells if this boot is current for the system and thus expands
     };
 
     /**

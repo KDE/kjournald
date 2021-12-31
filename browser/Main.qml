@@ -37,9 +37,14 @@ Kirigami.AbstractApplicationWindow {
                 id: bootIdComboBox
                 implicitWidth: Math.max(300, implicitContentWidth)
                 model: g_bootModel
+                valueRole: "bootid"
                 textRole: g_config.timeDisplay
                           === SessionConfig.UTC ? "displayshort_utc" : "displayshort_localtime"
-                valueRole: "bootid"
+                delegate: ItemDelegate {
+                    text: g_config.timeDisplay
+                          === SessionConfig.UTC ? model.displayshort_utc : model.displayshort_localtime
+                    font.weight: model.current === true ? Font.Bold : Font.Normal
+                }
             }
             ToolSeparator {}
 
