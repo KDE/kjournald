@@ -2,6 +2,7 @@
     <qresource prefix="/">
         <file>Main.qml</file>
         <file>LogLine.qml</file>
+        <file>GlobalMenu.qml</file>
         <file>RemoteJournalConfigDialog.qml</file>
         <file>TopMenuBar.qml</file>
         <file>LogView.qml</file>

@@ -17,7 +17,13 @@ Kirigami.AbstractApplicationWindow {
     visible: true
 
     menuBar: TopMenuBar {
+        visible: (Kirigami.Settings.hasPlatformMenuBar === false || Kirigami.Settings.hasPlatformMenuBar === undefined) && !Kirigami.Settings.isMobile
         onCopyViewToClipboard: logView.copyTextFromView()
+    }
+
+    Loader {
+        active: Kirigami.Settings.hasPlatformMenuBar === true && !Kirigami.Settings.isMobile
+        source: Qt.resolvedUrl("qrc:/GlobalMenu.qml")
     }
 
     header: ToolBar {
