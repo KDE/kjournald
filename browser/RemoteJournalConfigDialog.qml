@@ -27,7 +27,7 @@ Dialog {
         columnSpacing: 10
 
         // first line
-        Text {
+        Label {
             text: i18n("Url:")
         }
         TextField {
@@ -36,7 +36,7 @@ Dialog {
         }
 
         // second line
-        Text {
+        Label {
             text: i18n("Port:")
         }
         SpinBox {

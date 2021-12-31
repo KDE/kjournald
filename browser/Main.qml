@@ -176,7 +176,7 @@ Kirigami.AbstractApplicationWindow {
                     console.log("view content copied")
                 }
             }
-            Text {
+            Label {
                 anchors.centerIn: parent
                 text: i18n("No log entries apply to current filter selection")
                 color: Kirigami.Theme.textColor
