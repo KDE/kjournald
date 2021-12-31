@@ -169,7 +169,7 @@ Kirigami.AbstractApplicationWindow {
                 textSelectionMode: g_config.viewMode === SessionConfig.SELECT
                 visible: count > 0
                 onTextCopied: {
-                    clipboard.setText(text)
+                    Clipboard.setText(text)
                     console.log("view content copied")
                 }
             }
@@ -195,8 +195,5 @@ Kirigami.AbstractApplicationWindow {
         bootFilter: bootIdComboBox.currentValue
         priorityFilter: g_filterModel.priorityFilter
         kernelFilter: g_filterModel.kernelFilter
-    }
-    ClipboardProxy {
-        id: clipboard
     }
 }

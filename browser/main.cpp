@@ -55,7 +55,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<JournaldViewModel>("kjournald", 1, 0, "JournaldViewModel");
     qmlRegisterType<JournaldUniqueQueryModel>("kjournald", 1, 0, "JournaldUniqueQueryModel");
     qmlRegisterType<FieldFilterProxyModel>("kjournald", 1, 0, "FieldFilterProxyModel");
-    qmlRegisterType<ClipboardProxy>("kjournald", 1, 0, "ClipboardProxy");
+    qmlRegisterSingletonInstance("kjournald", 1, 0, "Clipboard", new ClipboardProxy);
     qmlRegisterType<AboutProxy>("kjournald", 1, 0, "AboutProxy");
     qmlRegisterType<FlattenedFilterCriteriaProxyModel>("kjournald", 1, 0, "FlattenedFilterCriteriaProxyModel");
     qmlRegisterUncreatableType<FilterCriteriaModel>("kjournald", 1, 0, "FilterCriteriaModel", "Backend only object");

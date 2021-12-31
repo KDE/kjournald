@@ -7,6 +7,11 @@
 #include <QClipboard>
 #include <QGuiApplication>
 
+ClipboardProxy::ClipboardProxy(QObject *parent)
+    : QObject(parent)
+{
+}
+
 void ClipboardProxy::setText(const QString &text)
 {
     QClipboard *clipboard = QGuiApplication::clipboard();
