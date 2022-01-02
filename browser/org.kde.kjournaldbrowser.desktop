@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: CC0-1.0
 [Desktop Entry]
 Type=Application
-Exec=journald-browser %U
+Exec=kjournaldbrowser %U
 Icon=utilities-log-viewer
 GenericName=Journald Browser
 GenericName[ca]=Navegador de «journald»
