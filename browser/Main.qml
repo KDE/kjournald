@@ -190,10 +190,7 @@ Kirigami.AbstractApplicationWindow {
             // Once the minimal KF5 version gets increased
             // it would be great to use Kirigami.PlaceholderMessage instead
             ColumnLayout {
-                visible: !(logView.count > 0
-                           && (g_unitModel.selectedEntries.length > 0
-                               || g_executableModel.selectedEntries.length > 0
-                               || root.journalModel.kernelFilter))
+                visible: logView.count === 0
                 anchors.centerIn: parent
                 Kirigami.Heading {
                     Layout.fillWidth: true
