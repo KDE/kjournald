@@ -187,14 +187,24 @@ Kirigami.AbstractApplicationWindow {
                     console.log("view content copied")
                 }
             }
-            Label {
-                anchors.centerIn: parent
-                text: i18n("No log entries apply to current filter selection")
-                color: Kirigami.Theme.textColor
+            // Once the minimal KF5 version gets increased
+            // it would be great to use Kirigami.PlaceholderMessage instead
+            ColumnLayout {
                 visible: !(logView.count > 0
                            && (g_unitModel.selectedEntries.length > 0
                                || g_executableModel.selectedEntries.length > 0
                                || root.journalModel.kernelFilter))
+                anchors.centerIn: parent
+                Kirigami.Heading {
+                    Layout.fillWidth: true
+
+                    text: i18n("No log entries apply ")
+                    level: 2
+                    opacity: 0.5
+
+                    horizontalAlignment: Qt.AlignHCenter
+                    wrapMode: Text.WordWrap
+                }
             }
         }
     }
