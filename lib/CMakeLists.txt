@@ -36,6 +36,7 @@ target_sources(kjournald PRIVATE
 )
 target_link_libraries(kjournald
 PRIVATE
+    KF5::I18n
     Qt5::Core
     Qt5::Quick
     PkgConfig::SYSTEMD

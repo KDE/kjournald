@@ -7,6 +7,7 @@
 #include "filtercriteriamodel_p.h"
 #include "kjournald_export.h"
 #include "loggingcategories.h"
+#include <KLocalizedString>
 #include <QDebug>
 #include <QDir>
 #include <QString>
@@ -127,14 +128,25 @@ void FilterCriteriaModelPrivate::rebuildModel()
 {
     mRootItem = std::make_unique<SelectionEntry>();
     {
-        auto parent = std::make_shared<SelectionEntry>(QLatin1String("Transport"), QVariant(), FilterCriteriaModel::Category::TRANSPORT, false, mRootItem);
+        auto parent = std::make_shared<SelectionEntry>(i18nc("Section title for log message source", "Transport"),
+                                                       QVariant(),
+                                                       FilterCriteriaModel::Category::TRANSPORT,
+                                                       false,
+                                                       mRootItem);
         mRootItem->appendChild(parent);
         mRootItem->child(FilterCriteriaModel::Category::TRANSPORT)
-            ->appendChild(std::move(
-                std::make_unique<SelectionEntry>(QLatin1String("Kernel"), QLatin1String("kernel"), FilterCriteriaModel::Category::TRANSPORT, false, parent)));
+            ->appendChild(std::move(std::make_unique<SelectionEntry>(i18nc("Checkbox option for kernel log messages", "Kernel"),
+                                                                     QLatin1String("kernel"),
+                                                                     FilterCriteriaModel::Category::TRANSPORT,
+                                                                     false,
+                                                                     parent)));
     }
     {
-        auto parent = std::make_shared<SelectionEntry>(QLatin1String("Priority"), QVariant(), FilterCriteriaModel::Category::PRIORITY, false, mRootItem);
+        auto parent = std::make_shared<SelectionEntry>(i18nc("Section title for log message priority", "Priority"),
+                                                       QVariant(),
+                                                       FilterCriteriaModel::Category::PRIORITY,
+                                                       false,
+                                                       mRootItem);
         mRootItem->appendChild(parent);
         for (int i = 0; i <= 7; ++i) {
             mRootItem->child(FilterCriteriaModel::Category::PRIORITY)
@@ -146,7 +158,11 @@ void FilterCriteriaModelPrivate::rebuildModel()
         }
     }
     {
-        auto parent = std::make_shared<SelectionEntry>(QLatin1String("Systemd"), QVariant(), FilterCriteriaModel::Category::SYSTEMD_UNIT, false, mRootItem);
+        auto parent = std::make_shared<SelectionEntry>(i18nc("Section title for systemd unit", "Unit"),
+                                                       QVariant(),
+                                                       FilterCriteriaModel::Category::SYSTEMD_UNIT,
+                                                       false,
+                                                       mRootItem);
         mRootItem->appendChild(parent);
         QVector<QString> units = JournaldHelper::queryUnique(mJournal, JournaldHelper::Field::SYSTEMD_UNIT);
         std::sort(std::begin(units), std::end(units), [](const QString &a, const QString &b) {
@@ -159,7 +175,11 @@ void FilterCriteriaModelPrivate::rebuildModel()
         }
     }
     {
-        auto parent = std::make_shared<SelectionEntry>(QLatin1String("Process"), QVariant(), FilterCriteriaModel::Category::EXE, false, mRootItem);
+        auto parent = std::make_shared<SelectionEntry>(i18nc("Section title for process list", "Process"),
+                                                       QVariant(),
+                                                       FilterCriteriaModel::Category::EXE,
+                                                       false,
+                                                       mRootItem);
         mRootItem->appendChild(parent);
         QVector<QString> exes = JournaldHelper::queryUnique(mJournal, JournaldHelper::Field::EXE);
         std::sort(std::begin(exes), std::end(exes), [](const QString &a, const QString &b) {
