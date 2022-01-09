@@ -52,6 +52,8 @@ public:
      */
     void rebuildModel();
 
+    static QString mapPriorityToString(int priority);
+
     std::shared_ptr<IJournal> mJournal;
     std::shared_ptr<SelectionEntry> mRootItem;
 };

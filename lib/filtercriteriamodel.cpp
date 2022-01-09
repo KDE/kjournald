@@ -13,25 +13,25 @@
 #include <QString>
 #include <memory>
 
-constexpr QLatin1String mapPriorityToString(int priority)
+QString FilterCriteriaModelPrivate::mapPriorityToString(int priority)
 {
     switch (priority) {
     case 0:
-        return QLatin1String("emergency");
+        return i18nc("Radio box option, log priority value", "Emergency");
     case 1:
-        return QLatin1String("alert");
+        return i18nc("Radio box option, log priority value", "Alert");
     case 2:
-        return QLatin1String("critical");
+        return i18nc("Radio box option, log priority value", "Critical");
     case 3:
-        return QLatin1String("error");
+        return i18nc("Radio box option, log priority value", "Error");
     case 4:
-        return QLatin1String("warning");
+        return i18nc("Radio box option, log priority value", "Warning");
     case 5:
-        return QLatin1String("notice");
+        return i18nc("Radio box option, log priority value", "Notice");
     case 6:
-        return QLatin1String("info");
+        return i18nc("Radio box option, log priority value", "Info");
     case 7:
-        return QLatin1String("debug");
+        return i18nc("Radio box option, log priority value", "Debug");
     }
     return QLatin1String("");
 }
