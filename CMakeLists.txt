@@ -22,7 +22,9 @@ add_definitions(
     -DKF_DEPRECATED_WARNINGS_SINCE=0x060000
 )
 
-find_package(ECM 5.44.0 NO_MODULE)
+# KF5 minimal version is chosen to support Ubuntu 20.04 LTS
+set(KF5_VERSION 5.68.0)
+find_package(ECM ${KF5_VERSION} NO_MODULE)
 set_package_properties(ECM PROPERTIES
     TYPE REQUIRED
     DESCRIPTION "Extra CMake Modules."
@@ -42,7 +44,7 @@ ecm_setup_version(${KJOURNALD_VERSION}
     SOVERSION 0
 )
 
-find_package(KF5 5.44.0 REQUIRED COMPONENTS
+find_package(KF5 ${KF5_VERSION} REQUIRED COMPONENTS
     CoreAddons
     I18n
 )
