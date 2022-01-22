@@ -14,6 +14,7 @@
 #include "journaldviewmodel.h"
 #include "sessionconfig.h"
 #include <KAboutData>
+#include <KLocalizedContext>
 #include <KLocalizedString>
 #include <QApplication>
 #include <QCommandLineParser>
