@@ -4,6 +4,7 @@
 */
 
 #include "test_viewmodel.h"
+#include "../containertesthelper.h"
 #include "../testdatalocation.h"
 #include "journaldviewmodel.h"
 #include "journaldviewmodel_p.h"
@@ -263,6 +264,76 @@ void TestViewModel::resetModelHeadAndTailCursorTest()
     model.seekHead();
     QCOMPARE(model.data(model.index(0, 0), JournaldViewModel::CURSOR), cursors.at(1).mHead);
     QCOMPARE(model.data(model.index(model.rowCount() - 1, 0), JournaldViewModel::CURSOR), cursors.at(1).mTail);
+}
+
+void TestViewModel::stringSearch()
+{
+    // obtained index lines with
+    // journalctl _TRANSPORT=journal _TRANSPORT=syslog _TRANSPORT=stdout -b -2 --output-fields=_MESSAGE --quiet -D . |grep -n Socket
+    // 19:Mär 13 16:23:01 raspberrypi4 systemd[1]: Listening on D-Bus System Message Bus Socket.
+    // 23:Mär 13 16:23:01 raspberrypi4 systemd[1]: Reached target Sockets.
+    // 291:Mär 13 16:23:01 raspberrypi4 kernel[206]: [    2.416393] systemd[1]: Listening on Syslog Socket.
+    // 293:Mär 13 16:23:01 raspberrypi4 kernel[206]: [    2.423412] systemd[1]: Listening on Journal Audit Socket.
+    // 294:Mär 13 16:23:01 raspberrypi4 kernel[206]: [    2.427158] systemd[1]: Listening on Journal Socket (/dev/log).
+    // 295:Mär 13 16:23:01 raspberrypi4 kernel[206]: [    2.430803] systemd[1]: Listening on Journal Socket.
+    // 296:Mär 13 16:23:01 raspberrypi4 kernel[206]: [    2.434436] systemd[1]: Listening on Network Service Netlink Socket.
+    // 297:Mär 13 16:23:01 raspberrypi4 kernel[206]: [    2.438047] systemd[1]: Listening on udev Control Socket.
+    // 298:Mär 13 16:23:01 raspberrypi4 kernel[206]: [    2.441297] systemd[1]: Listening on udev Kernel Socket.
+    // 545:Mär 13 16:23:05 raspberrypi4 systemd[305]: Starting D-Bus User Message Bus Socket.
+    // 546:Mär 13 16:23:05 raspberrypi4 systemd[305]: Listening on D-Bus User Message Bus Socket.
+    // 547:Mär 13 16:23:05 raspberrypi4 systemd[305]: Reached target Sockets.
+    // 734:Mär 13 16:36:56 raspberrypi4 systemd[305]: Stopped target Sockets.
+    // 737:Mär 13 16:36:56 raspberrypi4 systemd[305]: Closed D-Bus User Message Bus Socket.
+    // 798:Mär 13 16:36:57 raspberrypi4 systemd[1]: Stopped target Sockets.
+    // 800:Mär 13 16:36:57 raspberrypi4 systemd[1]: Closed D-Bus System Message Bus Socket.
+    // 805:Mär 13 16:36:57 raspberrypi4 systemd[1]: Closed Syslog Socket.
+
+    // note: output of the above grep starts at index 1
+    // note: all lines after 596 were redued manuall by 1, because journalclt contains a linebreak in that log output
+    const std::vector<int> needleLines = {18, 22, 290, 292, 293, 294, 295, 296, 297, 544, 545, 546, 732, 735, 796, 798, 803};
+
+    // simple check when full journal is alread read
+    {
+        JournaldViewModel model;
+        model.setBootFilter({mBoots.at(0)}); // select boot -2 == 68f2e61d061247d8a8ba0b8d53a97a52
+        QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
+        QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
+        int foundLine{-1};
+        std::vector<int> results;
+        do {
+            foundLine = model.search("Socket", foundLine + 1);
+            if (foundLine != -1) {
+                results.push_back(foundLine);
+            }
+
+        } while (foundLine != -1);
+        CONTAINER_EQUAL(needleLines, results);
+    }
+
+    // enforce multiple chunk reads
+    {
+        JournaldViewModel model;
+        model.setFetchMoreChunkSize(10);
+        model.setBootFilter({mBoots.at(0)}); // select boot -2 == 68f2e61d061247d8a8ba0b8d53a97a52
+        QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
+        QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
+        int foundLine{-1};
+        std::vector<int> results;
+        do {
+            foundLine = model.search("Socket", foundLine + 1);
+            if (foundLine != -1) {
+                results.push_back(foundLine);
+            }
+
+        } while (foundLine != -1);
+
+        // debugging helper
+        //    for (int i = 0; i < model.rowCount(); ++i) {
+        //        qDebug() << i << ":" << model.data(model.index(i, 0), Qt::DisplayRole).toString();
+        //    }
+
+        CONTAINER_EQUAL(needleLines, results);
+    }
 }
 
 QTEST_GUILESS_MAIN(TestViewModel);

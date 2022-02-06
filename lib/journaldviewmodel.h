@@ -276,6 +276,13 @@ public:
      */
     Q_INVOKABLE int closestIndexForData(const QDateTime &datetime);
 
+    /**
+     * @brief Set how many log entries shall be read on each request of read-mode.
+     * @param size
+     * @note the initial value is 500 and changing this value only affects future reads.
+     */
+    void setFetchMoreChunkSize(quint32 size);
+
 private Q_SLOTS:
     /**
      * Decoupled fetching for log entries that can enforce sequence of fetching calls.

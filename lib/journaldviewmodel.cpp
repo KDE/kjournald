@@ -110,7 +110,6 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
     static QMutex mutex;
     QMutexLocker locker(&mutex);
 
-    const int readChunkSize{500};
     int result{0};
     QVector<LogEntry> chunk;
     if (!mJournal->isValid()) {
@@ -186,7 +185,7 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
     }
 
     // at this point, the journal is guaranteed to point to the first valid entry
-    for (int counter = 0; counter < readChunkSize; ++counter) {
+    for (int counter = 0; counter < mChunkSize; ++counter) {
         char *data;
         size_t length;
         uint64_t time;
@@ -498,6 +497,15 @@ void JournaldViewModel::fetchMoreLogEntries()
     d->mActiveFetchOperations = 0;
 }
 
+void JournaldViewModel::setFetchMoreChunkSize(quint32 size)
+{
+    if (size > 0) {
+        d->mChunkSize = size;
+    } else {
+        qCWarning(journald) << "chunk size 0 is currently ignored";
+    }
+}
+
 void JournaldViewModel::seekHead()
 {
     beginResetModel();
@@ -598,13 +606,15 @@ int JournaldViewModel::search(const QString &searchString, int startRow)
     int row = startRow;
     while (row < d->mLog.size()) {
         if (d->mLog.at(row).mMessage.contains(searchString)) {
+            qCDebug(journald()) << "Found string in line" << row << d->mLog.at(row).mMessage;
             return row;
         }
         ++row;
         if (row == d->mLog.size() && canFetchMore(QModelIndex())) { // if end is reached, try to fetch more
-            fetchMore(QModelIndex());
+            fetchMore(QModelIndex()); // TODO improve performance by fetching only into scroll direction
         }
     }
+
     return -1;
 }
 

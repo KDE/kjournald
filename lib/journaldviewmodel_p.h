@@ -87,6 +87,7 @@ public:
     bool mHeadCursorReached{false};
     bool mTailCursorReached{false};
     QAtomicInt mActiveFetchOperations{0};
+    uint32_t mChunkSize{500};
 };
 
 #endif // JOURNALDVIEWMODEL_P_H
