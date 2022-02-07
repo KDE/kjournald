@@ -334,6 +334,26 @@ void TestViewModel::stringSearch()
 
         CONTAINER_EQUAL(needleLines, results);
     }
+
+    // test backward search
+    {
+        JournaldViewModel model;
+        model.setBootFilter({mBoots.at(0)}); // select boot -2 == 68f2e61d061247d8a8ba0b8d53a97a52
+        model.seekTail();
+        QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
+        QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
+        int foundLine = model.rowCount() - 1;
+        std::vector<int> results;
+        do {
+            foundLine = model.search("Socket", foundLine - 1, JournaldViewModel::BACKWARD);
+            if (foundLine != -1) {
+                results.push_back(foundLine);
+            }
+
+        } while (foundLine != -1);
+        std::sort(results.begin(), results.end());
+        CONTAINER_EQUAL(needleLines, results);
+    }
 }
 
 QTEST_GUILESS_MAIN(TestViewModel);
