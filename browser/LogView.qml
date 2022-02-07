@@ -66,6 +66,16 @@ ListView {
         root.textCopied(content)
     }
 
+    function scrollToSearchResult(needle, direction) {
+        var offset = direction === JournaldViewModel.FORWARD ? 1 : -1
+        var row = g_journalModel.search(hightlightTextField.text,
+                                        root.indexAt(1, root.contentY + root.height/2) + offset,
+                                        direction)
+        if (row >= 0) {
+            root.positionViewAtIndex(row, ListView.Center)
+        }
+    }
+
     highlightMoveDuration: 10
     model: root.journalModel
     focus: true

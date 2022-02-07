@@ -65,6 +65,12 @@ public:
     };
     Q_ENUM(Roles);
 
+    enum Direction {
+        FORWARD, //!< interaction with log view leads to browsing
+        BACKWARD, //!< interaction with log view leads to text selection
+    };
+    Q_ENUM(Direction);
+
     /**
      * @brief Construct model from the default local journald database
      *
@@ -240,7 +246,7 @@ public:
     /**
      * @return row index of searched string
      */
-    Q_INVOKABLE int search(const QString &searchString, int startRow);
+    Q_INVOKABLE int search(const QString &searchString, int startRow, Direction direction = FORWARD);
 
     /**
      * @brief Format time into string
@@ -286,8 +292,9 @@ public:
 private Q_SLOTS:
     /**
      * Decoupled fetching for log entries that can enforce sequence of fetching calls.
+     * @return pair of fetched entries, first are entries at head, second are entries at tail
      */
-    void fetchMoreLogEntries();
+    std::pair<int, int> fetchMoreLogEntries();
 
 Q_SIGNALS:
     /**

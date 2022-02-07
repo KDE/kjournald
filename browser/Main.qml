@@ -61,6 +61,20 @@ Kirigami.AbstractApplicationWindow {
                 id: hightlightTextField
                 text: ""
             }
+            ToolButton {
+                enabled: hightlightTextField.length > 2
+                icon.name: "go-up-search"
+                onClicked: {
+                    logView.scrollToSearchResult(hightlightTextField.text, JournaldViewModel.BACKWARD)
+                }
+            }
+            ToolButton {
+                enabled: hightlightTextField.length > 2
+                icon.name: "go-down-search"
+                onClicked: {
+                    logView.scrollToSearchResult(hightlightTextField.text, JournaldViewModel.FORWARD)
+                }
+            }
 
             ToolSeparator {}
             ToolButton {

@@ -462,19 +462,20 @@ void JournaldViewModel::fetchMore(const QModelIndex &parent)
     fetchMoreLogEntries();
 }
 
-void JournaldViewModel::fetchMoreLogEntries()
+std::pair<int, int> JournaldViewModel::fetchMoreLogEntries()
 {
     // guard against possible multi-threaded fetching access from QML engine while a fetch is not yet completed
     int instance = d->mActiveFetchOperations.fetchAndAddRelaxed(1);
     if (instance != 0) {
         qWarning() << "Skipping fetch operation, already one in progress";
-        return;
+        return std::pair(0, 0);
     }
     // increase window in both directions, since QAbstractIdemModel::fetchMore cannot
     // provide any indication of the direction. yet, this is not a real problem,
     // because by design usually the head or tail are already reached because that is
     // where we begin reading the log
 
+    std::pair<int, int> fetchResult;
     { // append to log
         QVector<LogEntry> chunk = d->readEntries(JournaldViewModelPrivate::Direction::TOWARDS_TAIL);
         if (chunk.size() > 0) {
@@ -482,6 +483,7 @@ void JournaldViewModel::fetchMoreLogEntries()
             d->mLog.append(chunk);
             endInsertRows();
             qCDebug(journald) << "read towards tail" << chunk.size();
+            fetchResult.first = chunk.size();
         }
     }
 
@@ -492,9 +494,11 @@ void JournaldViewModel::fetchMoreLogEntries()
             d->mLog = chunk << d->mLog; // TODO find more performant way than constructing a new vector every time
             endInsertRows();
             qCDebug(journald) << "read towards head" << chunk.size();
+            fetchResult.second = chunk.size();
         }
     }
     d->mActiveFetchOperations = 0;
+    return fetchResult;
 }
 
 void JournaldViewModel::setFetchMoreChunkSize(quint32 size)
@@ -601,17 +605,32 @@ bool JournaldViewModel::isKernelFilterEnabled() const
     return d->mShowKernelMessages;
 }
 
-int JournaldViewModel::search(const QString &searchString, int startRow)
+int JournaldViewModel::search(const QString &searchString, int startRow, Direction direction)
 {
     int row = startRow;
-    while (row < d->mLog.size()) {
-        if (d->mLog.at(row).mMessage.contains(searchString)) {
-            qCDebug(journald()) << "Found string in line" << row << d->mLog.at(row).mMessage;
-            return row;
+
+    if (direction == FORWARD) {
+        while (row < d->mLog.size()) {
+            if (d->mLog.at(row).mMessage.contains(searchString)) {
+                qCDebug(journald()) << "Found string in line" << row << d->mLog.at(row).mMessage;
+                return row;
+            }
+            ++row;
+            if (row == d->mLog.size() && canFetchMore(QModelIndex())) { // if end is reached, try to fetch more
+                fetchMoreLogEntries(); // TODO improve performance by fetching only into scroll direction
+            }
         }
-        ++row;
-        if (row == d->mLog.size() && canFetchMore(QModelIndex())) { // if end is reached, try to fetch more
-            fetchMore(QModelIndex()); // TODO improve performance by fetching only into scroll direction
+    } else {
+        while (row >= 0) {
+            if (d->mLog.at(row).mMessage.contains(searchString)) {
+                qCDebug(journald()) << "Found string in line" << row << d->mLog.at(row).mMessage;
+                return row;
+            }
+            --row;
+            if (row == d->mLog.size() && canFetchMore(QModelIndex())) { // if end is reached, try to fetch more
+                std::pair<int, int> fetchedRows = fetchMoreLogEntries(); // TODO improve performance by fetching only into scroll direction
+                row += fetchedRows.first;
+            }
         }
     }
 
