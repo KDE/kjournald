@@ -12,6 +12,7 @@
 #include "journaldhelper.h"
 #include "journalduniquequerymodel.h"
 #include "journaldviewmodel.h"
+#include "kjournald_version.h"
 #include "sessionconfig.h"
 #include <KAboutData>
 #include <KLocalizedContext>
@@ -41,7 +42,7 @@ int main(int argc, char *argv[])
     KLocalizedString::setApplicationDomain("kjournald");
     KAboutData aboutData(QStringLiteral("kjournald"),
                          i18nc("@title Displayed program name", "KJournald Browser"),
-                         "0.0.4",
+                         KJOURNALD_VERSION_STRING,
                          i18nc("@title KAboutData: short program description", "Viewer for Journald logs"),
                          KAboutLicense::LGPL_V2_1,
                          i18nc("@info:credit", "(c) 2021 The KJournald Developers"),

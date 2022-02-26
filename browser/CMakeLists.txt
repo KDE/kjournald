@@ -4,6 +4,7 @@
 include_directories(
     ${CMAKE_SOURCE_DIR}/lib
     ${CMAKE_BINARY_DIR}/lib
+    ${CMAKE_BINARY_DIR}
 )
 
 add_executable(kjournaldbrowser
