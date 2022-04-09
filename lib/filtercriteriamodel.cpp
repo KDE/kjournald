@@ -220,9 +220,7 @@ bool FilterCriteriaModel::setJournaldPath(const QString &path)
     beginResetModel();
     d->mJournal = std::make_shared<LocalJournal>(path);
     bool success = d->mJournal->isValid();
-    if (d->mJournal->isValid()) {
-        d->rebuildModel();
-    }
+    d->rebuildModel();
     endResetModel();
     return success;
 }

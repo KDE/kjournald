@@ -99,6 +99,8 @@ public:
 
 private Q_SLOTS:
     void handleSourceModelDataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QVector<int> &roles);
+    void handleSourceModelOnModelReset();
+    void handleSourceModelOnModelAboutToBeReset();
 
 Q_SIGNALS:
     /**

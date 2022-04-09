@@ -26,15 +26,29 @@ void FlattenedFilterCriteriaProxyModel::setSourceModel(QAbstractItemModel *model
 {
     if (mSourceModel) {
         disconnect(mSourceModel, &QAbstractItemModel::dataChanged, this, &FlattenedFilterCriteriaProxyModel::handleSourceModelDataChanged);
+        disconnect(mSourceModel, &QAbstractItemModel::modelAboutToBeReset, this, &FlattenedFilterCriteriaProxyModel::handleSourceModelOnModelAboutToBeReset);
+        disconnect(mSourceModel, &QAbstractItemModel::modelReset, this, &FlattenedFilterCriteriaProxyModel::handleSourceModelOnModelReset);
     }
 
     // TODO add assert that this model only handles two level hierarchies
-    beginResetModel();
-    mMapToSourceIndex.clear();
+    handleSourceModelOnModelAboutToBeReset();
     mSourceModel = model;
     connect(mSourceModel, &QAbstractItemModel::dataChanged, this, &FlattenedFilterCriteriaProxyModel::handleSourceModelDataChanged);
+    connect(mSourceModel, &QAbstractItemModel::modelAboutToBeReset, this, &FlattenedFilterCriteriaProxyModel::handleSourceModelOnModelAboutToBeReset);
+    connect(mSourceModel, &QAbstractItemModel::modelReset, this, &FlattenedFilterCriteriaProxyModel::handleSourceModelOnModelReset);
 
-    // top level items
+    handleSourceModelOnModelReset();
+}
+
+void FlattenedFilterCriteriaProxyModel::handleSourceModelOnModelAboutToBeReset()
+{
+    beginResetModel();
+    mMapToSourceIndex.clear();
+}
+
+void FlattenedFilterCriteriaProxyModel::handleSourceModelOnModelReset()
+{
+    // generate top level items
     for (int i = 0; i < mSourceModel->rowCount(); ++i) {
         mMapToSourceIndex.append({mSourceModel->index(i, 0), false});
     }
@@ -130,6 +144,10 @@ QVariant FlattenedFilterCriteriaProxyModel::data(const QModelIndex &index, int r
 
 bool FlattenedFilterCriteriaProxyModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
+    if (index.row() >= mMapToSourceIndex.count()) {
+        qCWarning(journald) << "access setData for line out of range with index:" << index.row() << " / total rows" << mMapToSourceIndex.count();
+        return false;
+    }
     if (role == FlattenedFilterCriteriaProxyModel::Roles::EXPANDED) {
         const int childrenCount = mSourceModel->rowCount(mMapToSourceIndex.at(index.row()).mSourceIndex);
         const QModelIndex parent = mMapToSourceIndex.at(index.row()).mSourceIndex;
