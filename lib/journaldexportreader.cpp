@@ -7,6 +7,7 @@
 #include "loggingcategories.h"
 #include <QDebug>
 #include <QVector>
+#include <QIODevice>
 #include <climits>
 
 JournaldExportReader::JournaldExportReader(QIODevice *device)

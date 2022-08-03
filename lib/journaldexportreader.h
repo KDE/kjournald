@@ -9,6 +9,7 @@
 #include "kjournald_export.h"
 #include <QObject>
 #include <QTextStream>
+#include <QHash>
 
 class QIODevice;
 
