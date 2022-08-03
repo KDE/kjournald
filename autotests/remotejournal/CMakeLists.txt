@@ -3,6 +3,6 @@
 
 ecm_add_test(
     test_remotejournal.cpp
-    LINK_LIBRARIES Qt5::Core Qt5::Quick Qt5::Test kjournald PkgConfig::SYSTEMD
+    LINK_LIBRARIES Qt::Core Qt::Quick Qt::Test kjournald PkgConfig::SYSTEMD
     TEST_NAME test_remotejournal
 )

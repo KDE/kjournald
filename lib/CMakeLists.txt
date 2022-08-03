@@ -37,8 +37,8 @@ target_sources(kjournald PRIVATE
 target_link_libraries(kjournald
 PRIVATE
     KF5::I18n
-    Qt5::Core
-    Qt5::Quick
+    Qt${QT_MAJOR_VERSION}::Core
+    Qt${QT_MAJOR_VERSION}::Quick
     PkgConfig::SYSTEMD
 )
 set_property(TARGET kjournald APPEND PROPERTY COMPILE_DEFINITIONS QT_NO_CAST_FROM_ASCII QT_NO_CAST_TO_ASCII)

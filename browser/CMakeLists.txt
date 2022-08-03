@@ -21,10 +21,10 @@ target_compile_definitions(kjournaldbrowser
 
 target_link_libraries(kjournaldbrowser
 PUBLIC
-    Qt5::Core
-    Qt5::Quick
-    Qt5::QuickControls2
-    Qt5::Widgets # because of QApplication and QQC2 style integration
+    Qt::Core
+    Qt::Quick
+    Qt::QuickControls2
+    Qt::Widgets # because of QApplication and QQC2 style integration
     KF5::I18n
     KF5::CoreAddons
     kjournald

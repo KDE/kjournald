@@ -3,6 +3,6 @@
 
 ecm_add_test(
     containertesthelpertest.cpp
-    LINK_LIBRARIES Qt5::Core Qt5::Quick Qt5::Test
+    LINK_LIBRARIES Qt::Core Qt::Quick Qt::Test
     TEST_NAME test_containertesthelper
 )

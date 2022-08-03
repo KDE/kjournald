@@ -53,7 +53,7 @@ find_package(PkgConfig REQUIRED)
 pkg_check_modules(SYSTEMD REQUIRED IMPORTED_TARGET libsystemd)
 
 set(REQUIRED_QT_VERSION 5.15.0)
-find_package(Qt5 ${REQUIRED_QT_VERSION} REQUIRED COMPONENTS
+find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} REQUIRED COMPONENTS
     Core
     Quick
     QuickControls2

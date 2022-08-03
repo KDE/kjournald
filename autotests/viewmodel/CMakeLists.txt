@@ -3,6 +3,6 @@
 
 ecm_add_test(
     test_viewmodel.cpp
-    LINK_LIBRARIES Qt5::Core Qt5::Quick Qt5::Test kjournald
+    LINK_LIBRARIES Qt::Core Qt::Quick Qt::Test kjournald
     TEST_NAME test_viewmodel
 )
