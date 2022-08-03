@@ -198,7 +198,11 @@ QString JournaldHelper::cleanupString(const QString &string)
         } else {
             // handle ascii escape sequence, eg. "\x2d" for "-"
             bool ok;
+#if QT_VERSION <= QT_VERSION_CHECK(6, 0, 0)
             auto character = QChar::fromLatin1(string.midRef(i + 2, 2).toUInt(&ok, 16));
+#else
+            auto character = QChar::fromLatin1(QStringView(string).mid(i + 2, 2).toUInt(&ok, 16));
+#endif
             Q_ASSERT(ok);
             cleaned.append(character);
             i += 4;
