@@ -14,7 +14,6 @@
 #include <QDir>
 #include <QMutex>
 #include <QRandomGenerator>
-#include <QTextDecoder>
 #include <QThread>
 #include <algorithm>
 #include <iterator>
