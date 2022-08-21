@@ -169,6 +169,10 @@ void FilterCriteriaModelPrivate::rebuildModel()
             return QString::compare(a, b, Qt::CaseInsensitive) <= 0;
         });
         for (const auto &unit : std::as_const(units)) {
+            // skip any non-service units, because we expect users only be interested in filtering those
+            if (!unit.endsWith(QLatin1String(".service"))) {
+                continue;
+            }
             mRootItem->child(FilterCriteriaModel::Category::SYSTEMD_UNIT)
                 ->appendChild(std::move(
                     std::make_unique<SelectionEntry>(JournaldHelper::cleanupString(unit), unit, FilterCriteriaModel::Category::SYSTEMD_UNIT, false, parent)));
