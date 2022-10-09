@@ -54,6 +54,7 @@ int main(int argc, char *argv[])
                         i18nc("@info:credit Role", "Original Author"),
                         QStringLiteral("cordlandwehr@kde.org"));
     aboutData.setTranslator(i18nc("NAME OF TRANSLATORS", "Your names"), i18nc("EMAIL OF TRANSLATORS", "Your emails"));
+    aboutData.setDesktopFileName(QStringLiteral("org.kde.kjournaldbrowser"));
     KAboutData::setApplicationData(aboutData);
 
     qmlRegisterType<JournaldViewModel>("kjournald", 1, 0, "JournaldViewModel");
