@@ -2,9 +2,11 @@
 
 This project aims to provide an abstraction of the systemd's journald API in terms of QAbstractItemModel classes. The main purpose is to ease the integration of journald into Qt based applications (both QML and QtWidget).
 
-Additional to the library, the project provides a reference implementation of the API, called `kjournaldbrowser` which might provide value of itself. The focus though is the library's API.
+Additional to the library, the project provides a reference implementation of the API, called `kjournaldbrowser`. Even though that application provides a powerful journal database reader, we aim to do a clear split between reuseable library and application logic.
 
 ## License
+All source files in the repository are supposed to be compatible with LGPL-2.1-or-later in order to easily move them between application and library part.
+
 - SPDX-License-Identifier: LGPL-2.1-or-later OR MIT
 - SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 
@@ -45,6 +47,6 @@ The browser provides a single window overview that can be configured to show a d
     - highlight search strings
 - use "kjournaldbrowser -D <path>" to directly open specific database folder
 
-## Dependencies
+## Library Dependencies
 - Qt::Core, Qt::Quick
 - systemd
