@@ -36,6 +36,7 @@ include(ECMCoverageOption)
 include(ECMSetupVersion)
 include(KDEInstallDirs)
 include(KDECMakeSettings)
+include(KDEClangFormat)
 
 ecm_setup_version(${KJOURNALD_VERSION}
     VARIABLE_PREFIX KJOURNALD
