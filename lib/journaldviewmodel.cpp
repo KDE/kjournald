@@ -185,7 +185,7 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
 
     // at this point, the journal is guaranteed to point to the first valid entry
     for (int counter = 0; counter < mChunkSize; ++counter) {
-        char *data;
+        char *data{nullptr};
         size_t length;
         uint64_t time;
         int result{1};
@@ -226,6 +226,7 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
         result = sd_journal_get_cursor(mJournal->sdJournal(), &data);
         if (result == 0) {
             entry.mCursor = QString::fromUtf8(data);
+            free(data);
         }
 
         if (direction == Direction::TOWARDS_TAIL) {
