@@ -246,7 +246,7 @@ public:
     /**
      * @return row index of searched string
      */
-    Q_INVOKABLE int search(const QString &searchString, int startRow, Direction direction = FORWARD);
+    Q_INVOKABLE int search(const QString &searchString, int startRow, JournaldViewModel::Direction direction = FORWARD);
 
     /**
      * @brief Format time into string
