@@ -547,22 +547,45 @@ void JournaldViewModel::setSystemdUnitFilter(const QStringList &systemdUnitFilte
     endResetModel();
 }
 
+QStringList JournaldViewModel::systemdUnitFilter() const
+{
+    return d->mSystemdUnitFilter;
+}
+
 void JournaldViewModel::setBootFilter(const QStringList &bootFilter)
 {
+    if (d->mBootFilter == bootFilter) {
+        return;
+    }
     beginResetModel();
     d->mBootFilter = bootFilter;
     d->resetJournal();
     fetchMoreLogEntries();
     endResetModel();
+    Q_EMIT bootFilterChanged();
+}
+
+QStringList JournaldViewModel::bootFilter() const
+{
+    return d->mBootFilter;
 }
 
 void JournaldViewModel::setExeFilter(const QStringList &exeFilter)
 {
+    if (d->mExeFilter == exeFilter) {
+        return;
+    }
     beginResetModel();
     d->mExeFilter = exeFilter;
     d->resetJournal();
     fetchMoreLogEntries();
     endResetModel();
+    Q_EMIT exeFilterChanged();
+}
+
+QStringList JournaldViewModel::exeFilter() const
+{
+    return d->mExeFilter;
 }
 
 void JournaldViewModel::setPriorityFilter(int priority)
@@ -576,6 +599,7 @@ void JournaldViewModel::setPriorityFilter(int priority)
     d->resetJournal();
     fetchMoreLogEntries();
     endResetModel();
+    Q_EMIT priorityFilterChanged();
 }
 
 void JournaldViewModel::resetPriorityFilter()
@@ -585,6 +609,12 @@ void JournaldViewModel::resetPriorityFilter()
     d->resetJournal();
     fetchMoreLogEntries();
     endResetModel();
+    Q_EMIT priorityFilterChanged();
+}
+
+int JournaldViewModel::priorityFilter() const
+{
+    return d->mPriorityFilter.value_or(-1);
 }
 
 void JournaldViewModel::setKernelFilter(bool showKernelMessages)

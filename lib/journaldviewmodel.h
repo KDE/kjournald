@@ -26,15 +26,15 @@ class KJOURNALD_EXPORT JournaldViewModel : public QAbstractItemModel
     /**
      * Configure model to only provide messages for stated systemd units
      **/
-    Q_PROPERTY(QStringList systemdUnitFilter WRITE setSystemdUnitFilter)
+    Q_PROPERTY(QStringList systemdUnitFilter WRITE setSystemdUnitFilter READ systemdUnitFilter NOTIFY systemdUnitFilterChanged)
     /**
      * Configure model to only provide messages for stated boot ids.
      **/
-    Q_PROPERTY(QStringList bootFilter WRITE setBootFilter)
+    Q_PROPERTY(QStringList bootFilter WRITE setBootFilter READ bootFilter NOTIFY bootFilterChanged)
     /**
      * Configure model to only show messages of stated executables (see journald '_EXE' field)
      **/
-    Q_PROPERTY(QStringList exeFilter WRITE setExeFilter)
+    Q_PROPERTY(QStringList exeFilter WRITE setExeFilter READ exeFilter NOTIFY exeFilterChanged)
     /**
      * if set to true, Kernel messages are added to the log output
      **/
@@ -42,7 +42,7 @@ class KJOURNALD_EXPORT JournaldViewModel : public QAbstractItemModel
     /**
      * Configure model to only provide messages with stated priority or higher. Default: no filter is set.
      **/
-    Q_PROPERTY(int priorityFilter WRITE setPriorityFilter RESET resetPriorityFilter)
+    Q_PROPERTY(int priorityFilter WRITE setPriorityFilter READ priorityFilter NOTIFY priorityFilterChanged RESET resetPriorityFilter)
 
 public:
     enum Roles {
@@ -196,6 +196,11 @@ public:
     void setSystemdUnitFilter(const QStringList &systemdUnitFilter);
 
     /**
+     * @return list of currently set systemd services for filtering
+     */
+    QStringList systemdUnitFilter() const;
+
+    /**
      * @brief Configure for which boots messages shall be shown
      *
      * If no boot id is configured, this filter is deactivated. The given values are compared
@@ -206,6 +211,11 @@ public:
     void setBootFilter(const QStringList &bootFilter);
 
     /**
+     * @return list of currently set boot ids for filtering
+     */
+    QStringList bootFilter() const;
+
+    /**
      * @brief Configure for which executable messages shall be shown
      *
      * If no executable is configured, this filter is deactivated. The given values are compared
@@ -214,6 +224,11 @@ public:
      * @param exeFilter list of executable paths
      */
     void setExeFilter(const QStringList &exeFilter);
+
+    /**
+     * @return list of currently set executables for filtering
+     */
+    QStringList exeFilter() const;
 
     /**
      * @brief Configure if Kernel messages shall be included in model
@@ -237,6 +252,11 @@ public:
      * @param priority the minimal priority for messages that shall be provided by model
      */
     void setPriorityFilter(int priority);
+
+    /**
+     * @return currently set priority filter value or -1 if not set
+     */
+    int priorityFilter() const;
 
     /**
      * @brief Discard priority filter and display all messages
@@ -301,6 +321,22 @@ Q_SIGNALS:
      * Signal is emitted when Kernel message filter is changed
      */
     void kernelFilterChanged();
+    /**
+     * Signal is emitted when boot id filter is changed
+     */
+    void bootFilterChanged();
+    /**
+     * Signal is emitted when Systemd service name filter is changed
+     */
+    void systemdUnitFilterChanged();
+    /**
+     * Signal is emitted when executable path filter is changed
+     */
+    void exeFilterChanged();
+    /**
+     * Signal is emitted when log level priority filter is changed
+     */
+    void priorityFilterChanged();
 
 private:
     std::unique_ptr<JournaldViewModelPrivate> d;
