@@ -94,4 +94,7 @@ SPDX-License-Identifier: CC0-1.0
     <binary>kjournaldbrowser</binary>
   </provides>
   <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="0.0.3" date="2021-12-30"/>
+  </releases>
 </component>
