@@ -23,16 +23,6 @@ int FieldFilterProxyModel::count() const
     return rowCount();
 }
 
-QObject *FieldFilterProxyModel::source() const
-{
-    return sourceModel();
-}
-
-void FieldFilterProxyModel::setSource(QObject *source)
-{
-    setSourceModel(qobject_cast<QAbstractItemModel *>(source));
-}
-
 void FieldFilterProxyModel::setField(const QString &field)
 {
     JournaldViewModel::Roles role = mFilterRole;
