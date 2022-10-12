@@ -62,6 +62,8 @@ find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} REQUIRED COMPONENTS
     Widgets
 )
 
+option(INSTALL_EXPERIMENTAL_HEADERS "Install headers for libkjournald (no stable API yet)" OFF)
+
 enable_testing()
 
 add_subdirectory(lib)
@@ -75,24 +77,26 @@ configure_package_config_file(
     INSTALL_DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
 )
 
-install(
-    FILES
-        "${CMAKE_CURRENT_BINARY_DIR}/KJournaldConfig.cmake"
-        "${CMAKE_CURRENT_BINARY_DIR}/KJournaldConfigVersion.cmake"
-    DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
-    COMPONENT Devel
-)
-
-install(
-    FILES
-        ${CMAKE_CURRENT_BINARY_DIR}/kjournald_version.h
-    DESTINATION ${KDE_INSTALL_INCLUDEDIR}
-    COMPONENT Devel
-)
-
-install(EXPORT KJournaldTargets
+if(INSTALL_EXPERIMENTAL_HEADERS)
+    install(
+        FILES
+            "${CMAKE_CURRENT_BINARY_DIR}/KJournaldConfig.cmake"
+            "${CMAKE_CURRENT_BINARY_DIR}/KJournaldConfigVersion.cmake"
         DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
-        FILE KJournaldTargets.cmake)
+        COMPONENT Devel
+    )
+
+    install(
+        FILES
+            ${CMAKE_CURRENT_BINARY_DIR}/kjournald_version.h
+        DESTINATION ${KDE_INSTALL_INCLUDEDIR}
+        COMPONENT Devel
+    )
+
+    install(EXPORT KJournaldTargets
+            DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
+            FILE KJournaldTargets.cmake)
+endif()
 
 ki18n_install(po)
 

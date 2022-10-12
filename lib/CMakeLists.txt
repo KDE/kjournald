@@ -55,14 +55,16 @@ install(TARGETS kjournald
     EXPORT KJournaldTargets
     DESTINATION ${KDE_INSTALL_LIBDIR})
 
-install(FILES
-    bootmodel.h
-    ijournal.h
-    localjournal.h
-    journaldhelper.h
-    journaldviewmodel.h
-    journalduniquequerymodel.h
-    systemdjournalremote.h
-    ${CMAKE_CURRENT_BINARY_DIR}/kjournald_export.h
-    DESTINATION ${KDE_INSTALL_INCLUDEDIR}
-)
+if(INSTALL_EXPERIMENTAL_HEADERS)
+    install(FILES
+        bootmodel.h
+        ijournal.h
+        localjournal.h
+        journaldhelper.h
+        journaldviewmodel.h
+        journalduniquequerymodel.h
+        systemdjournalremote.h
+        ${CMAKE_CURRENT_BINARY_DIR}/kjournald_export.h
+        DESTINATION ${KDE_INSTALL_INCLUDEDIR}
+    )
+endif()
