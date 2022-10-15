@@ -142,11 +142,10 @@ ListView {
             highlight: hightlightTextField.text
             modelProxy: root.model
 
-            Rectangle { // right side information
+            Rectangle { // indication box behind scrollbar
                 anchors.right: parent.right
-                width: categoryInfo.width + 8
-                height: categoryInfo.height
-                radius: 0
+                width: scrollbar.width
+                height: parent.height
                 color: {
                     switch (displayRoleRight) {
                     case JournaldViewModel.SYSTEMD_UNIT: return model ? model.systemdunitcolor_foreground : "#ffffff"
@@ -154,27 +153,51 @@ ListView {
                     }
                     return "#ffffff"
                 }
-                Text {
-                    id: categoryInfo
-                    anchors {
-                        right: parent.right
-                        rightMargin: 4
-                    }
-                    width: Math.max(Math.min(implicitWidth, 0.5 * messageText.width), 12)
-                    text: {
-                        switch (displayRoleRight) {
-                        case JournaldViewModel.SYSTEMD_UNIT:
-                            return categoryInfoHoverHandler.hovered ? model.systemdunit : model.systemdunit_changed_substring
-                        case JournaldViewModel.EXE:
-                            return categoryInfoHoverHandler.hovered ? model.exe : model.exe_changed_substring
-                        }
-                        return ""
-                    }
-                    elide: Text.ElideLeft
-                }
+            }
+            Item { // hover effect for displaying categoy
+                anchors.right: parent.right
+                width: scrollbar.width * 3 // arbitrary chosen value for decent hover size
+                height: parent.height
                 HoverHandler {
                     id: categoryInfoHoverHandler
                 }
+            }
+            Component { // infobox for service/exe name
+                id: infoBox
+                Rectangle {
+                    width: categoryInfo.width + 8 + scrollbar.width
+                    height: categoryInfo.height
+                    radius: 4
+                    color: {
+                        switch (displayRoleRight) {
+                        case JournaldViewModel.SYSTEMD_UNIT: return model ? model.systemdunitcolor_foreground : "#ffffff"
+                        case JournaldViewModel.EXE: return model ? model.execolor_foreground : "#ffffff"
+                        }
+                        return "#ffffff"
+                    }
+                    Text {
+                        id: categoryInfo
+                        anchors {
+                            right: parent.right
+                            rightMargin: 4 + scrollbar.width
+                        }
+                        width: Math.max(Math.min(implicitWidth, 0.5 * messageText.width), 12)
+                        text: {
+                            switch (displayRoleRight) {
+                            case JournaldViewModel.SYSTEMD_UNIT:
+                                return categoryInfoHoverHandler.hovered ? model.systemdunit : model.systemdunit_changed_substring
+                            case JournaldViewModel.EXE:
+                                return categoryInfoHoverHandler.hovered ? model.exe : model.exe_changed_substring
+                            }
+                            return ""
+                        }
+                        elide: Text.ElideLeft
+                    }
+                }
+            }
+            Loader {
+                anchors.right: parent.right
+                sourceComponent: categoryInfoHoverHandler.hovered || model.systemdunit_changed_substring !== "" ? infoBox : undefined
             }
         }
     }
@@ -207,6 +230,7 @@ ListView {
     }
 
     ScrollBar.vertical: ScrollBar {
+        id: scrollbar
         policy: ScrollBar.AlwaysOn
         active: ScrollBar.AlwaysOn
     }
