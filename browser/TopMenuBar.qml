@@ -14,14 +14,14 @@ MenuBar {
     Menu {
         title: i18n("File")
         MenuItem {
-            text: i18n("Open system journal")
+            text: i18n("Open System Journal")
             icon.name: "document-open"
             onTriggered: {
                 g_config.sessionMode = SessionConfig.SYSTEM
             }
         }
         MenuItem {
-            text: i18n("Open from folder")
+            text: i18n("Open from Folder")
             icon.name: "document-open"
             onTriggered: {
                 folderDialog.folder = g_config.localJournalPath
@@ -29,7 +29,7 @@ MenuBar {
             }
         }
         MenuItem {
-            text: i18n("Open from file")
+            text: i18n("Open from File")
             icon.name: "document-open"
             onTriggered: {
                 fileDialog.folder = g_config.localJournalPath
@@ -37,7 +37,7 @@ MenuBar {
             }
         }
         MenuItem {
-            text: i18n("Open remote journal stream")
+            text: i18n("Open Remote Journal Stream")
             icon.name: "document-import"
             onTriggered: {
                 remoteJournalDialog.open()
@@ -55,7 +55,7 @@ MenuBar {
     Menu {
         title: i18n("Current Journal")
         MenuItem {
-            text: "Copy current view"
+            text: "Copy Current View"
             icon.name: "edit-copy"
             onTriggered: copyViewToClipboard()
         }
