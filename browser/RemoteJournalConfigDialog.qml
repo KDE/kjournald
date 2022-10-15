@@ -28,7 +28,7 @@ Dialog {
 
         // first line
         Label {
-            text: i18n("Url:")
+            text: i18n("URL:")
         }
         TextField {
             id: urlTextField
