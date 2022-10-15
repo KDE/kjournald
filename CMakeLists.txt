@@ -49,6 +49,7 @@ find_package(KF5 ${KF5_VERSION} REQUIRED COMPONENTS
     CoreAddons
     I18n
 )
+add_definitions(-DTRANSLATION_DOMAIN=\"kjournald\")
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(SYSTEMD REQUIRED IMPORTED_TARGET libsystemd)
