@@ -12,7 +12,7 @@ import org.kde.kirigami 2.6 as Kirigami
 import kjournald 1.0
 
 Kirigami.AbstractApplicationWindow {
-    width: 800
+    width: 1000
     height: 640
     visible: true
 
