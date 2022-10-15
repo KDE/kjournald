@@ -24,12 +24,12 @@ LocalJournalPrivate::LocalJournalPrivate()
 LocalJournal::LocalJournal()
     : d(new LocalJournalPrivate)
 {
-    int result;
-    result = sd_journal_open(&d->mJournal, SD_JOURNAL_LOCAL_ONLY);
-    if (result < 0) {
-        qCCritical(journald) << "Failed to open journal:" << strerror(-result);
+    auto expectedJournal = owning_ptr_call<sd_journal>(sd_journal_open, SD_JOURNAL_LOCAL_ONLY);
+    if (expectedJournal.ret < 0) {
+        qCCritical(journald) << "Failed to open journal:" << strerror(-expectedJournal.ret);
     } else {
-        d->mFd = sd_journal_get_fd(d->mJournal);
+        d->mJournal = std::move(expectedJournal.value);
+        d->mFd = sd_journal_get_fd(d->mJournal.get());
         if (d->mFd > 0) {
             d->mJournalSocketNotifier = std::make_unique<QSocketNotifier>(d->mFd, QSocketNotifier::Read);
             connect(d->mJournalSocketNotifier.get(), &QSocketNotifier::activated, this, &LocalJournal::handleJournalDescriptorUpdate);
@@ -48,32 +48,28 @@ LocalJournal::LocalJournal(const QString &path)
         return;
     }
     if (QFileInfo(path).isDir()) {
-        int result = sd_journal_open_directory(&d->mJournal, path.toStdString().c_str(), 0 /* no flags, directory defines type */);
-        if (result < 0) {
-            qCCritical(journald) << "Could not open journal:" << strerror(-result);
+        auto expectedJournal = owning_ptr_call<sd_journal>(sd_journal_open_directory, path.toStdString().c_str(), 0 /* no flags, directory defines type */);
+        if (expectedJournal.ret < 0) {
+            qCCritical(journald) << "Could not open journal:" << strerror(-expectedJournal.ret);
         }
     } else if (QFileInfo(path).isFile()) {
         const char **files = new const char *[1];
         QByteArray journalPath = path.toLocal8Bit();
         files[0] = journalPath.data();
 
-        int result = sd_journal_open_files(&d->mJournal, files, 0 /* no flags, directory defines type */);
-        if (result < 0) {
-            qCCritical(journald) << "Could not open journal:" << strerror(-result);
+        auto expectedJournal = owning_ptr_call<sd_journal>(sd_journal_open_files, files, 0 /* no flags, directory defines type */);
+        if (expectedJournal.ret < 0) {
+            qCCritical(journald) << "Could not open journal:" << strerror(-expectedJournal.ret);
         }
         delete[] files;
     }
 }
 
-LocalJournal::~LocalJournal()
-{
-    sd_journal_close(d->mJournal);
-    d->mJournal = nullptr;
-}
+LocalJournal::~LocalJournal() = default;
 
 sd_journal *LocalJournal::sdJournal() const
 {
-    return d->mJournal;
+    return d->mJournal.get();
 }
 
 bool LocalJournal::isValid() const
@@ -89,7 +85,7 @@ QString LocalJournal::currentBootId() const
 uint64_t LocalJournal::usage() const
 {
     uint64_t size{0};
-    int res = sd_journal_get_usage(d->mJournal, &size);
+    int res = sd_journal_get_usage(d->mJournal.get(), &size);
     if (res < 0) {
         qCCritical(journald) << "Could not obtain journal size:" << strerror(-res);
     }

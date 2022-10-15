@@ -30,6 +30,7 @@ target_sources(kjournald PRIVATE
     journalduniquequerymodel.cpp
     journalduniquequerymodel.h
     journalduniquequerymodel_p.h
+    memory.h
     systemdjournalremote.cpp
     systemdjournalremote.h
     systemdjournalremote_p.h

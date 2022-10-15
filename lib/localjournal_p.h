@@ -6,16 +6,16 @@
 #ifndef LOCALJOURNAL_PRIVATE_H
 #define LOCALJOURNAL_PRIVATE_H
 
+#include "memory.h"
 #include <QSocketNotifier>
 #include <QtGlobal>
-#include <memory>
 #include <systemd/sd-journal.h>
 
 class LocalJournalPrivate
 {
 public:
     LocalJournalPrivate();
-    mutable sd_journal *mJournal{nullptr};
+    mutable std::unique_ptr<sd_journal> mJournal;
     qintptr mFd{0};
     QString mCurrentBootId;
     std::unique_ptr<QSocketNotifier> mJournalSocketNotifier;
