@@ -1,5 +1,5 @@
 /*
-    SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
+    SPDX-License-Identifier: LGPL-2.1-or-later
     SPDX-FileCopyrightText: 2019-2021 Harald Sitter <sitter@kde.org>
 */
 
