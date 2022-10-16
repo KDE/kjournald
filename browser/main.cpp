@@ -57,10 +57,12 @@ int main(int argc, char *argv[])
     aboutData.setDesktopFileName(QStringLiteral("org.kde.kjournaldbrowser"));
     KAboutData::setApplicationData(aboutData);
 
+    ClipboardProxy clipboardProxy;
+
     qmlRegisterType<JournaldViewModel>("kjournald", 1, 0, "JournaldViewModel");
     qmlRegisterType<JournaldUniqueQueryModel>("kjournald", 1, 0, "JournaldUniqueQueryModel");
     qmlRegisterType<FieldFilterProxyModel>("kjournald", 1, 0, "FieldFilterProxyModel");
-    qmlRegisterSingletonInstance("kjournald", 1, 0, "Clipboard", new ClipboardProxy);
+    qmlRegisterSingletonInstance("kjournald", 1, 0, "Clipboard", &clipboardProxy);
     qmlRegisterType<AboutProxy>("kjournald", 1, 0, "AboutProxy");
     qmlRegisterType<FlattenedFilterCriteriaProxyModel>("kjournald", 1, 0, "FlattenedFilterCriteriaProxyModel");
     qmlRegisterUncreatableType<FilterCriteriaModel>("kjournald", 1, 0, "FilterCriteriaModel", "Backend only object");
