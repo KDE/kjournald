@@ -58,11 +58,13 @@ int main(int argc, char *argv[])
     KAboutData::setApplicationData(aboutData);
 
     ClipboardProxy clipboardProxy;
+    SessionConfig sessionConfig;
 
     qmlRegisterType<JournaldViewModel>("kjournald", 1, 0, "JournaldViewModel");
     qmlRegisterType<JournaldUniqueQueryModel>("kjournald", 1, 0, "JournaldUniqueQueryModel");
     qmlRegisterType<FieldFilterProxyModel>("kjournald", 1, 0, "FieldFilterProxyModel");
-    qmlRegisterSingletonInstance("kjournald", 1, 0, "Clipboard", &clipboardProxy);
+    qmlRegisterSingletonInstance("kjournald", 1, 0, "ClipboardProxy", &clipboardProxy);
+    qmlRegisterSingletonInstance("kjournald", 1, 0, "SessionConfigProxy", &sessionConfig);
     qmlRegisterType<AboutProxy>("kjournald", 1, 0, "AboutProxy");
     qmlRegisterType<FlattenedFilterCriteriaProxyModel>("kjournald", 1, 0, "FlattenedFilterCriteriaProxyModel");
     qmlRegisterUncreatableType<FilterCriteriaModel>("kjournald", 1, 0, "FilterCriteriaModel", "Backend only object");
@@ -77,7 +79,6 @@ int main(int argc, char *argv[])
     parser.addOption(pathOption);
     parser.process(app);
 
-    SessionConfig sessionConfig;
     BootModel bootModel;
     FilterCriteriaModel filterCriteriaModel;
 
@@ -121,7 +122,6 @@ int main(int argc, char *argv[])
         },
         Qt::QueuedConnection);
     engine.rootContext()->setContextProperty("g_bootModel", &bootModel);
-    engine.rootContext()->setContextProperty("g_config", &sessionConfig);
     engine.rootContext()->setContextProperty("g_filterModel", &filterCriteriaModel);
 
     engine.load(url);

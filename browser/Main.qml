@@ -44,10 +44,10 @@ Kirigami.AbstractApplicationWindow {
                 implicitWidth: Math.max(300, implicitContentWidth)
                 model: g_bootModel
                 valueRole: "bootid"
-                textRole: g_config.timeDisplay
+                textRole: SessionConfigProxy.timeDisplay
                           === SessionConfig.UTC ? "displayshort_utc" : "displayshort_localtime"
                 delegate: ItemDelegate {
-                    text: g_config.timeDisplay
+                    text: SessionConfigProxy.timeDisplay
                           === SessionConfig.UTC ? model.displayshort_utc : model.displayshort_localtime
                     font.weight: model.current === true ? Font.Bold : Font.Normal
                 }
@@ -81,18 +81,18 @@ Kirigami.AbstractApplicationWindow {
                 text: i18n("Browse")
                 icon.name: "transform-browse"
                 checkable: true
-                checked: g_config.viewMode === SessionConfig.BROWSE
+                checked: SessionConfigProxy.viewMode === SessionConfig.BROWSE
                 onClicked: {
-                    g_config.viewMode = SessionConfig.BROWSE
+                    SessionConfigProxy.viewMode = SessionConfig.BROWSE
                 }
             }
             ToolButton {
                 text: i18n("Select")
                 icon.name: "edit-select-text"
                 checkable: true
-                checked: g_config.viewMode === SessionConfig.SELECT
+                checked: SessionConfigProxy.viewMode === SessionConfig.SELECT
                 onClicked: {
-                    g_config.viewMode = SessionConfig.SELECT
+                    SessionConfigProxy.viewMode = SessionConfig.SELECT
                 }
             }
 
@@ -107,8 +107,8 @@ Kirigami.AbstractApplicationWindow {
         title: i18n("Select journal folder")
         selectFolder: true
         onAccepted: {
-            g_config.localJournalPath = folderDialog.fileUrl
-            g_config.sessionMode = SessionConfig.LOCALFOLDER
+            SessionConfigProxy.localJournalPath = folderDialog.fileUrl
+            SessionConfigProxy.sessionMode = SessionConfig.LOCALFOLDER
         }
     }
 
@@ -117,8 +117,8 @@ Kirigami.AbstractApplicationWindow {
         title: i18n("Select journal file")
         nameFilters: [i18n("Journal files (*.journal)"), i18n("All files (*)")]
         onAccepted: {
-            g_config.localJournalPath = fileDialog.fileUrl
-            g_config.sessionMode = SessionConfig.LOCALFOLDER
+            SessionConfigProxy.localJournalPath = fileDialog.fileUrl
+            SessionConfigProxy.sessionMode = SessionConfig.LOCALFOLDER
         }
     }
 
@@ -147,9 +147,9 @@ Kirigami.AbstractApplicationWindow {
         id: remoteJournalDialog
         onAccepted: {
             console.log("set remote journal to: " + url + ":" + port)
-            g_config.remoteJournalPort = remoteJournalDialog.port
-            g_config.remoteJournalUrl = remoteJournalDialog.url
-            g_config.sessionMode = SessionConfig.REMOTE
+            SessionConfigProxy.remoteJournalPort = remoteJournalDialog.port
+            SessionConfigProxy.remoteJournalUrl = remoteJournalDialog.url
+            SessionConfigProxy.sessionMode = SessionConfig.REMOTE
         }
     }
 
@@ -191,13 +191,13 @@ Kirigami.AbstractApplicationWindow {
                 id: logView
                 anchors.fill: parent
                 journalModel: g_journalModel
-                displayRoleRight: g_config.filterCriterium === SessionConfig.SYSTEMD_UNIT ?
+                displayRoleRight: SessionConfigProxy.filterCriterium === SessionConfig.SYSTEMD_UNIT ?
                                       JournaldViewModel.SYSTEMD_UNIT : JournaldViewModel.EXE
                 snapToFollowMode: true
-                textSelectionMode: g_config.viewMode === SessionConfig.SELECT
+                textSelectionMode: SessionConfigProxy.viewMode === SessionConfig.SELECT
                 visible: count > 0
                 onTextCopied: {
-                    Clipboard.setText(text)
+                    ClipboardProxy.setText(text)
                     console.log("view content copied")
                 }
             }
@@ -222,9 +222,9 @@ Kirigami.AbstractApplicationWindow {
 
     JournaldViewModel {
         id: g_journalModel
-        journalPath: g_config.sessionMode === SessionConfig.LOCALFOLDER
-                     || g_config.sessionMode
-                     === SessionConfig.REMOTE ? g_config.localJournalPath : undefined
+        journalPath: SessionConfigProxy.sessionMode === SessionConfig.LOCALFOLDER
+                     || SessionConfigProxy.sessionMode
+                     === SessionConfig.REMOTE ? SessionConfigProxy.localJournalPath : undefined
         systemdUnitFilter: g_filterModel.systemdUnitFilter
         exeFilter: g_filterModel.exeFilter
         bootFilter: bootIdComboBox.currentValue

@@ -3,7 +3,6 @@
 // SPDX-FileCopyrightText: 2021 Carl Schwan <carl@carlschwan.eu>
 
 import Qt.labs.platform 1.1 as Labs
-
 import kjournald 1.0
 
 Labs.MenuBar {
@@ -14,14 +13,14 @@ Labs.MenuBar {
             text: i18n("Open system journal")
             icon.name: "document-open"
             onTriggered: {
-                g_config.sessionMode = SessionConfig.SYSTEM
+                SessionConfigProxy.sessionMode = SessionConfig.SYSTEM
             }
         }
         Labs.MenuItem {
             text: i18n("Open from folder")
             icon.name: "document-open"
             onTriggered: {
-                folderDialog.folder = g_config.localJournalPath
+                folderDialog.folder = SessionConfigProxy.localJournalPath
                 folderDialog.open()
             }
         }
@@ -29,7 +28,7 @@ Labs.MenuBar {
             text: i18n("Open from file")
             icon.name: "document-open"
             onTriggered: {
-                fileDialog.folder = g_config.localJournalPath
+                fileDialog.folder = SessionConfigProxy.localJournalPath
                 fileDialog.open()
             }
         }
@@ -66,25 +65,25 @@ Labs.MenuBar {
             Labs.MenuItem {
                 text: i18n("Localized Realtime")
                 checkable: true
-                checked: g_config.timeDisplay === SessionConfig.LOCALTIME
+                checked: SessionConfigProxy.timeDisplay === SessionConfig.LOCALTIME
                 onTriggered: {
-                    g_config.timeDisplay = SessionConfig.LOCALTIME
+                    SessionConfigProxy.timeDisplay = SessionConfig.LOCALTIME
                 }
             }
             Labs.MenuItem {
                 text: i18n("UTC Realtime")
                 checkable: true
-                checked: g_config.timeDisplay === SessionConfig.UTC
+                checked: SessionConfigProxy.timeDisplay === SessionConfig.UTC
                 onTriggered: {
-                    g_config.timeDisplay = SessionConfig.UTC
+                    SessionConfigProxy.timeDisplay = SessionConfig.UTC
                 }
             }
             Labs.MenuItem {
                 text: i18n("Monotonic Time")
                 checkable: true
-                checked: g_config.timeDisplay === SessionConfig.MONOTONIC_TIMESTAMP
+                checked: SessionConfigProxy.timeDisplay === SessionConfig.MONOTONIC_TIMESTAMP
                 onTriggered: {
-                    g_config.timeDisplay = SessionConfig.MONOTONIC_TIMESTAMP
+                    SessionConfigProxy.timeDisplay = SessionConfig.MONOTONIC_TIMESTAMP
                 }
             }
         }
@@ -94,17 +93,17 @@ Labs.MenuBar {
             Labs.MenuItem {
                 text: i18n("Systemd Unit")
                 checkable: true
-                checked: g_config.filterCriterium === SessionConfig.SYSTEMD_UNIT
+                checked: SessionConfigProxy.filterCriterium === SessionConfig.SYSTEMD_UNIT
                 onTriggered: {
-                    g_config.filterCriterium = SessionConfig.SYSTEMD_UNIT
+                    SessionConfigProxy.filterCriterium = SessionConfig.SYSTEMD_UNIT
                 }
             }
             Labs.MenuItem {
                 text: i18n("Executable")
                 checkable: true
-                checked: g_config.filterCriterium === SessionConfig.EXECUTABLE
+                checked: SessionConfigProxy.filterCriterium === SessionConfig.EXECUTABLE
                 onTriggered: {
-                    g_config.filterCriterium = SessionConfig.EXECUTABLE
+                    SessionConfigProxy.filterCriterium = SessionConfig.EXECUTABLE
                 }
             }
         }

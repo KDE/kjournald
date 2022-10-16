@@ -30,7 +30,7 @@ Item {
         spacing: 4
         Text {
             readonly property string timeString: {
-                switch (g_config.timeDisplay) {
+                switch (SessionConfigProxy.timeDisplay) {
                 case SessionConfig.UTC: return modelProxy.formatTime(root.date, true);
                 case SessionConfig.LOCALTIME: return modelProxy.formatTime(root.date, false);
                 case SessionConfig.MONOTONIC_TIMESTAMP: return (root.monotonicTimestamp / 1000).toFixed(3) // display miliseconds
