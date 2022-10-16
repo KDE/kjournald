@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-08-22 00:44+0000\n"
+"POT-Creation-Date: 2022-10-16 00:45+0000\n"
 "PO-Revision-Date: 2022-01-27 21:12+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -37,22 +37,22 @@ msgstr "Tyhjennä"
 msgid "File"
 msgstr "Tiedosto"
 
-#: browser/GlobalMenu.qml:14 browser/TopMenuBar.qml:17
+#: browser/GlobalMenu.qml:14
 #, kde-format
 msgid "Open system journal"
 msgstr "Avaa järjestelmäloki"
 
-#: browser/GlobalMenu.qml:21 browser/TopMenuBar.qml:24
+#: browser/GlobalMenu.qml:21
 #, kde-format
 msgid "Open from folder"
 msgstr "Avaa kansiosta"
 
-#: browser/GlobalMenu.qml:29 browser/TopMenuBar.qml:32
+#: browser/GlobalMenu.qml:29
 #, kde-format
 msgid "Open from file"
 msgstr "Avaa tiedostosta"
 
-#: browser/GlobalMenu.qml:37 browser/TopMenuBar.qml:40
+#: browser/GlobalMenu.qml:37
 #, kde-format
 msgid "Open remote journal stream"
 msgstr "Avaa etälokivirta"
@@ -219,13 +219,37 @@ msgstr "Etälokipalvelimen asetukset"
 
 #: browser/RemoteJournalConfigDialog.qml:31
 #, kde-format
-msgid "Url:"
-msgstr "Verkko-osoite:"
+msgid "URL:"
+msgstr ""
 
 #: browser/RemoteJournalConfigDialog.qml:40
 #, kde-format
 msgid "Port:"
 msgstr "Portti:"
+
+#: browser/TopMenuBar.qml:17
+#, fuzzy, kde-format
+#| msgid "Open system journal"
+msgid "Open System Journal"
+msgstr "Avaa järjestelmäloki"
+
+#: browser/TopMenuBar.qml:24
+#, fuzzy, kde-format
+#| msgid "Open from folder"
+msgid "Open from Folder"
+msgstr "Avaa kansiosta"
+
+#: browser/TopMenuBar.qml:32
+#, fuzzy, kde-format
+#| msgid "Open from file"
+msgid "Open from File"
+msgstr "Avaa tiedostosta"
+
+#: browser/TopMenuBar.qml:40
+#, fuzzy, kde-format
+#| msgid "Open remote journal stream"
+msgid "Open Remote Journal Stream"
+msgstr "Avaa etälokivirta"
 
 #: lib/filtercriteriamodel.cpp:20
 #, kde-format
@@ -304,3 +328,6 @@ msgstr "Yksikkö"
 msgctxt "Section title for process list"
 msgid "Process"
 msgstr "Prosessi"
+
+#~ msgid "Url:"
+#~ msgstr "Verkko-osoite:"

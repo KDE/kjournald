@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-08-22 00:44+0000\n"
+"POT-Creation-Date: 2022-10-16 00:45+0000\n"
 "PO-Revision-Date: 2022-02-19 12:17+0000\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English <kde-l10n-en_gb@kde.org>\n"
@@ -37,22 +37,22 @@ msgstr "Clear"
 msgid "File"
 msgstr "File"
 
-#: browser/GlobalMenu.qml:14 browser/TopMenuBar.qml:17
+#: browser/GlobalMenu.qml:14
 #, kde-format
 msgid "Open system journal"
 msgstr "Open system journal"
 
-#: browser/GlobalMenu.qml:21 browser/TopMenuBar.qml:24
+#: browser/GlobalMenu.qml:21
 #, kde-format
 msgid "Open from folder"
 msgstr "Open from folder"
 
-#: browser/GlobalMenu.qml:29 browser/TopMenuBar.qml:32
+#: browser/GlobalMenu.qml:29
 #, kde-format
 msgid "Open from file"
 msgstr "Open from file"
 
-#: browser/GlobalMenu.qml:37 browser/TopMenuBar.qml:40
+#: browser/GlobalMenu.qml:37
 #, kde-format
 msgid "Open remote journal stream"
 msgstr "Open remote journal stream"
@@ -221,13 +221,37 @@ msgstr "Configure Remote Journal Server"
 
 #: browser/RemoteJournalConfigDialog.qml:31
 #, kde-format
-msgid "Url:"
-msgstr "URL:"
+msgid "URL:"
+msgstr ""
 
 #: browser/RemoteJournalConfigDialog.qml:40
 #, kde-format
 msgid "Port:"
 msgstr "Port:"
+
+#: browser/TopMenuBar.qml:17
+#, fuzzy, kde-format
+#| msgid "Open system journal"
+msgid "Open System Journal"
+msgstr "Open system journal"
+
+#: browser/TopMenuBar.qml:24
+#, fuzzy, kde-format
+#| msgid "Open from folder"
+msgid "Open from Folder"
+msgstr "Open from folder"
+
+#: browser/TopMenuBar.qml:32
+#, fuzzy, kde-format
+#| msgid "Open from file"
+msgid "Open from File"
+msgstr "Open from file"
+
+#: browser/TopMenuBar.qml:40
+#, fuzzy, kde-format
+#| msgid "Open remote journal stream"
+msgid "Open Remote Journal Stream"
+msgstr "Open remote journal stream"
 
 #: lib/filtercriteriamodel.cpp:20
 #, kde-format
@@ -306,3 +330,6 @@ msgstr "Unit"
 msgctxt "Section title for process list"
 msgid "Process"
 msgstr "Process"
+
+#~ msgid "Url:"
+#~ msgstr "URL:"

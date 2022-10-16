@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-08-22 00:44+0000\n"
+"POT-Creation-Date: 2022-10-16 00:45+0000\n"
 "PO-Revision-Date: 2022-01-11 08:17+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@neuf.fr>\n"
 "Language-Team: French <kde-francophone@kde.org>\n"
@@ -34,22 +34,22 @@ msgstr "Effacer"
 msgid "File"
 msgstr "Fichier"
 
-#: browser/GlobalMenu.qml:14 browser/TopMenuBar.qml:17
+#: browser/GlobalMenu.qml:14
 #, kde-format
 msgid "Open system journal"
 msgstr "Ouvrir le journal du système"
 
-#: browser/GlobalMenu.qml:21 browser/TopMenuBar.qml:24
+#: browser/GlobalMenu.qml:21
 #, kde-format
 msgid "Open from folder"
 msgstr "Ouvrir à partir du dossier"
 
-#: browser/GlobalMenu.qml:29 browser/TopMenuBar.qml:32
+#: browser/GlobalMenu.qml:29
 #, kde-format
 msgid "Open from file"
 msgstr "Ouvrir à partir du fichier"
 
-#: browser/GlobalMenu.qml:37 browser/TopMenuBar.qml:40
+#: browser/GlobalMenu.qml:37
 #, kde-format
 msgid "Open remote journal stream"
 msgstr "Ajouter un flux de journal à distance"
@@ -218,13 +218,37 @@ msgstr "Configurer le serveur distant de journal"
 
 #: browser/RemoteJournalConfigDialog.qml:31
 #, kde-format
-msgid "Url:"
-msgstr "URL :"
+msgid "URL:"
+msgstr ""
 
 #: browser/RemoteJournalConfigDialog.qml:40
 #, kde-format
 msgid "Port:"
 msgstr "Port :"
+
+#: browser/TopMenuBar.qml:17
+#, fuzzy, kde-format
+#| msgid "Open system journal"
+msgid "Open System Journal"
+msgstr "Ouvrir le journal du système"
+
+#: browser/TopMenuBar.qml:24
+#, fuzzy, kde-format
+#| msgid "Open from folder"
+msgid "Open from Folder"
+msgstr "Ouvrir à partir du dossier"
+
+#: browser/TopMenuBar.qml:32
+#, fuzzy, kde-format
+#| msgid "Open from file"
+msgid "Open from File"
+msgstr "Ouvrir à partir du fichier"
+
+#: browser/TopMenuBar.qml:40
+#, fuzzy, kde-format
+#| msgid "Open remote journal stream"
+msgid "Open Remote Journal Stream"
+msgstr "Ajouter un flux de journal à distance"
 
 #: lib/filtercriteriamodel.cpp:20
 #, kde-format
@@ -303,3 +327,6 @@ msgstr "Unité"
 msgctxt "Section title for process list"
 msgid "Process"
 msgstr "Processus"
+
+#~ msgid "Url:"
+#~ msgstr "URL :"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-08-22 00:44+0000\n"
+"POT-Creation-Date: 2022-10-16 00:45+0000\n"
 "PO-Revision-Date: 2022-01-12 08:09+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -38,22 +38,22 @@ msgstr "Očisti"
 msgid "File"
 msgstr "Datoteka"
 
-#: browser/GlobalMenu.qml:14 browser/TopMenuBar.qml:17
+#: browser/GlobalMenu.qml:14
 #, kde-format
 msgid "Open system journal"
 msgstr "Odpri sistemski dnevnik"
 
-#: browser/GlobalMenu.qml:21 browser/TopMenuBar.qml:24
+#: browser/GlobalMenu.qml:21
 #, kde-format
 msgid "Open from folder"
 msgstr "Odpri iz mape"
 
-#: browser/GlobalMenu.qml:29 browser/TopMenuBar.qml:32
+#: browser/GlobalMenu.qml:29
 #, kde-format
 msgid "Open from file"
 msgstr "Odpri iz datoteke"
 
-#: browser/GlobalMenu.qml:37 browser/TopMenuBar.qml:40
+#: browser/GlobalMenu.qml:37
 #, kde-format
 msgid "Open remote journal stream"
 msgstr "Odpri oddaljeni tok dnevnika"
@@ -222,13 +222,37 @@ msgstr "Nastavi oddaljeni strežnik dnevnikov"
 
 #: browser/RemoteJournalConfigDialog.qml:31
 #, kde-format
-msgid "Url:"
-msgstr "Url:"
+msgid "URL:"
+msgstr ""
 
 #: browser/RemoteJournalConfigDialog.qml:40
 #, kde-format
 msgid "Port:"
 msgstr "Vrata:"
+
+#: browser/TopMenuBar.qml:17
+#, fuzzy, kde-format
+#| msgid "Open system journal"
+msgid "Open System Journal"
+msgstr "Odpri sistemski dnevnik"
+
+#: browser/TopMenuBar.qml:24
+#, fuzzy, kde-format
+#| msgid "Open from folder"
+msgid "Open from Folder"
+msgstr "Odpri iz mape"
+
+#: browser/TopMenuBar.qml:32
+#, fuzzy, kde-format
+#| msgid "Open from file"
+msgid "Open from File"
+msgstr "Odpri iz datoteke"
+
+#: browser/TopMenuBar.qml:40
+#, fuzzy, kde-format
+#| msgid "Open remote journal stream"
+msgid "Open Remote Journal Stream"
+msgstr "Odpri oddaljeni tok dnevnika"
 
 #: lib/filtercriteriamodel.cpp:20
 #, kde-format
@@ -307,3 +331,6 @@ msgstr "Enota"
 msgctxt "Section title for process list"
 msgid "Process"
 msgstr "Proces"
+
+#~ msgid "Url:"
+#~ msgstr "Url:"

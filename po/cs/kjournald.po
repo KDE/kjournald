@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-08-22 00:44+0000\n"
+"POT-Creation-Date: 2022-10-16 00:45+0000\n"
 "PO-Revision-Date: 2022-01-12 14:01+0100\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -37,22 +37,22 @@ msgstr "Vymazat"
 msgid "File"
 msgstr "Soubor"
 
-#: browser/GlobalMenu.qml:14 browser/TopMenuBar.qml:17
+#: browser/GlobalMenu.qml:14
 #, kde-format
 msgid "Open system journal"
 msgstr ""
 
-#: browser/GlobalMenu.qml:21 browser/TopMenuBar.qml:24
+#: browser/GlobalMenu.qml:21
 #, kde-format
 msgid "Open from folder"
 msgstr ""
 
-#: browser/GlobalMenu.qml:29 browser/TopMenuBar.qml:32
+#: browser/GlobalMenu.qml:29
 #, kde-format
 msgid "Open from file"
 msgstr ""
 
-#: browser/GlobalMenu.qml:37 browser/TopMenuBar.qml:40
+#: browser/GlobalMenu.qml:37
 #, kde-format
 msgid "Open remote journal stream"
 msgstr ""
@@ -219,13 +219,33 @@ msgstr ""
 
 #: browser/RemoteJournalConfigDialog.qml:31
 #, kde-format
-msgid "Url:"
-msgstr "Url:"
+msgid "URL:"
+msgstr ""
 
 #: browser/RemoteJournalConfigDialog.qml:40
 #, kde-format
 msgid "Port:"
 msgstr "Port:"
+
+#: browser/TopMenuBar.qml:17
+#, kde-format
+msgid "Open System Journal"
+msgstr ""
+
+#: browser/TopMenuBar.qml:24
+#, kde-format
+msgid "Open from Folder"
+msgstr ""
+
+#: browser/TopMenuBar.qml:32
+#, kde-format
+msgid "Open from File"
+msgstr ""
+
+#: browser/TopMenuBar.qml:40
+#, kde-format
+msgid "Open Remote Journal Stream"
+msgstr ""
 
 #: lib/filtercriteriamodel.cpp:20
 #, kde-format
@@ -304,3 +324,6 @@ msgstr "Jednotka"
 msgctxt "Section title for process list"
 msgid "Process"
 msgstr "Proces"
+
+#~ msgid "Url:"
+#~ msgstr "Url:"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-08-22 00:44+0000\n"
+"POT-Creation-Date: 2022-10-16 00:45+0000\n"
 "PO-Revision-Date: 2022-10-02 15:50\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -37,22 +37,22 @@ msgstr "清除"
 msgid "File"
 msgstr "文件"
 
-#: browser/GlobalMenu.qml:14 browser/TopMenuBar.qml:17
+#: browser/GlobalMenu.qml:14
 #, kde-format
 msgid "Open system journal"
 msgstr "打开系统日志"
 
-#: browser/GlobalMenu.qml:21 browser/TopMenuBar.qml:24
+#: browser/GlobalMenu.qml:21
 #, kde-format
 msgid "Open from folder"
 msgstr "从文件夹打开"
 
-#: browser/GlobalMenu.qml:29 browser/TopMenuBar.qml:32
+#: browser/GlobalMenu.qml:29
 #, kde-format
 msgid "Open from file"
 msgstr "从文件打开"
 
-#: browser/GlobalMenu.qml:37 browser/TopMenuBar.qml:40
+#: browser/GlobalMenu.qml:37
 #, kde-format
 msgid "Open remote journal stream"
 msgstr "打开远程日志流"
@@ -219,13 +219,37 @@ msgstr "配置远程日志服务器"
 
 #: browser/RemoteJournalConfigDialog.qml:31
 #, kde-format
-msgid "Url:"
-msgstr "URL："
+msgid "URL:"
+msgstr ""
 
 #: browser/RemoteJournalConfigDialog.qml:40
 #, kde-format
 msgid "Port:"
 msgstr "端口："
+
+#: browser/TopMenuBar.qml:17
+#, fuzzy, kde-format
+#| msgid "Open system journal"
+msgid "Open System Journal"
+msgstr "打开系统日志"
+
+#: browser/TopMenuBar.qml:24
+#, fuzzy, kde-format
+#| msgid "Open from folder"
+msgid "Open from Folder"
+msgstr "从文件夹打开"
+
+#: browser/TopMenuBar.qml:32
+#, fuzzy, kde-format
+#| msgid "Open from file"
+msgid "Open from File"
+msgstr "从文件打开"
+
+#: browser/TopMenuBar.qml:40
+#, fuzzy, kde-format
+#| msgid "Open remote journal stream"
+msgid "Open Remote Journal Stream"
+msgstr "打开远程日志流"
 
 #: lib/filtercriteriamodel.cpp:20
 #, kde-format
@@ -304,3 +328,6 @@ msgstr "单元"
 msgctxt "Section title for process list"
 msgid "Process"
 msgstr "进程"
+
+#~ msgid "Url:"
+#~ msgstr "URL："
