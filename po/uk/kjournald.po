@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-16 00:45+0000\n"
-"PO-Revision-Date: 2022-01-10 08:53+0200\n"
+"PO-Revision-Date: 2022-10-16 08:44+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -223,7 +223,7 @@ msgstr "Налаштування віддаленого сервера журн�
 #: browser/RemoteJournalConfigDialog.qml:31
 #, kde-format
 msgid "URL:"
-msgstr ""
+msgstr "Адреса:"
 
 #: browser/RemoteJournalConfigDialog.qml:40
 #, kde-format
@@ -231,26 +231,22 @@ msgid "Port:"
 msgstr "Порт:"
 
 #: browser/TopMenuBar.qml:17
-#, fuzzy, kde-format
-#| msgid "Open system journal"
+#, kde-format
 msgid "Open System Journal"
 msgstr "Відкрити системний журнал"
 
 #: browser/TopMenuBar.qml:24
-#, fuzzy, kde-format
-#| msgid "Open from folder"
+#, kde-format
 msgid "Open from Folder"
 msgstr "Відкрити з теки"
 
 #: browser/TopMenuBar.qml:32
-#, fuzzy, kde-format
-#| msgid "Open from file"
+#, kde-format
 msgid "Open from File"
 msgstr "Відкрити з файла"
 
 #: browser/TopMenuBar.qml:40
-#, fuzzy, kde-format
-#| msgid "Open remote journal stream"
+#, kde-format
 msgid "Open Remote Journal Stream"
 msgstr "Відкрити потік даних віддаленого журналу"
 

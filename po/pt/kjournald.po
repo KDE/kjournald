@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-16 00:45+0000\n"
-"PO-Revision-Date: 2022-03-26 22:49+0000\n"
+"PO-Revision-Date: 2022-10-16 11:35+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
 "Language: pt\n"
@@ -224,7 +224,7 @@ msgstr "Configurar o Servidor Remoto de Registos do Sistema"
 #: browser/RemoteJournalConfigDialog.qml:31
 #, kde-format
 msgid "URL:"
-msgstr ""
+msgstr "URL:"
 
 #: browser/RemoteJournalConfigDialog.qml:40
 #, kde-format
@@ -232,28 +232,24 @@ msgid "Port:"
 msgstr "Porto:"
 
 #: browser/TopMenuBar.qml:17
-#, fuzzy, kde-format
-#| msgid "Open system journal"
+#, kde-format
 msgid "Open System Journal"
-msgstr "Abrir o registo do sistema"
+msgstr "Abrir o Registo do Sistema"
 
 #: browser/TopMenuBar.qml:24
-#, fuzzy, kde-format
-#| msgid "Open from folder"
+#, kde-format
 msgid "Open from Folder"
-msgstr "Abrir da pasta"
+msgstr "Abrir da Pasta"
 
 #: browser/TopMenuBar.qml:32
-#, fuzzy, kde-format
-#| msgid "Open from file"
+#, kde-format
 msgid "Open from File"
-msgstr "Abrir do ficheiro"
+msgstr "Abrir do Ficheiro"
 
 #: browser/TopMenuBar.qml:40
-#, fuzzy, kde-format
-#| msgid "Open remote journal stream"
+#, kde-format
 msgid "Open Remote Journal Stream"
-msgstr "Abrir uma transmissão remota do registo"
+msgstr "Abrir uma Transmissão Remota do Registo"
 
 #: lib/filtercriteriamodel.cpp:20
 #, kde-format
@@ -332,6 +328,3 @@ msgstr "Unidade"
 msgctxt "Section title for process list"
 msgid "Process"
 msgstr "Processo"
-
-#~ msgid "Url:"
-#~ msgstr "URL:"
