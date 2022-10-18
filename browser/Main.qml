@@ -42,14 +42,14 @@ Kirigami.AbstractApplicationWindow {
             ComboBox {
                 id: bootIdComboBox
                 implicitWidth: Math.max(300, implicitContentWidth)
-                model: g_bootModel
+                model: bootModel
                 valueRole: "bootid"
                 textRole: SessionConfigProxy.timeDisplay
                           === SessionConfig.UTC ? "displayshort_utc" : "displayshort_localtime"
                 delegate: ItemDelegate {
                     text: SessionConfigProxy.timeDisplay
                           === SessionConfig.UTC ? model.displayshort_utc : model.displayshort_localtime
-                    font.weight: model.current === true ? Font.Bold : Font.Normal
+                    font.weight: model.index === bootIdComboBox.currentIndex ? Font.Bold : Font.Normal
                 }
             }
             ToolSeparator {}
@@ -218,6 +218,13 @@ Kirigami.AbstractApplicationWindow {
                 }
             }
         }
+    }
+
+    BootModel {
+        id: bootModel
+        journalPath: SessionConfigProxy.sessionMode === SessionConfig.LOCALFOLDER
+                     || SessionConfigProxy.sessionMode
+                     === SessionConfig.REMOTE ? SessionConfigProxy.localJournalPath : undefined
     }
 
     JournaldViewModel {

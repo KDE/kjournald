@@ -25,6 +25,7 @@ public:
     void sort(Qt::SortOrder order);
 
     QVector<BootInfo> mBootInfo;
+    QString mJournaldPath;
     std::unique_ptr<IJournal> mJournal;
 };
 

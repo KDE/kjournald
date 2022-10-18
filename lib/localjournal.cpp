@@ -50,7 +50,9 @@ LocalJournal::LocalJournal(const QString &path)
     if (QFileInfo(path).isDir()) {
         auto expectedJournal = owning_ptr_call<sd_journal>(sd_journal_open_directory, path.toStdString().c_str(), 0 /* no flags, directory defines type */);
         if (expectedJournal.ret < 0) {
-            qCCritical(journald) << "Could not open journal:" << strerror(-expectedJournal.ret);
+            qCCritical(journald) << "Could not open journal from directory" << path << ":" << strerror(-expectedJournal.ret);
+        } else {
+            d->mJournal = std::move(expectedJournal.value);
         }
     } else if (QFileInfo(path).isFile()) {
         const char **files = new const char *[1];
@@ -59,7 +61,9 @@ LocalJournal::LocalJournal(const QString &path)
 
         auto expectedJournal = owning_ptr_call<sd_journal>(sd_journal_open_files, files, 0 /* no flags, directory defines type */);
         if (expectedJournal.ret < 0) {
-            qCCritical(journald) << "Could not open journal:" << strerror(-expectedJournal.ret);
+            qCCritical(journald) << "Could not open journal from file" << path << ":" << strerror(-expectedJournal.ret);
+        } else {
+            d->mJournal = std::move(expectedJournal.value);
         }
         delete[] files;
     }

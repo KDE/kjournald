@@ -5,6 +5,7 @@
 
 #include "bootmodel.h"
 #include "bootmodel_p.h"
+#include "loggingcategories.h"
 
 BootModelPrivate::BootModelPrivate(std::unique_ptr<IJournal> journal)
     : mJournal(std::move(journal))
@@ -45,8 +46,10 @@ BootModel::~BootModel() = default;
 
 bool BootModel::setJournaldPath(const QString &path)
 {
+    qCDebug(journald) << "load journal from path" << path;
     bool success{true};
     beginResetModel();
+    d->mJournaldPath = path;
     d->mJournal = std::make_unique<LocalJournal>(path);
     success = d->mJournal->isValid();
     if (success) {
@@ -57,9 +60,16 @@ bool BootModel::setJournaldPath(const QString &path)
     return success;
 }
 
+QString BootModel::journaldPath() const
+{
+    return d->mJournaldPath;
+}
+
 void BootModel::setSystemJournal()
 {
+    qCDebug(journald) << "load system journal";
     beginResetModel();
+    d->mJournaldPath = QString();
     d->mJournal = std::make_unique<LocalJournal>();
     d->mBootInfo = JournaldHelper::queryOrderedBootIds(*d->mJournal.get());
     d->sort(Qt::SortOrder::DescendingOrder);

@@ -22,6 +22,8 @@ class BootModelPrivate;
 class KJOURNALD_EXPORT BootModel : public QAbstractListModel
 {
     Q_OBJECT
+    Q_PROPERTY(QString journalPath WRITE setJournaldPath READ journaldPath RESET setSystemJournal)
+
 public:
     enum Roles {
         BOOT_ID = Qt::DisplayRole, //!< the journald ID of the boot
@@ -70,6 +72,8 @@ public:
      * @return true if path could be found and opened, otherwise false
      */
     bool setJournaldPath(const QString &path);
+
+    QString journaldPath() const;
 
     /**
      * Switch to local system's default journald database
