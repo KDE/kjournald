@@ -57,6 +57,7 @@ int main(int argc, char *argv[])
     aboutData.setDesktopFileName(QStringLiteral("org.kde.kjournaldbrowser"));
     KAboutData::setApplicationData(aboutData);
 
+    FilterCriteriaModel filterCriteriaModel;
     ClipboardProxy clipboardProxy;
     SessionConfig sessionConfig;
 
@@ -64,11 +65,11 @@ int main(int argc, char *argv[])
     qmlRegisterType<JournaldUniqueQueryModel>("kjournald", 1, 0, "JournaldUniqueQueryModel");
     qmlRegisterType<FieldFilterProxyModel>("kjournald", 1, 0, "FieldFilterProxyModel");
     qmlRegisterType<BootModel>("kjournald", 1, 0, "BootModel");
+    qmlRegisterSingletonInstance("kjournald", 1, 0, "FilterCriteriaModelProxy", &filterCriteriaModel);
     qmlRegisterSingletonInstance("kjournald", 1, 0, "ClipboardProxy", &clipboardProxy);
     qmlRegisterSingletonInstance("kjournald", 1, 0, "SessionConfigProxy", &sessionConfig);
     qmlRegisterType<AboutProxy>("kjournald", 1, 0, "AboutProxy");
     qmlRegisterType<FlattenedFilterCriteriaProxyModel>("kjournald", 1, 0, "FlattenedFilterCriteriaProxyModel");
-    qmlRegisterUncreatableType<FilterCriteriaModel>("kjournald", 1, 0, "FilterCriteriaModel", "Backend only object");
     qmlRegisterUncreatableType<SessionConfig>("kjournald", 1, 0, "SessionConfig", "Backend only object");
 
     QCommandLineParser parser;
@@ -78,8 +79,6 @@ int main(int argc, char *argv[])
     const QCommandLineOption pathOption("D", "Path to journald database folder", "path");
     parser.addOption(pathOption);
     parser.process(app);
-
-    FilterCriteriaModel filterCriteriaModel;
 
     QObject::connect(&sessionConfig, &SessionConfig::modeChanged, &sessionConfig, [&sessionConfig, &filterCriteriaModel](SessionConfig::Mode mode) {
         switch (mode) {
@@ -116,8 +115,6 @@ int main(int argc, char *argv[])
                 QCoreApplication::exit(-1);
         },
         Qt::QueuedConnection);
-    engine.rootContext()->setContextProperty("g_filterModel", &filterCriteriaModel);
-
     engine.load(url);
 
     return app.exec();

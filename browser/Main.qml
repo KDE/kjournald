@@ -155,7 +155,7 @@ Kirigami.AbstractApplicationWindow {
 
     FlattenedFilterCriteriaProxyModel {
         id: flatFilterSelection
-        sourceModel: g_filterModel
+        sourceModel: FilterCriteriaModelProxy
     }
 
     SplitView {
@@ -232,10 +232,10 @@ Kirigami.AbstractApplicationWindow {
         journalPath: SessionConfigProxy.sessionMode === SessionConfig.LOCALFOLDER
                      || SessionConfigProxy.sessionMode
                      === SessionConfig.REMOTE ? SessionConfigProxy.localJournalPath : undefined
-        systemdUnitFilter: g_filterModel.systemdUnitFilter
-        exeFilter: g_filterModel.exeFilter
+        systemdUnitFilter: FilterCriteriaModelProxy.systemdUnitFilter
+        exeFilter: FilterCriteriaModelProxy.exeFilter
         bootFilter: bootIdComboBox.currentValue
-        priorityFilter: g_filterModel.priorityFilter
-        kernelFilter: g_filterModel.kernelFilter
+        priorityFilter: FilterCriteriaModelProxy.priorityFilter
+        kernelFilter: FilterCriteriaModelProxy.kernelFilter
     }
 }
