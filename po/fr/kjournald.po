@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-16 00:45+0000\n"
-"PO-Revision-Date: 2022-01-11 08:17+0100\n"
+"POT-Creation-Date: 2022-10-19 00:45+0000\n"
+"PO-Revision-Date: 2022-10-18 07:24+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@neuf.fr>\n"
 "Language-Team: French <kde-francophone@kde.org>\n"
 "Language: fr\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 21.12.1\n"
+"X-Generator: Lokalize 22.08.2\n"
 
 #: browser/FilterCriteriaView.qml:26
 #, kde-format
@@ -29,87 +29,87 @@ msgstr "Réduit"
 msgid "Clear"
 msgstr "Effacer"
 
-#: browser/GlobalMenu.qml:11 browser/TopMenuBar.qml:15
+#: browser/GlobalMenu.qml:10 browser/TopMenuBar.qml:15
 #, kde-format
 msgid "File"
 msgstr "Fichier"
 
-#: browser/GlobalMenu.qml:14
+#: browser/GlobalMenu.qml:13
 #, kde-format
 msgid "Open system journal"
 msgstr "Ouvrir le journal du système"
 
-#: browser/GlobalMenu.qml:21
+#: browser/GlobalMenu.qml:20
 #, kde-format
 msgid "Open from folder"
 msgstr "Ouvrir à partir du dossier"
 
-#: browser/GlobalMenu.qml:29
+#: browser/GlobalMenu.qml:28
 #, kde-format
 msgid "Open from file"
 msgstr "Ouvrir à partir du fichier"
 
-#: browser/GlobalMenu.qml:37
+#: browser/GlobalMenu.qml:36
 #, kde-format
 msgid "Open remote journal stream"
 msgstr "Ajouter un flux de journal à distance"
 
-#: browser/GlobalMenu.qml:47 browser/TopMenuBar.qml:50
+#: browser/GlobalMenu.qml:46 browser/TopMenuBar.qml:50
 #, kde-format
 msgid "Close"
 msgstr "Fermer"
 
-#: browser/GlobalMenu.qml:53 browser/TopMenuBar.qml:56
+#: browser/GlobalMenu.qml:52 browser/TopMenuBar.qml:56
 #, kde-format
 msgid "Current Journal"
 msgstr "Journal courant"
 
-#: browser/GlobalMenu.qml:61 browser/TopMenuBar.qml:64
+#: browser/GlobalMenu.qml:60 browser/TopMenuBar.qml:64
 #, kde-format
 msgid "View"
 msgstr "Affichage"
 
-#: browser/GlobalMenu.qml:64 browser/TopMenuBar.qml:67
+#: browser/GlobalMenu.qml:63 browser/TopMenuBar.qml:67
 #, kde-format
 msgid "Timestamp Display"
 msgstr "Affichage de l'horodatage"
 
-#: browser/GlobalMenu.qml:67 browser/TopMenuBar.qml:70
+#: browser/GlobalMenu.qml:66 browser/TopMenuBar.qml:70
 #, kde-format
 msgid "Localized Realtime"
 msgstr "Temps réel localisé"
 
-#: browser/GlobalMenu.qml:75 browser/TopMenuBar.qml:78
+#: browser/GlobalMenu.qml:74 browser/TopMenuBar.qml:78
 #, kde-format
 msgid "UTC Realtime"
 msgstr "Temps réel « UTC »"
 
-#: browser/GlobalMenu.qml:83 browser/TopMenuBar.qml:86
+#: browser/GlobalMenu.qml:82 browser/TopMenuBar.qml:86
 #, kde-format
 msgid "Monotonic Time"
 msgstr "Temps monotonique"
 
-#: browser/GlobalMenu.qml:92 browser/TopMenuBar.qml:95
+#: browser/GlobalMenu.qml:91 browser/TopMenuBar.qml:95
 #, kde-format
 msgid "Colorize"
 msgstr "Colorer"
 
-#: browser/GlobalMenu.qml:95 browser/TopMenuBar.qml:98
+#: browser/GlobalMenu.qml:94 browser/TopMenuBar.qml:98
 #, kde-format
 msgid "Systemd Unit"
 msgstr "Unité « Systemd »"
 
-#: browser/GlobalMenu.qml:103 browser/TopMenuBar.qml:106
+#: browser/GlobalMenu.qml:102 browser/TopMenuBar.qml:106
 #, kde-format
 msgid "Executable"
 msgstr "Exécutable"
 
-#: browser/GlobalMenu.qml:113 browser/TopMenuBar.qml:116
+#: browser/GlobalMenu.qml:112 browser/TopMenuBar.qml:116
 #, kde-format
 msgid "Help"
 msgstr "Aide"
 
-#: browser/GlobalMenu.qml:115 browser/TopMenuBar.qml:118
+#: browser/GlobalMenu.qml:114 browser/TopMenuBar.qml:118
 #, kde-format
 msgid "About"
 msgstr "À propos"
@@ -219,7 +219,7 @@ msgstr "Configurer le serveur distant de journal"
 #: browser/RemoteJournalConfigDialog.qml:31
 #, kde-format
 msgid "URL:"
-msgstr ""
+msgstr "URL :"
 
 #: browser/RemoteJournalConfigDialog.qml:40
 #, kde-format
@@ -227,26 +227,22 @@ msgid "Port:"
 msgstr "Port :"
 
 #: browser/TopMenuBar.qml:17
-#, fuzzy, kde-format
-#| msgid "Open system journal"
+#, kde-format
 msgid "Open System Journal"
 msgstr "Ouvrir le journal du système"
 
 #: browser/TopMenuBar.qml:24
-#, fuzzy, kde-format
-#| msgid "Open from folder"
+#, kde-format
 msgid "Open from Folder"
 msgstr "Ouvrir à partir du dossier"
 
 #: browser/TopMenuBar.qml:32
-#, fuzzy, kde-format
-#| msgid "Open from file"
+#, kde-format
 msgid "Open from File"
 msgstr "Ouvrir à partir du fichier"
 
 #: browser/TopMenuBar.qml:40
-#, fuzzy, kde-format
-#| msgid "Open remote journal stream"
+#, kde-format
 msgid "Open Remote Journal Stream"
 msgstr "Ajouter un flux de journal à distance"
 
