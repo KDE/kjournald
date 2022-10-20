@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-19 00:45+0000\n"
-"PO-Revision-Date: 2022-10-02 15:50\n"
+"PO-Revision-Date: 2022-10-19 13:23\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -228,28 +228,24 @@ msgid "Port:"
 msgstr "端口："
 
 #: browser/TopMenuBar.qml:17
-#, fuzzy, kde-format
-#| msgid "Open system journal"
+#, kde-format
 msgid "Open System Journal"
-msgstr "打开系统日志"
+msgstr ""
 
 #: browser/TopMenuBar.qml:24
-#, fuzzy, kde-format
-#| msgid "Open from folder"
+#, kde-format
 msgid "Open from Folder"
-msgstr "从文件夹打开"
+msgstr ""
 
 #: browser/TopMenuBar.qml:32
-#, fuzzy, kde-format
-#| msgid "Open from file"
+#, kde-format
 msgid "Open from File"
-msgstr "从文件打开"
+msgstr ""
 
 #: browser/TopMenuBar.qml:40
-#, fuzzy, kde-format
-#| msgid "Open remote journal stream"
+#, kde-format
 msgid "Open Remote Journal Stream"
-msgstr "打开远程日志流"
+msgstr ""
 
 #: lib/filtercriteriamodel.cpp:20
 #, kde-format
@@ -328,6 +324,3 @@ msgstr "单元"
 msgctxt "Section title for process list"
 msgid "Process"
 msgstr "进程"
-
-#~ msgid "Url:"
-#~ msgstr "URL："
