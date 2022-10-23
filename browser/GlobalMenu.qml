@@ -33,13 +33,14 @@ Labs.MenuBar {
                 fileDialog.open()
             }
         }
-        Labs.MenuItem {
-            text: i18n("Open remote journal stream")
-            icon.name: "document-import"
-            onTriggered: {
-                remoteJournalDialog.open()
-            }
-        }
+// disable option: it is not yet end-user ready
+//        Labs.MenuItem {
+//            text: i18n("Open remote journal stream")
+//            icon.name: "document-import"
+//            onTriggered: {
+//                remoteJournalDialog.open()
+//            }
+//        }
 
         Labs.MenuSeparator { }
 
