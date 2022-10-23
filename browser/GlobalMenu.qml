@@ -3,6 +3,7 @@
 // SPDX-FileCopyrightText: 2021 Carl Schwan <carl@carlschwan.eu>
 
 import Qt.labs.platform 1.1 as Labs
+import org.kde.kirigami 2.19 as Kirigami
 import kjournald 1.0
 
 Labs.MenuBar {
@@ -110,11 +111,11 @@ Labs.MenuBar {
     }
     Labs.Menu {
         title: i18n("Help")
+
         Labs.MenuItem {
             text: i18n("About")
             icon.name: "help-about"
             onTriggered: {
-                aboutDialog.visible = true
                 aboutDialog.open()
             }
         }

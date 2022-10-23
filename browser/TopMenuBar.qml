@@ -117,10 +117,7 @@ MenuBar {
         MenuItem {
             text: i18n("About")
             icon.name: "help-about"
-            onTriggered: {
-                aboutDialog.visible = true
-                aboutDialog.open()
-            }
+            onTriggered: aboutDialog.open()
         }
     }
 }

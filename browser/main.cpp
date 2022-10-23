@@ -55,6 +55,8 @@ int main(int argc, char *argv[])
                         QStringLiteral("cordlandwehr@kde.org"));
     aboutData.setTranslator(i18nc("NAME OF TRANSLATORS", "Your names"), i18nc("EMAIL OF TRANSLATORS", "Your emails"));
     aboutData.setDesktopFileName(QStringLiteral("org.kde.kjournaldbrowser"));
+    aboutData.setProductName("kjournald");
+    aboutData.setBugAddress("submit@bugs.kde.org");
     KAboutData::setApplicationData(aboutData);
 
     FilterCriteriaModel filterCriteriaModel;

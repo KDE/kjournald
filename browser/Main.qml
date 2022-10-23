@@ -6,9 +6,9 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
-import QtQuick.Dialogs 1.2
+import QtQuick.Dialogs 1.3 as Dialogs
 import QtQuick.Layouts 1.15
-import org.kde.kirigami 2.6 as Kirigami
+import org.kde.kirigami 2.19 as Kirigami
 import kjournald 1.0
 
 Kirigami.AbstractApplicationWindow {
@@ -24,6 +24,62 @@ Kirigami.AbstractApplicationWindow {
     Loader {
         active: Kirigami.Settings.hasPlatformMenuBar === true && !Kirigami.Settings.isMobile
         source: Qt.resolvedUrl("qrc:/GlobalMenu.qml")
+    }
+
+    Pane {
+        Loader {
+            id: aboutDialog
+            anchors.centerIn: parent
+            parent: Overlay.overlay
+            width: 500
+            height: 500
+
+            function open() {
+                if (item) {
+                    item.open()
+                } else {
+                    active = true
+                }
+            }
+            onLoaded: item.open()
+            active: false
+            asynchronous: true
+            sourceComponent: Dialog {
+                width: aboutDialog.width
+                height: aboutDialog.height
+                visible: false
+                title: i18n("About")
+                footer: DialogButtonBox {
+                    Button {
+                        icon.name: "tools-report-bug"
+                        text: i18n("Launch Bug Report Wizard")
+                        DialogButtonBox.buttonRole: DialogButtonBox.RejectRole
+                        onClicked:{
+                            const elements = aboutProxy.aboutData.productName.split('/');
+                            let url = `https://bugs.kde.org/enter_bug.cgi?format=guided&product=${elements[0]}&version=${aboutProxy.aboutData.version}`;
+                            if (elements.length === 2) {
+                                url += "&component=" + elements[1]
+                            }
+                            console.log("url: " + url)
+                            Qt.openUrlExternally(url)
+                        }
+                    }
+                    Button {
+                        icon.name: "document-close"
+                        text: i18n("Close")
+                        DialogButtonBox.buttonRole: DialogButtonBox.RejectRole
+                    }
+                }
+
+                AboutProxy {
+                    id: aboutProxy
+                }
+                Kirigami.AboutItem {
+                    anchors.fill: parent
+                    aboutData: aboutProxy.aboutData
+                }
+            }
+        }
     }
 
     header: ToolBar {
@@ -102,7 +158,7 @@ Kirigami.AbstractApplicationWindow {
         }
     }
 
-    FileDialog {
+    Dialogs.FileDialog {
         id: folderDialog
         title: i18n("Select journal folder")
         selectFolder: true
@@ -112,34 +168,13 @@ Kirigami.AbstractApplicationWindow {
         }
     }
 
-    FileDialog {
+    Dialogs.FileDialog {
         id: fileDialog
         title: i18n("Select journal file")
         nameFilters: [i18n("Journal files (*.journal)"), i18n("All files (*)")]
         onAccepted: {
             SessionConfigProxy.localJournalPath = fileDialog.fileUrl
             SessionConfigProxy.sessionMode = SessionConfig.LOCALFOLDER
-        }
-    }
-
-    Dialog {
-        id: aboutDialog
-        visible: false
-        modality: Qt.NonModal
-        standardButtons: StandardButton.Close
-        width: 600
-        height: 450
-
-        ColumnLayout {
-            anchors.fill: parent
-            Kirigami.AboutPage {
-                AboutProxy {
-                    id: aboutProxy
-                }
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-                aboutData: aboutProxy.aboutData
-            }
         }
     }
 
