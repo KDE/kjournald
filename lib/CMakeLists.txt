@@ -2,15 +2,30 @@
 # SPDX-FileCopyrightText: Andreas Cord-Landwehr <cordlandwehr@kde.org>
 
 add_library(kjournald SHARED)
+
+ecm_qt_declare_logging_category(
+    KJOURNALDLIB_SRCS
+    HEADER "loggingcategories.h"
+    IDENTIFIER "KJOURNALD_DEBUG"
+    CATEGORY_NAME "kjournald"
+    OLD_CATEGORY_NAMES "journald"
+    DESCRIPTION "KJournald"
+    EXPORT kjournald
+)
+ecm_qt_install_logging_categories(
+    EXPORT kjournald
+    FILE kjournald.categories
+    DESTINATION "${KDE_INSTALL_LOGGINGCATEGORIESDIR}"
+)
+
 generate_export_header(kjournald BASE_NAME KJournald)
 target_sources(kjournald PRIVATE
+    ${KJOURNALDLIB_SRCS}
     bootmodel.cpp
     bootmodel.h
     bootmodel_p.h
     colorizer.cpp
     colorizer.h
-    loggingcategories.cpp
-    loggingcategories.h
     fieldfilterproxymodel.cpp
     fieldfilterproxymodel.h
     ijournal.h

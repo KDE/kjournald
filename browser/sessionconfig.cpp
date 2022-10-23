@@ -16,7 +16,7 @@ SessionConfig::SessionConfig(QObject *parent)
 
 SessionConfig::~SessionConfig()
 {
-    qCDebug(journald()) << "Sync configuration";
+    qCDebug(KJOURNALD_DEBUG) << "Sync configuration";
     mSettings.sync();
 }
 
@@ -81,7 +81,7 @@ SessionConfig::ViewMode SessionConfig::viewMode() const
 
 void SessionConfig::setLocalJournalPath(const QString &path)
 {
-    qCDebug(journald) << "Open path" << path;
+    qCDebug(KJOURNALD_DEBUG) << "Open path" << path;
     // handle QUrl conversion for QML access
     QString resolvedPath = path;
     if (path.startsWith("file://")) {

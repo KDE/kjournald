@@ -21,7 +21,7 @@
 void JournaldViewModelPrivate::resetJournal()
 {
     if (!mJournal->isValid()) {
-        qCWarning(journald()) << "Skipping seek head, no valid journal open";
+        qCWarning(KJOURNALD_DEBUG) << "Skipping seek head, no valid journal open";
         return;
     }
 
@@ -37,7 +37,7 @@ void JournaldViewModelPrivate::resetJournal()
         QString filterExpression = QLatin1String("_BOOT_ID=") + boot;
         result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
         if (result < 0) {
-            qCCritical(journald) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
+            qCCritical(KJOURNALD_DEBUG) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
         }
     }
     if (mPriorityFilter.has_value()) {
@@ -45,7 +45,7 @@ void JournaldViewModelPrivate::resetJournal()
             QString filterExpression = QLatin1String("PRIORITY=") + QString::number(i);
             result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
             if (result < 0) {
-                qCCritical(journald()) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
+                qCCritical(KJOURNALD_DEBUG) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
             }
         }
     }
@@ -62,7 +62,7 @@ void JournaldViewModelPrivate::resetJournal()
             QString filterExpression = QLatin1String("_TRANSPORT=") + transport;
             result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
             if (result < 0) {
-                qCCritical(journald) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
+                qCCritical(KJOURNALD_DEBUG) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
             }
         }
     }
@@ -75,7 +75,7 @@ void JournaldViewModelPrivate::resetJournal()
             QString filterExpression = QLatin1String("_TRANSPORT=") + transport;
             result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
             if (result < 0) {
-                qCCritical(journald) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
+                qCCritical(KJOURNALD_DEBUG) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
             }
         }
     }
@@ -85,7 +85,7 @@ void JournaldViewModelPrivate::resetJournal()
         QString filterExpression = QLatin1String("_SYSTEMD_UNIT=") + unit;
         result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
         if (result < 0) {
-            qCCritical(journald) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
+            qCCritical(KJOURNALD_DEBUG) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
         }
     }
 
@@ -94,7 +94,7 @@ void JournaldViewModelPrivate::resetJournal()
         QString filterExpression = QLatin1String("_EXE=") + executable;
         result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
         if (result < 0) {
-            qCCritical(journald) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
+            qCCritical(KJOURNALD_DEBUG) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
         }
     }
 
@@ -112,7 +112,7 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
     int result{0};
     QVector<LogEntry> chunk;
     if (!mJournal->isValid()) {
-        qCWarning(journald) << "Skipping data fetch, no valid journal opened";
+        qCWarning(KJOURNALD_DEBUG) << "Skipping data fetch, no valid journal opened";
         return chunk;
     }
     if (direction == Direction::TOWARDS_TAIL) {
@@ -121,7 +121,7 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
             // note: seek cursor does not make it current, but a subsequenct sd_journal_next is required
             result = sd_journal_seek_cursor(mJournal->sdJournal(), cursor.toLocal8Bit().constData());
             if (result < 0) {
-                qCWarning(journald()) << "seeking cursor but could not be found" << strerror(-result);
+                qCWarning(KJOURNALD_DEBUG) << "seeking cursor but could not be found" << strerror(-result);
             }
             result = sd_journal_next(mJournal->sdJournal());
             if (result == 0) {
@@ -130,9 +130,9 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
             }
             result = sd_journal_test_cursor(mJournal->sdJournal(), cursor.toLocal8Bit().constData());
             if (result <= 0) {
-                qCCritical(journald()) << "current position does not match expected cursor:" << cursor;
+                qCCritical(KJOURNALD_DEBUG) << "current position does not match expected cursor:" << cursor;
                 if (result < 0) {
-                    qCCritical(journald()) << "cursor test failed:" << strerror(-result);
+                    qCCritical(KJOURNALD_DEBUG) << "cursor test failed:" << strerror(-result);
                 }
                 return {};
             }
@@ -152,7 +152,7 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
             QString cursor = mLog.first().mCursor;
             result = sd_journal_seek_cursor(mJournal->sdJournal(), cursor.toLocal8Bit().constData());
             if (result < 0) {
-                qCWarning(journald()) << "seeking cursor but could not be found" << strerror(-result);
+                qCWarning(KJOURNALD_DEBUG) << "seeking cursor but could not be found" << strerror(-result);
             }
             result = sd_journal_previous(mJournal->sdJournal());
             if (result == 0) {
@@ -161,9 +161,9 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
             }
             result = sd_journal_test_cursor(mJournal->sdJournal(), cursor.toLocal8Bit().constData());
             if (result <= 0) {
-                qCCritical(journald()) << "current position does not match expected cursor:" << cursor;
+                qCCritical(KJOURNALD_DEBUG) << "current position does not match expected cursor:" << cursor;
                 if (result < 0) {
-                    qCCritical(journald()) << "cursor test failed:" << strerror(-result);
+                    qCCritical(KJOURNALD_DEBUG) << "cursor test failed:" << strerror(-result);
                 }
                 return {};
             }
@@ -179,7 +179,7 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
             }
         }
     } else {
-        qCCritical(journald()) << "Jumping into the journal's middle, not supported";
+        qCCritical(KJOURNALD_DEBUG) << "Jumping into the journal's middle, not supported";
         return {};
     }
 
@@ -240,13 +240,13 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
             result = sd_journal_next(mJournal->sdJournal());
             if (result == 0) {
                 mTailCursorReached = true;
-                qCDebug(journald) << "obtained journal until tail, stop reading";
+                qCDebug(KJOURNALD_DEBUG) << "obtained journal until tail, stop reading";
                 break;
             }
         } else {
             if (sd_journal_previous(mJournal->sdJournal()) <= 0) {
                 mHeadCursorReached = true;
-                qCDebug(journald) << "obtained journal until head, stop reading";
+                qCDebug(KJOURNALD_DEBUG) << "obtained journal until head, stop reading";
                 break;
             }
         }
@@ -257,14 +257,14 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
 
 bool JournaldViewModelPrivate::seekHeadAndMakeCurrent()
 {
-    qCDebug(journald) << "seek head and make current";
+    qCDebug(KJOURNALD_DEBUG) << "seek head and make current";
     int result = sd_journal_seek_head(mJournal->sdJournal());
     if (result < 0) {
-        qCCritical(journald) << "Failed to seek head:" << strerror(-result);
+        qCCritical(KJOURNALD_DEBUG) << "Failed to seek head:" << strerror(-result);
         return false;
     }
     if (sd_journal_next(mJournal->sdJournal()) <= 0) {
-        qCWarning(journald) << "could not make head entry current";
+        qCWarning(KJOURNALD_DEBUG) << "could not make head entry current";
         return false;
     }
     mHeadCursorReached = true;
@@ -273,14 +273,14 @@ bool JournaldViewModelPrivate::seekHeadAndMakeCurrent()
 
 bool JournaldViewModelPrivate::seekTailAndMakeCurrent()
 {
-    qCDebug(journald) << "seek tail and make current";
+    qCDebug(KJOURNALD_DEBUG) << "seek tail and make current";
     int result = sd_journal_seek_tail(mJournal->sdJournal());
     if (result < 0) {
-        qCCritical(journald) << "Failed to seek head:" << strerror(-result);
+        qCCritical(KJOURNALD_DEBUG) << "Failed to seek head:" << strerror(-result);
         return false;
     }
     if (sd_journal_previous(mJournal->sdJournal()) <= 0) {
-        qCWarning(journald) << "could not make tail entry current";
+        qCWarning(KJOURNALD_DEBUG) << "could not make tail entry current";
         return false;
     }
     mTailCursorReached = true;
@@ -482,7 +482,7 @@ std::pair<int, int> JournaldViewModel::fetchMoreLogEntries()
             beginInsertRows(QModelIndex(), d->mLog.size(), d->mLog.size() + chunk.size() - 1);
             d->mLog.append(chunk);
             endInsertRows();
-            qCDebug(journald) << "read towards tail" << chunk.size();
+            qCDebug(KJOURNALD_DEBUG) << "read towards tail" << chunk.size();
             fetchResult.first = chunk.size();
         }
     }
@@ -493,7 +493,7 @@ std::pair<int, int> JournaldViewModel::fetchMoreLogEntries()
             beginInsertRows(QModelIndex(), 0, chunk.size() - 1);
             d->mLog = chunk << d->mLog; // TODO find more performant way than constructing a new vector every time
             endInsertRows();
-            qCDebug(journald) << "read towards head" << chunk.size();
+            qCDebug(KJOURNALD_DEBUG) << "read towards head" << chunk.size();
             fetchResult.second = chunk.size();
         }
     }
@@ -506,7 +506,7 @@ void JournaldViewModel::setFetchMoreChunkSize(quint32 size)
     if (size > 0) {
         d->mChunkSize = size;
     } else {
-        qCWarning(journald) << "chunk size 0 is currently ignored";
+        qCWarning(KJOURNALD_DEBUG) << "chunk size 0 is currently ignored";
     }
 }
 
@@ -519,7 +519,7 @@ void JournaldViewModel::seekHead()
         QVector<LogEntry> chunk = d->readEntries(JournaldViewModelPrivate::Direction::TOWARDS_TAIL);
         d->mLog = chunk;
     } else {
-        qCCritical(journald()) << "Cannot seek head of invalid journal";
+        qCCritical(KJOURNALD_DEBUG) << "Cannot seek head of invalid journal";
     }
     endResetModel();
 }
@@ -533,7 +533,7 @@ void JournaldViewModel::seekTail()
         QVector<LogEntry> chunk = d->readEntries(JournaldViewModelPrivate::Direction::TOWARDS_HEAD);
         d->mLog = chunk;
     } else {
-        qCCritical(journald()) << "Cannot seek head of invalid journal";
+        qCCritical(KJOURNALD_DEBUG) << "Cannot seek head of invalid journal";
     }
     endResetModel();
 }
@@ -590,7 +590,7 @@ QStringList JournaldViewModel::exeFilter() const
 
 void JournaldViewModel::setPriorityFilter(int priority)
 {
-    qCDebug(journald()) << "Set priority filter to:" << priority;
+    qCDebug(KJOURNALD_DEBUG) << "Set priority filter to:" << priority;
     if (d->mPriorityFilter.has_value() && d->mPriorityFilter.value() == priority) {
         return;
     }
@@ -642,7 +642,7 @@ int JournaldViewModel::search(const QString &searchString, int startRow, Directi
     if (direction == FORWARD) {
         while (row < d->mLog.size()) {
             if (d->mLog.at(row).mMessage.contains(searchString)) {
-                qCDebug(journald()) << "Found string in line" << row << d->mLog.at(row).mMessage;
+                qCDebug(KJOURNALD_DEBUG) << "Found string in line" << row << d->mLog.at(row).mMessage;
                 return row;
             }
             ++row;
@@ -653,7 +653,7 @@ int JournaldViewModel::search(const QString &searchString, int startRow, Directi
     } else {
         while (row >= 0) {
             if (d->mLog.at(row).mMessage.contains(searchString)) {
-                qCDebug(journald()) << "Found string in line" << row << d->mLog.at(row).mMessage;
+                qCDebug(KJOURNALD_DEBUG) << "Found string in line" << row << d->mLog.at(row).mMessage;
                 return row;
             }
             --row;

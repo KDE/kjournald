@@ -46,7 +46,7 @@ BootModel::~BootModel() = default;
 
 bool BootModel::setJournaldPath(const QString &path)
 {
-    qCDebug(journald) << "load journal from path" << path;
+    qCDebug(KJOURNALD_DEBUG) << "load journal from path" << path;
     bool success{true};
     beginResetModel();
     d->mJournaldPath = path;
@@ -67,7 +67,7 @@ QString BootModel::journaldPath() const
 
 void BootModel::setSystemJournal()
 {
-    qCDebug(journald) << "load system journal";
+    qCDebug(KJOURNALD_DEBUG) << "load system journal";
     beginResetModel();
     d->mJournaldPath = QString();
     d->mJournal = std::make_unique<LocalJournal>();

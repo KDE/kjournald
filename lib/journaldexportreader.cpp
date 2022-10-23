@@ -14,7 +14,7 @@ JournaldExportReader::JournaldExportReader(QIODevice *device)
     : mDevice(device)
 {
     if (!mDevice || !mDevice->open(QIODevice::ReadOnly)) {
-        qCCritical(journald()) << "Could not open device for reading";
+        qCCritical(KJOURNALD_DEBUG) << "Could not open device for reading";
         return;
     }
 }
@@ -72,7 +72,7 @@ bool JournaldExportReader::readNext()
             } size;
             qint64 bytes = mDevice->read(size.chars, 8);
             if (bytes != 8) {
-                qCWarning(journald()) << "Journal entry read that has unexpected number of bytes (8 bytes expected)" << bytes;
+                qCWarning(KJOURNALD_DEBUG) << "Journal entry read that has unexpected number of bytes (8 bytes expected)" << bytes;
             }
             mCurrentEntry[fieldId] = QString::fromLocal8Bit(mDevice->read(le64toh(size.uint64)));
             // read line break after binary content, such that reader points to next line

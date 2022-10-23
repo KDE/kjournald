@@ -108,7 +108,7 @@ bool SelectionEntry::setData(const QVariant &value, FilterCriteriaModel::Roles r
         mSelected = value.toBool();
         return true;
     }
-    qCWarning(journald) << "no settable role";
+    qCWarning(KJOURNALD_DEBUG) << "no settable role";
     return false;
 }
 
@@ -256,7 +256,7 @@ int FilterCriteriaModel::priorityFilter() const
             return parent->child(i)->data(FilterCriteriaModel::DATA).toInt();
         }
     }
-    qCWarning(journald()) << "No priority selected, falling back to 0";
+    qCWarning(KJOURNALD_DEBUG) << "No priority selected, falling back to 0";
     return 0;
 }
 
@@ -351,7 +351,7 @@ QVariant FilterCriteriaModel::data(const QModelIndex &index, int role) const
 {
     if (!index.parent().isValid()) {
         if (index.row() < 0 || index.row() >= d->mRootItem->childCount()) {
-            qCCritical(journald()) << "Index out of range" << index;
+            qCCritical(KJOURNALD_DEBUG) << "Index out of range" << index;
             return QVariant();
         }
         return d->mRootItem->child(index.row())->data(static_cast<FilterCriteriaModel::Roles>(role));

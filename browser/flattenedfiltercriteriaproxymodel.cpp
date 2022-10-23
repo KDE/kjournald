@@ -65,7 +65,7 @@ void FlattenedFilterCriteriaProxyModel::handleSourceModelDataChanged(const QMode
                                                                      const QVector<int> &roles)
 {
     if (sourceTopLeft != sourceBottomRight) {
-        qCWarning(journald) << "Data change ignored, currently only single line updates are implemented";
+        qCWarning(KJOURNALD_DEBUG) << "Data change ignored, currently only single line updates are implemented";
         return;
     }
     for (int i = 0; i < mMapToSourceIndex.size(); ++i) {
@@ -145,7 +145,7 @@ QVariant FlattenedFilterCriteriaProxyModel::data(const QModelIndex &index, int r
 bool FlattenedFilterCriteriaProxyModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     if (index.row() >= mMapToSourceIndex.count()) {
-        qCWarning(journald) << "access setData for line out of range with index:" << index.row() << " / total rows" << mMapToSourceIndex.count();
+        qCWarning(KJOURNALD_DEBUG) << "access setData for line out of range with index:" << index.row() << " / total rows" << mMapToSourceIndex.count();
         return false;
     }
     if (role == FlattenedFilterCriteriaProxyModel::Roles::EXPANDED) {

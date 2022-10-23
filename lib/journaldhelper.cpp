@@ -73,49 +73,49 @@ QVector<JournaldHelper::BootInfo> JournaldHelper::queryOrderedBootIds(const IJou
         QString filterExpression = QLatin1String("_BOOT_ID=") + id;
         result = sd_journal_add_match(sdJournal, filterExpression.toStdString().c_str(), filterExpression.length());
         if (result < 0) {
-            qCCritical(journald) << "Failed add filter:" << strerror(-result);
+            qCCritical(KJOURNALD_DEBUG) << "Failed add filter:" << strerror(-result);
             continue;
         }
 
         QDateTime since;
         result = sd_journal_seek_head(sdJournal);
         if (result < 0) {
-            qCCritical(journald) << "Failed to seek head:" << strerror(-result);
+            qCCritical(KJOURNALD_DEBUG) << "Failed to seek head:" << strerror(-result);
             continue;
         }
         result = sd_journal_next(sdJournal);
         if (result < 0) {
-            qCCritical(journald) << "Failed to obtain first entry:" << strerror(-result);
+            qCCritical(KJOURNALD_DEBUG) << "Failed to obtain first entry:" << strerror(-result);
             continue;
         }
         result = sd_journal_get_realtime_usec(sdJournal, &time);
         if (result == 0) {
             since.setMSecsSinceEpoch(time / 1000);
         } else {
-            qCCritical(journald) << "Failed to obtain time:" << strerror(-result);
+            qCCritical(KJOURNALD_DEBUG) << "Failed to obtain time:" << strerror(-result);
         }
 
         QDateTime until;
         result = sd_journal_seek_tail(sdJournal);
         if (result < 0) {
-            qCCritical(journald) << "Failed to seek tail:" << strerror(-result);
+            qCCritical(KJOURNALD_DEBUG) << "Failed to seek tail:" << strerror(-result);
             continue;
         }
         result = sd_journal_previous(sdJournal);
         if (result < 0) {
-            qCCritical(journald) << "Failed to obtain first entry:" << strerror(-result);
+            qCCritical(KJOURNALD_DEBUG) << "Failed to obtain first entry:" << strerror(-result);
         }
         result = sd_journal_get_realtime_usec(sdJournal, &time);
         if (result == 0) {
             until.setMSecsSinceEpoch(time / 1000);
         } else {
-            qCCritical(journald) << "Failed to obtain time:" << strerror(-result);
+            qCCritical(KJOURNALD_DEBUG) << "Failed to obtain time:" << strerror(-result);
         }
 
         if (since.isValid() && until.isValid()) {
             boots << BootInfo{id, since, until};
         } else {
-            qCCritical(journald) << "Could not correctly parse start/end time for boot" << id << "skipping from list";
+            qCCritical(KJOURNALD_DEBUG) << "Could not correctly parse start/end time for boot" << id << "skipping from list";
         }
     }
 
