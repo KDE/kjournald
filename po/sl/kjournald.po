@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-19 00:45+0000\n"
+"POT-Creation-Date: 2022-10-24 00:47+0000\n"
 "PO-Revision-Date: 2022-10-17 07:47+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -33,87 +33,82 @@ msgstr "Strnjeno"
 msgid "Clear"
 msgstr "Očisti"
 
-#: browser/GlobalMenu.qml:10 browser/TopMenuBar.qml:15
+#: browser/GlobalMenu.qml:11 browser/TopMenuBar.qml:15
 #, kde-format
 msgid "File"
 msgstr "Datoteka"
 
-#: browser/GlobalMenu.qml:13
+#: browser/GlobalMenu.qml:14
 #, kde-format
 msgid "Open system journal"
 msgstr "Odpri sistemski dnevnik"
 
-#: browser/GlobalMenu.qml:20
+#: browser/GlobalMenu.qml:21
 #, kde-format
 msgid "Open from folder"
 msgstr "Odpri iz mape"
 
-#: browser/GlobalMenu.qml:28
+#: browser/GlobalMenu.qml:29
 #, kde-format
 msgid "Open from file"
 msgstr "Odpri iz datoteke"
 
-#: browser/GlobalMenu.qml:36
-#, kde-format
-msgid "Open remote journal stream"
-msgstr "Odpri oddaljeni tok dnevnika"
-
-#: browser/GlobalMenu.qml:46 browser/TopMenuBar.qml:50
+#: browser/GlobalMenu.qml:48 browser/Main.qml:69 browser/TopMenuBar.qml:50
 #, kde-format
 msgid "Close"
 msgstr "Zapri"
 
-#: browser/GlobalMenu.qml:52 browser/TopMenuBar.qml:56
+#: browser/GlobalMenu.qml:54 browser/TopMenuBar.qml:56
 #, kde-format
 msgid "Current Journal"
 msgstr "Trenutni dnevnik"
 
-#: browser/GlobalMenu.qml:60 browser/TopMenuBar.qml:64
+#: browser/GlobalMenu.qml:62 browser/TopMenuBar.qml:64
 #, kde-format
 msgid "View"
 msgstr "Pogled"
 
-#: browser/GlobalMenu.qml:63 browser/TopMenuBar.qml:67
+#: browser/GlobalMenu.qml:65 browser/TopMenuBar.qml:67
 #, kde-format
 msgid "Timestamp Display"
 msgstr "Časovno žigosaj zaslon"
 
-#: browser/GlobalMenu.qml:66 browser/TopMenuBar.qml:70
+#: browser/GlobalMenu.qml:68 browser/TopMenuBar.qml:70
 #, kde-format
 msgid "Localized Realtime"
 msgstr "Lokalizirano sprotno"
 
-#: browser/GlobalMenu.qml:74 browser/TopMenuBar.qml:78
+#: browser/GlobalMenu.qml:76 browser/TopMenuBar.qml:78
 #, kde-format
 msgid "UTC Realtime"
 msgstr "UTC realni čas"
 
-#: browser/GlobalMenu.qml:82 browser/TopMenuBar.qml:86
+#: browser/GlobalMenu.qml:84 browser/TopMenuBar.qml:86
 #, kde-format
 msgid "Monotonic Time"
 msgstr "Monotoni čas"
 
-#: browser/GlobalMenu.qml:91 browser/TopMenuBar.qml:95
+#: browser/GlobalMenu.qml:93 browser/TopMenuBar.qml:95
 #, kde-format
 msgid "Colorize"
 msgstr "Obarvaj"
 
-#: browser/GlobalMenu.qml:94 browser/TopMenuBar.qml:98
+#: browser/GlobalMenu.qml:96 browser/TopMenuBar.qml:98
 #, kde-format
 msgid "Systemd Unit"
 msgstr "Enota Systemd"
 
-#: browser/GlobalMenu.qml:102 browser/TopMenuBar.qml:106
+#: browser/GlobalMenu.qml:104 browser/TopMenuBar.qml:106
 #, kde-format
 msgid "Executable"
 msgstr "Izvajalni program"
 
-#: browser/GlobalMenu.qml:112 browser/TopMenuBar.qml:116
+#: browser/GlobalMenu.qml:114 browser/TopMenuBar.qml:116
 #, kde-format
 msgid "Help"
 msgstr "Pomoč"
 
-#: browser/GlobalMenu.qml:114 browser/TopMenuBar.qml:118
+#: browser/GlobalMenu.qml:117 browser/Main.qml:51 browser/TopMenuBar.qml:118
 #, kde-format
 msgid "About"
 msgstr "O programu"
@@ -170,47 +165,52 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "matjaz.jeran@amis.net"
 
-#: browser/Main.qml:40
+#: browser/Main.qml:55
+#, kde-format
+msgid "Launch Bug Report Wizard"
+msgstr ""
+
+#: browser/Main.qml:96
 #, kde-format
 msgid "Boot:"
 msgstr "Zagon:"
 
-#: browser/Main.qml:58
+#: browser/Main.qml:114
 #, kde-format
 msgid "Highlight:"
 msgstr "Osvetljeno:"
 
-#: browser/Main.qml:81
+#: browser/Main.qml:137
 #, kde-format
 msgid "Browse"
 msgstr "Brskaj"
 
-#: browser/Main.qml:90
+#: browser/Main.qml:146
 #, kde-format
 msgid "Select"
 msgstr "Izberi"
 
-#: browser/Main.qml:107
+#: browser/Main.qml:163
 #, kde-format
 msgid "Select journal folder"
 msgstr "Izberi mapo dnevnikov"
 
-#: browser/Main.qml:117
+#: browser/Main.qml:173
 #, kde-format
 msgid "Select journal file"
 msgstr "Izberi datoteko dnevnika"
 
-#: browser/Main.qml:118
+#: browser/Main.qml:174
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "Datoteke dnevnikov (*.journal)"
 
-#: browser/Main.qml:118
+#: browser/Main.qml:174
 #, kde-format
 msgid "All files (*)"
 msgstr "Vse datoteke (*)"
 
-#: browser/Main.qml:212
+#: browser/Main.qml:247
 #, kde-format
 msgid "No log entries apply "
 msgstr "Ni vnosov v dnevniku "
@@ -327,6 +327,9 @@ msgstr "Enota"
 msgctxt "Section title for process list"
 msgid "Process"
 msgstr "Proces"
+
+#~ msgid "Open remote journal stream"
+#~ msgstr "Odpri oddaljeni tok dnevnika"
 
 #~ msgid "Url:"
 #~ msgstr "Url:"
