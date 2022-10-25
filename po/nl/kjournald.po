@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-24 00:47+0000\n"
-"PO-Revision-Date: 2022-10-16 22:43+0200\n"
+"PO-Revision-Date: 2022-10-24 10:30+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -167,7 +167,7 @@ msgstr "freekdekruijf@kde.nl"
 #: browser/Main.qml:55
 #, kde-format
 msgid "Launch Bug Report Wizard"
-msgstr ""
+msgstr "Assistent starten voor melden van een bug"
 
 #: browser/Main.qml:96
 #, kde-format

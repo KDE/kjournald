@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-24 00:47+0000\n"
-"PO-Revision-Date: 2022-10-16 09:07+0200\n"
+"PO-Revision-Date: 2022-10-24 10:48+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -170,7 +170,7 @@ msgstr "antonibella5@yahoo.com"
 #: browser/Main.qml:55
 #, kde-format
 msgid "Launch Bug Report Wizard"
-msgstr ""
+msgstr "Inicia l'assistent d'informe d'errors"
 
 #: browser/Main.qml:96
 #, kde-format
@@ -329,6 +329,3 @@ msgstr "Unitat"
 msgctxt "Section title for process list"
 msgid "Process"
 msgstr "Procés"
-
-#~ msgid "Open remote journal stream"
-#~ msgstr "Obri un flux de diari remot"

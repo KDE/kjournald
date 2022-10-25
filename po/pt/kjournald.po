@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-24 00:47+0000\n"
-"PO-Revision-Date: 2022-10-16 11:35+0100\n"
+"PO-Revision-Date: 2022-10-24 11:01+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
 "Language: pt\n"
@@ -169,7 +169,7 @@ msgstr "zepires@gmail.com"
 #: browser/Main.qml:55
 #, kde-format
 msgid "Launch Bug Report Wizard"
-msgstr ""
+msgstr "Invocar o Assistente de Comunicação de Erros"
 
 #: browser/Main.qml:96
 #, kde-format
@@ -328,6 +328,3 @@ msgstr "Unidade"
 msgctxt "Section title for process list"
 msgid "Process"
 msgstr "Processo"
-
-#~ msgid "Open remote journal stream"
-#~ msgstr "Abrir uma transmissão remota do registo"
