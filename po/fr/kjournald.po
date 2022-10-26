@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-24 00:47+0000\n"
-"PO-Revision-Date: 2022-10-18 07:24+0200\n"
+"PO-Revision-Date: 2022-10-25 15:39+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@neuf.fr>\n"
 "Language-Team: French <kde-francophone@kde.org>\n"
 "Language: fr\n"
@@ -164,7 +164,7 @@ msgstr "xavier.besnard@neuf.fr"
 #: browser/Main.qml:55
 #, kde-format
 msgid "Launch Bug Report Wizard"
-msgstr ""
+msgstr "Lancer l'assistant pour les rapports de bogue"
 
 #: browser/Main.qml:96
 #, kde-format
