@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-10-24 00:47+0000\n"
-"PO-Revision-Date: 2022-01-11 02:05+0100\n"
+"PO-Revision-Date: 2022-10-26 12:13+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 21.12.1\n"
+"X-Generator: Lokalize 22.08.2\n"
 
 #: browser/FilterCriteriaView.qml:26
 #, kde-format
@@ -167,7 +167,7 @@ msgstr "smart2128@baslug.org"
 #: browser/Main.qml:55
 #, kde-format
 msgid "Launch Bug Report Wizard"
-msgstr ""
+msgstr "Avvia la procedura guidata di segnalazione bug"
 
 #: browser/Main.qml:96
 #, kde-format
@@ -222,7 +222,7 @@ msgstr "Configura server journal remoto"
 #: browser/RemoteJournalConfigDialog.qml:31
 #, kde-format
 msgid "URL:"
-msgstr ""
+msgstr "URL:"
 
 #: browser/RemoteJournalConfigDialog.qml:40
 #, kde-format
@@ -230,26 +230,22 @@ msgid "Port:"
 msgstr "Porta:"
 
 #: browser/TopMenuBar.qml:17
-#, fuzzy, kde-format
-#| msgid "Open system journal"
+#, kde-format
 msgid "Open System Journal"
 msgstr "Apri journal di sistema"
 
 #: browser/TopMenuBar.qml:24
-#, fuzzy, kde-format
-#| msgid "Open from folder"
+#, kde-format
 msgid "Open from Folder"
 msgstr "Apri da cartella"
 
 #: browser/TopMenuBar.qml:32
-#, fuzzy, kde-format
-#| msgid "Open from file"
+#, kde-format
 msgid "Open from File"
 msgstr "Apri da file"
 
 #: browser/TopMenuBar.qml:40
-#, fuzzy, kde-format
-#| msgid "Open remote journal stream"
+#, kde-format
 msgid "Open Remote Journal Stream"
 msgstr "Apri flusso journal remoto"
 
