@@ -86,6 +86,12 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="x-test">xxJournald-browser is a reference implementation of the kjournald library and provides a flexible tool to browse in local, remote and offline journald databases.xx</p>
     <p xml:lang="zh-CN">Journald-browser 是 kjournald 程序库的参考实现程序，它提供了一套灵活浏览本机、远程和离线 journald 数据库的工具。</p>
   </description>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://cdn.kde.org/screenshots/kjournald/kjournald.png</image>
+      <caption>Log Browser</caption>
+    </screenshot>
+  </screenshots>
   <url type="homepage">https://invent.kde.org/libraries/kjournald</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kjournald</url>
   <url type="donation">https://www.kde.org/community/donations/?app=kjournald&amp;source=appdata</url>
