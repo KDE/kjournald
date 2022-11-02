@@ -30,8 +30,24 @@ void JournaldViewModelPrivate::resetJournal()
     // reset all filters
     sd_journal_flush_matches(mJournal->sdJournal());
 
-    // in the following a logical expression with with the following content is created:
-    // AND (boot_1 OR boot...) AND (priority_1 OR prio...) AND ((?kernel-messages) OR (non-kernel-tranport) AND (unit_1 OR unit_2 OR unit...))
+    // filter construction:
+    // The Journald API does not provide arbitrary logical phrases, but a 4 level syntax,
+    // see: https://www.freedesktop.org/software/systemd/man/sd_journal_add_match.html
+    // 1. level: AND, via add_conjunction (separates terms via AND)
+    // 2. level: OR, via add_disjunction (separates terms via OR or AND)
+    // 3: level: AND, via multiple add_match(...) in one term with different fields that are considered as AND combination
+    // 4: level: OR, via multiple add_match(...) in one term with same field that are considered as OR combination
+    //
+    // The following boolean expression is created as follow for kernel transport option:
+    //     (boot=123 OR boot=...)
+    //     AND (priority=1 OR priority=...)
+    //     AND (transport=kernel) OR (unit_1 OR unit_2 OR ...) OR (exe=x OR exe=y OR ...)
+    // And for non-kernel transport option:
+    //     (boot=123 OR boot=...)
+    //     AND (priority=1 OR priority=...)
+    //     AND (transport=not-kernel)
+    //     AND (unit_1 OR unit_2 OR ...) OR (exe=x OR exe=y OR ...)
+
     // filter boots
     for (const QString &boot : qAsConst(mBootFilter)) {
         QString filterExpression = QLatin1String("_BOOT_ID=") + boot;
@@ -55,6 +71,8 @@ void JournaldViewModelPrivate::resetJournal()
     Q_ASSERT(result >= 0);
 
     // see journal-fields documentation regarding list of valid transports
+    // note: in case of kernel messages being activated, this filter automatically activates all kernel transport
+    //       because kernel output will not match any further service/exe filter
     QStringList kernelTransports{QLatin1String("audit"), QLatin1String("driver"), QLatin1String("kernel")};
     QStringList nonKernelTransports{QLatin1String("syslog"), QLatin1String("journal"), QLatin1String("stdout")};
     if (mShowKernelMessages) {
@@ -65,12 +83,9 @@ void JournaldViewModelPrivate::resetJournal()
                 qCCritical(KJOURNALD_DEBUG) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
             }
         }
-    }
-    result = sd_journal_add_disjunction(mJournal->sdJournal());
-    Q_ASSERT(result >= 0);
-
-    // special case handling where for messages that are missing a _TRANSPORT entry and otherwise might be missing in log output
-    if (!mShowKernelMessages) {
+        result = sd_journal_add_disjunction(mJournal->sdJournal());
+        Q_ASSERT(result >= 0);
+    } else {
         for (const QString &transport : nonKernelTransports) {
             QString filterExpression = QLatin1String("_TRANSPORT=") + transport;
             result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
@@ -78,6 +93,8 @@ void JournaldViewModelPrivate::resetJournal()
                 qCCritical(KJOURNALD_DEBUG) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
             }
         }
+        result = sd_journal_add_conjunction(mJournal->sdJournal());
+        Q_ASSERT(result >= 0);
     }
 
     // filter units
@@ -88,6 +105,9 @@ void JournaldViewModelPrivate::resetJournal()
             qCCritical(KJOURNALD_DEBUG) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
         }
     }
+
+    result = sd_journal_add_disjunction(mJournal->sdJournal());
+    Q_ASSERT(result >= 0);
 
     // filter executable
     for (const QString &executable : qAsConst(mExeFilter)) {

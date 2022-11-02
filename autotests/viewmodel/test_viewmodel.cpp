@@ -130,6 +130,9 @@ void TestViewModel::unitFilter()
     for (int i = 0; i < model.rowCount(); ++i) {
         const QString unit = model.data(model.index(i, 0), JournaldViewModel::SYSTEMD_UNIT).toString();
         notFoundUnits.removeOne(unit);
+        if (!testSystemdUnitNames.contains(unit)) {
+            qDebug() << "unexpected unit:" << unit;
+        }
         QVERIFY(testSystemdUnitNames.contains(unit));
     }
     QVERIFY(notFoundUnits.isEmpty());

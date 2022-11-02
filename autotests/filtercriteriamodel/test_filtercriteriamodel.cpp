@@ -100,8 +100,8 @@ void TestFilterCriteriaModel::standaloneTestExeSelectionOptions()
         QVERIFY(model.hasChildren(categoryIndex));
         // value from first position
         QCOMPARE(model.data(model.index(0, 0, categoryIndex), FilterCriteriaModel::Roles::TEXT).toString(), "/bin/bash.bash");
-        // all elements are selected initially
-        QCOMPARE(model.data(model.index(0, 0, categoryIndex), FilterCriteriaModel::Roles::SELECTED).toBool(), true);
+        // all elements are disabled initially
+        QCOMPARE(model.data(model.index(0, 0, categoryIndex), FilterCriteriaModel::Roles::SELECTED).toBool(), false);
     }
 }
 
