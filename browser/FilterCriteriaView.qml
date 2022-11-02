@@ -63,10 +63,10 @@ ListView {
         DelegateChoice {
             roleValue: FlattenedFilterCriteriaProxyModel.CHECKBOX
             delegate: Kirigami.AbstractListItem {
-                id: control
+                id: checkboxDelegate
                 readonly property bool selected: model ? model.selected : false
                 width: ListView.view.width
-                onSelectedChanged: checkbox.checked = control.selected
+                onSelectedChanged: checkbox.checked = checkboxDelegate.selected
                 text: model ? model.text : ""
                 leftPadding: 20
                 onClicked: model.selected = !model.selected
@@ -94,10 +94,10 @@ ListView {
         DelegateChoice {
             roleValue: FlattenedFilterCriteriaProxyModel.RADIOBUTTON
             delegate: Kirigami.AbstractListItem {
-                id: control
+                id: radioDelegate
                 readonly property bool selected: model ? model.selected : false
                 width: ListView.view.width
-                onSelectedChanged: radiobox.checked = control.selected
+                onSelectedChanged: radiobox.checked = radioDelegate.selected
                 text: model ? model.text : ""
                 leftPadding: 20
                 onClicked: model.selected = !model.selected
