@@ -367,54 +367,54 @@ QVariant FilterCriteriaModel::data(const QModelIndex &index, int role) const
 bool FilterCriteriaModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     auto entry = static_cast<SelectionEntry *>(index.internalPointer());
-    if (nullptr != entry) {
-        if (value == entry->data(static_cast<FilterCriteriaModel::Roles>(role))) {
-            return true; // nothing to do
-        }
-        const bool result = entry->setData(value, static_cast<FilterCriteriaModel::Roles>(role));
-        const auto category = entry->data(FilterCriteriaModel::Roles::CATEGORY).value<FilterCriteriaModel::Category>();
-
-        // emit change only one entry is activated
-        if (result && category == FilterCriteriaModel::Category::PRIORITY && static_cast<FilterCriteriaModel::Roles>(role) == SELECTED && result) {
-            Q_EMIT priorityFilterChanged(index.row());
-        } else if (result && category == FilterCriteriaModel::Category::SYSTEMD_UNIT) {
-            // for checkable entries update parent's selected state
-            if (value.toBool() == true) {
-                setData(index.parent(), true, FilterCriteriaModel::Roles::SELECTED);
-            } else {
-                const auto parent = static_cast<SelectionEntry *>(index.parent().internalPointer());
-                if (parent) {
-                    bool hasSelectedSibling{false};
-                    for (int i = 0; i < parent->childCount(); ++i) {
-                        hasSelectedSibling = hasSelectedSibling || parent->child(i)->data(SELECTED).toBool();
-                    }
-                    setData(index.parent(), hasSelectedSibling, FilterCriteriaModel::Roles::SELECTED);
-                }
-            }
-            Q_EMIT systemdUnitFilterChanged();
-        } else if (result && category == FilterCriteriaModel::Category::EXE) {
-            // for checkable entries update parent's selected state
-            if (value.toBool() == true) {
-                setData(index.parent(), true, FilterCriteriaModel::Roles::SELECTED);
-            } else {
-                const auto parent = static_cast<SelectionEntry *>(index.parent().internalPointer());
-                if (parent) {
-                    bool hasSelectedSibling{false};
-                    for (int i = 0; i < parent->childCount(); ++i) {
-                        hasSelectedSibling = hasSelectedSibling || parent->child(i)->data(SELECTED).toBool();
-                    }
-                    setData(index.parent(), hasSelectedSibling, FilterCriteriaModel::Roles::SELECTED);
-                }
-            }
-            Q_EMIT exeFilterChanged();
-        } else if (result && category == FilterCriteriaModel::Category::TRANSPORT) {
-            Q_EMIT kernelFilterChanged();
-        }
-        Q_EMIT dataChanged(index, index, {role});
-        return result;
-    } else {
+    if (nullptr == entry) {
         return QAbstractItemModel::setData(index, value, role);
     }
+    if (value == entry->data(static_cast<FilterCriteriaModel::Roles>(role))) {
+        return true; // nothing to do
+    }
+
+    const bool result = entry->setData(value, static_cast<FilterCriteriaModel::Roles>(role));
+    const auto category = entry->data(FilterCriteriaModel::Roles::CATEGORY).value<FilterCriteriaModel::Category>();
+    Q_EMIT dataChanged(index, index, {role});
+
+    if (result && category == FilterCriteriaModel::Category::PRIORITY && static_cast<FilterCriteriaModel::Roles>(role) == SELECTED && result) {
+        // emit change only if one entry is activated
+        Q_EMIT priorityFilterChanged(index.row());
+    } else if (result && category == FilterCriteriaModel::Category::SYSTEMD_UNIT) {
+        // for checkable entries update parent's selected state
+        if (value.toBool() == true) {
+            setData(index.parent(), true, FilterCriteriaModel::Roles::SELECTED);
+        } else {
+            const auto parent = static_cast<SelectionEntry *>(index.parent().internalPointer());
+            if (parent) {
+                bool hasSelectedSibling{false};
+                for (int i = 0; i < parent->childCount(); ++i) {
+                    hasSelectedSibling = hasSelectedSibling || parent->child(i)->data(SELECTED).toBool();
+                }
+                setData(index.parent(), hasSelectedSibling, FilterCriteriaModel::Roles::SELECTED);
+            }
+        }
+        Q_EMIT systemdUnitFilterChanged();
+    } else if (result && category == FilterCriteriaModel::Category::EXE) {
+        // for checkable entries update parent's selected state
+        if (value.toBool() == true) {
+            setData(index.parent(), true, FilterCriteriaModel::Roles::SELECTED);
+        } else {
+            const auto parent = static_cast<SelectionEntry *>(index.parent().internalPointer());
+            if (parent) {
+                bool hasSelectedSibling{false};
+                for (int i = 0; i < parent->childCount(); ++i) {
+                    hasSelectedSibling = hasSelectedSibling || parent->child(i)->data(SELECTED).toBool();
+                }
+                setData(index.parent(), hasSelectedSibling, FilterCriteriaModel::Roles::SELECTED);
+            }
+        }
+        Q_EMIT exeFilterChanged();
+    } else if (result && category == FilterCriteriaModel::Category::TRANSPORT) {
+        Q_EMIT kernelFilterChanged();
+    }
+    return result;
 }
 
 QVector<std::pair<QString, bool>> FilterCriteriaModel::entries(FilterCriteriaModel::Category category) const
