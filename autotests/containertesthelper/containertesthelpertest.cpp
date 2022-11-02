@@ -46,4 +46,4 @@ void ContainerTestHelperTest::testContainerTestChecks()
     CONTAINER_IS_SUBSET_OF(c, b);
 }
 
-QTEST_MAIN(ContainerTestHelperTest)
+QTEST_GUILESS_MAIN(ContainerTestHelperTest)
