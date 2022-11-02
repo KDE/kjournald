@@ -36,13 +36,14 @@ MenuBar {
                 fileDialog.open()
             }
         }
-        MenuItem {
-            text: i18n("Open Remote Journal Stream")
-            icon.name: "document-import"
-            onTriggered: {
-                remoteJournalDialog.open()
-            }
-        }
+// disable feature for end-users until the dialog experience is more polished
+//        MenuItem {
+//            text: i18n("Open Remote Journal Stream")
+//            icon.name: "document-import"
+//            onTriggered: {
+//                remoteJournalDialog.open()
+//            }
+//        }
 
         MenuSeparator { }
 
