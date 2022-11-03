@@ -90,6 +90,14 @@ SPDX-License-Identifier: CC0-1.0
     <screenshot type="default">
       <image>https://cdn.kde.org/screenshots/kjournald/kjournald.png</image>
       <caption>Log Browser</caption>
+      <caption xml:lang="ca">Navegador del registre</caption>
+      <caption xml:lang="es">Explorador del registro</caption>
+      <caption xml:lang="eu">Egunkari arakatzailea</caption>
+      <caption xml:lang="nl">Browser van log</caption>
+      <caption xml:lang="pt">Navegador de Registos</caption>
+      <caption xml:lang="tr">Günlük Tarayıcı</caption>
+      <caption xml:lang="uk">Навігатор журналом</caption>
+      <caption xml:lang="x-test">xxLog Browserxx</caption>
     </screenshot>
   </screenshots>
   <url type="homepage">https://invent.kde.org/libraries/kjournald</url>
