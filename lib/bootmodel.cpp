@@ -16,30 +16,24 @@ BootModel::BootModel(QObject *parent)
     : QAbstractListModel(parent)
     , d(new BootModelPrivate(std::make_unique<LocalJournal>()))
 {
-    beginResetModel();
     d->mBootInfo = JournaldHelper::queryOrderedBootIds(*d->mJournal.get());
     d->sort(Qt::SortOrder::DescendingOrder);
-    endResetModel();
 }
 
 BootModel::BootModel(const QString &journaldPath, QObject *parent)
     : QAbstractListModel(parent)
     , d(new BootModelPrivate(std::make_unique<LocalJournal>(journaldPath)))
 {
-    beginResetModel();
     d->mBootInfo = JournaldHelper::queryOrderedBootIds(*d->mJournal.get());
     d->sort(Qt::SortOrder::DescendingOrder);
-    endResetModel();
 }
 
 BootModel::BootModel(std::unique_ptr<IJournal> journal, QObject *parent)
     : QAbstractListModel(parent)
     , d(new BootModelPrivate(std::move(journal)))
 {
-    beginResetModel();
     d->mBootInfo = JournaldHelper::queryOrderedBootIds(*d->mJournal.get());
     d->sort(Qt::SortOrder::DescendingOrder);
-    endResetModel();
 }
 
 BootModel::~BootModel() = default;
