@@ -33,6 +33,7 @@ public:
         DISPLAY_SHORT_LOCALTIME, //!< compact representation of the boot ID with all of its information: date, since-time, until-time, abbreviated hash
         CURRENT, //!< boolen role the tells if this boot is current for the system and thus expands
     };
+    Q_ENUM(Roles)
 
     /**
      * @brief Construct model from the default local jouurnald database
@@ -96,11 +97,6 @@ public:
      * @copydoc QAbstractItemModel::data()
      */
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
-
-    /**
-     * @brief Convenience method to support Qt 5.12's ComboxBox
-     */
-    Q_INVOKABLE QString bootId(int row) const;
 
 private:
     std::unique_ptr<BootModelPrivate> d;
