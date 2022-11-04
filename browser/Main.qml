@@ -55,8 +55,8 @@ Kirigami.AbstractApplicationWindow {
                         text: i18n("Launch Bug Report Wizard")
                         DialogButtonBox.buttonRole: DialogButtonBox.RejectRole
                         onClicked:{
-                            const elements = aboutProxy.aboutData.productName.split('/');
-                            let url = `https://bugs.kde.org/enter_bug.cgi?format=guided&product=${elements[0]}&version=${aboutProxy.aboutData.version}`;
+                            const elements = AboutData.productName.split('/');
+                            let url = `https://bugs.kde.org/enter_bug.cgi?format=guided&product=${elements[0]}&version=${AboutData.version}`;
                             if (elements.length === 2) {
                                 url += "&component=" + elements[1]
                             }
@@ -71,12 +71,9 @@ Kirigami.AbstractApplicationWindow {
                     }
                 }
 
-                AboutProxy {
-                    id: aboutProxy
-                }
                 Kirigami.AboutItem {
                     anchors.fill: parent
-                    aboutData: aboutProxy.aboutData
+                    aboutData: AboutData
                 }
             }
         }
