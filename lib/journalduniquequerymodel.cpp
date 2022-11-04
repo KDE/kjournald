@@ -219,7 +219,7 @@ bool JournaldUniqueQueryModel::setData(const QModelIndex &index, const QVariant 
     }
     if (role == JournaldUniqueQueryModel::Roles::SELECTED) {
         if (d->mEntries.at(index.row()).second == value.toBool()) {
-            return true;
+            return false;
         } else {
             d->mEntries[index.row()].second = value.toBool();
             Q_EMIT dataChanged(index, index);
