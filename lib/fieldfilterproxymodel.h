@@ -39,7 +39,6 @@ Q_SIGNALS:
 protected:
     int roleKey(const QByteArray &role) const;
     QHash<int, QByteArray> roleNames() const override;
-    bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const override;
 
 private:
     bool mComplete;
