@@ -45,22 +45,24 @@ bool JournaldUniqueQueryModelPrivate::openJournalFromPath(const QString &path)
         qCCritical(KJOURNALD_DEBUG) << "Journal directory does not exist, abort opening";
         return false;
     }
-    if (QFileInfo(path).isDir()) {
+    const QFileInfo fileInfo = QFileInfo(path);
+    if (fileInfo.isDir()) {
         int result = sd_journal_open_directory(&mJournal, path.toStdString().c_str(), 0 /* no flags, directory defines type */);
         if (result < 0) {
             qCCritical(KJOURNALD_DEBUG) << "Could not open journal:" << strerror(-result);
             return false;
         }
-    } else if (QFileInfo(path).isFile()) {
+    } else if (fileInfo.isFile()) {
         const char **files = new const char *[1];
         QByteArray journalPath = path.toLocal8Bit();
         files[0] = journalPath.data();
 
         int result = sd_journal_open_files(&mJournal, files, 0 /* no flags, directory defines type */);
+        delete[] files;
         if (result < 0) {
             qCCritical(KJOURNALD_DEBUG) << "Could not open journal:" << strerror(-result);
+            return false;
         }
-        delete[] files;
     }
 
     return true;
