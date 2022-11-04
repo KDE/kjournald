@@ -15,9 +15,9 @@ QVector<QString> JournaldHelper::queryUnique(const IJournal &journal, Field fiel
     size_t length;
     int result;
 
-    std::string fieldString = mapField(field).toStdString();
+    const QString fieldString = mapField(field);
 
-    result = sd_journal_query_unique(journal.sdJournal(), fieldString.c_str());
+    result = sd_journal_query_unique(journal.sdJournal(), qUtf8Printable(fieldString));
     if (result < 0) {
         qCritical() << "Failed to query journal:" << strerror(-result);
         return dataList;
@@ -42,9 +42,9 @@ QVector<QString> JournaldHelper::queryUnique(std::shared_ptr<IJournal> journal, 
     size_t length;
     int result;
 
-    std::string fieldString = mapField(field).toStdString();
+    QString fieldString = mapField(field);
 
-    result = sd_journal_query_unique(journal->sdJournal(), fieldString.c_str());
+    result = sd_journal_query_unique(journal->sdJournal(), qUtf8Printable(fieldString));
     if (result < 0) {
         qCritical() << "Failed to query journal:" << strerror(-result);
         return dataList;
