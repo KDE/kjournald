@@ -62,7 +62,7 @@ QVector<JournaldHelper::BootInfo> JournaldHelper::queryOrderedBootIds(const IJou
 {
     QVector<JournaldHelper::BootInfo> boots;
 
-    QVector<QString> bootIds = JournaldHelper::queryUnique(journal, Field::BOOT_ID);
+    QVector<QString> bootIds = JournaldHelper::queryUnique(journal, Field::_BOOT_ID);
 
     sd_journal *sdJournal = journal.sdJournal();
     for (const QString &id : bootIds) {
@@ -133,7 +133,7 @@ QString JournaldHelper::mapField(Field field)
     case Field::MESSAGE:
         fieldString = QLatin1String("MESSAGE");
         break;
-    case Field::BOOT_ID:
+    case Field::_BOOT_ID:
         fieldString = QLatin1String("_BOOT_ID");
         break;
     case Field::CODE_FILE:
@@ -151,31 +151,31 @@ QString JournaldHelper::mapField(Field field)
     case Field::MESSAGE_ID:
         fieldString = QLatin1String("MESSAGE_ID");
         break;
-    case Field::EXE:
+    case Field::_EXE:
         fieldString = QLatin1String("_EXE");
         break;
-    case Field::SYSTEMD_CGROUP:
+    case Field::_SYSTEMD_CGROUP:
         fieldString = QLatin1String("_SYSTEMD_CGROUP");
         break;
-    case Field::SYSTEMD_OWNER_UID:
+    case Field::_SYSTEMD_OWNER_UID:
         fieldString = QLatin1String("_SYSTEMD_OWNER_UID");
         break;
-    case Field::SYSTEMD_SESSION:
+    case Field::_SYSTEMD_SESSION:
         fieldString = QLatin1String("_SYSTEMD_SESSION");
         break;
-    case Field::SYSTEMD_SLICE:
+    case Field::_SYSTEMD_SLICE:
         fieldString = QLatin1String("_SYSTEMD_SLICE");
         break;
-    case Field::SYSTEMD_UNIT:
+    case Field::_SYSTEMD_UNIT:
         fieldString = QLatin1String("_SYSTEMD_UNIT");
         break;
-    case Field::SYSTEMD_USER_SLICE:
+    case Field::_SYSTEMD_USER_SLICE:
         fieldString = QLatin1String("_SYSTEMD_USER_SLICE");
         break;
-    case Field::SYSTEMD_USER_UNIT:
+    case Field::_SYSTEMD_USER_UNIT:
         fieldString = QLatin1String("_SYSTEMD_USER_UNIT");
         break;
-    case Field::TRANSPORT:
+    case Field::_TRANSPORT:
         fieldString = QLatin1String("_TRANSPORT");
         break;
     }

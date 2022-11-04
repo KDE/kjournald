@@ -39,7 +39,7 @@ void TestUniqueQuery::boots()
 
     model.setFieldString("_BOOT_ID");
     QCOMPARE(model.fieldString(), "_BOOT_ID");
-    model.setField(JournaldHelper::Field::BOOT_ID);
+    model.setField(JournaldHelper::Field::_BOOT_ID);
     QCOMPARE(model.fieldString(), "_BOOT_ID");
     QCOMPARE(model.rowCount(), 3);
 
@@ -59,7 +59,7 @@ void TestUniqueQuery::systemdUnits()
 
     model.setFieldString("_SYSTEMD_UNIT");
     QCOMPARE(model.fieldString(), "_SYSTEMD_UNIT");
-    model.setField(JournaldHelper::Field::SYSTEMD_UNIT);
+    model.setField(JournaldHelper::Field::_SYSTEMD_UNIT);
     QCOMPARE(model.fieldString(), "_SYSTEMD_UNIT");
     QCOMPARE(model.rowCount(), 17);
 
