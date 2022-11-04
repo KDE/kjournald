@@ -68,27 +68,36 @@ MenuBar {
             title: i18n("Timestamp Display")
 
             MenuItem {
-                text: i18n("Localized Realtime")
-                checkable: true
-                checked: SessionConfigProxy.timeDisplay === SessionConfig.LOCALTIME
-                onTriggered: {
-                    SessionConfigProxy.timeDisplay = SessionConfig.LOCALTIME
+                contentItem: RadioButton {
+                    text: i18n("Localized Realtime")
+                    checkable: true
+                    checked: SessionConfigProxy.timeDisplay === SessionConfig.LOCALTIME
+                    onToggled: {
+                        SessionConfigProxy.timeDisplay = SessionConfig.LOCALTIME
+                        parent.triggered()
+                    }
                 }
             }
             MenuItem {
-                text: i18n("UTC Realtime")
-                checkable: true
-                checked: SessionConfigProxy.timeDisplay === SessionConfig.UTC
-                onTriggered: {
-                    SessionConfigProxy.timeDisplay = SessionConfig.UTC
+                contentItem: RadioButton {
+                    text: i18n("UTC Realtime")
+                    checkable: true
+                    checked: SessionConfigProxy.timeDisplay === SessionConfig.UTC
+                    onToggled: {
+                        SessionConfigProxy.timeDisplay = SessionConfig.UTC
+                        parent.triggered()
+                    }
                 }
             }
             MenuItem {
-                text: i18n("Monotonic Time")
-                checkable: true
-                checked: SessionConfigProxy.timeDisplay === SessionConfig.MONOTONIC_TIMESTAMP
-                onTriggered: {
-                    SessionConfigProxy.timeDisplay = SessionConfig.MONOTONIC_TIMESTAMP
+                contentItem: RadioButton {
+                    text: i18n("Monotonic Time")
+                    checkable: true
+                    checked: SessionConfigProxy.timeDisplay === SessionConfig.MONOTONIC_TIMESTAMP
+                    onToggled: {
+                        SessionConfigProxy.timeDisplay = SessionConfig.MONOTONIC_TIMESTAMP
+                        parent.triggered()
+                    }
                 }
             }
         }
@@ -96,19 +105,25 @@ MenuBar {
             title: i18n("Colorize")
 
             MenuItem {
-                text: i18n("Systemd Unit")
-                checkable: true
-                checked: SessionConfigProxy.filterCriterium === SessionConfig.SYSTEMD_UNIT
-                onTriggered: {
-                    SessionConfigProxy.filterCriterium = SessionConfig.SYSTEMD_UNIT
+                contentItem: RadioButton {
+                    text: i18n("Systemd Unit")
+                    checkable: true
+                    checked: SessionConfigProxy.filterCriterium === SessionConfig.SYSTEMD_UNIT
+                    onToggled: {
+                        SessionConfigProxy.filterCriterium = SessionConfig.SYSTEMD_UNIT
+                        parent.triggered()
+                    }
                 }
             }
             MenuItem {
-                text: i18n("Executable")
-                checkable: true
-                checked: SessionConfigProxy.filterCriterium === SessionConfig.EXECUTABLE
-                onTriggered: {
-                    SessionConfigProxy.filterCriterium = SessionConfig.EXECUTABLE
+                contentItem: RadioButton {
+                    text: i18n("Executable")
+                    checkable: true
+                    checked: SessionConfigProxy.filterCriterium === SessionConfig.EXECUTABLE
+                    onToggled: {
+                        SessionConfigProxy.filterCriterium = SessionConfig.EXECUTABLE
+                        parent.triggered()
+                    }
                 }
             }
         }
