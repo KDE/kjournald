@@ -6,6 +6,7 @@
 #include "journaldhelper.h"
 #include "loggingcategories.h"
 #include <QDebug>
+#include <QMetaEnum>
 #include <systemd/sd-journal.h>
 
 QVector<QString> JournaldHelper::queryUnique(const IJournal &journal, Field field)
@@ -128,58 +129,8 @@ QVector<JournaldHelper::BootInfo> JournaldHelper::queryOrderedBootIds(const IJou
 
 QString JournaldHelper::mapField(Field field)
 {
-    QString fieldString;
-    switch (field) {
-    case Field::MESSAGE:
-        fieldString = QLatin1String("MESSAGE");
-        break;
-    case Field::_BOOT_ID:
-        fieldString = QLatin1String("_BOOT_ID");
-        break;
-    case Field::CODE_FILE:
-        fieldString = QLatin1String("CODE_FILE");
-        break;
-    case Field::CODE_FUNC:
-        fieldString = QLatin1String("CODE_FUNC");
-        break;
-    case Field::CODE_LINE:
-        fieldString = QLatin1String("CODE_LINE");
-        break;
-    case Field::PRIORITY:
-        fieldString = QLatin1String("PRIORITY");
-        break;
-    case Field::MESSAGE_ID:
-        fieldString = QLatin1String("MESSAGE_ID");
-        break;
-    case Field::_EXE:
-        fieldString = QLatin1String("_EXE");
-        break;
-    case Field::_SYSTEMD_CGROUP:
-        fieldString = QLatin1String("_SYSTEMD_CGROUP");
-        break;
-    case Field::_SYSTEMD_OWNER_UID:
-        fieldString = QLatin1String("_SYSTEMD_OWNER_UID");
-        break;
-    case Field::_SYSTEMD_SESSION:
-        fieldString = QLatin1String("_SYSTEMD_SESSION");
-        break;
-    case Field::_SYSTEMD_SLICE:
-        fieldString = QLatin1String("_SYSTEMD_SLICE");
-        break;
-    case Field::_SYSTEMD_UNIT:
-        fieldString = QLatin1String("_SYSTEMD_UNIT");
-        break;
-    case Field::_SYSTEMD_USER_SLICE:
-        fieldString = QLatin1String("_SYSTEMD_USER_SLICE");
-        break;
-    case Field::_SYSTEMD_USER_UNIT:
-        fieldString = QLatin1String("_SYSTEMD_USER_UNIT");
-        break;
-    case Field::_TRANSPORT:
-        fieldString = QLatin1String("_TRANSPORT");
-        break;
-    }
-    return fieldString;
+    static QMetaEnum metaEnum = QMetaEnum::fromType<JournaldHelper::Field>();
+    return QString::fromLatin1(metaEnum.valueToKey(static_cast<int>(field)));
 }
 
 QString JournaldHelper::cleanupString(const QString &string)
