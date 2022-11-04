@@ -105,22 +105,16 @@ JournaldUniqueQueryModel::JournaldUniqueQueryModel(QObject *parent)
     : QAbstractItemModel(parent)
     , d(new JournaldUniqueQueryModelPrivate)
 {
-    connect(this, &QAbstractItemModel::dataChanged, this, &JournaldUniqueQueryModel::selectedEntriesChanged);
-    beginResetModel();
     d->openJournal();
     d->runQuery();
-    endResetModel();
 }
 
 JournaldUniqueQueryModel::JournaldUniqueQueryModel(const QString &journalPath, QObject *parent)
     : QAbstractItemModel(parent)
     , d(new JournaldUniqueQueryModelPrivate)
 {
-    connect(this, &QAbstractItemModel::dataChanged, this, &JournaldUniqueQueryModel::selectedEntriesChanged);
-    beginResetModel();
     d->openJournalFromPath(journalPath);
     d->runQuery();
-    endResetModel();
 }
 
 JournaldUniqueQueryModel::~JournaldUniqueQueryModel() = default;
@@ -227,24 +221,4 @@ bool JournaldUniqueQueryModel::setData(const QModelIndex &index, const QVariant 
         }
     }
     return QAbstractItemModel::setData(index, value, role);
-}
-
-QStringList JournaldUniqueQueryModel::selectedEntries() const
-{
-    QStringList entries;
-    for (const auto &entry : qAsConst(d->mEntries)) {
-        if (entry.second == true) {
-            entries << entry.first;
-        }
-    }
-
-    return entries;
-}
-
-void JournaldUniqueQueryModel::setAllSelectionStates(bool selected)
-{
-    for (int i = 0; i < d->mEntries.size(); ++i) {
-        d->mEntries[i].second = selected;
-    }
-    Q_EMIT dataChanged(createIndex(0, 0), createIndex(d->mEntries.size() - 1, 0));
 }
