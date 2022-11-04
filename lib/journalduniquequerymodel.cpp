@@ -45,22 +45,24 @@ bool JournaldUniqueQueryModelPrivate::openJournalFromPath(const QString &path)
         qCCritical(KJOURNALD_DEBUG) << "Journal directory does not exist, abort opening";
         return false;
     }
-    if (QFileInfo(path).isDir()) {
+    const QFileInfo fileInfo = QFileInfo(path);
+    if (fileInfo.isDir()) {
         int result = sd_journal_open_directory(&mJournal, path.toStdString().c_str(), 0 /* no flags, directory defines type */);
         if (result < 0) {
             qCCritical(KJOURNALD_DEBUG) << "Could not open journal:" << strerror(-result);
             return false;
         }
-    } else if (QFileInfo(path).isFile()) {
+    } else if (fileInfo.isFile()) {
         const char **files = new const char *[1];
         QByteArray journalPath = path.toLocal8Bit();
         files[0] = journalPath.data();
 
         int result = sd_journal_open_files(&mJournal, files, 0 /* no flags, directory defines type */);
+        delete[] files;
         if (result < 0) {
             qCCritical(KJOURNALD_DEBUG) << "Could not open journal:" << strerror(-result);
+            return false;
         }
-        delete[] files;
     }
 
     return true;
@@ -103,22 +105,16 @@ JournaldUniqueQueryModel::JournaldUniqueQueryModel(QObject *parent)
     : QAbstractItemModel(parent)
     , d(new JournaldUniqueQueryModelPrivate)
 {
-    connect(this, &QAbstractItemModel::dataChanged, this, &JournaldUniqueQueryModel::selectedEntriesChanged);
-    beginResetModel();
     d->openJournal();
     d->runQuery();
-    endResetModel();
 }
 
 JournaldUniqueQueryModel::JournaldUniqueQueryModel(const QString &journalPath, QObject *parent)
     : QAbstractItemModel(parent)
     , d(new JournaldUniqueQueryModelPrivate)
 {
-    connect(this, &QAbstractItemModel::dataChanged, this, &JournaldUniqueQueryModel::selectedEntriesChanged);
-    beginResetModel();
     d->openJournalFromPath(journalPath);
     d->runQuery();
-    endResetModel();
 }
 
 JournaldUniqueQueryModel::~JournaldUniqueQueryModel() = default;
@@ -217,7 +213,7 @@ bool JournaldUniqueQueryModel::setData(const QModelIndex &index, const QVariant 
     }
     if (role == JournaldUniqueQueryModel::Roles::SELECTED) {
         if (d->mEntries.at(index.row()).second == value.toBool()) {
-            return true;
+            return false;
         } else {
             d->mEntries[index.row()].second = value.toBool();
             Q_EMIT dataChanged(index, index);
@@ -225,24 +221,4 @@ bool JournaldUniqueQueryModel::setData(const QModelIndex &index, const QVariant 
         }
     }
     return QAbstractItemModel::setData(index, value, role);
-}
-
-QStringList JournaldUniqueQueryModel::selectedEntries() const
-{
-    QStringList entries;
-    for (const auto &entry : qAsConst(d->mEntries)) {
-        if (entry.second == true) {
-            entries << entry.first;
-        }
-    }
-
-    return entries;
-}
-
-void JournaldUniqueQueryModel::setAllSelectionStates(bool selected)
-{
-    for (int i = 0; i < d->mEntries.size(); ++i) {
-        d->mEntries[i].second = selected;
-    }
-    Q_EMIT dataChanged(createIndex(0, 0), createIndex(d->mEntries.size() - 1, 0));
 }

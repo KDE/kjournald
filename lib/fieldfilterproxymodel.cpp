@@ -18,11 +18,6 @@ FieldFilterProxyModel::FieldFilterProxyModel(QObject *parent)
     connect(this, &QSortFilterProxyModel::rowsRemoved, this, &FieldFilterProxyModel::countChanged);
 }
 
-int FieldFilterProxyModel::count() const
-{
-    return rowCount();
-}
-
 void FieldFilterProxyModel::setField(const QString &field)
 {
     JournaldViewModel::Roles role = mFilterRole;
@@ -63,7 +58,7 @@ QJSValue FieldFilterProxyModel::get(int idx) const
 {
     QJSEngine *engine = qmlEngine(this);
     QJSValue value = engine->newObject();
-    if (idx >= 0 && idx < count()) {
+    if (idx >= 0 && idx < rowCount()) {
         QHash<int, QByteArray> roles = roleNames();
         QHashIterator<int, QByteArray> it(roles);
         while (it.hasNext()) {
@@ -98,22 +93,8 @@ int FieldFilterProxyModel::roleKey(const QByteArray &role) const
 
 QHash<int, QByteArray> FieldFilterProxyModel::roleNames() const
 {
-    if (QAbstractItemModel *source = sourceModel())
+    if (QAbstractItemModel *source = sourceModel()) {
         return source->roleNames();
+    }
     return QHash<int, QByteArray>();
-}
-
-bool FieldFilterProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
-{
-    QAbstractItemModel *model = sourceModel();
-    QModelIndex sourceIndex = model->index(sourceRow, 0, sourceParent);
-    if (!sourceIndex.isValid()) {
-        return true;
-    }
-    QString key = model->data(sourceIndex, filterRole()).toString();
-    if (key == mFilter || mFilter.isEmpty()) {
-        return true;
-    } else {
-        return false;
-    }
 }

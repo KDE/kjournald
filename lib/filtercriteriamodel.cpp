@@ -164,7 +164,7 @@ void FilterCriteriaModelPrivate::rebuildModel()
                                                        false,
                                                        mRootItem);
         mRootItem->appendChild(parent);
-        QVector<QString> units = JournaldHelper::queryUnique(mJournal, JournaldHelper::Field::SYSTEMD_UNIT);
+        QVector<QString> units = JournaldHelper::queryUnique(mJournal, JournaldHelper::Field::_SYSTEMD_UNIT);
         std::sort(std::begin(units), std::end(units), [](const QString &a, const QString &b) {
             return QString::compare(a, b, Qt::CaseInsensitive) <= 0;
         });
@@ -185,7 +185,7 @@ void FilterCriteriaModelPrivate::rebuildModel()
                                                        false,
                                                        mRootItem);
         mRootItem->appendChild(parent);
-        QVector<QString> exes = JournaldHelper::queryUnique(mJournal, JournaldHelper::Field::EXE);
+        QVector<QString> exes = JournaldHelper::queryUnique(mJournal, JournaldHelper::Field::_EXE);
         std::sort(std::begin(exes), std::end(exes), [](const QString &a, const QString &b) {
             return QString::compare(a, b, Qt::CaseInsensitive) <= 0;
         });

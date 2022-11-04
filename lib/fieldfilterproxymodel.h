@@ -17,7 +17,7 @@ class KJOURNALD_EXPORT FieldFilterProxyModel : public QSortFilterProxyModel, pub
     Q_OBJECT
     Q_INTERFACES(QQmlParserStatus)
 
-    Q_PROPERTY(int count READ count NOTIFY countChanged)
+    Q_PROPERTY(int count READ rowCount NOTIFY countChanged)
     Q_PROPERTY(QString field WRITE setField)
 
 public:
@@ -28,7 +28,6 @@ public:
     QString filterString() const;
     void setFilterString(const QString &filter);
 
-    int count() const;
     Q_INVOKABLE QJSValue get(int index) const;
 
     void classBegin() override;
@@ -40,7 +39,6 @@ Q_SIGNALS:
 protected:
     int roleKey(const QByteArray &role) const;
     QHash<int, QByteArray> roleNames() const override;
-    bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const override;
 
 private:
     bool mComplete;

@@ -183,6 +183,10 @@ ListView {
                         }
                         width: Math.max(Math.min(implicitWidth, 0.5 * messageText.width), 12)
                         text: {
+                            if (categoryInfoHoverHandler.hovered && model.systemdunit === "" && model.exe === "") {
+                                // this is not fully accurate by currently always true and avoids additional _TRANSPORT parameter
+                                return i18n("Kernel")
+                            }
                             switch (displayRoleRight) {
                             case JournaldViewModel.SYSTEMD_UNIT:
                                 return categoryInfoHoverHandler.hovered ? model.systemdunit : model.systemdunit_changed_substring

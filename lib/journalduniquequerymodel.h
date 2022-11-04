@@ -30,7 +30,6 @@ class KJOURNALD_EXPORT JournaldUniqueQueryModel : public QAbstractItemModel
     Q_OBJECT
     Q_PROPERTY(QString journalPath WRITE setJournaldPath RESET setSystemJournal)
     Q_PROPERTY(QString field WRITE setFieldString)
-    Q_PROPERTY(QStringList selectedEntries READ selectedEntries NOTIFY selectedEntriesChanged)
 
 public:
     enum Roles {
@@ -128,19 +127,6 @@ public:
      * @copydoc QAbstractItemModel::setData()
      */
     Q_INVOKABLE bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override;
-
-    /**
-     * @return list of entries that have the "selected" value checked
-     */
-    QStringList selectedEntries() const;
-
-    /**
-     * @brief set selected state of all entryies to value @param selected
-     */
-    Q_INVOKABLE void setAllSelectionStates(bool selected);
-
-Q_SIGNALS:
-    void selectedEntriesChanged();
 
 private:
     std::unique_ptr<JournaldUniqueQueryModelPrivate> d;

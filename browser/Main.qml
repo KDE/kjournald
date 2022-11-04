@@ -103,6 +103,7 @@ Kirigami.AbstractApplicationWindow {
                 textRole: SessionConfigProxy.timeDisplay
                           === SessionConfig.UTC ? "displayshort_utc" : "displayshort_localtime"
                 delegate: ItemDelegate {
+                    width: parent.width
                     text: SessionConfigProxy.timeDisplay
                           === SessionConfig.UTC ? model.displayshort_utc : model.displayshort_localtime
                     font.weight: model.index === bootIdComboBox.currentIndex ? Font.Bold : Font.Normal

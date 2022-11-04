@@ -41,16 +41,16 @@ public:
         CODE_LINE,
         CODE_FUNC,
         // trusted fields
-        BOOT_ID,
-        EXE,
-        SYSTEMD_CGROUP,
-        SYSTEMD_SLICE,
-        SYSTEMD_UNIT,
-        SYSTEMD_USER_UNIT,
-        SYSTEMD_USER_SLICE,
-        SYSTEMD_SESSION,
-        SYSTEMD_OWNER_UID,
-        TRANSPORT,
+        _BOOT_ID,
+        _EXE,
+        _SYSTEMD_CGROUP,
+        _SYSTEMD_SLICE,
+        _SYSTEMD_UNIT,
+        _SYSTEMD_USER_UNIT,
+        _SYSTEMD_USER_SLICE,
+        _SYSTEMD_SESSION,
+        _SYSTEMD_OWNER_UID,
+        _TRANSPORT,
     };
     Q_ENUM(Field)
 

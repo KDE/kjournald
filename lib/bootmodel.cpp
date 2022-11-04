@@ -16,30 +16,24 @@ BootModel::BootModel(QObject *parent)
     : QAbstractListModel(parent)
     , d(new BootModelPrivate(std::make_unique<LocalJournal>()))
 {
-    beginResetModel();
     d->mBootInfo = JournaldHelper::queryOrderedBootIds(*d->mJournal.get());
     d->sort(Qt::SortOrder::DescendingOrder);
-    endResetModel();
 }
 
 BootModel::BootModel(const QString &journaldPath, QObject *parent)
     : QAbstractListModel(parent)
     , d(new BootModelPrivate(std::make_unique<LocalJournal>(journaldPath)))
 {
-    beginResetModel();
     d->mBootInfo = JournaldHelper::queryOrderedBootIds(*d->mJournal.get());
     d->sort(Qt::SortOrder::DescendingOrder);
-    endResetModel();
 }
 
 BootModel::BootModel(std::unique_ptr<IJournal> journal, QObject *parent)
     : QAbstractListModel(parent)
     , d(new BootModelPrivate(std::move(journal)))
 {
-    beginResetModel();
     d->mBootInfo = JournaldHelper::queryOrderedBootIds(*d->mJournal.get());
     d->sort(Qt::SortOrder::DescendingOrder);
-    endResetModel();
 }
 
 BootModel::~BootModel() = default;
@@ -93,22 +87,6 @@ int BootModel::rowCount(const QModelIndex &parent) const
     return d->mBootInfo.size();
 }
 
-int BootModel::columnCount(const QModelIndex &parent) const
-{
-    return 1;
-}
-
-QModelIndex BootModel::index(int row, int column, const QModelIndex &parent) const
-{
-    return createIndex(row, column);
-}
-
-QModelIndex BootModel::parent(const QModelIndex &index) const
-{
-    // no tree model, thus no parent
-    return QModelIndex();
-}
-
 QVariant BootModel::data(const QModelIndex &index, int role) const
 {
     if (index.row() < 0 || index.row() >= d->mBootInfo.size()) {
@@ -130,12 +108,4 @@ QVariant BootModel::data(const QModelIndex &index, int role) const
     }
 
     return QVariant();
-}
-
-QString BootModel::bootId(int row) const
-{
-    if (row < 0 || row >= d->mBootInfo.size()) {
-        return QString();
-    }
-    return d->mBootInfo.at(row).mBootId;
 }
