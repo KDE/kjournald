@@ -8,7 +8,6 @@ include_directories(
 )
 
 add_executable(kjournaldbrowser
-    aboutproxy.cpp
     main.cpp
     clipboardproxy.cpp
     flattenedfiltercriteriaproxymodel.cpp
