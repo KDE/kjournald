@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-10-24 00:47+0000\n"
+"POT-Creation-Date: 2022-11-05 00:48+0000\n"
 "PO-Revision-Date: 2022-10-30 07:49\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -52,85 +52,92 @@ msgstr "从文件夹打开"
 msgid "Open from file"
 msgstr "从文件打开"
 
-#: browser/GlobalMenu.qml:48 browser/Main.qml:69 browser/TopMenuBar.qml:50
+#: browser/GlobalMenu.qml:48 browser/Main.qml:69 browser/TopMenuBar.qml:51
 #, kde-format
 msgid "Close"
 msgstr "关闭"
 
-#: browser/GlobalMenu.qml:54 browser/TopMenuBar.qml:56
+#: browser/GlobalMenu.qml:54 browser/TopMenuBar.qml:57
 #, kde-format
 msgid "Current Journal"
 msgstr "当前日志"
 
-#: browser/GlobalMenu.qml:62 browser/TopMenuBar.qml:64
+#: browser/GlobalMenu.qml:62 browser/TopMenuBar.qml:65
 #, kde-format
 msgid "View"
 msgstr "视图"
 
-#: browser/GlobalMenu.qml:65 browser/TopMenuBar.qml:67
+#: browser/GlobalMenu.qml:65 browser/TopMenuBar.qml:68
 #, kde-format
 msgid "Timestamp Display"
 msgstr "时间戳显示"
 
-#: browser/GlobalMenu.qml:68 browser/TopMenuBar.qml:70
+#: browser/GlobalMenu.qml:68 browser/TopMenuBar.qml:72
 #, kde-format
 msgid "Localized Realtime"
 msgstr "本地实时时间"
 
-#: browser/GlobalMenu.qml:76 browser/TopMenuBar.qml:78
+#: browser/GlobalMenu.qml:76 browser/TopMenuBar.qml:83
 #, kde-format
 msgid "UTC Realtime"
 msgstr "UTC 实时时间"
 
-#: browser/GlobalMenu.qml:84 browser/TopMenuBar.qml:86
+#: browser/GlobalMenu.qml:84 browser/TopMenuBar.qml:94
 #, kde-format
 msgid "Monotonic Time"
 msgstr "单向时间"
 
-#: browser/GlobalMenu.qml:93 browser/TopMenuBar.qml:95
+#: browser/GlobalMenu.qml:93 browser/TopMenuBar.qml:105
 #, kde-format
 msgid "Colorize"
 msgstr "着色"
 
-#: browser/GlobalMenu.qml:96 browser/TopMenuBar.qml:98
+#: browser/GlobalMenu.qml:96 browser/TopMenuBar.qml:109
 #, kde-format
 msgid "Systemd Unit"
 msgstr "Systemd 单元"
 
-#: browser/GlobalMenu.qml:104 browser/TopMenuBar.qml:106
+#: browser/GlobalMenu.qml:104 browser/TopMenuBar.qml:120
 #, kde-format
 msgid "Executable"
 msgstr "可执行程序"
 
-#: browser/GlobalMenu.qml:114 browser/TopMenuBar.qml:116
+#: browser/GlobalMenu.qml:114 browser/TopMenuBar.qml:132
 #, kde-format
 msgid "Help"
 msgstr "帮助"
 
-#: browser/GlobalMenu.qml:117 browser/Main.qml:51 browser/TopMenuBar.qml:118
+#: browser/GlobalMenu.qml:117 browser/Main.qml:51 browser/TopMenuBar.qml:134
 #, kde-format
 msgid "About"
 msgstr "关于"
 
-#: browser/main.cpp:46
+#: browser/LogView.qml:188
+#, fuzzy, kde-format
+#| msgctxt "Checkbox option for kernel log messages"
+#| msgid "Kernel"
+msgid "Kernel"
+msgstr "内核"
+
+#: browser/main.cpp:45
 #, kde-format
 msgctxt "@title Displayed program name"
 msgid "KJournald Browser"
 msgstr "KJournald 浏览器"
 
-#: browser/main.cpp:48
+#: browser/main.cpp:47
 #, kde-format
 msgctxt "@title KAboutData: short program description"
 msgid "Viewer for Journald logs"
 msgstr "Journald 日志查看器"
 
-#: browser/main.cpp:50
+#: browser/main.cpp:49
 #, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021 The KJournald Developers"
 msgstr "(c) 2021 The KJournald Developers"
 
-#: browser/main.cpp:51
+#: browser/main.cpp:50
 #, kde-format
 msgctxt "@title Short program description"
 msgid ""
@@ -138,25 +145,25 @@ msgid ""
 "tool."
 msgstr "查看由 Journald 日志工具生成的数据库的查看器。"
 
-#: browser/main.cpp:53
+#: browser/main.cpp:52
 #, kde-format
 msgctxt "@info:credit Developer name"
 msgid "Andreas Cord-Landwehr"
 msgstr "Andreas Cord-Landwehr"
 
-#: browser/main.cpp:54
+#: browser/main.cpp:53
 #, kde-format
 msgctxt "@info:credit Role"
 msgid "Original Author"
 msgstr "原始作者"
 
-#: browser/main.cpp:56
+#: browser/main.cpp:55
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Tyson Tan"
 
-#: browser/main.cpp:56
+#: browser/main.cpp:55
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -167,47 +174,47 @@ msgstr "tysontan@tysontan.com"
 msgid "Launch Bug Report Wizard"
 msgstr ""
 
-#: browser/Main.qml:96
+#: browser/Main.qml:93
 #, kde-format
 msgid "Boot:"
 msgstr "引导："
 
-#: browser/Main.qml:114
+#: browser/Main.qml:112
 #, kde-format
 msgid "Highlight:"
 msgstr "高亮："
 
-#: browser/Main.qml:137
+#: browser/Main.qml:135
 #, kde-format
 msgid "Browse"
 msgstr "浏览"
 
-#: browser/Main.qml:146
+#: browser/Main.qml:144
 #, kde-format
 msgid "Select"
 msgstr "选择"
 
-#: browser/Main.qml:163
+#: browser/Main.qml:161
 #, kde-format
 msgid "Select journal folder"
 msgstr "选择日志文件夹"
 
-#: browser/Main.qml:173
+#: browser/Main.qml:171
 #, kde-format
 msgid "Select journal file"
 msgstr "选择日志文件"
 
-#: browser/Main.qml:174
+#: browser/Main.qml:172
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "日志文件 (*.journal)"
 
-#: browser/Main.qml:174
+#: browser/Main.qml:172
 #, kde-format
 msgid "All files (*)"
 msgstr "所有文件 (*)"
 
-#: browser/Main.qml:247
+#: browser/Main.qml:245
 #, kde-format
 msgid "No log entries apply "
 msgstr "没有日志条目应用 "
@@ -240,11 +247,6 @@ msgstr ""
 #: browser/TopMenuBar.qml:32
 #, kde-format
 msgid "Open from File"
-msgstr ""
-
-#: browser/TopMenuBar.qml:40
-#, kde-format
-msgid "Open Remote Journal Stream"
 msgstr ""
 
 #: lib/filtercriteriamodel.cpp:20
