@@ -1,10 +1,11 @@
 # SPDX-License-Identifier: BSD-3-Clause
 # SPDX-FileCopyrightText: Andreas Cord-Landwehr <cordlandwehr@kde.org>
 
+cmake_minimum_required(VERSION 3.16)
+
 project(kjournald LANGUAGES CXX)
 set(KJOURNALD_VERSION 0.1.90)
 
-cmake_minimum_required(VERSION 3.16)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
