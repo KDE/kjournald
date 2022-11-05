@@ -48,8 +48,8 @@ Thumbs.db
 # Vim temporary files
 .*.swp
 
-# use generated file
-.clang-format
+/.clang-format
+/compile_commands.json
 
 # Visual Studio generated files
 *.ib_pdb_index
