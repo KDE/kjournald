@@ -80,6 +80,7 @@ ListView {
     model: root.journalModel
     focus: true
     interactive: textSelectionMode === false
+    reuseItems: true
 
     onContentYChanged: {
         if (snapToFollowMode === true) {
