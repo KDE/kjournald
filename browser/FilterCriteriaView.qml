@@ -82,6 +82,13 @@ ListView {
                     }
                     ColoredCheckbox {
                         id: checkbox
+
+                        // hard overwrite of internal calculations for speedup, check with profiler when modify
+                        implicitWidth: Kirigami.Units.iconSizes.small
+                        implicitHeight: Kirigami.Units.iconSizes.small
+                        baselineOffset: 0
+                        contentItem: null
+
                         color: model ? model.color : Kirigami.Theme.textColor
                         checked: model ? model.selected : false
                         onCheckedChanged: if (model.selected !== checked) model.selected = checked
