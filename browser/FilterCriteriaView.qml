@@ -16,6 +16,7 @@ ListView {
     ButtonGroup { id: priorityGroup }
     model: flatFilterSelection
     activeFocusOnTab: true
+    reuseItems: true
     delegate: DelegateChooser {
         role: "type"
         DelegateChoice {
@@ -65,9 +66,7 @@ ListView {
             roleValue: FlattenedFilterCriteriaProxyModel.CHECKBOX
             delegate: Kirigami.AbstractListItem {
                 id: checkboxDelegate
-                readonly property bool selected: model ? model.selected : false
                 width: ListView.view.width
-                onSelectedChanged: checkbox.checked = checkboxDelegate.selected
                 text: model ? model.text : ""
                 leftPadding: 20
                 onClicked: model.selected = !model.selected
@@ -91,7 +90,7 @@ ListView {
 
                         color: model ? model.color : Kirigami.Theme.textColor
                         checked: model ? model.selected : false
-                        onCheckedChanged: if (model.selected !== checked) model.selected = checked
+                        onToggled: model.selected = checked
                     }
                 }
                 ToolTip.delay: 1000
@@ -104,9 +103,7 @@ ListView {
             roleValue: FlattenedFilterCriteriaProxyModel.RADIOBUTTON
             delegate: Kirigami.AbstractListItem {
                 id: radioDelegate
-                readonly property bool selected: model ? model.selected : false
                 width: ListView.view.width
-                onSelectedChanged: radiobox.checked = radioDelegate.selected
                 text: model ? model.text : ""
                 leftPadding: 20
                 onClicked: model.selected = !model.selected
@@ -123,10 +120,9 @@ ListView {
                         id: radiobox
                         checked: model ? model.selected : false
                         spacing: 0
-                        onCheckedChanged: if (model.selected !== checked) model.selected = checked
+                        onToggled: model.selected = checked
                         ButtonGroup.group: priorityGroup
                     }
-
                 }
                 ToolTip.delay: 1000
                 ToolTip.timeout: 5000
