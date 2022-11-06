@@ -33,8 +33,9 @@ ListView {
                             Layout.fillWidth: true
                         }
                         Kirigami.Icon {
-                            Layout.preferredWidth: Kirigami.Units.iconSizes.small
-                            Layout.preferredHeight: Kirigami.Units.iconSizes.small
+                            id: collapseIcon
+                            implicitWidth: Kirigami.Units.iconSizes.small
+                            implicitHeight: Kirigami.Units.iconSizes.small
                             source: model.expanded ? "collapse" : "expand"
                         }
                     }
@@ -71,12 +72,13 @@ ListView {
                 leftPadding: 20
                 onClicked: model.selected = !model.selected
 
-                contentItem: RowLayout {
+                contentItem: Row {
+                    spacing: 0.5 * Kirigami.Units.gridUnit
                     Label {
                         text: model ? model.text : ""
                         textFormat: Text.PlainText
                         elide: Text.ElideRight
-                        Layout.fillWidth: true
+                        width: parent.width - checkbox.width - 0.5 * Kirigami.Units.gridUnit
                     }
                     ColoredCheckbox {
                         id: checkbox
