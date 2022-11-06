@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-05 00:48+0000\n"
-"PO-Revision-Date: 2022-10-24 10:48+0200\n"
+"PO-Revision-Date: 2022-11-05 11:19+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -116,9 +116,7 @@ msgid "About"
 msgstr "Quant al"
 
 #: browser/LogView.qml:188
-#, fuzzy, kde-format
-#| msgctxt "Checkbox option for kernel log messages"
-#| msgid "Kernel"
+#, kde-format
 msgid "Kernel"
 msgstr "Nucli"
 
@@ -331,6 +329,3 @@ msgstr "Unitat"
 msgctxt "Section title for process list"
 msgid "Process"
 msgstr "Procés"
-
-#~ msgid "Open Remote Journal Stream"
-#~ msgstr "Obre un flux de diari remot"

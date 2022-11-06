@@ -115,9 +115,7 @@ msgid "About"
 msgstr "Acerca"
 
 #: browser/LogView.qml:188
-#, fuzzy, kde-format
-#| msgctxt "Checkbox option for kernel log messages"
-#| msgid "Kernel"
+#, kde-format
 msgid "Kernel"
 msgstr "'Kernel'"
 
