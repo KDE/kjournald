@@ -26,7 +26,7 @@ QVector<QString> JournaldHelper::queryUnique(const IJournal &journal, Field fiel
     const int fieldLength = fieldString.length() + 1;
     SD_JOURNAL_FOREACH_UNIQUE(journal.sdJournal(), data, length)
     {
-        QString dataStr = QString::fromLocal8Bit(static_cast<const char *>(data));
+        QString dataStr = QString::fromUtf8(static_cast<const char *>(data), length);
         dataList << dataStr.remove(0, fieldLength);
     }
     return dataList;
@@ -53,7 +53,7 @@ QVector<QString> JournaldHelper::queryUnique(std::shared_ptr<IJournal> journal, 
     const int fieldLength = fieldString.length() + 1;
     SD_JOURNAL_FOREACH_UNIQUE(journal->sdJournal(), data, length)
     {
-        QString dataStr = QString::fromLocal8Bit(static_cast<const char *>(data));
+        QString dataStr = QString::fromUtf8(static_cast<const char *>(data), length);
         dataList << dataStr.remove(0, fieldLength);
     }
     return dataList;
