@@ -77,6 +77,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="id">Journald-browser adalah implementasi referensi dari pustaka kjournald dan menyediakan alat yang fleksibel untuk menelusuri basis data journald di lokal, jarak jauh dan offline.</p>
     <p xml:lang="ie">Navigator de Journald es un implementation de referentie del biblioteca kjournald e it provide un flexibil utensile por navigar local, lontan e retenet bases de data de journald.</p>
     <p xml:lang="it">Journald-browser è un'implementazione di riferimento della libreria kjournald e fornisce uno strumento flessibile per navigare nei database journald locali, remoti e non in linea.</p>
+    <p xml:lang="ka">Journald-brower-ი kjournald ბიბლიოთეკის სამაგალითო განხორციელებააა და journald-ის ადგილობრივი, დაშორებული და გათიშული ბაზების დასათვალიერებლად მოქნილ ინსტრუმენტს წარმოადგენს.</p>
     <p xml:lang="ko">Journald-browser는 kjournald 라이브러리의 참조 구현이며 로컬, 원격, 오프라인 journamd 데이터베이스를 탐색할 수 있는 유연한 도구입니다.</p>
     <p xml:lang="nl">Journald-browser is een referentie implementatie van de kjournald bibliotheek en biedt een flexibel hulpmiddel om te bladeren in lokale journald-databases of op afstand en offline.</p>
     <p xml:lang="pl">Przeglądarka Journald jest wzorcową implementacją biblioteki kjournald i dostarcza elastycznego narzędzia do przeglądania baz danych journald lokalnych, zdalnych i odłączonych od sieci.</p>
@@ -94,6 +95,7 @@ SPDX-License-Identifier: CC0-1.0
       <image>https://cdn.kde.org/screenshots/kjournald/kjournald.png</image>
       <caption>Log Browser</caption>
       <caption xml:lang="ca">Navegador del registre</caption>
+      <caption xml:lang="ca-valencia">Navegador del registre</caption>
       <caption xml:lang="es">Explorador del registro</caption>
       <caption xml:lang="eu">Egunkari arakatzailea</caption>
       <caption xml:lang="fr">Navigateur pour journaux</caption>
