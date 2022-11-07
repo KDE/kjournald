@@ -106,8 +106,7 @@ ListView {
                 width: ListView.view.width
                 text: model ? model.text : ""
                 leftPadding: 20
-                onClicked: model.selected = !model.selected
-
+                onClicked: radiobox.toggle()
                 contentItem: RowLayout {
                     Label {
                         text: model ? model.text : ""
@@ -120,7 +119,11 @@ ListView {
                         id: radiobox
                         checked: model ? model.selected : false
                         spacing: 0
-                        onToggled: model.selected = checked
+                        onCheckedChanged: {
+                            if (model.selected !== checked) {
+                                model.selected = checked
+                            }
+                        }
                         ButtonGroup.group: priorityGroup
                     }
                 }
