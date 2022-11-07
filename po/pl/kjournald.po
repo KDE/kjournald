@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-05 00:48+0000\n"
+"POT-Creation-Date: 2022-11-07 00:47+0000\n"
 "PO-Revision-Date: 2022-10-18 18:06+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -18,17 +18,17 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Lokalize 22.08.1\n"
 
-#: browser/FilterCriteriaView.qml:26
+#: browser/FilterCriteriaView.qml:27
 #, kde-format
 msgid "Expanded"
 msgstr "Rozwinięty"
 
-#: browser/FilterCriteriaView.qml:26
+#: browser/FilterCriteriaView.qml:27
 #, kde-format
 msgid "Collapsed"
 msgstr "Zwinięty"
 
-#: browser/FilterCriteriaView.qml:50
+#: browser/FilterCriteriaView.qml:52
 #, kde-format
 msgid "Clear"
 msgstr "Wyczyść"

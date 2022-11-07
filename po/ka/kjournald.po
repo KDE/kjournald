@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-05 00:48+0000\n"
+"POT-Creation-Date: 2022-11-07 00:47+0000\n"
 "PO-Revision-Date: 2022-11-03 06:29+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -18,17 +18,17 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.2\n"
 
-#: browser/FilterCriteriaView.qml:26
+#: browser/FilterCriteriaView.qml:27
 #, kde-format
 msgid "Expanded"
 msgstr "ჩაკეცვა"
 
-#: browser/FilterCriteriaView.qml:26
+#: browser/FilterCriteriaView.qml:27
 #, kde-format
 msgid "Collapsed"
 msgstr "აკეცვა"
 
-#: browser/FilterCriteriaView.qml:50
+#: browser/FilterCriteriaView.qml:52
 #, kde-format
 msgid "Clear"
 msgstr "გაწმენდა"

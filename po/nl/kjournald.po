@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-05 00:48+0000\n"
-"PO-Revision-Date: 2022-10-24 10:30+0200\n"
+"POT-Creation-Date: 2022-11-07 00:47+0000\n"
+"PO-Revision-Date: 2022-11-06 15:48-0400\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,19 +15,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.08.2\n"
+"X-Generator: Lokalize 22.08.1\n"
 
-#: browser/FilterCriteriaView.qml:26
+#: browser/FilterCriteriaView.qml:27
 #, kde-format
 msgid "Expanded"
 msgstr "Uitgevouwen"
 
-#: browser/FilterCriteriaView.qml:26
+#: browser/FilterCriteriaView.qml:27
 #, kde-format
 msgid "Collapsed"
 msgstr "Ingevouwen"
 
-#: browser/FilterCriteriaView.qml:50
+#: browser/FilterCriteriaView.qml:52
 #, kde-format
 msgid "Clear"
 msgstr "Wissen"
@@ -113,9 +113,7 @@ msgid "About"
 msgstr "Info over"
 
 #: browser/LogView.qml:188
-#, fuzzy, kde-format
-#| msgctxt "Checkbox option for kernel log messages"
-#| msgid "Kernel"
+#, kde-format
 msgid "Kernel"
 msgstr "Kernel"
 

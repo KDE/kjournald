@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-05 00:48+0000\n"
-"PO-Revision-Date: 2022-10-24 10:48+0200\n"
+"POT-Creation-Date: 2022-11-07 00:47+0000\n"
+"PO-Revision-Date: 2022-11-05 11:19+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -20,17 +20,17 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 20.12.0\n"
 
-#: browser/FilterCriteriaView.qml:26
+#: browser/FilterCriteriaView.qml:27
 #, kde-format
 msgid "Expanded"
 msgstr "Expandit"
 
-#: browser/FilterCriteriaView.qml:26
+#: browser/FilterCriteriaView.qml:27
 #, kde-format
 msgid "Collapsed"
 msgstr "Col·lapsat"
 
-#: browser/FilterCriteriaView.qml:50
+#: browser/FilterCriteriaView.qml:52
 #, kde-format
 msgid "Clear"
 msgstr "Neteja"
@@ -116,9 +116,7 @@ msgid "About"
 msgstr "Quant a"
 
 #: browser/LogView.qml:188
-#, fuzzy, kde-format
-#| msgctxt "Checkbox option for kernel log messages"
-#| msgid "Kernel"
+#, kde-format
 msgid "Kernel"
 msgstr "Nucli"
 
@@ -331,6 +329,3 @@ msgstr "Unitat"
 msgctxt "Section title for process list"
 msgid "Process"
 msgstr "Procés"
-
-#~ msgid "Open Remote Journal Stream"
-#~ msgstr "Obri un flux de diari remot"

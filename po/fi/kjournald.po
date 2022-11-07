@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-05 00:48+0000\n"
+"POT-Creation-Date: 2022-11-07 00:47+0000\n"
 "PO-Revision-Date: 2022-01-27 21:12+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -17,17 +17,17 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 20.04.2\n"
 
-#: browser/FilterCriteriaView.qml:26
+#: browser/FilterCriteriaView.qml:27
 #, kde-format
 msgid "Expanded"
 msgstr "Lavennettu"
 
-#: browser/FilterCriteriaView.qml:26
+#: browser/FilterCriteriaView.qml:27
 #, kde-format
 msgid "Collapsed"
 msgstr "Supistettu"
 
-#: browser/FilterCriteriaView.qml:50
+#: browser/FilterCriteriaView.qml:52
 #, kde-format
 msgid "Clear"
 msgstr "Tyhjennä"

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-05 00:48+0000\n"
-"PO-Revision-Date: 2022-10-25 08:58+0200\n"
+"POT-Creation-Date: 2022-11-07 00:47+0000\n"
+"PO-Revision-Date: 2022-11-06 08:28+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -18,17 +18,17 @@ msgstr ""
 "%100==4 ? 3 : 0);\n"
 "X-Generator: Lokalize 22.08.1\n"
 
-#: browser/FilterCriteriaView.qml:26
+#: browser/FilterCriteriaView.qml:27
 #, kde-format
 msgid "Expanded"
 msgstr "Razširjeno"
 
-#: browser/FilterCriteriaView.qml:26
+#: browser/FilterCriteriaView.qml:27
 #, kde-format
 msgid "Collapsed"
 msgstr "Strnjeno"
 
-#: browser/FilterCriteriaView.qml:50
+#: browser/FilterCriteriaView.qml:52
 #, kde-format
 msgid "Clear"
 msgstr "Očisti"
@@ -114,9 +114,7 @@ msgid "About"
 msgstr "O programu"
 
 #: browser/LogView.qml:188
-#, fuzzy, kde-format
-#| msgctxt "Checkbox option for kernel log messages"
-#| msgid "Kernel"
+#, kde-format
 msgid "Kernel"
 msgstr "Jedro"
 
