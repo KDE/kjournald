@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-07 00:47+0000\n"
+"POT-Creation-Date: 2022-11-08 00:49+0000\n"
 "PO-Revision-Date: 2022-02-19 12:17+0000\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English <kde-l10n-en_gb@kde.org>\n"
@@ -112,7 +112,7 @@ msgstr "Help"
 msgid "About"
 msgstr "About"
 
-#: browser/LogView.qml:188
+#: browser/LogView.qml:189
 #, fuzzy, kde-format
 #| msgctxt "Checkbox option for kernel log messages"
 #| msgid "Kernel"

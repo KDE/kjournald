@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-07 00:47+0000\n"
+"POT-Creation-Date: 2022-11-08 00:49+0000\n"
 "PO-Revision-Date: 2022-11-06 01:07\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -112,7 +112,7 @@ msgstr "帮助"
 msgid "About"
 msgstr "关于"
 
-#: browser/LogView.qml:188
+#: browser/LogView.qml:189
 #, kde-format
 msgid "Kernel"
 msgstr ""

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-07 00:47+0000\n"
+"POT-Creation-Date: 2022-11-08 00:49+0000\n"
 "PO-Revision-Date: 2022-11-05 10:40+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -115,7 +115,7 @@ msgstr "Laguntza"
 msgid "About"
 msgstr "Honi buruz"
 
-#: browser/LogView.qml:188
+#: browser/LogView.qml:189
 #, kde-format
 msgid "Kernel"
 msgstr "Muina"

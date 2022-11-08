@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-07 00:47+0000\n"
-"PO-Revision-Date: 2022-11-03 06:29+0100\n"
+"POT-Creation-Date: 2022-11-08 00:49+0000\n"
+"PO-Revision-Date: 2022-11-07 06:42+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -113,10 +113,8 @@ msgstr "დახმარება"
 msgid "About"
 msgstr "შესახებ"
 
-#: browser/LogView.qml:188
-#, fuzzy, kde-format
-#| msgctxt "Checkbox option for kernel log messages"
-#| msgid "Kernel"
+#: browser/LogView.qml:189
+#, kde-format
 msgid "Kernel"
 msgstr "ბირთვი"
 

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-07 00:47+0000\n"
+"POT-Creation-Date: 2022-11-08 00:49+0000\n"
 "PO-Revision-Date: 2022-01-08 11:52+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -110,7 +110,7 @@ msgstr "Pomocník"
 msgid "About"
 msgstr "O aplikácii"
 
-#: browser/LogView.qml:188
+#: browser/LogView.qml:189
 #, kde-format
 msgid "Kernel"
 msgstr ""

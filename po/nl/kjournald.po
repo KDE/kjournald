@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-07 00:47+0000\n"
+"POT-Creation-Date: 2022-11-08 00:49+0000\n"
 "PO-Revision-Date: 2022-11-06 15:48-0400\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -112,7 +112,7 @@ msgstr "Help"
 msgid "About"
 msgstr "Info over"
 
-#: browser/LogView.qml:188
+#: browser/LogView.qml:189
 #, kde-format
 msgid "Kernel"
 msgstr "Kernel"
