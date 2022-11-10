@@ -64,12 +64,13 @@ void FlattenedFilterCriteriaProxyModel::handleSourceModelDataChanged(const QMode
                                                                      const QModelIndex &sourceBottomRight,
                                                                      const QVector<int> &roles)
 {
-    if (sourceTopLeft != sourceBottomRight) {
-        qCWarning(KJOURNALD_DEBUG) << "Data change ignored, currently only single line updates are implemented";
+    Q_ASSERT(sourceTopLeft.row() <= sourceBottomRight.row());
+    if (sourceTopLeft.row() > sourceBottomRight.row()) {
+        qCWarning(KJOURNALD_DEBUG) << "Data change ignored, index values not in order";
         return;
     }
     for (int i = 0; i < mMapToSourceIndex.size(); ++i) {
-        if (mMapToSourceIndex.at(i).mSourceIndex == sourceTopLeft) {
+        if (mMapToSourceIndex.at(i).mSourceIndex.row() >= sourceTopLeft.row() && mMapToSourceIndex.at(i).mSourceIndex.row() < sourceBottomRight.row()) {
             Q_EMIT dataChanged(index(i, 0), index(i, 0));
             return;
         }
