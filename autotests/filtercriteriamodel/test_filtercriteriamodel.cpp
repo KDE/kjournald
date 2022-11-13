@@ -135,6 +135,39 @@ void TestFilterCriteriaModel::standaloneTestPrioritySelectionOptions()
         // at first position expect priority '0' / emergency level
         QCOMPARE(model.data(model.index(0, 0, categoryIndex), FilterCriteriaModel::Roles::DATA).toString(), "0");
     }
+
+    { // QAbstractItemData::setData operations
+        QModelIndex categoryIndex;
+        for (int i = 0; i < model.rowCount(); ++i) {
+            if (model.data(model.index(i, 0), FilterCriteriaModel::Roles::CATEGORY) == FilterCriteriaModel::Category::PRIORITY) {
+                categoryIndex = model.index(i, 0);
+                break;
+            }
+        }
+        QVERIFY(categoryIndex.isValid());
+        QVERIFY(model.hasChildren(categoryIndex));
+        // already set, default beavhior is to return false
+        //        QVERIFY(model.setData(model.index(1, 0, categoryIndex), false, FilterCriteriaModel::Roles::SELECTED) == false);
+
+        // select priority entry for level 1, check for result
+        model.setData(model.index(1, 0, categoryIndex), true, FilterCriteriaModel::Roles::SELECTED);
+        // setData shall always return false if no data is changed
+        QVERIFY(model.setData(model.index(1, 0, categoryIndex), true, FilterCriteriaModel::Roles::SELECTED) == false);
+        QCOMPARE(model.priorityFilter(), 1);
+        QVERIFY(model.data(model.index(0, 0, categoryIndex), FilterCriteriaModel::Roles::SELECTED) == false);
+        QVERIFY(model.data(model.index(1, 0, categoryIndex), FilterCriteriaModel::Roles::SELECTED) == true);
+
+        // select priority entry for level 0, then again for 1 to check resetting behavior of level 1
+        QVERIFY(model.setData(model.index(0, 0, categoryIndex), true, FilterCriteriaModel::Roles::SELECTED) == true);
+        QCOMPARE(model.priorityFilter(), 0);
+        QVERIFY(model.data(model.index(0, 0, categoryIndex), FilterCriteriaModel::Roles::SELECTED) == true);
+        QVERIFY(model.data(model.index(1, 0, categoryIndex), FilterCriteriaModel::Roles::SELECTED) == false);
+
+        QVERIFY(model.setData(model.index(1, 0, categoryIndex), true, FilterCriteriaModel::Roles::SELECTED) == true);
+        QCOMPARE(model.priorityFilter(), 1);
+        QVERIFY(model.data(model.index(0, 0, categoryIndex), FilterCriteriaModel::Roles::SELECTED) == false);
+        QVERIFY(model.data(model.index(1, 0, categoryIndex), FilterCriteriaModel::Roles::SELECTED) == true);
+    }
 }
 
 QTEST_GUILESS_MAIN(TestFilterCriteriaModel);

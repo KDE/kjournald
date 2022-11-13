@@ -364,7 +364,7 @@ bool FilterCriteriaModel::setData(const QModelIndex &index, const QVariant &valu
         return QAbstractItemModel::setData(index, value, role);
     }
     if (value == entry->data(static_cast<FilterCriteriaModel::Roles>(role))) {
-        return true; // nothing to do
+        return false; // nothing to do
     }
 
     const bool result = entry->setData(value, static_cast<FilterCriteriaModel::Roles>(role));
