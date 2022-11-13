@@ -56,6 +56,7 @@ public:
 
     std::shared_ptr<IJournal> mJournal;
     std::shared_ptr<SelectionEntry> mRootItem;
+    quint8 mPriorityLevel{0};
 };
 
 #endif // FILTERCRITERIAMODEL_P_H

@@ -106,7 +106,9 @@ ListView {
                 width: ListView.view.width
                 text: model ? model.text : ""
                 leftPadding: 20
-                onClicked: radiobox.toggle()
+                onClicked: {
+                    model.selected = true
+                }
                 contentItem: RowLayout {
                     Label {
                         text: model ? model.text : ""
@@ -117,9 +119,10 @@ ListView {
 
                     RadioButton {
                         id: radiobox
+                        autoExclusive: true
                         checked: model ? model.selected : false
                         spacing: 0
-                        onCheckedChanged: {
+                        onToggled: {
                             if (model.selected !== checked) {
                                 model.selected = checked
                             }

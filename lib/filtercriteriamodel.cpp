@@ -250,14 +250,7 @@ void FilterCriteriaModel::setSystemJournal()
 
 int FilterCriteriaModel::priorityFilter() const
 {
-    std::shared_ptr<SelectionEntry> parent = d->mRootItem->child(FilterCriteriaModel::Category::PRIORITY);
-    for (int i = 0; i < parent->childCount(); ++i) {
-        if (parent->child(i)->data(FilterCriteriaModel::SELECTED).toBool()) {
-            return parent->child(i)->data(FilterCriteriaModel::DATA).toInt();
-        }
-    }
-    qCWarning(KJOURNALD_DEBUG) << "No priority selected, falling back to 0";
-    return 0;
+    return d->mPriorityLevel;
 }
 
 QStringList FilterCriteriaModel::systemdUnitFilter() const
@@ -371,7 +364,7 @@ bool FilterCriteriaModel::setData(const QModelIndex &index, const QVariant &valu
         return QAbstractItemModel::setData(index, value, role);
     }
     if (value == entry->data(static_cast<FilterCriteriaModel::Roles>(role))) {
-        return true; // nothing to do
+        return false; // nothing to do
     }
 
     const bool result = entry->setData(value, static_cast<FilterCriteriaModel::Roles>(role));
@@ -379,7 +372,18 @@ bool FilterCriteriaModel::setData(const QModelIndex &index, const QVariant &valu
     Q_EMIT dataChanged(index, index, {role});
 
     if (result && category == FilterCriteriaModel::Category::PRIORITY && static_cast<FilterCriteriaModel::Roles>(role) == SELECTED && result) {
-        // emit change only if one entry is activated
+        // only listen on changes that set entry data to true, because this is considered a selector in the list
+        std::shared_ptr<SelectionEntry> parent = d->mRootItem->child(FilterCriteriaModel::Category::PRIORITY);
+        for (int i = 0; i < parent->childCount(); ++i) {
+            const bool selectedValue = i == index.row();
+            parent->child(i)->setData(selectedValue, FilterCriteriaModel::SELECTED);
+            static_cast<SelectionEntry *>(FilterCriteriaModel::index(i, 0, index.parent()).internalPointer())
+                ->setData(selectedValue, static_cast<FilterCriteriaModel::Roles>(role));
+        }
+        Q_EMIT dataChanged(FilterCriteriaModel::index(0, 0, index.parent()), FilterCriteriaModel::index(parent->childCount() - 1, 0, index.parent()), {role});
+        Q_ASSERT(index.row() >= 0);
+        d->mPriorityLevel = index.row();
+        qCDebug(KJOURNALD_DEBUG) << "set priority level to:" << d->mPriorityLevel;
         Q_EMIT priorityFilterChanged(index.row());
     } else if (result && category == FilterCriteriaModel::Category::SYSTEMD_UNIT) {
         // for checkable entries update parent's selected state
