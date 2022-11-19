@@ -129,6 +129,14 @@ Kirigami.AbstractApplicationWindow {
                     logView.scrollToSearchResult(hightlightTextField.text, JournaldViewModel.FORWARD)
                 }
             }
+            ToolButton {
+                icon.name: "go-top"
+                onClicked: logView.scrollToBeginning()
+            }
+            ToolButton {
+                icon.name: "go-bottom"
+                onClicked: logView.scrollToEnd()
+            }
 
             ToolSeparator {}
             ToolButton {
