@@ -76,6 +76,18 @@ ListView {
         }
     }
 
+    function scrollToBeginning() {
+        // model provides just a sliding window over the journal, fetch head data first
+        root.journalModel.seekHead()
+        root.positionViewAtBeginning()
+    }
+
+    function scrollToEnd() {
+        // model provides just a sliding window over the journal, fetch tail data first
+        root.journalModel.seekTail()
+        root.positionViewAtEnd()
+    }
+
     highlightMoveDuration: 10
     model: root.journalModel
     focus: true
@@ -277,9 +289,7 @@ ListView {
         var scrollIndexSkip = Math.floor(0.9 * root.height / 30) // hard-coded estimate of one line log height
         if (event.key === Qt.Key_PageDown) {
             if (event.modifiers & Qt.ControlModifier) {
-                // model provides just a sliding window over the journal, fetch tail data first
-                root.journalModel.seekTail()
-                root.positionViewAtEnd()
+                root.scrollToEnd()
             }
             else {
                 if (root.contentHeight - root.originY > root.height) {
@@ -302,9 +312,7 @@ ListView {
 
         if (event.key === Qt.Key_PageUp) {
             if (event.modifiers & Qt.ControlModifier) {
-                // model provides just a sliding window over the journal, fetch head data first
-                root.journalModel.seekHead()
-                root.positionViewAtBeginning()
+                root.scrollToBeginning()
             }
             else {
                 if (root.contentHeight - root.originY > root.height) {
