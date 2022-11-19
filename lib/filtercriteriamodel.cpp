@@ -153,9 +153,10 @@ void FilterCriteriaModelPrivate::rebuildModel()
                 ->appendChild(std::move(std::make_unique<SelectionEntry>(mapPriorityToString(i),
                                                                          QString::number(i),
                                                                          FilterCriteriaModel::Category::PRIORITY,
-                                                                         i == 5 ? true : false, // TODO hardcoded default, should be made configurable
+                                                                         i == sDefaultPriorityLevel ? true : false,
                                                                          parent)));
         }
+        mPriorityLevel = sDefaultPriorityLevel;
     }
     {
         auto parent = std::make_shared<SelectionEntry>(i18nc("Section title for systemd unit", "Unit"),
