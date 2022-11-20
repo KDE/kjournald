@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-08 00:49+0000\n"
+"POT-Creation-Date: 2022-11-20 03:32+0000\n"
 "PO-Revision-Date: 2022-11-05 20:30+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -112,7 +112,7 @@ msgstr "Yardım"
 msgid "About"
 msgstr "Hakkında"
 
-#: browser/LogView.qml:189
+#: browser/LogView.qml:201
 #, kde-format
 msgid "Kernel"
 msgstr "Çekirdek"
@@ -184,37 +184,37 @@ msgstr "Önyükle:"
 msgid "Highlight:"
 msgstr "Vurgula:"
 
-#: browser/Main.qml:135
+#: browser/Main.qml:143
 #, kde-format
 msgid "Browse"
 msgstr "Göz At"
 
-#: browser/Main.qml:144
+#: browser/Main.qml:152
 #, kde-format
 msgid "Select"
 msgstr "Seç"
 
-#: browser/Main.qml:161
+#: browser/Main.qml:169
 #, kde-format
 msgid "Select journal folder"
 msgstr "Jurnal klasörü seç"
 
-#: browser/Main.qml:171
+#: browser/Main.qml:179
 #, kde-format
 msgid "Select journal file"
 msgstr "Jurnal dosyası seç"
 
-#: browser/Main.qml:172
+#: browser/Main.qml:180
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "Jurnal dosyaları (*.journal)"
 
-#: browser/Main.qml:172
+#: browser/Main.qml:180
 #, kde-format
 msgid "All files (*)"
 msgstr "Tüm dosyalar (*)"
 
-#: browser/Main.qml:245
+#: browser/Main.qml:253
 #, kde-format
 msgid "No log entries apply "
 msgstr "Günlük girdisi yok "
@@ -315,13 +315,13 @@ msgctxt "Section title for log message priority"
 msgid "Priority"
 msgstr "Öncelik"
 
-#: lib/filtercriteriamodel.cpp:161
+#: lib/filtercriteriamodel.cpp:162
 #, kde-format
 msgctxt "Section title for systemd unit"
 msgid "Unit"
 msgstr "Birim"
 
-#: lib/filtercriteriamodel.cpp:182
+#: lib/filtercriteriamodel.cpp:183
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"
