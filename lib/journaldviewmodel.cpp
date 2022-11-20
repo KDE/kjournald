@@ -30,6 +30,8 @@ void JournaldViewModelPrivate::resetJournal()
     // reset all filters
     sd_journal_flush_matches(mJournal->sdJournal());
 
+    qCDebug(KJOURNALD_DEBUG) << "FILTER flush_matches()";
+
     // filter construction:
     // The Journald API does not provide arbitrary logical phrases, but a 4 level syntax,
     // see: https://www.freedesktop.org/software/systemd/man/sd_journal_add_match.html
@@ -52,6 +54,7 @@ void JournaldViewModelPrivate::resetJournal()
     for (const QString &boot : qAsConst(mBootFilter)) {
         QString filterExpression = QLatin1String("_BOOT_ID=") + boot;
         result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
+        qCDebug(KJOURNALD_DEBUG).nospace() << "FILTER add_match(" << filterExpression << ")";
         if (result < 0) {
             qCCritical(KJOURNALD_DEBUG) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
         }
@@ -60,6 +63,7 @@ void JournaldViewModelPrivate::resetJournal()
         for (int i = 0; i <= mPriorityFilter; ++i) {
             QString filterExpression = QLatin1String("PRIORITY=") + QString::number(i);
             result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
+            qCDebug(KJOURNALD_DEBUG).nospace() << "FILTER add_match(" << filterExpression << ")";
             if (result < 0) {
                 qCCritical(KJOURNALD_DEBUG) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
             }
@@ -71,6 +75,7 @@ void JournaldViewModelPrivate::resetJournal()
 
     // boot and priority filter shall always be enforced
     result = sd_journal_add_conjunction(mJournal->sdJournal());
+    qCDebug(KJOURNALD_DEBUG).nospace() << "FILTER add_conjunction()";
     Q_ASSERT(result >= 0);
 
     // see journal-fields documentation regarding list of valid transports
@@ -82,6 +87,7 @@ void JournaldViewModelPrivate::resetJournal()
         for (const QString &transport : kernelTransports) {
             QString filterExpression = QLatin1String("_TRANSPORT=") + transport;
             result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
+            qCDebug(KJOURNALD_DEBUG).nospace() << "FILTER add_match(" << filterExpression << ")";
             if (result < 0) {
                 qCCritical(KJOURNALD_DEBUG) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
             }
@@ -92,6 +98,7 @@ void JournaldViewModelPrivate::resetJournal()
         for (const QString &transport : nonKernelTransports) {
             QString filterExpression = QLatin1String("_TRANSPORT=") + transport;
             result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
+            qCDebug(KJOURNALD_DEBUG).nospace() << "FILTER add_match(" << filterExpression << ")";
             if (result < 0) {
                 qCCritical(KJOURNALD_DEBUG) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
             }
@@ -104,6 +111,7 @@ void JournaldViewModelPrivate::resetJournal()
     for (const QString &unit : qAsConst(mSystemdUnitFilter)) {
         QString filterExpression = QLatin1String("_SYSTEMD_UNIT=") + unit;
         result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
+        qCDebug(KJOURNALD_DEBUG).nospace() << "FILTER add_match(" << filterExpression << ")";
         if (result < 0) {
             qCCritical(KJOURNALD_DEBUG) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
         }
@@ -116,6 +124,7 @@ void JournaldViewModelPrivate::resetJournal()
     for (const QString &executable : qAsConst(mExeFilter)) {
         QString filterExpression = QLatin1String("_EXE=") + executable;
         result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
+        qCDebug(KJOURNALD_DEBUG).nospace() << "FILTER add_match(" << filterExpression << ")";
         if (result < 0) {
             qCCritical(KJOURNALD_DEBUG) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
         }
