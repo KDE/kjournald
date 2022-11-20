@@ -12,6 +12,7 @@
 #include <QString>
 #include <QVector>
 #include <memory>
+#include <optional>
 
 class SelectionEntry
 {
@@ -56,8 +57,7 @@ public:
 
     std::shared_ptr<IJournal> mJournal;
     std::shared_ptr<SelectionEntry> mRootItem;
-    quint8 mPriorityLevel{0};
-    static const quint8 sDefaultPriorityLevel{5};
+    std::optional<quint8> mPriorityLevel;
 };
 
 #endif // FILTERCRITERIAMODEL_P_H

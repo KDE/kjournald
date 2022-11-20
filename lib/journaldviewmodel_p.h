@@ -82,7 +82,7 @@ public:
     QStringList mSystemdUnitFilter;
     QStringList mExeFilter;
     QStringList mBootFilter;
-    std::optional<int> mPriorityFilter;
+    std::optional<quint8> mPriorityFilter;
     bool mShowKernelMessages{false};
     bool mHeadCursorReached{false};
     bool mTailCursorReached{false};

@@ -13,6 +13,8 @@
 #include <QString>
 #include <memory>
 
+constexpr quint8 sDefaultPriorityLevel{5};
+
 QString FilterCriteriaModelPrivate::mapPriorityToString(int priority)
 {
     switch (priority) {
@@ -32,6 +34,8 @@ QString FilterCriteriaModelPrivate::mapPriorityToString(int priority)
         return i18nc("Radio box option, log priority value", "Info");
     case 7:
         return i18nc("Radio box option, log priority value", "Debug");
+    case -1:
+        return i18nc("Radio box option, log priority value", "No Filter");
     }
     return QLatin1String("");
 }
@@ -156,6 +160,10 @@ void FilterCriteriaModelPrivate::rebuildModel()
                                                                          i == sDefaultPriorityLevel ? true : false,
                                                                          parent)));
         }
+        // add "no filter" option at end
+        mRootItem->child(FilterCriteriaModel::Category::PRIORITY)
+            ->appendChild(std::move(
+                std::make_unique<SelectionEntry>(mapPriorityToString(-1), QString::number(-1), FilterCriteriaModel::Category::PRIORITY, false, parent)));
         mPriorityLevel = sDefaultPriorityLevel;
     }
     {
@@ -251,7 +259,7 @@ void FilterCriteriaModel::setSystemJournal()
 
 int FilterCriteriaModel::priorityFilter() const
 {
-    return d->mPriorityLevel;
+    return static_cast<qint8>(d->mPriorityLevel.value_or(-1));
 }
 
 QStringList FilterCriteriaModel::systemdUnitFilter() const
@@ -376,15 +384,19 @@ bool FilterCriteriaModel::setData(const QModelIndex &index, const QVariant &valu
         // only listen on changes that set entry data to true, because this is considered a selector in the list
         std::shared_ptr<SelectionEntry> parent = d->mRootItem->child(FilterCriteriaModel::Category::PRIORITY);
         for (int i = 0; i < parent->childCount(); ++i) {
-            const bool selectedValue = i == index.row();
+            const bool selectedValue = (i == index.row());
             parent->child(i)->setData(selectedValue, FilterCriteriaModel::SELECTED);
             static_cast<SelectionEntry *>(FilterCriteriaModel::index(i, 0, index.parent()).internalPointer())
                 ->setData(selectedValue, static_cast<FilterCriteriaModel::Roles>(role));
         }
         Q_EMIT dataChanged(FilterCriteriaModel::index(0, 0, index.parent()), FilterCriteriaModel::index(parent->childCount() - 1, 0, index.parent()), {role});
         Q_ASSERT(index.row() >= 0);
-        d->mPriorityLevel = index.row();
-        qCDebug(KJOURNALD_DEBUG) << "set priority level to:" << d->mPriorityLevel;
+        if (parent->child(index.row())->data(FilterCriteriaModel::DATA).toInt() >= 0) {
+            d->mPriorityLevel = parent->child(index.row())->data(FilterCriteriaModel::DATA).toInt();
+        } else {
+            d->mPriorityLevel = std::nullopt;
+        }
+        qCDebug(KJOURNALD_DEBUG) << "set priority level to:" << static_cast<qint8>(d->mPriorityLevel.value_or(-1));
         Q_EMIT priorityFilterChanged(index.row());
     } else if (result && category == FilterCriteriaModel::Category::SYSTEMD_UNIT) {
         // for checkable entries update parent's selected state

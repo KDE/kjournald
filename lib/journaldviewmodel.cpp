@@ -64,6 +64,9 @@ void JournaldViewModelPrivate::resetJournal()
                 qCCritical(KJOURNALD_DEBUG) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
             }
         }
+        qCDebug(KJOURNALD_DEBUG) << "Use priority filter level:" << mPriorityFilter.value();
+    } else {
+        qCDebug(KJOURNALD_DEBUG) << "Skip setting priority filter";
     }
 
     // boot and priority filter shall always be enforced
@@ -611,11 +614,12 @@ QStringList JournaldViewModel::exeFilter() const
 void JournaldViewModel::setPriorityFilter(int priority)
 {
     qCDebug(KJOURNALD_DEBUG) << "Set priority filter to:" << priority;
-    if (d->mPriorityFilter.has_value() && d->mPriorityFilter.value() == priority) {
-        return;
-    }
     beginResetModel();
-    d->mPriorityFilter = priority;
+    if (priority >= 0) {
+        d->mPriorityFilter = priority;
+    } else {
+        d->mPriorityFilter = std::nullopt;
+    }
     d->resetJournal();
     fetchMoreLogEntries();
     endResetModel();
