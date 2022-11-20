@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-08 00:49+0000\n"
+"POT-Creation-Date: 2022-11-20 00:49+0000\n"
 "PO-Revision-Date: 2022-11-06 01:25+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -112,7 +112,7 @@ msgstr "Aiuto"
 msgid "About"
 msgstr "Informazioni"
 
-#: browser/LogView.qml:189
+#: browser/LogView.qml:201
 #, kde-format
 msgid "Kernel"
 msgstr "Kernel"
@@ -184,37 +184,37 @@ msgstr "Avvio:"
 msgid "Highlight:"
 msgstr "Evidenzia:"
 
-#: browser/Main.qml:135
+#: browser/Main.qml:143
 #, kde-format
 msgid "Browse"
 msgstr "Sfoglia"
 
-#: browser/Main.qml:144
+#: browser/Main.qml:152
 #, kde-format
 msgid "Select"
 msgstr "Seleziona"
 
-#: browser/Main.qml:161
+#: browser/Main.qml:169
 #, kde-format
 msgid "Select journal folder"
 msgstr "Seleziona la cartella del journal"
 
-#: browser/Main.qml:171
+#: browser/Main.qml:179
 #, kde-format
 msgid "Select journal file"
 msgstr "Seleziona il file del journal"
 
-#: browser/Main.qml:172
+#: browser/Main.qml:180
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "File Journal (*.journal)"
 
-#: browser/Main.qml:172
+#: browser/Main.qml:180
 #, kde-format
 msgid "All files (*)"
 msgstr "Tutti i file (*)"
 
-#: browser/Main.qml:245
+#: browser/Main.qml:253
 #, kde-format
 msgid "No log entries apply "
 msgstr "Nessuna voce di registro si applica "
@@ -315,13 +315,13 @@ msgctxt "Section title for log message priority"
 msgid "Priority"
 msgstr "Priorità"
 
-#: lib/filtercriteriamodel.cpp:161
+#: lib/filtercriteriamodel.cpp:162
 #, kde-format
 msgctxt "Section title for systemd unit"
 msgid "Unit"
 msgstr "Unità"
 
-#: lib/filtercriteriamodel.cpp:182
+#: lib/filtercriteriamodel.cpp:183
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"

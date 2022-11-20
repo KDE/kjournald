@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-08 00:49+0000\n"
+"POT-Creation-Date: 2022-11-20 00:49+0000\n"
 "PO-Revision-Date: 2022-11-05 11:19+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -115,7 +115,7 @@ msgstr "Ajuda"
 msgid "About"
 msgstr "Quant al"
 
-#: browser/LogView.qml:189
+#: browser/LogView.qml:201
 #, kde-format
 msgid "Kernel"
 msgstr "Nucli"
@@ -187,37 +187,37 @@ msgstr "Arrencada:"
 msgid "Highlight:"
 msgstr "Ressaltat:"
 
-#: browser/Main.qml:135
+#: browser/Main.qml:143
 #, kde-format
 msgid "Browse"
 msgstr "Navega"
 
-#: browser/Main.qml:144
+#: browser/Main.qml:152
 #, kde-format
 msgid "Select"
 msgstr "Selecciona"
 
-#: browser/Main.qml:161
+#: browser/Main.qml:169
 #, kde-format
 msgid "Select journal folder"
 msgstr "Seleccioneu la carpeta de diari"
 
-#: browser/Main.qml:171
+#: browser/Main.qml:179
 #, kde-format
 msgid "Select journal file"
 msgstr "Seleccioneu el fitxer de diari"
 
-#: browser/Main.qml:172
+#: browser/Main.qml:180
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "Fitxers de diari (*.journal)"
 
-#: browser/Main.qml:172
+#: browser/Main.qml:180
 #, kde-format
 msgid "All files (*)"
 msgstr "Tots els fitxers (*)"
 
-#: browser/Main.qml:245
+#: browser/Main.qml:253
 #, kde-format
 msgid "No log entries apply "
 msgstr "No s'apliquen entrades de registre"
@@ -318,13 +318,13 @@ msgctxt "Section title for log message priority"
 msgid "Priority"
 msgstr "Prioritat"
 
-#: lib/filtercriteriamodel.cpp:161
+#: lib/filtercriteriamodel.cpp:162
 #, kde-format
 msgctxt "Section title for systemd unit"
 msgid "Unit"
 msgstr "Unitat"
 
-#: lib/filtercriteriamodel.cpp:182
+#: lib/filtercriteriamodel.cpp:183
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"

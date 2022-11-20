@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-08 00:49+0000\n"
+"POT-Creation-Date: 2022-11-20 00:49+0000\n"
 "PO-Revision-Date: 2022-11-06 08:28+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -113,7 +113,7 @@ msgstr "Pomoč"
 msgid "About"
 msgstr "O programu"
 
-#: browser/LogView.qml:189
+#: browser/LogView.qml:201
 #, kde-format
 msgid "Kernel"
 msgstr "Jedro"
@@ -185,37 +185,37 @@ msgstr "Zagon:"
 msgid "Highlight:"
 msgstr "Osvetljeno:"
 
-#: browser/Main.qml:135
+#: browser/Main.qml:143
 #, kde-format
 msgid "Browse"
 msgstr "Brskaj"
 
-#: browser/Main.qml:144
+#: browser/Main.qml:152
 #, kde-format
 msgid "Select"
 msgstr "Izberi"
 
-#: browser/Main.qml:161
+#: browser/Main.qml:169
 #, kde-format
 msgid "Select journal folder"
 msgstr "Izberi mapo dnevnikov"
 
-#: browser/Main.qml:171
+#: browser/Main.qml:179
 #, kde-format
 msgid "Select journal file"
 msgstr "Izberi datoteko dnevnika"
 
-#: browser/Main.qml:172
+#: browser/Main.qml:180
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "Datoteke dnevnikov (*.journal)"
 
-#: browser/Main.qml:172
+#: browser/Main.qml:180
 #, kde-format
 msgid "All files (*)"
 msgstr "Vse datoteke (*)"
 
-#: browser/Main.qml:245
+#: browser/Main.qml:253
 #, kde-format
 msgid "No log entries apply "
 msgstr "Ni vnosov v dnevniku "
@@ -316,13 +316,13 @@ msgctxt "Section title for log message priority"
 msgid "Priority"
 msgstr "Prednost"
 
-#: lib/filtercriteriamodel.cpp:161
+#: lib/filtercriteriamodel.cpp:162
 #, kde-format
 msgctxt "Section title for systemd unit"
 msgid "Unit"
 msgstr "Enota"
 
-#: lib/filtercriteriamodel.cpp:182
+#: lib/filtercriteriamodel.cpp:183
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"
