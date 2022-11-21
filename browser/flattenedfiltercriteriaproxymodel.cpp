@@ -65,16 +65,25 @@ void FlattenedFilterCriteriaProxyModel::handleSourceModelDataChanged(const QMode
                                                                      const QVector<int> &roles)
 {
     Q_ASSERT(sourceTopLeft.row() <= sourceBottomRight.row());
+    Q_ASSERT(sourceTopLeft.model() == sourceBottomRight.model());
     if (sourceTopLeft.row() > sourceBottomRight.row()) {
         qCWarning(KJOURNALD_DEBUG) << "Data change ignored, index values not in order";
         return;
     }
+
+    int proxyTopLeft{-1};
+    int proxyBottomRight{-1};
     for (int i = 0; i < mMapToSourceIndex.size(); ++i) {
-        if (mMapToSourceIndex.at(i).mSourceIndex.row() >= sourceTopLeft.row() && mMapToSourceIndex.at(i).mSourceIndex.row() < sourceBottomRight.row()) {
-            Q_EMIT dataChanged(index(i, 0), index(i, 0));
-            return;
+        if (mMapToSourceIndex.at(i).mSourceIndex == sourceTopLeft) {
+            proxyTopLeft = i;
+        }
+        if (mMapToSourceIndex.at(i).mSourceIndex == sourceBottomRight) {
+            proxyBottomRight = i;
         }
     }
+    Q_ASSERT(proxyTopLeft != -1);
+    Q_ASSERT(proxyBottomRight != -1);
+    Q_EMIT dataChanged(index(proxyTopLeft, 0), index(proxyBottomRight, 0));
 }
 
 int FlattenedFilterCriteriaProxyModel::rowCount(const QModelIndex &parent) const

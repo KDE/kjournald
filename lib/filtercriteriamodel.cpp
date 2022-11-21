@@ -376,11 +376,12 @@ bool FilterCriteriaModel::setData(const QModelIndex &index, const QVariant &valu
         return false; // nothing to do
     }
 
+    // clear operations for top-level categories
     const bool result = entry->setData(value, static_cast<FilterCriteriaModel::Roles>(role));
     const auto category = entry->data(FilterCriteriaModel::Roles::CATEGORY).value<FilterCriteriaModel::Category>();
     Q_EMIT dataChanged(index, index, {role});
 
-    if (result && category == FilterCriteriaModel::Category::PRIORITY && static_cast<FilterCriteriaModel::Roles>(role) == SELECTED && result) {
+    if (result && category == FilterCriteriaModel::Category::PRIORITY && static_cast<FilterCriteriaModel::Roles>(role) == SELECTED) {
         // only listen on changes that set entry data to true, because this is considered a selector in the list
         std::shared_ptr<SelectionEntry> parent = d->mRootItem->child(FilterCriteriaModel::Category::PRIORITY);
         for (int i = 0; i < parent->childCount(); ++i) {

@@ -74,7 +74,7 @@ ListView {
                 contentItem: Row {
                     spacing: 0.5 * Kirigami.Units.gridUnit
                     Label {
-                        text: model ? model.text : ""
+                        text:model ? model.text : ""
                         textFormat: Text.PlainText
                         elide: Text.ElideRight
                         width: parent.width - checkbox.width - 0.5 * Kirigami.Units.gridUnit
@@ -90,7 +90,11 @@ ListView {
 
                         color: model ? model.color : Kirigami.Theme.textColor
                         checked: model ? model.selected : false
-                        onToggled: model.selected = checked
+                        onToggled: {
+                            if (model.selected !== checked) {
+                                model.selected = checked
+                            }
+                        }
                     }
                 }
                 ToolTip.delay: 1000
