@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-20 00:49+0000\n"
+"POT-Creation-Date: 2022-11-21 00:49+0000\n"
 "PO-Revision-Date: 2022-11-05 19:51+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -251,79 +251,85 @@ msgstr "Abrir desde carpeta"
 msgid "Open from File"
 msgstr "Abrir desde archivo"
 
-#: lib/filtercriteriamodel.cpp:20
+#: lib/filtercriteriamodel.cpp:22
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Emergency"
 msgstr "Emergencia"
 
-#: lib/filtercriteriamodel.cpp:22
+#: lib/filtercriteriamodel.cpp:24
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Alert"
 msgstr "Alerta"
 
-#: lib/filtercriteriamodel.cpp:24
+#: lib/filtercriteriamodel.cpp:26
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Critical"
 msgstr "Crítico"
 
-#: lib/filtercriteriamodel.cpp:26
+#: lib/filtercriteriamodel.cpp:28
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Error"
 msgstr "Error"
 
-#: lib/filtercriteriamodel.cpp:28
+#: lib/filtercriteriamodel.cpp:30
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Warning"
 msgstr "Advertencia"
 
-#: lib/filtercriteriamodel.cpp:30
+#: lib/filtercriteriamodel.cpp:32
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Notice"
 msgstr "Aviso"
 
-#: lib/filtercriteriamodel.cpp:32
+#: lib/filtercriteriamodel.cpp:34
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Info"
 msgstr "Información"
 
-#: lib/filtercriteriamodel.cpp:34
+#: lib/filtercriteriamodel.cpp:36
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Debug"
 msgstr "Depuración"
 
-#: lib/filtercriteriamodel.cpp:131
+#: lib/filtercriteriamodel.cpp:38
+#, kde-format
+msgctxt "Radio box option, log priority value"
+msgid "No Filter"
+msgstr ""
+
+#: lib/filtercriteriamodel.cpp:135
 #, kde-format
 msgctxt "Section title for log message source"
 msgid "Transport"
 msgstr "Transporte"
 
-#: lib/filtercriteriamodel.cpp:138
+#: lib/filtercriteriamodel.cpp:142
 #, kde-format
 msgctxt "Checkbox option for kernel log messages"
 msgid "Kernel"
 msgstr "Kernel"
 
-#: lib/filtercriteriamodel.cpp:145
+#: lib/filtercriteriamodel.cpp:149
 #, kde-format
 msgctxt "Section title for log message priority"
 msgid "Priority"
 msgstr "Prioridad"
 
-#: lib/filtercriteriamodel.cpp:162
+#: lib/filtercriteriamodel.cpp:170
 #, kde-format
 msgctxt "Section title for systemd unit"
 msgid "Unit"
 msgstr "Unidad"
 
-#: lib/filtercriteriamodel.cpp:183
+#: lib/filtercriteriamodel.cpp:191
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"
