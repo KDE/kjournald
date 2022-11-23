@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-21 00:49+0000\n"
-"PO-Revision-Date: 2022-10-24 11:01+0100\n"
+"PO-Revision-Date: 2022-11-22 13:06+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
 "Language: pt\n"
@@ -303,7 +303,7 @@ msgstr "Depuração"
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "No Filter"
-msgstr ""
+msgstr "Sem Filtro"
 
 #: lib/filtercriteriamodel.cpp:135
 #, kde-format
@@ -334,6 +334,3 @@ msgstr "Unidade"
 msgctxt "Section title for process list"
 msgid "Process"
 msgstr "Processo"
-
-#~ msgid "Open Remote Journal Stream"
-#~ msgstr "Abrir uma Transmissão Remota do Registo"
