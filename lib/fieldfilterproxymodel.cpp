@@ -5,7 +5,7 @@
 
 #include "fieldfilterproxymodel.h"
 #include "journaldviewmodel.h"
-#include "loggingcategories.h"
+#include "kjournaldlib_log_general.h"
 #include <QDebug>
 #include <QtQml>
 

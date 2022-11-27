@@ -4,12 +4,19 @@
 add_library(kjournald SHARED)
 
 ecm_qt_declare_logging_category(
-    KJOURNALDLIB_SRCS
-    HEADER "loggingcategories.h"
-    IDENTIFIER "KJOURNALD_DEBUG"
-    CATEGORY_NAME "kjournald"
-    OLD_CATEGORY_NAMES "journald"
-    DESCRIPTION "KJournald"
+    kjournald
+    HEADER kjournaldlib_log_general.h
+    IDENTIFIER "KJOURNALDLIB_GENERAL"
+    CATEGORY_NAME kjournald.lib.general
+    DESCRIPTION "KJournald General Debug Logs"
+    EXPORT kjournald
+)
+ecm_qt_declare_logging_category(
+    kjournald
+    HEADER kjournaldlib_log_filtertrace.h
+    IDENTIFIER "KJOURNALDLIB_FILTERTRACE"
+    CATEGORY_NAME kjournald.lib.general
+    DESCRIPTION "KJournald Trace Logs for Filter Operations"
     EXPORT kjournald
 )
 ecm_qt_install_logging_categories(

@@ -6,7 +6,7 @@
 #include "journalduniquequerymodel.h"
 #include "journalduniquequerymodel_p.h"
 #include "kjournald_export.h"
-#include "loggingcategories.h"
+#include "kjournaldlib_log_general.h"
 #include <QDebug>
 #include <QDir>
 #include <QString>
@@ -32,7 +32,7 @@ bool JournaldUniqueQueryModelPrivate::openJournal()
     // TODO allow custom selection of journal type
     int result = sd_journal_open(&mJournal, SD_JOURNAL_LOCAL_ONLY);
     if (result < 0) {
-        qCCritical(KJOURNALD_DEBUG) << "Could not open journal:" << strerror(-result);
+        qCCritical(KJOURNALDLIB_GENERAL) << "Could not open journal:" << strerror(-result);
         return false;
     }
     return true;
@@ -42,14 +42,14 @@ bool JournaldUniqueQueryModelPrivate::openJournalFromPath(const QString &path)
 {
     closeJournal();
     if (path.isEmpty() || !QDir().exists(path)) {
-        qCCritical(KJOURNALD_DEBUG) << "Journal directory does not exist, abort opening";
+        qCCritical(KJOURNALDLIB_GENERAL) << "Journal directory does not exist, abort opening";
         return false;
     }
     const QFileInfo fileInfo = QFileInfo(path);
     if (fileInfo.isDir()) {
         int result = sd_journal_open_directory(&mJournal, path.toStdString().c_str(), 0 /* no flags, directory defines type */);
         if (result < 0) {
-            qCCritical(KJOURNALD_DEBUG) << "Could not open journal:" << strerror(-result);
+            qCCritical(KJOURNALDLIB_GENERAL) << "Could not open journal:" << strerror(-result);
             return false;
         }
     } else if (fileInfo.isFile()) {
@@ -60,7 +60,7 @@ bool JournaldUniqueQueryModelPrivate::openJournalFromPath(const QString &path)
         int result = sd_journal_open_files(&mJournal, files, 0 /* no flags, directory defines type */);
         delete[] files;
         if (result < 0) {
-            qCCritical(KJOURNALD_DEBUG) << "Could not open journal:" << strerror(-result);
+            qCCritical(KJOURNALDLIB_GENERAL) << "Could not open journal:" << strerror(-result);
             return false;
         }
     }

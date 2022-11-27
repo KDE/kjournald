@@ -4,7 +4,7 @@
 */
 
 #include "sessionconfig.h"
-#include "loggingcategories.h"
+#include "kjournaldlib_log_general.h"
 #include <QFileInfo>
 
 SessionConfig::SessionConfig(QObject *parent)
@@ -16,7 +16,7 @@ SessionConfig::SessionConfig(QObject *parent)
 
 SessionConfig::~SessionConfig()
 {
-    qCDebug(KJOURNALD_DEBUG) << "Sync configuration";
+    qCDebug(KJOURNALDLIB_GENERAL) << "Sync configuration";
     mSettings.sync();
 }
 
@@ -81,7 +81,7 @@ SessionConfig::ViewMode SessionConfig::viewMode() const
 
 void SessionConfig::setLocalJournalPath(const QString &path)
 {
-    qCDebug(KJOURNALD_DEBUG) << "Open path" << path;
+    qCDebug(KJOURNALDLIB_GENERAL) << "Open path" << path;
     // handle QUrl conversion for QML access
     QString resolvedPath = path;
     if (path.startsWith("file://")) {

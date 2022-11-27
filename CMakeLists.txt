@@ -20,8 +20,8 @@ add_definitions(
     -DKF_DEPRECATED_WARNINGS_SINCE=0x060000
 )
 
-# KF5 minimal version is chosen to support Ubuntu 20.04 LTS
-set(KF5_VERSION 5.68.0)
+# KF5 minimal version is chosen to support Ubuntu 22.04 LTS
+set(KF5_VERSION 5.80.0)
 find_package(ECM ${KF5_VERSION} NO_MODULE)
 set_package_properties(ECM PROPERTIES
     TYPE REQUIRED

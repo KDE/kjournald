@@ -6,7 +6,7 @@
 #include "flattenedfiltercriteriaproxymodel.h"
 #include "colorizer.h"
 #include "filtercriteriamodel.h"
-#include "loggingcategories.h"
+#include "kjournaldlib_log_general.h"
 #include <QDebug>
 
 QHash<int, QByteArray> FlattenedFilterCriteriaProxyModel::roleNames() const
@@ -67,7 +67,7 @@ void FlattenedFilterCriteriaProxyModel::handleSourceModelDataChanged(const QMode
     Q_ASSERT(sourceTopLeft.row() <= sourceBottomRight.row());
     Q_ASSERT(sourceTopLeft.model() == sourceBottomRight.model());
     if (sourceTopLeft.row() > sourceBottomRight.row()) {
-        qCWarning(KJOURNALD_DEBUG) << "Data change ignored, index values not in order";
+        qCWarning(KJOURNALDLIB_GENERAL) << "Data change ignored, index values not in order";
         return;
     }
 
@@ -155,7 +155,7 @@ QVariant FlattenedFilterCriteriaProxyModel::data(const QModelIndex &index, int r
 bool FlattenedFilterCriteriaProxyModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     if (index.row() >= mMapToSourceIndex.count()) {
-        qCWarning(KJOURNALD_DEBUG) << "access setData for line out of range with index:" << index.row() << " / total rows" << mMapToSourceIndex.count();
+        qCWarning(KJOURNALDLIB_GENERAL) << "access setData for line out of range with index:" << index.row() << " / total rows" << mMapToSourceIndex.count();
         return false;
     }
     if (role == FlattenedFilterCriteriaProxyModel::Roles::EXPANDED) {

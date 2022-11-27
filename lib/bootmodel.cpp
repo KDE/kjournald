@@ -5,7 +5,7 @@
 
 #include "bootmodel.h"
 #include "bootmodel_p.h"
-#include "loggingcategories.h"
+#include "kjournaldlib_log_general.h"
 
 BootModelPrivate::BootModelPrivate(std::unique_ptr<IJournal> journal)
     : mJournal(std::move(journal))
@@ -40,7 +40,7 @@ BootModel::~BootModel() = default;
 
 bool BootModel::setJournaldPath(const QString &path)
 {
-    qCDebug(KJOURNALD_DEBUG) << "load journal from path" << path;
+    qCDebug(KJOURNALDLIB_GENERAL) << "load journal from path" << path;
     bool success{true};
     beginResetModel();
     d->mJournaldPath = path;
@@ -61,7 +61,7 @@ QString BootModel::journaldPath() const
 
 void BootModel::setSystemJournal()
 {
-    qCDebug(KJOURNALD_DEBUG) << "load system journal";
+    qCDebug(KJOURNALDLIB_GENERAL) << "load system journal";
     beginResetModel();
     d->mJournaldPath = QString();
     d->mJournal = std::make_unique<LocalJournal>();

@@ -6,7 +6,7 @@
 #include "filtercriteriamodel.h"
 #include "filtercriteriamodel_p.h"
 #include "kjournald_export.h"
-#include "loggingcategories.h"
+#include "kjournaldlib_log_general.h"
 #include <KLocalizedString>
 #include <QDebug>
 #include <QDir>
@@ -112,7 +112,7 @@ bool SelectionEntry::setData(const QVariant &value, FilterCriteriaModel::Roles r
         mSelected = value.toBool();
         return true;
     }
-    qCWarning(KJOURNALD_DEBUG) << "no settable role";
+    qCWarning(KJOURNALDLIB_GENERAL) << "no settable role";
     return false;
 }
 
@@ -353,7 +353,7 @@ QVariant FilterCriteriaModel::data(const QModelIndex &index, int role) const
 {
     if (!index.parent().isValid()) {
         if (index.row() < 0 || index.row() >= d->mRootItem->childCount()) {
-            qCCritical(KJOURNALD_DEBUG) << "Index out of range" << index;
+            qCCritical(KJOURNALDLIB_GENERAL) << "Index out of range" << index;
             return QVariant();
         }
         return d->mRootItem->child(index.row())->data(static_cast<FilterCriteriaModel::Roles>(role));
@@ -397,7 +397,7 @@ bool FilterCriteriaModel::setData(const QModelIndex &index, const QVariant &valu
         } else {
             d->mPriorityLevel = std::nullopt;
         }
-        qCDebug(KJOURNALD_DEBUG) << "set priority level to:" << static_cast<qint8>(d->mPriorityLevel.value_or(-1));
+        qCDebug(KJOURNALDLIB_GENERAL) << "set priority level to:" << static_cast<qint8>(d->mPriorityLevel.value_or(-1));
         Q_EMIT priorityFilterChanged(index.row());
     } else if (result && category == FilterCriteriaModel::Category::SYSTEMD_UNIT) {
         // for checkable entries update parent's selected state

@@ -4,7 +4,7 @@
 */
 
 #include "systemdjournalremote.h"
-#include "loggingcategories.h"
+#include "kjournaldlib_log_general.h"
 #include "systemdjournalremote_p.h"
 #include <QDir>
 #include <QFileInfo>
@@ -18,13 +18,13 @@ bool SystemdJournalRemotePrivate::sanityCheckForSystemdJournalRemoveExec() const
 {
     bool result{true};
     if (!QFile::exists(mSystemdJournalRemoteExec)) {
-        qCCritical(KJOURNALD_DEBUG) << "Could not find executable:" << mSystemdJournalRemoteExec;
+        qCCritical(KJOURNALDLIB_GENERAL) << "Could not find executable:" << mSystemdJournalRemoteExec;
         result = false;
     }
 
     QFileInfo info(mSystemdJournalRemoteExec);
     if (result && !info.isExecutable()) {
-        qCCritical(KJOURNALD_DEBUG) << "systemd-journal-remote not marked as executable:" << mSystemdJournalRemoteExec;
+        qCCritical(KJOURNALDLIB_GENERAL) << "systemd-journal-remote not marked as executable:" << mSystemdJournalRemoteExec;
         result = false;
     }
 
@@ -49,10 +49,10 @@ SystemdJournalRemote::SystemdJournalRemote(const QString &filePath)
     : d(new SystemdJournalRemotePrivate)
 {
     if (!QFile::exists(filePath)) {
-        qCCritical(KJOURNALD_DEBUG) << "Provided export journal file format does not exists, no journal created" << filePath;
+        qCCritical(KJOURNALDLIB_GENERAL) << "Provided export journal file format does not exists, no journal created" << filePath;
     }
     if (!filePath.endsWith(QLatin1String("export"))) {
-        qCWarning(KJOURNALD_DEBUG) << "Provided export file has uncommon file ending that is not \".export\":" << filePath;
+        qCWarning(KJOURNALDLIB_GENERAL) << "Provided export file has uncommon file ending that is not \".export\":" << filePath;
     }
 
     // start import
@@ -72,10 +72,10 @@ SystemdJournalRemote::SystemdJournalRemote(const QString &filePath)
 
 void SystemdJournalRemote::handleJournalFileCreated(const QString &path)
 {
-    qCDebug(KJOURNALD_DEBUG) << "handleJournaldFileCreated in path:" << path;
+    qCDebug(KJOURNALDLIB_GENERAL) << "handleJournaldFileCreated in path:" << path;
 
     if (path.isEmpty() || !QDir().exists(d->journalFile())) {
-        qCCritical(KJOURNALD_DEBUG) << "Journal directory does not exist, abort opening" << d->journalFile();
+        qCCritical(KJOURNALDLIB_GENERAL) << "Journal directory does not exist, abort opening" << d->journalFile();
         return;
     }
 
@@ -85,7 +85,7 @@ void SystemdJournalRemote::handleJournalFileCreated(const QString &path)
 
     int result = sd_journal_open_files(&d->mJournal, files, 0 /* no flags, directory defines type */);
     if (result < 0) {
-        qCCritical(KJOURNALD_DEBUG) << "Could not open journal:" << strerror(-result);
+        qCCritical(KJOURNALDLIB_GENERAL) << "Could not open journal:" << strerror(-result);
     }
     delete[] files;
 
@@ -96,7 +96,7 @@ SystemdJournalRemote::SystemdJournalRemote(const QString &url, const QString &po
     : d(new SystemdJournalRemotePrivate)
 {
     if (!(url.startsWith(QLatin1String("https://")) || url.startsWith(QLatin1String("http://")))) {
-        qCWarning(KJOURNALD_DEBUG) << "URL seems not begin a valid URL, no http/https prefix:" << url;
+        qCWarning(KJOURNALDLIB_GENERAL) << "URL seems not begin a valid URL, no http/https prefix:" << url;
     }
     d->mTemporaryJournalDirWatcher.addPath(d->mTemporyJournalDir.path());
     d->mJournalRemoteProcess.setProcessChannelMode(QProcess::ForwardedChannels);
@@ -119,7 +119,7 @@ SystemdJournalRemote::~SystemdJournalRemote()
     d->mJournalRemoteProcess.terminate();
     d->mJournalRemoteProcess.waitForFinished(1000);
     if (d->mJournalRemoteProcess.state() == QProcess::Running) {
-        qCWarning(KJOURNALD_DEBUG) << "Process did not react to SIGTERM in time, sending SIGKILL";
+        qCWarning(KJOURNALDLIB_GENERAL) << "Process did not react to SIGTERM in time, sending SIGKILL";
         d->mJournalRemoteProcess.kill();
     }
     d->mJournalRemoteProcess.waitForFinished();
@@ -144,7 +144,7 @@ bool SystemdJournalRemote::isValid() const
 
 QString SystemdJournalRemote::currentBootId() const
 {
-    qCWarning(KJOURNALD_DEBUG) << "Access to remote journal boot ID is not implemented";
+    qCWarning(KJOURNALDLIB_GENERAL) << "Access to remote journal boot ID is not implemented";
     return QString();
 }
 
@@ -153,7 +153,7 @@ uint64_t SystemdJournalRemote::usage() const
     uint64_t size{0};
     int res = sd_journal_get_usage(d->mJournal, &size);
     if (res < 0) {
-        qCCritical(KJOURNALD_DEBUG) << "Could not obtain journal size:" << strerror(-res);
+        qCCritical(KJOURNALDLIB_GENERAL) << "Could not obtain journal size:" << strerror(-res);
     }
     return size;
 }
