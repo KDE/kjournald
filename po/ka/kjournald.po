@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-21 00:49+0000\n"
-"PO-Revision-Date: 2022-11-07 06:42+0100\n"
+"PO-Revision-Date: 2022-11-27 07:03+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -302,7 +302,7 @@ msgstr "პროგრამის შეცდომის პოვნა"
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "No Filter"
-msgstr ""
+msgstr "ფილტრის გარეშე"
 
 #: lib/filtercriteriamodel.cpp:135
 #, kde-format
