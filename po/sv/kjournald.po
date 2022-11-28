@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-20 03:32+0000\n"
-"PO-Revision-Date: 2022-01-14 21:36+0100\n"
+"PO-Revision-Date: 2022-11-27 11:43+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -113,9 +113,7 @@ msgid "About"
 msgstr "Om"
 
 #: browser/LogView.qml:201
-#, fuzzy, kde-format
-#| msgctxt "Checkbox option for kernel log messages"
-#| msgid "Kernel"
+#, kde-format
 msgid "Kernel"
 msgstr "Kärna"
 
@@ -173,7 +171,7 @@ msgstr "stefan.asserhall@bredband.net"
 #: browser/Main.qml:55
 #, kde-format
 msgid "Launch Bug Report Wizard"
-msgstr ""
+msgstr "Starta felrapportguide"
 
 #: browser/Main.qml:93
 #, kde-format
@@ -228,7 +226,7 @@ msgstr "Anpassa fjärrjournalserver"
 #: browser/RemoteJournalConfigDialog.qml:31
 #, kde-format
 msgid "URL:"
-msgstr ""
+msgstr "Webbadress:"
 
 #: browser/RemoteJournalConfigDialog.qml:40
 #, kde-format
@@ -236,20 +234,17 @@ msgid "Port:"
 msgstr "Port:"
 
 #: browser/TopMenuBar.qml:17
-#, fuzzy, kde-format
-#| msgid "Open system journal"
+#, kde-format
 msgid "Open System Journal"
 msgstr "Öppna systemjournal"
 
 #: browser/TopMenuBar.qml:24
-#, fuzzy, kde-format
-#| msgid "Open from folder"
+#, kde-format
 msgid "Open from Folder"
 msgstr "Öppna från katalog"
 
 #: browser/TopMenuBar.qml:32
-#, fuzzy, kde-format
-#| msgid "Open from file"
+#, kde-format
 msgid "Open from File"
 msgstr "Öppna från fil"
 
