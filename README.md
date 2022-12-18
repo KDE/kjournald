@@ -4,6 +4,10 @@ This project aims to provide an abstraction of the systemd's journald API in ter
 
 Additional to the library, the project provides a reference implementation of the API, called `kjournaldbrowser`. Even though that application provides a powerful journal database reader, we aim to do a clear split between reuseable library and application logic.
 
+#### Screenshot
+
+![](https://cdn.kde.org/screenshots/kjournald/kjournald.png)
+
 ## License
 All source files in the repository are supposed to be compatible with LGPL-2.1-or-later in order to easily move them between application and library part.
 
