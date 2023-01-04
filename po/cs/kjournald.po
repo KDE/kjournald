@@ -1,6 +1,6 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the kjournald package.
-# Vit Pelcak <vpelcak@suse.cz>, 2022.
+# Vit Pelcak <vit@pelcak.org>, 2022.
 #
 msgid ""
 msgstr ""
@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-21 00:49+0000\n"
 "PO-Revision-Date: 2022-01-12 14:01+0100\n"
-"Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
+"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -113,9 +113,7 @@ msgid "About"
 msgstr "O aplikaci"
 
 #: browser/LogView.qml:201
-#, fuzzy, kde-format
-#| msgctxt "Checkbox option for kernel log messages"
-#| msgid "Kernel"
+#, kde-format
 msgid "Kernel"
 msgstr "Jádro"
 
@@ -227,7 +225,7 @@ msgstr ""
 #: browser/RemoteJournalConfigDialog.qml:31
 #, kde-format
 msgid "URL:"
-msgstr ""
+msgstr "URL:"
 
 #: browser/RemoteJournalConfigDialog.qml:40
 #, kde-format
@@ -332,6 +330,3 @@ msgstr "Jednotka"
 msgctxt "Section title for process list"
 msgid "Process"
 msgstr "Proces"
-
-#~ msgid "Url:"
-#~ msgstr "Url:"
