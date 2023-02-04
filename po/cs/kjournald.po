@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the kjournald package.
-# Vit Pelcak <vit@pelcak.org>, 2022.
+# Vit Pelcak <vit@pelcak.org>, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-20 03:32+0000\n"
-"PO-Revision-Date: 2022-01-12 14:01+0100\n"
+"PO-Revision-Date: 2023-01-30 11:19+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 21.12.0\n"
+"X-Generator: Lokalize 22.12.1\n"
 
 #: browser/FilterCriteriaView.qml:27
 #, kde-format
@@ -40,17 +40,17 @@ msgstr "Soubor"
 #: browser/GlobalMenu.qml:14
 #, kde-format
 msgid "Open system journal"
-msgstr ""
+msgstr "Otevřít žurnál systému"
 
 #: browser/GlobalMenu.qml:21
 #, kde-format
 msgid "Open from folder"
-msgstr ""
+msgstr "Otevřít ze složky"
 
 #: browser/GlobalMenu.qml:29
 #, kde-format
 msgid "Open from file"
-msgstr ""
+msgstr "Otevřít ze souboru"
 
 #: browser/GlobalMenu.qml:48 browser/Main.qml:69 browser/TopMenuBar.qml:51
 #, kde-format
@@ -60,7 +60,7 @@ msgstr "Zavřít"
 #: browser/GlobalMenu.qml:54 browser/TopMenuBar.qml:57
 #, kde-format
 msgid "Current Journal"
-msgstr ""
+msgstr "Současný žurnál"
 
 #: browser/GlobalMenu.qml:62 browser/TopMenuBar.qml:65
 #, kde-format
@@ -170,7 +170,7 @@ msgstr "vit@pelcak.org"
 #: browser/Main.qml:55
 #, kde-format
 msgid "Launch Bug Report Wizard"
-msgstr ""
+msgstr "Spustit průvodce chybovým hlášením"
 
 #: browser/Main.qml:93
 #, kde-format
@@ -235,17 +235,17 @@ msgstr "Port:"
 #: browser/TopMenuBar.qml:17
 #, kde-format
 msgid "Open System Journal"
-msgstr ""
+msgstr "Otevřít žurnál systému"
 
 #: browser/TopMenuBar.qml:24
 #, kde-format
 msgid "Open from Folder"
-msgstr ""
+msgstr "Otevřít ze složky"
 
 #: browser/TopMenuBar.qml:32
 #, kde-format
 msgid "Open from File"
-msgstr ""
+msgstr "Otevřít ze souboru"
 
 #: lib/filtercriteriamodel.cpp:20
 #, kde-format
