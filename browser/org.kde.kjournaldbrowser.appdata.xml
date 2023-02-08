@@ -114,6 +114,7 @@ SPDX-License-Identifier: CC0-1.0
       <caption xml:lang="tr">Günlük Tarayıcı</caption>
       <caption xml:lang="uk">Навігатор журналом</caption>
       <caption xml:lang="x-test">xxLog Browserxx</caption>
+      <caption xml:lang="zh-CN">日志浏览器</caption>
     </screenshot>
   </screenshots>
   <url type="homepage">https://invent.kde.org/libraries/kjournald</url>
