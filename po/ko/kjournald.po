@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the kjournald package.
-# Shinjo Park <kde@peremen.name>, 2022.
+# Shinjo Park <kde@peremen.name>, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-21 00:49+0000\n"
-"PO-Revision-Date: 2022-02-20 22:45+0100\n"
+"PO-Revision-Date: 2023-03-01 02:02+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 21.08.1\n"
+"X-Generator: Lokalize 21.12.3\n"
 
 #: browser/FilterCriteriaView.qml:27
 #, kde-format
@@ -113,9 +113,7 @@ msgid "About"
 msgstr "정보"
 
 #: browser/LogView.qml:201
-#, fuzzy, kde-format
-#| msgctxt "Checkbox option for kernel log messages"
-#| msgid "Kernel"
+#, kde-format
 msgid "Kernel"
 msgstr "커널"
 
@@ -172,7 +170,7 @@ msgstr "kde@peremen.name"
 #: browser/Main.qml:55
 #, kde-format
 msgid "Launch Bug Report Wizard"
-msgstr ""
+msgstr "버그 보고 마법사 실행"
 
 #: browser/Main.qml:93
 #, kde-format
@@ -227,7 +225,7 @@ msgstr "원격 저널 서버 설정"
 #: browser/RemoteJournalConfigDialog.qml:31
 #, kde-format
 msgid "URL:"
-msgstr ""
+msgstr "URL:"
 
 #: browser/RemoteJournalConfigDialog.qml:40
 #, kde-format
@@ -235,20 +233,17 @@ msgid "Port:"
 msgstr "포트:"
 
 #: browser/TopMenuBar.qml:17
-#, fuzzy, kde-format
-#| msgid "Open system journal"
+#, kde-format
 msgid "Open System Journal"
 msgstr "시스템 저널 열기"
 
 #: browser/TopMenuBar.qml:24
-#, fuzzy, kde-format
-#| msgid "Open from folder"
+#, kde-format
 msgid "Open from Folder"
 msgstr "폴더에서 열기"
 
 #: browser/TopMenuBar.qml:32
-#, fuzzy, kde-format
-#| msgid "Open from file"
+#, kde-format
 msgid "Open from File"
 msgstr "파일에서 열기"
 
@@ -304,7 +299,7 @@ msgstr "디버그"
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "No Filter"
-msgstr ""
+msgstr "필터 없음"
 
 #: lib/filtercriteriamodel.cpp:135
 #, kde-format
