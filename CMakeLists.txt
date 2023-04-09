@@ -24,9 +24,9 @@ add_definitions(
     -DKF_DEPRECATED_WARNINGS_SINCE=0x060000
 )
 
-# KF5 minimal version is chosen to support Ubuntu 22.04 LTS
-set(KF5_VERSION 5.80.0)
-find_package(ECM ${KF5_VERSION} NO_MODULE)
+# KF minimal version is chosen to support Ubuntu 22.04 LTS
+set(KF_VERSION 5.80.0)
+find_package(ECM ${KF_VERSION} NO_MODULE)
 set_package_properties(ECM PROPERTIES
     TYPE REQUIRED
     DESCRIPTION "Extra CMake Modules."
@@ -48,7 +48,7 @@ ecm_setup_version(${KJOURNALD_VERSION}
     SOVERSION 0
 )
 
-find_package(KF5 ${KF5_VERSION} REQUIRED COMPONENTS
+find_package(KF${QT_MAJOR_VERSION} ${KF_VERSION} REQUIRED COMPONENTS
     CoreAddons
     I18n
 )

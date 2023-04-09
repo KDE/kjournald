@@ -59,7 +59,7 @@ target_sources(kjournald PRIVATE
 )
 target_link_libraries(kjournald
 PRIVATE
-    KF5::I18n
+    KF${QT_MAJOR_VERSION}::I18n
     Qt${QT_MAJOR_VERSION}::Core
     Qt${QT_MAJOR_VERSION}::Quick
     PkgConfig::SYSTEMD
