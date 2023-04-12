@@ -127,6 +127,7 @@ SPDX-License-Identifier: CC0-1.0
   </provides>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release version="23.04.0" date="2023-04-20"/>
     <release version="0.1.0" date="2022-11-19"/>
     <release version="0.0.3" date="2021-12-30"/>
   </releases>
