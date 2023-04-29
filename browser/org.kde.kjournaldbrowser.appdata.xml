@@ -28,6 +28,7 @@ SPDX-License-Identifier: CC0-1.0
   <name xml:lang="pl">Przeglądarka Journald</name>
   <name xml:lang="pt">Navegador do Journald</name>
   <name xml:lang="pt-BR">Navegador do journald</name>
+  <name xml:lang="ru">Браузер journald</name>
   <name xml:lang="sk">Prehliadač Journald</name>
   <name xml:lang="sl">Brskalnik journald</name>
   <name xml:lang="sv">Journald-bläddrare</name>
@@ -55,6 +56,7 @@ SPDX-License-Identifier: CC0-1.0
   <summary xml:lang="pl">Przeglądarka dla baz danych journald</summary>
   <summary xml:lang="pt">Navegador das bases de dados do Journald</summary>
   <summary xml:lang="pt-BR">Navegador para os bancos de dados journald</summary>
+  <summary xml:lang="ru">Браузер для баз данных journald</summary>
   <summary xml:lang="sk">Prehliadať pre databázy Journald</summary>
   <summary xml:lang="sl">Brskalnik po podatkovnih bazah journald</summary>
   <summary xml:lang="sv">Bläddrare för journald-databaser</summary>
@@ -83,6 +85,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="pl">Przeglądarka Journald jest wzorcową implementacją biblioteki kjournald i dostarcza elastycznego narzędzia do przeglądania baz danych journald lokalnych, zdalnych i odłączonych od sieci.</p>
     <p xml:lang="pt">O Journald-browser é uma implementação de referência da biblioteca 'kjournald' e oferece uma ferramenta flexível para navegar pelas bases de dados locais, remotas e arquivadas do 'journald'.</p>
     <p xml:lang="pt-BR">O Journald-browser é uma implementação de referência da biblioteca kjournald e fornece uma ferramenta flexível para navegar nos bancos de dados local, remoto e offline.</p>
+    <p xml:lang="ru">Браузер journald — это справочная реализация библиотеки kjournald. Он предоставляет в распоряжение пользователя гибкий инструмент для просмотра локальных, сетевых и автономных баз данных journald.</p>
     <p xml:lang="sl">Brskalnik journald je referenčna izvedba knjižnice kjournald in nudi prilagodljivo orodje za brskanje po lokalnih, oddaljenih in nepovezanih podatkovnih baza journald.</p>
     <p xml:lang="sv">Journald-bläddraren är en referensimplementering av kjournald-biblioteket och tillhandahåller ett flexibelt verktyg för att bläddra i lokala databaser, fjärrdatabaser, och nedkopplade databaser.</p>
     <p xml:lang="tr">Journald-browser, kjournald kitaplığının bir başvuru uygulamasıdır ve yerel, uzak ve çevrimdışı journald veritabanlarına göz atmak için esnek bir araç sağlar.</p>
@@ -111,6 +114,7 @@ SPDX-License-Identifier: CC0-1.0
       <caption xml:lang="nl">Browser van log</caption>
       <caption xml:lang="pl">Przeglądarka dzienników</caption>
       <caption xml:lang="pt">Navegador de Registos</caption>
+      <caption xml:lang="ru">Браузер журналов</caption>
       <caption xml:lang="sl">Brskalnik po dnevniku</caption>
       <caption xml:lang="tr">Günlük Tarayıcı</caption>
       <caption xml:lang="uk">Навігатор журналом</caption>
