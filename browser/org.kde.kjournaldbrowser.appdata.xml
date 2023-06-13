@@ -18,6 +18,7 @@ SPDX-License-Identifier: CC0-1.0
   <name xml:lang="eu">Journald arakatzailea</name>
   <name xml:lang="fi">Journald-selain</name>
   <name xml:lang="fr">Navigateur « Journald »</name>
+  <name xml:lang="gl">Navegador de Journald</name>
   <name xml:lang="hi">जर्नलडी ब्राउज़र</name>
   <name xml:lang="id">Journald Browser</name>
   <name xml:lang="ie">Navigator de Journald</name>
@@ -46,6 +47,7 @@ SPDX-License-Identifier: CC0-1.0
   <summary xml:lang="eu">«Journald» datu-base arakatzailea</summary>
   <summary xml:lang="fi">Journald-tietokantaselain</summary>
   <summary xml:lang="fr">Navigateur dans les bases de données « Journald »</summary>
+  <summary xml:lang="gl">Navegador de bases de datos de journald</summary>
   <summary xml:lang="hi">जर्नलडी डाटाबेसेस के लिए ब्राउज़र</summary>
   <summary xml:lang="id">Penelusur untuk basis data journald</summary>
   <summary xml:lang="ie">Navigator de bases de data de Journald</summary>
@@ -75,6 +77,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="eu">Journald arakatzailea kjournald liburutegiaren erreferentzia inplementazio bat da eta tokiko, urrutiko eta lerroz-kanpoko journald datu-baseak arakatzeko tresna malgu bat eskaintzen du.</p>
     <p xml:lang="fi">Journald-selain on kjournald-kirjaston viitetoteutus, joka tarjoaa joustava työkalun paikallisten, etä- ja erillisten journald-tietokantojen selaukseen.</p>
     <p xml:lang="fr">Le navigateur « Journald » est une implémentation de référence de la bibliothèque « kjournald ». Il fournit un outil flexible pour naviguer dans les bases de données « journald » locales, distantes et hors ligne.</p>
+    <p xml:lang="gl">Journald-browser é unha implementación de referencia da biblioteca kjournald e fornece unha ferramenta flexíbel para navegar bases de datos de journald en local, en remoto e sen conexión.</p>
     <p xml:lang="hi">जर्नल-ब्राउज़र केजर्नलडी लाइब्ररी का एक संदर्भ कार्यान्वयन है और स्थानीय, दूरस्थ और ऑफ़लाइन जर्नल डेटाबेस में ब्राउज़ करने के लिए एक लचीला साधन प्रदान करता है।</p>
     <p xml:lang="id">Journald-browser adalah implementasi referensi dari pustaka kjournald dan menyediakan alat yang fleksibel untuk menelusuri basis data journald di lokal, jarak jauh dan offline.</p>
     <p xml:lang="ie">Navigator de Journald es un implementation de referentie del biblioteca kjournald e it provide un flexibil utensile por navigar local, lontan e retenet bases de data de journald.</p>
@@ -106,6 +109,7 @@ SPDX-License-Identifier: CC0-1.0
       <caption xml:lang="eu">Egunkari arakatzailea</caption>
       <caption xml:lang="fi">Lokiselain</caption>
       <caption xml:lang="fr">Navigateur pour journaux</caption>
+      <caption xml:lang="gl">Navegador de rexistros</caption>
       <caption xml:lang="id">Log Browser</caption>
       <caption xml:lang="ie">Navigator de diariums</caption>
       <caption xml:lang="it">Navigatore registri</caption>
