@@ -14,6 +14,7 @@ SPDX-License-Identifier: CC0-1.0
   <name xml:lang="de">Journald-Browser</name>
   <name xml:lang="el">Περιηγητής journald</name>
   <name xml:lang="en-GB">Journald Browser</name>
+  <name xml:lang="eo">Journald Browser</name>
   <name xml:lang="es">Explorador de Journald</name>
   <name xml:lang="eu">Journald arakatzailea</name>
   <name xml:lang="fi">Journald-selain</name>
@@ -43,6 +44,7 @@ SPDX-License-Identifier: CC0-1.0
   <summary xml:lang="de">Browser für Journald-Datenbanken</summary>
   <summary xml:lang="el">Περιηγητής για τις βάσεις δεδομένων journald</summary>
   <summary xml:lang="en-GB">Browser for journald databases</summary>
+  <summary xml:lang="eo">Foliumilo por journald-datenbazoj</summary>
   <summary xml:lang="es">Explorador de bases de datos de journald</summary>
   <summary xml:lang="eu">«Journald» datu-base arakatzailea</summary>
   <summary xml:lang="fi">Journald-tietokantaselain</summary>
