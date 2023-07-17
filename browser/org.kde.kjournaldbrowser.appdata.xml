@@ -75,6 +75,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="de">Journald-Browser ist eine Referenzimplementierung der kjournald-Bibliothek und bietet ein flexibles Werkzeug zum Browsen in lokalen, entfernten und Offline-Journald-Datenbanken.</p>
     <p xml:lang="el">Το journald-browser είναι μια υλοποίηση αναφοράς της βιβλιοθήκης kjournald και παρέχει ένα ευέλικτο εργαλείο περιήγησης σε τοπικές,α πομακρυσμένες και εκτός σύνδεσης journald βάσεις δεδομένων.</p>
     <p xml:lang="en-GB">Journald-browser is a reference implementation of the kjournald library and provides a flexible tool to browse in local, remote and offline journald databases.</p>
+    <p xml:lang="eo">Journald-browser estas referenca realigo de la kjournald-biblioteko kaj disponigas flekseblan ilon por foliumi en lokaj, malproksimaj kaj eksterretaj journald-datumbazoj.</p>
     <p xml:lang="es">El explorador de journald es una implementación de referencia de la biblioteca kjournald que proporciona una herramienta flexible para explorar las bases de datos locales, remotas y sin conexión de journald.</p>
     <p xml:lang="eu">Journald arakatzailea kjournald liburutegiaren erreferentzia inplementazio bat da eta tokiko, urrutiko eta lerroz-kanpoko journald datu-baseak arakatzeko tresna malgu bat eskaintzen du.</p>
     <p xml:lang="fi">Journald-selain on kjournald-kirjaston viitetoteutus, joka tarjoaa joustava työkalun paikallisten, etä- ja erillisten journald-tietokantojen selaukseen.</p>
@@ -107,6 +108,7 @@ SPDX-License-Identifier: CC0-1.0
       <caption xml:lang="cs">Prohlížeč záznamů</caption>
       <caption xml:lang="de">Protokollbrowser</caption>
       <caption xml:lang="en-GB">Log Browser</caption>
+      <caption xml:lang="eo">Protokolfoliumilo</caption>
       <caption xml:lang="es">Explorador del registro</caption>
       <caption xml:lang="eu">Egunkari arakatzailea</caption>
       <caption xml:lang="fi">Lokiselain</caption>
