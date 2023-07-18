@@ -14,6 +14,7 @@ SPDX-License-Identifier: CC0-1.0
   <name xml:lang="de">Journald-Browser</name>
   <name xml:lang="el">Περιηγητής journald</name>
   <name xml:lang="en-GB">Journald Browser</name>
+  <name xml:lang="eo">Journald Browser</name>
   <name xml:lang="es">Explorador de Journald</name>
   <name xml:lang="eu">Journald arakatzailea</name>
   <name xml:lang="fi">Journald-selain</name>
@@ -43,6 +44,7 @@ SPDX-License-Identifier: CC0-1.0
   <summary xml:lang="de">Browser für Journald-Datenbanken</summary>
   <summary xml:lang="el">Περιηγητής για τις βάσεις δεδομένων journald</summary>
   <summary xml:lang="en-GB">Browser for journald databases</summary>
+  <summary xml:lang="eo">Foliumilo por journald-datenbazoj</summary>
   <summary xml:lang="es">Explorador de bases de datos de journald</summary>
   <summary xml:lang="eu">«Journald» datu-base arakatzailea</summary>
   <summary xml:lang="fi">Journald-tietokantaselain</summary>
@@ -73,6 +75,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="de">Journald-Browser ist eine Referenzimplementierung der kjournald-Bibliothek und bietet ein flexibles Werkzeug zum Browsen in lokalen, entfernten und Offline-Journald-Datenbanken.</p>
     <p xml:lang="el">Το journald-browser είναι μια υλοποίηση αναφοράς της βιβλιοθήκης kjournald και παρέχει ένα ευέλικτο εργαλείο περιήγησης σε τοπικές,α πομακρυσμένες και εκτός σύνδεσης journald βάσεις δεδομένων.</p>
     <p xml:lang="en-GB">Journald-browser is a reference implementation of the kjournald library and provides a flexible tool to browse in local, remote and offline journald databases.</p>
+    <p xml:lang="eo">Journald-browser estas referenca realigo de la kjournald-biblioteko kaj disponigas flekseblan ilon por foliumi en lokaj, malproksimaj kaj eksterretaj journald-datumbazoj.</p>
     <p xml:lang="es">El explorador de journald es una implementación de referencia de la biblioteca kjournald que proporciona una herramienta flexible para explorar las bases de datos locales, remotas y sin conexión de journald.</p>
     <p xml:lang="eu">Journald arakatzailea kjournald liburutegiaren erreferentzia inplementazio bat da eta tokiko, urrutiko eta lerroz-kanpoko journald datu-baseak arakatzeko tresna malgu bat eskaintzen du.</p>
     <p xml:lang="fi">Journald-selain on kjournald-kirjaston viitetoteutus, joka tarjoaa joustava työkalun paikallisten, etä- ja erillisten journald-tietokantojen selaukseen.</p>
@@ -89,7 +92,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="pt">O Journald-browser é uma implementação de referência da biblioteca 'kjournald' e oferece uma ferramenta flexível para navegar pelas bases de dados locais, remotas e arquivadas do 'journald'.</p>
     <p xml:lang="pt-BR">O Journald-browser é uma implementação de referência da biblioteca kjournald e fornece uma ferramenta flexível para navegar nos bancos de dados local, remoto e offline.</p>
     <p xml:lang="ru">Браузер journald — это справочная реализация библиотеки kjournald. Он предоставляет в распоряжение пользователя гибкий инструмент для просмотра локальных, сетевых и автономных баз данных journald.</p>
-    <p xml:lang="sl">Brskalnik journald je referenčna izvedba knjižnice kjournald in nudi prilagodljivo orodje za brskanje po lokalnih, oddaljenih in nepovezanih podatkovnih bazah journald.</p>
+    <p xml:lang="sl">Brskalnik journald je referenčna izvedba knjižnice kjournald in nudi prilagodljivo orodje za brskanje po lokalnih, oddaljenih in nepovezanih podatkovnih baza journald.</p>
     <p xml:lang="sv">Journald-bläddraren är en referensimplementering av kjournald-biblioteket och tillhandahåller ett flexibelt verktyg för att bläddra i lokala databaser, fjärrdatabaser, och nedkopplade databaser.</p>
     <p xml:lang="tr">Journald-browser, kjournald kitaplığının bir başvuru uygulamasıdır ve yerel, uzak ve çevrimdışı journald veritabanlarına göz atmak için esnek bir araç sağlar.</p>
     <p xml:lang="uk">«Навігатор для Journald» — еталонна реалізація бібліотеки kjournald. Він надає у ваше розпорядження гнучкий інструмент для навігації локальними, віддаленими та автономними базами даних journald.</p>
@@ -105,6 +108,7 @@ SPDX-License-Identifier: CC0-1.0
       <caption xml:lang="cs">Prohlížeč záznamů</caption>
       <caption xml:lang="de">Protokollbrowser</caption>
       <caption xml:lang="en-GB">Log Browser</caption>
+      <caption xml:lang="eo">Protokolfoliumilo</caption>
       <caption xml:lang="es">Explorador del registro</caption>
       <caption xml:lang="eu">Egunkari arakatzailea</caption>
       <caption xml:lang="fi">Lokiselain</caption>
