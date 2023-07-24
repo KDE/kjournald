@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-21 00:49+0000\n"
-"PO-Revision-Date: 2023-07-18 11:15\n"
+"PO-Revision-Date: 2023-07-23 12:30\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -115,7 +115,7 @@ msgstr "关于"
 #: browser/LogView.qml:201
 #, kde-format
 msgid "Kernel"
-msgstr ""
+msgstr "内核"
 
 #: browser/main.cpp:45
 #, kde-format
@@ -170,7 +170,7 @@ msgstr "tysontan@tysontan.com"
 #: browser/Main.qml:55
 #, kde-format
 msgid "Launch Bug Report Wizard"
-msgstr ""
+msgstr "启动程序缺陷报告向导"
 
 #: browser/Main.qml:93
 #, kde-format
@@ -225,7 +225,7 @@ msgstr "配置远程日志服务器"
 #: browser/RemoteJournalConfigDialog.qml:31
 #, kde-format
 msgid "URL:"
-msgstr ""
+msgstr "URL："
 
 #: browser/RemoteJournalConfigDialog.qml:40
 #, kde-format
@@ -235,17 +235,17 @@ msgstr "端口："
 #: browser/TopMenuBar.qml:17
 #, kde-format
 msgid "Open System Journal"
-msgstr ""
+msgstr "打开系统日志"
 
 #: browser/TopMenuBar.qml:24
 #, kde-format
 msgid "Open from Folder"
-msgstr ""
+msgstr "从文件夹打开"
 
 #: browser/TopMenuBar.qml:32
 #, kde-format
 msgid "Open from File"
-msgstr ""
+msgstr "从文件打开"
 
 #: lib/filtercriteriamodel.cpp:22
 #, kde-format
@@ -299,7 +299,7 @@ msgstr "调试"
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "No Filter"
-msgstr ""
+msgstr "没有筛选条件"
 
 #: lib/filtercriteriamodel.cpp:135
 #, kde-format
