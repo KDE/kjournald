@@ -3,13 +3,13 @@
     SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 */
 
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Layouts 1.3
-import QtQml 2.15
-import org.kde.kirigami 2.2 as Kirigami
-import kjournald 1.0
-import Qt.labs.qmlmodels 1.0
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import QtQml
+import org.kde.kirigami as Kirigami
+import kjournald
+import Qt.labs.qmlmodels
 
 ListView {
     id: root

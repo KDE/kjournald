@@ -2,9 +2,9 @@
 // SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 // SPDX-FileCopyrightText: 2021 Carl Schwan <carl@carlschwan.eu>
 
-import Qt.labs.platform 1.1 as Labs
-import org.kde.kirigami 2.19 as Kirigami
-import kjournald 1.0
+import Qt.labs.platform as Labs
+import org.kde.kirigami as Kirigami
+import kjournald
 
 Labs.MenuBar {
     Labs.Menu {

@@ -3,10 +3,10 @@
     SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 */
 
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import org.kde.kirigami 2.15 as Kirigami
-import kjournald 1.0
+import QtQuick
+import QtQuick.Controls
+import org.kde.kirigami as Kirigami
+import kjournald
 
 MenuBar {
     signal copyViewToClipboard()
@@ -24,7 +24,7 @@ MenuBar {
             text: i18n("Open from Folder")
             icon.name: "document-open"
             onTriggered: {
-                folderDialog.folder = SessionConfigProxy.localJournalPath
+                folderDialog.currentFolder = SessionConfigProxy.localJournalPath
                 folderDialog.open()
             }
         }
@@ -32,7 +32,7 @@ MenuBar {
             text: i18n("Open from File")
             icon.name: "document-open"
             onTriggered: {
-                fileDialog.folder = SessionConfigProxy.localJournalPath
+                fileDialog.currentFolder = SessionConfigProxy.localJournalPath
                 fileDialog.open()
             }
         }

@@ -3,13 +3,13 @@
     SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 */
 
-import QtQuick 2.15
-import QtQuick.Window 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Dialogs 1.3 as Dialogs
-import QtQuick.Layouts 1.15
-import org.kde.kirigami 2.19 as Kirigami
-import kjournald 1.0
+import QtQuick
+import QtQuick.Window
+import QtQuick.Controls
+import QtQuick.Dialogs as Dialogs
+import QtQuick.Layouts
+import org.kde.kirigami as Kirigami
+import kjournald
 
 Kirigami.AbstractApplicationWindow {
     width: 1000
@@ -164,10 +164,9 @@ Kirigami.AbstractApplicationWindow {
         }
     }
 
-    Dialogs.FileDialog {
+    Dialogs.FolderDialog {
         id: folderDialog
         title: i18n("Select journal folder")
-        selectFolder: true
         onAccepted: {
             SessionConfigProxy.localJournalPath = folderDialog.fileUrl
             SessionConfigProxy.sessionMode = SessionConfig.LOCALFOLDER

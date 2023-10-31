@@ -3,9 +3,9 @@
     SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 */
 
-import QtQuick 2.15
-import QtQuick.Controls.Material 2.0
-import kjournald 1.0
+import QtQuick
+import QtQuick.Controls.Material
+import kjournald
 
 Item {
     id: root
