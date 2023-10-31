@@ -7,11 +7,11 @@
 #define JOURNALDHELPER_H
 
 #include "kjournald_export.h"
-#include "localjournal.h"
 #include <QDateTime>
 #include <QDebugStateSaver>
 #include <QObject>
 #include <QVector>
+#include <ijournal.h>
 
 class KJOURNALD_EXPORT JournaldHelper
 {

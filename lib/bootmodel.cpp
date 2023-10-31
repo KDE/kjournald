@@ -6,6 +6,7 @@
 #include "bootmodel.h"
 #include "bootmodel_p.h"
 #include "kjournaldlib_log_general.h"
+#include "localjournal.h"
 
 BootModelPrivate::BootModelPrivate(std::unique_ptr<IJournal> journal)
     : mJournal(std::move(journal))

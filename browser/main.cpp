@@ -8,7 +8,6 @@
 #include "fieldfilterproxymodel.h"
 #include "filtercriteriamodel.h"
 #include "flattenedfiltercriteriaproxymodel.h"
-#include "journaldhelper.h"
 #include "journalduniquequerymodel.h"
 #include "journaldviewmodel.h"
 #include "kjournald_version.h"
@@ -28,9 +27,6 @@
 
 int main(int argc, char *argv[])
 {
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-#endif
     QApplication app(argc, argv);
     QGuiApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("utilities-log-viewer")));
     app.setOrganizationName("KDE");

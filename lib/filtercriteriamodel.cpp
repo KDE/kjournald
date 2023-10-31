@@ -7,6 +7,7 @@
 #include "filtercriteriamodel_p.h"
 #include "kjournald_export.h"
 #include "kjournaldlib_log_general.h"
+#include "localjournal.h"
 #include <KLocalizedString>
 #include <QDebug>
 #include <QDir>
