@@ -59,9 +59,9 @@ target_sources(kjournald PRIVATE
 )
 target_link_libraries(kjournald
 PRIVATE
-    KF${QT_MAJOR_VERSION}::I18n
-    Qt${QT_MAJOR_VERSION}::Core
-    Qt${QT_MAJOR_VERSION}::Quick
+    KF6::I18n
+    Qt6::Core
+    Qt6::Quick
     PkgConfig::SYSTEMD
 )
 set_property(TARGET kjournald APPEND PROPERTY COMPILE_DEFINITIONS QT_NO_CAST_FROM_ASCII QT_NO_CAST_TO_ASCII)
@@ -70,7 +70,7 @@ target_include_directories(kjournald PUBLIC
     $<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}>
 )
 set_target_properties(kjournald PROPERTIES
-    VERSION ${KJOURNALD_VERSION_STRING}
+    VERSION ${KJOURNALD_VERSION}
     SOVERSION ${KJOURNALD_SOVERSION}
     EXPORT_NAME KJournald
 )

@@ -24,8 +24,8 @@ PUBLIC
     Qt::Quick
     Qt::QuickControls2
     Qt::Widgets # because of QApplication and QQC2 style integration
-    KF${QT_MAJOR_VERSION}::I18n
-    KF${QT_MAJOR_VERSION}::CoreAddons
+    KF6::I18n
+    KF6::CoreAddons
     kjournald
 )
 install(TARGETS kjournaldbrowser DESTINATION bin)
