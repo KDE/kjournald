@@ -24,7 +24,7 @@ Item {
     Rectangle {
         visible: root.__isHighlighted
         anchors.fill: parent
-        color: Material.highlightedButtonColor
+        color: Material.accent
     }
     Row {
         spacing: 4
