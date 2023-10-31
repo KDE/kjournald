@@ -15,11 +15,11 @@
 #define CONTAINER_EQUAL(actual, expected) \
 do {\
     if (!QTest::compare_helper(std::size(actual) >= std::size(expected), "Container elements differ", \
-                          QTest::toString(std::size(expected)), QTest::toString(std::size(actual)), "second container size", "first container size", __FILE__, __LINE__)) \
+                          QTest::toString(std::size(expected)), QTest::toString(std::size(actual)), __FILE__, __LINE__)) \
         return; \
     auto mismatch = std::mismatch(actual.cbegin(), actual.cend(), expected.cbegin()); \
     if (!QTest::compare_helper(mismatch.first == actual.cend(), "Container elements differ", \
-                          QTest::toString(*mismatch.second), QTest::toString(*mismatch.first), "element of second container", "element of first container", __FILE__, __LINE__)) \
+                          QTest::toString(*mismatch.second), QTest::toString(*mismatch.first), __FILE__, __LINE__)) \
         return; \
 } while (false)
 
