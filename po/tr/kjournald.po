@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the kjournald package.
 #
-# Emir SARI <emir_sari@icloud.com>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022, 2023 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-21 00:49+0000\n"
-"PO-Revision-Date: 2023-04-02 17:26+0300\n"
+"PO-Revision-Date: 2023-11-02 13:25+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.2\n"
 
 #: browser/FilterCriteriaView.qml:27
 #, kde-format
@@ -40,7 +40,7 @@ msgstr "Dosya"
 #: browser/GlobalMenu.qml:14
 #, kde-format
 msgid "Open system journal"
-msgstr "Sistem jurnalini aç"
+msgstr "Sistem güncesini aç"
 
 #: browser/GlobalMenu.qml:21
 #, kde-format
@@ -60,7 +60,7 @@ msgstr "Kapat"
 #: browser/GlobalMenu.qml:54 browser/TopMenuBar.qml:57
 #, kde-format
 msgid "Current Journal"
-msgstr "Geçerli jurnal"
+msgstr "Geçerli günce"
 
 #: browser/GlobalMenu.qml:62 browser/TopMenuBar.qml:65
 #, kde-format
@@ -197,17 +197,17 @@ msgstr "Seç"
 #: browser/Main.qml:169
 #, kde-format
 msgid "Select journal folder"
-msgstr "Jurnal klasörü seç"
+msgstr "Günce klasörü seç"
 
 #: browser/Main.qml:179
 #, kde-format
 msgid "Select journal file"
-msgstr "Jurnal dosyası seç"
+msgstr "Günce dosyası seç"
 
 #: browser/Main.qml:180
 #, kde-format
 msgid "Journal files (*.journal)"
-msgstr "Jurnal dosyaları (*.journal)"
+msgstr "Günce dosyaları (*.journal)"
 
 #: browser/Main.qml:180
 #, kde-format
@@ -222,7 +222,7 @@ msgstr "Günlük girdisi yok "
 #: browser/RemoteJournalConfigDialog.qml:17
 #, kde-format
 msgid "Configure Remote Journal Server"
-msgstr "Uzak Jurnal Sunucusunu Yapılandır"
+msgstr "Uzak Günce Sunucusunu Yapılandır"
 
 #: browser/RemoteJournalConfigDialog.qml:31
 #, kde-format
@@ -237,7 +237,7 @@ msgstr "Kapı:"
 #: browser/TopMenuBar.qml:17
 #, kde-format
 msgid "Open System Journal"
-msgstr "Sistem Jurnalini Aç"
+msgstr "Sistem Güncesini Aç"
 
 #: browser/TopMenuBar.qml:24
 #, kde-format
