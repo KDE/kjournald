@@ -25,8 +25,7 @@ add_definitions(
     -DKF_DEPRECATED_WARNINGS_SINCE=0x060000
 )
 
-# KF minimal version is chosen to support Ubuntu 22.04 LTS
-set(KF_VERSION 5.239.0)
+set(KF_VERSION 5.240.0)
 find_package(ECM ${KF_VERSION} NO_MODULE)
 set_package_properties(ECM PROPERTIES
     TYPE REQUIRED
