@@ -39,6 +39,7 @@ SPDX-License-Identifier: CC0-1.0
   <name xml:lang="x-test">xxJournald Browserxx</name>
   <name xml:lang="zh-CN">Journald 浏览器</name>
   <summary>Browser for journald databases</summary>
+  <summary xml:lang="ast">Restola les bases de datos de journald</summary>
   <summary xml:lang="ca">Navegador per a bases de dades de «journald»</summary>
   <summary xml:lang="ca-valencia">Navegador per a bases de dades de «journald»</summary>
   <summary xml:lang="de">Browser für Journald-Datenbanken</summary>
@@ -103,6 +104,7 @@ SPDX-License-Identifier: CC0-1.0
     <screenshot type="default">
       <image>https://cdn.kde.org/screenshots/kjournald/kjournald.png</image>
       <caption>Log Browser</caption>
+      <caption xml:lang="ast">Restolador de rexistros</caption>
       <caption xml:lang="ca">Navegador del registre</caption>
       <caption xml:lang="ca-valencia">Navegador del registre</caption>
       <caption xml:lang="cs">Prohlížeč záznamů</caption>
