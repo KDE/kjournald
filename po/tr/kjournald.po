@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 01:39+0000\n"
+"POT-Creation-Date: 2023-11-06 01:40+0000\n"
 "PO-Revision-Date: 2023-11-02 13:25+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -117,25 +117,25 @@ msgstr "Hakkında"
 msgid "Kernel"
 msgstr "Çekirdek"
 
-#: browser/main.cpp:45
+#: browser/main.cpp:41
 #, kde-format
 msgctxt "@title Displayed program name"
 msgid "KJournald Browser"
 msgstr "Kjournald Tarayıcısı"
 
-#: browser/main.cpp:47
+#: browser/main.cpp:43
 #, kde-format
 msgctxt "@title KAboutData: short program description"
 msgid "Viewer for Journald logs"
 msgstr "Journald günlükleri için görüntüleyici"
 
-#: browser/main.cpp:49
+#: browser/main.cpp:45
 #, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021 The KJournald Developers"
 msgstr "(c) 2021 KJournald Geliştiricileri"
 
-#: browser/main.cpp:50
+#: browser/main.cpp:46
 #, kde-format
 msgctxt "@title Short program description"
 msgid ""
@@ -145,25 +145,25 @@ msgstr ""
 "Journald günlükleme aracı tarafından oluşturulan Journald veritabanları için "
 "görüntüleyici."
 
-#: browser/main.cpp:52
+#: browser/main.cpp:48
 #, kde-format
 msgctxt "@info:credit Developer name"
 msgid "Andreas Cord-Landwehr"
 msgstr "Andreas Cord-Landwehr"
 
-#: browser/main.cpp:53
+#: browser/main.cpp:49
 #, kde-format
 msgctxt "@info:credit Role"
 msgid "Original Author"
 msgstr "Özgün Yazar"
 
-#: browser/main.cpp:55
+#: browser/main.cpp:51
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Emir SARI"
 
-#: browser/main.cpp:55
+#: browser/main.cpp:51
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -199,22 +199,22 @@ msgstr "Seç"
 msgid "Select journal folder"
 msgstr "Günce klasörü seç"
 
-#: browser/Main.qml:179
+#: browser/Main.qml:178
 #, kde-format
 msgid "Select journal file"
 msgstr "Günce dosyası seç"
 
-#: browser/Main.qml:180
+#: browser/Main.qml:179
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "Günce dosyaları (*.journal)"
 
-#: browser/Main.qml:180
+#: browser/Main.qml:179
 #, kde-format
 msgid "All files (*)"
 msgstr "Tüm dosyalar (*)"
 
-#: browser/Main.qml:253
+#: browser/Main.qml:252
 #, kde-format
 msgid "No log entries apply "
 msgstr "Günlük girdisi yok "
@@ -249,85 +249,85 @@ msgstr "Klasörden Aç"
 msgid "Open from File"
 msgstr "Dosyadan Aç"
 
-#: lib/filtercriteriamodel.cpp:22
+#: lib/filtercriteriamodel.cpp:23
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Emergency"
 msgstr "Acil Durum:"
 
-#: lib/filtercriteriamodel.cpp:24
+#: lib/filtercriteriamodel.cpp:25
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Alert"
 msgstr "Alarm"
 
-#: lib/filtercriteriamodel.cpp:26
+#: lib/filtercriteriamodel.cpp:27
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Critical"
 msgstr "Kritik"
 
-#: lib/filtercriteriamodel.cpp:28
+#: lib/filtercriteriamodel.cpp:29
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Error"
 msgstr "Hata"
 
-#: lib/filtercriteriamodel.cpp:30
+#: lib/filtercriteriamodel.cpp:31
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Warning"
 msgstr "Uyarı"
 
-#: lib/filtercriteriamodel.cpp:32
+#: lib/filtercriteriamodel.cpp:33
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Notice"
 msgstr "Bildirim"
 
-#: lib/filtercriteriamodel.cpp:34
+#: lib/filtercriteriamodel.cpp:35
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Info"
 msgstr "Bilgi"
 
-#: lib/filtercriteriamodel.cpp:36
+#: lib/filtercriteriamodel.cpp:37
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Debug"
 msgstr "Hata Ayıklama"
 
-#: lib/filtercriteriamodel.cpp:38
+#: lib/filtercriteriamodel.cpp:39
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "No Filter"
 msgstr "Süzgeç Yok"
 
-#: lib/filtercriteriamodel.cpp:135
+#: lib/filtercriteriamodel.cpp:136
 #, kde-format
 msgctxt "Section title for log message source"
 msgid "Transport"
 msgstr "Taşıma"
 
-#: lib/filtercriteriamodel.cpp:142
+#: lib/filtercriteriamodel.cpp:143
 #, kde-format
 msgctxt "Checkbox option for kernel log messages"
 msgid "Kernel"
 msgstr "Çekirdek"
 
-#: lib/filtercriteriamodel.cpp:149
+#: lib/filtercriteriamodel.cpp:150
 #, kde-format
 msgctxt "Section title for log message priority"
 msgid "Priority"
 msgstr "Öncelik"
 
-#: lib/filtercriteriamodel.cpp:170
+#: lib/filtercriteriamodel.cpp:171
 #, kde-format
 msgctxt "Section title for systemd unit"
 msgid "Unit"
 msgstr "Birim"
 
-#: lib/filtercriteriamodel.cpp:191
+#: lib/filtercriteriamodel.cpp:192
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"

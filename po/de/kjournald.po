@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 01:39+0000\n"
+"POT-Creation-Date: 2023-11-06 01:40+0000\n"
 "PO-Revision-Date: 2022-12-19 09:57+0100\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -121,25 +121,25 @@ msgstr "Über"
 msgid "Kernel"
 msgstr "Kernel"
 
-#: browser/main.cpp:45
+#: browser/main.cpp:41
 #, kde-format
 msgctxt "@title Displayed program name"
 msgid "KJournald Browser"
 msgstr "KJournald-Betrachter"
 
-#: browser/main.cpp:47
+#: browser/main.cpp:43
 #, kde-format
 msgctxt "@title KAboutData: short program description"
 msgid "Viewer for Journald logs"
 msgstr "Betrachter für Journald-Protokolle"
 
-#: browser/main.cpp:49
+#: browser/main.cpp:45
 #, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021 The KJournald Developers"
 msgstr "Copyright 2021 Die KJournald-Entwickler"
 
-#: browser/main.cpp:50
+#: browser/main.cpp:46
 #, kde-format
 msgctxt "@title Short program description"
 msgid ""
@@ -149,25 +149,25 @@ msgstr ""
 "Betrachter für Journald-Datenbanken, die vom Journald-"
 "Protokollierungswerkzeug erstellt wurden."
 
-#: browser/main.cpp:52
+#: browser/main.cpp:48
 #, kde-format
 msgctxt "@info:credit Developer name"
 msgid "Andreas Cord-Landwehr"
 msgstr "Andreas Cord-Landwehr"
 
-#: browser/main.cpp:53
+#: browser/main.cpp:49
 #, kde-format
 msgctxt "@info:credit Role"
 msgid "Original Author"
 msgstr "Ursprünglicher Autor"
 
-#: browser/main.cpp:55
+#: browser/main.cpp:51
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Deutsches KDE-Übersetzerteam"
 
-#: browser/main.cpp:55
+#: browser/main.cpp:51
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -203,22 +203,22 @@ msgstr "Auswählen"
 msgid "Select journal folder"
 msgstr "Journal-Ordner auswählen"
 
-#: browser/Main.qml:179
+#: browser/Main.qml:178
 #, kde-format
 msgid "Select journal file"
 msgstr "Journal-Datei auswählen"
 
-#: browser/Main.qml:180
+#: browser/Main.qml:179
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "Journal-Dateien (*.journal)"
 
-#: browser/Main.qml:180
+#: browser/Main.qml:179
 #, kde-format
 msgid "All files (*)"
 msgstr "Alle Dateien (*)"
 
-#: browser/Main.qml:253
+#: browser/Main.qml:252
 #, kde-format
 msgid "No log entries apply "
 msgstr "Keine zutreffenden Protokolleinträge"
@@ -253,85 +253,85 @@ msgstr "Aus Ordner öffnen"
 msgid "Open from File"
 msgstr "Aus Datei öffnen"
 
-#: lib/filtercriteriamodel.cpp:22
+#: lib/filtercriteriamodel.cpp:23
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Emergency"
 msgstr "Notfall"
 
-#: lib/filtercriteriamodel.cpp:24
+#: lib/filtercriteriamodel.cpp:25
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Alert"
 msgstr "Alarm"
 
-#: lib/filtercriteriamodel.cpp:26
+#: lib/filtercriteriamodel.cpp:27
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Critical"
 msgstr "Kritisch"
 
-#: lib/filtercriteriamodel.cpp:28
+#: lib/filtercriteriamodel.cpp:29
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Error"
 msgstr "Fehler"
 
-#: lib/filtercriteriamodel.cpp:30
+#: lib/filtercriteriamodel.cpp:31
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Warning"
 msgstr "Warnung"
 
-#: lib/filtercriteriamodel.cpp:32
+#: lib/filtercriteriamodel.cpp:33
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Notice"
 msgstr "Hinweis"
 
-#: lib/filtercriteriamodel.cpp:34
+#: lib/filtercriteriamodel.cpp:35
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Info"
 msgstr "Information"
 
-#: lib/filtercriteriamodel.cpp:36
+#: lib/filtercriteriamodel.cpp:37
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Debug"
 msgstr "Fehlersuche"
 
-#: lib/filtercriteriamodel.cpp:38
+#: lib/filtercriteriamodel.cpp:39
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "No Filter"
 msgstr "Kein Filter"
 
-#: lib/filtercriteriamodel.cpp:135
+#: lib/filtercriteriamodel.cpp:136
 #, kde-format
 msgctxt "Section title for log message source"
 msgid "Transport"
 msgstr "Transport"
 
-#: lib/filtercriteriamodel.cpp:142
+#: lib/filtercriteriamodel.cpp:143
 #, kde-format
 msgctxt "Checkbox option for kernel log messages"
 msgid "Kernel"
 msgstr "Kernel"
 
-#: lib/filtercriteriamodel.cpp:149
+#: lib/filtercriteriamodel.cpp:150
 #, kde-format
 msgctxt "Section title for log message priority"
 msgid "Priority"
 msgstr "Priorität"
 
-#: lib/filtercriteriamodel.cpp:170
+#: lib/filtercriteriamodel.cpp:171
 #, kde-format
 msgctxt "Section title for systemd unit"
 msgid "Unit"
 msgstr "Einheit"
 
-#: lib/filtercriteriamodel.cpp:191
+#: lib/filtercriteriamodel.cpp:192
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"
