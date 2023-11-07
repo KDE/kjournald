@@ -21,7 +21,9 @@ ListView {
         role: "type"
         DelegateChoice {
             roleValue: FlattenedFilterCriteriaProxyModel.FIRST_LEVEL
-            delegate: Kirigami.AbstractListItem {
+            delegate: ItemDelegate {
+                id: expandDelegate
+                width: ListView.view.width
                 onClicked: model.expanded = !model.expanded
                 Accessible.name: model.text
                 Accessible.description: model.expanded ? i18n("Expanded") : i18n("Collapsed")
@@ -40,7 +42,7 @@ ListView {
                             source: model.expanded ? "collapse" : "expand"
                         }
                     }
-                    Kirigami.AbstractListItem { // clear button for checkbox selection
+                    ItemDelegate { // clear button for checkbox selection
                         visible: model.expanded && model.selected
                         leftPadding: 20
                         onClicked: model.selected = false
@@ -64,7 +66,7 @@ ListView {
         }
         DelegateChoice {
             roleValue: FlattenedFilterCriteriaProxyModel.CHECKBOX
-            delegate: Kirigami.AbstractListItem {
+            delegate: ItemDelegate {
                 id: checkboxDelegate
                 width: ListView.view.width
                 text: model ? model.text : ""
@@ -105,7 +107,7 @@ ListView {
         }
         DelegateChoice {
             roleValue: FlattenedFilterCriteriaProxyModel.RADIOBUTTON
-            delegate: Kirigami.AbstractListItem {
+            delegate: ItemDelegate {
                 id: radioDelegate
                 width: ListView.view.width
                 text: model ? model.text : ""
