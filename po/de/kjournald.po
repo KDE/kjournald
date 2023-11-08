@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-06 01:40+0000\n"
+"POT-Creation-Date: 2023-11-08 08:48+0000\n"
 "PO-Revision-Date: 2022-12-19 09:57+0100\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -21,17 +21,17 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 22.12.0\n"
 
-#: browser/FilterCriteriaView.qml:27
+#: browser/FilterCriteriaView.qml:29
 #, kde-format
 msgid "Expanded"
 msgstr "Ausgeklappt"
 
-#: browser/FilterCriteriaView.qml:27
+#: browser/FilterCriteriaView.qml:29
 #, kde-format
 msgid "Collapsed"
 msgstr "Eingeklappt"
 
-#: browser/FilterCriteriaView.qml:52
+#: browser/FilterCriteriaView.qml:54
 #, kde-format
 msgid "Clear"
 msgstr "Leeren"

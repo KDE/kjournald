@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-06 01:40+0000\n"
+"POT-Creation-Date: 2023-11-08 08:48+0000\n"
 "PO-Revision-Date: 2022-11-22 07:43+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -18,17 +18,17 @@ msgstr ""
 "%100==4 ? 3 : 0);\n"
 "X-Generator: Lokalize 22.08.2\n"
 
-#: browser/FilterCriteriaView.qml:27
+#: browser/FilterCriteriaView.qml:29
 #, kde-format
 msgid "Expanded"
 msgstr "Razširjeno"
 
-#: browser/FilterCriteriaView.qml:27
+#: browser/FilterCriteriaView.qml:29
 #, kde-format
 msgid "Collapsed"
 msgstr "Strnjeno"
 
-#: browser/FilterCriteriaView.qml:52
+#: browser/FilterCriteriaView.qml:54
 #, kde-format
 msgid "Clear"
 msgstr "Očisti"
