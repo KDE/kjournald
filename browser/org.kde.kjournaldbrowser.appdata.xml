@@ -21,6 +21,7 @@ SPDX-License-Identifier: CC0-1.0
   <name xml:lang="fr">Navigateur « Journald »</name>
   <name xml:lang="gl">Navegador de Journald</name>
   <name xml:lang="hi">जर्नलडी ब्राउज़र</name>
+  <name xml:lang="ia">Journald Browser (Navigator de Journald)</name>
   <name xml:lang="id">Journald Browser</name>
   <name xml:lang="ie">Navigator de Journald</name>
   <name xml:lang="it">Navigatore journald</name>
@@ -52,6 +53,7 @@ SPDX-License-Identifier: CC0-1.0
   <summary xml:lang="fr">Navigateur dans les bases de données « Journald »</summary>
   <summary xml:lang="gl">Navegador de bases de datos de journald</summary>
   <summary xml:lang="hi">जर्नलडी डाटाबेसेस के लिए ब्राउज़र</summary>
+  <summary xml:lang="ia">Navigator per base da datos de journald</summary>
   <summary xml:lang="id">Penelusur untuk basis data journald</summary>
   <summary xml:lang="ie">Navigator de bases de data de Journald</summary>
   <summary xml:lang="it">Navigatore per i database di journald</summary>
