@@ -1,5 +1,7 @@
 # SPDX-License-Identifier: CC0-1.0
 # SPDX-FileCopyrightText: none
 include:
-  - https://invent.kde.org/sysadmin/ci-utilities/raw/master/gitlab-templates/linux-qt6.yml
-  # - https://invent.kde.org/sysadmin/ci-utilities/raw/master/gitlab-templates/flatpak.yml no KF6 runtime yet
+  - project: sysadmin/ci-utilities
+    file:
+      - /gitlab-templates/linux-qt6.yml
+  #     - /gitlab-templates/flatpak.yml no KF6 runtime yet
