@@ -39,6 +39,7 @@ SPDX-License-Identifier: CC0-1.0
   <name xml:lang="uk">Навігатор для Journald</name>
   <name xml:lang="x-test">xxJournald Browserxx</name>
   <name xml:lang="zh-CN">Journald 浏览器</name>
+  <name xml:lang="zh-TW">Journald 日誌瀏覽器</name>
   <summary>Browser for journald databases</summary>
   <summary xml:lang="ast">Restola les bases de datos de journald</summary>
   <summary xml:lang="ca">Navegador per a bases de dades de «journald»</summary>
@@ -71,6 +72,7 @@ SPDX-License-Identifier: CC0-1.0
   <summary xml:lang="uk">Навігатор для баз даних journald</summary>
   <summary xml:lang="x-test">xxBrowser for journald databasesxx</summary>
   <summary xml:lang="zh-CN">journald 数据库浏览器</summary>
+  <summary xml:lang="zh-TW">Journald 資料庫的瀏覽器</summary>
   <description>
     <p>Journald-browser is a reference implementation of the kjournald library and provides a flexible tool to browse in local, remote and offline journald databases.</p>
     <p xml:lang="ca">El navegador de «journald» és una implementació de referència de la biblioteca kjournald i proporciona una eina flexible per a navegar per les bases de dades de journald locals, remotes i fora de línia.</p>
@@ -101,6 +103,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="uk">«Навігатор для Journald» — еталонна реалізація бібліотеки kjournald. Він надає у ваше розпорядження гнучкий інструмент для навігації локальними, віддаленими та автономними базами даних journald.</p>
     <p xml:lang="x-test">xxJournald-browser is a reference implementation of the kjournald library and provides a flexible tool to browse in local, remote and offline journald databases.xx</p>
     <p xml:lang="zh-CN">Journald-browser 是 kjournald 程序库的参考实现程序，它提供了一套灵活浏览本地、远程和离线 journald 数据库的工具。</p>
+    <p xml:lang="zh-TW">Journald 日誌瀏覽器 (journald-browser) 是 kjournald 函式庫的參考實作，提供一個瀏覽本機、遠端及離線 journald 資料庫的靈活工具。</p>
   </description>
   <screenshots>
     <screenshot type="default">
@@ -134,6 +137,7 @@ SPDX-License-Identifier: CC0-1.0
       <caption xml:lang="uk">Навігатор журналом</caption>
       <caption xml:lang="x-test">xxLog Browserxx</caption>
       <caption xml:lang="zh-CN">日志浏览器</caption>
+      <caption xml:lang="zh-TW">日誌瀏覽器</caption>
     </screenshot>
   </screenshots>
   <url type="homepage">https://invent.kde.org/libraries/kjournald</url>
