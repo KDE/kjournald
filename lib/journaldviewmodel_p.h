@@ -86,6 +86,7 @@ public:
     bool mShowKernelMessages{false};
     bool mHeadCursorReached{false};
     bool mTailCursorReached{false};
+    bool mModelResetActive{false};
     QAtomicInt mActiveFetchOperations{0};
     uint32_t mChunkSize{500};
 };

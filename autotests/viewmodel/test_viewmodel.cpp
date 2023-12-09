@@ -23,7 +23,7 @@
 void TestViewModel::journalAccess()
 {
     JournaldViewModel model;
-    QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
+    QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
 
     // test failure handling for invalid journal
     QTemporaryFile invalidJournal; // file is surely invalid
@@ -39,7 +39,7 @@ void TestViewModel::rowAccess()
 {
     // used unfiltered journal and check first two lines
     JournaldViewModel model;
-    QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
+    QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
     QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
     QVERIFY(model.rowCount() > 0);
 
@@ -76,7 +76,7 @@ void TestViewModel::rowAccess()
 void TestViewModel::bootFilter()
 {
     JournaldViewModel model;
-    QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
+    QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
     QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
 
     // select only second boot
@@ -110,7 +110,7 @@ void TestViewModel::bootFilter()
 void TestViewModel::unitFilter()
 {
     JournaldViewModel model;
-    QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
+    QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
     QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
 
     // select single service
@@ -145,7 +145,7 @@ void TestViewModel::showKernelMessages()
     const QString arbitraryKernelMessage = "brcmfmac: brcmf_fw_alloc_request: using brcm/brcmfmac43455-sdio for chip BCM4345/6";
 
     JournaldViewModel model;
-    QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
+    QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
     QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
 
     // check that not contains Kernel message
@@ -178,7 +178,7 @@ void TestViewModel::showKernelMessages()
 void TestViewModel::closestIndexForDateComputation()
 {
     JournaldViewModel model;
-    QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
+    QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
     QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
 
     QDateTime firstLogEntryDateTime = model.data(model.index(0, 0), JournaldViewModel::DATETIME).toDateTime();
@@ -201,7 +201,7 @@ void TestViewModel::closestIndexForDateComputation()
 void TestViewModel::readFullJournal()
 {
     JournaldViewModel model;
-    QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
+    QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
     QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
     model.setBootFilter({mBoots.at(0)});
     model.setKernelFilter(true);
@@ -223,7 +223,7 @@ void TestViewModel::readFullJournal()
 void TestViewModel::resetModelHeadAndTailCursorTest()
 {
     JournaldViewModel model;
-    QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
+    QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
     QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
 
     struct Cursors {
@@ -299,7 +299,7 @@ void TestViewModel::stringSearch()
     {
         JournaldViewModel model;
         model.setBootFilter({mBoots.at(0)}); // select boot -2 == 68f2e61d061247d8a8ba0b8d53a97a52
-        QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
+        QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
         QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
         int foundLine{-1};
         std::vector<int> results;
@@ -318,7 +318,7 @@ void TestViewModel::stringSearch()
         JournaldViewModel model;
         model.setFetchMoreChunkSize(10);
         model.setBootFilter({mBoots.at(0)}); // select boot -2 == 68f2e61d061247d8a8ba0b8d53a97a52
-        QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
+        QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
         QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
         int foundLine{-1};
         std::vector<int> results;
@@ -343,7 +343,7 @@ void TestViewModel::stringSearch()
         JournaldViewModel model;
         model.setBootFilter({mBoots.at(0)}); // select boot -2 == 68f2e61d061247d8a8ba0b8d53a97a52
         model.seekTail();
-        QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
+        QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
         QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
         int foundLine = model.rowCount() - 1;
         std::vector<int> results;

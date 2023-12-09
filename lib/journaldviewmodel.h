@@ -338,6 +338,10 @@ Q_SIGNALS:
      */
     void priorityFilterChanged();
 
+protected:
+    void guardedBeginResetModel();
+    void guardedEndResetModel();
+
 private:
     std::unique_ptr<JournaldViewModelPrivate> d;
 };

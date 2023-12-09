@@ -27,7 +27,6 @@ private Q_SLOTS:
      * Reset model by changing the boot ID and and test that cursor for head/tail are updated accordingly
      */
     void resetModelHeadAndTailCursorTest();
-
     /**
      * Search mechanism with automatic fetching
      */

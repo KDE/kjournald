@@ -337,18 +337,33 @@ JournaldViewModel::JournaldViewModel(const QString &path, QObject *parent)
 
 JournaldViewModel::~JournaldViewModel() = default;
 
+void JournaldViewModel::guardedBeginResetModel()
+{
+    Q_ASSERT_X(d->mModelResetActive == false, "JournaldViewModel::guardedBeginResetModel", "d->mModelResetActive==true");
+    d->mModelResetActive = true;
+    beginResetModel();
+}
+
+void JournaldViewModel::guardedEndResetModel()
+{
+    endResetModel();
+    Q_ASSERT_X(d->mModelResetActive == true, "JournaldViewModel::guardedEndResetModel", "d->mModelResetActive==false");
+    d->mModelResetActive = false;
+}
+
 bool JournaldViewModel::setJournal(std::unique_ptr<IJournal> journal)
 {
+    // with this setter the problem starts
     bool success{true};
-    beginResetModel();
+    guardedBeginResetModel();
     d->mLog.clear();
     d->mJournal = std::move(journal);
     success = d->mJournal->isValid();
     if (success) {
         d->resetJournal();
-        fetchMoreLogEntries();
     }
-    endResetModel();
+    guardedEndResetModel();
+    fetchMoreLogEntries();
     connect(d->mJournal.get(), &IJournal::journalUpdated, this, [=](const QString &bootId) {
         if (!d->mBootFilter.contains(bootId)) {
             return;
@@ -488,11 +503,20 @@ QDateTime JournaldViewModel::datetime(int indexRow) const
 
 bool JournaldViewModel::canFetchMore(const QModelIndex &parent) const
 {
-    return !(d->mHeadCursorReached && d->mTailCursorReached);
+    if (parent.isValid()) {
+        return false;
+    }
+    return !d->mModelResetActive && !(d->mHeadCursorReached && d->mTailCursorReached);
 }
 
 void JournaldViewModel::fetchMore(const QModelIndex &parent)
 {
+    if (parent.isValid()) {
+        return;
+    }
+    if (d->mModelResetActive) {
+        return;
+    }
     fetchMoreLogEntries();
 }
 
@@ -546,7 +570,7 @@ void JournaldViewModel::setFetchMoreChunkSize(quint32 size)
 
 void JournaldViewModel::seekHead()
 {
-    beginResetModel();
+    guardedBeginResetModel();
     d->mLog.clear();
     if (d->mJournal && d->mJournal->isValid()) {
         d->seekHeadAndMakeCurrent();
@@ -555,12 +579,12 @@ void JournaldViewModel::seekHead()
     } else {
         qCCritical(KJOURNALDLIB_GENERAL) << "Cannot seek head of invalid journal";
     }
-    endResetModel();
+    guardedEndResetModel();
 }
 
 void JournaldViewModel::seekTail()
 {
-    beginResetModel();
+    guardedBeginResetModel();
     d->mLog.clear();
     if (d->mJournal && d->mJournal->isValid()) {
         d->seekTailAndMakeCurrent();
@@ -569,16 +593,16 @@ void JournaldViewModel::seekTail()
     } else {
         qCCritical(KJOURNALDLIB_GENERAL) << "Cannot seek head of invalid journal";
     }
-    endResetModel();
+    guardedEndResetModel();
 }
 
 void JournaldViewModel::setSystemdUnitFilter(const QStringList &systemdUnitFilter)
 {
-    beginResetModel();
+    guardedBeginResetModel();
     d->mSystemdUnitFilter = systemdUnitFilter;
     d->resetJournal();
+    guardedEndResetModel();
     fetchMoreLogEntries();
-    endResetModel();
 }
 
 QStringList JournaldViewModel::systemdUnitFilter() const
@@ -591,11 +615,11 @@ void JournaldViewModel::setBootFilter(const QStringList &bootFilter)
     if (d->mBootFilter == bootFilter) {
         return;
     }
-    beginResetModel();
+    guardedBeginResetModel();
     d->mBootFilter = bootFilter;
     d->resetJournal();
+    guardedEndResetModel();
     fetchMoreLogEntries();
-    endResetModel();
     Q_EMIT bootFilterChanged();
 }
 
@@ -609,11 +633,11 @@ void JournaldViewModel::setExeFilter(const QStringList &exeFilter)
     if (d->mExeFilter == exeFilter) {
         return;
     }
-    beginResetModel();
+    guardedBeginResetModel();
     d->mExeFilter = exeFilter;
     d->resetJournal();
+    guardedEndResetModel();
     fetchMoreLogEntries();
-    endResetModel();
     Q_EMIT exeFilterChanged();
 }
 
@@ -625,25 +649,25 @@ QStringList JournaldViewModel::exeFilter() const
 void JournaldViewModel::setPriorityFilter(int priority)
 {
     qCDebug(KJOURNALDLIB_GENERAL) << "Set priority filter to:" << priority;
-    beginResetModel();
+    guardedBeginResetModel();
     if (priority >= 0) {
         d->mPriorityFilter = priority;
     } else {
         d->mPriorityFilter = std::nullopt;
     }
     d->resetJournal();
+    guardedEndResetModel();
     fetchMoreLogEntries();
-    endResetModel();
     Q_EMIT priorityFilterChanged();
 }
 
 void JournaldViewModel::resetPriorityFilter()
 {
-    beginResetModel();
+    guardedBeginResetModel();
     d->mPriorityFilter.reset();
     d->resetJournal();
+    guardedEndResetModel();
     fetchMoreLogEntries();
-    endResetModel();
     Q_EMIT priorityFilterChanged();
 }
 
@@ -657,11 +681,11 @@ void JournaldViewModel::setKernelFilter(bool showKernelMessages)
     if (d->mShowKernelMessages == showKernelMessages) {
         return;
     }
-    beginResetModel();
+    guardedBeginResetModel();
     d->mShowKernelMessages = showKernelMessages;
     d->resetJournal();
+    guardedEndResetModel();
     fetchMoreLogEntries();
-    endResetModel();
     Q_EMIT kernelFilterChanged();
 }
 
