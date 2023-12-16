@@ -241,20 +241,27 @@ void TestViewModel::resetModelHeadAndTailCursorTest()
     model.setBootFilter({mBoots.at(0)});
     // boot has 925 non-kernel log entries, fetching once with chunk size 500 gets all
     model.fetchMore(QModelIndex());
+
     // journalctl -b 68f2e61d061247d8a8ba0b8d53a97a52 -D . -o json|head -n1
     QCOMPARE(model.data(model.index(0, 0), JournaldViewModel::CURSOR), cursors.at(0).mHead);
     // journalctl -b 27acae2fe35a40ac93f9c7732c0b8e59 -D . -o json|tail # then look for first message without driver or kernel TRANSPORT
     QCOMPARE(model.data(model.index(model.rowCount() - 1, 0), JournaldViewModel::CURSOR), cursors.at(0).mTail);
+
     // invoke tail seeking
     model.seekTail();
+    model.fetchMore(QModelIndex());
     QCOMPARE(model.data(model.index(0, 0), JournaldViewModel::CURSOR), cursors.at(0).mHead);
     QCOMPARE(model.data(model.index(model.rowCount() - 1, 0), JournaldViewModel::CURSOR), cursors.at(0).mTail);
+
+    // invoke head seeking
     model.seekHead();
+    model.fetchMore(QModelIndex());
     QCOMPARE(model.data(model.index(0, 0), JournaldViewModel::CURSOR), cursors.at(0).mHead);
     QCOMPARE(model.data(model.index(model.rowCount() - 1, 0), JournaldViewModel::CURSOR), cursors.at(0).mTail);
 
     // use model and set boot 1
     model.setBootFilter({mBoots.at(1)});
+    model.fetchMore(QModelIndex());
     // journalctl -b 27acae2fe35a40ac93f9c7732c0b8e59 -D . -o json|head -n1
     QCOMPARE(model.data(model.index(0, 0), JournaldViewModel::CURSOR), cursors.at(1).mHead);
     // journalctl -b 27acae2fe35a40ac93f9c7732c0b8e59 -D . -o json|tail -n1
@@ -262,9 +269,11 @@ void TestViewModel::resetModelHeadAndTailCursorTest()
 
     // invoke tail seeking
     model.seekTail();
+    model.fetchMore(QModelIndex());
     QCOMPARE(model.data(model.index(0, 0), JournaldViewModel::CURSOR), cursors.at(1).mHead);
     QCOMPARE(model.data(model.index(model.rowCount() - 1, 0), JournaldViewModel::CURSOR), cursors.at(1).mTail);
     model.seekHead();
+    model.fetchMore(QModelIndex());
     QCOMPARE(model.data(model.index(0, 0), JournaldViewModel::CURSOR), cursors.at(1).mHead);
     QCOMPARE(model.data(model.index(model.rowCount() - 1, 0), JournaldViewModel::CURSOR), cursors.at(1).mTail);
 }
@@ -345,6 +354,7 @@ void TestViewModel::stringSearch()
         model.seekTail();
         QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
         QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
+        model.fetchMore(QModelIndex());
         int foundLine = model.rowCount() - 1;
         std::vector<int> results;
         do {
