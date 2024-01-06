@@ -4,4 +4,4 @@ include:
   - project: sysadmin/ci-utilities
     file:
       - /gitlab-templates/linux-qt6.yml
-  #     - /gitlab-templates/flatpak.yml no KF6 runtime yet
+      - /gitlab-templates/flatpak.yml
