@@ -226,7 +226,7 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
         LogEntry entry;
         result = sd_journal_get_realtime_usec(mJournal->sdJournal(), &time);
         if (result == 0) {
-            entry.mDate.setMSecsSinceEpoch(time / 1000);
+            entry.mDate = QDateTime::fromMSecsSinceEpoch(time / 1000, Qt::UTC);
         }
         sd_id128_t bootId; // currently unused
         result = sd_journal_get_monotonic_usec(mJournal->sdJournal(), &time, &bootId);
