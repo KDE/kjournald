@@ -54,7 +54,7 @@ void JournaldViewModelPrivate::resetJournal()
     // filter boots
     for (const QString &boot : qAsConst(mBootFilter)) {
         QString filterExpression = QLatin1String("_BOOT_ID=") + boot;
-        result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
+        result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toUtf8().constData(), 0);
         qCDebug(KJOURNALDLIB_FILTERTRACE).nospace() << "add_match(" << filterExpression << ")";
         if (result < 0) {
             qCCritical(KJOURNALDLIB_GENERAL) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
@@ -63,7 +63,7 @@ void JournaldViewModelPrivate::resetJournal()
     if (mPriorityFilter.has_value()) {
         for (int i = 0; i <= mPriorityFilter; ++i) {
             QString filterExpression = QLatin1String("PRIORITY=") + QString::number(i);
-            result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
+            result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toUtf8().constData(), 0);
             qCDebug(KJOURNALDLIB_FILTERTRACE).nospace() << "add_match(" << filterExpression << ")";
             if (result < 0) {
                 qCCritical(KJOURNALDLIB_GENERAL) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
@@ -87,7 +87,7 @@ void JournaldViewModelPrivate::resetJournal()
     if (mShowKernelMessages) {
         for (const QString &transport : kernelTransports) {
             QString filterExpression = QLatin1String("_TRANSPORT=") + transport;
-            result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
+            result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toUtf8().constData(), 0);
             qCDebug(KJOURNALDLIB_FILTERTRACE).nospace() << "add_match(" << filterExpression << ")";
             if (result < 0) {
                 qCCritical(KJOURNALDLIB_GENERAL) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
@@ -98,7 +98,7 @@ void JournaldViewModelPrivate::resetJournal()
     } else {
         for (const QString &transport : nonKernelTransports) {
             QString filterExpression = QLatin1String("_TRANSPORT=") + transport;
-            result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
+            result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toUtf8().constData(), 0);
             qCDebug(KJOURNALDLIB_FILTERTRACE).nospace() << "add_match(" << filterExpression << ")";
             if (result < 0) {
                 qCCritical(KJOURNALDLIB_GENERAL) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
@@ -111,7 +111,7 @@ void JournaldViewModelPrivate::resetJournal()
     // filter units
     for (const QString &unit : qAsConst(mSystemdUnitFilter)) {
         QString filterExpression = QLatin1String("_SYSTEMD_UNIT=") + unit;
-        result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
+        result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toUtf8().constData(), 0);
         qCDebug(KJOURNALDLIB_FILTERTRACE).nospace() << "add_match(" << filterExpression << ")";
         if (result < 0) {
             qCCritical(KJOURNALDLIB_GENERAL) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
@@ -124,7 +124,7 @@ void JournaldViewModelPrivate::resetJournal()
     // filter executable
     for (const QString &executable : qAsConst(mExeFilter)) {
         QString filterExpression = QLatin1String("_EXE=") + executable;
-        result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toLocal8Bit().constData(), 0);
+        result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toUtf8().constData(), 0);
         qCDebug(KJOURNALDLIB_FILTERTRACE).nospace() << "add_match(" << filterExpression << ")";
         if (result < 0) {
             qCCritical(KJOURNALDLIB_GENERAL) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
@@ -152,8 +152,8 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
     if (direction == Direction::TOWARDS_TAIL) {
         if (mLog.size() > 0) {
             QString cursor = mLog.last().mCursor;
-            // note: seek cursor does not make it current, but a subsequenct sd_journal_next is required
-            result = sd_journal_seek_cursor(mJournal->sdJournal(), cursor.toLocal8Bit().constData());
+            // note: seek cursor does not make it current, but a subsequent sd_journal_next is required
+            result = sd_journal_seek_cursor(mJournal->sdJournal(), cursor.toUtf8().constData());
             if (result < 0) {
                 qCWarning(KJOURNALDLIB_GENERAL) << "seeking cursor but could not be found" << strerror(-result);
             }
@@ -162,7 +162,7 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
                 mTailCursorReached = true;
                 return {};
             }
-            result = sd_journal_test_cursor(mJournal->sdJournal(), cursor.toLocal8Bit().constData());
+            result = sd_journal_test_cursor(mJournal->sdJournal(), cursor.toUtf8().constData());
             if (result <= 0) {
                 qCCritical(KJOURNALDLIB_GENERAL) << "current position does not match expected cursor:" << cursor;
                 if (result < 0) {
@@ -184,7 +184,7 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
     } else if (direction == Direction::TOWARDS_HEAD) {
         if (mLog.size() > 0) {
             QString cursor = mLog.first().mCursor;
-            result = sd_journal_seek_cursor(mJournal->sdJournal(), cursor.toLocal8Bit().constData());
+            result = sd_journal_seek_cursor(mJournal->sdJournal(), cursor.toUtf8().constData());
             if (result < 0) {
                 qCWarning(KJOURNALDLIB_GENERAL) << "seeking cursor but could not be found" << strerror(-result);
             }
@@ -193,7 +193,7 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
                 mHeadCursorReached = true;
                 return {};
             }
-            result = sd_journal_test_cursor(mJournal->sdJournal(), cursor.toLocal8Bit().constData());
+            result = sd_journal_test_cursor(mJournal->sdJournal(), cursor.toUtf8().constData());
             if (result <= 0) {
                 qCCritical(KJOURNALDLIB_GENERAL) << "current position does not match expected cursor:" << cursor;
                 if (result < 0) {
