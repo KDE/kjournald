@@ -164,7 +164,12 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
             }
             result = sd_journal_test_cursor(mJournal->sdJournal(), cursor.toUtf8().constData());
             if (result <= 0) {
-                qCCritical(KJOURNALDLIB_GENERAL) << "current position does not match expected cursor:" << cursor;
+                char *actualCursor{nullptr};
+                const int actualCursorResult = sd_journal_get_cursor(mJournal->sdJournal(), &actualCursor);
+                qCCritical(KJOURNALDLIB_GENERAL) << "current position does not match expected cursor (requested, actual):" << cursor << actualCursor;
+                if (actualCursorResult >= 0) {
+                    free(actualCursor);
+                }
                 if (result < 0) {
                     qCCritical(KJOURNALDLIB_GENERAL) << "cursor test failed:" << strerror(-result);
                 }
