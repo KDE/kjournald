@@ -142,6 +142,10 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
 {
     static QMutex mutex;
     QMutexLocker locker(&mutex);
+    if (!locker.isLocked()) {
+        qDebug() << "ABORT already in progress";
+        return {};
+    }
 
     int result{0};
     QVector<LogEntry> chunk;
@@ -149,9 +153,10 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
         qCWarning(KJOURNALDLIB_GENERAL) << "Skipping data fetch, no valid journal opened";
         return chunk;
     }
+    qDebug() << "do fetch..." << chunk.size() << mLog.size();
     if (direction == Direction::TOWARDS_TAIL) {
         if (mLog.size() > 0) {
-            QString cursor = mLog.last().mCursor;
+            const QString cursor = mLog.last().mCursor;
             // note: seek cursor does not make it current, but a subsequent sd_journal_next is required
             result = sd_journal_seek_cursor(mJournal->sdJournal(), cursor.toUtf8().constData());
             if (result < 0) {
@@ -159,11 +164,14 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
             }
             result = sd_journal_next(mJournal->sdJournal());
             if (result == 0) {
+                qDebug() << "tail reached aborting";
                 mTailCursorReached = true;
                 return {};
+            } else if (result < 0) {
+                qDebug() << "error:" << strerror(-result);
             }
             result = sd_journal_test_cursor(mJournal->sdJournal(), cursor.toUtf8().constData());
-            if (result <= 0) {
+            if (result <= 0) { // result == 0 if cursor does not match
                 char *actualCursor{nullptr};
                 const int actualCursorResult = sd_journal_get_cursor(mJournal->sdJournal(), &actualCursor);
                 qCCritical(KJOURNALDLIB_GENERAL) << "current position does not match expected cursor (requested, actual):" << cursor << actualCursor;
@@ -290,6 +298,8 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
             }
         }
     }
+
+    qDebug() << "XXX added entry taken from journal with cursor" << chunk.last().mCursor;
 
     return chunk;
 }
@@ -544,6 +554,7 @@ std::pair<int, int> JournaldViewModel::fetchMoreLogEntries()
         if (chunk.size() > 0) {
             beginInsertRows(QModelIndex(), d->mLog.size(), d->mLog.size() + chunk.size() - 1);
             d->mLog.append(chunk);
+            qDebug() << "rows appended";
             endInsertRows();
             qCDebug(KJOURNALDLIB_GENERAL) << "read towards tail" << chunk.size();
             fetchResult.first = chunk.size();
@@ -560,7 +571,7 @@ std::pair<int, int> JournaldViewModel::fetchMoreLogEntries()
             fetchResult.second = chunk.size();
         }
     }
-    d->mActiveFetchOperations = 0;
+    d->mActiveFetchOperations.storeRelease(0);
     return fetchResult;
 }
 
