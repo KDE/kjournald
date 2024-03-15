@@ -5,6 +5,7 @@
 
 #include "journaldexportreader.h"
 #include "kjournaldlib_log_general.h"
+#include <endian.h>
 #include <QDebug>
 #include <QVector>
 #include <QIODevice>
