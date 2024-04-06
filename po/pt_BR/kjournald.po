@@ -1,21 +1,22 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the kjournald package.
 #
 # Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2023.
+# SPDX-FileCopyrightText: 2024 Geraldo Simiao <geraldosimiao@fedoraproject.org>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-08 08:48+0000\n"
-"PO-Revision-Date: 2023-10-05 18:29-0300\n"
-"Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
+"PO-Revision-Date: 2024-04-05 10:21-0300\n"
+"Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 24.02.1\n"
 
 #: browser/FilterCriteriaView.qml:29
 #, kde-format
@@ -30,32 +31,32 @@ msgstr "Recolhido"
 #: browser/FilterCriteriaView.qml:54
 #, kde-format
 msgid "Clear"
-msgstr ""
+msgstr "Limpar"
 
 #: browser/GlobalMenu.qml:11 browser/TopMenuBar.qml:15
 #, kde-format
 msgid "File"
-msgstr ""
+msgstr "Arquivo"
 
 #: browser/GlobalMenu.qml:14
 #, kde-format
 msgid "Open system journal"
-msgstr ""
+msgstr "Abrir a partir do sistema"
 
 #: browser/GlobalMenu.qml:21
 #, kde-format
 msgid "Open from folder"
-msgstr ""
+msgstr "Abrir pasta"
 
 #: browser/GlobalMenu.qml:29
 #, kde-format
 msgid "Open from file"
-msgstr ""
+msgstr "Abrir arquivo"
 
 #: browser/GlobalMenu.qml:48 browser/Main.qml:69 browser/TopMenuBar.qml:51
 #, kde-format
 msgid "Close"
-msgstr ""
+msgstr "Fechar"
 
 #: browser/GlobalMenu.qml:54 browser/TopMenuBar.qml:57
 #, kde-format
@@ -65,7 +66,7 @@ msgstr ""
 #: browser/GlobalMenu.qml:62 browser/TopMenuBar.qml:65
 #, kde-format
 msgid "View"
-msgstr ""
+msgstr "Exibir"
 
 #: browser/GlobalMenu.qml:65 browser/TopMenuBar.qml:68
 #, kde-format
@@ -90,38 +91,38 @@ msgstr ""
 #: browser/GlobalMenu.qml:93 browser/TopMenuBar.qml:105
 #, kde-format
 msgid "Colorize"
-msgstr ""
+msgstr "Colorir"
 
 #: browser/GlobalMenu.qml:96 browser/TopMenuBar.qml:109
 #, kde-format
 msgid "Systemd Unit"
-msgstr ""
+msgstr "Unidade do systemd"
 
 #: browser/GlobalMenu.qml:104 browser/TopMenuBar.qml:120
 #, kde-format
 msgid "Executable"
-msgstr ""
+msgstr "Executável"
 
 #: browser/GlobalMenu.qml:114 browser/TopMenuBar.qml:132
 #, kde-format
 msgid "Help"
-msgstr ""
+msgstr "Ajuda"
 
 #: browser/GlobalMenu.qml:117 browser/Main.qml:51 browser/TopMenuBar.qml:134
 #, kde-format
 msgid "About"
-msgstr ""
+msgstr "Sobre"
 
 #: browser/LogView.qml:201
 #, kde-format
 msgid "Kernel"
-msgstr ""
+msgstr "Versão do kernel"
 
 #: browser/main.cpp:41
 #, kde-format
 msgctxt "@title Displayed program name"
 msgid "KJournald Browser"
-msgstr ""
+msgstr "Navegador do Kjournald"
 
 #: browser/main.cpp:43
 #, kde-format
@@ -159,13 +160,13 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "Geraldo Simião, Luiz Fernando Ranghetti"
 
 #: browser/main.cpp:51
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "geraldosimiao@fedoraproject.org, elchevive@opensuse.org"
 
 #: browser/Main.qml:55
 #, kde-format
@@ -205,128 +206,128 @@ msgstr ""
 #: browser/Main.qml:179
 #, kde-format
 msgid "Journal files (*.journal)"
-msgstr ""
+msgstr "Arquivos de log (*.journal)"
 
 #: browser/Main.qml:179
 #, kde-format
 msgid "All files (*)"
-msgstr ""
+msgstr "Todo tipo de arquivos (*)"
 
 #: browser/Main.qml:252
 #, kde-format
 msgid "No log entries apply "
-msgstr ""
+msgstr "Nenhum registro é compatível com o critério"
 
 #: browser/RemoteJournalConfigDialog.qml:17
 #, kde-format
 msgid "Configure Remote Journal Server"
-msgstr ""
+msgstr "Configurar servidor remoto"
 
 #: browser/RemoteJournalConfigDialog.qml:31
 #, kde-format
 msgid "URL:"
-msgstr ""
+msgstr "URL:"
 
 #: browser/RemoteJournalConfigDialog.qml:40
 #, kde-format
 msgid "Port:"
-msgstr ""
+msgstr "Porta:"
 
 #: browser/TopMenuBar.qml:17
 #, kde-format
 msgid "Open System Journal"
-msgstr ""
+msgstr "Abrir a partir do sistema"
 
 #: browser/TopMenuBar.qml:24
 #, kde-format
 msgid "Open from Folder"
-msgstr ""
+msgstr "Abrir pasta"
 
 #: browser/TopMenuBar.qml:32
 #, kde-format
 msgid "Open from File"
-msgstr ""
+msgstr "Abrir arquivo"
 
 #: lib/filtercriteriamodel.cpp:23
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Emergency"
-msgstr ""
+msgstr "Emergência"
 
 #: lib/filtercriteriamodel.cpp:25
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Alert"
-msgstr ""
+msgstr "Alerta"
 
 #: lib/filtercriteriamodel.cpp:27
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Critical"
-msgstr ""
+msgstr "Erro crítico"
 
 #: lib/filtercriteriamodel.cpp:29
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Error"
-msgstr ""
+msgstr "Erro"
 
 #: lib/filtercriteriamodel.cpp:31
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Warning"
-msgstr ""
+msgstr "Aviso"
 
 #: lib/filtercriteriamodel.cpp:33
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Notice"
-msgstr ""
+msgstr "Observação"
 
 #: lib/filtercriteriamodel.cpp:35
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Info"
-msgstr ""
+msgstr "Informações"
 
 #: lib/filtercriteriamodel.cpp:37
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Debug"
-msgstr ""
+msgstr "Depuração de erros"
 
 #: lib/filtercriteriamodel.cpp:39
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "No Filter"
-msgstr ""
+msgstr "Sem filtro"
 
 #: lib/filtercriteriamodel.cpp:136
 #, kde-format
 msgctxt "Section title for log message source"
 msgid "Transport"
-msgstr ""
+msgstr "Transporte"
 
 #: lib/filtercriteriamodel.cpp:143
 #, kde-format
 msgctxt "Checkbox option for kernel log messages"
 msgid "Kernel"
-msgstr ""
+msgstr "Versão do kernel"
 
 #: lib/filtercriteriamodel.cpp:150
 #, kde-format
 msgctxt "Section title for log message priority"
 msgid "Priority"
-msgstr ""
+msgstr "Prioridade"
 
 #: lib/filtercriteriamodel.cpp:171
 #, kde-format
 msgctxt "Section title for systemd unit"
 msgid "Unit"
-msgstr ""
+msgstr "Unidade"
 
 #: lib/filtercriteriamodel.cpp:192
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"
-msgstr ""
+msgstr "Processo"
