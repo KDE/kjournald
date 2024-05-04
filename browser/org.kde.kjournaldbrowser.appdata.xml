@@ -88,7 +88,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="es">El explorador de journald es una implementación de referencia de la biblioteca kjournald que proporciona una herramienta flexible para explorar las bases de datos locales, remotas y sin conexión de journald.</p>
     <p xml:lang="eu">Journald arakatzailea kjournald liburutegiaren erreferentzia inplementazio bat da eta tokiko, urrutiko eta lerroz-kanpoko journald datu-baseak arakatzeko tresna malgu bat eskaintzen du.</p>
     <p xml:lang="fi">Journald-selain on kjournald-kirjaston viitetoteutus, joka tarjoaa joustava työkalun paikallisten, etä- ja erillisten journald-tietokantojen selaukseen.</p>
-    <p xml:lang="fr">Le navigateur « Journald » est une implémentation de référence de la bibliothèque « kjournald ». Il fournit un outil flexible pour naviguer dans les bases de données « journald » locales, distantes et hors ligne.</p>
+    <p xml:lang="fr">Le navigateur Journald est une implémentation de référence de la bibliothèque « kjournald ». Il fournit un outil flexible pour naviguer dans les bases de données « journald » locales, distantes et hors ligne.</p>
     <p xml:lang="gl">Journald-browser é unha implementación de referencia da biblioteca kjournald e fornece unha ferramenta flexíbel para navegar bases de datos de journald en local, en remoto e sen conexión.</p>
     <p xml:lang="he">דפדפן Journald הוא מימוש סימוכין של ספריית kjournald ומספק כלי גמיש לדפדוף במסדי נתונים מקומיים, מרוחקים ובלתי מקוונים של journald.</p>
     <p xml:lang="hi">जर्नल-ब्राउज़र केजर्नलडी लाइब्ररी का एक संदर्भ कार्यान्वयन है और स्थानीय, दूरस्थ और ऑफ़लाइन जर्नल डेटाबेस में ब्राउज़ करने के लिए एक लचीला साधन प्रदान करता है।</p>
