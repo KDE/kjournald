@@ -92,6 +92,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="gl">Journald-browser é unha implementación de referencia da biblioteca kjournald e fornece unha ferramenta flexíbel para navegar bases de datos de journald en local, en remoto e sen conexión.</p>
     <p xml:lang="he">דפדפן Journald הוא מימוש סימוכין של ספריית kjournald ומספק כלי גמיש לדפדוף במסדי נתונים מקומיים, מרוחקים ובלתי מקוונים של journald.</p>
     <p xml:lang="hi">जर्नल-ब्राउज़र केजर्नलडी लाइब्ररी का एक संदर्भ कार्यान्वयन है और स्थानीय, दूरस्थ और ऑफ़लाइन जर्नल डेटाबेस में ब्राउज़ करने के लिए एक लचीला साधन प्रदान करता है।</p>
+    <p xml:lang="ia">Journald-browser es un implementation de referentia del bibliotheca de kjournalòd e forni un instrumento flexibile per navigar in base de datos de journald local, remote e foras de linea.</p>
     <p xml:lang="id">Journald-browser adalah implementasi referensi dari pustaka kjournald dan menyediakan alat yang fleksibel untuk menelusuri basis data journald di lokal, jarak jauh dan offline.</p>
     <p xml:lang="ie">Navigator de Journald es un implementation de referentie del biblioteca kjournald e it provide un flexibil utensile por navigar local, lontan e retenet bases de data de journald.</p>
     <p xml:lang="is">Journald vafri er tilvísunarútfærsla af kjournald-safninu og býður upp á þægilega leið til að skoða staðbundna, fjartengda og ótengda journald-gagnagrunna.</p>
@@ -128,6 +129,7 @@ SPDX-License-Identifier: CC0-1.0
       <caption xml:lang="fr">Navigateur pour journaux</caption>
       <caption xml:lang="gl">Navegador de rexistros</caption>
       <caption xml:lang="he">דפדפן יומנים</caption>
+      <caption xml:lang="ia">Navigator de Registro (Log Browser)</caption>
       <caption xml:lang="id">Log Browser</caption>
       <caption xml:lang="ie">Navigator de diariums</caption>
       <caption xml:lang="is">Annálavafri</caption>
