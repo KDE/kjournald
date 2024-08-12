@@ -32,6 +32,10 @@ parts:
     plugin: cmake
     source: .
     source-type: local
+    build-packages:
+      - libsystemd-dev
+    stage-packages:
+      - libsystemd0
     cmake-parameters:
       - -DCMAKE_INSTALL_PREFIX=/usr
       - -DCMAKE_BUILD_TYPE=Release
