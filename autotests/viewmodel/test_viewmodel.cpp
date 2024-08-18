@@ -15,6 +15,7 @@
 #include <QTemporaryFile>
 #include <QTest>
 #include <QVector>
+#include <QDebug>
 
 // note: this test request several data from a real example journald database
 //       you can check them by using "journalctl -D journal" and requesting the values
@@ -93,7 +94,8 @@ void TestViewModel::bootFilter()
     bool firstBootFound = false;
     bool secondBootFound = false;
     model.setBootFilter({mBoots.at(0), mBoots.at(1)});
-    while (model.canFetchMore(QModelIndex())) {
+    // value of 20.000 is chosen arbitrarily from test with this journal archive
+    while (model.canFetchMore(QModelIndex()) && model.rowCount() < 20'000) {
         model.fetchMore(QModelIndex());
     }
     QVERIFY(model.rowCount() > 0);
@@ -151,7 +153,7 @@ void TestViewModel::showKernelMessages()
     // check that not contains Kernel message
     model.setKernelFilter(false);
     QVERIFY(model.rowCount() > 0);
-    while (model.canFetchMore(QModelIndex())) {
+    while (model.canFetchMore(QModelIndex())  && model.rowCount() < 2000) {
         model.fetchMore(QModelIndex());
     }
     for (int i = 0; i < model.rowCount(); ++i) {
