@@ -140,6 +140,7 @@ void JournaldViewModelPrivate::resetJournal()
 
 QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
 {
+    QString dir = (direction == Direction::TOWARDS_HEAD) ? QStringLiteral("head") : QStringLiteral("tail");
     static QMutex mutex;
     QMutexLocker locker(&mutex);
 
@@ -149,77 +150,38 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
         qCWarning(KJOURNALDLIB_GENERAL) << "Skipping data fetch, no valid journal opened";
         return chunk;
     }
-    if (direction == Direction::TOWARDS_TAIL) {
-        if (mLog.size() > 0) {
-            QString cursor = mLog.last().mCursor;
-            // note: seek cursor does not make it current, but a subsequent sd_journal_next is required
-            result = sd_journal_seek_cursor(mJournal->sdJournal(), cursor.toUtf8().constData());
-            if (result < 0) {
-                qCWarning(KJOURNALDLIB_GENERAL) << "seeking cursor but could not be found" << strerror(-result);
-            }
-            result = sd_journal_next(mJournal->sdJournal());
-            if (result == 0) {
-                mTailCursorReached = true;
-                return {};
-            }
-            result = sd_journal_test_cursor(mJournal->sdJournal(), cursor.toUtf8().constData());
-            if (result <= 0) {
-                char *actualCursor{nullptr};
-                const int actualCursorResult = sd_journal_get_cursor(mJournal->sdJournal(), &actualCursor);
-                qCCritical(KJOURNALDLIB_GENERAL) << "current position does not match expected cursor (requested, actual):" << cursor << actualCursor;
-                if (actualCursorResult >= 0) {
-                    free(actualCursor);
+    if (mLog.size() > 0) {
+        const QString cursor = (direction == Direction::TOWARDS_TAIL) ? mLog.last().mCursor : mLog.first().mCursor;
+        const SeekCursorResult seekResult = seekCursor(cursor);
+        switch (seekResult) {
+        case SeekCursorResult::CURSOR_MADE_CURRENT:
+            if (direction == Direction::TOWARDS_TAIL) {
+                result = sd_journal_next(mJournal->sdJournal());
+                if (result == 0) {
+                    mTailCursorReached = true;
+                    return {};
                 }
-                if (result < 0) {
-                    qCCritical(KJOURNALDLIB_GENERAL) << "cursor test failed:" << strerror(-result);
+            } else if (direction == Direction::TOWARDS_HEAD) {
+                result = sd_journal_previous(mJournal->sdJournal());
+                if (result == 0) {
+                    mHeadCursorReached = true;
+                    return {};
                 }
-                return {};
             }
-            // read first entry after cursor
-            result = sd_journal_next(mJournal->sdJournal());
-            if (result == 0) {
-                mTailCursorReached = true;
-                return {};
-            }
-        } else {
-            if (!seekHeadAndMakeCurrent()) {
-                return {};
-            }
+            break;
+        case SeekCursorResult::ERROR:
+            qCCritical(KJOURNALDLIB_GENERAL) << "cursor test failed:" << strerror(-result);
+            return {};
+            break;
         }
-    } else if (direction == Direction::TOWARDS_HEAD) {
-        if (mLog.size() > 0) {
-            QString cursor = mLog.first().mCursor;
-            result = sd_journal_seek_cursor(mJournal->sdJournal(), cursor.toUtf8().constData());
-            if (result < 0) {
-                qCWarning(KJOURNALDLIB_GENERAL) << "seeking cursor but could not be found" << strerror(-result);
-            }
-            result = sd_journal_previous(mJournal->sdJournal());
-            if (result == 0) {
-                mHeadCursorReached = true;
-                return {};
-            }
-            result = sd_journal_test_cursor(mJournal->sdJournal(), cursor.toUtf8().constData());
-            if (result <= 0) {
-                qCCritical(KJOURNALDLIB_GENERAL) << "current position does not match expected cursor:" << cursor;
-                if (result < 0) {
-                    qCCritical(KJOURNALDLIB_GENERAL) << "cursor test failed:" << strerror(-result);
-                }
-                return {};
-            }
-            // read first entry before cursor
-            result = sd_journal_previous(mJournal->sdJournal());
-            if (result == 0) {
-                mHeadCursorReached = true;
-                return {};
-            }
-        } else {
-            if (!seekTailAndMakeCurrent()) {
-                return {};
-            }
+    } else if (mLog.size() == 0 && direction == Direction::TOWARDS_TAIL) {
+        if (!seekHeadAndMakeCurrent()) {
+            return {};
         }
-    } else {
-        qCCritical(KJOURNALDLIB_GENERAL) << "Jumping into the journal's middle, not supported";
-        return {};
+    } else if (mLog.size() == 0 && direction == Direction::TOWARDS_HEAD) {
+        if (!seekTailAndMakeCurrent()) {
+            return {};
+        }
     }
 
     // at this point, the journal is guaranteed to point to the first valid entry
@@ -292,6 +254,46 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
     }
 
     return chunk;
+}
+
+JournaldViewModelPrivate::SeekCursorResult JournaldViewModelPrivate::seekCursor(const QString &cursor)
+{
+    int result{0};
+    // note: seek cursor does not make it current, but a subsequent sd_journal_next is required
+    result = sd_journal_seek_cursor(mJournal->sdJournal(), cursor.toUtf8().constData());
+    if (result < 0) {
+        qCWarning(KJOURNALDLIB_GENERAL) << "seeking cursor but could not be found" << strerror(-result);
+        return SeekCursorResult::ERROR;
+    }
+
+    // make entry current
+    // every result other than 1 is an error, because the cursor is expected to exist
+    result = sd_journal_next(mJournal->sdJournal());
+    if (result != 1) {
+        qCCritical(KJOURNALDLIB_GENERAL) << "seeked entry for cursor could not be made current";
+        return JournaldViewModelPrivate::SeekCursorResult::ERROR;
+    }
+
+    // fallback search logic for problematic versions of systemd: https://github.com/systemd/systemd/issues/31516
+    // note the linear search is very expensive and should be the exception
+    result = sd_journal_test_cursor(mJournal->sdJournal(), cursor.toUtf8().constData());
+    if (result > 0) {
+        return SeekCursorResult::CURSOR_MADE_CURRENT;
+    } else {
+        qCWarning(KJOURNALDLIB_GENERAL) << "current position does not match expected cursor, entering expensive linear search";
+        //(requested, actual):" << cursor << actualCursor;
+        sd_journal_seek_head(mJournal->sdJournal());
+        while (sd_journal_next(mJournal->sdJournal()) > 0) {
+            char *actualCursor{nullptr};
+            const int actualCursorResult = sd_journal_get_cursor(mJournal->sdJournal(), &actualCursor);
+            free(actualCursor);
+            if (actualCursorResult >= 0) {
+                return SeekCursorResult::CURSOR_MADE_CURRENT;
+            }
+        }
+        qCCritical(KJOURNALDLIB_GENERAL) << "even with linear search, the cursor could not be found, giving up";
+    }
+    return SeekCursorResult::ERROR;
 }
 
 bool JournaldViewModelPrivate::seekHeadAndMakeCurrent()
