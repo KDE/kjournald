@@ -82,7 +82,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="ca">El navegador de «journald» és una implementació de referència de la biblioteca kjournald i proporciona una eina flexible per a navegar per les bases de dades de journald locals, remotes i fora de línia.</p>
     <p xml:lang="ca-valencia">El navegador de «journald» és una implementació de referència de la biblioteca kjournald i proporciona una eina flexible per a navegar per les bases de dades de journald locals, remotes i fora de línia.</p>
     <p xml:lang="de">Journald-Browser ist eine Referenzimplementierung der kjournald-Bibliothek und bietet ein flexibles Werkzeug zum Browsen in lokalen, entfernten und Offline-Journald-Datenbanken.</p>
-    <p xml:lang="el">Το journald-browser είναι μια υλοποίηση αναφοράς της βιβλιοθήκης kjournald και παρέχει ένα ευέλικτο εργαλείο περιήγησης σε τοπικές,α πομακρυσμένες και εκτός σύνδεσης journald βάσεις δεδομένων.</p>
+    <p xml:lang="el">Το journald-browser είναι μια υλοποίηση αναφοράς της βιβλιοθήκης kjournald και παρέχει ένα ευέλικτο εργαλείο περιήγησης σε τοπικές, απομακρυσμένες και εκτός σύνδεσης journald βάσεις δεδομένων.</p>
     <p xml:lang="en-GB">Journald-browser is a reference implementation of the kjournald library and provides a flexible tool to browse in local, remote and offline journald databases.</p>
     <p xml:lang="eo">Journald-browser estas referenca realigo de la kjournald-biblioteko kaj disponigas flekseblan ilon por foliumi en lokaj, malproksimaj kaj eksterretaj journald-datumbazoj.</p>
     <p xml:lang="es">El explorador de journald es una implementación de referencia de la biblioteca kjournald que proporciona una herramienta flexible para explorar las bases de datos locales, remotas y sin conexión de journald.</p>
