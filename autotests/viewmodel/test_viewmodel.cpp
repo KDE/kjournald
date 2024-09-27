@@ -15,6 +15,7 @@
 #include <QTemporaryFile>
 #include <QTest>
 #include <QVector>
+#include <QDebug>
 
 // note: this test request several data from a real example journald database
 //       you can check them by using "journalctl -D journal" and requesting the values
@@ -44,7 +45,7 @@ void TestViewModel::rowAccess()
     QVERIFY(model.rowCount() > 0);
 
     // journalctl -b -2 -D . -o json | head -n2
-    std::vector<LogEntry> expectedData{{QDateTime::fromString("2021-03-13T16:23:01.464", Qt::ISODateWithMs).toLocalTime(),
+    std::vector<LogEntry> expectedData{{QDateTime(QDate(2021, 03, 13), QTime(15, 23, 1, 464), Qt::UTC),
                                         4050458,
                                         QString(),
                                         "System clock time unset or jumped backwards, restoring from recorded timestamp: Sat 2021-03-13 15:23:01 UTC",
@@ -52,7 +53,7 @@ void TestViewModel::rowAccess()
                                         "68f2e61d061247d8a8ba0b8d53a97a52",
                                         "/lib/systemd/systemd-timesyncd",
                                         6},
-                                       {QDateTime::fromString("2021-03-13T16:23:01.592", Qt::ISODateWithMs).toLocalTime(),
+                                       {QDateTime(QDate(2021, 03, 13), QTime(15, 23, 1, 592), Qt::UTC),
                                         4178254,
                                         QString(),
                                         "klogd started: BusyBox v1.31.1 ()",
@@ -93,7 +94,8 @@ void TestViewModel::bootFilter()
     bool firstBootFound = false;
     bool secondBootFound = false;
     model.setBootFilter({mBoots.at(0), mBoots.at(1)});
-    while (model.canFetchMore(QModelIndex())) {
+    // value of 20.000 is chosen arbitrarily from test with this journal archive
+    while (model.canFetchMore(QModelIndex()) && model.rowCount() < 20'000) {
         model.fetchMore(QModelIndex());
     }
     QVERIFY(model.rowCount() > 0);
@@ -151,7 +153,7 @@ void TestViewModel::showKernelMessages()
     // check that not contains Kernel message
     model.setKernelFilter(false);
     QVERIFY(model.rowCount() > 0);
-    while (model.canFetchMore(QModelIndex())) {
+    while (model.canFetchMore(QModelIndex())  && model.rowCount() < 2000) {
         model.fetchMore(QModelIndex());
     }
     for (int i = 0; i < model.rowCount(); ++i) {

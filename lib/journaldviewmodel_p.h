@@ -37,6 +37,11 @@ public:
         TOWARDS_TAIL,
     };
 
+    enum class SeekCursorResult {
+        CURSOR_MADE_CURRENT,
+        ERROR,
+    };
+
     /**
      * reapply all filters and seek journal at head
      * ensure to guard this call with beginModelReset and endModelReset
@@ -76,6 +81,12 @@ public:
      * reset and then only in the respective direction
      */
     QVector<LogEntry> readEntries(Direction direction);
+
+    /**
+     * @brief seekCursor in journal an handle issues
+     * @return
+     */
+    SeekCursorResult seekCursor(const QString &cursor);
 
     std::unique_ptr<IJournal> mJournal;
     QVector<LogEntry> mLog;
