@@ -28,7 +28,7 @@ package-repositories:
 parts:
   kjournald:
     parse-info:
-      - usr/share/metainfo/org.kde.kjournald.appdata.xml
+      - usr/share/metainfo/org.kde.kjournaldbrowser.appdata.xml
     plugin: cmake
     source: .
     source-type: local
