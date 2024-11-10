@@ -1,3 +1,4 @@
+
 /*
     SPDX-License-Identifier: LGPL-2.1-or-later OR MIT
     SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
@@ -8,9 +9,10 @@
 
 #include "journaldviewmodel.h"
 #include "kjournald_export.h"
-#include <qjsvalue.h>
-#include <qqmlparserstatus.h>
-#include <qsortfilterproxymodel.h>
+#include <QJSValue>
+#include <QQmlEngine>
+#include <QQmlParserStatus>
+#include <QSortFilterProxyModel>
 
 class KJOURNALD_EXPORT FieldFilterProxyModel : public QSortFilterProxyModel, public QQmlParserStatus
 {
@@ -19,6 +21,8 @@ class KJOURNALD_EXPORT FieldFilterProxyModel : public QSortFilterProxyModel, pub
 
     Q_PROPERTY(int count READ rowCount NOTIFY countChanged)
     Q_PROPERTY(QString field WRITE setField)
+
+    QML_ELEMENT
 
 public:
     explicit FieldFilterProxyModel(QObject *parent = 0);

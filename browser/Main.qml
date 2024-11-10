@@ -10,6 +10,7 @@ import QtQuick.Dialogs as Dialogs
 import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 import kjournald
+import org.kde.kjournald
 
 Kirigami.AbstractApplicationWindow {
     width: 1000

@@ -5,10 +5,10 @@
 
 import QtQuick
 import QtQuick.Controls
-import QtQml
 import org.kde.kirigami as Kirigami
 import QtQuick.Controls.Material
 import kjournald
+import org.kde.kjournald
 
 ListView {
     id: root

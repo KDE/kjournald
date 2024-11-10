@@ -25,7 +25,7 @@ add_definitions(
     -DKF_DEPRECATED_WARNINGS_SINCE=0x060000
 )
 
-set(KF_VERSION 5.240.0)
+set(KF_VERSION 6.1.0)
 find_package(ECM ${KF_VERSION} NO_MODULE)
 set_package_properties(ECM PROPERTIES
     TYPE REQUIRED
@@ -37,9 +37,10 @@ include(ECMEnableSanitizers)
 include(ECMCoverageOption)
 include(ECMSetupVersion)
 include(ECMQtDeclareLoggingCategory)
-include(KDEInstallDirs)
+include(KDEInstallDirs6)
 include(KDECMakeSettings)
 include(KDEClangFormat)
+include(ECMQmlModule)
 
 ecm_setup_version(${KJOURNALD_VERSION}
     VARIABLE_PREFIX KJOURNALD

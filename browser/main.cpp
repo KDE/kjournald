@@ -3,13 +3,9 @@
     SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 */
 
-#include "bootmodel.h"
 #include "clipboardproxy.h"
-#include "fieldfilterproxymodel.h"
 #include "filtercriteriamodel.h"
 #include "flattenedfiltercriteriaproxymodel.h"
-#include "journalduniquequerymodel.h"
-#include "journaldviewmodel.h"
 #include "kjournald_version.h"
 #include "sessionconfig.h"
 #include <KAboutData>
@@ -62,10 +58,6 @@ int main(int argc, char *argv[])
         return engine->toScriptValue(aboutData);
     });
 
-    qmlRegisterType<JournaldViewModel>("kjournald", 1, 0, "JournaldViewModel");
-    qmlRegisterType<JournaldUniqueQueryModel>("kjournald", 1, 0, "JournaldUniqueQueryModel");
-    qmlRegisterType<FieldFilterProxyModel>("kjournald", 1, 0, "FieldFilterProxyModel");
-    qmlRegisterType<BootModel>("kjournald", 1, 0, "BootModel");
     qmlRegisterSingletonInstance("kjournald", 1, 0, "FilterCriteriaModelProxy", &filterCriteriaModel);
     qmlRegisterSingletonInstance("kjournald", 1, 0, "ClipboardProxy", &clipboardProxy);
     qmlRegisterSingletonInstance("kjournald", 1, 0, "SessionConfigProxy", &sessionConfig);

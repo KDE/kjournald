@@ -9,6 +9,7 @@
 #include "ijournal.h"
 #include "kjournald_export.h"
 #include <QAbstractItemModel>
+#include <QQmlEngine>
 #include <memory>
 
 class BootModelPrivate;
@@ -23,6 +24,8 @@ class KJOURNALD_EXPORT BootModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY(QString journalPath WRITE setJournaldPath READ journaldPath RESET setSystemJournal)
+
+    QML_ELEMENT
 
 public:
     enum Roles {
