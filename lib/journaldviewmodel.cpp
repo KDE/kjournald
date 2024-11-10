@@ -52,7 +52,7 @@ void JournaldViewModelPrivate::resetJournal()
     //     AND (unit_1 OR unit_2 OR ...) OR (exe=x OR exe=y OR ...)
 
     // filter boots
-    for (const QString &boot : qAsConst(mBootFilter)) {
+    for (const QString &boot : mFilter.bootFilter()) {
         QString filterExpression = QLatin1String("_BOOT_ID=") + boot;
         result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toUtf8().constData(), 0);
         qCDebug(KJOURNALDLIB_FILTERTRACE).nospace() << "add_match(" << filterExpression << ")";
@@ -60,8 +60,8 @@ void JournaldViewModelPrivate::resetJournal()
             qCCritical(KJOURNALDLIB_GENERAL) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
         }
     }
-    if (mPriorityFilter.has_value()) {
-        for (int i = 0; i <= mPriorityFilter; ++i) {
+    if (mFilter.priorityFilter() >= 0) {
+        for (int i = 0; i <= mFilter.priorityFilter(); ++i) {
             QString filterExpression = QLatin1String("PRIORITY=") + QString::number(i);
             result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toUtf8().constData(), 0);
             qCDebug(KJOURNALDLIB_FILTERTRACE).nospace() << "add_match(" << filterExpression << ")";
@@ -69,7 +69,7 @@ void JournaldViewModelPrivate::resetJournal()
                 qCCritical(KJOURNALDLIB_GENERAL) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
             }
         }
-        qCDebug(KJOURNALDLIB_GENERAL) << "Use priority filter level:" << mPriorityFilter.value();
+        qCDebug(KJOURNALDLIB_GENERAL) << "Use priority filter level:" << mFilter.priorityFilter();
     } else {
         qCDebug(KJOURNALDLIB_GENERAL) << "Skip setting priority filter";
     }
@@ -84,7 +84,7 @@ void JournaldViewModelPrivate::resetJournal()
     //       because kernel output will not match any further service/exe filter
     QStringList kernelTransports{QLatin1String("audit"), QLatin1String("driver"), QLatin1String("kernel")};
     QStringList nonKernelTransports{QLatin1String("syslog"), QLatin1String("journal"), QLatin1String("stdout")};
-    if (mShowKernelMessages) {
+    if (mFilter.areKernelMessagesEnabled()) {
         for (const QString &transport : kernelTransports) {
             QString filterExpression = QLatin1String("_TRANSPORT=") + transport;
             result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toUtf8().constData(), 0);
@@ -109,7 +109,7 @@ void JournaldViewModelPrivate::resetJournal()
     }
 
     // filter units
-    for (const QString &unit : qAsConst(mSystemdUnitFilter)) {
+    for (const QString &unit : mFilter.systemdUnitFilter()) {
         QString filterExpression = QLatin1String("_SYSTEMD_UNIT=") + unit;
         result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toUtf8().constData(), 0);
         qCDebug(KJOURNALDLIB_FILTERTRACE).nospace() << "add_match(" << filterExpression << ")";
@@ -122,7 +122,7 @@ void JournaldViewModelPrivate::resetJournal()
     Q_ASSERT(result >= 0);
 
     // filter executable
-    for (const QString &executable : qAsConst(mExeFilter)) {
+    for (const QString &executable : mFilter.exeFilter()) {
         QString filterExpression = QLatin1String("_EXE=") + executable;
         result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toUtf8().constData(), 0);
         qCDebug(KJOURNALDLIB_FILTERTRACE).nospace() << "add_match(" << filterExpression << ")";
@@ -372,7 +372,7 @@ bool JournaldViewModel::setJournal(std::unique_ptr<IJournal> journal)
     guardedEndResetModel();
     fetchMoreLogEntries();
     connect(d->mJournal.get(), &IJournal::journalUpdated, this, [=](const QString &bootId) {
-        if (!d->mBootFilter.contains(bootId)) {
+        if (!d->mFilter.bootFilter().contains(bootId)) {
             return;
         }
         if (d->mTailCursorReached) {
@@ -603,102 +603,26 @@ void JournaldViewModel::seekTail()
     guardedEndResetModel();
 }
 
-void JournaldViewModel::setSystemdUnitFilter(const QStringList &systemdUnitFilter)
+void JournaldViewModel::setFilter(const Filter &filter)
 {
+    qCDebug(KJOURNALDLIB_FILTERTRACE) << "setfilter" << filter;
+    //TODO add == operator and skip setting of same filter
     guardedBeginResetModel();
-    d->mSystemdUnitFilter = systemdUnitFilter;
+    d->mFilter = filter;
     d->resetJournal();
     guardedEndResetModel();
     fetchMoreLogEntries();
 }
 
-QStringList JournaldViewModel::systemdUnitFilter() const
+void JournaldViewModel::resetFilter()
 {
-    return d->mSystemdUnitFilter;
+    Filter defaultFilter;
+    setFilter(defaultFilter);
 }
 
-void JournaldViewModel::setBootFilter(const QStringList &bootFilter)
+Filter JournaldViewModel::filter() const
 {
-    if (d->mBootFilter == bootFilter) {
-        return;
-    }
-    guardedBeginResetModel();
-    d->mBootFilter = bootFilter;
-    d->resetJournal();
-    guardedEndResetModel();
-    fetchMoreLogEntries();
-    Q_EMIT bootFilterChanged();
-}
-
-QStringList JournaldViewModel::bootFilter() const
-{
-    return d->mBootFilter;
-}
-
-void JournaldViewModel::setExeFilter(const QStringList &exeFilter)
-{
-    if (d->mExeFilter == exeFilter) {
-        return;
-    }
-    guardedBeginResetModel();
-    d->mExeFilter = exeFilter;
-    d->resetJournal();
-    guardedEndResetModel();
-    fetchMoreLogEntries();
-    Q_EMIT exeFilterChanged();
-}
-
-QStringList JournaldViewModel::exeFilter() const
-{
-    return d->mExeFilter;
-}
-
-void JournaldViewModel::setPriorityFilter(int priority)
-{
-    qCDebug(KJOURNALDLIB_GENERAL) << "Set priority filter to:" << priority;
-    guardedBeginResetModel();
-    if (priority >= 0) {
-        d->mPriorityFilter = priority;
-    } else {
-        d->mPriorityFilter = std::nullopt;
-    }
-    d->resetJournal();
-    guardedEndResetModel();
-    fetchMoreLogEntries();
-    Q_EMIT priorityFilterChanged();
-}
-
-void JournaldViewModel::resetPriorityFilter()
-{
-    guardedBeginResetModel();
-    d->mPriorityFilter.reset();
-    d->resetJournal();
-    guardedEndResetModel();
-    fetchMoreLogEntries();
-    Q_EMIT priorityFilterChanged();
-}
-
-int JournaldViewModel::priorityFilter() const
-{
-    return d->mPriorityFilter.value_or(-1);
-}
-
-void JournaldViewModel::setKernelFilter(bool showKernelMessages)
-{
-    if (d->mShowKernelMessages == showKernelMessages) {
-        return;
-    }
-    guardedBeginResetModel();
-    d->mShowKernelMessages = showKernelMessages;
-    d->resetJournal();
-    guardedEndResetModel();
-    fetchMoreLogEntries();
-    Q_EMIT kernelFilterChanged();
-}
-
-bool JournaldViewModel::isKernelFilterEnabled() const
-{
-    return d->mShowKernelMessages;
+    return d->mFilter;
 }
 
 int JournaldViewModel::search(const QString &searchString, int startRow, Direction direction)

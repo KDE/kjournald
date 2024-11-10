@@ -9,6 +9,7 @@
 #include "kjournald_export.h"
 #include <QAbstractItemModel>
 #include <ijournal.h>
+#include <filter.h>
 #include <memory>
 #include <QQmlEngine>
 
@@ -24,26 +25,11 @@ class KJOURNALD_EXPORT JournaldViewModel : public QAbstractItemModel
 {
     Q_OBJECT
     Q_PROPERTY(QString journalPath WRITE setJournaldPath RESET setSystemJournal)
+
     /**
-     * Configure model to only provide messages for stated systemd units
+     * Configure filter for view model
      **/
-    Q_PROPERTY(QStringList systemdUnitFilter WRITE setSystemdUnitFilter READ systemdUnitFilter NOTIFY systemdUnitFilterChanged)
-    /**
-     * Configure model to only provide messages for stated boot ids.
-     **/
-    Q_PROPERTY(QStringList bootFilter WRITE setBootFilter READ bootFilter NOTIFY bootFilterChanged)
-    /**
-     * Configure model to only show messages of stated executables (see journald '_EXE' field)
-     **/
-    Q_PROPERTY(QStringList exeFilter WRITE setExeFilter READ exeFilter NOTIFY exeFilterChanged)
-    /**
-     * if set to true, Kernel messages are added to the log output
-     **/
-    Q_PROPERTY(bool kernelFilter WRITE setKernelFilter READ isKernelFilterEnabled NOTIFY kernelFilterChanged)
-    /**
-     * Configure model to only provide messages with stated priority or higher. Default: no filter is set.
-     **/
-    Q_PROPERTY(int priorityFilter WRITE setPriorityFilter READ priorityFilter NOTIFY priorityFilterChanged RESET resetPriorityFilter)
+    Q_PROPERTY(Filter filter WRITE setFilter READ filter RESET resetFilter NOTIFY filterChanged)
 
     QML_ELEMENT
 
@@ -189,82 +175,19 @@ public:
     void fetchMore(const QModelIndex &parent) override;
 
     /**
-     * @brief Configure for which systemd units messages shall be shown
-     *
-     * If no unit is configured, this filter is deactivated. The given values are compared
-     * to the _SYSTEMD_UNIT journal value.
-     *
-     * @param systemdUnitFilter list of system units
+     * Configure the filter that is applied to view model
      */
-    void setSystemdUnitFilter(const QStringList &systemdUnitFilter);
+    void setFilter(const Filter &filter);
 
     /**
-     * @return list of currently set systemd services for filtering
+     * @return currently set filter
      */
-    QStringList systemdUnitFilter() const;
+    Filter filter() const;
 
     /**
-     * @brief Configure for which boots messages shall be shown
-     *
-     * If no boot id is configured, this filter is deactivated. The given values are compared
-     * to the _BOOT_ID journal value.
-     *
-     * @param bootFilter list of boot ids
+     * @brief Discard all filter values
      */
-    void setBootFilter(const QStringList &bootFilter);
-
-    /**
-     * @return list of currently set boot ids for filtering
-     */
-    QStringList bootFilter() const;
-
-    /**
-     * @brief Configure for which executable messages shall be shown
-     *
-     * If no executable is configured, this filter is deactivated. The given values are compared
-     * to the _EXE journal value.
-     *
-     * @param exeFilter list of executable paths
-     */
-    void setExeFilter(const QStringList &exeFilter);
-
-    /**
-     * @return list of currently set executables for filtering
-     */
-    QStringList exeFilter() const;
-
-    /**
-     * @brief Configure if Kernel messages shall be included in model
-     *
-     * Per default, Kernel messages are deactivated.
-     *
-     * @param showKernelMessages parameter that defines if Kernel messages shall be shown
-     */
-    void setKernelFilter(bool showKernelMessages);
-
-    /**
-     * @return true if Kernel messages are included in model, otherwise false
-     */
-    bool isKernelFilterEnabled() const;
-
-    /**
-     * @brief Filter messages such that only messages with this and higher priority are provided
-     *
-     * @note Non-systemd services may not follow systemd's priority values
-     *
-     * @param priority the minimal priority for messages that shall be provided by model
-     */
-    void setPriorityFilter(int priority);
-
-    /**
-     * @return currently set priority filter value or -1 if not set
-     */
-    int priorityFilter() const;
-
-    /**
-     * @brief Discard priority filter and display all messages
-     */
-    void resetPriorityFilter();
+    void resetFilter();
 
     /**
      * @return row index of searched string
@@ -321,25 +244,9 @@ private Q_SLOTS:
 
 Q_SIGNALS:
     /**
-     * Signal is emitted when Kernel message filter is changed
+     * Signal is emitted when filter is changed
      */
-    void kernelFilterChanged();
-    /**
-     * Signal is emitted when boot id filter is changed
-     */
-    void bootFilterChanged();
-    /**
-     * Signal is emitted when Systemd service name filter is changed
-     */
-    void systemdUnitFilterChanged();
-    /**
-     * Signal is emitted when executable path filter is changed
-     */
-    void exeFilterChanged();
-    /**
-     * Signal is emitted when log level priority filter is changed
-     */
-    void priorityFilterChanged();
+    void filterChanged();
 
 protected:
     void guardedBeginResetModel();

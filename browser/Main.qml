@@ -273,10 +273,10 @@ Kirigami.AbstractApplicationWindow {
         journalPath: SessionConfigProxy.sessionMode === SessionConfig.LOCALFOLDER
                      || SessionConfigProxy.sessionMode
                      === SessionConfig.REMOTE ? SessionConfigProxy.localJournalPath : undefined
-        systemdUnitFilter: FilterCriteriaModelProxy.systemdUnitFilter
-        exeFilter: FilterCriteriaModelProxy.exeFilter
-        bootFilter: bootIdComboBox.currentValue
-        priorityFilter: FilterCriteriaModelProxy.priorityFilter
-        kernelFilter: FilterCriteriaModelProxy.kernelFilter
+        filter.units: FilterCriteriaModelProxy.systemdUnitFilter
+        filter.exes: FilterCriteriaModelProxy.exeFilter
+        filter.boots: bootIdComboBox.currentValue
+        filter.priority: FilterCriteriaModelProxy.priorityFilter
+        filter.kernel: FilterCriteriaModelProxy.kernelFilter
     }
 }
