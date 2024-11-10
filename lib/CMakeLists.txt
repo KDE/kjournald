@@ -39,6 +39,8 @@ target_sources(kjournald PRIVATE
     localjournal.cpp
     localjournal.h
     localjournal_p.h
+    filter.cpp
+    filter.h
     filtercriteriamodel.cpp
     filtercriteriamodel.h
     filtercriteriamodel_p.h
@@ -87,6 +89,7 @@ install(TARGETS kjournald
 if(INSTALL_EXPERIMENTAL_HEADERS)
     install(FILES
         bootmodel.h
+        filter.h
         ijournal.h
         localjournal.h
         journaldhelper.h

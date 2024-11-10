@@ -77,23 +77,27 @@ void TestViewModel::rowAccess()
 void TestViewModel::bootFilter()
 {
     JournaldViewModel model;
+    Filter filter = model.filter();
     QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
     QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
 
     // select only second boot
-    model.setBootFilter({mBoots.at(1)});
+    filter.setBootFilter({mBoots.at(1)});
+    model.setFilter(filter);
     QVERIFY(model.rowCount() > 0);
     QCOMPARE(model.data(model.index(0, 0), JournaldViewModel::BOOT_ID), mBoots.at(1));
 
     // select only first boot
-    model.setBootFilter({mBoots.at(0)});
+    filter.setBootFilter({mBoots.at(0)});
+    model.setFilter(filter);
     QVERIFY(model.rowCount() > 0);
     QCOMPARE(model.data(model.index(0, 0), JournaldViewModel::BOOT_ID), mBoots.at(0));
 
     // select first and second boot
     bool firstBootFound = false;
     bool secondBootFound = false;
-    model.setBootFilter({mBoots.at(0), mBoots.at(1)});
+    filter.setBootFilter({mBoots.at(0), mBoots.at(1)});
+    model.setFilter(filter);
     // value of 20.000 is chosen arbitrarily from test with this journal archive
     while (model.canFetchMore(QModelIndex()) && model.rowCount() < 20'000) {
         model.fetchMore(QModelIndex());
@@ -112,18 +116,22 @@ void TestViewModel::bootFilter()
 void TestViewModel::unitFilter()
 {
     JournaldViewModel model;
+    Filter filter = model.filter();
     QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
     QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
 
     // select single service
-    model.setSystemdUnitFilter({"systemd-networkd.service"});
+
+    filter.setSystemdUnitFilter({"systemd-networkd.service"});
+    model.setFilter(filter);
     QVERIFY(model.rowCount() > 0);
     QCOMPARE(model.data(model.index(0, 0), JournaldViewModel::SYSTEMD_UNIT), "systemd-networkd.service");
 
     // test mulitple services
     QStringList testSystemdUnitNames{"init.scope", "dbus.service", "systemd-networkd.service"};
     QStringList notFoundUnits = testSystemdUnitNames;
-    model.setSystemdUnitFilter(testSystemdUnitNames);
+    filter.setSystemdUnitFilter(testSystemdUnitNames);
+    model.setFilter(filter);
 
     while (model.canFetchMore(QModelIndex())) {
         model.fetchMore(QModelIndex());
@@ -147,11 +155,13 @@ void TestViewModel::showKernelMessages()
     const QString arbitraryKernelMessage = "brcmfmac: brcmf_fw_alloc_request: using brcm/brcmfmac43455-sdio for chip BCM4345/6";
 
     JournaldViewModel model;
+    Filter filter = model.filter();
     QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
     QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
 
     // check that not contains Kernel message
-    model.setKernelFilter(false);
+    filter.setKernelMessagesEnabled(false);
+    model.setFilter(filter);
     QVERIFY(model.rowCount() > 0);
     while (model.canFetchMore(QModelIndex())  && model.rowCount() < 2000) {
         model.fetchMore(QModelIndex());
@@ -162,7 +172,8 @@ void TestViewModel::showKernelMessages()
     }
 
     // check that Kernel messages are containted
-    model.setKernelFilter(true);
+    filter.setKernelMessagesEnabled(true);
+    model.setFilter(filter);
     QVERIFY(model.rowCount() > 0);
     while (model.canFetchMore(QModelIndex())) {
         model.fetchMore(QModelIndex());
@@ -205,8 +216,10 @@ void TestViewModel::readFullJournal()
     JournaldViewModel model;
     QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
     QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
-    model.setBootFilter({mBoots.at(0)});
-    model.setKernelFilter(true);
+    Filter filter = model.filter();
+    filter.setBootFilter({mBoots.at(0)});
+    filter.setKernelMessagesEnabled(true);
+    model.setFilter(filter);
 
     qDebug().noquote() << "check with:"
                        << "journalctl -b" << mBoots.at(0);
@@ -225,6 +238,7 @@ void TestViewModel::readFullJournal()
 void TestViewModel::resetModelHeadAndTailCursorTest()
 {
     JournaldViewModel model;
+    Filter filter = model.filter();
     QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
     QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
 
@@ -240,7 +254,8 @@ void TestViewModel::resetModelHeadAndTailCursorTest()
          "s=f1a33fced0cb4d2bb629fb2bd70d1326;i=48e;b=27acae2fe35a40ac93f9c7732c0b8e59;m=67f0d79;t=5bd6cd098ce95;x=c20fdd57f02ca4c5"}};
 
     // use model and set boot 0
-    model.setBootFilter({mBoots.at(0)});
+    filter.setBootFilter({mBoots.at(0)});
+    model.setFilter(filter);
     // boot has 925 non-kernel log entries, fetching once with chunk size 500 gets all
     model.fetchMore(QModelIndex());
 
@@ -262,7 +277,8 @@ void TestViewModel::resetModelHeadAndTailCursorTest()
     QCOMPARE(model.data(model.index(model.rowCount() - 1, 0), JournaldViewModel::CURSOR), cursors.at(0).mTail);
 
     // use model and set boot 1
-    model.setBootFilter({mBoots.at(1)});
+    filter.setBootFilter({mBoots.at(1)});
+    model.setFilter(filter);
     model.fetchMore(QModelIndex());
     // journalctl -b 27acae2fe35a40ac93f9c7732c0b8e59 -D . -o json|head -n1
     QCOMPARE(model.data(model.index(0, 0), JournaldViewModel::CURSOR), cursors.at(1).mHead);
@@ -309,7 +325,9 @@ void TestViewModel::stringSearch()
     // simple check when full journal is alread read
     {
         JournaldViewModel model;
-        model.setBootFilter({mBoots.at(0)}); // select boot -2 == 68f2e61d061247d8a8ba0b8d53a97a52
+        Filter filter = model.filter();
+        filter.setBootFilter({mBoots.at(0)}); // select boot -2 == 68f2e61d061247d8a8ba0b8d53a97a52
+        model.setFilter(filter);
         QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
         QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
         int foundLine{-1};
@@ -319,16 +337,18 @@ void TestViewModel::stringSearch()
             if (foundLine != -1) {
                 results.push_back(foundLine);
             }
-
         } while (foundLine != -1);
+        QVERIFY(results.size() > 0);
         CONTAINER_EQUAL(needleLines, results);
     }
 
     // enforce multiple chunk reads
     {
         JournaldViewModel model;
+        Filter filter = model.filter();
         model.setFetchMoreChunkSize(10);
-        model.setBootFilter({mBoots.at(0)}); // select boot -2 == 68f2e61d061247d8a8ba0b8d53a97a52
+        filter.setBootFilter({mBoots.at(0)}); // select boot -2 == 68f2e61d061247d8a8ba0b8d53a97a52
+        model.setFilter(filter);
         QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
         QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
         int foundLine{-1};
@@ -352,7 +372,9 @@ void TestViewModel::stringSearch()
     // test backward search
     {
         JournaldViewModel model;
-        model.setBootFilter({mBoots.at(0)}); // select boot -2 == 68f2e61d061247d8a8ba0b8d53a97a52
+        Filter filter = model.filter();
+        filter.setBootFilter({mBoots.at(0)}); // select boot -2 == 68f2e61d061247d8a8ba0b8d53a97a52
+        model.setFilter(filter);
         model.seekTail();
         QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
         QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);

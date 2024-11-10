@@ -7,6 +7,7 @@
 #define JOURNALDVIEWMODEL_P_H
 
 #include "ijournal.h"
+#include "filter.h"
 #include <QAtomicInt>
 #include <QColor>
 #include <QDateTime>
@@ -90,11 +91,7 @@ public:
 
     std::unique_ptr<IJournal> mJournal;
     QVector<LogEntry> mLog;
-    QStringList mSystemdUnitFilter;
-    QStringList mExeFilter;
-    QStringList mBootFilter;
-    std::optional<quint8> mPriorityFilter;
-    bool mShowKernelMessages{false};
+    Filter mFilter;
     bool mHeadCursorReached{false};
     bool mTailCursorReached{false};
     bool mModelResetActive{false};
