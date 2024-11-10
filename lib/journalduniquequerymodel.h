@@ -9,6 +9,7 @@
 #include "journaldhelper.h"
 #include "kjournald_export.h"
 #include <QAbstractItemModel>
+#include <QQmlEngine>
 #include <memory>
 
 class JournaldUniqueQueryModelPrivate;
@@ -28,6 +29,7 @@ class JournaldUniqueQueryModelPrivate;
 class KJOURNALD_EXPORT JournaldUniqueQueryModel : public QAbstractItemModel
 {
     Q_OBJECT
+    QML_ELEMENT
     Q_PROPERTY(QString journalPath WRITE setJournaldPath RESET setSystemJournal)
     Q_PROPERTY(QString field WRITE setFieldString)
 

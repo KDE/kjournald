@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: Andreas Cord-Landwehr <cordlandwehr@kde.org>
 
 add_library(kjournald SHARED)
+ecm_add_qml_module(kjournald URI "org.kde.kjournald")
 
 ecm_qt_declare_logging_category(
     kjournald
@@ -27,7 +28,6 @@ ecm_qt_install_logging_categories(
 
 generate_export_header(kjournald BASE_NAME KJournald)
 target_sources(kjournald PRIVATE
-    ${KJOURNALDLIB_SRCS}
     bootmodel.cpp
     bootmodel.h
     bootmodel_p.h
@@ -64,7 +64,13 @@ PRIVATE
     Qt6::Quick
     PkgConfig::SYSTEMD
 )
-set_property(TARGET kjournald APPEND PROPERTY COMPILE_DEFINITIONS QT_NO_CAST_FROM_ASCII QT_NO_CAST_TO_ASCII)
+
+ecm_finalize_qml_module(kjournald DESTINATION ${KDE_INSTALL_QMLDIR})
+
+set_property(TARGET kjournald
+    APPEND PROPERTY COMPILE_DEFINITIONS
+        QT_NO_CAST_FROM_ASCII
+        QT_NO_CAST_TO_ASCII)
 target_include_directories(kjournald PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/>
     $<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}>

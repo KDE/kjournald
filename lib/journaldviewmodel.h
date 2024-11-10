@@ -10,6 +10,7 @@
 #include <QAbstractItemModel>
 #include <ijournal.h>
 #include <memory>
+#include <QQmlEngine>
 
 class JournaldViewModelPrivate;
 
@@ -43,6 +44,8 @@ class KJOURNALD_EXPORT JournaldViewModel : public QAbstractItemModel
      * Configure model to only provide messages with stated priority or higher. Default: no filter is set.
      **/
     Q_PROPERTY(int priorityFilter WRITE setPriorityFilter READ priorityFilter NOTIFY priorityFilterChanged RESET resetPriorityFilter)
+
+    QML_ELEMENT
 
 public:
     enum Roles {
