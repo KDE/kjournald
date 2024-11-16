@@ -39,6 +39,14 @@ Item {
             }
             color: root.__isHighlighted ? Material.primaryHighlightedTextColor : Material.iconDisabledColor
             text: timeString
+            HoverHandler {
+                id: timeHoverHandler
+                cursorShape: Qt.PointingHandCursor
+            }
+            ToolTip.delay: 1000
+            ToolTip.timeout: 5000
+            ToolTip.visible: timeHoverHandler.hovered
+            ToolTip.text: "UTC " + modelProxy.formatTime(root.date, true)
         }
 
         Text {
