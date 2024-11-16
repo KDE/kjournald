@@ -44,10 +44,11 @@ ListView {
                     }
                     ItemDelegate { // clear button for checkbox selection
                         visible: model.expanded && model.selected
-                        leftPadding: 20
+                        leftPadding: 10
                         onClicked: model.selected = false
                         activeFocusOnTab: true
                         Accessible.name: clearLabel.text
+                        Layout.fillWidth: true
                         contentItem: RowLayout {
                             Label {
                                 id: clearLabel
