@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-08 08:48+0000\n"
+"POT-Creation-Date: 2024-11-18 02:40+0000\n"
 "PO-Revision-Date: 2022-11-21 13:22+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -28,7 +28,7 @@ msgstr "Розгорнуто"
 msgid "Collapsed"
 msgstr "Згорнуто"
 
-#: browser/FilterCriteriaView.qml:54
+#: browser/FilterCriteriaView.qml:55
 #, kde-format
 msgid "Clear"
 msgstr "Спорожнити"
@@ -53,7 +53,7 @@ msgstr "Відкрити з теки"
 msgid "Open from file"
 msgstr "Відкрити з файла"
 
-#: browser/GlobalMenu.qml:48 browser/Main.qml:69 browser/TopMenuBar.qml:51
+#: browser/GlobalMenu.qml:48 browser/Main.qml:70 browser/TopMenuBar.qml:51
 #, kde-format
 msgid "Close"
 msgstr "Закрити"
@@ -108,7 +108,7 @@ msgstr "Виконуваний файл"
 msgid "Help"
 msgstr "Довідка"
 
-#: browser/GlobalMenu.qml:117 browser/Main.qml:51 browser/TopMenuBar.qml:134
+#: browser/GlobalMenu.qml:117 browser/Main.qml:52 browser/TopMenuBar.qml:134
 #, kde-format
 msgid "About"
 msgstr "Про програму"
@@ -118,25 +118,25 @@ msgstr "Про програму"
 msgid "Kernel"
 msgstr "Ядро"
 
-#: browser/main.cpp:41
+#: browser/main.cpp:37
 #, kde-format
 msgctxt "@title Displayed program name"
 msgid "KJournald Browser"
 msgstr "Навігатор KJournald"
 
-#: browser/main.cpp:43
+#: browser/main.cpp:39
 #, kde-format
 msgctxt "@title KAboutData: short program description"
 msgid "Viewer for Journald logs"
 msgstr "Програма для перегляду журналів Journald"
 
-#: browser/main.cpp:45
+#: browser/main.cpp:41
 #, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021 The KJournald Developers"
 msgstr "© Розробники KJournald, 2021"
 
-#: browser/main.cpp:46
+#: browser/main.cpp:42
 #, kde-format
 msgctxt "@title Short program description"
 msgid ""
@@ -146,76 +146,76 @@ msgstr ""
 "Програма для перегляду баз даних Journald, які було створено засобом ведення "
 "журналу Journald."
 
-#: browser/main.cpp:48
+#: browser/main.cpp:44
 #, kde-format
 msgctxt "@info:credit Developer name"
 msgid "Andreas Cord-Landwehr"
 msgstr "Andreas Cord-Landwehr"
 
-#: browser/main.cpp:49
+#: browser/main.cpp:45
 #, kde-format
 msgctxt "@info:credit Role"
 msgid "Original Author"
 msgstr "Автор початкової версії"
 
-#: browser/main.cpp:51
+#: browser/main.cpp:47
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Юрій Чорноіван"
 
-#: browser/main.cpp:51
+#: browser/main.cpp:47
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "yurchor@ukr.net"
 
-#: browser/Main.qml:55
+#: browser/Main.qml:56
 #, kde-format
 msgid "Launch Bug Report Wizard"
 msgstr "Запустити майстра звітування про помилку"
 
-#: browser/Main.qml:93
+#: browser/Main.qml:94
 #, kde-format
 msgid "Boot:"
 msgstr "Завантаження:"
 
-#: browser/Main.qml:112
+#: browser/Main.qml:113
 #, kde-format
 msgid "Highlight:"
 msgstr "Підсвічування:"
 
-#: browser/Main.qml:143
+#: browser/Main.qml:144
 #, kde-format
 msgid "Browse"
 msgstr "Огляд"
 
-#: browser/Main.qml:152
+#: browser/Main.qml:153
 #, kde-format
 msgid "Select"
 msgstr "Вибрати"
 
-#: browser/Main.qml:169
+#: browser/Main.qml:170
 #, kde-format
 msgid "Select journal folder"
 msgstr "Виберіть теку журналу"
 
-#: browser/Main.qml:178
+#: browser/Main.qml:179
 #, kde-format
 msgid "Select journal file"
 msgstr "Виберіть файл журналу"
 
-#: browser/Main.qml:179
+#: browser/Main.qml:180
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "файли журналу (*.journal)"
 
-#: browser/Main.qml:179
+#: browser/Main.qml:180
 #, kde-format
 msgid "All files (*)"
 msgstr "усі файли (*)"
 
-#: browser/Main.qml:252
+#: browser/Main.qml:253
 #, kde-format
 msgid "No log entries apply "
 msgstr "Жоден із записів журналу не є відповідним"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-08 08:48+0000\n"
+"POT-Creation-Date: 2024-11-18 02:40+0000\n"
 "PO-Revision-Date: 2024-04-06 01:55-0300\n"
 "Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -28,7 +28,7 @@ msgstr "Expandido"
 msgid "Collapsed"
 msgstr "Recolhido"
 
-#: browser/FilterCriteriaView.qml:54
+#: browser/FilterCriteriaView.qml:55
 #, kde-format
 msgid "Clear"
 msgstr "Limpar"
@@ -53,7 +53,7 @@ msgstr "Abrir pasta"
 msgid "Open from file"
 msgstr "Abrir arquivo"
 
-#: browser/GlobalMenu.qml:48 browser/Main.qml:69 browser/TopMenuBar.qml:51
+#: browser/GlobalMenu.qml:48 browser/Main.qml:70 browser/TopMenuBar.qml:51
 #, kde-format
 msgid "Close"
 msgstr "Fechar"
@@ -108,7 +108,7 @@ msgstr "Executável"
 msgid "Help"
 msgstr "Ajuda"
 
-#: browser/GlobalMenu.qml:117 browser/Main.qml:51 browser/TopMenuBar.qml:134
+#: browser/GlobalMenu.qml:117 browser/Main.qml:52 browser/TopMenuBar.qml:134
 #, kde-format
 msgid "About"
 msgstr "Sobre"
@@ -118,25 +118,25 @@ msgstr "Sobre"
 msgid "Kernel"
 msgstr "Versão do kernel"
 
-#: browser/main.cpp:41
+#: browser/main.cpp:37
 #, kde-format
 msgctxt "@title Displayed program name"
 msgid "KJournald Browser"
 msgstr "Navegador do Kjournald"
 
-#: browser/main.cpp:43
+#: browser/main.cpp:39
 #, kde-format
 msgctxt "@title KAboutData: short program description"
 msgid "Viewer for Journald logs"
 msgstr "Visualizador de logs do journald"
 
-#: browser/main.cpp:45
+#: browser/main.cpp:41
 #, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021 The KJournald Developers"
 msgstr "(c) 2021, os desenvolvedores do KJournald"
 
-#: browser/main.cpp:46
+#: browser/main.cpp:42
 #, kde-format
 msgctxt "@title Short program description"
 msgid ""
@@ -144,76 +144,76 @@ msgid ""
 "tool."
 msgstr "Visualizador de base de dados gerada pelo journald."
 
-#: browser/main.cpp:48
+#: browser/main.cpp:44
 #, kde-format
 msgctxt "@info:credit Developer name"
 msgid "Andreas Cord-Landwehr"
 msgstr "Andreas Cord-Landwehr"
 
-#: browser/main.cpp:49
+#: browser/main.cpp:45
 #, kde-format
 msgctxt "@info:credit Role"
 msgid "Original Author"
 msgstr "Autor original"
 
-#: browser/main.cpp:51
+#: browser/main.cpp:47
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Geraldo Simião, Luiz Fernando Ranghetti"
 
-#: browser/main.cpp:51
+#: browser/main.cpp:47
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "geraldosimiao@fedoraproject.org, elchevive@opensuse.org"
 
-#: browser/Main.qml:55
+#: browser/Main.qml:56
 #, kde-format
 msgid "Launch Bug Report Wizard"
 msgstr "Iniciar o Assistente de Relatório de Erros"
 
-#: browser/Main.qml:93
+#: browser/Main.qml:94
 #, kde-format
 msgid "Boot:"
 msgstr "Inicialização:"
 
-#: browser/Main.qml:112
+#: browser/Main.qml:113
 #, kde-format
 msgid "Highlight:"
 msgstr "Destaque:"
 
-#: browser/Main.qml:143
+#: browser/Main.qml:144
 #, kde-format
 msgid "Browse"
 msgstr "Navegar"
 
-#: browser/Main.qml:152
+#: browser/Main.qml:153
 #, kde-format
 msgid "Select"
 msgstr "Selecionar"
 
-#: browser/Main.qml:169
+#: browser/Main.qml:170
 #, kde-format
 msgid "Select journal folder"
 msgstr "Selecionar pasta"
 
-#: browser/Main.qml:178
+#: browser/Main.qml:179
 #, kde-format
 msgid "Select journal file"
 msgstr "Selecionar arquivo"
 
-#: browser/Main.qml:179
+#: browser/Main.qml:180
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "Arquivos de log (*.journal)"
 
-#: browser/Main.qml:179
+#: browser/Main.qml:180
 #, kde-format
 msgid "All files (*)"
 msgstr "Todo tipo de arquivos (*)"
 
-#: browser/Main.qml:252
+#: browser/Main.qml:253
 #, kde-format
 msgid "No log entries apply "
 msgstr "Nenhum registro é compatível com o critério"

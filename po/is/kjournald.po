@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-08 08:48+0000\n"
+"POT-Creation-Date: 2024-11-18 02:40+0000\n"
 "PO-Revision-Date: 2024-03-18 15:25+0000\n"
 "Last-Translator: Guðmundur Erlingsson <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
@@ -27,7 +27,7 @@ msgstr "Útvíkkað"
 msgid "Collapsed"
 msgstr "Fellt saman"
 
-#: browser/FilterCriteriaView.qml:54
+#: browser/FilterCriteriaView.qml:55
 #, kde-format
 msgid "Clear"
 msgstr "Hreinsa"
@@ -52,7 +52,7 @@ msgstr "Opna úr möppu"
 msgid "Open from file"
 msgstr "Opna úr skrá"
 
-#: browser/GlobalMenu.qml:48 browser/Main.qml:69 browser/TopMenuBar.qml:51
+#: browser/GlobalMenu.qml:48 browser/Main.qml:70 browser/TopMenuBar.qml:51
 #, kde-format
 msgid "Close"
 msgstr "Loka"
@@ -107,7 +107,7 @@ msgstr "Keyrsluskrá"
 msgid "Help"
 msgstr "Hjálp"
 
-#: browser/GlobalMenu.qml:117 browser/Main.qml:51 browser/TopMenuBar.qml:134
+#: browser/GlobalMenu.qml:117 browser/Main.qml:52 browser/TopMenuBar.qml:134
 #, kde-format
 msgid "About"
 msgstr "Um forritið"
@@ -117,25 +117,25 @@ msgstr "Um forritið"
 msgid "Kernel"
 msgstr "Kjarni"
 
-#: browser/main.cpp:41
+#: browser/main.cpp:37
 #, kde-format
 msgctxt "@title Displayed program name"
 msgid "KJournald Browser"
 msgstr "KJournald-vafri"
 
-#: browser/main.cpp:43
+#: browser/main.cpp:39
 #, kde-format
 msgctxt "@title KAboutData: short program description"
 msgid "Viewer for Journald logs"
 msgstr "Skoðari fyrir Journald-annála"
 
-#: browser/main.cpp:45
+#: browser/main.cpp:41
 #, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021 The KJournald Developers"
 msgstr "(c) 2021 KJournald forritararnir"
 
-#: browser/main.cpp:46
+#: browser/main.cpp:42
 #, kde-format
 msgctxt "@title Short program description"
 msgid ""
@@ -143,76 +143,76 @@ msgid ""
 "tool."
 msgstr "Skoðari fyrir Journald-gagnagrunna, sem annálaverkfæri Journald útbýr."
 
-#: browser/main.cpp:48
+#: browser/main.cpp:44
 #, kde-format
 msgctxt "@info:credit Developer name"
 msgid "Andreas Cord-Landwehr"
 msgstr "Andreas Cord-Landwehr"
 
-#: browser/main.cpp:49
+#: browser/main.cpp:45
 #, kde-format
 msgctxt "@info:credit Role"
 msgid "Original Author"
 msgstr "Upprunalegur höfundur"
 
-#: browser/main.cpp:51
+#: browser/main.cpp:47
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Guðmundur Erlingsson"
 
-#: browser/main.cpp:51
+#: browser/main.cpp:47
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "gudmundure@gmail.com"
 
-#: browser/Main.qml:55
+#: browser/Main.qml:56
 #, kde-format
 msgid "Launch Bug Report Wizard"
 msgstr "Opna hjálparforrit fyrir villuskýrslu"
 
-#: browser/Main.qml:93
+#: browser/Main.qml:94
 #, kde-format
 msgid "Boot:"
 msgstr "Ræsing:"
 
-#: browser/Main.qml:112
+#: browser/Main.qml:113
 #, kde-format
 msgid "Highlight:"
 msgstr "Áherslulitur:"
 
-#: browser/Main.qml:143
+#: browser/Main.qml:144
 #, kde-format
 msgid "Browse"
 msgstr "Fletta"
 
-#: browser/Main.qml:152
+#: browser/Main.qml:153
 #, kde-format
 msgid "Select"
 msgstr "Velja"
 
-#: browser/Main.qml:169
+#: browser/Main.qml:170
 #, kde-format
 msgid "Select journal folder"
 msgstr "Velja færsluskrármöppu"
 
-#: browser/Main.qml:178
+#: browser/Main.qml:179
 #, kde-format
 msgid "Select journal file"
 msgstr "Velja færsluskrá"
 
-#: browser/Main.qml:179
+#: browser/Main.qml:180
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "Færsluskrár (*.journal)"
 
-#: browser/Main.qml:179
+#: browser/Main.qml:180
 #, kde-format
 msgid "All files (*)"
 msgstr "Allar skrár (*)"
 
-#: browser/Main.qml:252
+#: browser/Main.qml:253
 #, kde-format
 msgid "No log entries apply "
 msgstr "Engin annálafærsla á við"
