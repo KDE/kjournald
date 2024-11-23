@@ -21,7 +21,7 @@ class KJOURNALD_EXPORT Filter
     /**
      * filter for message priorities
      */
-    Q_PROPERTY(int priority READ priorityFilter WRITE setPriorityFilter RESET resetPriorityFilter)
+    Q_PROPERTY(int priority READ priorityFilterInt WRITE setPriorityFilter RESET resetPriorityFilter)
     /**
      * filter list for systemd units
      **/
@@ -45,7 +45,12 @@ public:
     /**
      * \return the currently selected priority threshold for displayed log entries
      */
-    [[nodiscard]] int priorityFilter() const;
+    [[nodiscard]] std::optional<quint8> priorityFilter() const;
+
+    /**
+     * \return the currently selected priority threshold for displayed log entries
+     */
+    [[nodiscard]] int priorityFilterInt() const;
 
     /**
      * \brief Filter messages such that only messages with this and higher priority are provided
@@ -89,7 +94,7 @@ public:
      *
      * \param units list of system units
      */
-    void setSystemdUnitFilter(const QStringList& units);
+    void setSystemdUnitFilter(const QStringList &units);
 
     /**
      * \return the list of enabled processes

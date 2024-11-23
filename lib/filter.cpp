@@ -5,9 +5,14 @@
 
 #include "filter.h"
 
-int Filter::priorityFilter() const
+std::optional<quint8> Filter::priorityFilter() const
 {
-    return mPriority.value_or(-1);
+    return mPriority;
+}
+
+int Filter::priorityFilterInt() const
+{
+    return mPriority.value_or(0);
 }
 
 void Filter::setPriorityFilter(int priority)
@@ -66,7 +71,7 @@ void Filter::setKernelMessagesEnabled(bool enabled)
 
 QDebug operator<<(QDebug debug, const Filter &c)
 {
-    debug.nospace() << "filter(priority: " << c.priorityFilter() << ", boot: " << c.bootFilter() << ", exe: " << c.exeFilter() << ", unit: " << c.systemdUnitFilter()
-                    << ", kernel: " << c.areKernelMessagesEnabled() << ")";
+    debug.nospace() << "filter(priority: " << c.priorityFilterInt() << ", boot: " << c.bootFilter() << ", exe: " << c.exeFilter()
+                    << ", unit: " << c.systemdUnitFilter() << ", kernel: " << c.areKernelMessagesEnabled() << ")";
     return debug.space();
 }

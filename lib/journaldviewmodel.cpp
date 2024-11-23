@@ -33,24 +33,6 @@ void JournaldViewModelPrivate::resetJournal()
 
     qCDebug(KJOURNALDLIB_FILTERTRACE) << "flush_matches()";
 
-    // filter construction:
-    // The Journald API does not provide arbitrary logical phrases, but a 4 level syntax,
-    // see: https://www.freedesktop.org/software/systemd/man/sd_journal_add_match.html
-    // 1. level: AND, via add_conjunction (separates terms via AND)
-    // 2. level: OR, via add_disjunction (separates terms via OR or AND)
-    // 3: level: AND, via multiple add_match(...) in one term with different fields that are considered as AND combination
-    // 4: level: OR, via multiple add_match(...) in one term with same field that are considered as OR combination
-    //
-    // The following boolean expression is created as follow for kernel transport option:
-    //      (boot=123 OR boot=...)
-    //      AND (priority=1 OR priority=...)
-    //      AND (transport=kernel)
-    //      AND (transport=not-kernel) OR (unit_1 OR unit_2 OR ...) OR (exe=x OR exe=y OR ...)
-    //  And for non-kernel transport option:
-    //      (boot=123 OR boot=...)
-    //      AND (priority=1 OR priority=...)
-    //      AND (unit_1 OR unit_2 OR ...) OR (exe=x OR exe=y OR ...)
-
     auto addConjunction = [](sd_journal *journal) -> void {
         int result{0};
         result = sd_journal_add_conjunction(journal);
@@ -81,10 +63,10 @@ void JournaldViewModelPrivate::resetJournal()
         }
     };
 
-    auto addMatchesPriorityFilter = [](sd_journal *journal, int priorityLimit) -> void {
+    auto addMatchesPriorityFilter = [](sd_journal *journal, std::optional<quint8> priorityLimit) -> void {
         int result{0};
-        if (priorityLimit >= 0) {
-            for (int i = 0; i <= priorityLimit; ++i) {
+        if (priorityLimit.has_value()) {
+            for (int i = 0; i <= *priorityLimit; ++i) {
                 QString filterExpression = QLatin1String("PRIORITY=") + QString::number(i);
                 result = sd_journal_add_match(journal, filterExpression.toUtf8().constData(), 0);
                 qCDebug(KJOURNALDLIB_FILTERTRACE).nospace() << "add_match(" << filterExpression << ")";
@@ -92,7 +74,7 @@ void JournaldViewModelPrivate::resetJournal()
                     qCCritical(KJOURNALDLIB_GENERAL) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
                 }
             }
-            qCDebug(KJOURNALDLIB_GENERAL) << "Use priority filter level:" << priorityLimit;
+            qCDebug(KJOURNALDLIB_GENERAL) << "Use priority filter level:" << *priorityLimit;
         } else {
             qCDebug(KJOURNALDLIB_GENERAL) << "Skip setting priority filter";
         }
@@ -134,29 +116,67 @@ void JournaldViewModelPrivate::resetJournal()
         }
     };
 
-    // filter boots
-    addMatchesBootFilter(mJournal->sdJournal(), mFilter.bootFilter());
-    addMatchesPriorityFilter(mJournal->sdJournal(), mFilter.priorityFilter());
-    addDisjunction(mJournal->sdJournal());
+    const QStringList kernelTransports{QLatin1String("audit"), QLatin1String("driver"), QLatin1String("kernel")};
+    const QStringList nonKernelTransports{QLatin1String("syslog"), QLatin1String("journal"), QLatin1String("stdout")};
 
-    addConjunction(mJournal->sdJournal());
+    // filter construction:
+    // The Journald API does not provide arbitrary logical phrases, but a 4 level syntax,
+    // see: https://www.freedesktop.org/software/systemd/man/sd_journal_add_match.html
+    // 1. level: AND, via add_conjunction (separates terms via AND)
+    // 2. level: OR, via add_disjunction (separates terms via OR or AND)
+    // 3: level: AND, via multiple add_match(...) in one term with different fields that are considered as AND combination
+    // 4: level: OR, via multiple add_match(...) in one term with same field that are considered as OR combination
+    //
+    // The following boolean expression is created as follow for kernel transport option:
+    //     (boot=123 OR boot=...)
+    //     AND (priority=1 OR priority=...)
+    //     AND (transport=kernel)
+    // OR
+    //     (boot=123 OR boot=...)
+    //     AND (priority=1 OR priority=...)
+    //     AND (unit_1 OR unit_2 OR ...)
+    // OR
+    //     (boot=123 OR boot=...)
+    //     AND (priority=1 OR priority=...)
+    //     AND (exe=x OR exe=y OR ...)
 
-    // see journal-fields documentation regarding list of valid transports
-    // note: in case of kernel messages being activated, this filter automatically activates all kernel transport
-    //       because kernel output will not match any further service/exe filter
-    QStringList kernelTransports{QLatin1String("audit"), QLatin1String("driver"), QLatin1String("kernel")};
-    QStringList nonKernelTransports{QLatin1String("syslog"), QLatin1String("journal"), QLatin1String("stdout")};
+    bool clauseAdded{false};
+    // kernel filter is special in the sense that thouse message only shall be added
+    // and in the absense of different category filters, a filtering of the correct
+    // transport layer must be applied
     if (mFilter.areKernelMessagesEnabled()) {
-        addMatchesTransportFilter(mJournal->sdJournal(), kernelTransports);
-        addDisjunction(mJournal->sdJournal());
-    } else {
+        clauseAdded = true;
+        addMatchesBootFilter(mJournal->sdJournal(), mFilter.bootFilter());
+        addMatchesPriorityFilter(mJournal->sdJournal(), mFilter.priorityFilter());
+        QStringList transportFilter = kernelTransports;
+        if (mFilter.systemdUnitFilter().empty() && mFilter.exeFilter().empty()) {
+            transportFilter.append(nonKernelTransports);
+        }
+        addMatchesTransportFilter(mJournal->sdJournal(), transportFilter);
+    } else if (mFilter.systemdUnitFilter().empty() && mFilter.exeFilter().empty()) {
+        clauseAdded = true;
+        addMatchesBootFilter(mJournal->sdJournal(), mFilter.bootFilter());
+        addMatchesPriorityFilter(mJournal->sdJournal(), mFilter.priorityFilter());
         addMatchesTransportFilter(mJournal->sdJournal(), nonKernelTransports);
-        addConjunction(mJournal->sdJournal());
     }
-
-    addMatchesUnitFilter(mJournal->sdJournal(), mFilter.systemdUnitFilter());
-    addDisjunction(mJournal->sdJournal());
-    addMatchesExeFilter(mJournal->sdJournal(), mFilter.exeFilter());
+    if (clauseAdded && !mFilter.systemdUnitFilter().empty()) {
+        addDisjunction(mJournal->sdJournal());
+        clauseAdded = false;
+    }
+    if (!mFilter.systemdUnitFilter().empty()) {
+        clauseAdded = true;
+        addMatchesBootFilter(mJournal->sdJournal(), mFilter.bootFilter());
+        addMatchesPriorityFilter(mJournal->sdJournal(), mFilter.priorityFilter());
+        addMatchesUnitFilter(mJournal->sdJournal(), mFilter.systemdUnitFilter());
+    }
+    if (clauseAdded && !mFilter.exeFilter().empty()) {
+        addDisjunction(mJournal->sdJournal());
+    }
+    if (!mFilter.exeFilter().empty()) {
+        addMatchesBootFilter(mJournal->sdJournal(), mFilter.bootFilter());
+        addMatchesPriorityFilter(mJournal->sdJournal(), mFilter.priorityFilter());
+        addMatchesExeFilter(mJournal->sdJournal(), mFilter.exeFilter());
+    }
 
     qCDebug(KJOURNALDLIB_FILTERTRACE).nospace() << "Filter DONE";
     mTailCursorReached = false;
