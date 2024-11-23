@@ -66,7 +66,7 @@ void Filter::setKernelMessagesEnabled(bool enabled)
 
 QDebug operator<<(QDebug debug, const Filter &c)
 {
-    debug.nospace() << "filter(priority: " << c.priorityFilter() << ", boot: " << c.bootFilter() << ", exe: " << c.exeFilter() << ", unit:" << c.systemdUnitFilter()
-                    << "kernel: " << c.areKernelMessagesEnabled() << ")";
+    debug.nospace() << "filter(priority: " << c.priorityFilter() << ", boot: " << c.bootFilter() << ", exe: " << c.exeFilter() << ", unit: " << c.systemdUnitFilter()
+                    << ", kernel: " << c.areKernelMessagesEnabled() << ")";
     return debug.space();
 }
