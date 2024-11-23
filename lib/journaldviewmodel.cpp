@@ -42,42 +42,104 @@ void JournaldViewModelPrivate::resetJournal()
     // 4: level: OR, via multiple add_match(...) in one term with same field that are considered as OR combination
     //
     // The following boolean expression is created as follow for kernel transport option:
-    //     (boot=123 OR boot=...)
-    //     AND (priority=1 OR priority=...)
-    //     AND (transport=kernel) OR (unit_1 OR unit_2 OR ...) OR (exe=x OR exe=y OR ...)
-    // And for non-kernel transport option:
-    //     (boot=123 OR boot=...)
-    //     AND (priority=1 OR priority=...)
-    //     AND (transport=not-kernel)
-    //     AND (unit_1 OR unit_2 OR ...) OR (exe=x OR exe=y OR ...)
+    //      (boot=123 OR boot=...)
+    //      AND (priority=1 OR priority=...)
+    //      AND (transport=kernel)
+    //      AND (transport=not-kernel) OR (unit_1 OR unit_2 OR ...) OR (exe=x OR exe=y OR ...)
+    //  And for non-kernel transport option:
+    //      (boot=123 OR boot=...)
+    //      AND (priority=1 OR priority=...)
+    //      AND (unit_1 OR unit_2 OR ...) OR (exe=x OR exe=y OR ...)
 
-    // filter boots
-    for (const QString &boot : mFilter.bootFilter()) {
-        QString filterExpression = QLatin1String("_BOOT_ID=") + boot;
-        result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toUtf8().constData(), 0);
-        qCDebug(KJOURNALDLIB_FILTERTRACE).nospace() << "add_match(" << filterExpression << ")";
+    auto addConjunction = [](sd_journal *journal) -> void {
+        int result{0};
+        result = sd_journal_add_conjunction(journal);
         if (result < 0) {
-            qCCritical(KJOURNALDLIB_GENERAL) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
+            qCCritical(KJOURNALDLIB_FILTERTRACE).nospace() << "add_conjunction returned error";
         }
-    }
-    if (mFilter.priorityFilter() >= 0) {
-        for (int i = 0; i <= mFilter.priorityFilter(); ++i) {
-            QString filterExpression = QLatin1String("PRIORITY=") + QString::number(i);
-            result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toUtf8().constData(), 0);
+        Q_ASSERT(result >= 0);
+    };
+
+    auto addDisjunction = [](sd_journal *journal) -> void {
+        int result{0};
+        result = sd_journal_add_disjunction(journal);
+        if (result < 0) {
+            qCCritical(KJOURNALDLIB_FILTERTRACE).nospace() << "add_disjunction returned error";
+        }
+        Q_ASSERT(result >= 0);
+    };
+
+    auto addMatchesBootFilter = [](sd_journal *journal, const QStringList &boots) -> void {
+        int result{0};
+        for (const QString &boot : boots) {
+            QString filterExpression = QLatin1String("_BOOT_ID=") + boot;
+            result = sd_journal_add_match(journal, filterExpression.toUtf8().constData(), 0);
             qCDebug(KJOURNALDLIB_FILTERTRACE).nospace() << "add_match(" << filterExpression << ")";
             if (result < 0) {
                 qCCritical(KJOURNALDLIB_GENERAL) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
             }
         }
-        qCDebug(KJOURNALDLIB_GENERAL) << "Use priority filter level:" << mFilter.priorityFilter();
-    } else {
-        qCDebug(KJOURNALDLIB_GENERAL) << "Skip setting priority filter";
-    }
+    };
 
-    // boot and priority filter shall always be enforced
-    result = sd_journal_add_conjunction(mJournal->sdJournal());
-    qCDebug(KJOURNALDLIB_FILTERTRACE).nospace() << "add_conjunction()";
-    Q_ASSERT(result >= 0);
+    auto addMatchesPriorityFilter = [](sd_journal *journal, int priorityLimit) -> void {
+        int result{0};
+        if (priorityLimit >= 0) {
+            for (int i = 0; i <= priorityLimit; ++i) {
+                QString filterExpression = QLatin1String("PRIORITY=") + QString::number(i);
+                result = sd_journal_add_match(journal, filterExpression.toUtf8().constData(), 0);
+                qCDebug(KJOURNALDLIB_FILTERTRACE).nospace() << "add_match(" << filterExpression << ")";
+                if (result < 0) {
+                    qCCritical(KJOURNALDLIB_GENERAL) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
+                }
+            }
+            qCDebug(KJOURNALDLIB_GENERAL) << "Use priority filter level:" << priorityLimit;
+        } else {
+            qCDebug(KJOURNALDLIB_GENERAL) << "Skip setting priority filter";
+        }
+    };
+
+    auto addMatchesUnitFilter = [](sd_journal *journal, const QStringList &units) -> void {
+        int result{0};
+        for (const QString &unit : units) {
+            QString filterExpression = QLatin1String("_SYSTEMD_UNIT=") + unit;
+            result = sd_journal_add_match(journal, filterExpression.toUtf8().constData(), 0);
+            qCDebug(KJOURNALDLIB_FILTERTRACE).nospace() << "add_match(" << filterExpression << ")";
+            if (result < 0) {
+                qCCritical(KJOURNALDLIB_GENERAL) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
+            }
+        }
+    };
+
+    auto addMatchesExeFilter = [](sd_journal *journal, const QStringList &exes) -> void {
+        int result{0};
+        for (const QString &executable : exes) {
+            QString filterExpression = QLatin1String("_EXE=") + executable;
+            result = sd_journal_add_match(journal, filterExpression.toUtf8().constData(), 0);
+            qCDebug(KJOURNALDLIB_FILTERTRACE).nospace() << "add_match(" << filterExpression << ")";
+            if (result < 0) {
+                qCCritical(KJOURNALDLIB_GENERAL) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
+            }
+        }
+    };
+
+    auto addMatchesTransportFilter = [](sd_journal *journal, const QStringList &transports) -> void {
+        int result{0};
+        for (const QString &transport : transports) {
+            QString filterExpression = QLatin1String("_TRANSPORT=") + transport;
+            result = sd_journal_add_match(journal, filterExpression.toUtf8().constData(), 0);
+            qCDebug(KJOURNALDLIB_FILTERTRACE).nospace() << "add_match(" << filterExpression << ")";
+            if (result < 0) {
+                qCCritical(KJOURNALDLIB_GENERAL) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
+            }
+        }
+    };
+
+    // filter boots
+    addMatchesBootFilter(mJournal->sdJournal(), mFilter.bootFilter());
+    addMatchesPriorityFilter(mJournal->sdJournal(), mFilter.priorityFilter());
+    addDisjunction(mJournal->sdJournal());
+
+    addConjunction(mJournal->sdJournal());
 
     // see journal-fields documentation regarding list of valid transports
     // note: in case of kernel messages being activated, this filter automatically activates all kernel transport
@@ -85,51 +147,16 @@ void JournaldViewModelPrivate::resetJournal()
     QStringList kernelTransports{QLatin1String("audit"), QLatin1String("driver"), QLatin1String("kernel")};
     QStringList nonKernelTransports{QLatin1String("syslog"), QLatin1String("journal"), QLatin1String("stdout")};
     if (mFilter.areKernelMessagesEnabled()) {
-        for (const QString &transport : kernelTransports) {
-            QString filterExpression = QLatin1String("_TRANSPORT=") + transport;
-            result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toUtf8().constData(), 0);
-            qCDebug(KJOURNALDLIB_FILTERTRACE).nospace() << "add_match(" << filterExpression << ")";
-            if (result < 0) {
-                qCCritical(KJOURNALDLIB_GENERAL) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
-            }
-        }
-        result = sd_journal_add_disjunction(mJournal->sdJournal());
-        Q_ASSERT(result >= 0);
+        addMatchesTransportFilter(mJournal->sdJournal(), kernelTransports);
+        addDisjunction(mJournal->sdJournal());
     } else {
-        for (const QString &transport : nonKernelTransports) {
-            QString filterExpression = QLatin1String("_TRANSPORT=") + transport;
-            result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toUtf8().constData(), 0);
-            qCDebug(KJOURNALDLIB_FILTERTRACE).nospace() << "add_match(" << filterExpression << ")";
-            if (result < 0) {
-                qCCritical(KJOURNALDLIB_GENERAL) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
-            }
-        }
-        result = sd_journal_add_conjunction(mJournal->sdJournal());
-        Q_ASSERT(result >= 0);
+        addMatchesTransportFilter(mJournal->sdJournal(), nonKernelTransports);
+        addConjunction(mJournal->sdJournal());
     }
 
-    // filter units
-    for (const QString &unit : mFilter.systemdUnitFilter()) {
-        QString filterExpression = QLatin1String("_SYSTEMD_UNIT=") + unit;
-        result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toUtf8().constData(), 0);
-        qCDebug(KJOURNALDLIB_FILTERTRACE).nospace() << "add_match(" << filterExpression << ")";
-        if (result < 0) {
-            qCCritical(KJOURNALDLIB_GENERAL) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
-        }
-    }
-
-    result = sd_journal_add_disjunction(mJournal->sdJournal());
-    Q_ASSERT(result >= 0);
-
-    // filter executable
-    for (const QString &executable : mFilter.exeFilter()) {
-        QString filterExpression = QLatin1String("_EXE=") + executable;
-        result = sd_journal_add_match(mJournal->sdJournal(), filterExpression.toUtf8().constData(), 0);
-        qCDebug(KJOURNALDLIB_FILTERTRACE).nospace() << "add_match(" << filterExpression << ")";
-        if (result < 0) {
-            qCCritical(KJOURNALDLIB_GENERAL) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
-        }
-    }
+    addMatchesUnitFilter(mJournal->sdJournal(), mFilter.systemdUnitFilter());
+    addDisjunction(mJournal->sdJournal());
+    addMatchesExeFilter(mJournal->sdJournal(), mFilter.exeFilter());
 
     qCDebug(KJOURNALDLIB_FILTERTRACE).nospace() << "Filter DONE";
     mTailCursorReached = false;
@@ -606,7 +633,7 @@ void JournaldViewModel::seekTail()
 void JournaldViewModel::setFilter(const Filter &filter)
 {
     qCDebug(KJOURNALDLIB_FILTERTRACE) << "setfilter" << filter;
-    //TODO add == operator and skip setting of same filter
+    // TODO add == operator and skip setting of same filter
     guardedBeginResetModel();
     d->mFilter = filter;
     d->resetJournal();
