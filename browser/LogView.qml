@@ -284,7 +284,7 @@ ListView {
         }
     }
 
-    Keys.onPressed: {
+    Keys.onPressed: (event)=> {
         var currentIndex = root.indexAt(1, root.contentY + 1) // 1 pixel right and down to really get the first item in view
         var scrollIndexSkip = Math.floor(0.9 * root.height / 30) // hard-coded estimate of one line log height
         if (event.key === Qt.Key_PageDown) {
