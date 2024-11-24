@@ -15,7 +15,6 @@
 #include <QTemporaryFile>
 #include <QTest>
 #include <QVector>
-#include <QDebug>
 
 // note: this test request several data from a real example journald database
 //       you can check them by using "journalctl -D journal" and requesting the values
@@ -40,6 +39,7 @@ void TestViewModel::rowAccess()
 {
     // used unfiltered journal and check first two lines
     JournaldViewModel model;
+
     QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
     QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
     QVERIFY(model.rowCount() > 0);
@@ -151,37 +151,41 @@ void TestViewModel::unitFilter()
 void TestViewModel::showKernelMessages()
 {
     // obtained string with:
-    // journalctl -b -0 -k -D . -o cat | head -n1
-    const QString arbitraryKernelMessage = "brcmfmac: brcmf_fw_alloc_request: using brcm/brcmfmac43455-sdio for chip BCM4345/6";
+    // journalctl _TRANSPORT=kernel -b 2dbe99dd855049af8f2865c5da2b8fda -D . -o json|head -1
+    const QString needleCursor = "s=71e0819dabc84edab6c4a3b6f386e57a;i=195;b=2dbe99dd855049af8f2865c5da2b8fda;m=3f55c8;t=5bd6cd5f8b895;x=c3f4327cdb1c3b6f";
+    const QString needleMessage = "brcmfmac: brcmf_fw_alloc_request: using brcm/brcmfmac43455-sdio for chip BCM4345/6";
 
     JournaldViewModel model;
     Filter filter = model.filter();
+    filter.setBootFilter({"2dbe99dd855049af8f2865c5da2b8fda"});
     QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
     QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
 
-    // check that not contains Kernel message
+    // check that journal does not contain Kernel message
     filter.setKernelMessagesEnabled(false);
     model.setFilter(filter);
     QVERIFY(model.rowCount() > 0);
-    while (model.canFetchMore(QModelIndex())  && model.rowCount() < 2000) {
+    while (model.canFetchMore(QModelIndex()) && model.rowCount() < 2000) {
         model.fetchMore(QModelIndex());
     }
     for (int i = 0; i < model.rowCount(); ++i) {
         const QString message = model.data(model.index(i, 0), JournaldViewModel::MESSAGE).toString();
-        QVERIFY(arbitraryKernelMessage != message);
+        QVERIFY(needleMessage != message);
     }
 
     // check that Kernel messages are containted
     filter.setKernelMessagesEnabled(true);
     model.setFilter(filter);
     QVERIFY(model.rowCount() > 0);
-    while (model.canFetchMore(QModelIndex())) {
+    // 10 is magic number to avoid full model fetching
+    for (int i = 0; i < 10 && model.canFetchMore(QModelIndex()); ++i) {
         model.fetchMore(QModelIndex());
     }
     bool found{false};
     for (int i = 0; i < model.rowCount(); ++i) {
-        const QString message = model.data(model.index(i, 0), JournaldViewModel::MESSAGE).toString();
-        if (arbitraryKernelMessage == message) {
+        const QString cursor = model.data(model.index(i, 0), JournaldViewModel::CURSOR).toString();
+        if (needleCursor == cursor) {
+            QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::MESSAGE).toString(), needleMessage);
             found = true;
         }
     }
