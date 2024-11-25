@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-18 00:42+0000\n"
+"POT-Creation-Date: 2024-11-25 00:42+0000\n"
 "PO-Revision-Date: 2022-12-31 15:50+0000\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English <kde-l10n-en_gb@kde.org>\n"
@@ -130,9 +130,11 @@ msgid "Viewer for Journald logs"
 msgstr "Viewer for Journald logs"
 
 #: browser/main.cpp:41
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:credit"
+#| msgid "(c) 2021 The KJournald Developers"
 msgctxt "@info:credit"
-msgid "(c) 2021 The KJournald Developers"
+msgid "(c) 2021-2024 The KJournald Developers"
 msgstr "(c) 2021 The KJournald Developers"
 
 #: browser/main.cpp:42
@@ -327,7 +329,7 @@ msgctxt "Section title for systemd unit"
 msgid "Unit"
 msgstr "Unit"
 
-#: lib/filtercriteriamodel.cpp:192
+#: lib/filtercriteriamodel.cpp:199
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"
