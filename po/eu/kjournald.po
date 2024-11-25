@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-18 02:40+0000\n"
+"POT-Creation-Date: 2024-11-25 02:36+0000\n"
 "PO-Revision-Date: 2022-11-24 05:00+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -330,7 +330,7 @@ msgctxt "Section title for systemd unit"
 msgid "Unit"
 msgstr "Unitatea"
 
-#: lib/filtercriteriamodel.cpp:192
+#: lib/filtercriteriamodel.cpp:199
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"
