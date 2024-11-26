@@ -1,16 +1,16 @@
 # Translation of kjournald.po to Catalan (Valencian)
-# Copyright (C) 2021-2022 This_file_is_part_of_KDE
+# Copyright (C) 2021-2024 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2021.
-# Josep M. Ferrer <txemaq@gmail.com>, 2022.
+# Josep M. Ferrer <txemaq@gmail.com>, 2022, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-25 00:42+0000\n"
-"PO-Revision-Date: 2022-11-21 09:14+0100\n"
+"PO-Revision-Date: 2024-11-25 09:15+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 20.12.0\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: browser/FilterCriteriaView.qml:29
 #, kde-format
@@ -133,12 +133,10 @@ msgid "Viewer for Journald logs"
 msgstr "Visor per a registres de Journald"
 
 #: browser/main.cpp:41
-#, fuzzy, kde-format
-#| msgctxt "@info:credit"
-#| msgid "(c) 2021 The KJournald Developers"
+#, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2024 The KJournald Developers"
-msgstr "(c) 2021, Els desenvolupadors de KJournald"
+msgstr "(c) 2021-2024 Els desenvolupadors de KJournald"
 
 #: browser/main.cpp:42
 #, kde-format

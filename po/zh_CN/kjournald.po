@@ -130,12 +130,10 @@ msgid "Viewer for Journald logs"
 msgstr "Journald 日志查看器"
 
 #: browser/main.cpp:41
-#, fuzzy, kde-format
-#| msgctxt "@info:credit"
-#| msgid "(c) 2021 The KJournald Developers"
+#, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2024 The KJournald Developers"
-msgstr "(c) 2021 The KJournald Developers"
+msgstr ""
 
 #: browser/main.cpp:42
 #, kde-format
