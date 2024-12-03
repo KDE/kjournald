@@ -4,13 +4,13 @@
 # This file is distributed under the same license as the kjournald package.
 # Automatically generated, 2022.
 #
-# SPDX-FileCopyrightText: 2023 Kisaragi Hiu <mail@kisaragi-hiu.com>
+# SPDX-FileCopyrightText: 2023, 2024 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-25 00:42+0000\n"
-"PO-Revision-Date: 2023-11-29 18:56+0900\n"
+"PO-Revision-Date: 2024-12-02 17:04+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 23.08.3\n"
+"X-Generator: Lokalize 24.08.3\n"
 
 #: browser/FilterCriteriaView.qml:29
 #, kde-format
@@ -133,12 +133,10 @@ msgid "Viewer for Journald logs"
 msgstr "Journald 紀錄的檢視器"
 
 #: browser/main.cpp:41
-#, fuzzy, kde-format
-#| msgctxt "@info:credit"
-#| msgid "(c) 2021 The KJournald Developers"
+#, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2024 The KJournald Developers"
-msgstr "(c) 2021 KJournald 開發團隊"
+msgstr "(c) 2021-2024 KJournald 開發團隊"
 
 #: browser/main.cpp:42
 #, kde-format
