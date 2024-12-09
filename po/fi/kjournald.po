@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the kjournald package.
-# Tommi Nieminen <translator@legisign.org>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Tommi Nieminen <translator@legisign.org>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-25 00:42+0000\n"
-"PO-Revision-Date: 2023-03-05 17:57+0200\n"
+"PO-Revision-Date: 2024-12-07 15:08+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -15,6 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: browser/FilterCriteriaView.qml:29
 #, kde-format
@@ -129,12 +130,10 @@ msgid "Viewer for Journald logs"
 msgstr "Journald-lokikatselin"
 
 #: browser/main.cpp:41
-#, fuzzy, kde-format
-#| msgctxt "@info:credit"
-#| msgid "(c) 2021 The KJournald Developers"
+#, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2024 The KJournald Developers"
-msgstr "© 2021 KJournald:n kehittäjät"
+msgstr "© 2021–2024 KJournald:n kehittäjät"
 
 #: browser/main.cpp:42
 #, kde-format
