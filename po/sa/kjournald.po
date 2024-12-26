@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-25 00:42+0000\n"
-"PO-Revision-Date: 2024-12-24 20:39+0530\n"
+"PO-Revision-Date: 2024-12-25 19:45+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
@@ -37,7 +37,7 @@ msgstr "स्पष्टः"
 #: browser/GlobalMenu.qml:11 browser/TopMenuBar.qml:15
 #, kde-format
 msgid "File"
-msgstr "संचिका"
+msgstr "सञ्चिका"
 
 #: browser/GlobalMenu.qml:14
 #, kde-format
@@ -47,7 +47,7 @@ msgstr "ओपन सिस्टम जर्नल"
 #: browser/GlobalMenu.qml:21
 #, kde-format
 msgid "Open from folder"
-msgstr "फोल्डर् तः उद्घाटयन्तु"
+msgstr "समुच्चय तः उद्घाटयन्तु"
 
 #: browser/GlobalMenu.qml:29
 #, kde-format
