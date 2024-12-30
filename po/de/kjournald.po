@@ -4,6 +4,7 @@
 # Frederik Schwarzer <schwarzer@kde.org>, 2022.
 # Alois Spitzbart <spitz234@hotmail.com>, 2022.
 # Frank Steinmetzger <dev-kde@felsenfleischer.de>, 2022.
+# SPDX-FileCopyrightText: 2024 Johannes Obermayr <johannesobermayr@gmx.de>
 #
 # Automatically generated, 2022.
 msgid ""
@@ -19,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.12.0\n"
+"X-Generator: Lokalize 25.03.70\n"
 
 #: browser/FilterCriteriaView.qml:29
 #, kde-format
