@@ -1,13 +1,13 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the kjournald package.
 #
-# SPDX-FileCopyrightText: 2022, 2023, 2024 Emir SARI <emir_sari@icloud.com>
+# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-25 00:42+0000\n"
-"PO-Revision-Date: 2024-11-25 21:06+0300\n"
+"PO-Revision-Date: 2025-02-05 11:27+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -149,7 +149,7 @@ msgstr ""
 #, kde-format
 msgctxt "@info:credit Developer name"
 msgid "Andreas Cord-Landwehr"
-msgstr "Andreas Cord-Landwehr"
+msgstr "Andreas Cord–Landwehr"
 
 #: browser/main.cpp:45
 #, kde-format
@@ -253,13 +253,13 @@ msgstr "Dosyadan Aç"
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Emergency"
-msgstr "Acil Durum:"
+msgstr "Acil durum:"
 
 #: lib/filtercriteriamodel.cpp:25
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Alert"
-msgstr "Alarm"
+msgstr "İkaz"
 
 #: lib/filtercriteriamodel.cpp:27
 #, kde-format
