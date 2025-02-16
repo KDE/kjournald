@@ -9,6 +9,7 @@
 #include "kjournald_version.h"
 #include "sessionconfig.h"
 #include <KAboutData>
+#include <KCrash>
 #include <KLocalizedContext>
 #include <KLocalizedString>
 #include <QApplication>
@@ -26,6 +27,8 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
     QGuiApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("utilities-log-viewer")));
     app.setOrganizationName("KDE");
+
+    KCrash::initialize();
 
     // use org.kde.desktop style unless another style is forced
     if (qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE")) {

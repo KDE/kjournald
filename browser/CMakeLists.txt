@@ -26,6 +26,7 @@ PUBLIC
     Qt::Widgets # because of QApplication and QQC2 style integration
     KF6::I18n
     KF6::CoreAddons
+    KF6::Crash
     kjournald
 )
 install(TARGETS kjournaldbrowser DESTINATION bin)

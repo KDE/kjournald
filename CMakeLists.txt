@@ -51,6 +51,7 @@ ecm_setup_version(${KJOURNALD_VERSION}
 
 find_package(KF6 ${KF_VERSION} REQUIRED COMPONENTS
     CoreAddons
+    Crash
     I18n
 )
 add_definitions(-DTRANSLATION_DOMAIN=\"kjournald\")
