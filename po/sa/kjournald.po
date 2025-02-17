@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-25 00:42+0000\n"
+"POT-Creation-Date: 2025-02-17 00:43+0000\n"
 "PO-Revision-Date: 2024-12-25 19:45+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -119,25 +119,25 @@ msgstr "विषये"
 msgid "Kernel"
 msgstr "कर्नेल"
 
-#: browser/main.cpp:37
+#: browser/main.cpp:40
 #, kde-format
 msgctxt "@title Displayed program name"
 msgid "KJournald Browser"
 msgstr "KJournald ब्राउज़र"
 
-#: browser/main.cpp:39
+#: browser/main.cpp:42
 #, kde-format
 msgctxt "@title KAboutData: short program description"
 msgid "Viewer for Journald logs"
 msgstr "Journald logs कृते दर्शकः"
 
-#: browser/main.cpp:41
+#: browser/main.cpp:44
 #, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2024 The KJournald Developers"
 msgstr "(ग) 2021-2024 द केजर्नल्ड डेवलपर्स"
 
-#: browser/main.cpp:42
+#: browser/main.cpp:45
 #, kde-format
 msgctxt "@title Short program description"
 msgid ""
@@ -145,25 +145,25 @@ msgid ""
 "tool."
 msgstr "Journald databases कृते Viewer, ये Journald logging tool द्वारा उत्पद्यन्ते ।"
 
-#: browser/main.cpp:44
+#: browser/main.cpp:47
 #, kde-format
 msgctxt "@info:credit Developer name"
 msgid "Andreas Cord-Landwehr"
 msgstr "आन्द्रियास कॉर्ड Landwehr"
 
-#: browser/main.cpp:45
+#: browser/main.cpp:48
 #, kde-format
 msgctxt "@info:credit Role"
 msgid "Original Author"
 msgstr "मूल लेखक"
 
-#: browser/main.cpp:47
+#: browser/main.cpp:50
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "श्रीकान्त् कलवार्"
 
-#: browser/main.cpp:47
+#: browser/main.cpp:50
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
