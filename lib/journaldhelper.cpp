@@ -122,7 +122,7 @@ QVector<JournaldHelper::BootInfo> JournaldHelper::queryOrderedBootIds(const IJou
     }
 
     std::sort(boots.begin(), boots.end(), [](const JournaldHelper::BootInfo &lhs, const JournaldHelper::BootInfo &rhs) {
-        return lhs.mSince < rhs.mUntil;
+        return lhs.mSince < rhs.mSince;
     });
 
     return boots;
