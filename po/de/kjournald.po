@@ -166,7 +166,7 @@ msgstr "Ursprünglicher Autor"
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Deutsches KDE-Übersetzerteam"
+msgstr "Deutsches KDE-Übersetzungsteam"
 
 #: browser/main.cpp:50
 #, kde-format
