@@ -141,22 +141,19 @@ Kirigami.AbstractApplicationWindow {
 
             ToolSeparator {}
             ToolButton {
-                text: i18n("Browse")
-                icon.name: "transform-browse"
-                checkable: true
+                icon.name: SessionConfigProxy.viewMode === SessionConfig.BROWSE ? "transform-browse" : "edit-select-text"
                 checked: SessionConfigProxy.viewMode === SessionConfig.BROWSE
                 onClicked: {
-                    SessionConfigProxy.viewMode = SessionConfig.BROWSE
+                    if (SessionConfigProxy.viewMode === SessionConfig.BROWSE) {
+                        SessionConfigProxy.viewMode = SessionConfig.SELECT
+                    } else {
+                        SessionConfigProxy.viewMode = SessionConfig.BROWSE
+                    }
                 }
-            }
-            ToolButton {
-                text: i18n("Select")
-                icon.name: "edit-select-text"
-                checkable: true
-                checked: SessionConfigProxy.viewMode === SessionConfig.SELECT
-                onClicked: {
-                    SessionConfigProxy.viewMode = SessionConfig.SELECT
-                }
+                ToolTip.text: SessionConfigProxy.viewMode === SessionConfig.BROWSE ?
+                                 i18n("Switch to browsing mode") :
+                                 i18n("Switch to selection mode")
+                ToolTip.visible: hovered
             }
 
             Item {
