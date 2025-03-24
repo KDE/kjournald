@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-17 00:43+0000\n"
+"POT-Creation-Date: 2025-03-24 00:44+0000\n"
 "PO-Revision-Date: 2024-11-25 23:51+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -185,37 +185,37 @@ msgstr "Завантаження:"
 msgid "Highlight:"
 msgstr "Підсвічування:"
 
-#: browser/Main.qml:144
+#: browser/Main.qml:154
 #, kde-format
-msgid "Browse"
-msgstr "Огляд"
+msgid "Switch to browsing mode"
+msgstr ""
 
-#: browser/Main.qml:153
+#: browser/Main.qml:155
 #, kde-format
-msgid "Select"
-msgstr "Вибрати"
+msgid "Switch to selection mode"
+msgstr ""
 
-#: browser/Main.qml:170
+#: browser/Main.qml:167
 #, kde-format
 msgid "Select journal folder"
 msgstr "Виберіть теку журналу"
 
-#: browser/Main.qml:179
+#: browser/Main.qml:176
 #, kde-format
 msgid "Select journal file"
 msgstr "Виберіть файл журналу"
 
-#: browser/Main.qml:180
+#: browser/Main.qml:177
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "файли журналу (*.journal)"
 
-#: browser/Main.qml:180
+#: browser/Main.qml:177
 #, kde-format
 msgid "All files (*)"
 msgstr "усі файли (*)"
 
-#: browser/Main.qml:253
+#: browser/Main.qml:250
 #, kde-format
 msgid "No log entries apply "
 msgstr "Жоден із записів журналу не є відповідним"
@@ -333,6 +333,12 @@ msgstr "Модуль"
 msgctxt "Section title for process list"
 msgid "Process"
 msgstr "Процес"
+
+#~ msgid "Browse"
+#~ msgstr "Огляд"
+
+#~ msgid "Select"
+#~ msgstr "Вибрати"
 
 #~ msgid "Open Remote Journal Stream"
 #~ msgstr "Відкрити потік даних віддаленого журналу"

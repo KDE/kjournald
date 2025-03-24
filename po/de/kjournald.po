@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-17 00:43+0000\n"
+"POT-Creation-Date: 2025-03-24 00:44+0000\n"
 "PO-Revision-Date: 2024-12-28 23:17+0100\n"
 "Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -189,37 +189,37 @@ msgstr "Boot:"
 msgid "Highlight:"
 msgstr "Hervorheben:"
 
-#: browser/Main.qml:144
+#: browser/Main.qml:154
 #, kde-format
-msgid "Browse"
-msgstr "Durchsuchen"
+msgid "Switch to browsing mode"
+msgstr ""
 
-#: browser/Main.qml:153
+#: browser/Main.qml:155
 #, kde-format
-msgid "Select"
-msgstr "Auswählen"
+msgid "Switch to selection mode"
+msgstr ""
 
-#: browser/Main.qml:170
+#: browser/Main.qml:167
 #, kde-format
 msgid "Select journal folder"
 msgstr "Journal-Ordner auswählen"
 
-#: browser/Main.qml:179
+#: browser/Main.qml:176
 #, kde-format
 msgid "Select journal file"
 msgstr "Journal-Datei auswählen"
 
-#: browser/Main.qml:180
+#: browser/Main.qml:177
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "Journal-Dateien (*.journal)"
 
-#: browser/Main.qml:180
+#: browser/Main.qml:177
 #, kde-format
 msgid "All files (*)"
 msgstr "Alle Dateien (*)"
 
-#: browser/Main.qml:253
+#: browser/Main.qml:250
 #, kde-format
 msgid "No log entries apply "
 msgstr "Keine zutreffenden Protokolleinträge"
@@ -337,6 +337,12 @@ msgstr "Einheit"
 msgctxt "Section title for process list"
 msgid "Process"
 msgstr "Prozess"
+
+#~ msgid "Browse"
+#~ msgstr "Durchsuchen"
+
+#~ msgid "Select"
+#~ msgstr "Auswählen"
 
 #, fuzzy
 #~| msgid "Open system journal"

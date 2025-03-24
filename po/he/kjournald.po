@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-17 00:43+0000\n"
+"POT-Creation-Date: 2025-03-24 00:44+0000\n"
 "PO-Revision-Date: 2024-11-25 06:54+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -183,37 +183,37 @@ msgstr "טעינה:"
 msgid "Highlight:"
 msgstr "הדגשה:"
 
-#: browser/Main.qml:144
+#: browser/Main.qml:154
 #, kde-format
-msgid "Browse"
-msgstr "דפדוף"
+msgid "Switch to browsing mode"
+msgstr ""
 
-#: browser/Main.qml:153
+#: browser/Main.qml:155
 #, kde-format
-msgid "Select"
-msgstr "בחירה"
+msgid "Switch to selection mode"
+msgstr ""
 
-#: browser/Main.qml:170
+#: browser/Main.qml:167
 #, kde-format
 msgid "Select journal folder"
 msgstr "בחירת תיקיית יומן (journal)"
 
-#: browser/Main.qml:179
+#: browser/Main.qml:176
 #, kde-format
 msgid "Select journal file"
 msgstr "בחירת קובץ יומן (journal)"
 
-#: browser/Main.qml:180
+#: browser/Main.qml:177
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "קובצי Journal‏ (‎*.journal)"
 
-#: browser/Main.qml:180
+#: browser/Main.qml:177
 #, kde-format
 msgid "All files (*)"
 msgstr "כל הקבצים (*)"
 
-#: browser/Main.qml:253
+#: browser/Main.qml:250
 #, kde-format
 msgid "No log entries apply "
 msgstr "אין רשומות תקפות ביומן"
@@ -331,3 +331,9 @@ msgstr "יחידה"
 msgctxt "Section title for process list"
 msgid "Process"
 msgstr "תהליך"
+
+#~ msgid "Browse"
+#~ msgstr "דפדוף"
+
+#~ msgid "Select"
+#~ msgstr "בחירה"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-17 00:43+0000\n"
+"POT-Creation-Date: 2025-03-24 00:44+0000\n"
 "PO-Revision-Date: 2022-11-22 13:06+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -188,37 +188,37 @@ msgstr "Arranque:"
 msgid "Highlight:"
 msgstr "Realce:"
 
-#: browser/Main.qml:144
+#: browser/Main.qml:154
 #, kde-format
-msgid "Browse"
-msgstr "Escolher"
+msgid "Switch to browsing mode"
+msgstr ""
 
-#: browser/Main.qml:153
+#: browser/Main.qml:155
 #, kde-format
-msgid "Select"
-msgstr "Seleccionar"
+msgid "Switch to selection mode"
+msgstr ""
 
-#: browser/Main.qml:170
+#: browser/Main.qml:167
 #, kde-format
 msgid "Select journal folder"
 msgstr "Seleccionar a pasta do registo"
 
-#: browser/Main.qml:179
+#: browser/Main.qml:176
 #, kde-format
 msgid "Select journal file"
 msgstr "Seleccionar o ficheiro do registo"
 
-#: browser/Main.qml:180
+#: browser/Main.qml:177
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "Ficheiros do registo (*.journal)"
 
-#: browser/Main.qml:180
+#: browser/Main.qml:177
 #, kde-format
 msgid "All files (*)"
 msgstr "Todos os Ficheiros (*)"
 
-#: browser/Main.qml:253
+#: browser/Main.qml:250
 #, kde-format
 msgid "No log entries apply "
 msgstr "Sem itens do registo correspondentes "
@@ -336,3 +336,9 @@ msgstr "Unidade"
 msgctxt "Section title for process list"
 msgid "Process"
 msgstr "Processo"
+
+#~ msgid "Browse"
+#~ msgstr "Escolher"
+
+#~ msgid "Select"
+#~ msgstr "Seleccionar"

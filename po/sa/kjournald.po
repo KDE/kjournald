@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-17 00:43+0000\n"
+"POT-Creation-Date: 2025-03-24 00:44+0000\n"
 "PO-Revision-Date: 2024-12-25 19:45+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -184,37 +184,37 @@ msgstr "पादत्राण:"
 msgid "Highlight:"
 msgstr "प्रमुखाकृष्टि:"
 
-#: browser/Main.qml:144
+#: browser/Main.qml:154
 #, kde-format
-msgid "Browse"
-msgstr "ब्राउज़ करें"
+msgid "Switch to browsing mode"
+msgstr ""
 
-#: browser/Main.qml:153
+#: browser/Main.qml:155
 #, kde-format
-msgid "Select"
-msgstr "विचि"
+msgid "Switch to selection mode"
+msgstr ""
 
-#: browser/Main.qml:170
+#: browser/Main.qml:167
 #, kde-format
 msgid "Select journal folder"
 msgstr "पत्रिकापुटं चिनोतु"
 
-#: browser/Main.qml:179
+#: browser/Main.qml:176
 #, kde-format
 msgid "Select journal file"
 msgstr "जर्नल् सञ्चिकां चिनोतु"
 
-#: browser/Main.qml:180
+#: browser/Main.qml:177
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "जर्नल् सञ्चिकाः (*.journal) ."
 
-#: browser/Main.qml:180
+#: browser/Main.qml:177
 #, kde-format
 msgid "All files (*)"
 msgstr "सर्वाणि सञ्चिकाः (*) ."
 
-#: browser/Main.qml:253
+#: browser/Main.qml:250
 #, kde-format
 msgid "No log entries apply "
 msgstr "कोऽपि लॉगप्रविष्टयः न प्रवर्तन्ते "
@@ -332,3 +332,9 @@ msgstr "इंकाईं"
 msgctxt "Section title for process list"
 msgid "Process"
 msgstr "प्रक्रिया"
+
+#~ msgid "Browse"
+#~ msgstr "ब्राउज़ करें"
+
+#~ msgid "Select"
+#~ msgstr "विचि"
