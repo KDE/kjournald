@@ -151,8 +151,8 @@ Kirigami.AbstractApplicationWindow {
                     }
                 }
                 ToolTip.text: SessionConfigProxy.viewMode === SessionConfig.BROWSE ?
-                                 i18n("Switch to browsing mode") :
-                                 i18n("Switch to selection mode")
+                                 i18nc("@info:tooltip", "Switch to browsing mode") :
+                                 i18nc("@info:tooltip", "Switch to selection mode")
                 ToolTip.visible: hovered
             }
 
