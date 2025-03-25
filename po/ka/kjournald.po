@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-24 00:44+0000\n"
-"PO-Revision-Date: 2024-11-25 05:18+0100\n"
+"PO-Revision-Date: 2025-03-24 03:42+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -188,12 +188,12 @@ msgstr "გამოკვეთა:"
 #: browser/Main.qml:154
 #, kde-format
 msgid "Switch to browsing mode"
-msgstr ""
+msgstr "გადასვლა დათვალიერების რეჟიმში"
 
 #: browser/Main.qml:155
 #, kde-format
 msgid "Switch to selection mode"
-msgstr ""
+msgstr "არჩევის რეჟიმზე გადართვა"
 
 #: browser/Main.qml:167
 #, kde-format

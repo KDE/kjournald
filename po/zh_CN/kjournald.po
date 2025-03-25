@@ -330,9 +330,3 @@ msgstr "单元"
 msgctxt "Section title for process list"
 msgid "Process"
 msgstr "进程"
-
-#~ msgid "Browse"
-#~ msgstr "浏览"
-
-#~ msgid "Select"
-#~ msgstr "选择"

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-24 00:44+0000\n"
-"PO-Revision-Date: 2024-11-25 07:05+0100\n"
+"PO-Revision-Date: 2025-03-24 07:35+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -188,12 +188,12 @@ msgstr "Osvetljeno:"
 #: browser/Main.qml:154
 #, kde-format
 msgid "Switch to browsing mode"
-msgstr ""
+msgstr "Preklopi v način brskanja"
 
 #: browser/Main.qml:155
 #, kde-format
 msgid "Switch to selection mode"
-msgstr ""
+msgstr "Preklopi v izbirni način"
 
 #: browser/Main.qml:167
 #, kde-format

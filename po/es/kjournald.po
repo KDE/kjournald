@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the kjournald package.
 #
 # Automatically generated, 2021.
-# SPDX-FileCopyrightText: 2021, 2022, 2024 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2021, 2022, 2024, 2025 Eloy Cuadra <ecuadra@eloihr.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-24 00:44+0000\n"
-"PO-Revision-Date: 2024-11-25 20:14+0100\n"
+"PO-Revision-Date: 2025-03-24 02:47+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.08.3\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #: browser/FilterCriteriaView.qml:29
 #, kde-format
@@ -189,12 +189,12 @@ msgstr "Resaltar:"
 #: browser/Main.qml:154
 #, kde-format
 msgid "Switch to browsing mode"
-msgstr ""
+msgstr "Cambiar al modo de navegación"
 
 #: browser/Main.qml:155
 #, kde-format
 msgid "Switch to selection mode"
-msgstr ""
+msgstr "Cambiar al modo de selección"
 
 #: browser/Main.qml:167
 #, kde-format
@@ -334,18 +334,3 @@ msgstr "Unidad"
 msgctxt "Section title for process list"
 msgid "Process"
 msgstr "Proceso"
-
-#~ msgid "Browse"
-#~ msgstr "Explorar"
-
-#~ msgid "Select"
-#~ msgstr "Seleccionar"
-
-#~ msgid "Open Remote Journal Stream"
-#~ msgstr "Abrir un canal de registro remoto"
-
-#~ msgid "Open remote journal stream"
-#~ msgstr "Abrir un canal de registro remoto"
-
-#~ msgid "Url:"
-#~ msgstr "URL:"

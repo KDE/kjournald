@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-24 00:44+0000\n"
-"PO-Revision-Date: 2025-02-05 11:27+0300\n"
+"PO-Revision-Date: 2025-03-24 22:34+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -40,17 +40,17 @@ msgstr "Dosya"
 #: browser/GlobalMenu.qml:14
 #, kde-format
 msgid "Open system journal"
-msgstr "Sistem güncesini aç"
+msgstr "Sistem Güncesini Aç"
 
 #: browser/GlobalMenu.qml:21
 #, kde-format
 msgid "Open from folder"
-msgstr "Klasörden aç"
+msgstr "Klasörden Aç"
 
 #: browser/GlobalMenu.qml:29
 #, kde-format
 msgid "Open from file"
-msgstr "Dosyadan aç"
+msgstr "Dosyadan Aç"
 
 #: browser/GlobalMenu.qml:48 browser/Main.qml:70 browser/TopMenuBar.qml:51
 #, kde-format
@@ -187,12 +187,12 @@ msgstr "Vurgula:"
 #: browser/Main.qml:154
 #, kde-format
 msgid "Switch to browsing mode"
-msgstr ""
+msgstr "Tarama kipine geç"
 
 #: browser/Main.qml:155
 #, kde-format
 msgid "Switch to selection mode"
-msgstr ""
+msgstr "Seçim kipine geç"
 
 #: browser/Main.qml:167
 #, kde-format

@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the kjournald package.
 #
-# SPDX-FileCopyrightText: 2021, 2022, 2024 Freek de Kruijf <freekdekruijf@kde.nl>
+# SPDX-FileCopyrightText: 2021, 2022, 2024, 2025 Freek de Kruijf <freekdekruijf@kde.nl>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-24 00:44+0000\n"
-"PO-Revision-Date: 2024-11-25 11:12+0100\n"
+"PO-Revision-Date: 2025-03-24 11:36+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.08.3\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #: browser/FilterCriteriaView.qml:29
 #, kde-format
@@ -187,12 +187,12 @@ msgstr "Accentuering:"
 #: browser/Main.qml:154
 #, kde-format
 msgid "Switch to browsing mode"
-msgstr ""
+msgstr "Omschakelen naar modus bladeren"
 
 #: browser/Main.qml:155
 #, kde-format
 msgid "Switch to selection mode"
-msgstr ""
+msgstr "Omschakelen naar modus selecteren"
 
 #: browser/Main.qml:167
 #, kde-format
