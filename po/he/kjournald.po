@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-24 00:44+0000\n"
+"POT-Creation-Date: 2025-03-26 00:44+0000\n"
 "PO-Revision-Date: 2025-03-24 14:45+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -184,12 +184,16 @@ msgid "Highlight:"
 msgstr "הדגשה:"
 
 #: browser/Main.qml:154
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Switch to browsing mode"
+msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "מעבר למצב עיון"
 
 #: browser/Main.qml:155
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Switch to selection mode"
+msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "מעבר למצב בחירה"
 

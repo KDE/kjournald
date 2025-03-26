@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-24 00:44+0000\n"
+"POT-Creation-Date: 2025-03-26 00:44+0000\n"
 "PO-Revision-Date: 2024-12-04 09:40+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -186,11 +186,13 @@ msgstr "Realzar:"
 
 #: browser/Main.qml:154
 #, kde-format
+msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr ""
 
 #: browser/Main.qml:155
 #, kde-format
+msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr ""
 
