@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the kjournald package.
 #
-# SPDX-FileCopyrightText: 2023, 2024 giovanni <g.sora@tiscali.it>
+# SPDX-FileCopyrightText: 2023, 2024, 2025 giovanni <g.sora@tiscali.it>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-26 00:44+0000\n"
-"PO-Revision-Date: 2024-11-25 17:45+0100\n"
+"PO-Revision-Date: 2025-03-26 11:26+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -188,13 +188,13 @@ msgstr "Evidentia:"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
-msgstr ""
+msgstr "Commuta a modo de navigar "
 
 #: browser/Main.qml:155
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
-msgstr ""
+msgstr "Commuta a modo de selection  "
 
 #: browser/Main.qml:167
 #, kde-format

@@ -1,5 +1,5 @@
 # Spanish translations for kjournald.po package.
-# Copyright (C) 2021 This file is copyright:
+# Copyright (C) 2021-2025 This file is copyright:
 # This file is distributed under the same license as the kjournald package.
 #
 # Automatically generated, 2021.
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-26 00:44+0000\n"
-"PO-Revision-Date: 2025-03-24 02:47+0100\n"
+"PO-Revision-Date: 2025-03-26 02:38+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -187,15 +187,13 @@ msgid "Highlight:"
 msgstr "Resaltar:"
 
 #: browser/Main.qml:154
-#, fuzzy, kde-format
-#| msgid "Switch to browsing mode"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "Cambiar al modo de navegación"
 
 #: browser/Main.qml:155
-#, fuzzy, kde-format
-#| msgid "Switch to selection mode"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "Cambiar al modo de selección"

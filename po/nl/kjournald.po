@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-26 00:44+0000\n"
-"PO-Revision-Date: 2025-03-24 11:36+0100\n"
+"PO-Revision-Date: 2025-03-26 11:39+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -185,15 +185,13 @@ msgid "Highlight:"
 msgstr "Accentuering:"
 
 #: browser/Main.qml:154
-#, fuzzy, kde-format
-#| msgid "Switch to browsing mode"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "Omschakelen naar modus bladeren"
 
 #: browser/Main.qml:155
-#, fuzzy, kde-format
-#| msgid "Switch to selection mode"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "Omschakelen naar modus selecteren"
