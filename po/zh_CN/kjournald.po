@@ -186,13 +186,13 @@ msgstr "高亮："
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
-msgstr ""
+msgstr "切换到浏览模式"
 
 #: browser/Main.qml:155
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
-msgstr ""
+msgstr "切换到选择模式"
 
 #: browser/Main.qml:167
 #, kde-format
