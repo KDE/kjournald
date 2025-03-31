@@ -1,10 +1,10 @@
-# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024 Xavier Besnard <xavier.besnard@kde.org>
+# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024, 2025 Xavier Besnard <xavier.besnard@kde.org>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-26 00:44+0000\n"
-"PO-Revision-Date: 2024-11-26 09:18+0100\n"
+"PO-Revision-Date: 2025-03-27 08:44+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.11.80\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #: browser/FilterCriteriaView.qml:29
 #, kde-format
@@ -185,13 +185,13 @@ msgstr "Surbrillance :"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
-msgstr ""
+msgstr "Basculer en mode « Navigation »"
 
 #: browser/Main.qml:155
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
-msgstr ""
+msgstr "Basculer en mode « Sélection »"
 
 #: browser/Main.qml:167
 #, kde-format
