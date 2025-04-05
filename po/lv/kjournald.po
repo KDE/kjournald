@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-26 00:44+0000\n"
-"PO-Revision-Date: 2025-01-04 15:15+0200\n"
+"PO-Revision-Date: 2025-04-03 17:48+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 24.12.0\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #: browser/FilterCriteriaView.qml:29
 #, kde-format
@@ -188,13 +188,13 @@ msgstr "Izcelšana:"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
-msgstr ""
+msgstr "Pārslēgties uz pārlūkošanas režīmu"
 
 #: browser/Main.qml:155
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
-msgstr ""
+msgstr "Pārslēgties uz atlases režīmu"
 
 #: browser/Main.qml:167
 #, kde-format
