@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the kjournald package.
-# SPDX-FileCopyrightText: 2022, 2023, 2024 Shinjo Park <kde@peremen.name>
+# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-26 00:44+0000\n"
-"PO-Revision-Date: 2024-12-10 00:54+0100\n"
+"PO-Revision-Date: 2025-04-06 23:15+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -186,13 +186,13 @@ msgstr "강조:"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
-msgstr ""
+msgstr "탐색 모드로 전환"
 
 #: browser/Main.qml:155
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
-msgstr ""
+msgstr "선택 모드로 전환"
 
 #: browser/Main.qml:167
 #, kde-format
