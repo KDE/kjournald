@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-26 00:44+0000\n"
-"PO-Revision-Date: 2024-11-25 21:08+0100\n"
+"PO-Revision-Date: 2025-04-05 17:59+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -188,13 +188,13 @@ msgstr "Evidenzia:"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
-msgstr ""
+msgstr "Passa alla modalità di navigazione"
 
 #: browser/Main.qml:155
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
-msgstr ""
+msgstr "Passa alla modalità di selezione"
 
 #: browser/Main.qml:167
 #, kde-format
