@@ -131,6 +131,11 @@ void TestRemoteJournal::systemdJournalRemoteJournalFromFile()
     sd_id128_t bootId;
 
     SystemdJournalRemote journal(JOURNAL_EXPORT_FORMAT_EXAMPLE);
+
+    if (!journal.isSystemdRemoteAvailable()) {
+        QSKIP("Systemd remote is not correctly installed");
+    }
+
     QTRY_COMPARE_WITH_TIMEOUT(journal.isValid(), true, 5000);
 
     QCOMPARE(sd_journal_seek_head(journal.sdJournal()), 0);

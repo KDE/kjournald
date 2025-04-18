@@ -72,6 +72,8 @@ public:
      */
     uint64_t usage() const;
 
+    bool isSystemdRemoteAvailable() const;
+
 Q_SIGNALS:
     void journalFileChanged();
 

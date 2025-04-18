@@ -17,7 +17,7 @@ class SystemdJournalRemotePrivate
 {
 public:
     SystemdJournalRemotePrivate();
-    bool sanityCheckForSystemdJournalRemoveExec() const;
+    bool sanityCheckForSystemdJournalRemoteExec() const;
     QString journalFile() const;
 
     mutable sd_journal *mJournal{nullptr};

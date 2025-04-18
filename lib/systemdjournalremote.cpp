@@ -14,7 +14,7 @@
 
 SystemdJournalRemotePrivate::SystemdJournalRemotePrivate() = default;
 
-bool SystemdJournalRemotePrivate::sanityCheckForSystemdJournalRemoveExec() const
+bool SystemdJournalRemotePrivate::sanityCheckForSystemdJournalRemoteExec() const
 {
     bool result{true};
     if (!QFile::exists(mSystemdJournalRemoteExec)) {
@@ -58,7 +58,7 @@ SystemdJournalRemote::SystemdJournalRemote(const QString &filePath)
     // start import
     d->mTemporaryJournalDirWatcher.addPath(d->mTemporyJournalDir.path());
     d->mJournalRemoteProcess.setProcessChannelMode(QProcess::ForwardedChannels);
-    d->sanityCheckForSystemdJournalRemoveExec();
+    d->sanityCheckForSystemdJournalRemoteExec();
     // command structure: systemd-journal-remote --output=foo.journal foo.export
     d->mJournalRemoteProcess.start(d->mSystemdJournalRemoteExec, QStringList() << QLatin1String("--output=") + d->journalFile() << filePath);
     d->mJournalRemoteProcess.waitForStarted();
@@ -100,7 +100,7 @@ SystemdJournalRemote::SystemdJournalRemote(const QString &url, const QString &po
     }
     d->mTemporaryJournalDirWatcher.addPath(d->mTemporyJournalDir.path());
     d->mJournalRemoteProcess.setProcessChannelMode(QProcess::ForwardedChannels);
-    d->sanityCheckForSystemdJournalRemoveExec();
+    d->sanityCheckForSystemdJournalRemoteExec();
     // command structure /lib/systemd/systemd-journal-remote --url http://127.0.0.1 -o /tmp/asdf.journal --split-mode=none
     d->mJournalRemoteProcess.start(d->mSystemdJournalRemoteExec,
                                    QStringList() << QLatin1String("--output=") + d->journalFile() << QLatin1String("--url=") + url + QLatin1Char(':') + port
@@ -156,4 +156,9 @@ uint64_t SystemdJournalRemote::usage() const
         qCCritical(KJOURNALDLIB_GENERAL) << "Could not obtain journal size:" << strerror(-res);
     }
     return size;
+}
+
+bool SystemdJournalRemote::isSystemdRemoteAvailable() const
+{
+    return d->sanityCheckForSystemdJournalRemoteExec();
 }
