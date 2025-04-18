@@ -138,6 +138,11 @@ void TestRemoteJournal::systemdJournalRemoteJournalFromFile()
 
     QTRY_COMPARE_WITH_TIMEOUT(journal.isValid(), true, 5000);
 
+    if (!journal.isSystemdRemoteAvailable()) {
+        qWarning() << "Skip further test operations due to systemd remote not being available";
+        return;
+    }
+
     QCOMPARE(sd_journal_seek_head(journal.sdJournal()), 0);
 
     { // read first entry

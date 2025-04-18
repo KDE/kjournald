@@ -58,7 +58,9 @@ SystemdJournalRemote::SystemdJournalRemote(const QString &filePath)
     // start import
     d->mTemporaryJournalDirWatcher.addPath(d->mTemporyJournalDir.path());
     d->mJournalRemoteProcess.setProcessChannelMode(QProcess::ForwardedChannels);
-    d->sanityCheckForSystemdJournalRemoteExec();
+    if (!d->sanityCheckForSystemdJournalRemoteExec()) {
+        qCCritical(KJOURNALDLIB_GENERAL) << "Sanity checks failed, which indidate systemd-journal-remote libexe is not available";
+    }
     // command structure: systemd-journal-remote --output=foo.journal foo.export
     d->mJournalRemoteProcess.start(d->mSystemdJournalRemoteExec, QStringList() << QLatin1String("--output=") + d->journalFile() << filePath);
     d->mJournalRemoteProcess.waitForStarted();
