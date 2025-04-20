@@ -10,13 +10,14 @@
 #include <QProcess>
 #include <QString>
 #include <QTemporaryDir>
-#include <memory>
 #include <systemd/sd-journal.h>
+
+class SystemdJournalRemote;
 
 class SystemdJournalRemotePrivate
 {
 public:
-    SystemdJournalRemotePrivate();
+    SystemdJournalRemotePrivate(SystemdJournalRemote *q);
     bool sanityCheckForSystemdJournalRemoteExec() const;
     QString journalFile() const;
 

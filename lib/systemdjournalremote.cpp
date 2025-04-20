@@ -12,7 +12,14 @@
 #include <QProcess>
 #include <QThread>
 
-SystemdJournalRemotePrivate::SystemdJournalRemotePrivate() = default;
+SystemdJournalRemotePrivate::SystemdJournalRemotePrivate(SystemdJournalRemote *q)
+{
+    QObject::connect(&mJournalRemoteProcess, &QProcess::errorOccurred, q, &SystemdJournalRemote::handleJournalRemoteProcessErrors);
+    mJournalRemoteProcess.setProcessChannelMode(QProcess::ForwardedChannels);
+    if (!sanityCheckForSystemdJournalRemoteExec()) {
+        qCCritical(KJOURNALDLIB_GENERAL) << "Sanity checks failed, which indidate systemd-journal-remote libexe is not available";
+    }
+}
 
 bool SystemdJournalRemotePrivate::sanityCheckForSystemdJournalRemoteExec() const
 {
@@ -46,7 +53,7 @@ QString SystemdJournalRemotePrivate::journalFile() const
 // TODO introduce special handling when reaching max system file size due to: https://github.com/systemd/systemd/issues/5242
 
 SystemdJournalRemote::SystemdJournalRemote(const QString &filePath)
-    : d(new SystemdJournalRemotePrivate)
+    : d(new SystemdJournalRemotePrivate(this))
 {
     if (!QFile::exists(filePath)) {
         qCCritical(KJOURNALDLIB_GENERAL) << "Provided export journal file format does not exists, no journal created" << filePath;
@@ -56,10 +63,8 @@ SystemdJournalRemote::SystemdJournalRemote(const QString &filePath)
     }
 
     // start import
-    d->mTemporaryJournalDirWatcher.addPath(d->mTemporyJournalDir.path());
-    d->mJournalRemoteProcess.setProcessChannelMode(QProcess::ForwardedChannels);
-    if (!d->sanityCheckForSystemdJournalRemoteExec()) {
-        qCCritical(KJOURNALDLIB_GENERAL) << "Sanity checks failed, which indidate systemd-journal-remote libexe is not available";
+    if (!d->mTemporaryJournalDirWatcher.addPath(d->mTemporyJournalDir.path())) {
+        qCWarning(KJOURNALDLIB_GENERAL) << "could not add path to system watcher:" << d->mTemporyJournalDir.path();
     }
     // command structure: systemd-journal-remote --output=foo.journal foo.export
     d->mJournalRemoteProcess.start(d->mSystemdJournalRemoteExec, QStringList() << QLatin1String("--output=") + d->journalFile() << filePath);
@@ -94,15 +99,18 @@ void SystemdJournalRemote::handleJournalFileCreated(const QString &path)
     Q_EMIT journalFileChanged();
 }
 
+void SystemdJournalRemote::handleJournalRemoteProcessErrors(QProcess::ProcessError error)
+{
+    qCCritical(KJOURNALDLIB_GENERAL) << "systemd-journal-remote error occured:" << error;
+}
+
 SystemdJournalRemote::SystemdJournalRemote(const QString &url, const QString &port)
-    : d(new SystemdJournalRemotePrivate)
+    : d(new SystemdJournalRemotePrivate(this))
 {
     if (!(url.startsWith(QLatin1String("https://")) || url.startsWith(QLatin1String("http://")))) {
         qCWarning(KJOURNALDLIB_GENERAL) << "URL seems not begin a valid URL, no http/https prefix:" << url;
     }
     d->mTemporaryJournalDirWatcher.addPath(d->mTemporyJournalDir.path());
-    d->mJournalRemoteProcess.setProcessChannelMode(QProcess::ForwardedChannels);
-    d->sanityCheckForSystemdJournalRemoteExec();
     // command structure /lib/systemd/systemd-journal-remote --url http://127.0.0.1 -o /tmp/asdf.journal --split-mode=none
     d->mJournalRemoteProcess.start(d->mSystemdJournalRemoteExec,
                                    QStringList() << QLatin1String("--output=") + d->journalFile() << QLatin1String("--url=") + url + QLatin1Char(':') + port

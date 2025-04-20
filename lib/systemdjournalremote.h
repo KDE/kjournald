@@ -8,6 +8,7 @@
 
 #include "ijournal.h"
 #include "kjournald_export.h"
+#include <QProcess>
 #include <QString>
 #include <memory>
 
@@ -79,9 +80,12 @@ Q_SIGNALS:
 
 private Q_SLOTS:
     void handleJournalFileCreated(const QString &path);
+    void handleJournalRemoteProcessErrors(QProcess::ProcessError error);
 
 private:
     std::unique_ptr<SystemdJournalRemotePrivate> d;
+
+    friend SystemdJournalRemotePrivate;
 };
 
 #endif
