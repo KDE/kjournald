@@ -67,8 +67,11 @@ SystemdJournalRemote::SystemdJournalRemote(const QString &filePath)
         qCWarning(KJOURNALDLIB_GENERAL) << "could not add path to system watcher:" << d->mTemporyJournalDir.path();
     }
     // command structure: systemd-journal-remote --output=foo.journal foo.export
+    qCDebug(KJOURNALDLIB_GENERAL) << QLatin1String("starting process: ") + d->mSystemdJournalRemoteExec + QLatin1String(" --output=") + d->journalFile()
+            + QLatin1String(" ") + filePath;
     d->mJournalRemoteProcess.start(d->mSystemdJournalRemoteExec, QStringList() << QLatin1String("--output=") + d->journalFile() << filePath);
-    d->mJournalRemoteProcess.waitForStarted();
+    // local file access currently only works when the full journal file is written
+    d->mJournalRemoteProcess.waitForFinished();
 
     connect(&d->mTemporaryJournalDirWatcher,
             &QFileSystemWatcher::directoryChanged,
@@ -79,8 +82,7 @@ SystemdJournalRemote::SystemdJournalRemote(const QString &filePath)
 
 void SystemdJournalRemote::handleJournalFileCreated(const QString &path)
 {
-    qCDebug(KJOURNALDLIB_GENERAL) << "handleJournaldFileCreated in path:" << path;
-
+    qCDebug(KJOURNALDLIB_GENERAL) << "handle created journal file at:" << path;
     if (path.isEmpty() || !QDir().exists(d->journalFile())) {
         qCCritical(KJOURNALDLIB_GENERAL) << "Journal directory does not exist, abort opening" << d->journalFile();
         return;

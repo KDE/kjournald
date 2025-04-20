@@ -26,12 +26,12 @@ class KJOURNALD_EXPORT SystemdJournalRemote : public IJournal
     Q_PROPERTY(QString journalFile READ journalFile NOTIFY journalFileChanged)
 public:
     /**
-     * @brief Construct journal object form file containing logs in systemd's journal export format
+     * @brief Construct journal object from file containing logs in systemd's journal export format
      */
     SystemdJournalRemote(const QString &filePath);
 
     /**
-     * @brief Construct journal object form file containing logs in systemd's journal export format
+     * @brief Construct journal object from file containing logs in systemd's journal export format
      */
     SystemdJournalRemote(const QString &url, const QString &port);
 
