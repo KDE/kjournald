@@ -8,6 +8,7 @@
 
 #include "systemdjournalremote.h"
 #include <QObject>
+#include <QQmlEngine>
 #include <QSettings>
 
 /**

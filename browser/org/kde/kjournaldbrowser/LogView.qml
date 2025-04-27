@@ -7,7 +7,7 @@ import QtQuick
 import QtQuick.Controls
 import org.kde.kirigami as Kirigami
 import QtQuick.Controls.Material
-import kjournald
+import org.kde.kjournaldbrowser
 import org.kde.kjournald
 
 ListView {

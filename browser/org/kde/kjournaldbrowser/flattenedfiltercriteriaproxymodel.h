@@ -8,6 +8,7 @@
 
 #include <QAbstractListModel>
 #include <QHash>
+#include <QQmlEngine>
 
 /**
  * @brief Linear list proxy model for QML integration of @see FilterCriteriaModel
@@ -29,6 +30,8 @@ class FlattenedFilterCriteriaProxyModel : public QAbstractListModel
      * FilterCriteriaModel, which holds data of this proxy model
      */
     Q_PROPERTY(QAbstractItemModel *sourceModel READ sourceModel WRITE setSourceModel NOTIFY sourceModelChanged);
+
+    QML_ELEMENT
 
 public:
     /** model roles **/

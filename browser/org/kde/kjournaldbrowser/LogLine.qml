@@ -5,7 +5,7 @@
 
 import QtQuick
 import QtQuick.Controls.Material
-import kjournald
+import org.kde.kjournaldbrowser
 
 Item {
     id: root

@@ -4,7 +4,7 @@
 
 import Qt.labs.platform as Labs
 import org.kde.kirigami as Kirigami
-import kjournald
+import org.kde.kjournaldbrowser
 
 Labs.MenuBar {
     Labs.Menu {

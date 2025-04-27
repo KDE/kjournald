@@ -9,6 +9,7 @@
 #include "journaldhelper.h"
 #include "kjournald_export.h"
 #include <QAbstractItemModel>
+#include <QQmlEngine>
 #include <QVector>
 #include <memory>
 
@@ -46,6 +47,8 @@ class KJOURNALD_EXPORT FilterCriteriaModel : public QAbstractItemModel
      * if set to true, Kernel messages are added to the log output
      **/
     Q_PROPERTY(bool kernelFilter READ isKernelFilterEnabled NOTIFY kernelFilterChanged)
+
+    QML_ELEMENT
 
 public:
     enum Category : quint8 {

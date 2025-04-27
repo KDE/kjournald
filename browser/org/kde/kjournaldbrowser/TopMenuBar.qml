@@ -6,7 +6,7 @@
 import QtQuick
 import QtQuick.Controls
 import org.kde.kirigami as Kirigami
-import kjournald
+import org.kde.kjournaldbrowser
 
 MenuBar {
     signal copyViewToClipboard()

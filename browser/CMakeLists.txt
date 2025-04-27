@@ -7,19 +7,19 @@ include_directories(
     ${CMAKE_BINARY_DIR}
 )
 
+add_subdirectory(org/kde/kjournaldbrowser/)
+
 add_executable(kjournaldbrowser
     main.cpp
-    clipboardproxy.cpp
-    flattenedfiltercriteriaproxymodel.cpp
     sessionconfig.cpp
-    qml.qrc
+    sessionconfig.h
 )
 
 target_compile_definitions(kjournaldbrowser
     PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 
 target_link_libraries(kjournaldbrowser
-PUBLIC
+LINK_PUBLIC
     Qt::Core
     Qt::Quick
     Qt::QuickControls2
@@ -28,6 +28,9 @@ PUBLIC
     KF6::CoreAddons
     KF6::Crash
     kjournald
+LINK_PRIVATE
+    kjournaldbrowser_backing
+    kjournaldbrowser_backingplugin
 )
 install(TARGETS kjournaldbrowser DESTINATION bin)
 install(PROGRAMS org.kde.kjournaldbrowser.desktop  DESTINATION ${KDE_INSTALL_APPDIR})

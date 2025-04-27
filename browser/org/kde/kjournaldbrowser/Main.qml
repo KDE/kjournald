@@ -9,13 +9,17 @@ import QtQuick.Controls
 import QtQuick.Dialogs as Dialogs
 import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
-import kjournald
+import org.kde.kjournaldbrowser
 import org.kde.kjournald
 
 Kirigami.AbstractApplicationWindow {
+    id: root
+
     width: 1000
     height: 640
     visible: true
+
+    required property FilterCriteriaModel filterModel
 
     menuBar: TopMenuBar {
         visible: (Kirigami.Settings.hasPlatformMenuBar === false || Kirigami.Settings.hasPlatformMenuBar === undefined) && !Kirigami.Settings.isMobile
@@ -193,7 +197,7 @@ Kirigami.AbstractApplicationWindow {
 
     FlattenedFilterCriteriaProxyModel {
         id: flatFilterSelection
-        sourceModel: FilterCriteriaModelProxy
+        sourceModel: root.filterModel
     }
 
     SplitView {
@@ -234,7 +238,7 @@ Kirigami.AbstractApplicationWindow {
                 snapToFollowMode: true
                 textSelectionMode: SessionConfigProxy.viewMode === SessionConfig.SELECT
                 visible: count > 0
-                onTextCopied: {
+                onTextCopied: text => {
                     ClipboardProxy.setText(text)
                     console.log("view content copied")
                 }
@@ -270,10 +274,10 @@ Kirigami.AbstractApplicationWindow {
         journalPath: SessionConfigProxy.sessionMode === SessionConfig.LOCALFOLDER
                      || SessionConfigProxy.sessionMode
                      === SessionConfig.REMOTE ? SessionConfigProxy.localJournalPath : undefined
-        filter.units: FilterCriteriaModelProxy.systemdUnitFilter
-        filter.exes: FilterCriteriaModelProxy.exeFilter
+        filter.units: root.filterModel.systemdUnitFilter
+        filter.exes: root.filterModel.exeFilter
         filter.boots: bootIdComboBox.currentValue
-        filter.priority: FilterCriteriaModelProxy.priorityFilter
-        filter.kernel: FilterCriteriaModelProxy.kernelFilter
+        filter.priority: root.filterModel.priorityFilter
+        filter.kernel: root.filterModel.kernelFilter
     }
 }

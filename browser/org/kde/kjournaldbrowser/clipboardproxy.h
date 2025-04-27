@@ -7,10 +7,14 @@
 #define CLIPBOARDPROXY_H
 
 #include <QObject>
+#include <QQmlEngine>
 
 class ClipboardProxy : public QObject
 {
     Q_OBJECT
+
+    QML_ELEMENT
+    QML_SINGLETON
 public:
     explicit ClipboardProxy(QObject *parent = nullptr);
     Q_INVOKABLE void setText(const QString &text);

@@ -6,9 +6,8 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
-import QtQml
 import org.kde.kirigami as Kirigami
-import kjournald
+import org.kde.kjournaldbrowser
 import Qt.labs.qmlmodels
 
 ListView {

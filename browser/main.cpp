@@ -3,9 +3,7 @@
     SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 */
 
-#include "clipboardproxy.h"
 #include "filtercriteriamodel.h"
-#include "flattenedfiltercriteriaproxymodel.h"
 #include "kjournald_version.h"
 #include "sessionconfig.h"
 #include <KAboutData>
@@ -54,18 +52,14 @@ int main(int argc, char *argv[])
     KAboutData::setApplicationData(aboutData);
 
     FilterCriteriaModel filterCriteriaModel;
-    ClipboardProxy clipboardProxy;
     SessionConfig sessionConfig;
 
-    qmlRegisterSingletonType("kjournald", 1, 0, "AboutData", [](QQmlEngine *engine, QJSEngine *) -> QJSValue {
+    qmlRegisterSingletonType("org.kde.kjournaldbrowser", 1, 0, "AboutData", [](QQmlEngine *engine, QJSEngine *) -> QJSValue {
         return engine->toScriptValue(aboutData);
     });
 
-    qmlRegisterSingletonInstance("kjournald", 1, 0, "FilterCriteriaModelProxy", &filterCriteriaModel);
-    qmlRegisterSingletonInstance("kjournald", 1, 0, "ClipboardProxy", &clipboardProxy);
-    qmlRegisterSingletonInstance("kjournald", 1, 0, "SessionConfigProxy", &sessionConfig);
-    qmlRegisterType<FlattenedFilterCriteriaProxyModel>("kjournald", 1, 0, "FlattenedFilterCriteriaProxyModel");
-    qmlRegisterUncreatableType<SessionConfig>("kjournald", 1, 0, "SessionConfig", "Backend only object");
+    qmlRegisterSingletonInstance("org.kde.kjournaldbrowser", 1, 0, "SessionConfigProxy", &sessionConfig);
+    qmlRegisterUncreatableType<SessionConfig>("org.kde.kjournaldbrowser", 1, 0, "SessionConfig", "Backend only object");
 
     QCommandLineParser parser;
     parser.setApplicationDescription("Journald Log Viewer");
@@ -99,8 +93,10 @@ int main(int argc, char *argv[])
     }
 
     QQmlApplicationEngine engine;
+    const QVariantMap initialProperties = {{"filterModel", QVariant::fromValue(&filterCriteriaModel)}};
+    engine.setInitialProperties(initialProperties);
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
-    const QUrl url(QStringLiteral("qrc:/Main.qml"));
+    const QUrl url(QStringLiteral("qrc:/qt/qml/org/kde/kjournaldbrowser/Main.qml"));
     QObject::connect(
         &engine,
         &QQmlApplicationEngine::objectCreated,
