@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-26 00:44+0000\n"
+"POT-Creation-Date: 2025-04-28 00:43+0000\n"
 "PO-Revision-Date: 2024-03-18 15:25+0000\n"
 "Last-Translator: Guðmundur Erlingsson <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
@@ -17,119 +17,19 @@ msgstr ""
 "Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 23.08.3\n"
 
-#: browser/FilterCriteriaView.qml:29
-#, kde-format
-msgid "Expanded"
-msgstr "Útvíkkað"
-
-#: browser/FilterCriteriaView.qml:29
-#, kde-format
-msgid "Collapsed"
-msgstr "Fellt saman"
-
-#: browser/FilterCriteriaView.qml:55
-#, kde-format
-msgid "Clear"
-msgstr "Hreinsa"
-
-#: browser/GlobalMenu.qml:11 browser/TopMenuBar.qml:15
-#, kde-format
-msgid "File"
-msgstr "Skrá"
-
-#: browser/GlobalMenu.qml:14
-#, kde-format
-msgid "Open system journal"
-msgstr "Opna kerfisfærsluskrá"
-
-#: browser/GlobalMenu.qml:21
-#, kde-format
-msgid "Open from folder"
-msgstr "Opna úr möppu"
-
-#: browser/GlobalMenu.qml:29
-#, kde-format
-msgid "Open from file"
-msgstr "Opna úr skrá"
-
-#: browser/GlobalMenu.qml:48 browser/Main.qml:70 browser/TopMenuBar.qml:51
-#, kde-format
-msgid "Close"
-msgstr "Loka"
-
-#: browser/GlobalMenu.qml:54 browser/TopMenuBar.qml:57
-#, kde-format
-msgid "Current Journal"
-msgstr "Núverandi færsluskrá"
-
-#: browser/GlobalMenu.qml:62 browser/TopMenuBar.qml:65
-#, kde-format
-msgid "View"
-msgstr "Skoða"
-
-#: browser/GlobalMenu.qml:65 browser/TopMenuBar.qml:68
-#, kde-format
-msgid "Timestamp Display"
-msgstr "Birting tímastimpils"
-
-#: browser/GlobalMenu.qml:68 browser/TopMenuBar.qml:72
-#, kde-format
-msgid "Localized Realtime"
-msgstr "Staðfærður rauntími"
-
-#: browser/GlobalMenu.qml:76 browser/TopMenuBar.qml:83
-#, kde-format
-msgid "UTC Realtime"
-msgstr "UTC rauntími"
-
-#: browser/GlobalMenu.qml:84 browser/TopMenuBar.qml:94
-#, kde-format
-msgid "Monotonic Time"
-msgstr "Einhalla tími (monotonic time)"
-
-#: browser/GlobalMenu.qml:93 browser/TopMenuBar.qml:105
-#, kde-format
-msgid "Colorize"
-msgstr "Lita"
-
-#: browser/GlobalMenu.qml:96 browser/TopMenuBar.qml:109
-#, kde-format
-msgid "Systemd Unit"
-msgstr "Systemd-eining"
-
-#: browser/GlobalMenu.qml:104 browser/TopMenuBar.qml:120
-#, kde-format
-msgid "Executable"
-msgstr "Keyrsluskrá"
-
-#: browser/GlobalMenu.qml:114 browser/TopMenuBar.qml:132
-#, kde-format
-msgid "Help"
-msgstr "Hjálp"
-
-#: browser/GlobalMenu.qml:117 browser/Main.qml:52 browser/TopMenuBar.qml:134
-#, kde-format
-msgid "About"
-msgstr "Um forritið"
-
-#: browser/LogView.qml:201
-#, kde-format
-msgid "Kernel"
-msgstr "Kjarni"
-
-#: browser/main.cpp:40
+#: browser/main.cpp:38
 #, kde-format
 msgctxt "@title Displayed program name"
 msgid "KJournald Browser"
 msgstr "KJournald-vafri"
 
-#: browser/main.cpp:42
+#: browser/main.cpp:40
 #, kde-format
 msgctxt "@title KAboutData: short program description"
 msgid "Viewer for Journald logs"
 msgstr "Skoðari fyrir Journald-annála"
 
-#: browser/main.cpp:44
+#: browser/main.cpp:42
 #, fuzzy, kde-format
 #| msgctxt "@info:credit"
 #| msgid "(c) 2021 The KJournald Developers"
@@ -137,7 +37,7 @@ msgctxt "@info:credit"
 msgid "(c) 2021-2024 The KJournald Developers"
 msgstr "(c) 2021 KJournald forritararnir"
 
-#: browser/main.cpp:45
+#: browser/main.cpp:43
 #, kde-format
 msgctxt "@title Short program description"
 msgid ""
@@ -145,108 +45,223 @@ msgid ""
 "tool."
 msgstr "Skoðari fyrir Journald-gagnagrunna, sem annálaverkfæri Journald útbýr."
 
-#: browser/main.cpp:47
+#: browser/main.cpp:45
 #, kde-format
 msgctxt "@info:credit Developer name"
 msgid "Andreas Cord-Landwehr"
 msgstr "Andreas Cord-Landwehr"
 
-#: browser/main.cpp:48
+#: browser/main.cpp:46
 #, kde-format
 msgctxt "@info:credit Role"
 msgid "Original Author"
 msgstr "Upprunalegur höfundur"
 
-#: browser/main.cpp:50
+#: browser/main.cpp:48
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Guðmundur Erlingsson"
 
-#: browser/main.cpp:50
+#: browser/main.cpp:48
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "gudmundure@gmail.com"
 
-#: browser/Main.qml:56
+#: browser/org/kde/kjournaldbrowser/FilterCriteriaView.qml:28
+#, kde-format
+msgid "Expanded"
+msgstr "Útvíkkað"
+
+#: browser/org/kde/kjournaldbrowser/FilterCriteriaView.qml:28
+#, kde-format
+msgid "Collapsed"
+msgstr "Fellt saman"
+
+#: browser/org/kde/kjournaldbrowser/FilterCriteriaView.qml:54
+#, kde-format
+msgid "Clear"
+msgstr "Hreinsa"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:11
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:15
+#, kde-format
+msgid "File"
+msgstr "Skrá"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:14
+#, kde-format
+msgid "Open system journal"
+msgstr "Opna kerfisfærsluskrá"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:21
+#, kde-format
+msgid "Open from folder"
+msgstr "Opna úr möppu"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:29
+#, kde-format
+msgid "Open from file"
+msgstr "Opna úr skrá"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:48
+#: browser/org/kde/kjournaldbrowser/Main.qml:74
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:51
+#, kde-format
+msgid "Close"
+msgstr "Loka"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:54
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:57
+#, kde-format
+msgid "Current Journal"
+msgstr "Núverandi færsluskrá"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:62
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:65
+#, kde-format
+msgid "View"
+msgstr "Skoða"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:65
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:68
+#, kde-format
+msgid "Timestamp Display"
+msgstr "Birting tímastimpils"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:68
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:72
+#, kde-format
+msgid "Localized Realtime"
+msgstr "Staðfærður rauntími"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:76
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:83
+#, kde-format
+msgid "UTC Realtime"
+msgstr "UTC rauntími"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:84
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:94
+#, kde-format
+msgid "Monotonic Time"
+msgstr "Einhalla tími (monotonic time)"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:93
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:105
+#, kde-format
+msgid "Colorize"
+msgstr "Lita"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:96
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:109
+#, kde-format
+msgid "Systemd Unit"
+msgstr "Systemd-eining"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:104
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:120
+#, kde-format
+msgid "Executable"
+msgstr "Keyrsluskrá"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:114
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:132
+#, kde-format
+msgid "Help"
+msgstr "Hjálp"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:117
+#: browser/org/kde/kjournaldbrowser/Main.qml:56
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:134
+#, kde-format
+msgid "About"
+msgstr "Um forritið"
+
+#: browser/org/kde/kjournaldbrowser/LogView.qml:201
+#, kde-format
+msgid "Kernel"
+msgstr "Kjarni"
+
+#: browser/org/kde/kjournaldbrowser/Main.qml:60
 #, kde-format
 msgid "Launch Bug Report Wizard"
 msgstr "Opna hjálparforrit fyrir villuskýrslu"
 
-#: browser/Main.qml:94
+#: browser/org/kde/kjournaldbrowser/Main.qml:98
 #, kde-format
 msgid "Boot:"
 msgstr "Ræsing:"
 
-#: browser/Main.qml:113
+#: browser/org/kde/kjournaldbrowser/Main.qml:117
 #, kde-format
 msgid "Highlight:"
 msgstr "Áherslulitur:"
 
-#: browser/Main.qml:154
+#: browser/org/kde/kjournaldbrowser/Main.qml:158
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr ""
 
-#: browser/Main.qml:155
+#: browser/org/kde/kjournaldbrowser/Main.qml:159
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr ""
 
-#: browser/Main.qml:167
+#: browser/org/kde/kjournaldbrowser/Main.qml:171
 #, kde-format
 msgid "Select journal folder"
 msgstr "Velja færsluskrármöppu"
 
-#: browser/Main.qml:176
+#: browser/org/kde/kjournaldbrowser/Main.qml:180
 #, kde-format
 msgid "Select journal file"
 msgstr "Velja færsluskrá"
 
-#: browser/Main.qml:177
+#: browser/org/kde/kjournaldbrowser/Main.qml:181
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "Færsluskrár (*.journal)"
 
-#: browser/Main.qml:177
+#: browser/org/kde/kjournaldbrowser/Main.qml:181
 #, kde-format
 msgid "All files (*)"
 msgstr "Allar skrár (*)"
 
-#: browser/Main.qml:250
+#: browser/org/kde/kjournaldbrowser/Main.qml:254
 #, kde-format
 msgid "No log entries apply "
 msgstr "Engin annálafærsla á við"
 
-#: browser/RemoteJournalConfigDialog.qml:17
+#: browser/org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:17
 #, kde-format
 msgid "Configure Remote Journal Server"
 msgstr "Grunnstilla fjartengdan færsluskráningarþjón"
 
-#: browser/RemoteJournalConfigDialog.qml:31
+#: browser/org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:31
 #, kde-format
 msgid "URL:"
 msgstr "Slóð:"
 
-#: browser/RemoteJournalConfigDialog.qml:40
+#: browser/org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:40
 #, kde-format
 msgid "Port:"
 msgstr "Tengi:"
 
-#: browser/TopMenuBar.qml:17
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:17
 #, kde-format
 msgid "Open System Journal"
 msgstr "Opna kerfisfærsluskrá"
 
-#: browser/TopMenuBar.qml:24
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:24
 #, kde-format
 msgid "Open from Folder"
 msgstr "Opna úr möppu"
 
-#: browser/TopMenuBar.qml:32
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:32
 #, kde-format
 msgid "Open from File"
 msgstr "Opna úr skrá"

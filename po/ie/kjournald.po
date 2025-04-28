@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-26 00:44+0000\n"
+"POT-Creation-Date: 2025-04-28 00:43+0000\n"
 "PO-Revision-Date: 2022-11-03 07:29+0700\n"
 "Last-Translator: OIS <mistresssilvara@hotmail.com>\n"
 "Language-Team: Interlingue <kde-i18n-doc@kde.org>\n"
@@ -18,121 +18,19 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.8.12\n"
 
-#: browser/FilterCriteriaView.qml:29
-#, kde-format
-msgid "Expanded"
-msgstr "Expandet"
-
-#: browser/FilterCriteriaView.qml:29
-#, kde-format
-msgid "Collapsed"
-msgstr "Contraet"
-
-#: browser/FilterCriteriaView.qml:55
-#, kde-format
-msgid "Clear"
-msgstr "Vacuar"
-
-#: browser/GlobalMenu.qml:11 browser/TopMenuBar.qml:15
-#, kde-format
-msgid "File"
-msgstr "File"
-
-#: browser/GlobalMenu.qml:14
-#, kde-format
-msgid "Open system journal"
-msgstr "Aperter un diarium de journald"
-
-#: browser/GlobalMenu.qml:21
-#, kde-format
-msgid "Open from folder"
-msgstr "Aperter ex un fólder"
-
-#: browser/GlobalMenu.qml:29
-#, kde-format
-msgid "Open from file"
-msgstr "Aperter ex un file"
-
-#: browser/GlobalMenu.qml:48 browser/Main.qml:70 browser/TopMenuBar.qml:51
-#, kde-format
-msgid "Close"
-msgstr "Cluder"
-
-#: browser/GlobalMenu.qml:54 browser/TopMenuBar.qml:57
-#, kde-format
-msgid "Current Journal"
-msgstr "Actual diarium"
-
-#: browser/GlobalMenu.qml:62 browser/TopMenuBar.qml:65
-#, kde-format
-msgid "View"
-msgstr "Vider"
-
-#: browser/GlobalMenu.qml:65 browser/TopMenuBar.qml:68
-#, kde-format
-msgid "Timestamp Display"
-msgstr "Monstrar témpor"
-
-#: browser/GlobalMenu.qml:68 browser/TopMenuBar.qml:72
-#, kde-format
-msgid "Localized Realtime"
-msgstr "Local témpor"
-
-#: browser/GlobalMenu.qml:76 browser/TopMenuBar.qml:83
-#, kde-format
-msgid "UTC Realtime"
-msgstr "UTC témpor"
-
-#: browser/GlobalMenu.qml:84 browser/TopMenuBar.qml:94
-#, kde-format
-msgid "Monotonic Time"
-msgstr "Monoton"
-
-#: browser/GlobalMenu.qml:93 browser/TopMenuBar.qml:105
-#, kde-format
-msgid "Colorize"
-msgstr "Colorisar"
-
-#: browser/GlobalMenu.qml:96 browser/TopMenuBar.qml:109
-#, kde-format
-msgid "Systemd Unit"
-msgstr "Unité de systemd"
-
-#: browser/GlobalMenu.qml:104 browser/TopMenuBar.qml:120
-#, kde-format
-msgid "Executable"
-msgstr "Executibile"
-
-#: browser/GlobalMenu.qml:114 browser/TopMenuBar.qml:132
-#, kde-format
-msgid "Help"
-msgstr "Auxilie"
-
-#: browser/GlobalMenu.qml:117 browser/Main.qml:52 browser/TopMenuBar.qml:134
-#, kde-format
-msgid "About"
-msgstr "Pri"
-
-#: browser/LogView.qml:201
-#, fuzzy, kde-format
-#| msgctxt "Checkbox option for kernel log messages"
-#| msgid "Kernel"
-msgid "Kernel"
-msgstr "Nucleo"
-
-#: browser/main.cpp:40
+#: browser/main.cpp:38
 #, kde-format
 msgctxt "@title Displayed program name"
 msgid "KJournald Browser"
 msgstr "Navigator de Journald"
 
-#: browser/main.cpp:42
+#: browser/main.cpp:40
 #, kde-format
 msgctxt "@title KAboutData: short program description"
 msgid "Viewer for Journald logs"
 msgstr "Visor de diariums de Journald"
 
-#: browser/main.cpp:44
+#: browser/main.cpp:42
 #, fuzzy, kde-format
 #| msgctxt "@info:credit"
 #| msgid "(c) 2021 The KJournald Developers"
@@ -140,7 +38,7 @@ msgctxt "@info:credit"
 msgid "(c) 2021-2024 The KJournald Developers"
 msgstr "(c) 2021 Li developatores de KJournald"
 
-#: browser/main.cpp:45
+#: browser/main.cpp:43
 #, kde-format
 msgctxt "@title Short program description"
 msgid ""
@@ -148,108 +46,225 @@ msgid ""
 "tool."
 msgstr "Visor de bases de data del gerente de diarium Journald."
 
-#: browser/main.cpp:47
+#: browser/main.cpp:45
 #, kde-format
 msgctxt "@info:credit Developer name"
 msgid "Andreas Cord-Landwehr"
 msgstr "Andreas Cord-Landwehr"
 
-#: browser/main.cpp:48
+#: browser/main.cpp:46
 #, kde-format
 msgctxt "@info:credit Role"
 msgid "Original Author"
 msgstr "Original autor"
 
-#: browser/main.cpp:50
+#: browser/main.cpp:48
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "OIS"
 
-#: browser/main.cpp:50
+#: browser/main.cpp:48
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "mistresssilvara@hotmail.com"
 
-#: browser/Main.qml:56
+#: browser/org/kde/kjournaldbrowser/FilterCriteriaView.qml:28
+#, kde-format
+msgid "Expanded"
+msgstr "Expandet"
+
+#: browser/org/kde/kjournaldbrowser/FilterCriteriaView.qml:28
+#, kde-format
+msgid "Collapsed"
+msgstr "Contraet"
+
+#: browser/org/kde/kjournaldbrowser/FilterCriteriaView.qml:54
+#, kde-format
+msgid "Clear"
+msgstr "Vacuar"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:11
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:15
+#, kde-format
+msgid "File"
+msgstr "File"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:14
+#, kde-format
+msgid "Open system journal"
+msgstr "Aperter un diarium de journald"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:21
+#, kde-format
+msgid "Open from folder"
+msgstr "Aperter ex un fólder"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:29
+#, kde-format
+msgid "Open from file"
+msgstr "Aperter ex un file"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:48
+#: browser/org/kde/kjournaldbrowser/Main.qml:74
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:51
+#, kde-format
+msgid "Close"
+msgstr "Cluder"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:54
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:57
+#, kde-format
+msgid "Current Journal"
+msgstr "Actual diarium"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:62
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:65
+#, kde-format
+msgid "View"
+msgstr "Vider"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:65
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:68
+#, kde-format
+msgid "Timestamp Display"
+msgstr "Monstrar témpor"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:68
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:72
+#, kde-format
+msgid "Localized Realtime"
+msgstr "Local témpor"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:76
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:83
+#, kde-format
+msgid "UTC Realtime"
+msgstr "UTC témpor"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:84
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:94
+#, kde-format
+msgid "Monotonic Time"
+msgstr "Monoton"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:93
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:105
+#, kde-format
+msgid "Colorize"
+msgstr "Colorisar"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:96
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:109
+#, kde-format
+msgid "Systemd Unit"
+msgstr "Unité de systemd"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:104
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:120
+#, kde-format
+msgid "Executable"
+msgstr "Executibile"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:114
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:132
+#, kde-format
+msgid "Help"
+msgstr "Auxilie"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:117
+#: browser/org/kde/kjournaldbrowser/Main.qml:56
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:134
+#, kde-format
+msgid "About"
+msgstr "Pri"
+
+#: browser/org/kde/kjournaldbrowser/LogView.qml:201
+#, fuzzy, kde-format
+#| msgctxt "Checkbox option for kernel log messages"
+#| msgid "Kernel"
+msgid "Kernel"
+msgstr "Nucleo"
+
+#: browser/org/kde/kjournaldbrowser/Main.qml:60
 #, kde-format
 msgid "Launch Bug Report Wizard"
 msgstr "Lansar li assistente del raportes de defecte"
 
-#: browser/Main.qml:94
+#: browser/org/kde/kjournaldbrowser/Main.qml:98
 #, kde-format
 msgid "Boot:"
 msgstr "Inicialisation:"
 
-#: browser/Main.qml:113
+#: browser/org/kde/kjournaldbrowser/Main.qml:117
 #, kde-format
 msgid "Highlight:"
 msgstr "Marcar: "
 
-#: browser/Main.qml:154
+#: browser/org/kde/kjournaldbrowser/Main.qml:158
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr ""
 
-#: browser/Main.qml:155
+#: browser/org/kde/kjournaldbrowser/Main.qml:159
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr ""
 
-#: browser/Main.qml:167
+#: browser/org/kde/kjournaldbrowser/Main.qml:171
 #, kde-format
 msgid "Select journal folder"
 msgstr "Selecter un fólder de diarium"
 
-#: browser/Main.qml:176
+#: browser/org/kde/kjournaldbrowser/Main.qml:180
 #, kde-format
 msgid "Select journal file"
 msgstr "Selecter un file de diarium"
 
-#: browser/Main.qml:177
+#: browser/org/kde/kjournaldbrowser/Main.qml:181
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "Files de diarium (*.journal)"
 
-#: browser/Main.qml:177
+#: browser/org/kde/kjournaldbrowser/Main.qml:181
 #, kde-format
 msgid "All files (*)"
 msgstr "Omni files (*)"
 
-#: browser/Main.qml:250
+#: browser/org/kde/kjournaldbrowser/Main.qml:254
 #, kde-format
 msgid "No log entries apply "
 msgstr "Null applicabil elementes "
 
-#: browser/RemoteJournalConfigDialog.qml:17
+#: browser/org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:17
 #, kde-format
 msgid "Configure Remote Journal Server"
 msgstr "Lontan servitor de diarium"
 
-#: browser/RemoteJournalConfigDialog.qml:31
+#: browser/org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:31
 #, kde-format
 msgid "URL:"
 msgstr "URL:"
 
-#: browser/RemoteJournalConfigDialog.qml:40
+#: browser/org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:40
 #, kde-format
 msgid "Port:"
 msgstr "Portu:"
 
-#: browser/TopMenuBar.qml:17
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:17
 #, kde-format
 msgid "Open System Journal"
 msgstr "Aperter li diarium del sistema"
 
-#: browser/TopMenuBar.qml:24
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:24
 #, kde-format
 msgid "Open from Folder"
 msgstr "Aperter ex un fólder"
 
-#: browser/TopMenuBar.qml:32
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:32
 #, kde-format
 msgid "Open from File"
 msgstr "Aperter ex un file"

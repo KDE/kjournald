@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-26 00:44+0000\n"
+"POT-Creation-Date: 2025-04-28 00:43+0000\n"
 "PO-Revision-Date: 2024-12-25 19:45+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -19,125 +19,25 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n>2);\n"
 "X-Generator: Lokalize 24.08.2\n"
 
-#: browser/FilterCriteriaView.qml:29
-#, kde-format
-msgid "Expanded"
-msgstr "विस्तारितः"
-
-#: browser/FilterCriteriaView.qml:29
-#, kde-format
-msgid "Collapsed"
-msgstr "पतितः"
-
-#: browser/FilterCriteriaView.qml:55
-#, kde-format
-msgid "Clear"
-msgstr "स्पष्टः"
-
-#: browser/GlobalMenu.qml:11 browser/TopMenuBar.qml:15
-#, kde-format
-msgid "File"
-msgstr "सञ्चिका"
-
-#: browser/GlobalMenu.qml:14
-#, kde-format
-msgid "Open system journal"
-msgstr "ओपन सिस्टम जर्नल"
-
-#: browser/GlobalMenu.qml:21
-#, kde-format
-msgid "Open from folder"
-msgstr "समुच्चय तः उद्घाटयन्तु"
-
-#: browser/GlobalMenu.qml:29
-#, kde-format
-msgid "Open from file"
-msgstr "सञ्चिकातः उद्घाटयन्तु"
-
-#: browser/GlobalMenu.qml:48 browser/Main.qml:70 browser/TopMenuBar.qml:51
-#, kde-format
-msgid "Close"
-msgstr "पिधानं करोतु"
-
-#: browser/GlobalMenu.qml:54 browser/TopMenuBar.qml:57
-#, kde-format
-msgid "Current Journal"
-msgstr "वर्तमान पत्रिका"
-
-#: browser/GlobalMenu.qml:62 browser/TopMenuBar.qml:65
-#, kde-format
-msgid "View"
-msgstr "दृश्यं"
-
-#: browser/GlobalMenu.qml:65 browser/TopMenuBar.qml:68
-#, kde-format
-msgid "Timestamp Display"
-msgstr "समयमुद्रांक प्रदर्शन"
-
-#: browser/GlobalMenu.qml:68 browser/TopMenuBar.qml:72
-#, kde-format
-msgid "Localized Realtime"
-msgstr "स्थानीयकृत वास्तविकसमय"
-
-#: browser/GlobalMenu.qml:76 browser/TopMenuBar.qml:83
-#, kde-format
-msgid "UTC Realtime"
-msgstr "UTC वास्तविकसमय"
-
-#: browser/GlobalMenu.qml:84 browser/TopMenuBar.qml:94
-#, kde-format
-msgid "Monotonic Time"
-msgstr "एकरसः समयः"
-
-#: browser/GlobalMenu.qml:93 browser/TopMenuBar.qml:105
-#, kde-format
-msgid "Colorize"
-msgstr "वर्णित करें"
-
-#: browser/GlobalMenu.qml:96 browser/TopMenuBar.qml:109
-#, kde-format
-msgid "Systemd Unit"
-msgstr "Systemd इकाई"
-
-#: browser/GlobalMenu.qml:104 browser/TopMenuBar.qml:120
-#, kde-format
-msgid "Executable"
-msgstr "निष्पादनीयम्"
-
-#: browser/GlobalMenu.qml:114 browser/TopMenuBar.qml:132
-#, kde-format
-msgid "Help"
-msgstr "साहाय्यम्‌"
-
-#: browser/GlobalMenu.qml:117 browser/Main.qml:52 browser/TopMenuBar.qml:134
-#, kde-format
-msgid "About"
-msgstr "विषये"
-
-#: browser/LogView.qml:201
-#, kde-format
-msgid "Kernel"
-msgstr "कर्नेल"
-
-#: browser/main.cpp:40
+#: browser/main.cpp:38
 #, kde-format
 msgctxt "@title Displayed program name"
 msgid "KJournald Browser"
 msgstr "KJournald ब्राउज़र"
 
-#: browser/main.cpp:42
+#: browser/main.cpp:40
 #, kde-format
 msgctxt "@title KAboutData: short program description"
 msgid "Viewer for Journald logs"
 msgstr "Journald logs कृते दर्शकः"
 
-#: browser/main.cpp:44
+#: browser/main.cpp:42
 #, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2024 The KJournald Developers"
 msgstr "(ग) 2021-2024 द केजर्नल्ड डेवलपर्स"
 
-#: browser/main.cpp:45
+#: browser/main.cpp:43
 #, kde-format
 msgctxt "@title Short program description"
 msgid ""
@@ -145,108 +45,223 @@ msgid ""
 "tool."
 msgstr "Journald databases कृते Viewer, ये Journald logging tool द्वारा उत्पद्यन्ते ।"
 
-#: browser/main.cpp:47
+#: browser/main.cpp:45
 #, kde-format
 msgctxt "@info:credit Developer name"
 msgid "Andreas Cord-Landwehr"
 msgstr "आन्द्रियास कॉर्ड Landwehr"
 
-#: browser/main.cpp:48
+#: browser/main.cpp:46
 #, kde-format
 msgctxt "@info:credit Role"
 msgid "Original Author"
 msgstr "मूल लेखक"
 
-#: browser/main.cpp:50
+#: browser/main.cpp:48
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "श्रीकान्त् कलवार्"
 
-#: browser/main.cpp:50
+#: browser/main.cpp:48
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "skkalwar999@gmail.com"
 
-#: browser/Main.qml:56
+#: browser/org/kde/kjournaldbrowser/FilterCriteriaView.qml:28
+#, kde-format
+msgid "Expanded"
+msgstr "विस्तारितः"
+
+#: browser/org/kde/kjournaldbrowser/FilterCriteriaView.qml:28
+#, kde-format
+msgid "Collapsed"
+msgstr "पतितः"
+
+#: browser/org/kde/kjournaldbrowser/FilterCriteriaView.qml:54
+#, kde-format
+msgid "Clear"
+msgstr "स्पष्टः"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:11
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:15
+#, kde-format
+msgid "File"
+msgstr "सञ्चिका"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:14
+#, kde-format
+msgid "Open system journal"
+msgstr "ओपन सिस्टम जर्नल"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:21
+#, kde-format
+msgid "Open from folder"
+msgstr "समुच्चय तः उद्घाटयन्तु"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:29
+#, kde-format
+msgid "Open from file"
+msgstr "सञ्चिकातः उद्घाटयन्तु"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:48
+#: browser/org/kde/kjournaldbrowser/Main.qml:74
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:51
+#, kde-format
+msgid "Close"
+msgstr "पिधानं करोतु"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:54
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:57
+#, kde-format
+msgid "Current Journal"
+msgstr "वर्तमान पत्रिका"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:62
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:65
+#, kde-format
+msgid "View"
+msgstr "दृश्यं"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:65
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:68
+#, kde-format
+msgid "Timestamp Display"
+msgstr "समयमुद्रांक प्रदर्शन"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:68
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:72
+#, kde-format
+msgid "Localized Realtime"
+msgstr "स्थानीयकृत वास्तविकसमय"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:76
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:83
+#, kde-format
+msgid "UTC Realtime"
+msgstr "UTC वास्तविकसमय"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:84
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:94
+#, kde-format
+msgid "Monotonic Time"
+msgstr "एकरसः समयः"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:93
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:105
+#, kde-format
+msgid "Colorize"
+msgstr "वर्णित करें"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:96
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:109
+#, kde-format
+msgid "Systemd Unit"
+msgstr "Systemd इकाई"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:104
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:120
+#, kde-format
+msgid "Executable"
+msgstr "निष्पादनीयम्"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:114
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:132
+#, kde-format
+msgid "Help"
+msgstr "साहाय्यम्‌"
+
+#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:117
+#: browser/org/kde/kjournaldbrowser/Main.qml:56
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:134
+#, kde-format
+msgid "About"
+msgstr "विषये"
+
+#: browser/org/kde/kjournaldbrowser/LogView.qml:201
+#, kde-format
+msgid "Kernel"
+msgstr "कर्नेल"
+
+#: browser/org/kde/kjournaldbrowser/Main.qml:60
 #, kde-format
 msgid "Launch Bug Report Wizard"
 msgstr "बग रिपोर्ट विजार्ड प्रारम्भं कुर्वन्तु"
 
-#: browser/Main.qml:94
+#: browser/org/kde/kjournaldbrowser/Main.qml:98
 #, kde-format
 msgid "Boot:"
 msgstr "पादत्राण:"
 
-#: browser/Main.qml:113
+#: browser/org/kde/kjournaldbrowser/Main.qml:117
 #, kde-format
 msgid "Highlight:"
 msgstr "प्रमुखाकृष्टि:"
 
-#: browser/Main.qml:154
+#: browser/org/kde/kjournaldbrowser/Main.qml:158
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr ""
 
-#: browser/Main.qml:155
+#: browser/org/kde/kjournaldbrowser/Main.qml:159
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr ""
 
-#: browser/Main.qml:167
+#: browser/org/kde/kjournaldbrowser/Main.qml:171
 #, kde-format
 msgid "Select journal folder"
 msgstr "पत्रिकापुटं चिनोतु"
 
-#: browser/Main.qml:176
+#: browser/org/kde/kjournaldbrowser/Main.qml:180
 #, kde-format
 msgid "Select journal file"
 msgstr "जर्नल् सञ्चिकां चिनोतु"
 
-#: browser/Main.qml:177
+#: browser/org/kde/kjournaldbrowser/Main.qml:181
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "जर्नल् सञ्चिकाः (*.journal) ."
 
-#: browser/Main.qml:177
+#: browser/org/kde/kjournaldbrowser/Main.qml:181
 #, kde-format
 msgid "All files (*)"
 msgstr "सर्वाणि सञ्चिकाः (*) ."
 
-#: browser/Main.qml:250
+#: browser/org/kde/kjournaldbrowser/Main.qml:254
 #, kde-format
 msgid "No log entries apply "
 msgstr "कोऽपि लॉगप्रविष्टयः न प्रवर्तन्ते "
 
-#: browser/RemoteJournalConfigDialog.qml:17
+#: browser/org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:17
 #, kde-format
 msgid "Configure Remote Journal Server"
 msgstr "दूरस्थं जर्नल् सर्वरं विन्यस्तं कुर्वन्तु"
 
-#: browser/RemoteJournalConfigDialog.qml:31
+#: browser/org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:31
 #, kde-format
 msgid "URL:"
 msgstr "URL: 1.1."
 
-#: browser/RemoteJournalConfigDialog.qml:40
+#: browser/org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:40
 #, kde-format
 msgid "Port:"
 msgstr "पोताश्रय:"
 
-#: browser/TopMenuBar.qml:17
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:17
 #, kde-format
 msgid "Open System Journal"
 msgstr "ओपन सिस्टम जर्नल"
 
-#: browser/TopMenuBar.qml:24
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:24
 #, kde-format
 msgid "Open from Folder"
 msgstr "Folder तः उद्घाटयन्तु"
 
-#: browser/TopMenuBar.qml:32
+#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:32
 #, kde-format
 msgid "Open from File"
 msgstr "File तः उद्घाटयन्तु"
