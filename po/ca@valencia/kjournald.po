@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-28 00:43+0000\n"
-"PO-Revision-Date: 2025-03-26 09:29+0100\n"
+"PO-Revision-Date: 2025-04-28 10:16+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -80,7 +80,7 @@ msgstr "Expandit"
 #: browser/org/kde/kjournaldbrowser/FilterCriteriaView.qml:28
 #, kde-format
 msgid "Collapsed"
-msgstr "Col·lapsat"
+msgstr "Reduït"
 
 #: browser/org/kde/kjournaldbrowser/FilterCriteriaView.qml:54
 #, kde-format
