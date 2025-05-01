@@ -9,6 +9,9 @@ qt6_add_qml_module(
     IMPORTS
         org.kde.kirigami
         org.kde.kjournald
+    DEPENDENCIES
+        QtQuick
+        org.kde.kjournald
     SOURCES
         clipboardproxy.cpp
         clipboardproxy.h

@@ -29,6 +29,8 @@ ecm_qt_install_logging_categories(
 
 qt6_add_qml_module(kjournald
     URI org.kde.kjournald
+    DEPENDENCIES
+        QtQuick
 )
 
 target_sources(kjournald PRIVATE
