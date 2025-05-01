@@ -6,7 +6,6 @@
 #ifndef FILTERCRITERIAMODEL_H
 #define FILTERCRITERIAMODEL_H
 
-#include "journaldhelper.h"
 #include "kjournald_export.h"
 #include <QAbstractItemModel>
 #include <QQmlEngine>

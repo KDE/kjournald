@@ -6,3 +6,7 @@ ecm_add_test(
     LINK_LIBRARIES Qt::Core Qt::Quick Qt::Test kjournald
     TEST_NAME test_viewmodel
 )
+
+target_include_directories(test_viewmodel PRIVATE
+    ${CMAKE_SOURCE_DIR}/org/kde/kjournald
+)

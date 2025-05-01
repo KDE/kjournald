@@ -2,6 +2,8 @@
 # SPDX-FileCopyrightText: Andreas Cord-Landwehr <cordlandwehr@kde.org>
 
 add_library(kjournald SHARED)
+generate_export_header(kjournald BASE_NAME KJournald)
+target_link_directories(kjournald PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
 
 ecm_qt_declare_logging_category(
     kjournald
@@ -25,8 +27,23 @@ ecm_qt_install_logging_categories(
     DESTINATION "${KDE_INSTALL_LOGGINGCATEGORIESDIR}"
 )
 
-generate_export_header(kjournald BASE_NAME KJournald)
+qt6_add_qml_module(kjournald
+    URI org.kde.kjournald
+)
+
 target_sources(kjournald PRIVATE
+    bootmodel.cpp
+    bootmodel.h
+    bootmodel_p.h
+    fieldfilterproxymodel.cpp
+    fieldfilterproxymodel.h
+    filter.cpp
+    filter.h
+    flattenedfiltercriteriaproxymodel.cpp
+    flattenedfiltercriteriaproxymodel.h
+    journaldviewmodel.cpp
+    journaldviewmodel.h
+    journaldviewmodel_p.h
     colorizer.cpp
     colorizer.h
     filtercriteriamodel.cpp
@@ -48,6 +65,7 @@ target_sources(kjournald PRIVATE
     systemdjournalremote.h
     systemdjournalremote_p.h
 )
+
 target_link_libraries(kjournald
 PRIVATE
     Qt6::Core
@@ -60,15 +78,18 @@ set_property(TARGET kjournald
     APPEND PROPERTY COMPILE_DEFINITIONS
         QT_NO_CAST_FROM_ASCII
         QT_NO_CAST_TO_ASCII)
+
 target_include_directories(kjournald PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/>
     $<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}>
 )
-set_target_properties(kjournald PROPERTIES
-    VERSION ${KJOURNALD_VERSION}
-    SOVERSION ${KJOURNALD_SOVERSION}
-    EXPORT_NAME KJournald
-)
+
+ecm_finalize_qml_module(kjournald DESTINATION ${KDE_INSTALL_QMLDIR})
+
+#set_target_properties(kjournald PROPERTIES
+#    QT_QMLCACHEGEN_ARGUMENTS "--verbose"
+#)
+
 install(TARGETS kjournald
     EXPORT KJournaldTargets
     DESTINATION ${KDE_INSTALL_LIBDIR})

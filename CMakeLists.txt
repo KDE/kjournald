@@ -74,7 +74,8 @@ option(INSTALL_EXPERIMENTAL_HEADERS "Install headers for libkjournald (no stable
 
 enable_testing()
 
-add_subdirectory(lib)
+add_subdirectory(org/kde/kjournald/)
+add_subdirectory(org/kde/kjournaldbrowser/)
 add_subdirectory(browser)
 add_subdirectory(autotests)
 

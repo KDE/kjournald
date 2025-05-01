@@ -7,8 +7,6 @@ include_directories(
     ${CMAKE_BINARY_DIR}
 )
 
-add_subdirectory(org/kde/kjournaldbrowser/)
-
 add_executable(kjournaldbrowser
     main.cpp
     sessionconfig.cpp

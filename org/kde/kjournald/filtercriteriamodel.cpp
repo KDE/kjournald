@@ -5,7 +5,7 @@
 
 #include "filtercriteriamodel.h"
 #include "filtercriteriamodel_p.h"
-#include "kjournald_export.h"
+#include "journaldhelper.h"
 #include "kjournaldlib_log_general.h"
 #include "localjournal.h"
 #include <KLocalizedString>

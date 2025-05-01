@@ -9,8 +9,8 @@ import QtQuick.Controls
 import QtQuick.Dialogs as Dialogs
 import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
-import org.kde.kjournaldbrowser
 import org.kde.kjournald
+import org.kde.kjournaldbrowser
 
 Kirigami.AbstractApplicationWindow {
     id: root

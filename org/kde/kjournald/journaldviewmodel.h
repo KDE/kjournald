@@ -6,12 +6,12 @@
 #ifndef JOURNALDVIEWMODEL_H
 #define JOURNALDVIEWMODEL_H
 
+#include "filter.h"
 #include "kjournald_export.h"
 #include <QAbstractItemModel>
-#include <ijournal.h>
-#include <filter.h>
-#include <memory>
 #include <QQmlEngine>
+#include <ijournal.h>
+#include <memory>
 
 class JournaldViewModelPrivate;
 

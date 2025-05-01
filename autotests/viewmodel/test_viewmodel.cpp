@@ -4,10 +4,10 @@
 */
 
 #include "test_viewmodel.h"
+#include "../../org/kde/kjournald/journaldviewmodel.h"
+#include "../../org/kde/kjournald/journaldviewmodel_p.h"
 #include "../containertesthelper.h"
 #include "../testdatalocation.h"
-#include "journaldviewmodel.h"
-#include "journaldviewmodel_p.h"
 #include <QAbstractItemModelTester>
 #include <QDebug>
 #include <QDir>

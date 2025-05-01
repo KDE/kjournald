@@ -18,7 +18,10 @@
 #include <QQmlContext>
 #include <QQuickStyle>
 #include <QSortFilterProxyModel>
+#include <QtQml/QQmlExtensionPlugin>
 #include <systemd/sd-journal.h>
+
+Q_IMPORT_PLUGIN(org_kde_kjournaldbrowserPlugin)
 
 int main(int argc, char *argv[])
 {
