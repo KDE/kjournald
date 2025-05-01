@@ -41,6 +41,7 @@ Thumbs.db
 /build*/
 # qtcreator generated files
 *.pro.user*
+**/.qmlls.ini
 
 # xemacs temporary files
 *.flc
