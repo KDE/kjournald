@@ -3,7 +3,6 @@
 // SPDX-FileCopyrightText: 2021 Carl Schwan <carl@carlschwan.eu>
 
 import Qt.labs.platform as Labs
-import org.kde.kirigami as Kirigami
 import org.kde.kjournaldbrowser
 
 Labs.MenuBar {
