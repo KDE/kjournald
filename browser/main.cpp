@@ -8,7 +8,7 @@
 #include "sessionconfig.h"
 #include <KAboutData>
 #include <KCrash>
-#include <KLocalizedContext>
+#include <KLocalizedQmlContext>
 #include <KLocalizedString>
 #include <QApplication>
 #include <QCommandLineParser>
@@ -98,7 +98,7 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     const QVariantMap initialProperties = {{"filterModel", QVariant::fromValue(&filterCriteriaModel)}};
     engine.setInitialProperties(initialProperties);
-    engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
+    KLocalization::setupLocalizedContext(&engine);
     const QUrl url(QStringLiteral("qrc:/qt/qml/org/kde/kjournaldbrowser/Main.qml"));
     QObject::connect(
         &engine,
