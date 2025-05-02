@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-28 00:43+0000\n"
+"POT-Creation-Date: 2025-05-02 00:44+0000\n"
 "PO-Revision-Date: 2025-03-26 11:48+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -18,25 +18,25 @@ msgstr ""
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Lokalize 23.04.3\n"
 
-#: browser/main.cpp:38
+#: browser/main.cpp:41
 #, kde-format
 msgctxt "@title Displayed program name"
 msgid "KJournald Browser"
 msgstr "Навігатор KJournald"
 
-#: browser/main.cpp:40
+#: browser/main.cpp:43
 #, kde-format
 msgctxt "@title KAboutData: short program description"
 msgid "Viewer for Journald logs"
 msgstr "Програма для перегляду журналів Journald"
 
-#: browser/main.cpp:42
+#: browser/main.cpp:45
 #, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2024 The KJournald Developers"
 msgstr "© Розробники KJournald, 2021–2024"
 
-#: browser/main.cpp:43
+#: browser/main.cpp:46
 #, kde-format
 msgctxt "@title Short program description"
 msgid ""
@@ -46,310 +46,310 @@ msgstr ""
 "Програма для перегляду баз даних Journald, які було створено засобом ведення "
 "журналу Journald."
 
-#: browser/main.cpp:45
+#: browser/main.cpp:48
 #, kde-format
 msgctxt "@info:credit Developer name"
 msgid "Andreas Cord-Landwehr"
 msgstr "Andreas Cord-Landwehr"
 
-#: browser/main.cpp:46
+#: browser/main.cpp:49
 #, kde-format
 msgctxt "@info:credit Role"
 msgid "Original Author"
 msgstr "Автор початкової версії"
 
-#: browser/main.cpp:48
+#: browser/main.cpp:51
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Юрій Чорноіван"
 
-#: browser/main.cpp:48
+#: browser/main.cpp:51
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "yurchor@ukr.net"
 
-#: browser/org/kde/kjournaldbrowser/FilterCriteriaView.qml:28
-#, kde-format
-msgid "Expanded"
-msgstr "Розгорнуто"
-
-#: browser/org/kde/kjournaldbrowser/FilterCriteriaView.qml:28
-#, kde-format
-msgid "Collapsed"
-msgstr "Згорнуто"
-
-#: browser/org/kde/kjournaldbrowser/FilterCriteriaView.qml:54
-#, kde-format
-msgid "Clear"
-msgstr "Спорожнити"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:11
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:15
-#, kde-format
-msgid "File"
-msgstr "Файл"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:14
-#, kde-format
-msgid "Open system journal"
-msgstr "Відкрити системний журнал"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:21
-#, kde-format
-msgid "Open from folder"
-msgstr "Відкрити з теки"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:29
-#, kde-format
-msgid "Open from file"
-msgstr "Відкрити з файла"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:48
-#: browser/org/kde/kjournaldbrowser/Main.qml:74
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:51
-#, kde-format
-msgid "Close"
-msgstr "Закрити"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:54
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:57
-#, kde-format
-msgid "Current Journal"
-msgstr "Поточний журнал"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:62
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:65
-#, kde-format
-msgid "View"
-msgstr "Перегляд"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:65
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:68
-#, kde-format
-msgid "Timestamp Display"
-msgstr "Показ часових позначок"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:68
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:72
-#, kde-format
-msgid "Localized Realtime"
-msgstr "Місцевий час"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:76
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:83
-#, kde-format
-msgid "UTC Realtime"
-msgstr "Всесвітній час"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:84
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:94
-#, kde-format
-msgid "Monotonic Time"
-msgstr "Монотонний час"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:93
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:105
-#, kde-format
-msgid "Colorize"
-msgstr "Розфарбувати"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:96
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:109
-#, kde-format
-msgid "Systemd Unit"
-msgstr "Одиниця Systemd"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:104
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:120
-#, kde-format
-msgid "Executable"
-msgstr "Виконуваний файл"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:114
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:132
-#, kde-format
-msgid "Help"
-msgstr "Довідка"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:117
-#: browser/org/kde/kjournaldbrowser/Main.qml:56
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:134
-#, kde-format
-msgid "About"
-msgstr "Про програму"
-
-#: browser/org/kde/kjournaldbrowser/LogView.qml:201
-#, kde-format
-msgid "Kernel"
-msgstr "Ядро"
-
-#: browser/org/kde/kjournaldbrowser/Main.qml:60
-#, kde-format
-msgid "Launch Bug Report Wizard"
-msgstr "Запустити майстра звітування про помилку"
-
-#: browser/org/kde/kjournaldbrowser/Main.qml:98
-#, kde-format
-msgid "Boot:"
-msgstr "Завантаження:"
-
-#: browser/org/kde/kjournaldbrowser/Main.qml:117
-#, kde-format
-msgid "Highlight:"
-msgstr "Підсвічування:"
-
-#: browser/org/kde/kjournaldbrowser/Main.qml:158
-#, kde-format
-msgctxt "@info:tooltip"
-msgid "Switch to browsing mode"
-msgstr "Перемкнутися на режим навігації"
-
-#: browser/org/kde/kjournaldbrowser/Main.qml:159
-#, kde-format
-msgctxt "@info:tooltip"
-msgid "Switch to selection mode"
-msgstr "Перемкнутися на режим вибору"
-
-#: browser/org/kde/kjournaldbrowser/Main.qml:171
-#, kde-format
-msgid "Select journal folder"
-msgstr "Виберіть теку журналу"
-
-#: browser/org/kde/kjournaldbrowser/Main.qml:180
-#, kde-format
-msgid "Select journal file"
-msgstr "Виберіть файл журналу"
-
-#: browser/org/kde/kjournaldbrowser/Main.qml:181
-#, kde-format
-msgid "Journal files (*.journal)"
-msgstr "файли журналу (*.journal)"
-
-#: browser/org/kde/kjournaldbrowser/Main.qml:181
-#, kde-format
-msgid "All files (*)"
-msgstr "усі файли (*)"
-
-#: browser/org/kde/kjournaldbrowser/Main.qml:254
-#, kde-format
-msgid "No log entries apply "
-msgstr "Жоден із записів журналу не є відповідним"
-
-#: browser/org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:17
-#, kde-format
-msgid "Configure Remote Journal Server"
-msgstr "Налаштування віддаленого сервера журналу"
-
-#: browser/org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:31
-#, kde-format
-msgid "URL:"
-msgstr "Адреса:"
-
-#: browser/org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:40
-#, kde-format
-msgid "Port:"
-msgstr "Порт:"
-
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:17
-#, kde-format
-msgid "Open System Journal"
-msgstr "Відкрити системний журнал"
-
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:24
-#, kde-format
-msgid "Open from Folder"
-msgstr "Відкрити з теки"
-
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:32
-#, kde-format
-msgid "Open from File"
-msgstr "Відкрити з файла"
-
-#: lib/filtercriteriamodel.cpp:23
+#: org/kde/kjournald/filtercriteriamodel.cpp:23
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Emergency"
 msgstr "Критичний стан"
 
-#: lib/filtercriteriamodel.cpp:25
+#: org/kde/kjournald/filtercriteriamodel.cpp:25
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Alert"
 msgstr "Попередження"
 
-#: lib/filtercriteriamodel.cpp:27
+#: org/kde/kjournald/filtercriteriamodel.cpp:27
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Critical"
 msgstr "Критична помилка"
 
-#: lib/filtercriteriamodel.cpp:29
+#: org/kde/kjournald/filtercriteriamodel.cpp:29
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Error"
 msgstr "Помилка"
 
-#: lib/filtercriteriamodel.cpp:31
+#: org/kde/kjournald/filtercriteriamodel.cpp:31
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Warning"
 msgstr "Попередження"
 
-#: lib/filtercriteriamodel.cpp:33
+#: org/kde/kjournald/filtercriteriamodel.cpp:33
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Notice"
 msgstr "Зауваження"
 
-#: lib/filtercriteriamodel.cpp:35
+#: org/kde/kjournald/filtercriteriamodel.cpp:35
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Info"
 msgstr "Інформація"
 
-#: lib/filtercriteriamodel.cpp:37
+#: org/kde/kjournald/filtercriteriamodel.cpp:37
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Debug"
 msgstr "Діагностика"
 
-#: lib/filtercriteriamodel.cpp:39
+#: org/kde/kjournald/filtercriteriamodel.cpp:39
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "No Filter"
 msgstr "Без фільтрування"
 
-#: lib/filtercriteriamodel.cpp:136
+#: org/kde/kjournald/filtercriteriamodel.cpp:136
 #, kde-format
 msgctxt "Section title for log message source"
 msgid "Transport"
 msgstr "Передавання"
 
-#: lib/filtercriteriamodel.cpp:143
+#: org/kde/kjournald/filtercriteriamodel.cpp:143
 #, kde-format
 msgctxt "Checkbox option for kernel log messages"
 msgid "Kernel"
 msgstr "Ядро"
 
-#: lib/filtercriteriamodel.cpp:150
+#: org/kde/kjournald/filtercriteriamodel.cpp:150
 #, kde-format
 msgctxt "Section title for log message priority"
 msgid "Priority"
 msgstr "Пріоритетність"
 
-#: lib/filtercriteriamodel.cpp:171
+#: org/kde/kjournald/filtercriteriamodel.cpp:171
 #, kde-format
 msgctxt "Section title for systemd unit"
 msgid "Unit"
 msgstr "Модуль"
 
-#: lib/filtercriteriamodel.cpp:199
+#: org/kde/kjournald/filtercriteriamodel.cpp:199
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"
 msgstr "Процес"
+
+#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:28
+#, kde-format
+msgid "Expanded"
+msgstr "Розгорнуто"
+
+#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:28
+#, kde-format
+msgid "Collapsed"
+msgstr "Згорнуто"
+
+#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:54
+#, kde-format
+msgid "Clear"
+msgstr "Спорожнити"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:10
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:15
+#, kde-format
+msgid "File"
+msgstr "Файл"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:13
+#, kde-format
+msgid "Open system journal"
+msgstr "Відкрити системний журнал"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:20
+#, kde-format
+msgid "Open from folder"
+msgstr "Відкрити з теки"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:28
+#, kde-format
+msgid "Open from file"
+msgstr "Відкрити з файла"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:47
+#: org/kde/kjournaldbrowser/Main.qml:74
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:51
+#, kde-format
+msgid "Close"
+msgstr "Закрити"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:53
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:57
+#, kde-format
+msgid "Current Journal"
+msgstr "Поточний журнал"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:61
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:65
+#, kde-format
+msgid "View"
+msgstr "Перегляд"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:64
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:68
+#, kde-format
+msgid "Timestamp Display"
+msgstr "Показ часових позначок"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:67
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:72
+#, kde-format
+msgid "Localized Realtime"
+msgstr "Місцевий час"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:75
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:83
+#, kde-format
+msgid "UTC Realtime"
+msgstr "Всесвітній час"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:83
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:94
+#, kde-format
+msgid "Monotonic Time"
+msgstr "Монотонний час"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:92
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:105
+#, kde-format
+msgid "Colorize"
+msgstr "Розфарбувати"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:95
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:109
+#, kde-format
+msgid "Systemd Unit"
+msgstr "Одиниця Systemd"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:103
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:120
+#, kde-format
+msgid "Executable"
+msgstr "Виконуваний файл"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:113
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:132
+#, kde-format
+msgid "Help"
+msgstr "Довідка"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:116
+#: org/kde/kjournaldbrowser/Main.qml:56
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:134
+#, kde-format
+msgid "About"
+msgstr "Про програму"
+
+#: org/kde/kjournaldbrowser/LogView.qml:201
+#, kde-format
+msgid "Kernel"
+msgstr "Ядро"
+
+#: org/kde/kjournaldbrowser/Main.qml:60
+#, kde-format
+msgid "Launch Bug Report Wizard"
+msgstr "Запустити майстра звітування про помилку"
+
+#: org/kde/kjournaldbrowser/Main.qml:98
+#, kde-format
+msgid "Boot:"
+msgstr "Завантаження:"
+
+#: org/kde/kjournaldbrowser/Main.qml:117
+#, kde-format
+msgid "Highlight:"
+msgstr "Підсвічування:"
+
+#: org/kde/kjournaldbrowser/Main.qml:158
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Switch to browsing mode"
+msgstr "Перемкнутися на режим навігації"
+
+#: org/kde/kjournaldbrowser/Main.qml:159
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Switch to selection mode"
+msgstr "Перемкнутися на режим вибору"
+
+#: org/kde/kjournaldbrowser/Main.qml:171
+#, kde-format
+msgid "Select journal folder"
+msgstr "Виберіть теку журналу"
+
+#: org/kde/kjournaldbrowser/Main.qml:180
+#, kde-format
+msgid "Select journal file"
+msgstr "Виберіть файл журналу"
+
+#: org/kde/kjournaldbrowser/Main.qml:181
+#, kde-format
+msgid "Journal files (*.journal)"
+msgstr "файли журналу (*.journal)"
+
+#: org/kde/kjournaldbrowser/Main.qml:181
+#, kde-format
+msgid "All files (*)"
+msgstr "усі файли (*)"
+
+#: org/kde/kjournaldbrowser/Main.qml:254
+#, kde-format
+msgid "No log entries apply "
+msgstr "Жоден із записів журналу не є відповідним"
+
+#: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:16
+#, kde-format
+msgid "Configure Remote Journal Server"
+msgstr "Налаштування віддаленого сервера журналу"
+
+#: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:30
+#, kde-format
+msgid "URL:"
+msgstr "Адреса:"
+
+#: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:39
+#, kde-format
+msgid "Port:"
+msgstr "Порт:"
+
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:17
+#, kde-format
+msgid "Open System Journal"
+msgstr "Відкрити системний журнал"
+
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:24
+#, kde-format
+msgid "Open from Folder"
+msgstr "Відкрити з теки"
+
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:32
+#, kde-format
+msgid "Open from File"
+msgstr "Відкрити з файла"
 
 #~ msgid "Browse"
 #~ msgstr "Огляд"

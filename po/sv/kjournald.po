@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-28 00:43+0000\n"
+"POT-Creation-Date: 2025-05-02 00:44+0000\n"
 "PO-Revision-Date: 2025-03-26 17:46+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -17,25 +17,25 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 24.12.0\n"
 
-#: browser/main.cpp:38
+#: browser/main.cpp:41
 #, kde-format
 msgctxt "@title Displayed program name"
 msgid "KJournald Browser"
 msgstr "Kjournald-bläddrare"
 
-#: browser/main.cpp:40
+#: browser/main.cpp:43
 #, kde-format
 msgctxt "@title KAboutData: short program description"
 msgid "Viewer for Journald logs"
 msgstr "Visare av loggar från journald"
 
-#: browser/main.cpp:42
+#: browser/main.cpp:45
 #, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2024 The KJournald Developers"
 msgstr "© 2021-2024 KJournald-utvecklarna"
 
-#: browser/main.cpp:43
+#: browser/main.cpp:46
 #, kde-format
 msgctxt "@title Short program description"
 msgid ""
@@ -44,310 +44,310 @@ msgid ""
 msgstr ""
 "Visare av journald-databaser, som genereras av loggningsverktyget journald."
 
-#: browser/main.cpp:45
+#: browser/main.cpp:48
 #, kde-format
 msgctxt "@info:credit Developer name"
 msgid "Andreas Cord-Landwehr"
 msgstr "Andreas Cord-Landwehr"
 
-#: browser/main.cpp:46
+#: browser/main.cpp:49
 #, kde-format
 msgctxt "@info:credit Role"
 msgid "Original Author"
 msgstr "Ursprunglig upphovsman"
 
-#: browser/main.cpp:48
+#: browser/main.cpp:51
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Stefan Asserhäll"
 
-#: browser/main.cpp:48
+#: browser/main.cpp:51
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "stefan.asserhall@gmail.com"
 
-#: browser/org/kde/kjournaldbrowser/FilterCriteriaView.qml:28
-#, kde-format
-msgid "Expanded"
-msgstr "Expanderad"
-
-#: browser/org/kde/kjournaldbrowser/FilterCriteriaView.qml:28
-#, kde-format
-msgid "Collapsed"
-msgstr "Hopdragen"
-
-#: browser/org/kde/kjournaldbrowser/FilterCriteriaView.qml:54
-#, kde-format
-msgid "Clear"
-msgstr "Rensa"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:11
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:15
-#, kde-format
-msgid "File"
-msgstr "Arkiv"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:14
-#, kde-format
-msgid "Open system journal"
-msgstr "Öppna systemjournal"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:21
-#, kde-format
-msgid "Open from folder"
-msgstr "Öppna från katalog"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:29
-#, kde-format
-msgid "Open from file"
-msgstr "Öppna från fil"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:48
-#: browser/org/kde/kjournaldbrowser/Main.qml:74
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:51
-#, kde-format
-msgid "Close"
-msgstr "Stäng"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:54
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:57
-#, kde-format
-msgid "Current Journal"
-msgstr "Aktuell journal"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:62
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:65
-#, kde-format
-msgid "View"
-msgstr "Visa"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:65
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:68
-#, kde-format
-msgid "Timestamp Display"
-msgstr "Visa tidsstämpel"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:68
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:72
-#, kde-format
-msgid "Localized Realtime"
-msgstr "Lokal realtid"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:76
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:83
-#, kde-format
-msgid "UTC Realtime"
-msgstr "UTC-realtid"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:84
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:94
-#, kde-format
-msgid "Monotonic Time"
-msgstr "Monoton tid"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:93
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:105
-#, kde-format
-msgid "Colorize"
-msgstr "Färga"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:96
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:109
-#, kde-format
-msgid "Systemd Unit"
-msgstr "Systemd-enhet"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:104
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:120
-#, kde-format
-msgid "Executable"
-msgstr "Körbart program"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:114
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:132
-#, kde-format
-msgid "Help"
-msgstr "Hjälp"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:117
-#: browser/org/kde/kjournaldbrowser/Main.qml:56
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:134
-#, kde-format
-msgid "About"
-msgstr "Om"
-
-#: browser/org/kde/kjournaldbrowser/LogView.qml:201
-#, kde-format
-msgid "Kernel"
-msgstr "Kärna"
-
-#: browser/org/kde/kjournaldbrowser/Main.qml:60
-#, kde-format
-msgid "Launch Bug Report Wizard"
-msgstr "Starta felrapportguide"
-
-#: browser/org/kde/kjournaldbrowser/Main.qml:98
-#, kde-format
-msgid "Boot:"
-msgstr "Start:"
-
-#: browser/org/kde/kjournaldbrowser/Main.qml:117
-#, kde-format
-msgid "Highlight:"
-msgstr "Färglägg:"
-
-#: browser/org/kde/kjournaldbrowser/Main.qml:158
-#, kde-format
-msgctxt "@info:tooltip"
-msgid "Switch to browsing mode"
-msgstr "Byt till bläddringsläge"
-
-#: browser/org/kde/kjournaldbrowser/Main.qml:159
-#, kde-format
-msgctxt "@info:tooltip"
-msgid "Switch to selection mode"
-msgstr "Byt till markeringsläge"
-
-#: browser/org/kde/kjournaldbrowser/Main.qml:171
-#, kde-format
-msgid "Select journal folder"
-msgstr "Välj journalkatalog"
-
-#: browser/org/kde/kjournaldbrowser/Main.qml:180
-#, kde-format
-msgid "Select journal file"
-msgstr "Välj journalfil"
-
-#: browser/org/kde/kjournaldbrowser/Main.qml:181
-#, kde-format
-msgid "Journal files (*.journal)"
-msgstr "Journalfiler (*.journal)"
-
-#: browser/org/kde/kjournaldbrowser/Main.qml:181
-#, kde-format
-msgid "All files (*)"
-msgstr "Alla filer (*)"
-
-#: browser/org/kde/kjournaldbrowser/Main.qml:254
-#, kde-format
-msgid "No log entries apply "
-msgstr "Inga loggposter stämmer "
-
-#: browser/org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:17
-#, kde-format
-msgid "Configure Remote Journal Server"
-msgstr "Anpassa fjärrjournalserver"
-
-#: browser/org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:31
-#, kde-format
-msgid "URL:"
-msgstr "Webbadress:"
-
-#: browser/org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:40
-#, kde-format
-msgid "Port:"
-msgstr "Port:"
-
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:17
-#, kde-format
-msgid "Open System Journal"
-msgstr "Öppna systemjournal"
-
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:24
-#, kde-format
-msgid "Open from Folder"
-msgstr "Öppna från katalog"
-
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:32
-#, kde-format
-msgid "Open from File"
-msgstr "Öppna från fil"
-
-#: lib/filtercriteriamodel.cpp:23
+#: org/kde/kjournald/filtercriteriamodel.cpp:23
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Emergency"
 msgstr "Nödfall"
 
-#: lib/filtercriteriamodel.cpp:25
+#: org/kde/kjournald/filtercriteriamodel.cpp:25
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Alert"
 msgstr "Varning"
 
-#: lib/filtercriteriamodel.cpp:27
+#: org/kde/kjournald/filtercriteriamodel.cpp:27
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Critical"
 msgstr "Kritisk"
 
-#: lib/filtercriteriamodel.cpp:29
+#: org/kde/kjournald/filtercriteriamodel.cpp:29
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Error"
 msgstr "Fel"
 
-#: lib/filtercriteriamodel.cpp:31
+#: org/kde/kjournald/filtercriteriamodel.cpp:31
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Warning"
 msgstr "Varning"
 
-#: lib/filtercriteriamodel.cpp:33
+#: org/kde/kjournald/filtercriteriamodel.cpp:33
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Notice"
 msgstr "Anmärkning"
 
-#: lib/filtercriteriamodel.cpp:35
+#: org/kde/kjournald/filtercriteriamodel.cpp:35
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Info"
 msgstr "Information"
 
-#: lib/filtercriteriamodel.cpp:37
+#: org/kde/kjournald/filtercriteriamodel.cpp:37
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Debug"
 msgstr "Felsökning"
 
-#: lib/filtercriteriamodel.cpp:39
+#: org/kde/kjournald/filtercriteriamodel.cpp:39
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "No Filter"
 msgstr "Inget filter"
 
-#: lib/filtercriteriamodel.cpp:136
+#: org/kde/kjournald/filtercriteriamodel.cpp:136
 #, kde-format
 msgctxt "Section title for log message source"
 msgid "Transport"
 msgstr "Transport"
 
-#: lib/filtercriteriamodel.cpp:143
+#: org/kde/kjournald/filtercriteriamodel.cpp:143
 #, kde-format
 msgctxt "Checkbox option for kernel log messages"
 msgid "Kernel"
 msgstr "Kärna"
 
-#: lib/filtercriteriamodel.cpp:150
+#: org/kde/kjournald/filtercriteriamodel.cpp:150
 #, kde-format
 msgctxt "Section title for log message priority"
 msgid "Priority"
 msgstr "Prioritet"
 
-#: lib/filtercriteriamodel.cpp:171
+#: org/kde/kjournald/filtercriteriamodel.cpp:171
 #, kde-format
 msgctxt "Section title for systemd unit"
 msgid "Unit"
 msgstr "Enhet"
 
-#: lib/filtercriteriamodel.cpp:199
+#: org/kde/kjournald/filtercriteriamodel.cpp:199
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"
 msgstr "Process"
+
+#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:28
+#, kde-format
+msgid "Expanded"
+msgstr "Expanderad"
+
+#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:28
+#, kde-format
+msgid "Collapsed"
+msgstr "Hopdragen"
+
+#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:54
+#, kde-format
+msgid "Clear"
+msgstr "Rensa"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:10
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:15
+#, kde-format
+msgid "File"
+msgstr "Arkiv"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:13
+#, kde-format
+msgid "Open system journal"
+msgstr "Öppna systemjournal"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:20
+#, kde-format
+msgid "Open from folder"
+msgstr "Öppna från katalog"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:28
+#, kde-format
+msgid "Open from file"
+msgstr "Öppna från fil"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:47
+#: org/kde/kjournaldbrowser/Main.qml:74
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:51
+#, kde-format
+msgid "Close"
+msgstr "Stäng"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:53
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:57
+#, kde-format
+msgid "Current Journal"
+msgstr "Aktuell journal"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:61
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:65
+#, kde-format
+msgid "View"
+msgstr "Visa"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:64
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:68
+#, kde-format
+msgid "Timestamp Display"
+msgstr "Visa tidsstämpel"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:67
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:72
+#, kde-format
+msgid "Localized Realtime"
+msgstr "Lokal realtid"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:75
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:83
+#, kde-format
+msgid "UTC Realtime"
+msgstr "UTC-realtid"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:83
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:94
+#, kde-format
+msgid "Monotonic Time"
+msgstr "Monoton tid"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:92
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:105
+#, kde-format
+msgid "Colorize"
+msgstr "Färga"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:95
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:109
+#, kde-format
+msgid "Systemd Unit"
+msgstr "Systemd-enhet"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:103
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:120
+#, kde-format
+msgid "Executable"
+msgstr "Körbart program"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:113
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:132
+#, kde-format
+msgid "Help"
+msgstr "Hjälp"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:116
+#: org/kde/kjournaldbrowser/Main.qml:56
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:134
+#, kde-format
+msgid "About"
+msgstr "Om"
+
+#: org/kde/kjournaldbrowser/LogView.qml:201
+#, kde-format
+msgid "Kernel"
+msgstr "Kärna"
+
+#: org/kde/kjournaldbrowser/Main.qml:60
+#, kde-format
+msgid "Launch Bug Report Wizard"
+msgstr "Starta felrapportguide"
+
+#: org/kde/kjournaldbrowser/Main.qml:98
+#, kde-format
+msgid "Boot:"
+msgstr "Start:"
+
+#: org/kde/kjournaldbrowser/Main.qml:117
+#, kde-format
+msgid "Highlight:"
+msgstr "Färglägg:"
+
+#: org/kde/kjournaldbrowser/Main.qml:158
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Switch to browsing mode"
+msgstr "Byt till bläddringsläge"
+
+#: org/kde/kjournaldbrowser/Main.qml:159
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Switch to selection mode"
+msgstr "Byt till markeringsläge"
+
+#: org/kde/kjournaldbrowser/Main.qml:171
+#, kde-format
+msgid "Select journal folder"
+msgstr "Välj journalkatalog"
+
+#: org/kde/kjournaldbrowser/Main.qml:180
+#, kde-format
+msgid "Select journal file"
+msgstr "Välj journalfil"
+
+#: org/kde/kjournaldbrowser/Main.qml:181
+#, kde-format
+msgid "Journal files (*.journal)"
+msgstr "Journalfiler (*.journal)"
+
+#: org/kde/kjournaldbrowser/Main.qml:181
+#, kde-format
+msgid "All files (*)"
+msgstr "Alla filer (*)"
+
+#: org/kde/kjournaldbrowser/Main.qml:254
+#, kde-format
+msgid "No log entries apply "
+msgstr "Inga loggposter stämmer "
+
+#: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:16
+#, kde-format
+msgid "Configure Remote Journal Server"
+msgstr "Anpassa fjärrjournalserver"
+
+#: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:30
+#, kde-format
+msgid "URL:"
+msgstr "Webbadress:"
+
+#: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:39
+#, kde-format
+msgid "Port:"
+msgstr "Port:"
+
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:17
+#, kde-format
+msgid "Open System Journal"
+msgstr "Öppna systemjournal"
+
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:24
+#, kde-format
+msgid "Open from Folder"
+msgstr "Öppna från katalog"
+
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:32
+#, kde-format
+msgid "Open from File"
+msgstr "Öppna från fil"
 
 #~ msgid "Browse"
 #~ msgstr "Bläddra"

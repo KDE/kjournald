@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-28 00:43+0000\n"
+"POT-Creation-Date: 2025-05-02 00:44+0000\n"
 "PO-Revision-Date: 2024-12-27 10:42+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -18,25 +18,25 @@ msgstr ""
 "X-Generator: translate-po (https://github.com/zcribe/translate-po)\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: browser/main.cpp:38
+#: browser/main.cpp:41
 #, kde-format
 msgctxt "@title Displayed program name"
 msgid "KJournald Browser"
 msgstr "KJournald-Retumilo"
 
-#: browser/main.cpp:40
+#: browser/main.cpp:43
 #, kde-format
 msgctxt "@title KAboutData: short program description"
 msgid "Viewer for Journald logs"
 msgstr "Vidilo por Journald-protokoloj"
 
-#: browser/main.cpp:42
+#: browser/main.cpp:45
 #, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2024 The KJournald Developers"
 msgstr "(c) 2021-2024 La KJournald-Programistoj"
 
-#: browser/main.cpp:43
+#: browser/main.cpp:46
 #, kde-format
 msgctxt "@title Short program description"
 msgid ""
@@ -46,310 +46,310 @@ msgstr ""
 "Vidilo por Journald-datumbazoj, kiuj estas generitaj de la Journald-registra "
 "ilo."
 
-#: browser/main.cpp:45
+#: browser/main.cpp:48
 #, kde-format
 msgctxt "@info:credit Developer name"
 msgid "Andreas Cord-Landwehr"
 msgstr "Andreas Cord-Landwehr"
 
-#: browser/main.cpp:46
+#: browser/main.cpp:49
 #, kde-format
 msgctxt "@info:credit Role"
 msgid "Original Author"
 msgstr "Originala Aŭtoro"
 
-#: browser/main.cpp:48
+#: browser/main.cpp:51
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Oliver Kellogg"
 
-#: browser/main.cpp:48
+#: browser/main.cpp:51
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "olivermkellogg@gmail.com"
 
-#: browser/org/kde/kjournaldbrowser/FilterCriteriaView.qml:28
-#, kde-format
-msgid "Expanded"
-msgstr "Vastigita"
-
-#: browser/org/kde/kjournaldbrowser/FilterCriteriaView.qml:28
-#, kde-format
-msgid "Collapsed"
-msgstr "Malvastigita"
-
-#: browser/org/kde/kjournaldbrowser/FilterCriteriaView.qml:54
-#, kde-format
-msgid "Clear"
-msgstr "Malplenigi"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:11
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:15
-#, kde-format
-msgid "File"
-msgstr "Dosiero"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:14
-#, kde-format
-msgid "Open system journal"
-msgstr "Malfermi sistemprotokolon"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:21
-#, kde-format
-msgid "Open from folder"
-msgstr "Malfermi el dosierujo"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:29
-#, kde-format
-msgid "Open from file"
-msgstr "Malfermi el dosiero"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:48
-#: browser/org/kde/kjournaldbrowser/Main.qml:74
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:51
-#, kde-format
-msgid "Close"
-msgstr "Fermi"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:54
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:57
-#, kde-format
-msgid "Current Journal"
-msgstr "Aktuala Protokolo"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:62
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:65
-#, kde-format
-msgid "View"
-msgstr "Vido"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:65
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:68
-#, kde-format
-msgid "Timestamp Display"
-msgstr "Tempmarka Elmontro"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:68
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:72
-#, kde-format
-msgid "Localized Realtime"
-msgstr "Lokigita Realtempa"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:76
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:83
-#, kde-format
-msgid "UTC Realtime"
-msgstr "UTC Realtempo"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:84
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:94
-#, kde-format
-msgid "Monotonic Time"
-msgstr "Monotona Tempo"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:93
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:105
-#, kde-format
-msgid "Colorize"
-msgstr "Kolorigi"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:96
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:109
-#, kde-format
-msgid "Systemd Unit"
-msgstr "Sistemd-Unuo"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:104
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:120
-#, kde-format
-msgid "Executable"
-msgstr "Efektivigebla"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:114
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:132
-#, kde-format
-msgid "Help"
-msgstr "Helpo"
-
-#: browser/org/kde/kjournaldbrowser/GlobalMenu.qml:117
-#: browser/org/kde/kjournaldbrowser/Main.qml:56
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:134
-#, kde-format
-msgid "About"
-msgstr "Pri"
-
-#: browser/org/kde/kjournaldbrowser/LogView.qml:201
-#, kde-format
-msgid "Kernel"
-msgstr "Kerno"
-
-#: browser/org/kde/kjournaldbrowser/Main.qml:60
-#, kde-format
-msgid "Launch Bug Report Wizard"
-msgstr "Lanĉi Cimraport-Sorĉiston"
-
-#: browser/org/kde/kjournaldbrowser/Main.qml:98
-#, kde-format
-msgid "Boot:"
-msgstr "Boto:"
-
-#: browser/org/kde/kjournaldbrowser/Main.qml:117
-#, kde-format
-msgid "Highlight:"
-msgstr "Elstarigi:"
-
-#: browser/org/kde/kjournaldbrowser/Main.qml:158
-#, kde-format
-msgctxt "@info:tooltip"
-msgid "Switch to browsing mode"
-msgstr ""
-
-#: browser/org/kde/kjournaldbrowser/Main.qml:159
-#, kde-format
-msgctxt "@info:tooltip"
-msgid "Switch to selection mode"
-msgstr ""
-
-#: browser/org/kde/kjournaldbrowser/Main.qml:171
-#, kde-format
-msgid "Select journal folder"
-msgstr "Elekti protokolan dosierujon"
-
-#: browser/org/kde/kjournaldbrowser/Main.qml:180
-#, kde-format
-msgid "Select journal file"
-msgstr "Elekti protokolan dosieron"
-
-#: browser/org/kde/kjournaldbrowser/Main.qml:181
-#, kde-format
-msgid "Journal files (*.journal)"
-msgstr "Protokoldosieroj (*.journal)"
-
-#: browser/org/kde/kjournaldbrowser/Main.qml:181
-#, kde-format
-msgid "All files (*)"
-msgstr "Ĉiuj dosieroj (*)"
-
-#: browser/org/kde/kjournaldbrowser/Main.qml:254
-#, kde-format
-msgid "No log entries apply "
-msgstr "Neniuj protokolaj enskriboj validas"
-
-#: browser/org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:17
-#, kde-format
-msgid "Configure Remote Journal Server"
-msgstr "Agordi Remote Journal Server"
-
-#: browser/org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:31
-#, kde-format
-msgid "URL:"
-msgstr "URL:"
-
-#: browser/org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:40
-#, kde-format
-msgid "Port:"
-msgstr "Pordo:"
-
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:17
-#, kde-format
-msgid "Open System Journal"
-msgstr "Malfermi Sistemprotokolon"
-
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:24
-#, kde-format
-msgid "Open from Folder"
-msgstr "Malfermi el Dosierujo"
-
-#: browser/org/kde/kjournaldbrowser/TopMenuBar.qml:32
-#, kde-format
-msgid "Open from File"
-msgstr "Malfermi el Dosiero"
-
-#: lib/filtercriteriamodel.cpp:23
+#: org/kde/kjournald/filtercriteriamodel.cpp:23
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Emergency"
 msgstr "Krizo"
 
-#: lib/filtercriteriamodel.cpp:25
+#: org/kde/kjournald/filtercriteriamodel.cpp:25
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Alert"
 msgstr "Atentigo"
 
-#: lib/filtercriteriamodel.cpp:27
+#: org/kde/kjournald/filtercriteriamodel.cpp:27
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Critical"
 msgstr "Kritika"
 
-#: lib/filtercriteriamodel.cpp:29
+#: org/kde/kjournald/filtercriteriamodel.cpp:29
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Error"
 msgstr "Eraro"
 
-#: lib/filtercriteriamodel.cpp:31
+#: org/kde/kjournald/filtercriteriamodel.cpp:31
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Warning"
 msgstr "Averto"
 
-#: lib/filtercriteriamodel.cpp:33
+#: org/kde/kjournald/filtercriteriamodel.cpp:33
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Notice"
 msgstr "Rimarkigo"
 
-#: lib/filtercriteriamodel.cpp:35
+#: org/kde/kjournald/filtercriteriamodel.cpp:35
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Info"
 msgstr "Informo"
 
-#: lib/filtercriteriamodel.cpp:37
+#: org/kde/kjournald/filtercriteriamodel.cpp:37
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Debug"
 msgstr "Sencimigo"
 
-#: lib/filtercriteriamodel.cpp:39
+#: org/kde/kjournald/filtercriteriamodel.cpp:39
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "No Filter"
 msgstr "Neniu filtrilo"
 
-#: lib/filtercriteriamodel.cpp:136
+#: org/kde/kjournald/filtercriteriamodel.cpp:136
 #, kde-format
 msgctxt "Section title for log message source"
 msgid "Transport"
 msgstr "Transporto"
 
-#: lib/filtercriteriamodel.cpp:143
+#: org/kde/kjournald/filtercriteriamodel.cpp:143
 #, kde-format
 msgctxt "Checkbox option for kernel log messages"
 msgid "Kernel"
 msgstr "Kerno"
 
-#: lib/filtercriteriamodel.cpp:150
+#: org/kde/kjournald/filtercriteriamodel.cpp:150
 #, kde-format
 msgctxt "Section title for log message priority"
 msgid "Priority"
 msgstr "Prioritato"
 
-#: lib/filtercriteriamodel.cpp:171
+#: org/kde/kjournald/filtercriteriamodel.cpp:171
 #, kde-format
 msgctxt "Section title for systemd unit"
 msgid "Unit"
 msgstr "Unuo"
 
-#: lib/filtercriteriamodel.cpp:199
+#: org/kde/kjournald/filtercriteriamodel.cpp:199
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"
 msgstr "Procezo"
+
+#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:28
+#, kde-format
+msgid "Expanded"
+msgstr "Vastigita"
+
+#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:28
+#, kde-format
+msgid "Collapsed"
+msgstr "Malvastigita"
+
+#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:54
+#, kde-format
+msgid "Clear"
+msgstr "Malplenigi"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:10
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:15
+#, kde-format
+msgid "File"
+msgstr "Dosiero"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:13
+#, kde-format
+msgid "Open system journal"
+msgstr "Malfermi sistemprotokolon"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:20
+#, kde-format
+msgid "Open from folder"
+msgstr "Malfermi el dosierujo"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:28
+#, kde-format
+msgid "Open from file"
+msgstr "Malfermi el dosiero"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:47
+#: org/kde/kjournaldbrowser/Main.qml:74
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:51
+#, kde-format
+msgid "Close"
+msgstr "Fermi"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:53
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:57
+#, kde-format
+msgid "Current Journal"
+msgstr "Aktuala Protokolo"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:61
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:65
+#, kde-format
+msgid "View"
+msgstr "Vido"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:64
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:68
+#, kde-format
+msgid "Timestamp Display"
+msgstr "Tempmarka Elmontro"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:67
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:72
+#, kde-format
+msgid "Localized Realtime"
+msgstr "Lokigita Realtempa"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:75
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:83
+#, kde-format
+msgid "UTC Realtime"
+msgstr "UTC Realtempo"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:83
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:94
+#, kde-format
+msgid "Monotonic Time"
+msgstr "Monotona Tempo"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:92
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:105
+#, kde-format
+msgid "Colorize"
+msgstr "Kolorigi"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:95
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:109
+#, kde-format
+msgid "Systemd Unit"
+msgstr "Sistemd-Unuo"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:103
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:120
+#, kde-format
+msgid "Executable"
+msgstr "Efektivigebla"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:113
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:132
+#, kde-format
+msgid "Help"
+msgstr "Helpo"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:116
+#: org/kde/kjournaldbrowser/Main.qml:56
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:134
+#, kde-format
+msgid "About"
+msgstr "Pri"
+
+#: org/kde/kjournaldbrowser/LogView.qml:201
+#, kde-format
+msgid "Kernel"
+msgstr "Kerno"
+
+#: org/kde/kjournaldbrowser/Main.qml:60
+#, kde-format
+msgid "Launch Bug Report Wizard"
+msgstr "Lanĉi Cimraport-Sorĉiston"
+
+#: org/kde/kjournaldbrowser/Main.qml:98
+#, kde-format
+msgid "Boot:"
+msgstr "Boto:"
+
+#: org/kde/kjournaldbrowser/Main.qml:117
+#, kde-format
+msgid "Highlight:"
+msgstr "Elstarigi:"
+
+#: org/kde/kjournaldbrowser/Main.qml:158
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Switch to browsing mode"
+msgstr ""
+
+#: org/kde/kjournaldbrowser/Main.qml:159
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Switch to selection mode"
+msgstr ""
+
+#: org/kde/kjournaldbrowser/Main.qml:171
+#, kde-format
+msgid "Select journal folder"
+msgstr "Elekti protokolan dosierujon"
+
+#: org/kde/kjournaldbrowser/Main.qml:180
+#, kde-format
+msgid "Select journal file"
+msgstr "Elekti protokolan dosieron"
+
+#: org/kde/kjournaldbrowser/Main.qml:181
+#, kde-format
+msgid "Journal files (*.journal)"
+msgstr "Protokoldosieroj (*.journal)"
+
+#: org/kde/kjournaldbrowser/Main.qml:181
+#, kde-format
+msgid "All files (*)"
+msgstr "Ĉiuj dosieroj (*)"
+
+#: org/kde/kjournaldbrowser/Main.qml:254
+#, kde-format
+msgid "No log entries apply "
+msgstr "Neniuj protokolaj enskriboj validas"
+
+#: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:16
+#, kde-format
+msgid "Configure Remote Journal Server"
+msgstr "Agordi Remote Journal Server"
+
+#: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:30
+#, kde-format
+msgid "URL:"
+msgstr "URL:"
+
+#: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:39
+#, kde-format
+msgid "Port:"
+msgstr "Pordo:"
+
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:17
+#, kde-format
+msgid "Open System Journal"
+msgstr "Malfermi Sistemprotokolon"
+
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:24
+#, kde-format
+msgid "Open from Folder"
+msgstr "Malfermi el Dosierujo"
+
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:32
+#, kde-format
+msgid "Open from File"
+msgstr "Malfermi el Dosiero"
 
 #~ msgid "Browse"
 #~ msgstr "Foliumi"
