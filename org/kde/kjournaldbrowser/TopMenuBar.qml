@@ -6,13 +6,18 @@
 import QtQuick
 import QtQuick.Controls
 import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.statefulapp as StatefulApp
 import org.kde.kjournaldbrowser
 
 MenuBar {
+    id: root
+
+    property StatefulApp.AbstractKirigamiApplication application: BrowserApplication
+
     signal copyViewToClipboard()
     Kirigami.Theme.colorSet: Kirigami.Theme.Header
     Menu {
-        title: i18n("File")
+        title: i18nc("@action:menu", "File")
         MenuItem {
             text: i18n("Open System Journal")
             icon.name: "document-open"
@@ -129,11 +134,14 @@ MenuBar {
         }
     }
     Menu {
-        title: i18n("Help")
-        MenuItem {
-            text: i18n("About")
-            icon.name: "help-about"
-            onTriggered: aboutDialog.open()
+        title: i18nc("@action:menu", "Help")
+
+        Kirigami.Action {
+            fromQAction: root.application.action('open_about_page')
+        }
+
+        Kirigami.Action {
+            fromQAction: root.application.action('open_about_kde_page')
         }
     }
 }

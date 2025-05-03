@@ -3,11 +3,17 @@
 // SPDX-FileCopyrightText: 2021 Carl Schwan <carl@carlschwan.eu>
 
 import Qt.labs.platform as Labs
+import org.kde.kirigamiaddons.statefulapp.labs as StatefulAppLabs
+import org.kde.kirigamiaddons.statefulapp as StatefulApp
 import org.kde.kjournaldbrowser
 
 Labs.MenuBar {
+    id: root
+
+    property StatefulApp.AbstractKirigamiApplication application: BrowserApplication
+
     Labs.Menu {
-        title: i18n("File")
+        title: i18nc("@action:menu", "File")
 
         Labs.MenuItem {
             text: i18n("Open system journal")
@@ -110,14 +116,16 @@ Labs.MenuBar {
         }
     }
     Labs.Menu {
-        title: i18n("Help")
+        title: i18nc("@action:menu", "Help")
 
-        Labs.MenuItem {
-            text: i18n("About")
-            icon.name: "help-about"
-            onTriggered: {
-                aboutDialog.open()
-            }
+        StatefulAppLabs.NativeMenuItem {
+            actionName: "open_about_page"
+            application: root.application
+        }
+
+        StatefulAppLabs.NativeMenuItem {
+            actionName: "open_about_kde_page"
+            application: root.application
         }
     }
 }

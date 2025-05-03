@@ -9,15 +9,19 @@ import QtQuick.Controls
 import QtQuick.Dialogs as Dialogs
 import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.statefulapp as StatefulApp
+import org.kde.kirigamiaddons.settings as Settings
 import org.kde.kjournald
 import org.kde.kjournaldbrowser
 
-Kirigami.AbstractApplicationWindow {
+StatefulApp.StatefulWindow {
     id: root
 
     width: 1000
     height: 640
     visible: true
+    windowName: 'kjournaldbrowser'
+    application: BrowserApplication
 
     required property FilterCriteriaModel filterModel
 
@@ -29,59 +33,6 @@ Kirigami.AbstractApplicationWindow {
     Loader {
         active: Kirigami.Settings.hasPlatformMenuBar === true && !Kirigami.Settings.isMobile
         source: Qt.resolvedUrl("qrc:/GlobalMenu.qml")
-    }
-
-    Pane {
-        Loader {
-            id: aboutDialog
-            anchors.centerIn: parent
-            parent: Overlay.overlay
-            width: 500
-            height: 500
-
-            function open() {
-                if (item) {
-                    item.open()
-                } else {
-                    active = true
-                }
-            }
-            onLoaded: item.open()
-            active: false
-            asynchronous: true
-            sourceComponent: Dialog {
-                width: aboutDialog.width
-                height: aboutDialog.height
-                visible: false
-                title: i18n("About")
-                footer: DialogButtonBox {
-                    Button {
-                        icon.name: "tools-report-bug"
-                        text: i18n("Launch Bug Report Wizard")
-                        DialogButtonBox.buttonRole: DialogButtonBox.RejectRole
-                        onClicked:{
-                            const elements = AboutData.productName.split('/');
-                            let url = `https://bugs.kde.org/enter_bug.cgi?format=guided&product=${elements[0]}&version=${AboutData.version}`;
-                            if (elements.length === 2) {
-                                url += "&component=" + elements[1]
-                            }
-                            console.log("url: " + url)
-                            Qt.openUrlExternally(url)
-                        }
-                    }
-                    Button {
-                        icon.name: "document-close"
-                        text: i18n("Close")
-                        DialogButtonBox.buttonRole: DialogButtonBox.RejectRole
-                    }
-                }
-
-                Kirigami.AboutItem {
-                    anchors.fill: parent
-                    aboutData: AboutData
-                }
-            }
-        }
     }
 
     header: ToolBar {

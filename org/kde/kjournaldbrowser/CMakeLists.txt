@@ -12,9 +12,13 @@ qt6_add_qml_module(
     DEPENDENCIES
         QtQuick
         org.kde.kjournald
+        org.kde.kirigamiaddons.
+        org.kde.kirigamiaddons.statefulapp
     SOURCES
         clipboardproxy.cpp
         clipboardproxy.h
+        browserapplication.cpp
+        browserapplication.h
     QML_FILES
         Main.qml
         LogLine.qml
@@ -24,8 +28,9 @@ qt6_add_qml_module(
         LogView.qml
         FilterCriteriaView.qml
         ColoredCheckbox.qml
+        SOURCES browserapplication.h browserapplication.cpp
 )
 
 target_link_libraries(kjournaldbrowser_backing
-    PUBLIC kjournald Qt6::Core Qt6::Gui
+    PUBLIC kjournald Qt6::Core Qt6::Gui KF6::Kirigami KirigamiAddonsStatefulApp
 )

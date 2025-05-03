@@ -55,9 +55,13 @@ ecm_setup_version(${KJOURNALD_VERSION}
 find_package(KF6 ${KF_VERSION} REQUIRED COMPONENTS
     CoreAddons
     Crash
+    Config
     I18n
+    Kirigami
 )
 add_definitions(-DTRANSLATION_DOMAIN=\"kjournald\")
+
+find_package(KF6KirigamiAddons 1.4.0 REQUIRED)
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(SYSTEMD REQUIRED IMPORTED_TARGET libsystemd)
