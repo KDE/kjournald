@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-02 00:44+0000\n"
-"PO-Revision-Date: 2025-04-05 17:59+0200\n"
+"PO-Revision-Date: 2025-04-29 12:51+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #: browser/main.cpp:41
 #, kde-format
@@ -27,7 +27,7 @@ msgstr "Navigatore KJournald"
 #, kde-format
 msgctxt "@title KAboutData: short program description"
 msgid "Viewer for Journald logs"
-msgstr "Visore per i registri di Jounarld"
+msgstr "Visore per i registri di Journald"
 
 #: browser/main.cpp:45
 #, kde-format
@@ -230,7 +230,7 @@ msgstr "Tempo reale UTC"
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:94
 #, kde-format
 msgid "Monotonic Time"
-msgstr "Orario monotòno"
+msgstr "Orario monotono"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:92
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:105
