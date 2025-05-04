@@ -10,14 +10,10 @@
 SessionConfig::SessionConfig(QObject *parent)
     : QObject(parent)
 {
-    mTimeDisplayFormat = mSettings.value("browser/timedisplay").value<TimeDisplay>();
-    mFilterCriterium = mSettings.value("browser/filtercriterium").value<FilterCriterium>();
 }
 
 SessionConfig::~SessionConfig()
 {
-    qCDebug(KJOURNALDLIB_GENERAL) << "Sync configuration";
-    mSettings.sync();
 }
 
 SessionConfig::Mode SessionConfig::mode() const
@@ -33,50 +29,6 @@ void SessionConfig::setMode(SessionConfig::Mode mode)
     mMode = mode;
 
     Q_EMIT modeChanged(mode);
-}
-
-void SessionConfig::setTimeDisplay(SessionConfig::TimeDisplay format)
-{
-    if (format == mTimeDisplayFormat) {
-        return;
-    }
-    mTimeDisplayFormat = format;
-    mSettings.setValue("browser/timedisplay", QVariant::fromValue(static_cast<uint8_t>(format)));
-    Q_EMIT timeDisplayChanged();
-}
-
-SessionConfig::TimeDisplay SessionConfig::timeDisplay() const
-{
-    return mTimeDisplayFormat;
-}
-
-void SessionConfig::setFilterCriterium(FilterCriterium criterium)
-{
-    if (criterium == mFilterCriterium) {
-        return;
-    }
-    mFilterCriterium = criterium;
-    mSettings.setValue("browser/filtercriterium", QVariant::fromValue(static_cast<uint8_t>(criterium)));
-    Q_EMIT filterCriteriumChanged();
-}
-
-SessionConfig::FilterCriterium SessionConfig::filterCriterium() const
-{
-    return mFilterCriterium;
-}
-
-void SessionConfig::setViewMode(ViewMode mode)
-{
-    if (mode == mViewMode) {
-        return;
-    }
-    mViewMode = mode;
-    Q_EMIT viewModeChanged();
-}
-
-SessionConfig::ViewMode SessionConfig::viewMode() const
-{
-    return mViewMode;
 }
 
 void SessionConfig::setLocalJournalPath(const QString &path)

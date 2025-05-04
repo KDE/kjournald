@@ -72,25 +72,25 @@ Labs.MenuBar {
             Labs.MenuItem {
                 text: i18n("Localized Realtime")
                 checkable: true
-                checked: SessionConfigProxy.timeDisplay === SessionConfig.LOCALTIME
+                checked: BrowserApplication.timeDisplay === BrowserApplication.LOCALTIME
                 onTriggered: {
-                    SessionConfigProxy.timeDisplay = SessionConfig.LOCALTIME
+                    BrowserApplication.timeDisplay = BrowserApplication.LOCALTIME
                 }
             }
             Labs.MenuItem {
                 text: i18n("UTC Realtime")
                 checkable: true
-                checked: SessionConfigProxy.timeDisplay === SessionConfig.UTC
+                checked: BrowserApplication.timeDisplay === BrowserApplication.UTC
                 onTriggered: {
-                    SessionConfigProxy.timeDisplay = SessionConfig.UTC
+                    BrowserApplication.timeDisplay = BrowserApplication.UTC
                 }
             }
             Labs.MenuItem {
                 text: i18n("Monotonic Time")
                 checkable: true
-                checked: SessionConfigProxy.timeDisplay === SessionConfig.MONOTONIC_TIMESTAMP
+                checked: BrowserApplication.timeDisplay === BrowserApplication.MONOTONIC_TIMESTAMP
                 onTriggered: {
-                    SessionConfigProxy.timeDisplay = SessionConfig.MONOTONIC_TIMESTAMP
+                    BrowserApplication.timeDisplay = BrowserApplication.MONOTONIC_TIMESTAMP
                 }
             }
         }
@@ -100,17 +100,17 @@ Labs.MenuBar {
             Labs.MenuItem {
                 text: i18n("Systemd Unit")
                 checkable: true
-                checked: SessionConfigProxy.filterCriterium === SessionConfig.SYSTEMD_UNIT
+                checked: BrowserApplication.filterCriterium === BrowserApplication.SYSTEMD_UNIT
                 onTriggered: {
-                    SessionConfigProxy.filterCriterium = SessionConfig.SYSTEMD_UNIT
+                    BrowserApplication.filterCriterium = BrowserApplication.SYSTEMD_UNIT
                 }
             }
             Labs.MenuItem {
                 text: i18n("Executable")
                 checkable: true
-                checked: SessionConfigProxy.filterCriterium === SessionConfig.EXECUTABLE
+                checked: BrowserApplication.filterCriterium === BrowserApplication.EXECUTABLE
                 onTriggered: {
-                    SessionConfigProxy.filterCriterium = SessionConfig.EXECUTABLE
+                    BrowserApplication.filterCriterium = BrowserApplication.EXECUTABLE
                 }
             }
         }

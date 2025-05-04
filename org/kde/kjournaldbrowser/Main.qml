@@ -54,16 +54,16 @@ StatefulApp.StatefulWindow {
                 implicitWidth: Math.max(300, implicitContentWidth)
                 model: bootModel
                 valueRole: "bootid"
-                textRole: SessionConfigProxy.timeDisplay
-                          === SessionConfig.UTC ? "displayshort_utc" : "displayshort_localtime"
+                textRole: BrowserApplication.timeDisplay
+                          === BrowserApplication.UTC ? "displayshort_utc" : "displayshort_localtime"
                 delegate: ItemDelegate {
                     id: bootIdDelegate
                     required property int index
                     required property string displayshort_utc
                     required property string displayshort_localtime
                     width: parent.width
-                    text: SessionConfigProxy.timeDisplay
-                          === SessionConfig.UTC ? bootIdDelegate.displayshort_utc : bootIdDelegate.displayshort_localtime
+                    text: BrowserApplication.timeDisplay
+                          === BrowserApplication.UTC ? bootIdDelegate.displayshort_utc : bootIdDelegate.displayshort_localtime
                     font.weight: bootIdDelegate.index === bootIdComboBox.currentIndex ? Font.Bold : Font.Normal
                 }
             }
@@ -101,16 +101,16 @@ StatefulApp.StatefulWindow {
 
             ToolSeparator {}
             ToolButton {
-                icon.name: SessionConfigProxy.viewMode === SessionConfig.BROWSE ? "transform-browse" : "edit-select-text"
-                checked: SessionConfigProxy.viewMode === SessionConfig.BROWSE
+                icon.name: BrowserApplication.viewMode === BrowserApplication.BROWSE ? "transform-browse" : "edit-select-text"
+                checked: BrowserApplication.viewMode === BrowserApplication.BROWSE
                 onClicked: {
-                    if (SessionConfigProxy.viewMode === SessionConfig.BROWSE) {
-                        SessionConfigProxy.viewMode = SessionConfig.SELECT
+                    if (BrowserApplication.viewMode === BrowserApplication.BROWSE) {
+                        BrowserApplication.viewMode = BrowserApplication.SELECT
                     } else {
-                        SessionConfigProxy.viewMode = SessionConfig.BROWSE
+                        BrowserApplication.viewMode = BrowserApplication.BROWSE
                     }
                 }
-                ToolTip.text: SessionConfigProxy.viewMode === SessionConfig.BROWSE ?
+                ToolTip.text: BrowserApplication.viewMode === BrowserApplication.BROWSE ?
                                  i18nc("@info:tooltip", "Switch to browsing mode") :
                                  i18nc("@info:tooltip", "Switch to selection mode")
                 ToolTip.visible: hovered
@@ -190,10 +190,10 @@ StatefulApp.StatefulWindow {
                 id: logView
                 anchors.fill: parent
                 journalModel: g_journalModel
-                displayRoleRight: SessionConfigProxy.filterCriterium === SessionConfig.SYSTEMD_UNIT ?
+                displayRoleRight: BrowserApplication.filterCriterium === BrowserApplication.SYSTEMD_UNIT ?
                                       JournaldViewModel.SYSTEMD_UNIT : JournaldViewModel.EXE
                 snapToFollowMode: true
-                textSelectionMode: SessionConfigProxy.viewMode === SessionConfig.SELECT
+                textSelectionMode: BrowserApplication.viewMode === BrowserApplication.SELECT
                 visible: count > 0
                 onTextCopied: text => {
                     ClipboardProxy.setText(text)

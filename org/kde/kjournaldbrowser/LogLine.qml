@@ -29,10 +29,10 @@ Item {
         spacing: 4
         Text {
             readonly property string timeString: {
-                switch (SessionConfigProxy.timeDisplay) {
-                case SessionConfig.UTC: return Formatter.formatTime(root.date, true);
-                case SessionConfig.LOCALTIME: return Formatter.formatTime(root.date, false);
-                case SessionConfig.MONOTONIC_TIMESTAMP: return (root.monotonicTimestamp / 1000).toFixed(3) // display miliseconds
+                switch (BrowserApplication.timeDisplay) {
+                case BrowserApplication.UTC: return Formatter.formatTime(root.date, true);
+                case BrowserApplication.LOCALTIME: return Formatter.formatTime(root.date, false);
+                case BrowserApplication.MONOTONIC_TIMESTAMP: return (root.monotonicTimestamp / 1000).toFixed(3) // display miliseconds
                 }
                 return ""
             }

@@ -76,10 +76,9 @@ MenuBar {
                 contentItem: RadioButton {
                     text: i18n("Localized Realtime")
                     checkable: true
-                    checked: SessionConfigProxy.timeDisplay === SessionConfig.LOCALTIME
+                    checked: BrowserApplication.timeDisplay === BrowserApplication.LOCALTIME
                     onToggled: {
-                        SessionConfigProxy.timeDisplay = SessionConfig.LOCALTIME
-                        parent.triggered()
+                        BrowserApplication.timeDisplay = BrowserApplication.LOCALTIME
                     }
                 }
             }
@@ -87,10 +86,9 @@ MenuBar {
                 contentItem: RadioButton {
                     text: i18n("UTC Realtime")
                     checkable: true
-                    checked: SessionConfigProxy.timeDisplay === SessionConfig.UTC
+                    checked: BrowserApplication.timeDisplay === BrowserApplication.UTC
                     onToggled: {
-                        SessionConfigProxy.timeDisplay = SessionConfig.UTC
-                        parent.triggered()
+                        BrowserApplication.timeDisplay = BrowserApplication.UTC
                     }
                 }
             }
@@ -98,10 +96,9 @@ MenuBar {
                 contentItem: RadioButton {
                     text: i18n("Monotonic Time")
                     checkable: true
-                    checked: SessionConfigProxy.timeDisplay === SessionConfig.MONOTONIC_TIMESTAMP
+                    checked: BrowserApplication.timeDisplay === BrowserApplication.MONOTONIC_TIMESTAMP
                     onToggled: {
-                        SessionConfigProxy.timeDisplay = SessionConfig.MONOTONIC_TIMESTAMP
-                        parent.triggered()
+                        BrowserApplication.timeDisplay = BrowserApplication.MONOTONIC_TIMESTAMP
                     }
                 }
             }
@@ -113,10 +110,9 @@ MenuBar {
                 contentItem: RadioButton {
                     text: i18n("Systemd Unit")
                     checkable: true
-                    checked: SessionConfigProxy.filterCriterium === SessionConfig.SYSTEMD_UNIT
+                    checked: BrowserApplication.filterCriterium === BrowserApplication.SYSTEMD_UNIT
                     onToggled: {
-                        SessionConfigProxy.filterCriterium = SessionConfig.SYSTEMD_UNIT
-                        parent.triggered()
+                        BrowserApplication.filterCriterium = BrowserApplication.SYSTEMD_UNIT
                     }
                 }
             }
@@ -124,10 +120,9 @@ MenuBar {
                 contentItem: RadioButton {
                     text: i18n("Executable")
                     checkable: true
-                    checked: SessionConfigProxy.filterCriterium === SessionConfig.EXECUTABLE
+                    checked: BrowserApplication.filterCriterium === BrowserApplication.EXECUTABLE
                     onToggled: {
-                        SessionConfigProxy.filterCriterium = SessionConfig.EXECUTABLE
-                        parent.triggered()
+                        BrowserApplication.filterCriterium = BrowserApplication.EXECUTABLE
                     }
                 }
             }

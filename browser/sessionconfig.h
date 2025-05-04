@@ -24,9 +24,6 @@ class SessionConfig : public QObject
     Q_PROPERTY(QString localJournalPath READ localJournalPath WRITE setLocalJournalPath NOTIFY localJournalPathChanged)
     Q_PROPERTY(QString remoteJournalUrl READ remoteJournalUrl WRITE setRemoteJournalUrl NOTIFY remoteJournalUrlChanged)
     Q_PROPERTY(quint32 remoteJournalPort READ remoteJournalPort WRITE setRemoteJournalPort NOTIFY remoteJournalPortChanged)
-    Q_PROPERTY(SessionConfig::TimeDisplay timeDisplay READ timeDisplay WRITE setTimeDisplay NOTIFY timeDisplayChanged)
-    Q_PROPERTY(SessionConfig::FilterCriterium filterCriterium READ filterCriterium WRITE setFilterCriterium NOTIFY filterCriteriumChanged)
-    Q_PROPERTY(SessionConfig::ViewMode viewMode READ viewMode WRITE setViewMode NOTIFY viewModeChanged)
 
 public:
     enum class Mode {
@@ -35,25 +32,6 @@ public:
         REMOTE, //!< reading from remote port
     };
     Q_ENUM(Mode);
-
-    enum class ViewMode {
-        BROWSE, //!< interaction with log view leads to browsing
-        SELECT, //!< interaction with log view leads to text selection
-    };
-    Q_ENUM(ViewMode);
-
-    enum class TimeDisplay : uint8_t {
-        LOCALTIME, //!< display time as local time
-        UTC, //!< display time as UTC time
-        MONOTONIC_TIMESTAMP //!< display monotonic timestamp
-    };
-    Q_ENUM(TimeDisplay);
-
-    enum class FilterCriterium : uint8_t {
-        SYSTEMD_UNIT, //!< filter by systemd unit to which the log belongs
-        EXECUTABLE, //!< filter by executable name to which the log belogs
-    };
-    Q_ENUM(FilterCriterium);
 
     explicit SessionConfig(QObject *parent = nullptr);
     ~SessionConfig() override;
@@ -74,26 +52,11 @@ public:
 
     quint32 remoteJournalPort() const;
 
-    void setTimeDisplay(TimeDisplay format);
-
-    TimeDisplay timeDisplay() const;
-
-    void setFilterCriterium(FilterCriterium criterium);
-
-    FilterCriterium filterCriterium() const;
-
-    void setViewMode(ViewMode mode);
-
-    ViewMode viewMode() const;
-
 Q_SIGNALS:
     void modeChanged(SessionConfig::Mode mode);
     void localJournalPathChanged();
     void remoteJournalUrlChanged();
     void remoteJournalPortChanged();
-    void timeDisplayChanged();
-    void filterCriteriumChanged();
-    void viewModeChanged();
 
 private:
     void initRemoteJournal();
@@ -102,11 +65,7 @@ private:
     QString mJournalPath;
     QString mRemoteJournalUrl;
     quint32 mRemoteJournalPort{0};
-    TimeDisplay mTimeDisplayFormat{TimeDisplay::UTC};
-    FilterCriterium mFilterCriterium{FilterCriterium::SYSTEMD_UNIT};
-    ViewMode mViewMode{ViewMode::BROWSE};
     std::unique_ptr<SystemdJournalRemote> mRemoteJournal;
-    QSettings mSettings;
 };
 
 #endif // SESSIONCONFIG_H
