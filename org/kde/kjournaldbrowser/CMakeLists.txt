@@ -19,6 +19,8 @@ qt6_add_qml_module(
         clipboardproxy.h
         browserapplication.cpp
         browserapplication.h
+        formatter.cpp
+        formatter.h
     QML_FILES
         Main.qml
         LogLine.qml

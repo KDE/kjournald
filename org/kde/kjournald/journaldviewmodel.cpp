@@ -724,12 +724,3 @@ int JournaldViewModel::closestIndexForData(const QDateTime &datetime)
         return index;
     }
 }
-
-QString JournaldViewModel::formatTime(const QDateTime &datetime, bool utc) const
-{
-    if (utc) {
-        return datetime.toUTC().time().toString(QLatin1String("HH:mm:ss.zzz"));
-    } else {
-        return datetime.time().toString(QLatin1String("HH:mm:ss.zzz"));
-    }
-}

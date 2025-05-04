@@ -10,11 +10,10 @@ import org.kde.kjournaldbrowser
 Item {
     id: root
     property string message
-    property date date
+    property var date
     property var monotonicTimestamp // unsigned int 64
     property int priority
     property string highlight
-    property QtObject modelProxy
     property int index
     readonly property bool __isHighlighted : highlight !== "" && message.includes(root.highlight)
 
@@ -31,8 +30,8 @@ Item {
         Text {
             readonly property string timeString: {
                 switch (SessionConfigProxy.timeDisplay) {
-                case SessionConfig.UTC: return modelProxy.formatTime(root.date, true);
-                case SessionConfig.LOCALTIME: return modelProxy.formatTime(root.date, false);
+                case SessionConfig.UTC: return Formatter.formatTime(root.date, true);
+                case SessionConfig.LOCALTIME: return Formatter.formatTime(root.date, false);
                 case SessionConfig.MONOTONIC_TIMESTAMP: return (root.monotonicTimestamp / 1000).toFixed(3) // display miliseconds
                 }
                 return ""
@@ -46,7 +45,7 @@ Item {
             ToolTip.delay: 1000
             ToolTip.timeout: 5000
             ToolTip.visible: timeHoverHandler.hovered
-            ToolTip.text: "UTC " + modelProxy.formatTime(root.date, true)
+            ToolTip.text: "UTC " + Formatter.formatTime(root.date, true)
         }
 
         Text {

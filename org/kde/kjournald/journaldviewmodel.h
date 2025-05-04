@@ -195,14 +195,6 @@ public:
     Q_INVOKABLE int search(const QString &searchString, int startRow, JournaldViewModel::Direction direction = FORWARD);
 
     /**
-     * @brief Format time into string
-     * @param datetime the datetime object
-     * @param utc if set to true, the string will be UTC time, otherwise according to the current local
-     * @return formatted string
-     */
-    Q_INVOKABLE QString formatTime(const QDateTime &datetime, bool utc) const;
-
-    /**
      * @brief Reset model and start reading from head
      *
      * This method can be used to position the log at the beginning and clearing all existing

@@ -3,6 +3,8 @@
     SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 */
 
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Controls
 import org.kde.kirigami as Kirigami
@@ -59,7 +61,7 @@ ListView {
         var content = ""
         for (var i = startIndex; i <= endIndex; ++i) {
             // TODO print date/time information with user selected time zone
-            content += root.journalModel.formatTime(root.journalModel.data(root.journalModel.index(i, 0), JournaldViewModel.DATETIME), true) + " UTC "
+            content += Formatter.formatTime(root.journalModel.data(root.journalModel.index(i, 0), JournaldViewModel.DATETIME), true) + " UTC "
                         + root.journalModel.data(root.journalModel.index(i, 0), JournaldViewModel.SYSTEMD_UNIT) + " "
                         + root.journalModel.data(root.journalModel.index(i, 0), JournaldViewModel.MESSAGE) + "\n"
         }
@@ -68,7 +70,7 @@ ListView {
 
     function scrollToSearchResult(needle, direction) {
         var offset = direction === JournaldViewModel.FORWARD ? 1 : -1
-        var row = g_journalModel.search(hightlightTextField.text,
+        var row = root.journalModel.search(hightlightTextField.text,
                                         root.indexAt(1, root.contentY + root.height/2) + offset,
                                         direction)
         if (row >= 0) {
@@ -91,7 +93,7 @@ ListView {
     highlightMoveDuration: 10
     model: root.journalModel
     focus: true
-    interactive: textSelectionMode === false
+    interactive: root.textSelectionMode === false
     reuseItems: true
 
     onContentYChanged: {
@@ -125,17 +127,32 @@ ListView {
     Component.onCompleted: {
         forceActiveFocus()
     }
-    delegate: Rectangle
-    {
+    delegate: Rectangle {
+        id: coloredLogLineDelegate
+
+        required property int index
+        required property date datetime
+        required property var monotonictimestamp
+        required property int priority
+        required property string message
+        required property string exe
+        required property string systemdunit
+        required property string systemdunit_changed_substring
+        required property string exe_changed_substring
+        required property color systemdunitcolor_background
+        required property color execolor_background
+        required property color systemdunitcolor_foreground
+        required property color execolor_foreground
+
         color: {
             if (textSelectionHandler.selectionActive
-                && model.index >= Math.min(textSelectionHandler.startIndex, textSelectionHandler.temporaryEndIndex)
-                && model.index <= Math.max(textSelectionHandler.startIndex, textSelectionHandler.temporaryEndIndex)) {
+                && coloredLogLineDelegate.index >= Math.min(textSelectionHandler.startIndex, textSelectionHandler.temporaryEndIndex)
+                && coloredLogLineDelegate.index <= Math.max(textSelectionHandler.startIndex, textSelectionHandler.temporaryEndIndex)) {
                 return Material.listHighlightColor
             }
-            switch (displayRoleRight) {
-            case JournaldViewModel.SYSTEMD_UNIT: return model ? model.systemdunitcolor_background : "#ffffff"
-            case JournaldViewModel.EXE: return model ? model.execolor_background : "#ffffff"
+            switch (root.displayRoleRight) {
+            case JournaldViewModel.SYSTEMD_UNIT: return coloredLogLineDelegate.systemdunitcolor_background
+            case JournaldViewModel.EXE: return coloredLogLineDelegate.execolor_background
             }
             return "#ffffff"
         }
@@ -147,22 +164,21 @@ ListView {
                 left: parent.left
                 right: parent.right
             }
-            index: model.index
-            date: model.datetime
-            monotonicTimestamp: model.monotonictimestamp
-            priority: model.priority
-            message: model.message
+            index: coloredLogLineDelegate.index
+            date: coloredLogLineDelegate.datetime
+            monotonicTimestamp: coloredLogLineDelegate.monotonictimestamp
+            priority: coloredLogLineDelegate.priority
+            message: coloredLogLineDelegate.message
             highlight: hightlightTextField.text
-            modelProxy: root.model
 
             Rectangle { // indication box behind scrollbar
                 anchors.right: parent.right
                 width: scrollbar.width
                 height: parent.height
                 color: {
-                    switch (displayRoleRight) {
-                    case JournaldViewModel.SYSTEMD_UNIT: return model ? model.systemdunitcolor_foreground : "#ffffff"
-                    case JournaldViewModel.EXE: return model ? model.execolor_foreground : "#ffffff"
+                    switch (root.displayRoleRight) {
+                    case JournaldViewModel.SYSTEMD_UNIT: return coloredLogLineDelegate.systemdunitcolor_foreground
+                    case JournaldViewModel.EXE: return coloredLogLineDelegate.execolor_foreground
                     }
                     return "#ffffff"
                 }
@@ -182,9 +198,9 @@ ListView {
                     height: categoryInfo.height
                     radius: 4
                     color: {
-                        switch (displayRoleRight) {
-                        case JournaldViewModel.SYSTEMD_UNIT: return model ? model.systemdunitcolor_foreground : "#ffffff"
-                        case JournaldViewModel.EXE: return model ? model.execolor_foreground : "#ffffff"
+                        switch (root.displayRoleRight) {
+                        case JournaldViewModel.SYSTEMD_UNIT: return coloredLogLineDelegate.systemdunitcolor_foreground
+                        case JournaldViewModel.EXE: return coloredLogLineDelegate.execolor_foreground
                         }
                         return "#ffffff"
                     }
@@ -196,15 +212,15 @@ ListView {
                         }
                         width: Math.max(Math.min(implicitWidth, 0.5 * messageText.width), 12)
                         text: {
-                            if (categoryInfoHoverHandler.hovered && model.systemdunit === "" && model.exe === "") {
+                            if (categoryInfoHoverHandler.hovered && coloredLogLineDelegate.systemdunit === "" && coloredLogLineDelegate.exe === "") {
                                 // this is not fully accurate by currently always true and avoids additional _TRANSPORT parameter
                                 return i18n("Kernel")
                             }
-                            switch (displayRoleRight) {
+                            switch (root.displayRoleRight) {
                             case JournaldViewModel.SYSTEMD_UNIT:
-                                return categoryInfoHoverHandler.hovered ? model.systemdunit : model.systemdunit_changed_substring
+                                return categoryInfoHoverHandler.hovered ? coloredLogLineDelegate.systemdunit : coloredLogLineDelegate.systemdunit_changed_substring
                             case JournaldViewModel.EXE:
-                                return categoryInfoHoverHandler.hovered ? model.exe : model.exe_changed_substring
+                                return categoryInfoHoverHandler.hovered ? coloredLogLineDelegate.exe : coloredLogLineDelegate.exe_changed_substring
                             }
                             return ""
                         }
@@ -214,7 +230,7 @@ ListView {
             }
             Loader {
                 anchors.right: parent.right
-                sourceComponent: categoryInfoHoverHandler.hovered || model.systemdunit_changed_substring !== "" ? infoBox : undefined
+                sourceComponent: categoryInfoHoverHandler.hovered || coloredLogLineDelegate.systemdunit_changed_substring !== "" ? infoBox : undefined
             }
         }
     }
@@ -228,6 +244,7 @@ ListView {
     section.criteria: ViewSection.FullString
     section.delegate: Kirigami.Heading {
         id: sectionContainer
+        required property string section
         width: parent.width
         text: Qt.formatDate(section, "dddd, yyyy-MM-dd")
 

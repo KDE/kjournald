@@ -173,6 +173,7 @@ StatefulApp.StatefulWindow {
             ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
 
             FilterCriteriaView {
+                model: flatFilterSelection
             }
 
             data: Kirigami.Separator {
