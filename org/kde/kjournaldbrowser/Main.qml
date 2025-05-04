@@ -3,6 +3,8 @@
     SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 */
 
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Window
 import QtQuick.Controls
@@ -10,7 +12,6 @@ import QtQuick.Dialogs as Dialogs
 import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.statefulapp as StatefulApp
-import org.kde.kirigamiaddons.settings as Settings
 import org.kde.kjournald
 import org.kde.kjournaldbrowser
 
@@ -56,10 +57,14 @@ StatefulApp.StatefulWindow {
                 textRole: SessionConfigProxy.timeDisplay
                           === SessionConfig.UTC ? "displayshort_utc" : "displayshort_localtime"
                 delegate: ItemDelegate {
+                    id: bootIdDelegate
+                    required property int index
+                    required property string displayshort_utc
+                    required property string displayshort_localtime
                     width: parent.width
                     text: SessionConfigProxy.timeDisplay
-                          === SessionConfig.UTC ? model.displayshort_utc : model.displayshort_localtime
-                    font.weight: model.index === bootIdComboBox.currentIndex ? Font.Bold : Font.Normal
+                          === SessionConfig.UTC ? bootIdDelegate.displayshort_utc : bootIdDelegate.displayshort_localtime
+                    font.weight: bootIdDelegate.index === bootIdComboBox.currentIndex ? Font.Bold : Font.Normal
                 }
             }
             ToolSeparator {}
