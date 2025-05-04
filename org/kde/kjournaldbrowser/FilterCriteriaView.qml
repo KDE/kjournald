@@ -3,17 +3,18 @@
     SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 */
 
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
-import org.kde.kjournaldbrowser
+import org.kde.kjournald
 import Qt.labs.qmlmodels
 
 ListView {
     id: root
     ButtonGroup { id: priorityGroup }
-    model: flatFilterSelection
     activeFocusOnTab: true
     reuseItems: true
     delegate: DelegateChooser {
@@ -22,14 +23,19 @@ ListView {
             roleValue: FlattenedFilterCriteriaProxyModel.FIRST_LEVEL
             delegate: ItemDelegate {
                 id: expandDelegate
+                required property bool expanded
+                required property bool selected
+                required text
+                required property var model
+
                 width: ListView.view.width
-                onClicked: model.expanded = !model.expanded
-                Accessible.name: model.text
-                Accessible.description: model.expanded ? i18n("Expanded") : i18n("Collapsed")
+                onClicked: model.expanded = !expandDelegate.expanded
+                Accessible.name: expandDelegate.text
+                Accessible.description: expandDelegate.expanded ? i18n("Expanded") : i18n("Collapsed")
                 contentItem: ColumnLayout {
                     RowLayout {
                         Label {
-                            text: model.text
+                            text: expandDelegate.text
                             textFormat: Text.PlainText
                             elide: Text.ElideRight
                             Layout.fillWidth: true
@@ -38,13 +44,13 @@ ListView {
                             id: collapseIcon
                             implicitWidth: Kirigami.Units.iconSizes.small
                             implicitHeight: Kirigami.Units.iconSizes.small
-                            source: model.expanded ? "collapse" : "expand"
+                            source: expandDelegate.expanded ? "collapse" : "expand"
                         }
                     }
                     ItemDelegate { // clear button for checkbox selection
-                        visible: model.expanded && model.selected
+                        visible: expandDelegate.expanded && expandDelegate.selected
                         leftPadding: 10
-                        onClicked: model.selected = false
+                        onClicked: expandDelegate.model.selected = false
                         activeFocusOnTab: true
                         Accessible.name: clearLabel.text
                         Layout.fillWidth: true
@@ -68,15 +74,20 @@ ListView {
             roleValue: FlattenedFilterCriteriaProxyModel.CHECKBOX
             delegate: ItemDelegate {
                 id: checkboxDelegate
+                required property bool selected
+                required property color color
+                required text
+                required property string longtext
+                required property var model
+
                 width: ListView.view.width
-                text: model ? model.text : ""
                 leftPadding: 20
-                onClicked: model.selected = !model.selected
+                onClicked: model.selected = !checkboxDelegate.selected
 
                 contentItem: Row {
                     spacing: 0.5 * Kirigami.Units.gridUnit
                     Label {
-                        text:model ? model.text : ""
+                        text: checkboxDelegate.text
                         textFormat: Text.PlainText
                         elide: Text.ElideRight
                         width: parent.width - checkbox.width - 0.5 * Kirigami.Units.gridUnit
@@ -90,11 +101,11 @@ ListView {
                         baselineOffset: 0
                         contentItem: null
 
-                        color: model ? model.color : Kirigami.Theme.textColor
-                        checked: model ? model.selected : false
+                        color: checkboxDelegate.color
+                        checked: checkboxDelegate.selected
                         onToggled: {
-                            if (model.selected !== checked) {
-                                model.selected = checked
+                            if (checkboxDelegate.selected !== checked) {
+                                checkboxDelegate.model.selected = checked
                             }
                         }
                     }
@@ -102,22 +113,24 @@ ListView {
                 ToolTip.delay: 1000
                 ToolTip.timeout: 5000
                 ToolTip.visible: hovered
-                ToolTip.text: model !== null ? model.longtext : ""
+                ToolTip.text: checkboxDelegate.longtext
             }
         }
         DelegateChoice {
             roleValue: FlattenedFilterCriteriaProxyModel.RADIOBUTTON
             delegate: ItemDelegate {
                 id: radioDelegate
+                required property bool selected
+                required text
+                required property string longtext
+                required property var model
+
                 width: ListView.view.width
-                text: model ? model.text : ""
                 leftPadding: 20
-                onClicked: {
-                    model.selected = true
-                }
+                onClicked: radioDelegate.model.selected = true
                 contentItem: RowLayout {
                     Label {
-                        text: model ? model.text : ""
+                        text: radioDelegate.text
                         textFormat: Text.PlainText
                         elide: Text.ElideRight
                         Layout.fillWidth: true
@@ -126,11 +139,11 @@ ListView {
                     RadioButton {
                         id: radiobox
                         autoExclusive: true
-                        checked: model ? model.selected : false
+                        checked: radioDelegate.selected
                         spacing: 0
                         onToggled: {
-                            if (model.selected !== checked) {
-                                model.selected = checked
+                            if (radioDelegate.selected !== checked) {
+                                radioDelegate.model.selected = checked
                             }
                         }
                         ButtonGroup.group: priorityGroup
@@ -139,7 +152,7 @@ ListView {
                 ToolTip.delay: 1000
                 ToolTip.timeout: 5000
                 ToolTip.visible: hovered
-                ToolTip.text: model !== null ? model.longtext : ""
+                ToolTip.text: radioDelegate.longtext
             }
         }
     }
