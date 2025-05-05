@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-02 00:44+0000\n"
+"POT-Creation-Date: 2025-05-05 00:44+0000\n"
 "PO-Revision-Date: 2022-11-22 13:06+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -36,7 +36,7 @@ msgstr "Visualizador dos registos do Journald"
 #| msgctxt "@info:credit"
 #| msgid "(c) 2021 The KJournald Developers"
 msgctxt "@info:credit"
-msgid "(c) 2021-2024 The KJournald Developers"
+msgid "(c) 2021-2025 The KJournald Developers"
 msgstr "(c) 2021 dos Programadores do KJournald"
 
 #: browser/main.cpp:46
@@ -172,154 +172,145 @@ msgstr "Fechado"
 msgid "Clear"
 msgstr "Limpar"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:10
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:15
-#, kde-format
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:16
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:20
+#, fuzzy, kde-format
+#| msgid "File"
+msgctxt "@action:menu"
 msgid "File"
 msgstr "Ficheiro"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:13
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:19
 #, kde-format
 msgid "Open system journal"
 msgstr "Abrir o registo do sistema"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:20
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:26
 #, kde-format
 msgid "Open from folder"
 msgstr "Abrir da pasta"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:28
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:34
 #, kde-format
 msgid "Open from file"
 msgstr "Abrir do ficheiro"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:47
-#: org/kde/kjournaldbrowser/Main.qml:74
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:51
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:53
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:56
 #, kde-format
 msgid "Close"
 msgstr "Fechar"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:53
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:57
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:59
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:62
 #, kde-format
 msgid "Current Journal"
 msgstr "Registo Actual"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:61
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:65
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:67
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:70
 #, kde-format
 msgid "View"
 msgstr "Ver"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:64
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:68
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:70
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:73
 #, kde-format
 msgid "Timestamp Display"
 msgstr "Visualização da Hora"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:67
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:72
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:73
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:77
 #, kde-format
 msgid "Localized Realtime"
 msgstr "Tempo-Real Local"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:75
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:83
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:81
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:88
 #, kde-format
 msgid "UTC Realtime"
 msgstr "Tempo-Real UTC"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:83
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:94
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:89
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:99
 #, kde-format
 msgid "Monotonic Time"
 msgstr "Tempo Monotónico"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:92
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:105
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:98
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:110
 #, kde-format
 msgid "Colorize"
 msgstr "Colorir"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:95
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:109
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:101
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:114
 #, kde-format
 msgid "Systemd Unit"
 msgstr "Unidade do Systemd"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:103
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:120
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:109
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:125
 #, kde-format
 msgid "Executable"
 msgstr "Executável"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:113
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:132
-#, kde-format
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:119
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:137
+#, fuzzy, kde-format
+#| msgid "Help"
+msgctxt "@action:menu"
 msgid "Help"
 msgstr "Ajuda"
-
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:116
-#: org/kde/kjournaldbrowser/Main.qml:56
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:134
-#, kde-format
-msgid "About"
-msgstr "Acerca"
 
 #: org/kde/kjournaldbrowser/LogView.qml:201
 #, kde-format
 msgid "Kernel"
 msgstr "'Kernel'"
 
-#: org/kde/kjournaldbrowser/Main.qml:60
-#, kde-format
-msgid "Launch Bug Report Wizard"
-msgstr "Invocar o Assistente de Comunicação de Erros"
-
-#: org/kde/kjournaldbrowser/Main.qml:98
+#: org/kde/kjournaldbrowser/Main.qml:49
 #, kde-format
 msgid "Boot:"
 msgstr "Arranque:"
 
-#: org/kde/kjournaldbrowser/Main.qml:117
+#: org/kde/kjournaldbrowser/Main.qml:68
 #, kde-format
 msgid "Highlight:"
 msgstr "Realce:"
 
-#: org/kde/kjournaldbrowser/Main.qml:158
+#: org/kde/kjournaldbrowser/Main.qml:109
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:159
+#: org/kde/kjournaldbrowser/Main.qml:110
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:171
+#: org/kde/kjournaldbrowser/Main.qml:122
 #, kde-format
 msgid "Select journal folder"
 msgstr "Seleccionar a pasta do registo"
 
-#: org/kde/kjournaldbrowser/Main.qml:180
+#: org/kde/kjournaldbrowser/Main.qml:131
 #, kde-format
 msgid "Select journal file"
 msgstr "Seleccionar o ficheiro do registo"
 
-#: org/kde/kjournaldbrowser/Main.qml:181
+#: org/kde/kjournaldbrowser/Main.qml:132
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "Ficheiros do registo (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:181
+#: org/kde/kjournaldbrowser/Main.qml:132
 #, kde-format
 msgid "All files (*)"
 msgstr "Todos os Ficheiros (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:254
+#: org/kde/kjournaldbrowser/Main.qml:205
 #, kde-format
 msgid "No log entries apply "
 msgstr "Sem itens do registo correspondentes "
@@ -339,20 +330,26 @@ msgstr "URL:"
 msgid "Port:"
 msgstr "Porto:"
 
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:17
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:22
 #, kde-format
 msgid "Open System Journal"
 msgstr "Abrir o Registo do Sistema"
 
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:24
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:29
 #, kde-format
 msgid "Open from Folder"
 msgstr "Abrir da Pasta"
 
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:32
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:37
 #, kde-format
 msgid "Open from File"
 msgstr "Abrir do Ficheiro"
+
+#~ msgid "About"
+#~ msgstr "Acerca"
+
+#~ msgid "Launch Bug Report Wizard"
+#~ msgstr "Invocar o Assistente de Comunicação de Erros"
 
 #~ msgid "Browse"
 #~ msgstr "Escolher"
