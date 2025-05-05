@@ -275,7 +275,7 @@ ListView {
         property int startIndex: 0
         property int temporaryEndIndex: 0 // current mouse position's index
         anchors.fill: parent
-        enabled: textSelectionMode === true
+        enabled: root.textSelectionMode === true
         onPressed: {
             startIndex = root.indexAt(mouseX, mouseY + root.contentY)
             if (startIndex === -1) { // when drag started at section header
@@ -292,7 +292,7 @@ ListView {
         }
         onReleased: {
             if (selectionActive) {
-                copyTextFromView(startIndex, temporaryEndIndex)
+                root.copyTextFromView(startIndex, temporaryEndIndex)
             }
             selectionActive = false
         }

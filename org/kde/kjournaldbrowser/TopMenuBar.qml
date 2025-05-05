@@ -15,6 +15,7 @@ MenuBar {
     property StatefulApp.AbstractKirigamiApplication application: BrowserApplication
 
     signal copyViewToClipboard()
+
     Kirigami.Theme.colorSet: Kirigami.Theme.Header
     Menu {
         title: i18nc("@action:menu", "File")
@@ -63,7 +64,7 @@ MenuBar {
         MenuItem {
             text: "Copy Current View"
             icon.name: "edit-copy"
-            onTriggered: copyViewToClipboard()
+            onTriggered: root.copyViewToClipboard()
         }
     }
     Menu {
