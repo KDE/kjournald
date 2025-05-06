@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-05 00:44+0000\n"
-"PO-Revision-Date: 2025-03-26 11:48+0200\n"
+"PO-Revision-Date: 2025-05-05 09:32+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -31,12 +31,10 @@ msgid "Viewer for Journald logs"
 msgstr "Програма для перегляду журналів Journald"
 
 #: browser/main.cpp:45
-#, fuzzy, kde-format
-#| msgctxt "@info:credit"
-#| msgid "(c) 2021-2024 The KJournald Developers"
+#, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2025 The KJournald Developers"
-msgstr "© Розробники KJournald, 2021–2024"
+msgstr "© Розробники KJournald, 2021–2025"
 
 #: browser/main.cpp:46
 #, kde-format
@@ -173,8 +171,7 @@ msgstr "Спорожнити"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:16
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:20
-#, fuzzy, kde-format
-#| msgid "File"
+#, kde-format
 msgctxt "@action:menu"
 msgid "File"
 msgstr "Файл"
@@ -256,8 +253,7 @@ msgstr "Виконуваний файл"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:119
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:137
-#, fuzzy, kde-format
-#| msgid "Help"
+#, kde-format
 msgctxt "@action:menu"
 msgid "Help"
 msgstr "Довідка"

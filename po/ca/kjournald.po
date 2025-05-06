@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-05 00:44+0000\n"
-"PO-Revision-Date: 2025-04-28 10:16+0200\n"
+"PO-Revision-Date: 2025-05-05 13:30+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -33,12 +33,10 @@ msgid "Viewer for Journald logs"
 msgstr "Visualitzador per a registres de Journald"
 
 #: browser/main.cpp:45
-#, fuzzy, kde-format
-#| msgctxt "@info:credit"
-#| msgid "(c) 2021-2024 The KJournald Developers"
+#, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2025 The KJournald Developers"
-msgstr "(c) 2021-2024 The KJournald Developers"
+msgstr "(c) 2021-2025 The KJournald Developers"
 
 #: browser/main.cpp:46
 #, kde-format
@@ -175,8 +173,7 @@ msgstr "Neteja"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:16
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:20
-#, fuzzy, kde-format
-#| msgid "File"
+#, kde-format
 msgctxt "@action:menu"
 msgid "File"
 msgstr "Fitxer"
@@ -258,8 +255,7 @@ msgstr "Executable"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:119
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:137
-#, fuzzy, kde-format
-#| msgid "Help"
+#, kde-format
 msgctxt "@action:menu"
 msgid "Help"
 msgstr "Ajuda"

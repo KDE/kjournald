@@ -1,15 +1,15 @@
 # Spanish translations for kjournald.po package.
 # Copyright (C) 2021-2025 This file is copyright:
 # This file is distributed under the same license as the kjournald package.
-#
 # Automatically generated, 2021.
+#
 # SPDX-FileCopyrightText: 2021, 2022, 2024, 2025 Eloy Cuadra <ecuadra@eloihr.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-05 00:44+0000\n"
-"PO-Revision-Date: 2025-03-26 02:38+0100\n"
+"PO-Revision-Date: 2025-05-05 20:50+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #: browser/main.cpp:41
 #, kde-format
@@ -32,12 +32,10 @@ msgid "Viewer for Journald logs"
 msgstr "Visor para los registros de Journald"
 
 #: browser/main.cpp:45
-#, fuzzy, kde-format
-#| msgctxt "@info:credit"
-#| msgid "(c) 2021-2024 The KJournald Developers"
+#, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2025 The KJournald Developers"
-msgstr "© 2021-2024 Los desarrolladores de KJournald"
+msgstr "© 2021-2025 Los desarrolladores de KJournald"
 
 #: browser/main.cpp:46
 #, kde-format
@@ -174,8 +172,7 @@ msgstr "Borrar todo"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:16
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:20
-#, fuzzy, kde-format
-#| msgid "File"
+#, kde-format
 msgctxt "@action:menu"
 msgid "File"
 msgstr "Archivo"
@@ -257,8 +254,7 @@ msgstr "Ejecutable"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:119
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:137
-#, fuzzy, kde-format
-#| msgid "Help"
+#, kde-format
 msgctxt "@action:menu"
 msgid "Help"
 msgstr "Ayuda"
@@ -344,9 +340,3 @@ msgstr "Abrir desde carpeta"
 #, kde-format
 msgid "Open from File"
 msgstr "Abrir desde archivo"
-
-#~ msgid "About"
-#~ msgstr "Acerca de"
-
-#~ msgid "Launch Bug Report Wizard"
-#~ msgstr "Lanzar el asistente de informe de fallos"

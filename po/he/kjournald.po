@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-05 00:44+0000\n"
-"PO-Revision-Date: 2025-03-28 22:28+0300\n"
+"PO-Revision-Date: 2025-05-05 13:09+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 24.12.2\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #: browser/main.cpp:41
 #, kde-format
@@ -31,12 +31,10 @@ msgid "Viewer for Journald logs"
 msgstr "מציג יומני Journald"
 
 #: browser/main.cpp:45
-#, fuzzy, kde-format
-#| msgctxt "@info:credit"
-#| msgid "(c) 2021-2024 The KJournald Developers"
+#, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2025 The KJournald Developers"
-msgstr "(c) 2021‏-2024 מפתחי KJournald"
+msgstr "(c) 2021‏-2025 מפתחי KJournald"
 
 #: browser/main.cpp:46
 #, kde-format
@@ -171,8 +169,7 @@ msgstr "פינוי"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:16
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:20
-#, fuzzy, kde-format
-#| msgid "File"
+#, kde-format
 msgctxt "@action:menu"
 msgid "File"
 msgstr "קובץ"
@@ -254,8 +251,7 @@ msgstr "להפעלה"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:119
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:137
-#, fuzzy, kde-format
-#| msgid "Help"
+#, kde-format
 msgctxt "@action:menu"
 msgid "Help"
 msgstr "עזרה"
