@@ -496,7 +496,15 @@ int JournaldViewModel::columnCount(const QModelIndex &parent) const
 QVariant JournaldViewModel::data(const QModelIndex &index, int role) const
 {
     if (index.row() < 0 || d->mLog.count() <= index.row()) {
-        return QVariant();
+        switch (role) {
+        case JournaldViewModel::Roles::SYSTEMD_UNIT_COLOR_BACKGROUND:
+        case JournaldViewModel::Roles::SYSTEMD_UNIT_COLOR_FOREGROUND:
+        case JournaldViewModel::Roles::EXE_COLOR_BACKGROUND:
+        case JournaldViewModel::Roles::EXE_COLOR_FOREGROUND:
+            return QColor();
+        default:
+            return QVariant();
+        }
     }
     switch (role) {
     case JournaldViewModel::Roles::MESSAGE:
