@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-05 00:44+0000\n"
+"POT-Creation-Date: 2025-05-08 00:44+0000\n"
 "PO-Revision-Date: 2025-05-05 22:52+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -155,23 +155,23 @@ msgctxt "Section title for process list"
 msgid "Process"
 msgstr "行程"
 
-#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:28
+#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:34
 #, kde-format
 msgid "Expanded"
 msgstr "已展開"
 
-#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:28
+#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:34
 #, kde-format
 msgid "Collapsed"
 msgstr "已收起"
 
-#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:54
+#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:60
 #, kde-format
 msgid "Clear"
 msgstr "清除"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:16
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:20
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:21
 #, kde-format
 msgctxt "@action:menu"
 msgid "File"
@@ -193,31 +193,31 @@ msgid "Open from file"
 msgstr "從檔案開啟"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:53
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:56
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:57
 #, kde-format
 msgid "Close"
 msgstr "關閉"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:59
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:62
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:63
 #, kde-format
 msgid "Current Journal"
 msgstr "目前日誌"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:67
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:70
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:71
 #, kde-format
 msgid "View"
 msgstr "檢視"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:70
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:73
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:74
 #, kde-format
 msgid "Timestamp Display"
 msgstr "時間戳顯示方式"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:73
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:77
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:78
 #, kde-format
 msgid "Localized Realtime"
 msgstr "本地實時"
@@ -229,84 +229,84 @@ msgid "UTC Realtime"
 msgstr "UTC 實時"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:89
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:99
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:98
 #, kde-format
 msgid "Monotonic Time"
 msgstr "單調不倒退 (monotonic) 時間"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:98
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:110
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:108
 #, kde-format
 msgid "Colorize"
 msgstr "著色"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:101
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:114
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:112
 #, kde-format
 msgid "Systemd Unit"
 msgstr "systemd 單元"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:109
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:125
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:122
 #, kde-format
 msgid "Executable"
 msgstr "執行檔"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:119
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:137
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:133
 #, kde-format
 msgctxt "@action:menu"
 msgid "Help"
 msgstr "說明"
 
-#: org/kde/kjournaldbrowser/LogView.qml:201
+#: org/kde/kjournaldbrowser/LogView.qml:217
 #, kde-format
 msgid "Kernel"
 msgstr "核心"
 
-#: org/kde/kjournaldbrowser/Main.qml:49
+#: org/kde/kjournaldbrowser/Main.qml:50
 #, kde-format
 msgid "Boot:"
 msgstr "開機："
 
-#: org/kde/kjournaldbrowser/Main.qml:68
+#: org/kde/kjournaldbrowser/Main.qml:73
 #, kde-format
 msgid "Highlight:"
 msgstr "突顯："
 
-#: org/kde/kjournaldbrowser/Main.qml:109
+#: org/kde/kjournaldbrowser/Main.qml:114
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "切換到瀏覽模式"
 
-#: org/kde/kjournaldbrowser/Main.qml:110
+#: org/kde/kjournaldbrowser/Main.qml:115
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "切換到選取模式"
 
-#: org/kde/kjournaldbrowser/Main.qml:122
+#: org/kde/kjournaldbrowser/Main.qml:127
 #, kde-format
 msgid "Select journal folder"
 msgstr "選擇日誌資料夾"
 
-#: org/kde/kjournaldbrowser/Main.qml:131
+#: org/kde/kjournaldbrowser/Main.qml:136
 #, kde-format
 msgid "Select journal file"
 msgstr "選擇日誌檔案"
 
-#: org/kde/kjournaldbrowser/Main.qml:132
+#: org/kde/kjournaldbrowser/Main.qml:137
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "日誌檔 (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:132
+#: org/kde/kjournaldbrowser/Main.qml:137
 #, kde-format
 msgid "All files (*)"
 msgstr "所有檔案 (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:205
+#: org/kde/kjournaldbrowser/Main.qml:211
 #, kde-format
 msgid "No log entries apply "
 msgstr "沒有符合的紀錄條目"
@@ -326,17 +326,17 @@ msgstr "網址："
 msgid "Port:"
 msgstr "連接埠："
 
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:22
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:23
 #, kde-format
 msgid "Open System Journal"
 msgstr "開啟系統日誌"
 
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:29
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:30
 #, kde-format
 msgid "Open from Folder"
 msgstr "從資料夾開啟"
 
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:37
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:38
 #, kde-format
 msgid "Open from File"
 msgstr "從檔案開啟"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-05 00:44+0000\n"
+"POT-Creation-Date: 2025-05-08 00:44+0000\n"
 "PO-Revision-Date: 2025-05-05 13:30+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -156,23 +156,23 @@ msgctxt "Section title for process list"
 msgid "Process"
 msgstr "Procés"
 
-#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:28
+#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:34
 #, kde-format
 msgid "Expanded"
 msgstr "Expandit"
 
-#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:28
+#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:34
 #, kde-format
 msgid "Collapsed"
 msgstr "Reduït"
 
-#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:54
+#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:60
 #, kde-format
 msgid "Clear"
 msgstr "Neteja"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:16
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:20
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:21
 #, kde-format
 msgctxt "@action:menu"
 msgid "File"
@@ -194,31 +194,31 @@ msgid "Open from file"
 msgstr "Obri des del fitxer"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:53
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:56
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:57
 #, kde-format
 msgid "Close"
 msgstr "Tanca"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:59
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:62
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:63
 #, kde-format
 msgid "Current Journal"
 msgstr "Diari actual"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:67
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:70
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:71
 #, kde-format
 msgid "View"
 msgstr "Visualitza"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:70
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:73
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:74
 #, kde-format
 msgid "Timestamp Display"
 msgstr "Mostra les marques de temps"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:73
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:77
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:78
 #, kde-format
 msgid "Localized Realtime"
 msgstr "Temps real local"
@@ -230,84 +230,84 @@ msgid "UTC Realtime"
 msgstr "Temps real UTC"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:89
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:99
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:98
 #, kde-format
 msgid "Monotonic Time"
 msgstr "Temps monotònic"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:98
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:110
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:108
 #, kde-format
 msgid "Colorize"
 msgstr "Acolorix"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:101
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:114
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:112
 #, kde-format
 msgid "Systemd Unit"
 msgstr "Unitat de «systemd»"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:109
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:125
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:122
 #, kde-format
 msgid "Executable"
 msgstr "Executable"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:119
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:137
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:133
 #, kde-format
 msgctxt "@action:menu"
 msgid "Help"
 msgstr "Ajuda"
 
-#: org/kde/kjournaldbrowser/LogView.qml:201
+#: org/kde/kjournaldbrowser/LogView.qml:217
 #, kde-format
 msgid "Kernel"
 msgstr "Nucli"
 
-#: org/kde/kjournaldbrowser/Main.qml:49
+#: org/kde/kjournaldbrowser/Main.qml:50
 #, kde-format
 msgid "Boot:"
 msgstr "Arrancada:"
 
-#: org/kde/kjournaldbrowser/Main.qml:68
+#: org/kde/kjournaldbrowser/Main.qml:73
 #, kde-format
 msgid "Highlight:"
 msgstr "Ressaltat:"
 
-#: org/kde/kjournaldbrowser/Main.qml:109
+#: org/kde/kjournaldbrowser/Main.qml:114
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "Canvia al mode de navegació"
 
-#: org/kde/kjournaldbrowser/Main.qml:110
+#: org/kde/kjournaldbrowser/Main.qml:115
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "Canvia al mode de selecció"
 
-#: org/kde/kjournaldbrowser/Main.qml:122
+#: org/kde/kjournaldbrowser/Main.qml:127
 #, kde-format
 msgid "Select journal folder"
 msgstr "Seleccioneu la carpeta de diari"
 
-#: org/kde/kjournaldbrowser/Main.qml:131
+#: org/kde/kjournaldbrowser/Main.qml:136
 #, kde-format
 msgid "Select journal file"
 msgstr "Seleccioneu el fitxer de diari"
 
-#: org/kde/kjournaldbrowser/Main.qml:132
+#: org/kde/kjournaldbrowser/Main.qml:137
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "Fitxers de diari (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:132
+#: org/kde/kjournaldbrowser/Main.qml:137
 #, kde-format
 msgid "All files (*)"
 msgstr "Tots els fitxers (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:205
+#: org/kde/kjournaldbrowser/Main.qml:211
 #, kde-format
 msgid "No log entries apply "
 msgstr "No s'apliquen entrades de registre"
@@ -327,17 +327,17 @@ msgstr "URL:"
 msgid "Port:"
 msgstr "Port:"
 
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:22
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:23
 #, kde-format
 msgid "Open System Journal"
 msgstr "Obri el diari del sistema"
 
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:29
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:30
 #, kde-format
 msgid "Open from Folder"
 msgstr "Obri des de la carpeta"
 
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:37
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:38
 #, kde-format
 msgid "Open from File"
 msgstr "Obri des del fitxer"

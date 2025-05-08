@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-05 00:44+0000\n"
+"POT-Creation-Date: 2025-05-08 00:44+0000\n"
 "PO-Revision-Date: 2025-05-05 13:09+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -152,23 +152,23 @@ msgctxt "Section title for process list"
 msgid "Process"
 msgstr "תהליך"
 
-#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:28
+#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:34
 #, kde-format
 msgid "Expanded"
 msgstr "מורחב"
 
-#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:28
+#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:34
 #, kde-format
 msgid "Collapsed"
 msgstr "מצומצם"
 
-#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:54
+#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:60
 #, kde-format
 msgid "Clear"
 msgstr "פינוי"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:16
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:20
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:21
 #, kde-format
 msgctxt "@action:menu"
 msgid "File"
@@ -190,31 +190,31 @@ msgid "Open from file"
 msgstr "פתיחה מקובץ"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:53
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:56
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:57
 #, kde-format
 msgid "Close"
 msgstr "סגירה"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:59
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:62
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:63
 #, kde-format
 msgid "Current Journal"
 msgstr "היומן (journal) הנוכחי"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:67
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:70
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:71
 #, kde-format
 msgid "View"
 msgstr "תצוגה"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:70
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:73
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:74
 #, kde-format
 msgid "Timestamp Display"
 msgstr "תצוגת חותמות זמן"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:73
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:77
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:78
 #, kde-format
 msgid "Localized Realtime"
 msgstr "זמן אמת מקומי"
@@ -226,84 +226,84 @@ msgid "UTC Realtime"
 msgstr "זמן אמת לפי UTC"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:89
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:99
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:98
 #, kde-format
 msgid "Monotonic Time"
 msgstr "זמן מונוטוני"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:98
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:110
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:108
 #, kde-format
 msgid "Colorize"
 msgstr "צביעה"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:101
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:114
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:112
 #, kde-format
 msgid "Systemd Unit"
 msgstr "יחידת Systemd"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:109
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:125
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:122
 #, kde-format
 msgid "Executable"
 msgstr "להפעלה"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:119
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:137
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:133
 #, kde-format
 msgctxt "@action:menu"
 msgid "Help"
 msgstr "עזרה"
 
-#: org/kde/kjournaldbrowser/LogView.qml:201
+#: org/kde/kjournaldbrowser/LogView.qml:217
 #, kde-format
 msgid "Kernel"
 msgstr "ליבה"
 
-#: org/kde/kjournaldbrowser/Main.qml:49
+#: org/kde/kjournaldbrowser/Main.qml:50
 #, kde-format
 msgid "Boot:"
 msgstr "טעינה:"
 
-#: org/kde/kjournaldbrowser/Main.qml:68
+#: org/kde/kjournaldbrowser/Main.qml:73
 #, kde-format
 msgid "Highlight:"
 msgstr "הדגשה:"
 
-#: org/kde/kjournaldbrowser/Main.qml:109
+#: org/kde/kjournaldbrowser/Main.qml:114
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "מעבר למצב עיון"
 
-#: org/kde/kjournaldbrowser/Main.qml:110
+#: org/kde/kjournaldbrowser/Main.qml:115
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "מעבר למצב בחירה"
 
-#: org/kde/kjournaldbrowser/Main.qml:122
+#: org/kde/kjournaldbrowser/Main.qml:127
 #, kde-format
 msgid "Select journal folder"
 msgstr "בחירת תיקיית יומן (journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:131
+#: org/kde/kjournaldbrowser/Main.qml:136
 #, kde-format
 msgid "Select journal file"
 msgstr "בחירת קובץ יומן (journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:132
+#: org/kde/kjournaldbrowser/Main.qml:137
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "קובצי Journal‏ (‎*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:132
+#: org/kde/kjournaldbrowser/Main.qml:137
 #, kde-format
 msgid "All files (*)"
 msgstr "כל הקבצים (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:205
+#: org/kde/kjournaldbrowser/Main.qml:211
 #, kde-format
 msgid "No log entries apply "
 msgstr "אין רשומות תקפות ביומן"
@@ -323,17 +323,17 @@ msgstr "כתובת:"
 msgid "Port:"
 msgstr "פתחה:"
 
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:22
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:23
 #, kde-format
 msgid "Open System Journal"
 msgstr "פתיחת יומן (Journal) המערכת"
 
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:29
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:30
 #, kde-format
 msgid "Open from Folder"
 msgstr "פתיחה מתיקייה"
 
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:37
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:38
 #, kde-format
 msgid "Open from File"
 msgstr "פתיחה מקובץ"
