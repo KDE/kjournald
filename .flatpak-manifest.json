@@ -1,12 +1,11 @@
 {
-    "id": "org.kde.kjournald",
+    "id": "org.kde.kjournaldbrowser",
     "branch": "master",
     "runtime": "org.kde.Platform",
     "runtime-version": "6.9",
     "sdk": "org.kde.Sdk",
     "command": "kjournaldbrowser",
     "tags": ["nightly"],
-    "rename-desktop-file": "org.kde.kjournaldbrowser.desktop",
     "desktop-file-name-suffix": " (Nightly)",
     "finish-args": [
         "--share=network",
