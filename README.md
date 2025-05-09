@@ -2,7 +2,7 @@
 
 This project aims to provide an abstraction of the systemd's journald API in terms of QAbstractItemModel classes. The main purpose is to ease the integration of journald into Qt based applications (both QML and QtWidget).
 
-Additional to the library, the project provides a reference implementation of the API, called `kjournaldbrowser`. Even though that application provides a powerful journal database reader, we aim to do a clear split between reuseable library and application logic.
+In addition to the library, the project provides a reference implementation of the API, called `kjournaldbrowser`. Even though that application provides a powerful journal database reader, we aim to do a clear split between reusable library and application logic.
 
 #### Screenshot
 
@@ -47,7 +47,7 @@ The browser provides a single window overview that can be configured to show a d
         - scroll forward: PAGE_DOWN
         - scroll backward: PAGE_UP
         - scroll to most recent entry: CTRL+PAGE_DOWN
-        - scroll to oldest entry: CTRL+PAGE_UP
+        - scroll to the oldest entry: CTRL+PAGE_UP
     - highlight search strings
 - use "kjournaldbrowser -D <path>" to directly open specific database folder
 
