@@ -73,21 +73,22 @@ StatefulApp.StatefulWindow {
                 text: i18n("Highlight:")
             }
             TextField {
-                id: hightlightTextField
+                id: highlightTextField
                 text: ""
+                onTextChanged: TextSearch.needle = text
             }
             ToolButton {
-                enabled: hightlightTextField.length > 2
+                enabled: TextSearch.needle.length > 2
                 icon.name: "go-up-search"
                 onClicked: {
-                    logView.scrollToSearchResult(hightlightTextField.text, JournaldViewModel.BACKWARD)
+                    logView.scrollToSearchResult(TextSearch.needle, JournaldViewModel.BACKWARD)
                 }
             }
             ToolButton {
-                enabled: hightlightTextField.length > 2
+                enabled: TextSearch.needle.length > 2
                 icon.name: "go-down-search"
                 onClicked: {
-                    logView.scrollToSearchResult(hightlightTextField.text, JournaldViewModel.FORWARD)
+                    logView.scrollToSearchResult(TextSearch.needle, JournaldViewModel.FORWARD)
                 }
             }
             ToolButton {

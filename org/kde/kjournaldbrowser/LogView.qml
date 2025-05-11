@@ -70,7 +70,7 @@ ListView {
 
     function scrollToSearchResult(needle, direction) {
         var offset = direction === JournaldViewModel.FORWARD ? 1 : -1
-        var row = root.journalModel.search(hightlightTextField.text,
+        var row = root.journalModel.search(TextSearch.needle,
                                         root.indexAt(1, root.contentY + root.height/2) + offset,
                                         direction)
         if (row >= 0) {
@@ -169,7 +169,7 @@ ListView {
             monotonicTimestamp: coloredLogLineDelegate.monotonictimestamp
             priority: coloredLogLineDelegate.priority
             message: coloredLogLineDelegate.message
-            highlight: hightlightTextField.text
+            highlight: TextSearch.needle
 
             Rectangle { // indication box behind scrollbar
                 anchors.right: parent.right
@@ -347,7 +347,7 @@ ListView {
             }
         }
         if (event.key === Qt.Key_F3) {
-            var index = root.journalModel.search(hightlightTextField.text, root.currentIndex + 1)
+            var index = root.journalModel.search(TextSearch.needle, root.currentIndex + 1)
             if (index >= 0) {
                 root.currentIndex = index
                 positionViewAtIndex(index, ListView.Beginning)

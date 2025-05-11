@@ -21,6 +21,8 @@ qt6_add_qml_module(
         browserapplication.h
         formatter.cpp
         formatter.h
+        textsearch.cpp
+        textsearch.h
     QML_FILES
         Main.qml
         LogLine.qml
@@ -30,7 +32,6 @@ qt6_add_qml_module(
         LogView.qml
         FilterCriteriaView.qml
         ColoredCheckbox.qml
-        SOURCES browserapplication.h browserapplication.cpp
 )
 
 target_link_libraries(kjournaldbrowser_backing
