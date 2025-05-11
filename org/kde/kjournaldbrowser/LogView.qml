@@ -131,12 +131,7 @@ ListView {
         id: coloredLogLineDelegate
 
         required property int index
-        required property date datetime
-        required property var monotonictimestamp
-        required property int priority
-        required property string message
-        required property string exe
-        required property string systemdunit
+        required property entry entry
         required property string systemdunit_changed_substring
         required property string exe_changed_substring
         required property color systemdunitcolor_background
@@ -164,12 +159,7 @@ ListView {
                 left: parent.left
                 right: parent.right
             }
-            index: coloredLogLineDelegate.index
-            date: coloredLogLineDelegate.datetime
-            monotonicTimestamp: coloredLogLineDelegate.monotonictimestamp
-            priority: coloredLogLineDelegate.priority
-            message: coloredLogLineDelegate.message
-            highlight: TextSearch.needle
+            logEntry: coloredLogLineDelegate.entry
 
             Rectangle { // indication box behind scrollbar
                 anchors.right: parent.right
@@ -212,7 +202,7 @@ ListView {
                         }
                         width: Math.max(Math.min(implicitWidth, 0.5 * messageText.width), 12)
                         text: {
-                            if (categoryInfoHoverHandler.hovered && coloredLogLineDelegate.systemdunit === "" && coloredLogLineDelegate.exe === "") {
+                            if (categoryInfoHoverHandler.hovered && coloredLogLineDelegate.entry.unit === "" && coloredLogLineDelegate.entry.exe === "") {
                                 // this is not fully accurate by currently always true and avoids additional _TRANSPORT parameter
                                 return i18n("Kernel")
                             }

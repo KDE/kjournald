@@ -78,6 +78,14 @@ StatefulApp.StatefulWindow {
                 onTextChanged: TextSearch.needle = text
             }
             ToolButton {
+                id: caseSensitiveOptionButton
+                icon.name: checked ? "format-text-capitalize" : "format-text-lowercase"
+                checkable: true
+                ToolTip.text: i18nc("@info:tooltip", "Switch between case sensitive and case insensitive matching")
+                ToolTip.visible: hovered
+                onCheckedChanged: TextSearch.caseSensitive = caseSensitiveOptionButton.checked
+            }
+            ToolButton {
                 enabled: TextSearch.needle.length > 2
                 icon.name: "go-up-search"
                 onClicked: {
@@ -91,6 +99,9 @@ StatefulApp.StatefulWindow {
                     logView.scrollToSearchResult(TextSearch.needle, JournaldViewModel.FORWARD)
                 }
             }
+
+            ToolSeparator {}
+
             ToolButton {
                 icon.name: "go-top"
                 onClicked: logView.scrollToBeginning()

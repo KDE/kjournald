@@ -10,6 +10,7 @@
 #include "kjournaldlib_log_filtertrace.h"
 #include "kjournaldlib_log_general.h"
 #include "localjournal.h"
+#include "logentry.h"
 #include <QColor>
 #include <QDebug>
 #include <QDir>
@@ -198,7 +199,7 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
         return chunk;
     }
     if (mLog.size() > 0) {
-        const QString cursor = (direction == Direction::TOWARDS_TAIL) ? mLog.last().mCursor : mLog.first().mCursor;
+        const QString cursor = (direction == Direction::TOWARDS_TAIL) ? mLog.last().cursor() : mLog.first().cursor();
         const SeekCursorResult seekResult = seekCursor(cursor);
         switch (seekResult) {
         case SeekCursorResult::CURSOR_MADE_CURRENT:
@@ -240,40 +241,40 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
         LogEntry entry;
         result = sd_journal_get_realtime_usec(mJournal->sdJournal(), &time);
         if (result == 0) {
-            entry.mDate = QDateTime::fromMSecsSinceEpoch(time / 1000, Qt::UTC);
+            entry.setDate(QDateTime::fromMSecsSinceEpoch(time / 1000, Qt::UTC));
         }
         sd_id128_t bootId; // currently unused
         result = sd_journal_get_monotonic_usec(mJournal->sdJournal(), &time, &bootId);
         if (result == 0) {
-            entry.mMonotonicTimestamp = time;
+            entry.setMonotonicTimestamp(time);
         }
         result = sd_journal_get_data(mJournal->sdJournal(), "MESSAGE", (const void **)&data, &length);
         if (result == 0) {
-            entry.mMessage = QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1);
+            entry.setMessage(QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1));
         }
         result = sd_journal_get_data(mJournal->sdJournal(), "MESSAGE_ID", (const void **)&data, &length);
         if (result == 0) {
-            entry.mId = QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1);
+            entry.setId(QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1));
         }
         result = sd_journal_get_data(mJournal->sdJournal(), "_SYSTEMD_UNIT", (const void **)&data, &length);
         if (result == 0) {
-            entry.mSystemdUnit = JournaldHelper::cleanupString(QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1));
+            entry.setUnit(JournaldHelper::cleanupString(QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1)));
         }
         result = sd_journal_get_data(mJournal->sdJournal(), "_BOOT_ID", (const void **)&data, &length);
         if (result == 0) {
-            entry.mBootId = QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1);
+            entry.setBootId(QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1));
         }
         result = sd_journal_get_data(mJournal->sdJournal(), "_EXE", (const void **)&data, &length);
         if (result == 0) {
-            entry.mExe = QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1);
+            entry.setExe(QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1));
         }
         result = sd_journal_get_data(mJournal->sdJournal(), "PRIORITY", (const void **)&data, &length);
         if (result == 0) {
-            entry.mPriority = QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1).toInt();
+            entry.setPriority(QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1).toInt());
         }
         result = sd_journal_get_cursor(mJournal->sdJournal(), &data);
         if (result == 0) {
-            entry.mCursor = QString::fromUtf8(data);
+            entry.setCursor(QString::fromUtf8(data));
             free(data);
         }
 
@@ -443,6 +444,7 @@ bool JournaldViewModel::setSystemJournal()
 QHash<int, QByteArray> JournaldViewModel::roleNames() const
 {
     QHash<int, QByteArray> roles;
+    roles[JournaldViewModel::ENTRY] = "entry";
     roles[JournaldViewModel::DATE] = "date";
     roles[JournaldViewModel::DATETIME] = "datetime";
     roles[JournaldViewModel::MONOTONIC_TIMESTAMP] = "monotonictimestamp";
@@ -507,53 +509,50 @@ QVariant JournaldViewModel::data(const QModelIndex &index, int role) const
         }
     }
     switch (role) {
+    case JournaldViewModel::Roles::ENTRY:
+        return QVariant::fromValue(d->mLog.at(index.row()));
     case JournaldViewModel::Roles::MESSAGE:
-        // TODO add handling for arbitrary color codes
-        return QString(d->mLog.at(index.row()).mMessage)
-            .remove(QLatin1String("\u001B[96m"))
-            .remove(QLatin1String("\u001B[0m"))
-            .remove(QLatin1String("\u001B[93m"))
-            .remove(QLatin1String("\u001B[31m"));
+        return QString(d->mLog.at(index.row()).message());
     case JournaldViewModel::Roles::MESSAGE_ID:
-        return QString(d->mLog.at(index.row()).mId);
+        return QString(d->mLog.at(index.row()).id());
     case JournaldViewModel::Roles::DATE:
-        return d->mLog.at(index.row()).mDate.date();
+        return d->mLog.at(index.row()).date().date();
     case JournaldViewModel::Roles::DATETIME:
-        return d->mLog.at(index.row()).mDate;
+        return d->mLog.at(index.row()).date();
     case JournaldViewModel::Roles::MONOTONIC_TIMESTAMP:
-        return d->mLog.at(index.row()).mMonotonicTimestamp;
+        return d->mLog.at(index.row()).monotonicTimestamp();
     case JournaldViewModel::Roles::BOOT_ID:
-        return d->mLog.at(index.row()).mBootId;
+        return d->mLog.at(index.row()).bootId();
     case JournaldViewModel::Roles::SYSTEMD_UNIT:
-        return d->mLog.at(index.row()).mSystemdUnit;
+        return d->mLog.at(index.row()).unit();
     case JournaldViewModel::Roles::SYSTEMD_UNIT_CHANGED_SUBSTRING: {
-        QString unit = d->mLog.at(index.row()).mSystemdUnit;
+        QString unit = d->mLog.at(index.row()).unit();
         if (index.row() != 0) {
-            unit.remove(d->mLog.at(index.row() - 1).mSystemdUnit);
+            unit.remove(d->mLog.at(index.row() - 1).unit());
         }
         return unit;
     }
     case JournaldViewModel::Roles::PRIORITY:
-        return d->mLog.at(index.row()).mPriority;
+        return d->mLog.at(index.row()).priority();
     case JournaldViewModel::Roles::EXE:
-        return d->mLog.at(index.row()).mExe;
+        return d->mLog.at(index.row()).exe();
     case JournaldViewModel::Roles::EXE_CHANGED_SUBSTRING: {
-        QString exe = d->mLog.at(index.row()).mExe;
+        QString exe = d->mLog.at(index.row()).exe();
         if (index.row() != 0) {
-            exe.remove(d->mLog.at(index.row() - 1).mExe);
+            exe.remove(d->mLog.at(index.row() - 1).exe());
         }
         return exe;
     }
     case JournaldViewModel::Roles::SYSTEMD_UNIT_COLOR_BACKGROUND:
-        return Colorizer::color(d->mLog.at(index.row()).mSystemdUnit, Colorizer::COLOR_TYPE::BACKGROUND);
+        return Colorizer::color(d->mLog.at(index.row()).unit(), Colorizer::COLOR_TYPE::BACKGROUND);
     case JournaldViewModel::Roles::SYSTEMD_UNIT_COLOR_FOREGROUND:
-        return Colorizer::color(d->mLog.at(index.row()).mSystemdUnit, Colorizer::COLOR_TYPE::FOREGROUND);
+        return Colorizer::color(d->mLog.at(index.row()).unit(), Colorizer::COLOR_TYPE::FOREGROUND);
     case JournaldViewModel::Roles::EXE_COLOR_BACKGROUND:
-        return Colorizer::color(d->mLog.at(index.row()).mExe, Colorizer::COLOR_TYPE::BACKGROUND);
+        return Colorizer::color(d->mLog.at(index.row()).exe(), Colorizer::COLOR_TYPE::BACKGROUND);
     case JournaldViewModel::Roles::EXE_COLOR_FOREGROUND:
-        return Colorizer::color(d->mLog.at(index.row()).mExe, Colorizer::COLOR_TYPE::FOREGROUND);
+        return Colorizer::color(d->mLog.at(index.row()).exe(), Colorizer::COLOR_TYPE::FOREGROUND);
     case JournaldViewModel::Roles::CURSOR:
-        return d->mLog.at(index.row()).mCursor;
+        return d->mLog.at(index.row()).cursor();
     }
     return QVariant();
 }
@@ -686,8 +685,8 @@ int JournaldViewModel::search(const QString &searchString, int startRow, Directi
 
     if (direction == FORWARD) {
         while (row < d->mLog.size()) {
-            if (d->mLog.at(row).mMessage.contains(searchString)) {
-                qCDebug(KJOURNALDLIB_GENERAL) << "Found string in line" << row << d->mLog.at(row).mMessage;
+            if (d->mLog.at(row).message().contains(searchString)) {
+                qCDebug(KJOURNALDLIB_GENERAL) << "Found string in line" << row << d->mLog.at(row).message();
                 return row;
             }
             ++row;
@@ -697,8 +696,8 @@ int JournaldViewModel::search(const QString &searchString, int startRow, Directi
         }
     } else {
         while (row >= 0) {
-            if (d->mLog.at(row).mMessage.contains(searchString)) {
-                qCDebug(KJOURNALDLIB_GENERAL) << "Found string in line" << row << d->mLog.at(row).mMessage;
+            if (d->mLog.at(row).message().contains(searchString)) {
+                qCDebug(KJOURNALDLIB_GENERAL) << "Found string in line" << row << d->mLog.at(row).message();
                 return row;
             }
             --row;
@@ -717,12 +716,12 @@ int JournaldViewModel::closestIndexForData(const QDateTime &datetime)
     if (d->mLog.isEmpty()) {
         return -1;
     }
-    if (datetime > d->mLog.last().mDate) {
+    if (datetime > d->mLog.last().date()) {
         return d->mLog.size() - 1;
     }
 
     auto it = std::lower_bound(d->mLog.cbegin(), d->mLog.cend(), datetime, [](const LogEntry &entry, const QDateTime &needle) {
-        return entry.mDate < needle;
+        return entry.date() < needle;
     });
 
     if (it == d->mLog.cend()) {

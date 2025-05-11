@@ -45,32 +45,34 @@ void TestViewModel::rowAccess()
     QVERIFY(model.rowCount() > 0);
 
     // journalctl -b -2 -D . -o json | head -n2
-    std::vector<LogEntry> expectedData{{QDateTime(QDate(2021, 03, 13), QTime(15, 23, 1, 464), Qt::UTC),
-                                        4050458,
-                                        QString(),
-                                        "System clock time unset or jumped backwards, restoring from recorded timestamp: Sat 2021-03-13 15:23:01 UTC",
-                                        "systemd-timesyncd.service",
-                                        "68f2e61d061247d8a8ba0b8d53a97a52",
-                                        "/lib/systemd/systemd-timesyncd",
-                                        6},
-                                       {QDateTime(QDate(2021, 03, 13), QTime(15, 23, 1, 592), Qt::UTC),
-                                        4178254,
-                                        QString(),
-                                        "klogd started: BusyBox v1.31.1 ()",
-                                        QString("busybox-klogd.service"),
-                                        "68f2e61d061247d8a8ba0b8d53a97a52",
-                                        "/bin/busybox.nosuid",
-                                        5}};
+    std::vector<LogEntry> expectedData{LogEntry(QDateTime(QDate(2021, 03, 13), QTime(15, 23, 1, 464), Qt::UTC),
+                                                4050458,
+                                                QString(),
+                                                "System clock time unset or jumped backwards, restoring from recorded timestamp: Sat 2021-03-13 15:23:01 UTC",
+                                                "systemd-timesyncd.service",
+                                                "68f2e61d061247d8a8ba0b8d53a97a52",
+                                                "/lib/systemd/systemd-timesyncd",
+                                                6,
+                                                QString()),
+                                       LogEntry(QDateTime(QDate(2021, 03, 13), QTime(15, 23, 1, 592), Qt::UTC),
+                                                4178254,
+                                                QString(),
+                                                "klogd started: BusyBox v1.31.1 ()",
+                                                QString("busybox-klogd.service"),
+                                                "68f2e61d061247d8a8ba0b8d53a97a52",
+                                                "/bin/busybox.nosuid",
+                                                5,
+                                                QString())};
 
     for (int i = 0; i < expectedData.size(); ++i) {
-        QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::DATETIME).toDateTime(), expectedData.at(i).mDate);
-        QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::MONOTONIC_TIMESTAMP), expectedData.at(i).mMonotonicTimestamp);
-        QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::MESSAGE_ID), expectedData.at(i).mId);
-        QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::MESSAGE), expectedData.at(i).mMessage);
-        QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::PRIORITY), expectedData.at(i).mPriority);
-        QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::SYSTEMD_UNIT), expectedData.at(i).mSystemdUnit);
-        QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::BOOT_ID), expectedData.at(i).mBootId);
-        QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::EXE), expectedData.at(i).mExe);
+        QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::DATETIME).toDateTime(), expectedData.at(i).date());
+        QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::MONOTONIC_TIMESTAMP), expectedData.at(i).monotonicTimestamp());
+        QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::MESSAGE_ID), expectedData.at(i).id());
+        QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::MESSAGE), expectedData.at(i).message());
+        QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::PRIORITY), expectedData.at(i).priority());
+        QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::SYSTEMD_UNIT), expectedData.at(i).unit());
+        QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::BOOT_ID), expectedData.at(i).bootId());
+        QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::EXE), expectedData.at(i).exe());
     }
 }
 

@@ -55,6 +55,8 @@ target_sources(kjournald PRIVATE
     localjournal.cpp
     localjournal.h
     localjournal_p.h
+    logentry.cpp
+    logentry.h
     journaldexportreader.cpp
     journaldexportreader.h
     journaldhelper.cpp

@@ -37,6 +37,7 @@ public:
     enum Roles {
         MESSAGE = Qt::DisplayRole, //!< journal entry's message text
         MESSAGE_ID = Qt::UserRole + 1, //!< ID of log entry in journald DB (might not exist for non systemd services)
+        ENTRY, //!< gadget with basic log information
         DATE, //!< date of journal entry
         DATETIME, //!< date and time of journal entry
         MONOTONIC_TIMESTAMP, //!< monotonic timestamp in miliseconds for journal entry

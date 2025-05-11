@@ -37,3 +37,22 @@ void TextSearch::setHighlightMode(bool highlightMode)
     m_hightlightMode = highlightMode;
     Q_EMIT highlightModeChanged();
 }
+
+bool TextSearch::isCaseSensitive() const
+{
+    if (m_caseSensitive == Qt::CaseSensitivity::CaseSensitive) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+void TextSearch::setCaseSensitive(bool caseSensitive)
+{
+    const auto nextCaseSensitive = caseSensitive ? Qt::CaseSensitivity::CaseSensitive : Qt::CaseSensitivity::CaseInsensitive;
+    if (nextCaseSensitive == m_caseSensitive) {
+        return;
+    }
+    m_caseSensitive = nextCaseSensitive;
+    Q_EMIT caseSensitiveChanged();
+}

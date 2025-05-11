@@ -15,6 +15,7 @@ class TextSearch : public QObject
 
     Q_PROPERTY(QString needle READ needle WRITE setNeedle NOTIFY needleChanged FINAL)
     Q_PROPERTY(bool highlightMode READ isHighlightMode WRITE setHighlightMode NOTIFY highlightModeChanged FINAL)
+    Q_PROPERTY(bool caseSensitive READ isCaseSensitive WRITE setCaseSensitive NOTIFY caseSensitiveChanged FINAL)
 
     QML_ELEMENT
     QML_SINGLETON
@@ -25,14 +26,18 @@ public:
     void setNeedle(const QString &needle);
     bool isHighlightMode() const;
     void setHighlightMode(bool highlightMode);
+    bool isCaseSensitive() const;
+    void setCaseSensitive(bool caseSensitive);
 
 Q_SIGNALS:
     void needleChanged();
     void highlightModeChanged();
+    void caseSensitiveChanged();
 
 private:
     QString m_needle;
     bool m_hightlightMode{false};
+    Qt::CaseSensitivity m_caseSensitive = Qt::CaseSensitivity::CaseInsensitive;
 };
 
 #endif // TEXTSEARCH_H

@@ -9,13 +9,8 @@ import org.kde.kjournaldbrowser
 
 Item {
     id: root
-    property string message
-    property var date
-    property var monotonicTimestamp // unsigned int 64
-    property int priority
-    property string highlight
-    property int index
-    readonly property bool __isHighlighted : highlight !== "" && message.includes(root.highlight)
+    required property entry logEntry
+    readonly property bool __isHighlighted : logEntry.matches(TextSearch.needle, TextSearch.caseSensitive)
 
     implicitWidth: text.implicitWidth
     implicitHeight: text.implicitHeight
@@ -30,9 +25,9 @@ Item {
         Text {
             readonly property string timeString: {
                 switch (BrowserApplication.timeDisplay) {
-                case BrowserApplication.UTC: return Formatter.formatTime(root.date, true);
-                case BrowserApplication.LOCALTIME: return Formatter.formatTime(root.date, false);
-                case BrowserApplication.MONOTONIC_TIMESTAMP: return (root.monotonicTimestamp / 1000).toFixed(3) // display miliseconds
+                case BrowserApplication.UTC: return Formatter.formatTime(root.logEntry.date, true);
+                case BrowserApplication.LOCALTIME: return Formatter.formatTime(root.logEntry.date, false);
+                case BrowserApplication.MONOTONIC_TIMESTAMP: return (root.logEntry.monotonicTimestamp / 1000).toFixed(3) // display miliseconds
                 }
                 return ""
             }
@@ -45,18 +40,18 @@ Item {
             ToolTip.delay: 1000
             ToolTip.timeout: 5000
             ToolTip.visible: timeHoverHandler.hovered
-            ToolTip.text: "UTC " + Formatter.formatTime(root.date, true)
+            ToolTip.text: "UTC " + Formatter.formatTime(root.logEntry.date, true)
         }
 
         Text {
             id: text
-            text: root.message
+            text: root.logEntry.message
             color: {
                 if (root.__isHighlighted) {
                     return Material.primaryHighlightedTextColor
                 }
 
-                switch(root.priority) {
+                switch(root.logEntry.priority) {
                 case 0: return "#700293" // emergency (violet)
                 case 1: return "#930269" // alert
                 case 2: return "#930202" // critical

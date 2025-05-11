@@ -6,8 +6,9 @@
 #ifndef JOURNALDVIEWMODEL_P_H
 #define JOURNALDVIEWMODEL_P_H
 
-#include "ijournal.h"
 #include "filter.h"
+#include "ijournal.h"
+#include "logentry.h"
 #include <QAtomicInt>
 #include <QColor>
 #include <QDateTime>
@@ -15,20 +16,7 @@
 #include <QString>
 #include <QVector>
 #include <memory>
-#include <optional>
 #include <systemd/sd-journal.h>
-
-struct LogEntry {
-    QDateTime mDate;
-    quint64 mMonotonicTimestamp{0};
-    QString mId;
-    QString mMessage;
-    QString mSystemdUnit;
-    QString mBootId;
-    QString mExe;
-    int mPriority{0};
-    QString mCursor;
-};
 
 class JournaldViewModelPrivate
 {
@@ -90,7 +78,7 @@ public:
     SeekCursorResult seekCursor(const QString &cursor);
 
     std::unique_ptr<IJournal> mJournal;
-    QVector<LogEntry> mLog;
+    QList<LogEntry> mLog;
     Filter mFilter;
     bool mHeadCursorReached{false};
     bool mTailCursorReached{false};
