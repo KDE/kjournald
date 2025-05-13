@@ -336,15 +336,3 @@ msgstr "Otevřít ze složky"
 #, kde-format
 msgid "Open from File"
 msgstr "Otevřít ze souboru"
-
-#~ msgid "About"
-#~ msgstr "O aplikaci"
-
-#~ msgid "Launch Bug Report Wizard"
-#~ msgstr "Spustit průvodce chybovým hlášením"
-
-#~ msgid "Browse"
-#~ msgstr "Procházet"
-
-#~ msgid "Select"
-#~ msgstr "Vybrat"
