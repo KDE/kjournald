@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-08 00:44+0000\n"
+"POT-Creation-Date: 2025-05-15 00:45+0000\n"
 "PO-Revision-Date: 2025-05-05 13:09+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -256,7 +256,7 @@ msgctxt "@action:menu"
 msgid "Help"
 msgstr "עזרה"
 
-#: org/kde/kjournaldbrowser/LogView.qml:217
+#: org/kde/kjournaldbrowser/LogView.qml:207
 #, kde-format
 msgid "Kernel"
 msgstr "ליבה"
@@ -271,39 +271,45 @@ msgstr "טעינה:"
 msgid "Highlight:"
 msgstr "הדגשה:"
 
-#: org/kde/kjournaldbrowser/Main.qml:114
+#: org/kde/kjournaldbrowser/Main.qml:84
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Switch between case sensitive and case insensitive matching"
+msgstr ""
+
+#: org/kde/kjournaldbrowser/Main.qml:126
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "מעבר למצב עיון"
 
-#: org/kde/kjournaldbrowser/Main.qml:115
+#: org/kde/kjournaldbrowser/Main.qml:127
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "מעבר למצב בחירה"
 
-#: org/kde/kjournaldbrowser/Main.qml:127
+#: org/kde/kjournaldbrowser/Main.qml:139
 #, kde-format
 msgid "Select journal folder"
 msgstr "בחירת תיקיית יומן (journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:136
+#: org/kde/kjournaldbrowser/Main.qml:148
 #, kde-format
 msgid "Select journal file"
 msgstr "בחירת קובץ יומן (journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:137
+#: org/kde/kjournaldbrowser/Main.qml:149
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "קובצי Journal‏ (‎*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:137
+#: org/kde/kjournaldbrowser/Main.qml:149
 #, kde-format
 msgid "All files (*)"
 msgstr "כל הקבצים (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:211
+#: org/kde/kjournaldbrowser/Main.qml:223
 #, kde-format
 msgid "No log entries apply "
 msgstr "אין רשומות תקפות ביומן"

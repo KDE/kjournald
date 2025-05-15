@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-08 00:44+0000\n"
+"POT-Creation-Date: 2025-05-15 00:45+0000\n"
 "PO-Revision-Date: 2025-05-07 07:37+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -257,7 +257,7 @@ msgctxt "@action:menu"
 msgid "Help"
 msgstr "Aiuto"
 
-#: org/kde/kjournaldbrowser/LogView.qml:217
+#: org/kde/kjournaldbrowser/LogView.qml:207
 #, kde-format
 msgid "Kernel"
 msgstr "Kernel"
@@ -272,39 +272,45 @@ msgstr "Avvio:"
 msgid "Highlight:"
 msgstr "Evidenzia:"
 
-#: org/kde/kjournaldbrowser/Main.qml:114
+#: org/kde/kjournaldbrowser/Main.qml:84
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Switch between case sensitive and case insensitive matching"
+msgstr ""
+
+#: org/kde/kjournaldbrowser/Main.qml:126
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "Passa alla modalità di navigazione"
 
-#: org/kde/kjournaldbrowser/Main.qml:115
+#: org/kde/kjournaldbrowser/Main.qml:127
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "Passa alla modalità di selezione"
 
-#: org/kde/kjournaldbrowser/Main.qml:127
+#: org/kde/kjournaldbrowser/Main.qml:139
 #, kde-format
 msgid "Select journal folder"
 msgstr "Seleziona la cartella del journal"
 
-#: org/kde/kjournaldbrowser/Main.qml:136
+#: org/kde/kjournaldbrowser/Main.qml:148
 #, kde-format
 msgid "Select journal file"
 msgstr "Seleziona il file del journal"
 
-#: org/kde/kjournaldbrowser/Main.qml:137
+#: org/kde/kjournaldbrowser/Main.qml:149
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "File Journal (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:137
+#: org/kde/kjournaldbrowser/Main.qml:149
 #, kde-format
 msgid "All files (*)"
 msgstr "Tutti i file (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:211
+#: org/kde/kjournaldbrowser/Main.qml:223
 #, kde-format
 msgid "No log entries apply "
 msgstr "Nessuna voce di registro si applica "

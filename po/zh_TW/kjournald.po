@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-08 00:44+0000\n"
+"POT-Creation-Date: 2025-05-15 00:45+0000\n"
 "PO-Revision-Date: 2025-05-05 22:52+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -259,7 +259,7 @@ msgctxt "@action:menu"
 msgid "Help"
 msgstr "說明"
 
-#: org/kde/kjournaldbrowser/LogView.qml:217
+#: org/kde/kjournaldbrowser/LogView.qml:207
 #, kde-format
 msgid "Kernel"
 msgstr "核心"
@@ -274,39 +274,45 @@ msgstr "開機："
 msgid "Highlight:"
 msgstr "突顯："
 
-#: org/kde/kjournaldbrowser/Main.qml:114
+#: org/kde/kjournaldbrowser/Main.qml:84
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Switch between case sensitive and case insensitive matching"
+msgstr ""
+
+#: org/kde/kjournaldbrowser/Main.qml:126
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "切換到瀏覽模式"
 
-#: org/kde/kjournaldbrowser/Main.qml:115
+#: org/kde/kjournaldbrowser/Main.qml:127
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "切換到選取模式"
 
-#: org/kde/kjournaldbrowser/Main.qml:127
+#: org/kde/kjournaldbrowser/Main.qml:139
 #, kde-format
 msgid "Select journal folder"
 msgstr "選擇日誌資料夾"
 
-#: org/kde/kjournaldbrowser/Main.qml:136
+#: org/kde/kjournaldbrowser/Main.qml:148
 #, kde-format
 msgid "Select journal file"
 msgstr "選擇日誌檔案"
 
-#: org/kde/kjournaldbrowser/Main.qml:137
+#: org/kde/kjournaldbrowser/Main.qml:149
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "日誌檔 (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:137
+#: org/kde/kjournaldbrowser/Main.qml:149
 #, kde-format
 msgid "All files (*)"
 msgstr "所有檔案 (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:211
+#: org/kde/kjournaldbrowser/Main.qml:223
 #, kde-format
 msgid "No log entries apply "
 msgstr "沒有符合的紀錄條目"
