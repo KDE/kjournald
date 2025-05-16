@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-15 00:45+0000\n"
-"PO-Revision-Date: 2025-05-05 09:32+0300\n"
+"PO-Revision-Date: 2025-05-15 17:49+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -278,6 +278,7 @@ msgstr "Підсвічування:"
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr ""
+"Перемкнутися між відповідністю із врахуванням і без врахування регістру"
 
 #: org/kde/kjournaldbrowser/Main.qml:126
 #, kde-format
