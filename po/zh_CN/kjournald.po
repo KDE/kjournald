@@ -274,7 +274,7 @@ msgstr "高亮："
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
-msgstr ""
+msgstr "切换区分/不区分大小写的匹配模式"
 
 #: org/kde/kjournaldbrowser/Main.qml:126
 #, kde-format
