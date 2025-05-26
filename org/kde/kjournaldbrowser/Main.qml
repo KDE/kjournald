@@ -69,14 +69,91 @@ StatefulApp.StatefulWindow {
             }
             ToolSeparator {}
 
-            Label {
-                text: i18n("Highlight:")
-            }
-            TextField {
+            Kirigami.SearchField {
                 id: highlightTextField
+                Layout.fillWidth: true
                 text: ""
+                property ListModel recentSearchesModel: ListModel {
+                    // TODO replace with persistent model over application starts
+                }
                 onTextChanged: TextSearch.needle = text
+                onTextEdited: {
+                    recentSearchesListView.currentIndex = -1
+                    if (!popup.opened && text !== "") {
+                        popup.open()
+                    }
+                }
+                Keys.onPressed: (event)=> {
+                    if (event.key === Qt.Key_Down) {
+                        if (!popup.opened) {
+                            recentSearchesListView.currentIndex = 0
+                            popup.open()
+                        } else {
+                            recentSearchesListView.incrementCurrentIndex()
+                        }
+                    }
+                    if (event.key === Qt.Key_Up) {
+                        recentSearchesListView.decrementCurrentIndex()
+                    }
+                    if (event.key === Qt.Key_Return) {
+                        if (recentSearchesListView.currentIndex === -1) {
+                            recentSearchesModel.insert(0, {text: text})
+                            if (recentSearchesModel.rowCount() > 20) {
+                                recentSearchesModel.remove(20)
+                            }
+                        } else {
+                            recentSearchesModel.move(recentSearchesListView.currentIndex, 0, 1)
+                            highlightTextField.text = recentSearchesModel.get(recentSearchesListView.currentIndex).text
+                        }
+                        popup.close()
+                    }
+                    if (event.key === Qt.Key_Escape) {
+                        popup.close()
+                    }
+                }
+
+                Popup {
+                    id: popup
+                    y: highlightTextField.height
+                    width: highlightTextField.width
+                    height: Math.min(recentSearchesListView.contentHeight + 24, 400)
+                    modal: false
+                    focus: false
+                    closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
+                    ListView {
+                        id: recentSearchesListView
+                        anchors.fill: parent
+                        model: highlightTextField.recentSearchesModel
+                        highlightFollowsCurrentItem: true
+                        delegate: ItemDelegate {
+                            id: recentSearchDelegate
+                            required text
+                            required property int index
+                            width: recentSearchesListView.width
+                            highlighted: ListView.isCurrentItem
+                            onClicked: {
+                                highlightTextField.recentSearchesModel.move(index, 0, 1)
+                                highlightTextField.text = text
+                                popup.close()
+                            }
+
+                            contentItem: Text {
+                                rightPadding: recentSearchDelegate.spacing
+                                text: recentSearchDelegate.text
+                                font: recentSearchDelegate.font
+                                elide: Text.ElideRight
+                                visible: recentSearchDelegate.text
+                                horizontalAlignment: Text.AlignLeft
+                                verticalAlignment: Text.AlignVCenter
+                            }
+                        }
+                        ScrollIndicator.vertical: ScrollIndicator {
+                            id: recentSeearchScrollIndicator
+                        }
+                    }
+                }
             }
+
             ToolButton {
                 id: caseSensitiveOptionButton
                 icon.name: checked ? "format-text-capitalize" : "format-text-lowercase"
