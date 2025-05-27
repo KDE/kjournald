@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-15 00:45+0000\n"
+"POT-Creation-Date: 2025-05-27 00:44+0000\n"
 "PO-Revision-Date: 2025-04-06 23:15+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -269,50 +269,45 @@ msgstr "커널"
 msgid "Boot:"
 msgstr "부트:"
 
-#: org/kde/kjournaldbrowser/Main.qml:73
-#, kde-format
-msgid "Highlight:"
-msgstr "강조:"
-
-#: org/kde/kjournaldbrowser/Main.qml:84
+#: org/kde/kjournaldbrowser/Main.qml:161
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:126
+#: org/kde/kjournaldbrowser/Main.qml:203
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "탐색 모드로 전환"
 
-#: org/kde/kjournaldbrowser/Main.qml:127
+#: org/kde/kjournaldbrowser/Main.qml:204
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "선택 모드로 전환"
 
-#: org/kde/kjournaldbrowser/Main.qml:139
+#: org/kde/kjournaldbrowser/Main.qml:216
 #, kde-format
 msgid "Select journal folder"
 msgstr "저널 폴더 선택"
 
-#: org/kde/kjournaldbrowser/Main.qml:148
+#: org/kde/kjournaldbrowser/Main.qml:225
 #, kde-format
 msgid "Select journal file"
 msgstr "저널 파일 선택"
 
-#: org/kde/kjournaldbrowser/Main.qml:149
+#: org/kde/kjournaldbrowser/Main.qml:226
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "저널 파일 (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:149
+#: org/kde/kjournaldbrowser/Main.qml:226
 #, kde-format
 msgid "All files (*)"
 msgstr "모든 파일 (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:223
+#: org/kde/kjournaldbrowser/Main.qml:300
 #, kde-format
 msgid "No log entries apply "
 msgstr "적용된 로그 항목 없음"
@@ -346,6 +341,9 @@ msgstr "폴더에서 열기"
 #, kde-format
 msgid "Open from File"
 msgstr "파일에서 열기"
+
+#~ msgid "Highlight:"
+#~ msgstr "강조:"
 
 #~ msgid "About"
 #~ msgstr "정보"

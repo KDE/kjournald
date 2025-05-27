@@ -1,7 +1,7 @@
 # Translation for kjournald.po to Euskara/Basque (eu).
 # Copyright (C) 2022-2025 This file is copyright:
 # This file is distributed under the same license as the kjournald package.
-# SPDX-FileCopyrightText: 2024, 2025 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
+# SPDX-FileCopyrightText: 2024, 2025 KDE euskaratzeko proiektuaren arduraduna <xalba@ni.eus>
 #
 # Translators:
 # Iñigo Salvador Azurmendi <xalba@ni.eus>, 2022, 2024, 2025.
@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-15 00:45+0000\n"
-"PO-Revision-Date: 2025-03-26 19:20+0100\n"
+"POT-Creation-Date: 2025-05-27 00:44+0000\n"
+"PO-Revision-Date: 2025-05-26 16:45+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.04.1\n"
 
 #: browser/main.cpp:41
 #, kde-format
@@ -33,12 +33,10 @@ msgid "Viewer for Journald logs"
 msgstr "«Journald» egunerokoen erakuslea"
 
 #: browser/main.cpp:45
-#, fuzzy, kde-format
-#| msgctxt "@info:credit"
-#| msgid "(c) 2021-2024 The KJournald Developers"
+#, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2025 The KJournald Developers"
-msgstr "(c) 2021-2024 KJournald-en garatzaileak"
+msgstr "(c) 2021-2025 KJournald-ren garatzaileak"
 
 #: browser/main.cpp:46
 #, kde-format
@@ -175,8 +173,7 @@ msgstr "Garbitu"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:16
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:21
-#, fuzzy, kde-format
-#| msgid "File"
+#, kde-format
 msgctxt "@action:menu"
 msgid "File"
 msgstr "Fitxategia"
@@ -258,8 +255,7 @@ msgstr "Exekutagarria"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:119
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:133
-#, fuzzy, kde-format
-#| msgid "Help"
+#, kde-format
 msgctxt "@action:menu"
 msgid "Help"
 msgstr "Laguntza"
@@ -274,50 +270,46 @@ msgstr "Muina"
 msgid "Boot:"
 msgstr "Abioa:"
 
-#: org/kde/kjournaldbrowser/Main.qml:73
-#, kde-format
-msgid "Highlight:"
-msgstr "Nabarmendu:"
-
-#: org/kde/kjournaldbrowser/Main.qml:84
+#: org/kde/kjournaldbrowser/Main.qml:161
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr ""
+"Aldatu, parekatzean, maiuskulak bereiztearen eta ez bereiztearen artean"
 
-#: org/kde/kjournaldbrowser/Main.qml:126
+#: org/kde/kjournaldbrowser/Main.qml:203
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "Aldatu arakatze modura"
 
-#: org/kde/kjournaldbrowser/Main.qml:127
+#: org/kde/kjournaldbrowser/Main.qml:204
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "Aldatu hautapen modura"
 
-#: org/kde/kjournaldbrowser/Main.qml:139
+#: org/kde/kjournaldbrowser/Main.qml:216
 #, kde-format
 msgid "Select journal folder"
 msgstr "Hautatu egunkariaren karpeta"
 
-#: org/kde/kjournaldbrowser/Main.qml:148
+#: org/kde/kjournaldbrowser/Main.qml:225
 #, kde-format
 msgid "Select journal file"
 msgstr "Hautatu egunkariaren fitxategia"
 
-#: org/kde/kjournaldbrowser/Main.qml:149
+#: org/kde/kjournaldbrowser/Main.qml:226
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "Egunkari fitxategiak (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:149
+#: org/kde/kjournaldbrowser/Main.qml:226
 #, kde-format
 msgid "All files (*)"
 msgstr "Fitxategi guztiak (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:223
+#: org/kde/kjournaldbrowser/Main.qml:300
 #, kde-format
 msgid "No log entries apply "
 msgstr "Ez da eguneroko-sarrerarik aplikatzen"
@@ -351,6 +343,9 @@ msgstr "Ireki karpetatik"
 #, kde-format
 msgid "Open from File"
 msgstr "Ireki fitxategitik"
+
+#~ msgid "Highlight:"
+#~ msgstr "Nabarmendu:"
 
 #~ msgid "About"
 #~ msgstr "Honi buruz"

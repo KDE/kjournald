@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-15 00:45+0000\n"
+"POT-Creation-Date: 2025-05-27 00:44+0000\n"
 "PO-Revision-Date: 2025-04-14 01:25-0300\n"
 "Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -271,50 +271,45 @@ msgstr "Versão do kernel"
 msgid "Boot:"
 msgstr "Inicialização:"
 
-#: org/kde/kjournaldbrowser/Main.qml:73
-#, kde-format
-msgid "Highlight:"
-msgstr "Destaque:"
-
-#: org/kde/kjournaldbrowser/Main.qml:84
+#: org/kde/kjournaldbrowser/Main.qml:161
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:126
+#: org/kde/kjournaldbrowser/Main.qml:203
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "Mudar para o modo de navegação"
 
-#: org/kde/kjournaldbrowser/Main.qml:127
+#: org/kde/kjournaldbrowser/Main.qml:204
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "Mudar para o modo de seleção"
 
-#: org/kde/kjournaldbrowser/Main.qml:139
+#: org/kde/kjournaldbrowser/Main.qml:216
 #, kde-format
 msgid "Select journal folder"
 msgstr "Selecionar pasta"
 
-#: org/kde/kjournaldbrowser/Main.qml:148
+#: org/kde/kjournaldbrowser/Main.qml:225
 #, kde-format
 msgid "Select journal file"
 msgstr "Selecionar arquivo"
 
-#: org/kde/kjournaldbrowser/Main.qml:149
+#: org/kde/kjournaldbrowser/Main.qml:226
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "Arquivos de log (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:149
+#: org/kde/kjournaldbrowser/Main.qml:226
 #, kde-format
 msgid "All files (*)"
 msgstr "Todo tipo de arquivos (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:223
+#: org/kde/kjournaldbrowser/Main.qml:300
 #, kde-format
 msgid "No log entries apply "
 msgstr "Nenhum registro é compatível com o critério"
@@ -348,6 +343,9 @@ msgstr "Abrir pasta"
 #, kde-format
 msgid "Open from File"
 msgstr "Abrir arquivo"
+
+#~ msgid "Highlight:"
+#~ msgstr "Destaque:"
 
 #~ msgid "About"
 #~ msgstr "Sobre"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-15 00:45+0000\n"
+"POT-Creation-Date: 2025-05-27 00:44+0000\n"
 "PO-Revision-Date: 2025-04-20 16:34+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -269,50 +269,45 @@ msgstr "Ydin"
 msgid "Boot:"
 msgstr "Käynnistys:"
 
-#: org/kde/kjournaldbrowser/Main.qml:73
-#, kde-format
-msgid "Highlight:"
-msgstr "Korostus:"
-
-#: org/kde/kjournaldbrowser/Main.qml:84
+#: org/kde/kjournaldbrowser/Main.qml:161
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:126
+#: org/kde/kjournaldbrowser/Main.qml:203
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "Vaihda selaustilaan"
 
-#: org/kde/kjournaldbrowser/Main.qml:127
+#: org/kde/kjournaldbrowser/Main.qml:204
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "Vaihda valintatilaan"
 
-#: org/kde/kjournaldbrowser/Main.qml:139
+#: org/kde/kjournaldbrowser/Main.qml:216
 #, kde-format
 msgid "Select journal folder"
 msgstr "Valitse lokikansio"
 
-#: org/kde/kjournaldbrowser/Main.qml:148
+#: org/kde/kjournaldbrowser/Main.qml:225
 #, kde-format
 msgid "Select journal file"
 msgstr "Valitse lokitiedosto"
 
-#: org/kde/kjournaldbrowser/Main.qml:149
+#: org/kde/kjournaldbrowser/Main.qml:226
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "Lokitiedostot (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:149
+#: org/kde/kjournaldbrowser/Main.qml:226
 #, kde-format
 msgid "All files (*)"
 msgstr "Kaikki tiedostot (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:223
+#: org/kde/kjournaldbrowser/Main.qml:300
 #, kde-format
 msgid "No log entries apply "
 msgstr "Ei lokimerkintöjä, jotka vastaavat: "
@@ -346,6 +341,9 @@ msgstr "Avaa kansiosta"
 #, kde-format
 msgid "Open from File"
 msgstr "Avaa tiedostosta"
+
+#~ msgid "Highlight:"
+#~ msgstr "Korostus:"
 
 #~ msgid "About"
 #~ msgstr "Tietoa"

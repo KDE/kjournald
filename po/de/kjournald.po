@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-15 00:45+0000\n"
+"POT-Creation-Date: 2025-05-27 00:44+0000\n"
 "PO-Revision-Date: 2024-12-28 23:17+0100\n"
 "Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -276,50 +276,45 @@ msgstr "Kernel"
 msgid "Boot:"
 msgstr "Boot:"
 
-#: org/kde/kjournaldbrowser/Main.qml:73
-#, kde-format
-msgid "Highlight:"
-msgstr "Hervorheben:"
-
-#: org/kde/kjournaldbrowser/Main.qml:84
+#: org/kde/kjournaldbrowser/Main.qml:161
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:126
+#: org/kde/kjournaldbrowser/Main.qml:203
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:127
+#: org/kde/kjournaldbrowser/Main.qml:204
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:139
+#: org/kde/kjournaldbrowser/Main.qml:216
 #, kde-format
 msgid "Select journal folder"
 msgstr "Journal-Ordner auswählen"
 
-#: org/kde/kjournaldbrowser/Main.qml:148
+#: org/kde/kjournaldbrowser/Main.qml:225
 #, kde-format
 msgid "Select journal file"
 msgstr "Journal-Datei auswählen"
 
-#: org/kde/kjournaldbrowser/Main.qml:149
+#: org/kde/kjournaldbrowser/Main.qml:226
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "Journal-Dateien (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:149
+#: org/kde/kjournaldbrowser/Main.qml:226
 #, kde-format
 msgid "All files (*)"
 msgstr "Alle Dateien (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:223
+#: org/kde/kjournaldbrowser/Main.qml:300
 #, kde-format
 msgid "No log entries apply "
 msgstr "Keine zutreffenden Protokolleinträge"
@@ -353,6 +348,9 @@ msgstr "Aus Ordner öffnen"
 #, kde-format
 msgid "Open from File"
 msgstr "Aus Datei öffnen"
+
+#~ msgid "Highlight:"
+#~ msgstr "Hervorheben:"
 
 #~ msgid "About"
 #~ msgstr "Über"
