@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-27 00:44+0000\n"
-"PO-Revision-Date: 2025-05-09 17:05+0200\n"
+"PO-Revision-Date: 2025-05-27 11:46+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -271,7 +271,7 @@ msgstr "Boot:"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
-msgstr ""
+msgstr "Commuta inter considera o non considera majusculas e minusculas"
 
 #: org/kde/kjournaldbrowser/Main.qml:203
 #, kde-format
