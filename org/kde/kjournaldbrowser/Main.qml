@@ -25,6 +25,18 @@ StatefulApp.StatefulWindow {
     application: BrowserApplication
 
     required property FilterCriteriaModel filterModel
+    required property string initialJournalPath
+
+    Component.onCompleted: {
+        if (root.initialJournalPath !== "") {
+            console.log(`set initial journald path to ` + root.initialJournalPath)
+            DatabaseProvider.setLocalJournalPath(root.initialJournalPath)
+        }
+    }
+
+    Binding {
+        root.filterModel.journalPath: DatabaseProvider.mode === DatabaseProvider.SYSTEM ? undefined : DatabaseProvider.journalPath
+    }
 
     menuBar: TopMenuBar {
         visible: (Kirigami.Settings.hasPlatformMenuBar === false || Kirigami.Settings.hasPlatformMenuBar === undefined) && !Kirigami.Settings.isMobile
@@ -215,8 +227,7 @@ StatefulApp.StatefulWindow {
         id: folderDialog
         title: i18n("Select journal folder")
         onAccepted: {
-            SessionConfigProxy.localJournalPath = folderDialog.currentFolder
-            SessionConfigProxy.sessionMode = SessionConfig.LOCALFOLDER
+            DatabaseProvider.setLocalJournalPath(folderDialog.currentFolder)
         }
     }
 
@@ -225,18 +236,14 @@ StatefulApp.StatefulWindow {
         title: i18n("Select journal file")
         nameFilters: [i18n("Journal files (*.journal)"), i18n("All files (*)")]
         onAccepted: {
-            SessionConfigProxy.localJournalPath = fileDialog.currentFile
-            SessionConfigProxy.sessionMode = SessionConfig.LOCALFOLDER
+            DatabaseProvider.setLocalJournalPath(fileDialog.currentFile)
         }
     }
 
     RemoteJournalConfigDialog {
         id: remoteJournalDialog
         onAccepted: {
-            console.log("set remote journal to: " + url + ":" + port)
-            SessionConfigProxy.remoteJournalPort = remoteJournalDialog.port
-            SessionConfigProxy.remoteJournalUrl = remoteJournalDialog.url
-            SessionConfigProxy.sessionMode = SessionConfig.REMOTE
+            DatabaseProvider.setRemoteJournalUrl(remoteJournalDialog.url, remoteJournalDialog.port)
         }
     }
 
@@ -278,7 +285,7 @@ StatefulApp.StatefulWindow {
             LogView {
                 id: logView
                 anchors.fill: parent
-                journalModel: g_journalModel
+                journalModel: journalModel
                 displayRoleRight: BrowserApplication.filterCriterium === BrowserApplication.SYSTEMD_UNIT ?
                                       JournaldViewModel.SYSTEMD_UNIT : JournaldViewModel.EXE
                 snapToFollowMode: true
@@ -310,16 +317,12 @@ StatefulApp.StatefulWindow {
 
     BootModel {
         id: bootModel
-        journalPath: SessionConfigProxy.sessionMode === SessionConfig.LOCALFOLDER
-                     || SessionConfigProxy.sessionMode
-                     === SessionConfig.REMOTE ? SessionConfigProxy.localJournalPath : undefined
+        journalPath: DatabaseProvider.mode === DatabaseProvider.SYSTEM ? undefined : DatabaseProvider.journalPath
     }
 
     JournaldViewModel {
-        id: g_journalModel
-        journalPath: SessionConfigProxy.sessionMode === SessionConfig.LOCALFOLDER
-                     || SessionConfigProxy.sessionMode
-                     === SessionConfig.REMOTE ? SessionConfigProxy.localJournalPath : undefined
+        id: journalModel
+        journalPath: DatabaseProvider.mode === DatabaseProvider.SYSTEM ? undefined : DatabaseProvider.journalPath
         filter.units: root.filterModel.systemdUnitFilter
         filter.exes: root.filterModel.exeFilter
         filter.boots: bootIdComboBox.currentValue

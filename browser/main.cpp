@@ -5,7 +5,6 @@
 
 #include "filtercriteriamodel.h"
 #include "kjournald_version.h"
-#include "sessionconfig.h"
 #include <KAboutData>
 #include <KCrash>
 #include <KLocalizedQmlContext>
@@ -55,10 +54,6 @@ int main(int argc, char *argv[])
     KAboutData::setApplicationData(aboutData);
 
     FilterCriteriaModel filterCriteriaModel;
-    SessionConfig sessionConfig;
-
-    qmlRegisterSingletonInstance("org.kde.kjournaldbrowser", 1, 0, "SessionConfigProxy", &sessionConfig);
-    qmlRegisterUncreatableType<SessionConfig>("org.kde.kjournaldbrowser", 1, 0, "SessionConfig", "Backend only object");
 
     QCommandLineParser parser;
     parser.setApplicationDescription("Journald Log Viewer");
@@ -68,31 +63,13 @@ int main(int argc, char *argv[])
     parser.addOption(pathOption);
     parser.process(app);
 
-    QObject::connect(&sessionConfig, &SessionConfig::modeChanged, &sessionConfig, [&sessionConfig, &filterCriteriaModel](SessionConfig::Mode mode) {
-        switch (mode) {
-        case SessionConfig::Mode::SYSTEM:
-            filterCriteriaModel.setSystemJournal();
-            break;
-        case SessionConfig::Mode::REMOTE:
-            // remote is handle like a local access
-            Q_FALLTHROUGH();
-        case SessionConfig::Mode::LOCALFOLDER:
-            filterCriteriaModel.setJournaldPath(sessionConfig.localJournalPath());
-            break;
-        }
-    });
-    QObject::connect(&sessionConfig, &SessionConfig::localJournalPathChanged, &sessionConfig, [&sessionConfig, &filterCriteriaModel]() {
-        filterCriteriaModel.setJournaldPath(sessionConfig.localJournalPath());
-    });
-
+    QString initialJournalPath;
     if (parser.isSet(pathOption)) {
-        const QString path = parser.value(pathOption);
-        sessionConfig.setLocalJournalPath(path);
-        sessionConfig.setMode(SessionConfig::Mode::LOCALFOLDER);
+        initialJournalPath = parser.value(pathOption);
     }
 
     QQmlApplicationEngine engine;
-    const QVariantMap initialProperties = {{"filterModel", QVariant::fromValue(&filterCriteriaModel)}};
+    const QVariantMap initialProperties = {{"filterModel", QVariant::fromValue(&filterCriteriaModel)}, {"initialJournalPath", initialJournalPath}};
     engine.setInitialProperties(initialProperties);
     KLocalization::setupLocalizedContext(&engine);
     const QUrl url(QStringLiteral("qrc:/qt/qml/org/kde/kjournaldbrowser/Main.qml"));

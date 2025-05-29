@@ -15,10 +15,12 @@ qt6_add_qml_module(
         org.kde.kirigamiaddons.
         org.kde.kirigamiaddons.statefulapp
     SOURCES
-        clipboardproxy.cpp
-        clipboardproxy.h
         browserapplication.cpp
         browserapplication.h
+        clipboardproxy.cpp
+        clipboardproxy.h
+        databaseprovider.cpp
+        databaseprovider.h
         formatter.cpp
         formatter.h
         textsearch.cpp

@@ -19,14 +19,14 @@ Labs.MenuBar {
             text: i18n("Open system journal")
             icon.name: "document-open"
             onTriggered: {
-                SessionConfigProxy.sessionMode = SessionConfig.SYSTEM
+                DatabaseProvider.setSystemJournal()
             }
         }
         Labs.MenuItem {
             text: i18n("Open from folder")
             icon.name: "document-open"
             onTriggered: {
-                folderDialog.folder = SessionConfigProxy.localJournalPath
+                folderDialog.folder = DatabaseProvider.localJournalPath
                 folderDialog.open()
             }
         }
@@ -34,7 +34,7 @@ Labs.MenuBar {
             text: i18n("Open from file")
             icon.name: "document-open"
             onTriggered: {
-                fileDialog.folder = SessionConfigProxy.localJournalPath
+                fileDialog.folder = DatabaseProvider.localJournalPath
                 fileDialog.open()
             }
         }

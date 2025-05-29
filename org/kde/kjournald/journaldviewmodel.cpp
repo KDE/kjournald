@@ -433,7 +433,11 @@ bool JournaldViewModel::setJournal(std::unique_ptr<IJournal> journal)
 
 bool JournaldViewModel::setJournaldPath(const QString &path)
 {
-    return setJournal(std::make_unique<LocalJournal>(path));
+    if (path.isEmpty()) {
+        return setSystemJournal();
+    } else {
+        return setJournal(std::make_unique<LocalJournal>(path));
+    }
 }
 
 bool JournaldViewModel::setSystemJournal()

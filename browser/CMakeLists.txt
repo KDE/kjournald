@@ -9,8 +9,6 @@ include_directories(
 
 add_executable(kjournaldbrowser
     main.cpp
-    sessionconfig.cpp
-    sessionconfig.h
 )
 
 target_compile_definitions(kjournaldbrowser
