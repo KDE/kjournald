@@ -239,12 +239,7 @@ FilterCriteriaModel::~FilterCriteriaModel() = default;
 bool FilterCriteriaModel::setJournaldPath(const QString &path)
 {
     beginResetModel();
-    if (path.isEmpty()) {
-        qCDebug(KJOURNALDLIB_GENERAL) << "use system journal";
-        d->mJournal = std::make_shared<LocalJournal>();
-    } else {
-        d->mJournal = std::make_shared<LocalJournal>(path);
-    }
+    d->mJournal = std::make_shared<LocalJournal>(path);
     bool success = d->mJournal->isValid();
     d->rebuildModel();
     endResetModel();
@@ -264,7 +259,10 @@ QHash<int, QByteArray> FilterCriteriaModel::roleNames() const
 
 void FilterCriteriaModel::setSystemJournal()
 {
-    setJournaldPath(QString());
+    beginResetModel();
+    d->mJournal = std::make_shared<LocalJournal>();
+    d->rebuildModel();
+    endResetModel();
 }
 
 int FilterCriteriaModel::priorityFilter() const
