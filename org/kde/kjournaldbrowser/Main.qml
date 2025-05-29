@@ -215,7 +215,7 @@ StatefulApp.StatefulWindow {
         id: folderDialog
         title: i18n("Select journal folder")
         onAccepted: {
-            SessionConfigProxy.localJournalPath = folderDialog.fileUrl
+            SessionConfigProxy.localJournalPath = folderDialog.currentFolder
             SessionConfigProxy.sessionMode = SessionConfig.LOCALFOLDER
         }
     }
@@ -225,7 +225,7 @@ StatefulApp.StatefulWindow {
         title: i18n("Select journal file")
         nameFilters: [i18n("Journal files (*.journal)"), i18n("All files (*)")]
         onAccepted: {
-            SessionConfigProxy.localJournalPath = fileDialog.fileUrl
+            SessionConfigProxy.localJournalPath = fileDialog.currentFile
             SessionConfigProxy.sessionMode = SessionConfig.LOCALFOLDER
         }
     }
