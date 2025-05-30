@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-27 00:44+0000\n"
+"POT-Creation-Date: 2025-05-30 00:45+0000\n"
 "PO-Revision-Date: 2025-05-15 17:49+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -18,25 +18,25 @@ msgstr ""
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Lokalize 23.04.3\n"
 
-#: browser/main.cpp:41
+#: browser/main.cpp:40
 #, kde-format
 msgctxt "@title Displayed program name"
 msgid "KJournald Browser"
 msgstr "Навігатор KJournald"
 
-#: browser/main.cpp:43
+#: browser/main.cpp:42
 #, kde-format
 msgctxt "@title KAboutData: short program description"
 msgid "Viewer for Journald logs"
 msgstr "Програма для перегляду журналів Journald"
 
-#: browser/main.cpp:45
+#: browser/main.cpp:44
 #, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2025 The KJournald Developers"
 msgstr "© Розробники KJournald, 2021–2025"
 
-#: browser/main.cpp:46
+#: browser/main.cpp:45
 #, kde-format
 msgctxt "@title Short program description"
 msgid ""
@@ -46,25 +46,25 @@ msgstr ""
 "Програма для перегляду баз даних Journald, які було створено засобом ведення "
 "журналу Journald."
 
-#: browser/main.cpp:48
+#: browser/main.cpp:47
 #, kde-format
 msgctxt "@info:credit Developer name"
 msgid "Andreas Cord-Landwehr"
 msgstr "Andreas Cord-Landwehr"
 
-#: browser/main.cpp:49
+#: browser/main.cpp:48
 #, kde-format
 msgctxt "@info:credit Role"
 msgid "Original Author"
 msgstr "Автор початкової версії"
 
-#: browser/main.cpp:51
+#: browser/main.cpp:50
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Юрій Чорноіван"
 
-#: browser/main.cpp:51
+#: browser/main.cpp:50
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -263,51 +263,51 @@ msgstr "Довідка"
 msgid "Kernel"
 msgstr "Ядро"
 
-#: org/kde/kjournaldbrowser/Main.qml:50
+#: org/kde/kjournaldbrowser/Main.qml:62
 #, kde-format
 msgid "Boot:"
 msgstr "Завантаження:"
 
-#: org/kde/kjournaldbrowser/Main.qml:161
+#: org/kde/kjournaldbrowser/Main.qml:173
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr ""
 "Перемкнутися між відповідністю із врахуванням і без врахування регістру"
 
-#: org/kde/kjournaldbrowser/Main.qml:203
+#: org/kde/kjournaldbrowser/Main.qml:215
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "Перемкнутися на режим навігації"
 
-#: org/kde/kjournaldbrowser/Main.qml:204
+#: org/kde/kjournaldbrowser/Main.qml:216
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "Перемкнутися на режим вибору"
 
-#: org/kde/kjournaldbrowser/Main.qml:216
+#: org/kde/kjournaldbrowser/Main.qml:228
 #, kde-format
 msgid "Select journal folder"
 msgstr "Виберіть теку журналу"
 
-#: org/kde/kjournaldbrowser/Main.qml:225
+#: org/kde/kjournaldbrowser/Main.qml:236
 #, kde-format
 msgid "Select journal file"
 msgstr "Виберіть файл журналу"
 
-#: org/kde/kjournaldbrowser/Main.qml:226
+#: org/kde/kjournaldbrowser/Main.qml:237
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "файли журналу (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:226
+#: org/kde/kjournaldbrowser/Main.qml:237
 #, kde-format
 msgid "All files (*)"
 msgstr "усі файли (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:300
+#: org/kde/kjournaldbrowser/Main.qml:307
 #, kde-format
 msgid "No log entries apply "
 msgstr "Жоден із записів журналу не є відповідним"

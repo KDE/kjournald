@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-27 00:44+0000\n"
+"POT-Creation-Date: 2025-05-30 00:45+0000\n"
 "PO-Revision-Date: 2025-05-16 13:41+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -18,25 +18,25 @@ msgstr ""
 "n % 10 == 0) ? 2 : 3));\n"
 "X-Generator: Lokalize 25.04.1\n"
 
-#: browser/main.cpp:41
+#: browser/main.cpp:40
 #, kde-format
 msgctxt "@title Displayed program name"
 msgid "KJournald Browser"
 msgstr "דפדפן KJournald"
 
-#: browser/main.cpp:43
+#: browser/main.cpp:42
 #, kde-format
 msgctxt "@title KAboutData: short program description"
 msgid "Viewer for Journald logs"
 msgstr "מציג יומני Journald"
 
-#: browser/main.cpp:45
+#: browser/main.cpp:44
 #, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2025 The KJournald Developers"
 msgstr "(c) 2021‏-2025 מפתחי KJournald"
 
-#: browser/main.cpp:46
+#: browser/main.cpp:45
 #, kde-format
 msgctxt "@title Short program description"
 msgid ""
@@ -44,25 +44,25 @@ msgid ""
 "tool."
 msgstr "מציג מסדי נתונים של Journald, שנוצרים על ידי כלי התיעוד של Journald."
 
-#: browser/main.cpp:48
+#: browser/main.cpp:47
 #, kde-format
 msgctxt "@info:credit Developer name"
 msgid "Andreas Cord-Landwehr"
 msgstr "אנדראס קורד־לנדוור"
 
-#: browser/main.cpp:49
+#: browser/main.cpp:48
 #, kde-format
 msgctxt "@info:credit Role"
 msgid "Original Author"
 msgstr "יוצר מקורי"
 
-#: browser/main.cpp:51
+#: browser/main.cpp:50
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "צוות התרגום של KDE ישראל"
 
-#: browser/main.cpp:51
+#: browser/main.cpp:50
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -261,50 +261,50 @@ msgstr "עזרה"
 msgid "Kernel"
 msgstr "ליבה"
 
-#: org/kde/kjournaldbrowser/Main.qml:50
+#: org/kde/kjournaldbrowser/Main.qml:62
 #, kde-format
 msgid "Boot:"
 msgstr "טעינה:"
 
-#: org/kde/kjournaldbrowser/Main.qml:161
+#: org/kde/kjournaldbrowser/Main.qml:173
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr "מעבר בין התאמה תלויית רישיות לבין לא תלויה"
 
-#: org/kde/kjournaldbrowser/Main.qml:203
+#: org/kde/kjournaldbrowser/Main.qml:215
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "מעבר למצב עיון"
 
-#: org/kde/kjournaldbrowser/Main.qml:204
+#: org/kde/kjournaldbrowser/Main.qml:216
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "מעבר למצב בחירה"
 
-#: org/kde/kjournaldbrowser/Main.qml:216
+#: org/kde/kjournaldbrowser/Main.qml:228
 #, kde-format
 msgid "Select journal folder"
 msgstr "בחירת תיקיית יומן (journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:225
+#: org/kde/kjournaldbrowser/Main.qml:236
 #, kde-format
 msgid "Select journal file"
 msgstr "בחירת קובץ יומן (journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:226
+#: org/kde/kjournaldbrowser/Main.qml:237
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "קובצי Journal‏ (‎*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:226
+#: org/kde/kjournaldbrowser/Main.qml:237
 #, kde-format
 msgid "All files (*)"
 msgstr "כל הקבצים (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:300
+#: org/kde/kjournaldbrowser/Main.qml:307
 #, kde-format
 msgid "No log entries apply "
 msgstr "אין רשומות תקפות ביומן"

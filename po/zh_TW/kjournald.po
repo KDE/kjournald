@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-27 00:44+0000\n"
+"POT-Creation-Date: 2025-05-30 00:45+0000\n"
 "PO-Revision-Date: 2025-05-19 21:25+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -20,25 +20,25 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Lokalize 25.07.70\n"
 
-#: browser/main.cpp:41
+#: browser/main.cpp:40
 #, kde-format
 msgctxt "@title Displayed program name"
 msgid "KJournald Browser"
 msgstr "KJournald 瀏覽器"
 
-#: browser/main.cpp:43
+#: browser/main.cpp:42
 #, kde-format
 msgctxt "@title KAboutData: short program description"
 msgid "Viewer for Journald logs"
 msgstr "Journald 紀錄的檢視器"
 
-#: browser/main.cpp:45
+#: browser/main.cpp:44
 #, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2025 The KJournald Developers"
 msgstr "(c) 2021-2025 KJournald 開發團隊"
 
-#: browser/main.cpp:46
+#: browser/main.cpp:45
 #, kde-format
 msgctxt "@title Short program description"
 msgid ""
@@ -47,25 +47,25 @@ msgid ""
 msgstr ""
 "Journald 資料庫的瀏覽器；Journald 資料庫是由 Journald 紀錄工具所產生的。"
 
-#: browser/main.cpp:48
+#: browser/main.cpp:47
 #, kde-format
 msgctxt "@info:credit Developer name"
 msgid "Andreas Cord-Landwehr"
 msgstr "Andreas Cord-Landwehr"
 
-#: browser/main.cpp:49
+#: browser/main.cpp:48
 #, kde-format
 msgctxt "@info:credit Role"
 msgid "Original Author"
 msgstr "原始作者"
 
-#: browser/main.cpp:51
+#: browser/main.cpp:50
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Kisaragi Hiu"
 
-#: browser/main.cpp:51
+#: browser/main.cpp:50
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -264,50 +264,50 @@ msgstr "說明"
 msgid "Kernel"
 msgstr "核心"
 
-#: org/kde/kjournaldbrowser/Main.qml:50
+#: org/kde/kjournaldbrowser/Main.qml:62
 #, kde-format
 msgid "Boot:"
 msgstr "開機："
 
-#: org/kde/kjournaldbrowser/Main.qml:161
+#: org/kde/kjournaldbrowser/Main.qml:173
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr "切換比對時是否區分大小寫"
 
-#: org/kde/kjournaldbrowser/Main.qml:203
+#: org/kde/kjournaldbrowser/Main.qml:215
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "切換到瀏覽模式"
 
-#: org/kde/kjournaldbrowser/Main.qml:204
+#: org/kde/kjournaldbrowser/Main.qml:216
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "切換到選取模式"
 
-#: org/kde/kjournaldbrowser/Main.qml:216
+#: org/kde/kjournaldbrowser/Main.qml:228
 #, kde-format
 msgid "Select journal folder"
 msgstr "選擇日誌資料夾"
 
-#: org/kde/kjournaldbrowser/Main.qml:225
+#: org/kde/kjournaldbrowser/Main.qml:236
 #, kde-format
 msgid "Select journal file"
 msgstr "選擇日誌檔案"
 
-#: org/kde/kjournaldbrowser/Main.qml:226
+#: org/kde/kjournaldbrowser/Main.qml:237
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "日誌檔 (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:226
+#: org/kde/kjournaldbrowser/Main.qml:237
 #, kde-format
 msgid "All files (*)"
 msgstr "所有檔案 (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:300
+#: org/kde/kjournaldbrowser/Main.qml:307
 #, kde-format
 msgid "No log entries apply "
 msgstr "沒有符合的紀錄條目"

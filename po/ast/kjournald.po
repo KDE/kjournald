@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-27 00:44+0000\n"
+"POT-Creation-Date: 2025-05-30 00:45+0000\n"
 "PO-Revision-Date: 2023-11-04 18:37+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: \n"
@@ -17,25 +17,25 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 23.08.2\n"
 
-#: browser/main.cpp:41
+#: browser/main.cpp:40
 #, kde-format
 msgctxt "@title Displayed program name"
 msgid "KJournald Browser"
 msgstr ""
 
-#: browser/main.cpp:43
+#: browser/main.cpp:42
 #, kde-format
 msgctxt "@title KAboutData: short program description"
 msgid "Viewer for Journald logs"
 msgstr ""
 
-#: browser/main.cpp:45
+#: browser/main.cpp:44
 #, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2025 The KJournald Developers"
 msgstr ""
 
-#: browser/main.cpp:46
+#: browser/main.cpp:45
 #, kde-format
 msgctxt "@title Short program description"
 msgid ""
@@ -43,25 +43,25 @@ msgid ""
 "tool."
 msgstr ""
 
-#: browser/main.cpp:48
+#: browser/main.cpp:47
 #, kde-format
 msgctxt "@info:credit Developer name"
 msgid "Andreas Cord-Landwehr"
 msgstr ""
 
-#: browser/main.cpp:49
+#: browser/main.cpp:48
 #, kde-format
 msgctxt "@info:credit Role"
 msgid "Original Author"
 msgstr ""
 
-#: browser/main.cpp:51
+#: browser/main.cpp:50
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Softastur"
 
-#: browser/main.cpp:51
+#: browser/main.cpp:50
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -260,50 +260,50 @@ msgstr ""
 msgid "Kernel"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:50
+#: org/kde/kjournaldbrowser/Main.qml:62
 #, kde-format
 msgid "Boot:"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:161
+#: org/kde/kjournaldbrowser/Main.qml:173
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:203
+#: org/kde/kjournaldbrowser/Main.qml:215
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:204
+#: org/kde/kjournaldbrowser/Main.qml:216
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:216
+#: org/kde/kjournaldbrowser/Main.qml:228
 #, kde-format
 msgid "Select journal folder"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:225
+#: org/kde/kjournaldbrowser/Main.qml:236
 #, kde-format
 msgid "Select journal file"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:226
+#: org/kde/kjournaldbrowser/Main.qml:237
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:226
+#: org/kde/kjournaldbrowser/Main.qml:237
 #, kde-format
 msgid "All files (*)"
 msgstr "Tolos ficheros (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:300
+#: org/kde/kjournaldbrowser/Main.qml:307
 #, kde-format
 msgid "No log entries apply "
 msgstr ""
