@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-30 00:45+0000\n"
-"PO-Revision-Date: 2025-04-06 23:15+0200\n"
+"PO-Revision-Date: 2025-06-10 23:21+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #: browser/main.cpp:40
 #, kde-format
@@ -30,12 +30,10 @@ msgid "Viewer for Journald logs"
 msgstr "journald 로그 뷰어"
 
 #: browser/main.cpp:44
-#, fuzzy, kde-format
-#| msgctxt "@info:credit"
-#| msgid "(c) 2021-2024 The KJournald Developers"
+#, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2025 The KJournald Developers"
-msgstr "(c) 2021-2024 The KJournald Developers"
+msgstr "(c) 2021-2025 The KJournald Developers"
 
 #: browser/main.cpp:45
 #, kde-format
@@ -170,8 +168,7 @@ msgstr "지우기"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:16
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:21
-#, fuzzy, kde-format
-#| msgid "File"
+#, kde-format
 msgctxt "@action:menu"
 msgid "File"
 msgstr "파일"
@@ -253,8 +250,7 @@ msgstr "실행 파일"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:119
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:133
-#, fuzzy, kde-format
-#| msgid "Help"
+#, kde-format
 msgctxt "@action:menu"
 msgid "Help"
 msgstr "도움말"
@@ -273,7 +269,7 @@ msgstr "부트:"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
-msgstr ""
+msgstr "일치 시 대소문자 구분 여부 전환"
 
 #: org/kde/kjournaldbrowser/Main.qml:215
 #, kde-format
