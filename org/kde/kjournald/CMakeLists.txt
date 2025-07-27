@@ -94,6 +94,12 @@ ecm_finalize_qml_module(kjournald DESTINATION ${KDE_INSTALL_QMLDIR})
 #    QT_QMLCACHEGEN_ARGUMENTS "--verbose"
 #)
 
+set_target_properties(kjournald PROPERTIES
+    VERSION ${KJOURNALD_VERSION}
+    SOVERSION ${KJOURNALD_SOVERSION}
+    EXPORT_NAME KJournald
+)
+
 install(TARGETS kjournald
     EXPORT KJournaldTargets
     DESTINATION ${KDE_INSTALL_LIBDIR})
