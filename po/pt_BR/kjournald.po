@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-30 00:45+0000\n"
-"PO-Revision-Date: 2025-04-14 01:25-0300\n"
+"PO-Revision-Date: 2025-08-20 09:39-0300\n"
 "Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.08.0\n"
 
 #: browser/main.cpp:40
 #, kde-format
@@ -32,12 +32,10 @@ msgid "Viewer for Journald logs"
 msgstr "Visualizador de logs do journald"
 
 #: browser/main.cpp:44
-#, fuzzy, kde-format
-#| msgctxt "@info:credit"
-#| msgid "(c) 2021-2024 The KJournald Developers"
+#, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2025 The KJournald Developers"
-msgstr "(c) 2021-2024, os desenvolvedores do KJournald"
+msgstr "(c) 2021-2025, os desenvolvedores do KJournald"
 
 #: browser/main.cpp:45
 #, kde-format
@@ -172,8 +170,7 @@ msgstr "Limpar"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:16
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:21
-#, fuzzy, kde-format
-#| msgid "File"
+#, kde-format
 msgctxt "@action:menu"
 msgid "File"
 msgstr "Arquivo"
@@ -255,8 +252,7 @@ msgstr "Executável"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:119
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:133
-#, fuzzy, kde-format
-#| msgid "Help"
+#, kde-format
 msgctxt "@action:menu"
 msgid "Help"
 msgstr "Ajuda"
@@ -276,6 +272,8 @@ msgstr "Inicialização:"
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr ""
+"Alternar entre correspondência com distinção entre maiúsculas e minúsculas e "
+"sem distinção entre maiúsculas e minúsculas"
 
 #: org/kde/kjournaldbrowser/Main.qml:215
 #, kde-format
