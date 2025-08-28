@@ -337,6 +337,3 @@ msgstr "Otevřít ze složky"
 #, kde-format
 msgid "Open from File"
 msgstr "Otevřít ze souboru"
-
-#~ msgid "Highlight:"
-#~ msgstr "Zvýraznění:"
