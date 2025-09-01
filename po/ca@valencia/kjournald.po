@@ -292,12 +292,12 @@ msgstr "Canvia al mode de selecció"
 #: org/kde/kjournaldbrowser/Main.qml:228
 #, kde-format
 msgid "Select journal folder"
-msgstr "Seleccioneu la carpeta de diari"
+msgstr "Trieu la carpeta de diari"
 
 #: org/kde/kjournaldbrowser/Main.qml:236
 #, kde-format
 msgid "Select journal file"
-msgstr "Seleccioneu el fitxer de diari"
+msgstr "Trieu el fitxer de diari"
 
 #: org/kde/kjournaldbrowser/Main.qml:237
 #, kde-format
@@ -343,6 +343,3 @@ msgstr "Obri des de la carpeta"
 #, kde-format
 msgid "Open from File"
 msgstr "Obri des del fitxer"
-
-#~ msgid "Highlight:"
-#~ msgstr "Ressaltat:"
