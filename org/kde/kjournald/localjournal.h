@@ -67,8 +67,8 @@ public:
      */
     uint64_t usage() const;
 
-private
-    Q_SLOT : void handleJournalDescriptorUpdate();
+private Q_SLOTS:
+    void handleJournalDescriptorUpdate();
 
 private:
     std::unique_ptr<LocalJournalPrivate> d;
