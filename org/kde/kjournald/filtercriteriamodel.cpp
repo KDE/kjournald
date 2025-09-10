@@ -7,7 +7,6 @@
 #include "filtercriteriamodel_p.h"
 #include "journaldhelper.h"
 #include "kjournaldlib_log_general.h"
-#include "localjournal.h"
 #include <KLocalizedString>
 #include <QDebug>
 #include <QDir>
@@ -174,25 +173,30 @@ void FilterCriteriaModelPrivate::rebuildModel()
                                                        false,
                                                        mRootItem);
         mRootItem->appendChild(parent);
-        QVector<QString> units = JournaldHelper::queryUnique(mJournal, JournaldHelper::Field::_SYSTEMD_UNIT);
-        units.erase(std::remove_if(std::begin(units),
-                                   std::end(units),
-                                   [](const QString &unit) {
-                                       return unit.startsWith(QLatin1String("systemd-coredump@"))
-                                           || unit.startsWith(QLatin1String("drkonqi-coredump-processor@"));
-                                   }),
-                    std::cend(units));
-        std::sort(std::begin(units), std::end(units), [](const QString &a, const QString &b) {
-            return QString::compare(a, b, Qt::CaseInsensitive) <= 0;
-        });
-        for (const auto &unit : std::as_const(units)) {
-            // skip any non-service units, because we expect users only be interested in filtering those
-            if (!unit.endsWith(QLatin1String(".service"))) {
-                continue;
+        if (mJournal) {
+            QVector<QString> units = JournaldHelper::queryUnique(mJournal->get(), JournaldHelper::Field::_SYSTEMD_UNIT);
+            units.erase(std::remove_if(std::begin(units),
+                                       std::end(units),
+                                       [](const QString &unit) {
+                                           return unit.startsWith(QLatin1String("systemd-coredump@"))
+                                               || unit.startsWith(QLatin1String("drkonqi-coredump-processor@"));
+                                       }),
+                        std::cend(units));
+            std::sort(std::begin(units), std::end(units), [](const QString &a, const QString &b) {
+                return QString::compare(a, b, Qt::CaseInsensitive) <= 0;
+            });
+            for (const auto &unit : std::as_const(units)) {
+                // skip any non-service units, because we expect users only be interested in filtering those
+                if (!unit.endsWith(QLatin1String(".service"))) {
+                    continue;
+                }
+                mRootItem->child(FilterCriteriaModel::Category::SYSTEMD_UNIT)
+                    ->appendChild(std::move(std::make_unique<SelectionEntry>(JournaldHelper::cleanupString(unit),
+                                                                             unit,
+                                                                             FilterCriteriaModel::Category::SYSTEMD_UNIT,
+                                                                             false,
+                                                                             parent)));
             }
-            mRootItem->child(FilterCriteriaModel::Category::SYSTEMD_UNIT)
-                ->appendChild(std::move(
-                    std::make_unique<SelectionEntry>(JournaldHelper::cleanupString(unit), unit, FilterCriteriaModel::Category::SYSTEMD_UNIT, false, parent)));
         }
     }
     {
@@ -202,14 +206,16 @@ void FilterCriteriaModelPrivate::rebuildModel()
                                                        false,
                                                        mRootItem);
         mRootItem->appendChild(parent);
-        QVector<QString> exes = JournaldHelper::queryUnique(mJournal, JournaldHelper::Field::_EXE);
-        std::sort(std::begin(exes), std::end(exes), [](const QString &a, const QString &b) {
-            return QString::compare(a, b, Qt::CaseInsensitive) <= 0;
-        });
-        for (const auto &exe : std::as_const(exes)) {
-            mRootItem->child(FilterCriteriaModel::Category::EXE)
-                ->appendChild(
-                    std::move(std::make_unique<SelectionEntry>(JournaldHelper::cleanupString(exe), exe, FilterCriteriaModel::Category::EXE, false, parent)));
+        if (mJournal) {
+            QVector<QString> exes = JournaldHelper::queryUnique(mJournal->get(), JournaldHelper::Field::_EXE);
+            std::sort(std::begin(exes), std::end(exes), [](const QString &a, const QString &b) {
+                return QString::compare(a, b, Qt::CaseInsensitive) <= 0;
+            });
+            for (const auto &exe : std::as_const(exes)) {
+                mRootItem->child(FilterCriteriaModel::Category::EXE)
+                    ->appendChild(std::move(
+                        std::make_unique<SelectionEntry>(JournaldHelper::cleanupString(exe), exe, FilterCriteriaModel::Category::EXE, false, parent)));
+            }
         }
     }
 }
@@ -218,33 +224,28 @@ FilterCriteriaModel::FilterCriteriaModel(QObject *parent)
     : QAbstractItemModel(parent)
     , d(new FilterCriteriaModelPrivate)
 {
+}
+
+void FilterCriteriaModel::setJournalProvider(IJournalProvider *provider)
+{
+    d->mJournalProvider = provider;
+    if (provider) {
+        d->mJournal = provider->openJournal();
+    } else {
+        d->mJournal.reset();
+    }
+    Q_EMIT journalProviderChanged();
     beginResetModel();
-    d->mJournal = std::make_shared<LocalJournal>();
     d->rebuildModel();
     endResetModel();
 }
 
-FilterCriteriaModel::FilterCriteriaModel(const QString &journalPath, QObject *parent)
-    : QAbstractItemModel(parent)
-    , d(new FilterCriteriaModelPrivate)
+IJournalProvider *FilterCriteriaModel::journalProvider() const
 {
-    beginResetModel();
-    d->mJournal = std::make_shared<LocalJournal>(journalPath);
-    d->rebuildModel();
-    endResetModel();
+    return d->mJournalProvider;
 }
 
 FilterCriteriaModel::~FilterCriteriaModel() = default;
-
-bool FilterCriteriaModel::setJournaldPath(const QString &path)
-{
-    beginResetModel();
-    d->mJournal = std::make_shared<LocalJournal>(path);
-    bool success = d->mJournal->isValid();
-    d->rebuildModel();
-    endResetModel();
-    return success;
-}
 
 QHash<int, QByteArray> FilterCriteriaModel::roleNames() const
 {
@@ -255,14 +256,6 @@ QHash<int, QByteArray> FilterCriteriaModel::roleNames() const
     roles[FilterCriteriaModel::CATEGORY] = "category";
     roles[FilterCriteriaModel::SELECTED] = "selected";
     return roles;
-}
-
-void FilterCriteriaModel::setSystemJournal()
-{
-    beginResetModel();
-    d->mJournal = std::make_shared<LocalJournal>();
-    d->rebuildModel();
-    endResetModel();
 }
 
 int FilterCriteriaModel::priorityFilter() const

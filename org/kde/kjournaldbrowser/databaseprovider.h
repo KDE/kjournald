@@ -6,6 +6,7 @@
 #ifndef DATABASEPROVIDER_H
 #define DATABASEPROVIDER_H
 
+#include "localjournal.h"
 #include "systemdjournalremote.h"
 #include <QObject>
 #include <QQmlEngine>
@@ -26,6 +27,7 @@ class DatabaseProvider : public QObject
     Q_PROPERTY(QString localJournalPath READ localJournalPath NOTIFY journalPathChanged)
     Q_PROPERTY(QString remoteJournalUrl READ remoteJournalUrl NOTIFY journalPathChanged)
     Q_PROPERTY(quint32 remoteJournalPort READ remoteJournalPort NOTIFY journalPathChanged)
+    Q_PROPERTY(IJournalProvider *journalProvider READ journalProvider NOTIFY journalPathChanged)
 
     QML_ELEMENT
     QML_SINGLETON
@@ -34,6 +36,7 @@ public:
     enum class Mode {
         LOCALFOLDER, //!< local available journald folder
         SYSTEM, //!< local system journald database
+        USER, //!< Local user journaldbase
         REMOTE, //!< reading from remote port
     };
     Q_ENUM(Mode);
@@ -44,6 +47,7 @@ public:
     DatabaseProvider::Mode mode() const;
 
     Q_INVOKABLE void setSystemJournal();
+    Q_INVOKABLE void setUserJournal();
     Q_INVOKABLE void setLocalJournalPath(const QString &path);
     Q_INVOKABLE void setRemoteJournalUrl(const QString &url, quint32 port);
 
@@ -52,17 +56,21 @@ public:
     QString remoteJournalUrl() const;
     quint32 remoteJournalPort() const;
 
+    IJournalProvider *journalProvider();
+
 Q_SIGNALS:
     void journalPathChanged();
+    void journalChanged();
 
 private:
-    void initRemoteJournal();
+    void initJournal();
 
     Mode mMode{Mode::SYSTEM};
     QString mJournalPath;
     QString mRemoteJournalUrl;
     quint32 mRemoteJournalPort{0};
-    std::unique_ptr<SystemdJournalRemote> mRemoteJournal;
+
+    std::shared_ptr<IJournalProvider> mJournalProvider;
 };
 
 #endif

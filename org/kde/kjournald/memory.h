@@ -5,6 +5,7 @@
 
 #pragma once
 
+#include <errno.h>
 #include <memory>
 #include <systemd/sd-journal.h>
 

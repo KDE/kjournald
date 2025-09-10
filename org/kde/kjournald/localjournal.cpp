@@ -4,8 +4,8 @@
 */
 
 #include "localjournal.h"
-#include "localjournal_p.h"
 #include "kjournaldlib_log_general.h"
+#include "localjournal_p.h"
 #include <QDir>
 #include <systemd/sd-journal.h>
 
@@ -21,64 +21,35 @@ LocalJournalPrivate::LocalJournalPrivate()
     }
 }
 
-LocalJournal::LocalJournal()
+LocalJournal::LocalJournal(Mode mode)
     : d(new LocalJournalPrivate)
 {
-    auto expectedJournal = owning_ptr_call<sd_journal>(sd_journal_open, SD_JOURNAL_LOCAL_ONLY);
-    if (expectedJournal.ret < 0) {
-        qCCritical(KJOURNALDLIB_GENERAL) << "Failed to open journal:" << strerror(-expectedJournal.ret);
-    } else {
-        d->mJournal = std::move(expectedJournal.value);
-        d->mFd = sd_journal_get_fd(d->mJournal.get());
-        if (d->mFd > 0) {
-            d->mJournalSocketNotifier = std::make_unique<QSocketNotifier>(d->mFd, QSocketNotifier::Read);
-            connect(d->mJournalSocketNotifier.get(), &QSocketNotifier::activated, this, &LocalJournal::handleJournalDescriptorUpdate);
-        } else {
-            qCWarning(KJOURNALDLIB_GENERAL) << "Could not create FD" << strerror(-d->mFd);
-            d->mFd = 0;
-        }
-    }
+    d->mMode = mode;
 }
 
 LocalJournal::LocalJournal(const QString &path)
     : d(new LocalJournalPrivate)
 {
-    if (!QDir().exists(path)) {
-        qCCritical(KJOURNALDLIB_GENERAL) << "Journal directory does not exist, abort opening" << path;
-        return;
-    }
-    if (QFileInfo(path).isDir()) {
-        auto expectedJournal = owning_ptr_call<sd_journal>(sd_journal_open_directory, path.toStdString().c_str(), 0 /* no flags, directory defines type */);
-        if (expectedJournal.ret < 0) {
-            qCCritical(KJOURNALDLIB_GENERAL) << "Could not open journal from directory" << path << ":" << strerror(-expectedJournal.ret);
-        } else {
-            d->mJournal = std::move(expectedJournal.value);
-        }
-    } else if (QFileInfo(path).isFile()) {
-        const char **files = new const char *[1];
-        QByteArray journalPath = path.toLocal8Bit();
-        files[0] = journalPath.data();
-
-        auto expectedJournal = owning_ptr_call<sd_journal>(sd_journal_open_files, files, 0 /* no flags, directory defines type */);
-        if (expectedJournal.ret < 0) {
-            qCCritical(KJOURNALDLIB_GENERAL) << "Could not open journal from file" << path << ":" << strerror(-expectedJournal.ret);
-        } else {
-            d->mJournal = std::move(expectedJournal.value);
-        }
-        delete[] files;
-    }
+    d->mPath = path;
 }
 
 LocalJournal::~LocalJournal() = default;
 
-sd_journal *LocalJournal::sdJournal() const
+std::unique_ptr<SdJournal> LocalJournal::openJournal() const
 {
-    return d->mJournal.get();
-}
-
-bool LocalJournal::isValid() const
-{
-    return d->mJournal != nullptr;
+    if (!d->mPath.isEmpty()) {
+        qCDebug(KJOURNALDLIB_GENERAL) << "create sd_journal instance from path" << d->mPath;
+        return std::make_unique<SdJournal>(d->mPath);
+    } else {
+        int flags = SD_JOURNAL_LOCAL_ONLY;
+        if (d->mMode == Mode::System) {
+            flags |= SD_JOURNAL_SYSTEM;
+        } else {
+            flags |= SD_JOURNAL_CURRENT_USER;
+        }
+        qCDebug(KJOURNALDLIB_GENERAL) << "create sd_journal instance from system journal" << flags;
+        return std::make_unique<SdJournal>(flags);
+    }
 }
 
 QString LocalJournal::currentBootId() const
@@ -88,21 +59,14 @@ QString LocalJournal::currentBootId() const
 
 uint64_t LocalJournal::usage() const
 {
+    auto journal = openJournal();
+    if (!journal->isValid()) {
+        return 0;
+    }
     uint64_t size{0};
-    int res = sd_journal_get_usage(d->mJournal.get(), &size);
+    int res = sd_journal_get_usage(journal->get(), &size);
     if (res < 0) {
         qCCritical(KJOURNALDLIB_GENERAL) << "Could not obtain journal size:" << strerror(-res);
     }
     return size;
-}
-
-void LocalJournal::handleJournalDescriptorUpdate()
-{
-    // reset descriptor
-    QFile file;
-    file.open(d->mFd, QIODevice::ReadOnly);
-    file.readAll();
-    file.close();
-    qCDebug(KJOURNALDLIB_GENERAL) << "Local journal FD updated";
-    Q_EMIT journalUpdated(d->mCurrentBootId);
 }

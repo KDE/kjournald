@@ -130,23 +130,25 @@ void TestRemoteJournal::systemdJournalRemoteJournalFromFile()
     uint64_t time;
     sd_id128_t bootId;
 
-    SystemdJournalRemote journal(JOURNAL_EXPORT_FORMAT_EXAMPLE);
+    SystemdJournalRemote provider(JOURNAL_EXPORT_FORMAT_EXAMPLE);
+    auto journal = provider.openJournal();
+    QVERIFY(journal);
 
-    if (!journal.isSystemdRemoteAvailable()) {
+    if (!provider.isSystemdRemoteAvailable()) {
         QSKIP("Systemd remote is not correctly installed");
     }
 
-    QTRY_COMPARE_WITH_TIMEOUT(journal.isValid(), true, 5000);
+    QTRY_COMPARE_WITH_TIMEOUT(journal->isValid(), true, 5000);
 
-    if (!journal.isSystemdRemoteAvailable()) {
+    if (!provider.isSystemdRemoteAvailable()) {
         qWarning() << "Skip further test operations due to systemd remote not being available";
         return;
     }
 
-    QCOMPARE(sd_journal_seek_head(journal.sdJournal()), 0);
+    QCOMPARE(sd_journal_seek_head(journal->get()), 0);
 
     { // read first entry
-        QCOMPARE(sd_journal_next(journal.sdJournal()), 1); // 1 advanced line
+        QCOMPARE(sd_journal_next(journal->get()), 1); // 1 advanced line
 
         // {"__REALTIME_TIMESTAMP", "1342540861416409"},
         // {"__MONOTONIC_TIMESTAMP", "21415215982"},
@@ -175,23 +177,23 @@ void TestRemoteJournal::systemdJournalRemoteJournalFromFile()
         };
 
         // read and test real time
-        QCOMPARE(sd_journal_get_realtime_usec(journal.sdJournal(), &time), 0);
+        QCOMPARE(sd_journal_get_realtime_usec(journal->get(), &time), 0);
         QCOMPARE(time, 1342540861416409);
 
         // read and test monotonic time
-        QCOMPARE(sd_journal_get_monotonic_usec(journal.sdJournal(), &time, &bootId), 0);
+        QCOMPARE(sd_journal_get_monotonic_usec(journal->get(), &time, &bootId), 0);
         QCOMPARE(time, 21415215982);
 
         // read and test fields
         for (const auto &testEntry : testValues) {
             QByteArray field = testEntry.first.toLocal8Bit();
-            QCOMPARE(sd_journal_get_data(journal.sdJournal(), field.data(), (const void **)&data, &length), 0);
+            QCOMPARE(sd_journal_get_data(journal->get(), field.data(), (const void **)&data, &length), 0);
             QCOMPARE(QString::fromUtf8((const char *)data, length), testEntry.first + "=" + testEntry.second);
         }
     }
 
     {
-        QCOMPARE(sd_journal_next(journal.sdJournal()), 1);
+        QCOMPARE(sd_journal_next(journal->get()), 1);
 
         // {"__REALTIME_TIMESTAMP", "1342540861421465"},
         // {"__MONOTONIC_TIMESTAMP", "21415221039"},
@@ -221,17 +223,17 @@ void TestRemoteJournal::systemdJournalRemoteJournalFromFile()
         };
 
         // read and test real time
-        QCOMPARE(sd_journal_get_realtime_usec(journal.sdJournal(), &time), 0);
+        QCOMPARE(sd_journal_get_realtime_usec(journal->get(), &time), 0);
         QCOMPARE(time, 1342540861421465);
 
         // read and test monotonic time
-        QCOMPARE(sd_journal_get_monotonic_usec(journal.sdJournal(), &time, &bootId), 0);
+        QCOMPARE(sd_journal_get_monotonic_usec(journal->get(), &time, &bootId), 0);
         QCOMPARE(time, 21415221039);
 
         // read and test fields
         for (const auto &testEntry : testValues) {
             QByteArray field = testEntry.first.toLocal8Bit();
-            QCOMPARE(sd_journal_get_data(journal.sdJournal(), field.data(), (const void **)&data, &length), 0);
+            QCOMPARE(sd_journal_get_data(journal->get(), field.data(), (const void **)&data, &length), 0);
             QCOMPARE(QString::fromUtf8((const char *)data, length), testEntry.first + "=" + testEntry.second);
         }
     }
@@ -258,9 +260,12 @@ void TestRemoteJournal::systemdJournalRemoteJournalFromLocalhost()
     uint64_t time;
     sd_id128_t bootId;
 
-    SystemdJournalRemote journal("http://127.0.0.1", "19531");
-    QTRY_COMPARE_WITH_TIMEOUT(journal.isValid(), true, 5000);
-    QCOMPARE(sd_journal_seek_head(journal.sdJournal()), 0);
+    SystemdJournalRemote provider("http://127.0.0.1", "19531");
+    auto journal = provider.openJournal();
+    QVERIFY(journal);
+
+    QTRY_COMPARE_WITH_TIMEOUT(journal->isValid(), true, 5000);
+    QCOMPARE(sd_journal_seek_head(journal->get()), 0);
 
     systemdJournalGatwaydProcess.terminate();
     systemdJournalGatwaydProcess.waitForFinished(5000);

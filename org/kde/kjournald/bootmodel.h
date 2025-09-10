@@ -6,7 +6,7 @@
 #ifndef BOOTMODEL_H
 #define BOOTMODEL_H
 
-#include "ijournal.h"
+#include "ijournalprovider.h"
 #include "kjournald_export.h"
 #include <QAbstractItemModel>
 #include <QQmlEngine>
@@ -23,7 +23,7 @@ class BootModelPrivate;
 class KJOURNALD_EXPORT BootModel : public QAbstractListModel
 {
     Q_OBJECT
-    Q_PROPERTY(QString journalPath WRITE setJournaldPath READ journaldPath RESET setSystemJournal)
+    Q_PROPERTY(IJournalProvider * journalProvider WRITE setJournalProvider READ journalProvider NOTIFY journalProviderChanged)
 
     QML_ELEMENT
 
@@ -46,25 +46,6 @@ public:
     explicit BootModel(QObject *parent = nullptr);
 
     /**
-     * @brief Construct model from a journal database object
-     *
-     * @param journal object that contains a journald database object
-     * @param parent the QObject parent
-     */
-    BootModel(std::unique_ptr<IJournal> journal, QObject *parent = nullptr);
-
-    /**
-     * @brief Construct model from a journal database object
-     *
-     * This constructor works similar to "journalctl -D" and allows to use a custom path to the
-     * journald database.
-     *
-     * @param journalPath path to journald database
-     * @param parent the QObject parent
-     */
-    BootModel(const QString &journalPath, QObject *parent = nullptr);
-
-    /**
      * Destroys the boot model
      */
     ~BootModel() override;
@@ -72,19 +53,14 @@ public:
     /**
      * Reset model by reading from a new journald database
      *
-     * @param path The path to directory that obtains the journald DB, usually ending with "journal".
-     * @return true if path could be found and opened, otherwise false
+     * @param provider journal access factory
      */
-    bool setJournaldPath(const QString &path);
-
-    QString journaldPath() const;
+    void setJournalProvider(IJournalProvider * provider);
 
     /**
-     * Switch to local system's default journald database
-     *
-     * For details regarding preference, see journald documentation.
+     * @return currently set journal access factory
      */
-    void setSystemJournal();
+    IJournalProvider * journalProvider() const;
 
     /**
      * @copydoc QAbstractItemModel::roleNames()
@@ -100,6 +76,9 @@ public:
      * @copydoc QAbstractItemModel::data()
      */
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+
+Q_SIGNALS:
+    void journalProviderChanged();
 
 private:
     std::unique_ptr<BootModelPrivate> d;

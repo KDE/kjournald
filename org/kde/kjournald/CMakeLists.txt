@@ -51,7 +51,7 @@ target_sources(kjournald PRIVATE
     filtercriteriamodel.cpp
     filtercriteriamodel.h
     filtercriteriamodel_p.h
-    ijournal.h
+    ijournalprovider.h
     localjournal.cpp
     localjournal.h
     localjournal_p.h
@@ -65,6 +65,8 @@ target_sources(kjournald PRIVATE
     journalduniquequerymodel.h
     journalduniquequerymodel_p.h
     memory.h
+    sdjournal.h
+    sdjournal.cpp
     systemdjournalremote.cpp
     systemdjournalremote.h
     systemdjournalremote_p.h
@@ -107,11 +109,12 @@ install(TARGETS kjournald
 if(INSTALL_EXPERIMENTAL_HEADERS)
     install(FILES
         filter.h
-        ijournal.h
+        ijournalprovider.h
         localjournal.h
         journaldhelper.h
         journaldviewmodel.h
         journalduniquequerymodel.h
+        sdjournal.h
         systemdjournalremote.h
         ${CMAKE_CURRENT_BINARY_DIR}/kjournald_export.h
         DESTINATION ${KDE_INSTALL_INCLUDEDIR}

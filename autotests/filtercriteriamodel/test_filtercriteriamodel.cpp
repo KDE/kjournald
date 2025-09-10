@@ -4,6 +4,7 @@
 */
 
 #include "test_filtercriteriamodel.h"
+#include "../../org/kde/kjournald/localjournal.h"
 #include "../containertesthelper.h"
 #include "../testdatalocation.h"
 #include "filtercriteriamodel.h"
@@ -26,17 +27,24 @@ void TestFilterCriteriaModel::basicTreeModelStructure()
 
     // test failure handling for invalid journal: categories shall also be available there
     QTemporaryFile invalidJournal; // file is surely invalid
-    QCOMPARE(model.setJournaldPath(invalidJournal.fileName()), false);
-    QVERIFY(model.rowCount() > 0);
 
-    // use extracted journal
-    QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
-    QVERIFY(model.rowCount() > 0);
+    {
+        auto provider = LocalJournal(invalidJournal.fileName());
+        model.setJournalProvider(&provider);
+        QVERIFY(model.rowCount() > 0);
+    }
 
-    // check for all expected categories
-    MODEL_CONTAINS(model, FilterCriteriaModel::Roles::CATEGORY, FilterCriteriaModel::Category::SYSTEMD_UNIT);
-    MODEL_CONTAINS(model, FilterCriteriaModel::Roles::CATEGORY, FilterCriteriaModel::Category::EXE);
-    MODEL_CONTAINS(model, FilterCriteriaModel::Roles::CATEGORY, FilterCriteriaModel::Category::PRIORITY);
+    {
+        // use extracted journal
+        auto provider = LocalJournal(JOURNAL_LOCATION);
+        model.setJournalProvider(&provider);
+        QVERIFY(model.rowCount() > 0);
+
+        // check for all expected categories
+        MODEL_CONTAINS(model, FilterCriteriaModel::Roles::CATEGORY, FilterCriteriaModel::Category::SYSTEMD_UNIT);
+        MODEL_CONTAINS(model, FilterCriteriaModel::Roles::CATEGORY, FilterCriteriaModel::Category::EXE);
+        MODEL_CONTAINS(model, FilterCriteriaModel::Roles::CATEGORY, FilterCriteriaModel::Category::PRIORITY);
+    }
 }
 
 void TestFilterCriteriaModel::standaloneTestSystemdUnitSelectionOptions()
@@ -45,7 +53,8 @@ void TestFilterCriteriaModel::standaloneTestSystemdUnitSelectionOptions()
     QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
 
     // use extracted journal
-    QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
+    auto provider = LocalJournal(JOURNAL_LOCATION);
+    model.setJournalProvider(&provider);
     QVERIFY(model.rowCount() > 0);
     QVERIFY(model.entries(FilterCriteriaModel::Category::SYSTEMD_UNIT).count() > 0);
 
@@ -77,7 +86,8 @@ void TestFilterCriteriaModel::standaloneTestExeSelectionOptions()
     QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
 
     // use extracted journal
-    QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
+    auto provider = LocalJournal(JOURNAL_LOCATION);
+    model.setJournalProvider(&provider);
     QVERIFY(model.rowCount() > 0);
     QVERIFY(model.entries(FilterCriteriaModel::Category::EXE).count() > 0);
 
@@ -111,7 +121,8 @@ void TestFilterCriteriaModel::standaloneTestPrioritySelectionOptions()
     QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
 
     // use extracted journal
-    QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
+    auto provider = LocalJournal(JOURNAL_LOCATION);
+    model.setJournalProvider(&provider);
     QVERIFY(model.rowCount() > 0);
     QVERIFY(model.entries(FilterCriteriaModel::Category::PRIORITY).count() > 0);
 

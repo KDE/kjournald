@@ -6,6 +6,7 @@
 #ifndef FILTERCRITERIAMODEL_H
 #define FILTERCRITERIAMODEL_H
 
+#include "ijournalprovider.h"
 #include "kjournald_export.h"
 #include <QAbstractItemModel>
 #include <QQmlEngine>
@@ -29,7 +30,7 @@ class FilterCriteriaModelPrivate;
 class KJOURNALD_EXPORT FilterCriteriaModel : public QAbstractItemModel
 {
     Q_OBJECT
-    Q_PROPERTY(QString journalPath WRITE setJournaldPath RESET setSystemJournal)
+    Q_PROPERTY(IJournalProvider * journalProvider READ journalProvider WRITE setJournalProvider NOTIFY journalProviderChanged)
     /**
      * Filter for message priorities
      */
@@ -68,23 +69,13 @@ public:
     Q_ENUM(Roles)
 
     /**
-     * @brief Create filter criteria model for the system journal
+     * @brief Create filter criteria model
      *
      * This tree model provides a tree based structure for the most common filter options.
      *
      * @param parent the QObject parent
      */
     explicit FilterCriteriaModel(QObject *parent = nullptr);
-
-    /**
-     * @brief Create filter criteria model
-     *
-     * This tree model provides a tree based structure for the most common filter options.
-     *
-     * @param journalPath path to the journald database
-     * @param parent the QObject parent
-     */
-    FilterCriteriaModel(const QString &journalPath, QObject *parent = nullptr);
 
     /**
      * @brief Destroys the object
@@ -95,16 +86,10 @@ public:
      * Reset model by reading from a new journald database
      *
      * @param path The path to directory that obtains the journald DB, usually ending with "journal".
-     * @return true if path could be found and opened, otherwise false
      */
-    bool setJournaldPath(const QString &path);
+    void setJournalProvider(IJournalProvider * provider);
 
-    /**
-     * Switch to local system's default journald database
-     *
-     * For details regarding preference, see journald documentation.
-     */
-    void setSystemJournal();
+    IJournalProvider * journalProvider() const;
 
     /**
      * @return the currently selected priority threshold for displayed log entries
@@ -171,6 +156,7 @@ Q_SIGNALS:
     void systemdUnitFilterChanged();
     void exeFilterChanged();
     void kernelFilterChanged();
+    void journalProviderChanged();
 
 private:
     std::unique_ptr<FilterCriteriaModelPrivate> d;
