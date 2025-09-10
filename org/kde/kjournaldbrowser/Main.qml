@@ -35,7 +35,7 @@ StatefulApp.StatefulWindow {
     }
 
     Binding {
-        root.filterModel.journalPath: DatabaseProvider.mode === DatabaseProvider.SYSTEM ? undefined : DatabaseProvider.journalPath
+        root.filterModel.journalProvider: DatabaseProvider.journalProvider
     }
 
     menuBar: TopMenuBar {
@@ -317,12 +317,12 @@ StatefulApp.StatefulWindow {
 
     BootModel {
         id: bootModel
-        journalPath: DatabaseProvider.mode === DatabaseProvider.SYSTEM ? undefined : DatabaseProvider.journalPath
+        journalProvider: DatabaseProvider.journalProvider
     }
 
     JournaldViewModel {
         id: journalModel
-        journalPath: DatabaseProvider.mode === DatabaseProvider.SYSTEM ? undefined : DatabaseProvider.journalPath
+        journalProvider: DatabaseProvider.journalProvider
         filter.units: root.filterModel.systemdUnitFilter
         filter.exes: root.filterModel.exeFilter
         filter.boots: bootIdComboBox.currentValue

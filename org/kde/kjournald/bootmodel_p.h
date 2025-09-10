@@ -17,16 +17,12 @@ public:
     };
 
     using BootInfo = JournaldHelper::BootInfo;
-
-    explicit BootModelPrivate(std::unique_ptr<IJournal> journal);
-
     static QString prettyPrintBoot(const BootInfo &bootInfo, TIME_FORMAT format);
-
     void sort(Qt::SortOrder order);
 
     QVector<BootInfo> mBootInfo;
-    QString mJournaldPath;
-    std::unique_ptr<IJournal> mJournal;
+    IJournalProvider *mJournalProvider{nullptr};
+    std::unique_ptr<SdJournal> mJournal;
 };
 
 QString BootModelPrivate::prettyPrintBoot(const BootInfo &bootInfo, TIME_FORMAT format)

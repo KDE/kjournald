@@ -6,69 +6,36 @@
 #include "bootmodel.h"
 #include "bootmodel_p.h"
 #include "kjournaldlib_log_general.h"
-#include "localjournal.h"
-
-BootModelPrivate::BootModelPrivate(std::unique_ptr<IJournal> journal)
-    : mJournal(std::move(journal))
-{
-}
 
 BootModel::BootModel(QObject *parent)
     : QAbstractListModel(parent)
-    , d(new BootModelPrivate(std::make_unique<LocalJournal>()))
+    , d(new BootModelPrivate)
 {
-    d->mBootInfo = JournaldHelper::queryOrderedBootIds(*d->mJournal.get());
-    d->sort(Qt::SortOrder::DescendingOrder);
-}
-
-BootModel::BootModel(const QString &journaldPath, QObject *parent)
-    : QAbstractListModel(parent)
-    , d(new BootModelPrivate(std::make_unique<LocalJournal>(journaldPath)))
-{
-    d->mBootInfo = JournaldHelper::queryOrderedBootIds(*d->mJournal.get());
-    d->sort(Qt::SortOrder::DescendingOrder);
-}
-
-BootModel::BootModel(std::unique_ptr<IJournal> journal, QObject *parent)
-    : QAbstractListModel(parent)
-    , d(new BootModelPrivate(std::move(journal)))
-{
-    d->mBootInfo = JournaldHelper::queryOrderedBootIds(*d->mJournal.get());
-    d->sort(Qt::SortOrder::DescendingOrder);
 }
 
 BootModel::~BootModel() = default;
 
-bool BootModel::setJournaldPath(const QString &path)
+void BootModel::setJournalProvider(IJournalProvider *provider)
 {
-    qCDebug(KJOURNALDLIB_GENERAL) << "load journal from path" << path;
-    bool success{true};
-    beginResetModel();
-    d->mJournaldPath = path;
-    d->mJournal = std::make_unique<LocalJournal>(path);
-    success = d->mJournal->isValid();
-    if (success) {
-        d->mBootInfo = JournaldHelper::queryOrderedBootIds(*d->mJournal.get());
-        d->sort(Qt::SortOrder::DescendingOrder);
+    d->mJournalProvider = provider;
+    if (provider) {
+        d->mJournal = provider->openJournal();
+    } else {
+        d->mJournal.reset();
     }
-    endResetModel();
-    return success;
-}
-
-QString BootModel::journaldPath() const
-{
-    return d->mJournaldPath;
-}
-
-void BootModel::setSystemJournal()
-{
-    qCDebug(KJOURNALDLIB_GENERAL) << "load system journal";
+    Q_EMIT journalProviderChanged();
     beginResetModel();
-    d->mJournaldPath = QString();
-    d->mJournal = std::make_unique<LocalJournal>();
-    d->mBootInfo = JournaldHelper::queryOrderedBootIds(*d->mJournal.get());
-    d->sort(Qt::SortOrder::DescendingOrder);
-    endResetModel();
+    d->mBootInfo.clear();
+    if (d->mJournal) {
+        d->mBootInfo = JournaldHelper::queryOrderedBootIds(d->mJournal->get());
+        d->sort(Qt::SortOrder::DescendingOrder);
+        endResetModel();
+    }
+}
+
+IJournalProvider *BootModel::journalProvider() const
+{
+    return d->mJournalProvider;
 }
 
 QHash<int, QByteArray> BootModel::roleNames() const
@@ -105,7 +72,7 @@ QVariant BootModel::data(const QModelIndex &index, int role) const
     case BootModel::DISPLAY_SHORT_LOCALTIME:
         return d->prettyPrintBoot(d->mBootInfo.at(index.row()), BootModelPrivate::TIME_FORMAT::LOCALTIME);
     case BootModel::CURRENT:
-        return QVariant::fromValue<bool>(d->mJournal->currentBootId() == d->mBootInfo.at(index.row()).mBootId);
+        return QVariant::fromValue<bool>(d->mJournalProvider->currentBootId() == d->mBootInfo.at(index.row()).mBootId);
     }
 
     return QVariant();

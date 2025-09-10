@@ -10,7 +10,7 @@
 #include "kjournald_export.h"
 #include <QAbstractItemModel>
 #include <QQmlEngine>
-#include <ijournal.h>
+#include <ijournalprovider.h>
 #include <memory>
 
 class JournaldViewModelPrivate;
@@ -24,7 +24,7 @@ class JournaldViewModelPrivate;
 class KJOURNALD_EXPORT JournaldViewModel : public QAbstractItemModel
 {
     Q_OBJECT
-    Q_PROPERTY(QString journalPath WRITE setJournaldPath RESET setSystemJournal)
+    Q_PROPERTY(IJournalProvider *journalProvider READ journalProvider WRITE setJournalProvider NOTIFY journalProviderChanged)
 
     /**
      * Configure filter for view model
@@ -69,57 +69,18 @@ public:
     explicit JournaldViewModel(QObject *parent = nullptr);
 
     /**
-     * @brief Construct model from a specific journal database
-     *
-     * This constructor works similar to "journalctl -D" and allows to use a custom path to the
-     * journald database.
-     *
-     * @param journalPath path to the journald database
-     * @param parent the QObject parent
-     */
-    JournaldViewModel(const QString &journalPath, QObject *parent = nullptr);
-
-    /**
-     * @brief Construct model for given journal object
-     *
-     * @note API requires a unique_ptr because journald documentation explicitly states that (even though it works
-     * at the moment) one cannot assume that using differen requests for the same journal has no side effects.
-     * A prominent example would be to use the same journal object for unique query requests and for obtaining the log
-     * content.
-     *
-     * @param journal object that contains a journald database object
-     * @param parent the QObject parent
-     */
-    JournaldViewModel(std::unique_ptr<IJournal> journal, QObject *parent = nullptr);
-
-    /**
      * Destroys JournaldViewModel
      */
     ~JournaldViewModel() override;
 
     /**
-     * Reset model by reading from a new journald database
-     *
-     * @param path The path to directory that obtains the journald DB, usually ending with "journal".
-     * @return true if path could be found and opened, otherwise false
-     */
-    bool setJournaldPath(const QString &path);
-
-    /**
-     * Switch to local system's default journald database
-     *
-     * For details regarding preference, see journald documentation.
-     * @return true if journal was loaded correctly
-     */
-    bool setSystemJournal();
-
-    /**
      * Reset model by using given journal object
      *
      * @param journal The journald access wrapper
-     * @return true if path could be opened, otherwise false
      */
-    bool setJournal(std::unique_ptr<IJournal> journal);
+    void setJournalProvider(IJournalProvider *provider);
+
+    IJournalProvider *journalProvider() const;
 
     /**
      * @copydoc QAbstractItemModel::rolesNames()
@@ -240,6 +201,7 @@ Q_SIGNALS:
      * Signal is emitted when filter is changed
      */
     void filterChanged();
+    void journalProviderChanged();
 
 protected:
     void guardedBeginResetModel();

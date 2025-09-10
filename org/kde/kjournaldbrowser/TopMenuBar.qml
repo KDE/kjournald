@@ -27,6 +27,13 @@ MenuBar {
             }
         }
         MenuItem {
+            text: i18n("Open User Journal")
+            icon.name: "document-open"
+            onTriggered: {
+                DatabaseProvider.setUserJournal()
+            }
+        }
+        MenuItem {
             text: i18n("Open from Folder")
             icon.name: "document-open"
             onTriggered: {

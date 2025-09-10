@@ -72,33 +72,6 @@ SystemdJournalRemote::SystemdJournalRemote(const QString &filePath)
     d->mJournalRemoteProcess.start(d->mSystemdJournalRemoteExec, QStringList() << QLatin1String("--output=") + d->journalFile() << filePath);
     // local file access currently only works when the full journal file is written
     d->mJournalRemoteProcess.waitForFinished();
-
-    connect(&d->mTemporaryJournalDirWatcher,
-            &QFileSystemWatcher::directoryChanged,
-            this,
-            &SystemdJournalRemote::handleJournalFileCreated,
-            Qt::QueuedConnection);
-}
-
-void SystemdJournalRemote::handleJournalFileCreated(const QString &path)
-{
-    qCDebug(KJOURNALDLIB_GENERAL) << "handle created journal file at:" << path;
-    if (path.isEmpty() || !QDir().exists(d->journalFile())) {
-        qCCritical(KJOURNALDLIB_GENERAL) << "Journal directory does not exist, abort opening" << d->journalFile();
-        return;
-    }
-
-    const char **files = new const char *[1];
-    QByteArray journalPath = d->journalFile().toLocal8Bit();
-    files[0] = journalPath.data();
-
-    int result = sd_journal_open_files(&d->mJournal, files, 0 /* no flags, directory defines type */);
-    if (result < 0) {
-        qCCritical(KJOURNALDLIB_GENERAL) << "Could not open journal:" << strerror(-result);
-    }
-    delete[] files;
-
-    Q_EMIT journalFileChanged();
 }
 
 void SystemdJournalRemote::handleJournalRemoteProcessErrors(QProcess::ProcessError error)
@@ -118,12 +91,6 @@ SystemdJournalRemote::SystemdJournalRemote(const QString &url, const QString &po
                                    QStringList() << QLatin1String("--output=") + d->journalFile() << QLatin1String("--url=") + url + QLatin1Char(':') + port
                                                  << QLatin1String("--split-mode=none"));
     d->mJournalRemoteProcess.waitForStarted();
-
-    connect(&d->mTemporaryJournalDirWatcher,
-            &QFileSystemWatcher::directoryChanged,
-            this,
-            &SystemdJournalRemote::handleJournalFileCreated,
-            Qt::QueuedConnection);
 }
 
 SystemdJournalRemote::~SystemdJournalRemote()
@@ -135,8 +102,6 @@ SystemdJournalRemote::~SystemdJournalRemote()
         d->mJournalRemoteProcess.kill();
     }
     d->mJournalRemoteProcess.waitForFinished();
-    sd_journal_close(d->mJournal);
-    d->mJournal = nullptr;
 }
 
 QString SystemdJournalRemote::journalFile() const
@@ -144,14 +109,12 @@ QString SystemdJournalRemote::journalFile() const
     return d->journalFile();
 }
 
-sd_journal *SystemdJournalRemote::sdJournal() const
+std::unique_ptr<SdJournal> SystemdJournalRemote::openJournal() const
 {
-    return d->mJournal;
-}
-
-bool SystemdJournalRemote::isValid() const
-{
-    return d->mJournal != nullptr;
+    qCDebug(KJOURNALDLIB_GENERAL) << "use temporary journal directory:" << d->mTemporyJournalDir.path();
+    // do not test if temporary file already exists, because that can happen delayed
+    // after systemd-remote is fully running
+    return std::make_unique<SdJournal>(d->mTemporyJournalDir.path(), 0);
 }
 
 QString SystemdJournalRemote::currentBootId() const
@@ -162,8 +125,12 @@ QString SystemdJournalRemote::currentBootId() const
 
 uint64_t SystemdJournalRemote::usage() const
 {
+    auto journal = openJournal();
+    if (!journal->isValid()) {
+        return 0;
+    }
     uint64_t size{0};
-    int res = sd_journal_get_usage(d->mJournal, &size);
+    int res = sd_journal_get_usage(journal->get(), &size);
     if (res < 0) {
         qCCritical(KJOURNALDLIB_GENERAL) << "Could not obtain journal size:" << strerror(-res);
     }

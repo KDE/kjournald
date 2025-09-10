@@ -10,6 +10,7 @@
 DatabaseProvider::DatabaseProvider(QObject *parent)
     : QObject(parent)
 {
+    setSystemJournal();
 }
 
 DatabaseProvider::~DatabaseProvider() = default;
@@ -24,6 +25,16 @@ void DatabaseProvider::setSystemJournal()
     // not setting any path defaults to system journal
     mJournalPath = QString();
     mMode = Mode::SYSTEM;
+    mJournalProvider = std::make_shared<LocalJournal>(LocalJournal::Mode::System);
+    Q_EMIT journalPathChanged();
+}
+
+void DatabaseProvider::setUserJournal()
+{
+    // not setting any path defaults to system journal
+    mJournalPath = QString();
+    mMode = Mode::USER;
+    mJournalProvider = std::make_shared<LocalJournal>(LocalJournal::Mode::User);
     Q_EMIT journalPathChanged();
 }
 
@@ -46,6 +57,7 @@ void DatabaseProvider::setLocalJournalPath(const QString &path)
     }
     mJournalPath = resolvedPath;
     mMode = Mode::LOCALFOLDER;
+    mJournalProvider = std::make_shared<LocalJournal>(mJournalPath);
     Q_EMIT journalPathChanged();
 }
 
@@ -56,7 +68,7 @@ void DatabaseProvider::setRemoteJournalUrl(const QString &url, quint32 port)
     }
     mRemoteJournalUrl = url;
     mRemoteJournalPort = port;
-    initRemoteJournal();
+    initJournal();
     mMode = Mode::REMOTE;
     Q_EMIT journalPathChanged();
 }
@@ -71,18 +83,24 @@ quint32 DatabaseProvider::remoteJournalPort() const
     return mRemoteJournalPort;
 }
 
+IJournalProvider *DatabaseProvider::journalProvider()
+{
+    return mJournalProvider.get();
+}
+
 QString DatabaseProvider::localJournalPath() const
 {
     return mJournalPath;
 }
 
-void DatabaseProvider::initRemoteJournal()
+void DatabaseProvider::initJournal()
 {
     if (mRemoteJournalUrl.isEmpty() || mRemoteJournalPort == 0) {
         return;
     }
-    mRemoteJournal = std::make_unique<SystemdJournalRemote>(mRemoteJournalUrl, QString::number(mRemoteJournalPort));
-    connect(mRemoteJournal.get(), &SystemdJournalRemote::journalFileChanged, this, [=]() {
-        setLocalJournalPath(QFileInfo(mRemoteJournal->journalFile()).absolutePath());
+    auto remoteJournal = std::make_shared<SystemdJournalRemote>(mRemoteJournalUrl, QString::number(mRemoteJournalPort));
+    connect(remoteJournal.get(), &SystemdJournalRemote::journalFileChanged, this, [=]() {
+        setLocalJournalPath(QFileInfo(remoteJournal->journalFile()).absolutePath());
     });
+    mJournalProvider = remoteJournal;
 }

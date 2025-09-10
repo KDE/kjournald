@@ -21,7 +21,6 @@ public:
     bool sanityCheckForSystemdJournalRemoteExec() const;
     QString journalFile() const;
 
-    mutable sd_journal *mJournal{nullptr};
     QTemporaryDir mTemporyJournalDir;
     QFileSystemWatcher mTemporaryJournalDirWatcher;
     QProcess mJournalRemoteProcess;

@@ -9,7 +9,6 @@
 #include "journaldviewmodel_p.h"
 #include "kjournaldlib_log_filtertrace.h"
 #include "kjournaldlib_log_general.h"
-#include "localjournal.h"
 #include "logentry.h"
 #include <QColor>
 #include <QDebug>
@@ -22,15 +21,15 @@
 
 void JournaldViewModelPrivate::resetJournal()
 {
-    if (!mJournal->isValid()) {
-        qCWarning(KJOURNALDLIB_GENERAL) << "Skipping seek head, no valid journal open";
+    if (!mJournal || !mJournal->isValid()) {
+        qCWarning(KJOURNALDLIB_GENERAL) << "Skipping reset, no valid journal open";
         return;
     }
 
     int result{0};
 
     // reset all filters
-    sd_journal_flush_matches(mJournal->sdJournal());
+    sd_journal_flush_matches(mJournal->get());
 
     qCDebug(KJOURNALDLIB_FILTERTRACE) << "flush_matches()";
 
@@ -147,36 +146,36 @@ void JournaldViewModelPrivate::resetJournal()
     // transport layer must be applied
     if (mFilter.areKernelMessagesEnabled()) {
         clauseAdded = true;
-        addMatchesBootFilter(mJournal->sdJournal(), mFilter.bootFilter());
-        addMatchesPriorityFilter(mJournal->sdJournal(), mFilter.priorityFilter());
+        addMatchesBootFilter(mJournal->get(), mFilter.bootFilter());
+        addMatchesPriorityFilter(mJournal->get(), mFilter.priorityFilter());
         QStringList transportFilter = kernelTransports;
         if (mFilter.systemdUnitFilter().empty() && mFilter.exeFilter().empty()) {
             transportFilter.append(nonKernelTransports);
         }
-        addMatchesTransportFilter(mJournal->sdJournal(), transportFilter);
+        addMatchesTransportFilter(mJournal->get(), transportFilter);
     } else if (mFilter.systemdUnitFilter().empty() && mFilter.exeFilter().empty()) {
         clauseAdded = true;
-        addMatchesBootFilter(mJournal->sdJournal(), mFilter.bootFilter());
-        addMatchesPriorityFilter(mJournal->sdJournal(), mFilter.priorityFilter());
-        addMatchesTransportFilter(mJournal->sdJournal(), nonKernelTransports);
+        addMatchesBootFilter(mJournal->get(), mFilter.bootFilter());
+        addMatchesPriorityFilter(mJournal->get(), mFilter.priorityFilter());
+        addMatchesTransportFilter(mJournal->get(), nonKernelTransports);
     }
     if (clauseAdded && !mFilter.systemdUnitFilter().empty()) {
-        addDisjunction(mJournal->sdJournal());
+        addDisjunction(mJournal->get());
         clauseAdded = false;
     }
     if (!mFilter.systemdUnitFilter().empty()) {
         clauseAdded = true;
-        addMatchesBootFilter(mJournal->sdJournal(), mFilter.bootFilter());
-        addMatchesPriorityFilter(mJournal->sdJournal(), mFilter.priorityFilter());
-        addMatchesUnitFilter(mJournal->sdJournal(), mFilter.systemdUnitFilter());
+        addMatchesBootFilter(mJournal->get(), mFilter.bootFilter());
+        addMatchesPriorityFilter(mJournal->get(), mFilter.priorityFilter());
+        addMatchesUnitFilter(mJournal->get(), mFilter.systemdUnitFilter());
     }
     if (clauseAdded && !mFilter.exeFilter().empty()) {
-        addDisjunction(mJournal->sdJournal());
+        addDisjunction(mJournal->get());
     }
     if (!mFilter.exeFilter().empty()) {
-        addMatchesBootFilter(mJournal->sdJournal(), mFilter.bootFilter());
-        addMatchesPriorityFilter(mJournal->sdJournal(), mFilter.priorityFilter());
-        addMatchesExeFilter(mJournal->sdJournal(), mFilter.exeFilter());
+        addMatchesBootFilter(mJournal->get(), mFilter.bootFilter());
+        addMatchesPriorityFilter(mJournal->get(), mFilter.priorityFilter());
+        addMatchesExeFilter(mJournal->get(), mFilter.exeFilter());
     }
 
     qCDebug(KJOURNALDLIB_FILTERTRACE).nospace() << "Filter DONE";
@@ -188,6 +187,11 @@ void JournaldViewModelPrivate::resetJournal()
 
 QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
 {
+    if (!mJournal || !mJournal->isValid()) {
+        qCWarning(KJOURNALDLIB_GENERAL) << "Skipping read entries, no valid journal open";
+        return {};
+    }
+
     QString dir = (direction == Direction::TOWARDS_HEAD) ? QStringLiteral("head") : QStringLiteral("tail");
     static QMutex mutex;
     QMutexLocker locker(&mutex);
@@ -204,13 +208,13 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
         switch (seekResult) {
         case SeekCursorResult::CURSOR_MADE_CURRENT:
             if (direction == Direction::TOWARDS_TAIL) {
-                result = sd_journal_next(mJournal->sdJournal());
+                result = sd_journal_next(mJournal->get());
                 if (result == 0) {
                     mTailCursorReached = true;
                     return {};
                 }
             } else if (direction == Direction::TOWARDS_HEAD) {
-                result = sd_journal_previous(mJournal->sdJournal());
+                result = sd_journal_previous(mJournal->get());
                 if (result == 0) {
                     mHeadCursorReached = true;
                     return {};
@@ -239,40 +243,40 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
         uint64_t time;
         int result{1};
         LogEntry entry;
-        result = sd_journal_get_realtime_usec(mJournal->sdJournal(), &time);
+        result = sd_journal_get_realtime_usec(mJournal->get(), &time);
         if (result == 0) {
             entry.setDate(QDateTime::fromMSecsSinceEpoch(time / 1000, Qt::UTC));
         }
         sd_id128_t bootId; // currently unused
-        result = sd_journal_get_monotonic_usec(mJournal->sdJournal(), &time, &bootId);
+        result = sd_journal_get_monotonic_usec(mJournal->get(), &time, &bootId);
         if (result == 0) {
             entry.setMonotonicTimestamp(time);
         }
-        result = sd_journal_get_data(mJournal->sdJournal(), "MESSAGE", (const void **)&data, &length);
+        result = sd_journal_get_data(mJournal->get(), "MESSAGE", (const void **)&data, &length);
         if (result == 0) {
             entry.setMessage(QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1));
         }
-        result = sd_journal_get_data(mJournal->sdJournal(), "MESSAGE_ID", (const void **)&data, &length);
+        result = sd_journal_get_data(mJournal->get(), "MESSAGE_ID", (const void **)&data, &length);
         if (result == 0) {
             entry.setId(QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1));
         }
-        result = sd_journal_get_data(mJournal->sdJournal(), "_SYSTEMD_UNIT", (const void **)&data, &length);
+        result = sd_journal_get_data(mJournal->get(), "_SYSTEMD_UNIT", (const void **)&data, &length);
         if (result == 0) {
             entry.setUnit(JournaldHelper::cleanupString(QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1)));
         }
-        result = sd_journal_get_data(mJournal->sdJournal(), "_BOOT_ID", (const void **)&data, &length);
+        result = sd_journal_get_data(mJournal->get(), "_BOOT_ID", (const void **)&data, &length);
         if (result == 0) {
             entry.setBootId(QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1));
         }
-        result = sd_journal_get_data(mJournal->sdJournal(), "_EXE", (const void **)&data, &length);
+        result = sd_journal_get_data(mJournal->get(), "_EXE", (const void **)&data, &length);
         if (result == 0) {
             entry.setExe(QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1));
         }
-        result = sd_journal_get_data(mJournal->sdJournal(), "PRIORITY", (const void **)&data, &length);
+        result = sd_journal_get_data(mJournal->get(), "PRIORITY", (const void **)&data, &length);
         if (result == 0) {
             entry.setPriority(QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1).toInt());
         }
-        result = sd_journal_get_cursor(mJournal->sdJournal(), &data);
+        result = sd_journal_get_cursor(mJournal->get(), &data);
         if (result == 0) {
             entry.setCursor(QString::fromUtf8(data));
             free(data);
@@ -286,14 +290,14 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
 
         // obtain more data, 1 for success, 0 if reached end
         if (direction == Direction::TOWARDS_TAIL) {
-            result = sd_journal_next(mJournal->sdJournal());
+            result = sd_journal_next(mJournal->get());
             if (result == 0) {
                 mTailCursorReached = true;
                 qCDebug(KJOURNALDLIB_GENERAL) << "obtained journal until tail, stop reading";
                 break;
             }
         } else {
-            if (sd_journal_previous(mJournal->sdJournal()) <= 0) {
+            if (sd_journal_previous(mJournal->get()) <= 0) {
                 mHeadCursorReached = true;
                 qCDebug(KJOURNALDLIB_GENERAL) << "obtained journal until head, stop reading";
                 break;
@@ -308,7 +312,7 @@ JournaldViewModelPrivate::SeekCursorResult JournaldViewModelPrivate::seekCursor(
 {
     int result{0};
     // note: seek cursor does not make it current, but a subsequent sd_journal_next is required
-    result = sd_journal_seek_cursor(mJournal->sdJournal(), cursor.toUtf8().constData());
+    result = sd_journal_seek_cursor(mJournal->get(), cursor.toUtf8().constData());
     if (result < 0) {
         qCWarning(KJOURNALDLIB_GENERAL) << "seeking cursor but could not be found" << strerror(-result);
         return SeekCursorResult::ERROR;
@@ -316,7 +320,7 @@ JournaldViewModelPrivate::SeekCursorResult JournaldViewModelPrivate::seekCursor(
 
     // make entry current
     // every result other than 1 is an error, because the cursor is expected to exist
-    result = sd_journal_next(mJournal->sdJournal());
+    result = sd_journal_next(mJournal->get());
     if (result != 1) {
         qCCritical(KJOURNALDLIB_GENERAL) << "seeked entry for cursor could not be made current";
         return JournaldViewModelPrivate::SeekCursorResult::ERROR;
@@ -324,16 +328,16 @@ JournaldViewModelPrivate::SeekCursorResult JournaldViewModelPrivate::seekCursor(
 
     // fallback search logic for problematic versions of systemd: https://github.com/systemd/systemd/issues/31516
     // note the linear search is very expensive and should be the exception
-    result = sd_journal_test_cursor(mJournal->sdJournal(), cursor.toUtf8().constData());
+    result = sd_journal_test_cursor(mJournal->get(), cursor.toUtf8().constData());
     if (result > 0) {
         return SeekCursorResult::CURSOR_MADE_CURRENT;
     } else {
         qCWarning(KJOURNALDLIB_GENERAL) << "current position does not match expected cursor, entering expensive linear search";
         //(requested, actual):" << cursor << actualCursor;
-        sd_journal_seek_head(mJournal->sdJournal());
-        while (sd_journal_next(mJournal->sdJournal()) > 0) {
+        sd_journal_seek_head(mJournal->get());
+        while (sd_journal_next(mJournal->get()) > 0) {
             char *actualCursor{nullptr};
-            const int actualCursorResult = sd_journal_get_cursor(mJournal->sdJournal(), &actualCursor);
+            const int actualCursorResult = sd_journal_get_cursor(mJournal->get(), &actualCursor);
             free(actualCursor);
             if (actualCursorResult >= 0) {
                 return SeekCursorResult::CURSOR_MADE_CURRENT;
@@ -347,12 +351,12 @@ JournaldViewModelPrivate::SeekCursorResult JournaldViewModelPrivate::seekCursor(
 bool JournaldViewModelPrivate::seekHeadAndMakeCurrent()
 {
     qCDebug(KJOURNALDLIB_GENERAL) << "seek head and make current";
-    int result = sd_journal_seek_head(mJournal->sdJournal());
+    int result = sd_journal_seek_head(mJournal->get());
     if (result < 0) {
         qCCritical(KJOURNALDLIB_GENERAL) << "Failed to seek head:" << strerror(-result);
         return false;
     }
-    if (sd_journal_next(mJournal->sdJournal()) <= 0) {
+    if (sd_journal_next(mJournal->get()) <= 0) {
         qCWarning(KJOURNALDLIB_GENERAL) << "could not make head entry current";
         return false;
     }
@@ -363,12 +367,12 @@ bool JournaldViewModelPrivate::seekHeadAndMakeCurrent()
 bool JournaldViewModelPrivate::seekTailAndMakeCurrent()
 {
     qCDebug(KJOURNALDLIB_GENERAL) << "seek tail and make current";
-    int result = sd_journal_seek_tail(mJournal->sdJournal());
+    int result = sd_journal_seek_tail(mJournal->get());
     if (result < 0) {
         qCCritical(KJOURNALDLIB_GENERAL) << "Failed to seek head:" << strerror(-result);
         return false;
     }
-    if (sd_journal_previous(mJournal->sdJournal()) <= 0) {
+    if (sd_journal_previous(mJournal->get()) <= 0) {
         qCWarning(KJOURNALDLIB_GENERAL) << "could not make tail entry current";
         return false;
     }
@@ -380,14 +384,6 @@ JournaldViewModel::JournaldViewModel(QObject *parent)
     : QAbstractItemModel(parent)
     , d(new JournaldViewModelPrivate)
 {
-    setSystemJournal();
-}
-
-JournaldViewModel::JournaldViewModel(const QString &path, QObject *parent)
-    : QAbstractItemModel(parent)
-    , d(new JournaldViewModelPrivate)
-{
-    setJournaldPath(path);
 }
 
 JournaldViewModel::~JournaldViewModel() = default;
@@ -406,39 +402,35 @@ void JournaldViewModel::guardedEndResetModel()
     d->mModelResetActive = false;
 }
 
-bool JournaldViewModel::setJournal(std::unique_ptr<IJournal> journal)
+void JournaldViewModel::setJournalProvider(IJournalProvider *provider)
 {
-    // with this setter the problem starts
-    bool success{true};
+    d->mJournalProvider = provider;
+    Q_EMIT journalProviderChanged();
+
     guardedBeginResetModel();
     d->mLog.clear();
-    d->mJournal = std::move(journal);
-    success = d->mJournal->isValid();
-    if (success) {
+    if (provider) {
+        d->mJournal = provider->openJournal();
+    }
+    const bool journalAvailabe = provider && d->mJournal && d->mJournal->isValid();
+    if (journalAvailabe) {
         d->resetJournal();
     }
     guardedEndResetModel();
-    fetchMoreLogEntries();
-    connect(d->mJournal.get(), &IJournal::journalUpdated, this, [=](const QString &bootId) {
-        if (!d->mFilter.bootFilter().contains(bootId)) {
-            return;
-        }
-        if (d->mTailCursorReached) {
-            d->mTailCursorReached = false;
-            fetchMoreLogEntries();
-        }
-    });
-    return success;
+    if (journalAvailabe) {
+        fetchMoreLogEntries();
+        connect(d->mJournal.get(), &SdJournal::journalUpdated, this, [=]() {
+            if (d->mTailCursorReached) {
+                d->mTailCursorReached = false;
+                fetchMoreLogEntries();
+            }
+        });
+    }
 }
 
-bool JournaldViewModel::setJournaldPath(const QString &path)
+IJournalProvider *JournaldViewModel::journalProvider() const
 {
-    return setJournal(std::make_unique<LocalJournal>(path));
-}
-
-bool JournaldViewModel::setSystemJournal()
-{
-    return setJournal(std::make_unique<LocalJournal>());
+    return d->mJournalProvider;
 }
 
 QHash<int, QByteArray> JournaldViewModel::roleNames() const

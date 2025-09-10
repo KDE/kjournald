@@ -5,37 +5,14 @@
 
 #include "journaldhelper.h"
 #include "kjournaldlib_log_general.h"
-#include "localjournal.h"
 #include <QDebug>
 #include <QMetaEnum>
 #include <systemd/sd-journal.h>
 
-QVector<QString> JournaldHelper::queryUnique(const IJournal &journal, Field field)
-{
-    QVector<QString> dataList;
-    const void *data;
-    size_t length;
-    int result;
-
-    const QString fieldString = mapField(field);
-
-    result = sd_journal_query_unique(journal.sdJournal(), qUtf8Printable(fieldString));
-    if (result < 0) {
-        qCritical() << "Failed to query journal:" << strerror(-result);
-        return dataList;
-    }
-    const int fieldLength = fieldString.length() + 1;
-    SD_JOURNAL_FOREACH_UNIQUE(journal.sdJournal(), data, length)
-    {
-        QString dataStr = QString::fromUtf8(static_cast<const char *>(data), length);
-        dataList << dataStr.remove(0, fieldLength);
-    }
-    return dataList;
-}
-
-QVector<QString> JournaldHelper::queryUnique(std::shared_ptr<IJournal> journal, Field field)
+QVector<QString> JournaldHelper::queryUnique(sd_journal *journal, Field field)
 {
     if (!journal) {
+        qCritical() << "Failed query unique, sd_journal is null";
         return {};
     }
 
@@ -44,15 +21,15 @@ QVector<QString> JournaldHelper::queryUnique(std::shared_ptr<IJournal> journal, 
     size_t length;
     int result;
 
-    QString fieldString = mapField(field);
+    const QString fieldString = mapField(field);
 
-    result = sd_journal_query_unique(journal->sdJournal(), qUtf8Printable(fieldString));
+    result = sd_journal_query_unique(journal, qUtf8Printable(fieldString));
     if (result < 0) {
         qCritical() << "Failed to query journal:" << strerror(-result);
         return dataList;
     }
     const int fieldLength = fieldString.length() + 1;
-    SD_JOURNAL_FOREACH_UNIQUE(journal->sdJournal(), data, length)
+    SD_JOURNAL_FOREACH_UNIQUE(journal, data, length)
     {
         QString dataStr = QString::fromUtf8(static_cast<const char *>(data), length);
         dataList << dataStr.remove(0, fieldLength);
@@ -60,37 +37,38 @@ QVector<QString> JournaldHelper::queryUnique(std::shared_ptr<IJournal> journal, 
     return dataList;
 }
 
-QVector<JournaldHelper::BootInfo> JournaldHelper::queryOrderedBootIds(const IJournal &journal)
+QVector<JournaldHelper::BootInfo> JournaldHelper::queryOrderedBootIds(sd_journal *journal)
 {
+    if (!journal) {
+        qCritical() << "Failed query ordered boot ids, sd_journal is null";
+        return {};
+    }
     QVector<JournaldHelper::BootInfo> boots;
-
     QVector<QString> bootIds = JournaldHelper::queryUnique(journal, Field::_BOOT_ID);
-
-    sd_journal *sdJournal = journal.sdJournal();
     for (const QString &id : bootIds) {
         int result{0};
         uint64_t time{0};
 
-        sd_journal_flush_matches(sdJournal);
+        sd_journal_flush_matches(journal);
         QString filterExpression = QLatin1String("_BOOT_ID=") + id;
-        result = sd_journal_add_match(sdJournal, filterExpression.toStdString().c_str(), filterExpression.length());
+        result = sd_journal_add_match(journal, filterExpression.toStdString().c_str(), filterExpression.length());
         if (result < 0) {
             qCCritical(KJOURNALDLIB_GENERAL) << "Failed add filter:" << strerror(-result);
             continue;
         }
 
         QDateTime since;
-        result = sd_journal_seek_head(sdJournal);
+        result = sd_journal_seek_head(journal);
         if (result < 0) {
             qCCritical(KJOURNALDLIB_GENERAL) << "Failed to seek head:" << strerror(-result);
             continue;
         }
-        result = sd_journal_next(sdJournal);
+        result = sd_journal_next(journal);
         if (result < 0) {
             qCCritical(KJOURNALDLIB_GENERAL) << "Failed to obtain first entry:" << strerror(-result);
             continue;
         }
-        result = sd_journal_get_realtime_usec(sdJournal, &time);
+        result = sd_journal_get_realtime_usec(journal, &time);
         if (result == 0) {
             since.setMSecsSinceEpoch(time / 1000);
         } else {
@@ -98,16 +76,16 @@ QVector<JournaldHelper::BootInfo> JournaldHelper::queryOrderedBootIds(const IJou
         }
 
         QDateTime until;
-        result = sd_journal_seek_tail(sdJournal);
+        result = sd_journal_seek_tail(journal);
         if (result < 0) {
             qCCritical(KJOURNALDLIB_GENERAL) << "Failed to seek tail:" << strerror(-result);
             continue;
         }
-        result = sd_journal_previous(sdJournal);
+        result = sd_journal_previous(journal);
         if (result < 0) {
             qCCritical(KJOURNALDLIB_GENERAL) << "Failed to obtain first entry:" << strerror(-result);
         }
-        result = sd_journal_get_realtime_usec(sdJournal, &time);
+        result = sd_journal_get_realtime_usec(journal, &time);
         if (result == 0) {
             until.setMSecsSinceEpoch(time / 1000);
         } else {

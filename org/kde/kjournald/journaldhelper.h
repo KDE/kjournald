@@ -11,7 +11,7 @@
 #include <QDebugStateSaver>
 #include <QObject>
 #include <QVector>
-#include <ijournal.h>
+#include <ijournalprovider.h>
 
 class KJOURNALD_EXPORT JournaldHelper
 {
@@ -64,23 +64,21 @@ public:
      * ignores any add_match settings of the used @a journal. Yet this may change in the
      * future and it is encouraged to use a separate journal object to request unique valus.
      *
-     * @param journal the wrapper object for an sd_journal instance
+     * @note that calling this method leads to add_match calls to the provided journal and will
+     * change further filter results.
+     *
+     * @param journal valid pointer to sd_journal instance
      * @param field the requested field
      * @return the list of unique field contents
      */
-    static QVector<QString> queryUnique(const IJournal &journal, Field field);
-
-    /**
-     * @copydoc JournaldHelper::queryUnique
-     */
-    static QVector<QString> queryUnique(std::shared_ptr<IJournal> journal, Field field);
+    static QVector<QString> queryUnique(sd_journal *journal, Field field);
 
     /**
      * @brief Query boot information for @p journal
      *
      * @return ordered list of boots (first is earliest boot in time)
      */
-    static QVector<BootInfo> queryOrderedBootIds(const IJournal &journal);
+    static QVector<BootInfo> queryOrderedBootIds(sd_journal *journal);
 
     /**
      * @brief Mapper method that maps from field enum to textual representation

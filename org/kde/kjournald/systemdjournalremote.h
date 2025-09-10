@@ -6,21 +6,22 @@
 #ifndef SYSTEMDJOURNALREMOTE_H
 #define SYSTEMDJOURNALREMOTE_H
 
-#include "ijournal.h"
+#include "ijournalprovider.h"
 #include "kjournald_export.h"
+#include "sdjournal.h"
 #include <QProcess>
 #include <QString>
 #include <memory>
+#include <optional>
 
 class SystemdJournalRemotePrivate;
-class sd_journal;
 class QIODevice;
 
 /**
  * @brief The SystemdJournalRemote provides access to a remote journal via the systemd-journal-remote tool
  *
  */
-class KJOURNALD_EXPORT SystemdJournalRemote : public IJournal
+class KJOURNALD_EXPORT SystemdJournalRemote : public IJournalProvider
 {
     Q_OBJECT
     Q_PROPERTY(QString journalFile READ journalFile NOTIFY journalFileChanged)
@@ -50,20 +51,12 @@ public:
     QString journalFile() const;
 
     /**
-     * @brief Getter for raw sd_journal pointer
-     *
-     * This pointer can be nullptr if an error during opening of journal occured. Test
-     * with @s isValid() before using.
+     * @copydoc IJournalProvider::openJournal()
      */
-    sd_journal *sdJournal() const override;
+    std::unique_ptr<SdJournal> openJournal() const override;
 
     /**
-     * @brief returns true if and only if the sd_journal pointer is valid
-     */
-    bool isValid() const override;
-
-    /**
-     * @copydoc IJournal::currentBootId()
+     * @copydoc IJournalProvider::currentBootId()
      */
     QString currentBootId() const override;
 
@@ -79,7 +72,6 @@ Q_SIGNALS:
     void journalFileChanged();
 
 private Q_SLOTS:
-    void handleJournalFileCreated(const QString &path);
     void handleJournalRemoteProcessErrors(QProcess::ProcessError error);
 
 private:

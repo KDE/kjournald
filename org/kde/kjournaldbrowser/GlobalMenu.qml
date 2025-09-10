@@ -23,6 +23,13 @@ Labs.MenuBar {
             }
         }
         Labs.MenuItem {
+            text: i18n("Open user journal")
+            icon.name: "document-open"
+            onTriggered: {
+                DatabaseProvider.setUserJournal()
+            }
+        }
+        Labs.MenuItem {
             text: i18n("Open from folder")
             icon.name: "document-open"
             onTriggered: {

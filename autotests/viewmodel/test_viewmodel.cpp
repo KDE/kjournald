@@ -5,7 +5,8 @@
 
 #include "test_viewmodel.h"
 #include "../../org/kde/kjournald/journaldviewmodel.h"
-#include "../../org/kde/kjournald/journaldviewmodel_p.h"
+#include "../../org/kde/kjournald/localjournal.h"
+#include "../../org/kde/kjournald/logentry.h"
 #include "../containertesthelper.h"
 #include "../testdatalocation.h"
 #include <QAbstractItemModelTester>
@@ -26,13 +27,20 @@ void TestViewModel::journalAccess()
     QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
 
     // test failure handling for invalid journal
-    QTemporaryFile invalidJournal; // file is surely invalid
-    QCOMPARE(model.setJournaldPath(invalidJournal.fileName()), false);
-    QCOMPARE(model.rowCount(), 0);
+    {
+        QTemporaryFile invalidJournal; // file is surely invalid
+        invalidJournal.open();
+        auto provider = LocalJournal(invalidJournal.fileName());
+        model.setJournalProvider(&provider);
+        QCOMPARE(model.rowCount(), 0);
+    }
 
     // use extracted journal
-    QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
-    QVERIFY(model.rowCount() > 0);
+    {
+        auto provider = LocalJournal(JOURNAL_LOCATION);
+        model.setJournalProvider(&provider);
+        QVERIFY(model.rowCount() > 0);
+    }
 }
 
 void TestViewModel::rowAccess()
@@ -41,7 +49,9 @@ void TestViewModel::rowAccess()
     JournaldViewModel model;
 
     QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
-    QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
+
+    auto provider = LocalJournal(JOURNAL_LOCATION);
+    model.setJournalProvider(&provider);
     QVERIFY(model.rowCount() > 0);
 
     // journalctl -b -2 -D . -o json | head -n2
@@ -81,7 +91,8 @@ void TestViewModel::bootFilter()
     JournaldViewModel model;
     Filter filter = model.filter();
     QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
-    QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
+    auto provider = LocalJournal(JOURNAL_LOCATION);
+    model.setJournalProvider(&provider);
 
     // select only second boot
     filter.setBootFilter({mBoots.at(1)});
@@ -120,7 +131,8 @@ void TestViewModel::unitFilter()
     JournaldViewModel model;
     Filter filter = model.filter();
     QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
-    QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
+    auto provider = LocalJournal(JOURNAL_LOCATION);
+    model.setJournalProvider(&provider);
 
     // select single service
 
@@ -161,7 +173,8 @@ void TestViewModel::showKernelMessages()
     Filter filter = model.filter();
     filter.setBootFilter({"2dbe99dd855049af8f2865c5da2b8fda"});
     QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
-    QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
+    auto provider = LocalJournal(JOURNAL_LOCATION);
+    model.setJournalProvider(&provider);
 
     // check that journal does not contain Kernel message
     filter.setKernelMessagesEnabled(false);
@@ -198,7 +211,8 @@ void TestViewModel::closestIndexForDateComputation()
 {
     JournaldViewModel model;
     QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
-    QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
+    auto provider = LocalJournal(JOURNAL_LOCATION);
+    model.setJournalProvider(&provider);
 
     QDateTime firstLogEntryDateTime = model.data(model.index(0, 0), JournaldViewModel::DATETIME).toDateTime();
     QDateTime lastLogEntryDateTime = model.data(model.index(model.rowCount() - 1, 0), JournaldViewModel::DATETIME).toDateTime();
@@ -221,7 +235,8 @@ void TestViewModel::readFullJournal()
 {
     JournaldViewModel model;
     QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
-    QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
+    auto provider = LocalJournal(JOURNAL_LOCATION);
+    model.setJournalProvider(&provider);
     Filter filter = model.filter();
     filter.setBootFilter({mBoots.at(0)});
     filter.setKernelMessagesEnabled(true);
@@ -246,7 +261,8 @@ void TestViewModel::resetModelHeadAndTailCursorTest()
     JournaldViewModel model;
     Filter filter = model.filter();
     QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
-    QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
+    auto provider = LocalJournal(JOURNAL_LOCATION);
+    model.setJournalProvider(&provider);
 
     struct Cursors {
         QString mHead;
@@ -331,11 +347,12 @@ void TestViewModel::stringSearch()
     // simple check when full journal is alread read
     {
         JournaldViewModel model;
+        auto provider = LocalJournal(JOURNAL_LOCATION);
+        model.setJournalProvider(&provider);
         Filter filter = model.filter();
         filter.setBootFilter({mBoots.at(0)}); // select boot -2 == 68f2e61d061247d8a8ba0b8d53a97a52
         model.setFilter(filter);
         QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
-        QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
         int foundLine{-1};
         std::vector<int> results;
         do {
@@ -356,7 +373,8 @@ void TestViewModel::stringSearch()
         filter.setBootFilter({mBoots.at(0)}); // select boot -2 == 68f2e61d061247d8a8ba0b8d53a97a52
         model.setFilter(filter);
         QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
-        QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
+        auto provider = LocalJournal(JOURNAL_LOCATION);
+        model.setJournalProvider(&provider);
         int foundLine{-1};
         std::vector<int> results;
         do {
@@ -383,7 +401,8 @@ void TestViewModel::stringSearch()
         model.setFilter(filter);
         model.seekTail();
         QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
-        QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
+        auto provider = LocalJournal(JOURNAL_LOCATION);
+        model.setJournalProvider(&provider);
         model.fetchMore(QModelIndex());
         int foundLine = model.rowCount() - 1;
         std::vector<int> results;

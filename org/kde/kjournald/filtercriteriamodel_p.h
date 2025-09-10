@@ -7,7 +7,7 @@
 #define FILTERCRITERIAMODEL_P_H
 
 #include "filtercriteriamodel.h"
-#include "ijournal.h"
+#include "ijournalprovider.h"
 #include <QMap>
 #include <QString>
 #include <QVector>
@@ -55,7 +55,8 @@ public:
 
     static QString mapPriorityToString(int priority);
 
-    std::shared_ptr<IJournal> mJournal;
+    IJournalProvider *mJournalProvider{nullptr};
+    std::unique_ptr<SdJournal> mJournal;
     std::shared_ptr<SelectionEntry> mRootItem;
     std::optional<quint8> mPriorityLevel;
 };
