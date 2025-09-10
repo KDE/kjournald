@@ -21,10 +21,16 @@ LocalJournalPrivate::LocalJournalPrivate()
     }
 }
 
-LocalJournal::LocalJournal()
+LocalJournal::LocalJournal(Mode mode)
     : d(new LocalJournalPrivate)
 {
-    auto expectedJournal = owning_ptr_call<sd_journal>(sd_journal_open, SD_JOURNAL_LOCAL_ONLY);
+    int flags = SD_JOURNAL_LOCAL_ONLY;
+    if (mode == Mode::System) {
+        flags |= SD_JOURNAL_SYSTEM;
+    } else {
+        flags |= SD_JOURNAL_CURRENT_USER;
+    }
+    auto expectedJournal = owning_ptr_call<sd_journal>(sd_journal_open, flags);
     if (expectedJournal.ret < 0) {
         qCCritical(KJOURNALDLIB_GENERAL) << "Failed to open journal:" << strerror(-expectedJournal.ret);
     } else {

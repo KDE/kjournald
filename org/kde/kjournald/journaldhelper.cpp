@@ -35,6 +35,7 @@ QVector<QString> JournaldHelper::queryUnique(const IJournal &journal, Field fiel
 
 QVector<QString> JournaldHelper::queryUnique(std::shared_ptr<IJournal> journal, Field field)
 {
+    qDebug() << "doing a query on";
     if (!journal) {
         return {};
     }

@@ -34,8 +34,9 @@ StatefulApp.StatefulWindow {
         }
     }
 
+    // FIXME
     Binding {
-        root.filterModel.journalPath: DatabaseProvider.mode === DatabaseProvider.SYSTEM ? undefined : DatabaseProvider.journalPath
+        root.filterModel.journal: DatabaseProvider.journal
     }
 
     menuBar: TopMenuBar {
@@ -317,12 +318,12 @@ StatefulApp.StatefulWindow {
 
     BootModel {
         id: bootModel
-        journalPath: DatabaseProvider.mode === DatabaseProvider.SYSTEM ? undefined : DatabaseProvider.journalPath
+        journal: DatabaseProvider.journal
     }
 
     JournaldViewModel {
         id: journalModel
-        journalPath: DatabaseProvider.mode === DatabaseProvider.SYSTEM ? undefined : DatabaseProvider.journalPath
+        journal: DatabaseProvider.journal
         filter.units: root.filterModel.systemdUnitFilter
         filter.exes: root.filterModel.exeFilter
         filter.boots: bootIdComboBox.currentValue

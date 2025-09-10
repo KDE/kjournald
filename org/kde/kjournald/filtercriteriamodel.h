@@ -6,6 +6,7 @@
 #ifndef FILTERCRITERIAMODEL_H
 #define FILTERCRITERIAMODEL_H
 
+#include "ijournal.h"
 #include "kjournald_export.h"
 #include <QAbstractItemModel>
 #include <QQmlEngine>
@@ -29,8 +30,8 @@ class FilterCriteriaModelPrivate;
 class KJOURNALD_EXPORT FilterCriteriaModel : public QAbstractItemModel
 {
     Q_OBJECT
-    Q_PROPERTY(QString journalPath WRITE setJournaldPath RESET setSystemJournal)
-    /**
+    Q_PROPERTY(std::shared_ptr<IJournal> journal READ journal WRITE setJournal)
+        /**
      * Filter for message priorities
      */
     Q_PROPERTY(int priorityFilter READ priorityFilter NOTIFY priorityFilterChanged)
@@ -97,14 +98,9 @@ public:
      * @param path The path to directory that obtains the journald DB, usually ending with "journal".
      * @return true if path could be found and opened, otherwise false
      */
-    bool setJournaldPath(const QString &path);
+    bool setJournal(std::shared_ptr<IJournal> journal);
 
-    /**
-     * Switch to local system's default journald database
-     *
-     * For details regarding preference, see journald documentation.
-     */
-    void setSystemJournal();
+    std::shared_ptr<IJournal> journal() const;
 
     /**
      * @return the currently selected priority threshold for displayed log entries

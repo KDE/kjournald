@@ -380,14 +380,14 @@ JournaldViewModel::JournaldViewModel(QObject *parent)
     : QAbstractItemModel(parent)
     , d(new JournaldViewModelPrivate)
 {
-    setSystemJournal();
+    //DAVE!
+    setJournal(std::make_shared<LocalJournal>());
 }
 
 JournaldViewModel::JournaldViewModel(const QString &path, QObject *parent)
     : QAbstractItemModel(parent)
     , d(new JournaldViewModelPrivate)
 {
-    setJournaldPath(path);
 }
 
 JournaldViewModel::~JournaldViewModel() = default;
@@ -406,17 +406,19 @@ void JournaldViewModel::guardedEndResetModel()
     d->mModelResetActive = false;
 }
 
-bool JournaldViewModel::setJournal(std::unique_ptr<IJournal> journal)
+void JournaldViewModel::setJournal(std::shared_ptr<IJournal> journal)
 {
+    // to handle startup issue
+    if (!journal) {return;}
+
     // with this setter the problem starts
-    bool success{true};
     guardedBeginResetModel();
     d->mLog.clear();
-    d->mJournal = std::move(journal);
-    success = d->mJournal->isValid();
-    if (success) {
-        d->resetJournal();
-    }
+    d->mJournal = journal;
+    // success = d->mJournal->isValid();
+    // if (success) {
+        // d->resetJournal();
+    // }
     guardedEndResetModel();
     fetchMoreLogEntries();
     connect(d->mJournal.get(), &IJournal::journalUpdated, this, [=](const QString &bootId) {
@@ -428,17 +430,11 @@ bool JournaldViewModel::setJournal(std::unique_ptr<IJournal> journal)
             fetchMoreLogEntries();
         }
     });
-    return success;
 }
 
-bool JournaldViewModel::setJournaldPath(const QString &path)
+std::shared_ptr<IJournal> JournaldViewModel::journal() const
 {
-    return setJournal(std::make_unique<LocalJournal>(path));
-}
-
-bool JournaldViewModel::setSystemJournal()
-{
-    return setJournal(std::make_unique<LocalJournal>());
+    return d->mJournal;
 }
 
 QHash<int, QByteArray> JournaldViewModel::roleNames() const

@@ -23,7 +23,7 @@ class BootModelPrivate;
 class KJOURNALD_EXPORT BootModel : public QAbstractListModel
 {
     Q_OBJECT
-    Q_PROPERTY(QString journalPath WRITE setJournaldPath READ journaldPath RESET setSystemJournal)
+    Q_PROPERTY(std::shared_ptr<IJournal> journal WRITE setJournal READ journal)
 
     QML_ELEMENT
 
@@ -48,14 +48,6 @@ public:
     /**
      * @brief Construct model from a journal database object
      *
-     * @param journal object that contains a journald database object
-     * @param parent the QObject parent
-     */
-    BootModel(std::unique_ptr<IJournal> journal, QObject *parent = nullptr);
-
-    /**
-     * @brief Construct model from a journal database object
-     *
      * This constructor works similar to "journalctl -D" and allows to use a custom path to the
      * journald database.
      *
@@ -75,16 +67,9 @@ public:
      * @param path The path to directory that obtains the journald DB, usually ending with "journal".
      * @return true if path could be found and opened, otherwise false
      */
-    bool setJournaldPath(const QString &path);
+    bool setJournal(std::shared_ptr<IJournal> journal);
 
-    QString journaldPath() const;
-
-    /**
-     * Switch to local system's default journald database
-     *
-     * For details regarding preference, see journald documentation.
-     */
-    void setSystemJournal();
+    std::shared_ptr<IJournal> journal() const;
 
     /**
      * @copydoc QAbstractItemModel::roleNames()

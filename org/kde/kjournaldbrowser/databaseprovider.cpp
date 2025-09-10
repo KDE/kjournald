@@ -24,8 +24,19 @@ void DatabaseProvider::setSystemJournal()
     // not setting any path defaults to system journal
     mJournalPath = QString();
     mMode = Mode::SYSTEM;
+    mJournal = std::make_shared<LocalJournal>(LocalJournal::Mode::System);
     Q_EMIT journalPathChanged();
 }
+
+void DatabaseProvider::setUserJournal()
+{
+    // not setting any path defaults to system journal
+    mJournalPath = QString();
+    mMode = Mode::USER;
+    mJournal = std::make_shared<LocalJournal>(LocalJournal::Mode::User);
+    Q_EMIT journalPathChanged();
+}
+
 
 QString DatabaseProvider::journalPath() const
 {
@@ -46,6 +57,7 @@ void DatabaseProvider::setLocalJournalPath(const QString &path)
     }
     mJournalPath = resolvedPath;
     mMode = Mode::LOCALFOLDER;
+    // DAVE
     Q_EMIT journalPathChanged();
 }
 
@@ -56,7 +68,7 @@ void DatabaseProvider::setRemoteJournalUrl(const QString &url, quint32 port)
     }
     mRemoteJournalUrl = url;
     mRemoteJournalPort = port;
-    initRemoteJournal();
+    initJournal();
     mMode = Mode::REMOTE;
     Q_EMIT journalPathChanged();
 }
@@ -71,17 +83,28 @@ quint32 DatabaseProvider::remoteJournalPort() const
     return mRemoteJournalPort;
 }
 
+std::shared_ptr<IJournal> DatabaseProvider::journal()
+{
+    if (mRemoteJournal) {
+        return mRemoteJournal;
+    } else {
+        return mJournal;
+    }
+}
+
 QString DatabaseProvider::localJournalPath() const
 {
     return mJournalPath;
 }
 
-void DatabaseProvider::initRemoteJournal()
+void DatabaseProvider::initJournal()
 {
     if (mRemoteJournalUrl.isEmpty() || mRemoteJournalPort == 0) {
         return;
     }
     mRemoteJournal = std::make_unique<SystemdJournalRemote>(mRemoteJournalUrl, QString::number(mRemoteJournalPort));
+    // dave, can we kill this?
+
     connect(mRemoteJournal.get(), &SystemdJournalRemote::journalFileChanged, this, [=]() {
         setLocalJournalPath(QFileInfo(mRemoteJournal->journalFile()).absolutePath());
     });

@@ -29,46 +29,34 @@ BootModel::BootModel(const QString &journaldPath, QObject *parent)
     d->sort(Qt::SortOrder::DescendingOrder);
 }
 
-BootModel::BootModel(std::unique_ptr<IJournal> journal, QObject *parent)
-    : QAbstractListModel(parent)
-    , d(new BootModelPrivate(std::move(journal)))
-{
-    d->mBootInfo = JournaldHelper::queryOrderedBootIds(*d->mJournal.get());
-    d->sort(Qt::SortOrder::DescendingOrder);
-}
+// BootModel::BootModel(std::unique_ptr<IJournal> journal, QObject *parent)
+//     : QAbstractListModel(parent)
+//     , d(new BootModelPrivate(std::move(journal)))
+// {
+//     d->mBootInfo = JournaldHelper::queryOrderedBootIds(*d->mJournal.get());
+//     d->sort(Qt::SortOrder::DescendingOrder);
+// }
 
 BootModel::~BootModel() = default;
 
-bool BootModel::setJournaldPath(const QString &path)
+bool BootModel::setJournal(std::shared_ptr<IJournal> journal)
 {
-    qCDebug(KJOURNALDLIB_GENERAL) << "load journal from path" << path;
-    bool success{true};
-    beginResetModel();
-    d->mJournaldPath = path;
-    d->mJournal = std::make_unique<LocalJournal>(path);
-    success = d->mJournal->isValid();
-    if (success) {
-        d->mBootInfo = JournaldHelper::queryOrderedBootIds(*d->mJournal.get());
-        d->sort(Qt::SortOrder::DescendingOrder);
+    if (!journal) {
+        return false;
     }
-    endResetModel();
-    return success;
-}
-
-QString BootModel::journaldPath() const
-{
-    return d->mJournaldPath;
-}
-
-void BootModel::setSystemJournal()
-{
     qCDebug(KJOURNALDLIB_GENERAL) << "load system journal";
     beginResetModel();
     d->mJournaldPath = QString();
-    d->mJournal = std::make_unique<LocalJournal>();
+    d->mJournal = journal;
     d->mBootInfo = JournaldHelper::queryOrderedBootIds(*d->mJournal.get());
     d->sort(Qt::SortOrder::DescendingOrder);
     endResetModel();
+    return true;
+}
+
+std::shared_ptr<IJournal> BootModel::journal() const
+{
+    return d->mJournal;
 }
 
 QHash<int, QByteArray> BootModel::roleNames() const

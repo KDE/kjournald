@@ -77,7 +77,7 @@ public:
      */
     SeekCursorResult seekCursor(const QString &cursor);
 
-    std::unique_ptr<IJournal> mJournal;
+    std::shared_ptr<IJournal> mJournal;
     QList<LogEntry> mLog;
     Filter mFilter;
     bool mHeadCursorReached{false};

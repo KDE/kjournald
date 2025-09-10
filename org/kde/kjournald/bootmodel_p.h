@@ -26,7 +26,7 @@ public:
 
     QVector<BootInfo> mBootInfo;
     QString mJournaldPath;
-    std::unique_ptr<IJournal> mJournal;
+    std::shared_ptr<IJournal> mJournal;
 };
 
 QString BootModelPrivate::prettyPrintBoot(const BootInfo &bootInfo, TIME_FORMAT format)

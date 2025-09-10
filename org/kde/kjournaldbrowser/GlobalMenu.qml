@@ -16,10 +16,17 @@ Labs.MenuBar {
         title: i18nc("@action:menu", "File")
 
         Labs.MenuItem {
-            text: i18n("Open system journal")
+            text: i18n("Open system journal44444444")
             icon.name: "document-open"
             onTriggered: {
                 DatabaseProvider.setSystemJournal()
+            }
+        }
+        Labs.MenuItem {
+            text: i18n("Open user journal")
+            icon.name: "document-open"
+            onTriggered: {
+                DatabaseProvider.setUserJournal()
             }
         }
         Labs.MenuItem {

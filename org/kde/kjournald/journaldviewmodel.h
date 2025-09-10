@@ -24,7 +24,7 @@ class JournaldViewModelPrivate;
 class KJOURNALD_EXPORT JournaldViewModel : public QAbstractItemModel
 {
     Q_OBJECT
-    Q_PROPERTY(QString journalPath WRITE setJournaldPath RESET setSystemJournal)
+    Q_PROPERTY(std::shared_ptr<IJournal> journal READ journal WRITE setJournal)
 
     /**
      * Configure filter for view model
@@ -87,10 +87,14 @@ public:
      * A prominent example would be to use the same journal object for unique query requests and for obtaining the log
      * content.
      *
+     * DAVE!!!!! This sounds important.
+     * Maybe we can pass a shared ptr and you store a clone to act upon?
+     * or we pass a journal descriptor (name, path, etc....which is sort of the original design, just as one blob)
+     *
      * @param journal object that contains a journald database object
      * @param parent the QObject parent
      */
-    JournaldViewModel(std::unique_ptr<IJournal> journal, QObject *parent = nullptr);
+    // JournaldViewModel(std::unique_ptr<IJournal> journal, QObject *parent = nullptr);
 
     /**
      * Destroys JournaldViewModel
@@ -98,28 +102,13 @@ public:
     ~JournaldViewModel() override;
 
     /**
-     * Reset model by reading from a new journald database
-     *
-     * @param path The path to directory that obtains the journald DB, usually ending with "journal".
-     * @return true if path could be found and opened, otherwise false
-     */
-    bool setJournaldPath(const QString &path);
-
-    /**
-     * Switch to local system's default journald database
-     *
-     * For details regarding preference, see journald documentation.
-     * @return true if journal was loaded correctly
-     */
-    bool setSystemJournal();
-
-    /**
      * Reset model by using given journal object
      *
      * @param journal The journald access wrapper
-     * @return true if path could be opened, otherwise false
      */
-    bool setJournal(std::unique_ptr<IJournal> journal);
+    void setJournal(std::shared_ptr<IJournal> journal);
+
+    std::shared_ptr<IJournal> journal() const;
 
     /**
      * @copydoc QAbstractItemModel::rolesNames()

@@ -30,7 +30,12 @@ public:
     /**
      * @brief Construct journal object for system journald DB
      */
-    explicit LocalJournal();
+    enum class Mode {
+        System,
+        User
+    };
+    //TODO, default to inavalid journal, it'll be faster
+    explicit LocalJournal(Mode mode = LocalJournal::Mode::System);
 
     /**
      * @brief Construct journal object from journald DB at path @p path

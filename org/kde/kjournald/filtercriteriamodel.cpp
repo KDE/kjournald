@@ -2,7 +2,6 @@
     SPDX-License-Identifier: LGPL-2.1-or-later OR MIT
     SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 */
-
 #include "filtercriteriamodel.h"
 #include "filtercriteriamodel_p.h"
 #include "journaldhelper.h"
@@ -218,6 +217,8 @@ FilterCriteriaModel::FilterCriteriaModel(QObject *parent)
     : QAbstractItemModel(parent)
     , d(new FilterCriteriaModelPrivate)
 {
+
+
     beginResetModel();
     d->mJournal = std::make_shared<LocalJournal>();
     d->rebuildModel();
@@ -228,23 +229,24 @@ FilterCriteriaModel::FilterCriteriaModel(const QString &journalPath, QObject *pa
     : QAbstractItemModel(parent)
     , d(new FilterCriteriaModelPrivate)
 {
+}
+
+bool FilterCriteriaModel::setJournal(std::shared_ptr<IJournal> journal)
+{
+    qDebug() << "rebuild";
     beginResetModel();
-    d->mJournal = std::make_shared<LocalJournal>(journalPath);
+    d->mJournal = journal;
     d->rebuildModel();
     endResetModel();
+    return true;
+}
+
+std::shared_ptr<IJournal> FilterCriteriaModel::journal() const
+{
+    return d->mJournal;
 }
 
 FilterCriteriaModel::~FilterCriteriaModel() = default;
-
-bool FilterCriteriaModel::setJournaldPath(const QString &path)
-{
-    beginResetModel();
-    d->mJournal = std::make_shared<LocalJournal>(path);
-    bool success = d->mJournal->isValid();
-    d->rebuildModel();
-    endResetModel();
-    return success;
-}
 
 QHash<int, QByteArray> FilterCriteriaModel::roleNames() const
 {
@@ -255,14 +257,6 @@ QHash<int, QByteArray> FilterCriteriaModel::roleNames() const
     roles[FilterCriteriaModel::CATEGORY] = "category";
     roles[FilterCriteriaModel::SELECTED] = "selected";
     return roles;
-}
-
-void FilterCriteriaModel::setSystemJournal()
-{
-    beginResetModel();
-    d->mJournal = std::make_shared<LocalJournal>();
-    d->rebuildModel();
-    endResetModel();
 }
 
 int FilterCriteriaModel::priorityFilter() const
