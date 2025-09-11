@@ -45,6 +45,7 @@ std::unique_ptr<SdJournal> LocalJournal::openJournal() const
         if (d->mMode == Mode::System) {
             flags |= SD_JOURNAL_SYSTEM;
         } else {
+            d->mIsUser = true;
             flags |= SD_JOURNAL_CURRENT_USER;
         }
         qCDebug(KJOURNALDLIB_GENERAL) << "create sd_journal instance from system journal" << flags;
@@ -69,4 +70,9 @@ uint64_t LocalJournal::usage() const
         qCCritical(KJOURNALDLIB_GENERAL) << "Could not obtain journal size:" << strerror(-res);
     }
     return size;
+}
+
+bool LocalJournal::isUser() const
+{
+    return d->mIsUser;
 }
