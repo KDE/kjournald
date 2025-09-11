@@ -28,6 +28,7 @@ LocalJournal::LocalJournal(Mode mode)
     if (mode == Mode::System) {
         flags |= SD_JOURNAL_SYSTEM;
     } else {
+        d->mIsUser = true;
         flags |= SD_JOURNAL_CURRENT_USER;
     }
     auto expectedJournal = owning_ptr_call<sd_journal>(sd_journal_open, flags);
@@ -100,6 +101,11 @@ uint64_t LocalJournal::usage() const
         qCCritical(KJOURNALDLIB_GENERAL) << "Could not obtain journal size:" << strerror(-res);
     }
     return size;
+}
+
+bool LocalJournal::isUser() const
+{
+    return d->mIsUser;
 }
 
 void LocalJournal::handleJournalDescriptorUpdate()

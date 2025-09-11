@@ -72,6 +72,8 @@ public:
      */
     uint64_t usage() const;
 
+    virtual bool isUser() const override;
+
 private Q_SLOTS:
     void handleJournalDescriptorUpdate();
 

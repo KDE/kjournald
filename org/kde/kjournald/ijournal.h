@@ -49,6 +49,8 @@ public:
      */
     virtual QString currentBootId() const = 0;
 
+    virtual bool isUser() const {return false;};
+
 Q_SIGNALS:
     /**
      * @brief signal is fired when new entries are added to the journal

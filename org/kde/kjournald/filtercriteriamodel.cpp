@@ -130,6 +130,8 @@ FilterCriteriaModelPrivate::~FilterCriteriaModelPrivate() = default;
 
 void FilterCriteriaModelPrivate::rebuildModel()
 {
+    if (!mJournal) return;
+
     mRootItem = std::make_unique<SelectionEntry>();
     {
         auto parent = std::make_shared<SelectionEntry>(i18nc("Section title for log message source", "Transport"),
@@ -173,12 +175,14 @@ void FilterCriteriaModelPrivate::rebuildModel()
                                                        false,
                                                        mRootItem);
         mRootItem->appendChild(parent);
-        QVector<QString> units = JournaldHelper::queryUnique(mJournal, JournaldHelper::Field::_SYSTEMD_UNIT);
+        auto criteria = mJournal->isUser() ? JournaldHelper::Field::_SYSTEMD_USER_UNIT : JournaldHelper::Field::_SYSTEMD_UNIT;
+        QVector<QString> units = JournaldHelper::queryUnique(mJournal, criteria);
         units.erase(std::remove_if(std::begin(units),
                                    std::end(units),
                                    [](const QString &unit) {
                                        return unit.startsWith(QLatin1String("systemd-coredump@"))
-                                           || unit.startsWith(QLatin1String("drkonqi-coredump-processor@"));
+                                           || unit.startsWith(QLatin1String("drkonqi-coredump-processor@"))
+                                           || unit.startsWith(QLatin1String("drkonqi-coredump-launcher@"));
                                    }),
                     std::cend(units));
         std::sort(std::begin(units), std::end(units), [](const QString &a, const QString &b) {
