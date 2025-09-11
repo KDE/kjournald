@@ -80,10 +80,10 @@ void JournaldViewModelPrivate::resetJournal()
         }
     };
 
-    auto addMatchesUnitFilter = [](sd_journal *journal, const QStringList &units) -> void {
+    auto addMatchesUnitFilter = [](sd_journal *journal, const QStringList &units, bool isUser) -> void {
         int result{0};
         for (const QString &unit : units) {
-            QString filterExpression = QLatin1String("_SYSTEMD_UNIT=") + unit;
+            QString filterExpression = (isUser ? QLatin1String("_SYSTEMD_USER_UNIT=") : QLatin1String("_SYSTEMD_UNIT=")) + unit;
             result = sd_journal_add_match(journal, filterExpression.toUtf8().constData(), 0);
             qCDebug(KJOURNALDLIB_FILTERTRACE).nospace() << "add_match(" << filterExpression << ")";
             if (result < 0) {
@@ -167,7 +167,7 @@ void JournaldViewModelPrivate::resetJournal()
         clauseAdded = true;
         addMatchesBootFilter(mJournal->get(), mFilter.bootFilter());
         addMatchesPriorityFilter(mJournal->get(), mFilter.priorityFilter());
-        addMatchesUnitFilter(mJournal->get(), mFilter.systemdUnitFilter());
+        addMatchesUnitFilter(mJournal->get(), mFilter.systemdUnitFilter(), mJournalProvider->isUser());
     }
     if (clauseAdded && !mFilter.exeFilter().empty()) {
         addDisjunction(mJournal->get());
@@ -260,7 +260,7 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
         if (result == 0) {
             entry.setId(QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1));
         }
-        result = sd_journal_get_data(mJournal->get(), "_SYSTEMD_UNIT", (const void **)&data, &length);
+        result = sd_journal_get_data(mJournal->get(), mJournalProvider->isUser() ? "_SYSTEMD_USER_UNIT" : "_SYSTEMD_UNIT", (const void **)&data, &length);
         if (result == 0) {
             entry.setUnit(JournaldHelper::cleanupString(QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1)));
         }

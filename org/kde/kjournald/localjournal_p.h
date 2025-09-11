@@ -17,6 +17,7 @@ public:
     LocalJournalPrivate();
     QString mPath;
     LocalJournal::Mode mMode;
+    bool mIsUser = false;
     QString mCurrentBootId;
     std::unique_ptr<QSocketNotifier> mJournalSocketNotifier;
 };
