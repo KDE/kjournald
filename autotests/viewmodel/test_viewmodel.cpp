@@ -339,7 +339,7 @@ void TestViewModel::stringSearch()
         int foundLine{-1};
         std::vector<int> results;
         do {
-            foundLine = model.search("Socket", foundLine + 1);
+            foundLine = model.search("Socket", foundLine + 1, true);
             if (foundLine != -1) {
                 results.push_back(foundLine);
             }
@@ -360,7 +360,7 @@ void TestViewModel::stringSearch()
         int foundLine{-1};
         std::vector<int> results;
         do {
-            foundLine = model.search("Socket", foundLine + 1);
+            foundLine = model.search("Socket", foundLine + 1, true);
             if (foundLine != -1) {
                 results.push_back(foundLine);
             }
@@ -388,7 +388,7 @@ void TestViewModel::stringSearch()
         int foundLine = model.rowCount() - 1;
         std::vector<int> results;
         do {
-            foundLine = model.search("Socket", foundLine - 1, JournaldViewModel::BACKWARD);
+            foundLine = model.search("Socket", foundLine - 1, true, JournaldViewModel::BACKWARD);
             if (foundLine != -1) {
                 results.push_back(foundLine);
             }

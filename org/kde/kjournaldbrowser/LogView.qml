@@ -68,10 +68,11 @@ ListView {
         root.textCopied(content)
     }
 
-    function scrollToSearchResult(needle, direction) {
+    function scrollToSearchResult(needle, direction, caseSensitive) {
         var offset = direction === JournaldViewModel.FORWARD ? 1 : -1
         var row = root.journalModel.search(TextSearch.needle,
                                         root.indexAt(1, root.contentY + root.height/2) + offset,
+                                        caseSensitive,
                                         direction)
         if (row >= 0) {
             root.positionViewAtIndex(row, ListView.Center)
@@ -337,7 +338,7 @@ ListView {
             }
         }
         if (event.key === Qt.Key_F3) {
-            var index = root.journalModel.search(TextSearch.needle, root.currentIndex + 1)
+            var index = root.journalModel.search(TextSearch.needle, root.currentIndex + 1, TextSearch.caseSensitive)
             if (index >= 0) {
                 root.currentIndex = index
                 positionViewAtIndex(index, ListView.Beginning)

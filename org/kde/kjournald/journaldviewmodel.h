@@ -193,7 +193,7 @@ public:
     /**
      * @return row index of searched string
      */
-    Q_INVOKABLE int search(const QString &searchString, int startRow, JournaldViewModel::Direction direction = FORWARD);
+    Q_INVOKABLE int search(const QString &searchString, int startRow, bool caseSensitive, JournaldViewModel::Direction direction = FORWARD);
 
     /**
      * @brief Reset model and start reading from head

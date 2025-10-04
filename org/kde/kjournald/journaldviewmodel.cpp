@@ -679,13 +679,14 @@ Filter JournaldViewModel::filter() const
     return d->mFilter;
 }
 
-int JournaldViewModel::search(const QString &searchString, int startRow, Direction direction)
+int JournaldViewModel::search(const QString &searchString, int startRow, bool caseSensitive, Direction direction)
 {
     int row = startRow;
+    const Qt::CaseSensitivity caseSensitivity = caseSensitive ? Qt::CaseSensitive : Qt::CaseInsensitive;
 
     if (direction == FORWARD) {
         while (row < d->mLog.size()) {
-            if (d->mLog.at(row).message().contains(searchString)) {
+            if (d->mLog.at(row).message().contains(searchString, caseSensitivity)) {
                 qCDebug(KJOURNALDLIB_GENERAL) << "Found string in line" << row << d->mLog.at(row).message();
                 return row;
             }
@@ -696,7 +697,7 @@ int JournaldViewModel::search(const QString &searchString, int startRow, Directi
         }
     } else {
         while (row >= 0) {
-            if (d->mLog.at(row).message().contains(searchString)) {
+            if (d->mLog.at(row).message().contains(searchString, caseSensitivity)) {
                 qCDebug(KJOURNALDLIB_GENERAL) << "Found string in line" << row << d->mLog.at(row).message();
                 return row;
             }

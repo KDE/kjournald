@@ -178,14 +178,14 @@ StatefulApp.StatefulWindow {
                 enabled: TextSearch.needle.length > 2
                 icon.name: "go-up-search"
                 onClicked: {
-                    logView.scrollToSearchResult(TextSearch.needle, JournaldViewModel.BACKWARD)
+                    logView.scrollToSearchResult(TextSearch.needle, JournaldViewModel.BACKWARD, TextSearch.caseSensitive)
                 }
             }
             ToolButton {
                 enabled: TextSearch.needle.length > 2
                 icon.name: "go-down-search"
                 onClicked: {
-                    logView.scrollToSearchResult(TextSearch.needle, JournaldViewModel.FORWARD)
+                    logView.scrollToSearchResult(TextSearch.needle, JournaldViewModel.FORWARD, TextSearch.caseSensitive)
                 }
             }
 
