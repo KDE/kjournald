@@ -96,6 +96,7 @@ StatefulApp.StatefulWindow {
                     }
                 }
                 Keys.onPressed: (event)=> {
+                    console.log("handle in search field")
                     if (event.key === Qt.Key_Down) {
                         if (!popup.opened) {
                             recentSearchesListView.currentIndex = 0
