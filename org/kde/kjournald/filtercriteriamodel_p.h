@@ -40,7 +40,7 @@ private:
     QString mText; //!< user formatted string
     QVariant mData; //!< verbatim string as needed for journald filtering
     bool mSelected{true};
-    FilterCriteriaModel::Category mCategory;
+    FilterCriteriaModel::Category mCategory{FilterCriteriaModel::Category::TRANSPORT};
 };
 
 class FilterCriteriaModelPrivate
