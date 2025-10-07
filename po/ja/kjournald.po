@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-05 00:42+0000\n"
+"POT-Creation-Date: 2025-10-07 00:46+0000\n"
 "PO-Revision-Date: 2021-12-29 21:20-0800\n"
 "Last-Translator: Japanese KDE translation team <kde-jp@kde.org>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -64,85 +64,85 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:23
+#: org/kde/kjournald/filtercriteriamodel.cpp:22
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Emergency"
 msgstr ""
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:25
+#: org/kde/kjournald/filtercriteriamodel.cpp:24
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Alert"
 msgstr ""
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:27
+#: org/kde/kjournald/filtercriteriamodel.cpp:26
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Critical"
 msgstr ""
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:29
+#: org/kde/kjournald/filtercriteriamodel.cpp:28
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Error"
 msgstr ""
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:31
+#: org/kde/kjournald/filtercriteriamodel.cpp:30
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Warning"
 msgstr ""
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:33
+#: org/kde/kjournald/filtercriteriamodel.cpp:32
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Notice"
 msgstr ""
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:35
+#: org/kde/kjournald/filtercriteriamodel.cpp:34
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Info"
 msgstr ""
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:37
+#: org/kde/kjournald/filtercriteriamodel.cpp:36
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Debug"
 msgstr ""
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:39
+#: org/kde/kjournald/filtercriteriamodel.cpp:38
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "No Filter"
 msgstr ""
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:136
+#: org/kde/kjournald/filtercriteriamodel.cpp:135
 #, kde-format
 msgctxt "Section title for log message source"
 msgid "Transport"
 msgstr ""
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:143
+#: org/kde/kjournald/filtercriteriamodel.cpp:142
 #, kde-format
 msgctxt "Checkbox option for kernel log messages"
 msgid "Kernel"
 msgstr ""
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:150
+#: org/kde/kjournald/filtercriteriamodel.cpp:149
 #, kde-format
 msgctxt "Section title for log message priority"
 msgid "Priority"
 msgstr ""
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:171
+#: org/kde/kjournald/filtercriteriamodel.cpp:170
 #, kde-format
 msgctxt "Section title for systemd unit"
 msgid "Unit"
 msgstr ""
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:199
+#: org/kde/kjournald/filtercriteriamodel.cpp:205
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"
@@ -177,76 +177,81 @@ msgstr ""
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:26
 #, kde-format
+msgid "Open user journal"
+msgstr ""
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:33
+#, kde-format
 msgid "Open from folder"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:34
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:41
 #, kde-format
 msgid "Open from file"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:53
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:57
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:60
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:64
 #, kde-format
 msgid "Close"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:59
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:63
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:66
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:70
 #, kde-format
 msgid "Current Journal"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:67
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:71
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:74
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:78
 #, kde-format
 msgid "View"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:70
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:74
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:77
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:81
 #, kde-format
 msgid "Timestamp Display"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:73
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:78
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:80
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:85
 #, kde-format
 msgid "Localized Realtime"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:81
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:88
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:88
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:95
 #, kde-format
 msgid "UTC Realtime"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:89
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:98
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:96
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:105
 #, kde-format
 msgid "Monotonic Time"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:98
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:108
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:105
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:115
 #, kde-format
 msgid "Colorize"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:101
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:112
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:108
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:119
 #, kde-format
 msgid "Systemd Unit"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:109
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:122
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:116
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:129
 #, kde-format
 msgid "Executable"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:119
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:133
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:126
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:140
 #, kde-format
 msgctxt "@action:menu"
 msgid "Help"
@@ -327,10 +332,15 @@ msgstr ""
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:30
 #, kde-format
+msgid "Open User Journal"
+msgstr ""
+
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:37
+#, kde-format
 msgid "Open from Folder"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:38
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:45
 #, kde-format
 msgid "Open from File"
 msgstr ""

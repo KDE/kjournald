@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-05 00:42+0000\n"
+"POT-Creation-Date: 2025-10-07 00:46+0000\n"
 "PO-Revision-Date: 2024-12-25 19:45+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -71,85 +71,85 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "skkalwar999@gmail.com"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:23
+#: org/kde/kjournald/filtercriteriamodel.cpp:22
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Emergency"
 msgstr "ऊरुक"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:25
+#: org/kde/kjournald/filtercriteriamodel.cpp:24
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Alert"
 msgstr "सचेत"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:27
+#: org/kde/kjournald/filtercriteriamodel.cpp:26
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Critical"
 msgstr "गंभीरः"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:29
+#: org/kde/kjournald/filtercriteriamodel.cpp:28
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Error"
 msgstr "त्रुटि"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:31
+#: org/kde/kjournald/filtercriteriamodel.cpp:30
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Warning"
 msgstr "चेतवानी"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:33
+#: org/kde/kjournald/filtercriteriamodel.cpp:32
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Notice"
 msgstr "सूचना"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:35
+#: org/kde/kjournald/filtercriteriamodel.cpp:34
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Info"
 msgstr "Info"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:37
+#: org/kde/kjournald/filtercriteriamodel.cpp:36
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Debug"
 msgstr "त्रुटिनिवारणम्"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:39
+#: org/kde/kjournald/filtercriteriamodel.cpp:38
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "No Filter"
 msgstr "No Filter इति"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:136
+#: org/kde/kjournald/filtercriteriamodel.cpp:135
 #, kde-format
 msgctxt "Section title for log message source"
 msgid "Transport"
 msgstr "परिवहन"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:143
+#: org/kde/kjournald/filtercriteriamodel.cpp:142
 #, kde-format
 msgctxt "Checkbox option for kernel log messages"
 msgid "Kernel"
 msgstr "कर्नेल"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:150
+#: org/kde/kjournald/filtercriteriamodel.cpp:149
 #, kde-format
 msgctxt "Section title for log message priority"
 msgid "Priority"
 msgstr "पूर्ववर्तिता"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:171
+#: org/kde/kjournald/filtercriteriamodel.cpp:170
 #, kde-format
 msgctxt "Section title for systemd unit"
 msgid "Unit"
 msgstr "इंकाईं"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:199
+#: org/kde/kjournald/filtercriteriamodel.cpp:205
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"
@@ -184,77 +184,83 @@ msgid "Open system journal"
 msgstr "ओपन सिस्टम जर्नल"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:26
+#, fuzzy, kde-format
+#| msgid "Open system journal"
+msgid "Open user journal"
+msgstr "ओपन सिस्टम जर्नल"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:33
 #, kde-format
 msgid "Open from folder"
 msgstr "समुच्चय तः उद्घाटयन्तु"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:34
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:41
 #, kde-format
 msgid "Open from file"
 msgstr "सञ्चिकातः उद्घाटयन्तु"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:53
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:57
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:60
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:64
 #, kde-format
 msgid "Close"
 msgstr "पिधानं करोतु"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:59
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:63
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:66
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:70
 #, kde-format
 msgid "Current Journal"
 msgstr "वर्तमान पत्रिका"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:67
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:71
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:74
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:78
 #, kde-format
 msgid "View"
 msgstr "दृश्यं"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:70
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:74
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:77
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:81
 #, kde-format
 msgid "Timestamp Display"
 msgstr "समयमुद्रांक प्रदर्शन"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:73
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:78
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:80
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:85
 #, kde-format
 msgid "Localized Realtime"
 msgstr "स्थानीयकृत वास्तविकसमय"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:81
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:88
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:88
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:95
 #, kde-format
 msgid "UTC Realtime"
 msgstr "UTC वास्तविकसमय"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:89
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:98
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:96
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:105
 #, kde-format
 msgid "Monotonic Time"
 msgstr "एकरसः समयः"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:98
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:108
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:105
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:115
 #, kde-format
 msgid "Colorize"
 msgstr "वर्णित करें"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:101
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:112
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:108
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:119
 #, kde-format
 msgid "Systemd Unit"
 msgstr "Systemd इकाई"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:109
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:122
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:116
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:129
 #, kde-format
 msgid "Executable"
 msgstr "निष्पादनीयम्"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:119
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:133
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:126
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:140
 #, fuzzy, kde-format
 #| msgid "Help"
 msgctxt "@action:menu"
@@ -335,11 +341,17 @@ msgid "Open System Journal"
 msgstr "ओपन सिस्टम जर्नल"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:30
+#, fuzzy, kde-format
+#| msgid "Open System Journal"
+msgid "Open User Journal"
+msgstr "ओपन सिस्टम जर्नल"
+
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:37
 #, kde-format
 msgid "Open from Folder"
 msgstr "Folder तः उद्घाटयन्तु"
 
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:38
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:45
 #, kde-format
 msgid "Open from File"
 msgstr "File तः उद्घाटयन्तु"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-05 00:42+0000\n"
+"POT-Creation-Date: 2025-10-07 00:46+0000\n"
 "PO-Revision-Date: 2025-06-10 23:21+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -67,85 +67,85 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde@peremen.name"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:23
+#: org/kde/kjournald/filtercriteriamodel.cpp:22
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Emergency"
 msgstr "긴급"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:25
+#: org/kde/kjournald/filtercriteriamodel.cpp:24
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Alert"
 msgstr "알림"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:27
+#: org/kde/kjournald/filtercriteriamodel.cpp:26
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Critical"
 msgstr "치명적"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:29
+#: org/kde/kjournald/filtercriteriamodel.cpp:28
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Error"
 msgstr "오류"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:31
+#: org/kde/kjournald/filtercriteriamodel.cpp:30
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Warning"
 msgstr "경고"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:33
+#: org/kde/kjournald/filtercriteriamodel.cpp:32
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Notice"
 msgstr "공지"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:35
+#: org/kde/kjournald/filtercriteriamodel.cpp:34
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Info"
 msgstr "정보"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:37
+#: org/kde/kjournald/filtercriteriamodel.cpp:36
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Debug"
 msgstr "디버그"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:39
+#: org/kde/kjournald/filtercriteriamodel.cpp:38
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "No Filter"
 msgstr "필터 없음"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:136
+#: org/kde/kjournald/filtercriteriamodel.cpp:135
 #, kde-format
 msgctxt "Section title for log message source"
 msgid "Transport"
 msgstr "전송"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:143
+#: org/kde/kjournald/filtercriteriamodel.cpp:142
 #, kde-format
 msgctxt "Checkbox option for kernel log messages"
 msgid "Kernel"
 msgstr "커널"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:150
+#: org/kde/kjournald/filtercriteriamodel.cpp:149
 #, kde-format
 msgctxt "Section title for log message priority"
 msgid "Priority"
 msgstr "우선 순위"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:171
+#: org/kde/kjournald/filtercriteriamodel.cpp:170
 #, kde-format
 msgctxt "Section title for systemd unit"
 msgid "Unit"
 msgstr "단위"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:199
+#: org/kde/kjournald/filtercriteriamodel.cpp:205
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"
@@ -179,77 +179,83 @@ msgid "Open system journal"
 msgstr "시스템 저널 열기"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:26
+#, fuzzy, kde-format
+#| msgid "Open system journal"
+msgid "Open user journal"
+msgstr "시스템 저널 열기"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:33
 #, kde-format
 msgid "Open from folder"
 msgstr "폴더에서 열기"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:34
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:41
 #, kde-format
 msgid "Open from file"
 msgstr "파일에서 열기"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:53
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:57
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:60
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:64
 #, kde-format
 msgid "Close"
 msgstr "닫기"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:59
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:63
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:66
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:70
 #, kde-format
 msgid "Current Journal"
 msgstr "현재 저널"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:67
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:71
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:74
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:78
 #, kde-format
 msgid "View"
 msgstr "보기"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:70
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:74
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:77
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:81
 #, kde-format
 msgid "Timestamp Display"
 msgstr "타임스탬프 표시"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:73
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:78
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:80
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:85
 #, kde-format
 msgid "Localized Realtime"
 msgstr "지역 실시간"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:81
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:88
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:88
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:95
 #, kde-format
 msgid "UTC Realtime"
 msgstr "UTC 실시간"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:89
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:98
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:96
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:105
 #, kde-format
 msgid "Monotonic Time"
 msgstr "단조 증가 시간"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:98
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:108
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:105
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:115
 #, kde-format
 msgid "Colorize"
 msgstr "색상화"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:101
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:112
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:108
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:119
 #, kde-format
 msgid "Systemd Unit"
 msgstr "Systemd 단위"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:109
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:122
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:116
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:129
 #, kde-format
 msgid "Executable"
 msgstr "실행 파일"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:119
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:133
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:126
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:140
 #, kde-format
 msgctxt "@action:menu"
 msgid "Help"
@@ -329,11 +335,17 @@ msgid "Open System Journal"
 msgstr "시스템 저널 열기"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:30
+#, fuzzy, kde-format
+#| msgid "Open System Journal"
+msgid "Open User Journal"
+msgstr "시스템 저널 열기"
+
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:37
 #, kde-format
 msgid "Open from Folder"
 msgstr "폴더에서 열기"
 
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:38
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:45
 #, kde-format
 msgid "Open from File"
 msgstr "파일에서 열기"

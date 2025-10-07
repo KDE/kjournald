@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-05 00:42+0000\n"
+"POT-Creation-Date: 2025-10-07 00:46+0000\n"
 "PO-Revision-Date: 2025-05-25 16:50+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -67,85 +67,85 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "translator@legisign.org"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:23
+#: org/kde/kjournald/filtercriteriamodel.cpp:22
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Emergency"
 msgstr "Hätätila"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:25
+#: org/kde/kjournald/filtercriteriamodel.cpp:24
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Alert"
 msgstr "Hälytys"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:27
+#: org/kde/kjournald/filtercriteriamodel.cpp:26
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Critical"
 msgstr "Kriittinen"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:29
+#: org/kde/kjournald/filtercriteriamodel.cpp:28
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Error"
 msgstr "Virhe"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:31
+#: org/kde/kjournald/filtercriteriamodel.cpp:30
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Warning"
 msgstr "Varoitus"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:33
+#: org/kde/kjournald/filtercriteriamodel.cpp:32
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Notice"
 msgstr "Ilmoitus"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:35
+#: org/kde/kjournald/filtercriteriamodel.cpp:34
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Info"
 msgstr "Tiedotus"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:37
+#: org/kde/kjournald/filtercriteriamodel.cpp:36
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Debug"
 msgstr "Virheenpaikannus"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:39
+#: org/kde/kjournald/filtercriteriamodel.cpp:38
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "No Filter"
 msgstr "Ei suodatinta"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:136
+#: org/kde/kjournald/filtercriteriamodel.cpp:135
 #, kde-format
 msgctxt "Section title for log message source"
 msgid "Transport"
 msgstr "Siirto"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:143
+#: org/kde/kjournald/filtercriteriamodel.cpp:142
 #, kde-format
 msgctxt "Checkbox option for kernel log messages"
 msgid "Kernel"
 msgstr "Ydin"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:150
+#: org/kde/kjournald/filtercriteriamodel.cpp:149
 #, kde-format
 msgctxt "Section title for log message priority"
 msgid "Priority"
 msgstr "Etusija"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:171
+#: org/kde/kjournald/filtercriteriamodel.cpp:170
 #, kde-format
 msgctxt "Section title for systemd unit"
 msgid "Unit"
 msgstr "Yksikkö"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:199
+#: org/kde/kjournald/filtercriteriamodel.cpp:205
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"
@@ -179,77 +179,83 @@ msgid "Open system journal"
 msgstr "Avaa järjestelmäloki"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:26
+#, fuzzy, kde-format
+#| msgid "Open system journal"
+msgid "Open user journal"
+msgstr "Avaa järjestelmäloki"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:33
 #, kde-format
 msgid "Open from folder"
 msgstr "Avaa kansiosta"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:34
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:41
 #, kde-format
 msgid "Open from file"
 msgstr "Avaa tiedostosta"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:53
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:57
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:60
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:64
 #, kde-format
 msgid "Close"
 msgstr "Sulje"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:59
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:63
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:66
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:70
 #, kde-format
 msgid "Current Journal"
 msgstr "Nykyinen loki"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:67
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:71
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:74
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:78
 #, kde-format
 msgid "View"
 msgstr "Näkymä"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:70
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:74
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:77
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:81
 #, kde-format
 msgid "Timestamp Display"
 msgstr "Aikaleimanäkymä"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:73
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:78
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:80
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:85
 #, kde-format
 msgid "Localized Realtime"
 msgstr "Paikallinen tosiaikainen"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:81
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:88
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:88
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:95
 #, kde-format
 msgid "UTC Realtime"
 msgstr "UTC-tosiaikainen"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:89
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:98
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:96
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:105
 #, kde-format
 msgid "Monotonic Time"
 msgstr "Monotoninen aika"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:98
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:108
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:105
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:115
 #, kde-format
 msgid "Colorize"
 msgstr "Väritä"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:101
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:112
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:108
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:119
 #, kde-format
 msgid "Systemd Unit"
 msgstr "Systemd-yksikkö"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:109
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:122
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:116
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:129
 #, kde-format
 msgid "Executable"
 msgstr "Ohjelmatiedosto"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:119
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:133
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:126
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:140
 #, kde-format
 msgctxt "@action:menu"
 msgid "Help"
@@ -329,11 +335,17 @@ msgid "Open System Journal"
 msgstr "Avaa järjestelmäloki"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:30
+#, fuzzy, kde-format
+#| msgid "Open System Journal"
+msgid "Open User Journal"
+msgstr "Avaa järjestelmäloki"
+
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:37
 #, kde-format
 msgid "Open from Folder"
 msgstr "Avaa kansiosta"
 
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:38
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:45
 #, kde-format
 msgid "Open from File"
 msgstr "Avaa tiedostosta"
