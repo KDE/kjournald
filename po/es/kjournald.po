@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-10-07 00:46+0000\n"
-"PO-Revision-Date: 2025-05-15 03:55+0100\n"
+"PO-Revision-Date: 2025-10-07 04:35+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.04.1\n"
+"X-Generator: Lokalize 25.08.1\n"
 
 #: browser/main.cpp:40
 #, kde-format
@@ -183,10 +183,9 @@ msgid "Open system journal"
 msgstr "Abrir el registro del sistema"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:26
-#, fuzzy, kde-format
-#| msgid "Open system journal"
+#, kde-format
 msgid "Open user journal"
-msgstr "Abrir el registro del sistema"
+msgstr "Abrir el registro del usuario"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:33
 #, kde-format
@@ -339,10 +338,9 @@ msgid "Open System Journal"
 msgstr "Abrir el registro del sistema"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:30
-#, fuzzy, kde-format
-#| msgid "Open System Journal"
+#, kde-format
 msgid "Open User Journal"
-msgstr "Abrir el registro del sistema"
+msgstr "Abrir el registro del usuario"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:37
 #, kde-format
@@ -353,6 +351,3 @@ msgstr "Abrir desde carpeta"
 #, kde-format
 msgid "Open from File"
 msgstr "Abrir desde archivo"
-
-#~ msgid "Highlight:"
-#~ msgstr "Resaltar:"

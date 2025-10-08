@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-10-07 00:46+0000\n"
-"PO-Revision-Date: 2025-05-15 16:21+0200\n"
+"PO-Revision-Date: 2025-10-07 23:40+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.04.1\n"
+"X-Generator: Lokalize 25.08.1\n"
 
 #: browser/main.cpp:40
 #, kde-format
@@ -181,10 +181,9 @@ msgid "Open system journal"
 msgstr "Systeemjournaal openen"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:26
-#, fuzzy, kde-format
-#| msgid "Open system journal"
+#, kde-format
 msgid "Open user journal"
-msgstr "Systeemjournaal openen"
+msgstr "Gebruikersjournaal openen"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:33
 #, kde-format
@@ -338,10 +337,9 @@ msgid "Open System Journal"
 msgstr "Systeemjournaal openen"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:30
-#, fuzzy, kde-format
-#| msgid "Open System Journal"
+#, kde-format
 msgid "Open User Journal"
-msgstr "Systeemjournaal openen"
+msgstr "Gebruikersjournaal openen"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:37
 #, kde-format

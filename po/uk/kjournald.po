@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-10-07 00:46+0000\n"
-"PO-Revision-Date: 2025-05-15 17:49+0300\n"
+"PO-Revision-Date: 2025-10-07 16:26+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -182,10 +182,9 @@ msgid "Open system journal"
 msgstr "Відкрити системний журнал"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:26
-#, fuzzy, kde-format
-#| msgid "Open system journal"
+#, kde-format
 msgid "Open user journal"
-msgstr "Відкрити системний журнал"
+msgstr "Відкрити журнал користувача"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:33
 #, kde-format
@@ -339,10 +338,9 @@ msgid "Open System Journal"
 msgstr "Відкрити системний журнал"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:30
-#, fuzzy, kde-format
-#| msgid "Open System Journal"
+#, kde-format
 msgid "Open User Journal"
-msgstr "Відкрити системний журнал"
+msgstr "Відкрити журнал користувача"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:37
 #, kde-format
