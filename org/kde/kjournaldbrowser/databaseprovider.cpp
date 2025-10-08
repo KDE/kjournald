@@ -38,24 +38,23 @@ void DatabaseProvider::setUserJournal()
     Q_EMIT journalPathChanged();
 }
 
-QString DatabaseProvider::journalPath() const
+QUrl DatabaseProvider::journalPath() const
 {
-    return mJournalPath;
+    return QUrl::fromLocalFile(mJournalPath);
+}
+
+void DatabaseProvider::setJournalPath(const QUrl &path)
+{
+    setLocalJournalPath(path.toLocalFile());
 }
 
 void DatabaseProvider::setLocalJournalPath(const QString &path)
 {
     qCDebug(KJOURNALDLIB_GENERAL) << "Open path" << path;
-    // handle QUrl conversion for QML access
-    QString resolvedPath = path;
-    if (path.startsWith("file://")) {
-        resolvedPath.remove(0, 7);
-    }
-
-    if (resolvedPath == mJournalPath) {
+    if (path == mJournalPath) {
         return;
     }
-    mJournalPath = resolvedPath;
+    mJournalPath = path;
     mMode = Mode::LOCALFOLDER;
     mJournalProvider = std::make_shared<LocalJournal>(mJournalPath);
     Q_EMIT journalPathChanged();

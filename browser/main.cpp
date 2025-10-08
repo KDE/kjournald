@@ -63,9 +63,9 @@ int main(int argc, char *argv[])
     parser.addOption(pathOption);
     parser.process(app);
 
-    QString initialJournalPath;
+    QUrl initialJournalPath;
     if (parser.isSet(pathOption)) {
-        initialJournalPath = parser.value(pathOption);
+        initialJournalPath = QUrl::fromLocalFile(parser.value(pathOption));
     }
 
     QQmlApplicationEngine engine;

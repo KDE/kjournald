@@ -25,12 +25,12 @@ StatefulApp.StatefulWindow {
     application: BrowserApplication
 
     required property FilterCriteriaModel filterModel
-    required property string initialJournalPath
+    required property url initialJournalPath
 
     Component.onCompleted: {
         if (root.initialJournalPath !== "") {
             console.log(`set initial journald path to ` + root.initialJournalPath)
-            DatabaseProvider.setLocalJournalPath(root.initialJournalPath)
+            DatabaseProvider.setJournalPath(root.initialJournalPath)
         }
     }
 
@@ -227,8 +227,9 @@ StatefulApp.StatefulWindow {
     Dialogs.FolderDialog {
         id: folderDialog
         title: i18n("Select journal folder")
+        currentFolder: DatabaseProvider.journalPath
         onAccepted: {
-            DatabaseProvider.setLocalJournalPath(folderDialog.currentFolder)
+            DatabaseProvider.setJournalPath(folderDialog.currentFolder)
         }
     }
 
@@ -237,7 +238,7 @@ StatefulApp.StatefulWindow {
         title: i18n("Select journal file")
         nameFilters: [i18n("Journal files (*.journal)"), i18n("All files (*)")]
         onAccepted: {
-            DatabaseProvider.setLocalJournalPath(fileDialog.currentFile)
+            DatabaseProvider.setJournalPath(fileDialog.currentFile)
         }
     }
 

@@ -20,7 +20,8 @@ class DatabaseProvider : public QObject
     Q_OBJECT
     Q_PROPERTY(DatabaseProvider::Mode mode READ mode NOTIFY journalPathChanged)
 
-    Q_PROPERTY(QString journalPath READ journalPath NOTIFY journalPathChanged)
+    Q_PROPERTY(QUrl journalPath READ journalPath NOTIFY journalPathChanged)
+
     /**
      * @note this path can either be a directory or a file
      */
@@ -46,12 +47,14 @@ public:
 
     DatabaseProvider::Mode mode() const;
 
+    Q_INVOKABLE void setJournalPath(const QUrl &path);
     Q_INVOKABLE void setSystemJournal();
     Q_INVOKABLE void setUserJournal();
-    Q_INVOKABLE void setLocalJournalPath(const QString &path);
     Q_INVOKABLE void setRemoteJournalUrl(const QString &url, quint32 port);
 
-    QString journalPath() const;
+    void setLocalJournalPath(const QString &path);
+
+    QUrl journalPath() const;
     QString localJournalPath() const;
     QString remoteJournalUrl() const;
     quint32 remoteJournalPort() const;
