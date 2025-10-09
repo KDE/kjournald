@@ -2,20 +2,21 @@
 # This file is distributed under the same license as the kjournald package.
 #
 # SPDX-FileCopyrightText: 2024 Guðmundur Erlingsson <gudmundure@gmail.com>
+# SPDX-FileCopyrightText: 2025 Sveinn í Felli <sv1@fellsnet.is>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-07 00:46+0000\n"
-"PO-Revision-Date: 2024-03-18 15:25+0000\n"
-"Last-Translator: Guðmundur Erlingsson <gudmundure@gmail.com>\n"
-"Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
+"POT-Creation-Date: 2025-10-09 00:46+0000\n"
+"PO-Revision-Date: 2025-10-08 23:40+0000\n"
+"Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
+"Language-Team: Icelandic\n"
 "Language: is\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: browser/main.cpp:40
 #, kde-format
@@ -30,12 +31,10 @@ msgid "Viewer for Journald logs"
 msgstr "Skoðari fyrir Journald-annála"
 
 #: browser/main.cpp:44
-#, fuzzy, kde-format
-#| msgctxt "@info:credit"
-#| msgid "(c) 2021 The KJournald Developers"
+#, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2025 The KJournald Developers"
-msgstr "(c) 2021 KJournald forritararnir"
+msgstr "(c) 2021-2025 KJournald forritararnir"
 
 #: browser/main.cpp:45
 #, kde-format
@@ -170,8 +169,7 @@ msgstr "Hreinsa"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:16
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:21
-#, fuzzy, kde-format
-#| msgid "File"
+#, kde-format
 msgctxt "@action:menu"
 msgid "File"
 msgstr "Skrá"
@@ -182,10 +180,9 @@ msgid "Open system journal"
 msgstr "Opna kerfisfærsluskrá"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:26
-#, fuzzy, kde-format
-#| msgid "Open system journal"
+#, kde-format
 msgid "Open user journal"
-msgstr "Opna kerfisfærsluskrá"
+msgstr "Opna færsluskrá notanda"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:33
 #, kde-format
@@ -259,8 +256,7 @@ msgstr "Keyrsluskrá"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:126
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:140
-#, fuzzy, kde-format
-#| msgid "Help"
+#, kde-format
 msgctxt "@action:menu"
 msgid "Help"
 msgstr "Hjálp"
@@ -275,45 +271,45 @@ msgstr "Kjarni"
 msgid "Boot:"
 msgstr "Ræsing:"
 
-#: org/kde/kjournaldbrowser/Main.qml:173
+#: org/kde/kjournaldbrowser/Main.qml:174
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
-msgstr ""
-
-#: org/kde/kjournaldbrowser/Main.qml:215
-#, kde-format
-msgctxt "@info:tooltip"
-msgid "Switch to browsing mode"
-msgstr ""
+msgstr "Skipta á milli samsvörunar háð há-/lágstöfum og óháð há-/lágstöfum"
 
 #: org/kde/kjournaldbrowser/Main.qml:216
 #, kde-format
 msgctxt "@info:tooltip"
-msgid "Switch to selection mode"
-msgstr ""
+msgid "Switch to browsing mode"
+msgstr "Skipta yfir í vafurham"
 
-#: org/kde/kjournaldbrowser/Main.qml:228
+#: org/kde/kjournaldbrowser/Main.qml:217
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Switch to selection mode"
+msgstr "Skipta yfir í valham"
+
+#: org/kde/kjournaldbrowser/Main.qml:229
 #, kde-format
 msgid "Select journal folder"
 msgstr "Velja færsluskrármöppu"
 
-#: org/kde/kjournaldbrowser/Main.qml:236
+#: org/kde/kjournaldbrowser/Main.qml:238
 #, kde-format
 msgid "Select journal file"
 msgstr "Velja færsluskrá"
 
-#: org/kde/kjournaldbrowser/Main.qml:237
+#: org/kde/kjournaldbrowser/Main.qml:239
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "Færsluskrár (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:237
+#: org/kde/kjournaldbrowser/Main.qml:239
 #, kde-format
 msgid "All files (*)"
 msgstr "Allar skrár (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:307
+#: org/kde/kjournaldbrowser/Main.qml:309
 #, kde-format
 msgid "No log entries apply "
 msgstr "Engin annálafærsla á við"
@@ -339,10 +335,9 @@ msgid "Open System Journal"
 msgstr "Opna kerfisfærsluskrá"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:30
-#, fuzzy, kde-format
-#| msgid "Open System Journal"
+#, kde-format
 msgid "Open User Journal"
-msgstr "Opna kerfisfærsluskrá"
+msgstr "Opna færsluskrá notanda"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:37
 #, kde-format

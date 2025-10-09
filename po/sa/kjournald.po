@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-07 00:46+0000\n"
+"POT-Creation-Date: 2025-10-09 00:46+0000\n"
 "PO-Revision-Date: 2024-12-25 19:45+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -277,45 +277,45 @@ msgstr "कर्नेल"
 msgid "Boot:"
 msgstr "पादत्राण:"
 
-#: org/kde/kjournaldbrowser/Main.qml:173
+#: org/kde/kjournaldbrowser/Main.qml:174
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:215
+#: org/kde/kjournaldbrowser/Main.qml:216
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:216
+#: org/kde/kjournaldbrowser/Main.qml:217
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:228
+#: org/kde/kjournaldbrowser/Main.qml:229
 #, kde-format
 msgid "Select journal folder"
 msgstr "पत्रिकापुटं चिनोतु"
 
-#: org/kde/kjournaldbrowser/Main.qml:236
+#: org/kde/kjournaldbrowser/Main.qml:238
 #, kde-format
 msgid "Select journal file"
 msgstr "जर्नल् सञ्चिकां चिनोतु"
 
-#: org/kde/kjournaldbrowser/Main.qml:237
+#: org/kde/kjournaldbrowser/Main.qml:239
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "जर्नल् सञ्चिकाः (*.journal) ."
 
-#: org/kde/kjournaldbrowser/Main.qml:237
+#: org/kde/kjournaldbrowser/Main.qml:239
 #, kde-format
 msgid "All files (*)"
 msgstr "सर्वाणि सञ्चिकाः (*) ."
 
-#: org/kde/kjournaldbrowser/Main.qml:307
+#: org/kde/kjournaldbrowser/Main.qml:309
 #, kde-format
 msgid "No log entries apply "
 msgstr "कोऽपि लॉगप्रविष्टयः न प्रवर्तन्ते "

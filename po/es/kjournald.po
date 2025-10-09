@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-07 00:46+0000\n"
+"POT-Creation-Date: 2025-10-09 00:46+0000\n"
 "PO-Revision-Date: 2025-10-07 04:35+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -274,45 +274,45 @@ msgstr "Kernel"
 msgid "Boot:"
 msgstr "Arranque:"
 
-#: org/kde/kjournaldbrowser/Main.qml:173
+#: org/kde/kjournaldbrowser/Main.qml:174
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr "Cambiar entre distinguir o no mayúsculas de minúsculas"
 
-#: org/kde/kjournaldbrowser/Main.qml:215
+#: org/kde/kjournaldbrowser/Main.qml:216
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "Cambiar al modo de navegación"
 
-#: org/kde/kjournaldbrowser/Main.qml:216
+#: org/kde/kjournaldbrowser/Main.qml:217
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "Cambiar al modo de selección"
 
-#: org/kde/kjournaldbrowser/Main.qml:228
+#: org/kde/kjournaldbrowser/Main.qml:229
 #, kde-format
 msgid "Select journal folder"
 msgstr "Seleccionar carpeta de registro"
 
-#: org/kde/kjournaldbrowser/Main.qml:236
+#: org/kde/kjournaldbrowser/Main.qml:238
 #, kde-format
 msgid "Select journal file"
 msgstr "Seleccionar archivo de registro"
 
-#: org/kde/kjournaldbrowser/Main.qml:237
+#: org/kde/kjournaldbrowser/Main.qml:239
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "Archivos de registro (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:237
+#: org/kde/kjournaldbrowser/Main.qml:239
 #, kde-format
 msgid "All files (*)"
 msgstr "Todos los archivos (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:307
+#: org/kde/kjournaldbrowser/Main.qml:309
 #, kde-format
 msgid "No log entries apply "
 msgstr "Ninguna entrada del registro es aplicable"

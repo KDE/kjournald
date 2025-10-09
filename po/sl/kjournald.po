@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-07 00:46+0000\n"
+"POT-Creation-Date: 2025-10-09 00:46+0000\n"
 "PO-Revision-Date: 2025-10-07 07:23+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -273,7 +273,7 @@ msgstr "Jedro"
 msgid "Boot:"
 msgstr "Zagon:"
 
-#: org/kde/kjournaldbrowser/Main.qml:173
+#: org/kde/kjournaldbrowser/Main.qml:174
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
@@ -281,39 +281,39 @@ msgstr ""
 "Preklopi med ujemanjem, ki razlikuje velike in male črke, in ujemanjem, ki "
 "jih ne razlikuje"
 
-#: org/kde/kjournaldbrowser/Main.qml:215
+#: org/kde/kjournaldbrowser/Main.qml:216
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "Preklopi v način brskanja"
 
-#: org/kde/kjournaldbrowser/Main.qml:216
+#: org/kde/kjournaldbrowser/Main.qml:217
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "Preklopi v izbirni način"
 
-#: org/kde/kjournaldbrowser/Main.qml:228
+#: org/kde/kjournaldbrowser/Main.qml:229
 #, kde-format
 msgid "Select journal folder"
 msgstr "Izberi mapo dnevnikov"
 
-#: org/kde/kjournaldbrowser/Main.qml:236
+#: org/kde/kjournaldbrowser/Main.qml:238
 #, kde-format
 msgid "Select journal file"
 msgstr "Izberi datoteko dnevnika"
 
-#: org/kde/kjournaldbrowser/Main.qml:237
+#: org/kde/kjournaldbrowser/Main.qml:239
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "Datoteke dnevnikov (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:237
+#: org/kde/kjournaldbrowser/Main.qml:239
 #, kde-format
 msgid "All files (*)"
 msgstr "Vse datoteke (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:307
+#: org/kde/kjournaldbrowser/Main.qml:309
 #, kde-format
 msgid "No log entries apply "
 msgstr "Ni vnosov v dnevniku "

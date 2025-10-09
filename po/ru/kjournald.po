@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-10-07 00:46+0000\n"
+"POT-Creation-Date: 2025-10-09 00:46+0000\n"
 "PO-Revision-Date: 2025-08-18 11:43+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -275,45 +275,45 @@ msgstr "Ядро"
 msgid "Boot:"
 msgstr "Загрузка:"
 
-#: org/kde/kjournaldbrowser/Main.qml:173
+#: org/kde/kjournaldbrowser/Main.qml:174
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr "Переключение между регистрозависимым и регистронезависимым режимами"
 
-#: org/kde/kjournaldbrowser/Main.qml:215
+#: org/kde/kjournaldbrowser/Main.qml:216
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "Перейти в режим просмотра"
 
-#: org/kde/kjournaldbrowser/Main.qml:216
+#: org/kde/kjournaldbrowser/Main.qml:217
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "Перейти в режим выделения"
 
-#: org/kde/kjournaldbrowser/Main.qml:228
+#: org/kde/kjournaldbrowser/Main.qml:229
 #, kde-format
 msgid "Select journal folder"
 msgstr "Выбрать папку журнала"
 
-#: org/kde/kjournaldbrowser/Main.qml:236
+#: org/kde/kjournaldbrowser/Main.qml:238
 #, kde-format
 msgid "Select journal file"
 msgstr "Выбрать файл журнала"
 
-#: org/kde/kjournaldbrowser/Main.qml:237
+#: org/kde/kjournaldbrowser/Main.qml:239
 #, kde-format
 msgid "Journal files (*.journal)"
 msgstr "Файлы журнала (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:237
+#: org/kde/kjournaldbrowser/Main.qml:239
 #, kde-format
 msgid "All files (*)"
 msgstr "Все файлы (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:307
+#: org/kde/kjournaldbrowser/Main.qml:309
 #, kde-format
 msgid "No log entries apply "
 msgstr "Нет соответствующих записей журнала"
