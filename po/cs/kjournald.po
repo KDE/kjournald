@@ -179,10 +179,9 @@ msgid "Open system journal"
 msgstr "Otevřít žurnál systému"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:26
-#, fuzzy, kde-format
-#| msgid "Open system journal"
+#, kde-format
 msgid "Open user journal"
-msgstr "Otevřít žurnál systému"
+msgstr ""
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:33
 #, kde-format
@@ -335,10 +334,9 @@ msgid "Open System Journal"
 msgstr "Otevřít žurnál systému"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:30
-#, fuzzy, kde-format
-#| msgid "Open System Journal"
+#, kde-format
 msgid "Open User Journal"
-msgstr "Otevřít žurnál systému"
+msgstr ""
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:37
 #, kde-format
