@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-10-09 00:46+0000\n"
-"PO-Revision-Date: 2025-05-25 16:50+0300\n"
+"PO-Revision-Date: 2025-10-15 19:35+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #: browser/main.cpp:40
 #, kde-format
@@ -179,10 +179,9 @@ msgid "Open system journal"
 msgstr "Avaa järjestelmäloki"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:26
-#, fuzzy, kde-format
-#| msgid "Open system journal"
+#, kde-format
 msgid "Open user journal"
-msgstr "Avaa järjestelmäloki"
+msgstr "Avaa käyttäjän loki"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:33
 #, kde-format
@@ -335,10 +334,9 @@ msgid "Open System Journal"
 msgstr "Avaa järjestelmäloki"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:30
-#, fuzzy, kde-format
-#| msgid "Open System Journal"
+#, kde-format
 msgid "Open User Journal"
-msgstr "Avaa järjestelmäloki"
+msgstr "Avaa käyttäjän loki"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:37
 #, kde-format
