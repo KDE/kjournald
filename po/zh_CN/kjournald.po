@@ -14,8 +14,8 @@ msgstr ""
 "X-Crowdin-Project: kdeorg\n"
 "X-Crowdin-Project-ID: 269464\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf6-trunk/messages/kjournald/kjournald.pot\n"
-"X-Crowdin-File-ID: 48238\n"
+"X-Crowdin-File: /kf6-stable/messages/kjournald/kjournald.pot\n"
+"X-Crowdin-File-ID: 51910\n"
 
 #: browser/main.cpp:40
 #, kde-format
@@ -179,10 +179,9 @@ msgid "Open system journal"
 msgstr "打开系统日志"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:26
-#, fuzzy, kde-format
-#| msgid "Open system journal"
+#, kde-format
 msgid "Open user journal"
-msgstr "打开系统日志"
+msgstr "打开用户日志"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:33
 #, kde-format
@@ -335,10 +334,9 @@ msgid "Open System Journal"
 msgstr "打开系统日志"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:30
-#, fuzzy, kde-format
-#| msgid "Open System Journal"
+#, kde-format
 msgid "Open User Journal"
-msgstr "打开系统日志"
+msgstr "打开用户日志"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:37
 #, kde-format
