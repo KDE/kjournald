@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-10-09 00:46+0000\n"
-"PO-Revision-Date: 2025-05-19 21:25+0900\n"
+"PO-Revision-Date: 2025-11-13 22:04+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 25.07.70\n"
+"X-Generator: Lokalize 25.11.70\n"
 
 #: browser/main.cpp:40
 #, kde-format
@@ -183,10 +183,9 @@ msgid "Open system journal"
 msgstr "開啟系統日誌"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:26
-#, fuzzy, kde-format
-#| msgid "Open system journal"
+#, kde-format
 msgid "Open user journal"
-msgstr "開啟系統日誌"
+msgstr "開啟使用者日誌"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:33
 #, kde-format
@@ -339,10 +338,9 @@ msgid "Open System Journal"
 msgstr "開啟系統日誌"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:30
-#, fuzzy, kde-format
-#| msgid "Open System Journal"
+#, kde-format
 msgid "Open User Journal"
-msgstr "開啟系統日誌"
+msgstr "開啟使用者日誌"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:37
 #, kde-format
