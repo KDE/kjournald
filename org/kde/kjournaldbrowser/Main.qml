@@ -229,7 +229,7 @@ StatefulApp.StatefulWindow {
         title: i18n("Select journal folder")
         currentFolder: DatabaseProvider.journalPath
         onAccepted: {
-            DatabaseProvider.setJournalPath(folderDialog.currentFolder)
+            DatabaseProvider.setJournalPath(folderDialog.selectedFolder)
         }
     }
 
@@ -238,7 +238,7 @@ StatefulApp.StatefulWindow {
         title: i18n("Select journal file")
         nameFilters: [i18n("Journal files (*.journal)"), i18n("All files (*)")]
         onAccepted: {
-            DatabaseProvider.setJournalPath(fileDialog.currentFile)
+            DatabaseProvider.setJournalPath(fileDialog.selectedFile)
         }
     }
 
