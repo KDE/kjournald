@@ -132,7 +132,9 @@ ListView {
 
         required property int index
         required property entry entry
+        required property string systemdunit
         required property string systemdunit_changed_substring
+        required property string exe
         required property string exe_changed_substring
         required property color systemdunitcolor_background
         required property color execolor_background
