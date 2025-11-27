@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:54+0000\n"
+"POT-Creation-Date: 2025-11-27 00:46+0000\n"
 "PO-Revision-Date: 2022-11-22 13:06+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -269,7 +269,7 @@ msgctxt "@action:menu"
 msgid "Help"
 msgstr "Ajuda"
 
-#: org/kde/kjournaldbrowser/LogView.qml:208
+#: org/kde/kjournaldbrowser/LogView.qml:210
 #, kde-format
 msgid "Kernel"
 msgstr "'Kernel'"

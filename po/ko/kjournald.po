@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:54+0000\n"
+"POT-Creation-Date: 2025-11-27 00:46+0000\n"
 "PO-Revision-Date: 2025-10-09 01:28+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -260,7 +260,7 @@ msgctxt "@action:menu"
 msgid "Help"
 msgstr "도움말"
 
-#: org/kde/kjournaldbrowser/LogView.qml:208
+#: org/kde/kjournaldbrowser/LogView.qml:210
 #, kde-format
 msgid "Kernel"
 msgstr "커널"
