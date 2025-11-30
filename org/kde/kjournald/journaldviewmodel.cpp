@@ -412,12 +412,12 @@ void JournaldViewModel::setJournalProvider(IJournalProvider *provider)
     if (provider) {
         d->mJournal = provider->openJournal();
     }
-    const bool journalAvailabe = provider && d->mJournal && d->mJournal->isValid();
-    if (journalAvailabe) {
+    d->mJournalAvailable = provider && d->mJournal && d->mJournal->isValid();
+    if (d->mJournalAvailable) {
         d->resetJournal();
     }
     guardedEndResetModel();
-    if (journalAvailabe) {
+    if (d->mJournalAvailable) {
         fetchMoreLogEntries();
         connect(d->mJournal.get(), &SdJournal::journalUpdated, this, [=]() {
             if (d->mTailCursorReached) {
@@ -426,11 +426,17 @@ void JournaldViewModel::setJournalProvider(IJournalProvider *provider)
             }
         });
     }
+    Q_EMIT availableChanged();
 }
 
 IJournalProvider *JournaldViewModel::journalProvider() const
 {
     return d->mJournalProvider;
+}
+
+bool JournaldViewModel::isAvailable() const
+{
+    return d->mJournalAvailable;
 }
 
 QHash<int, QByteArray> JournaldViewModel::roleNames() const

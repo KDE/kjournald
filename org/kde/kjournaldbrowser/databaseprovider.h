@@ -19,7 +19,6 @@ class DatabaseProvider : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(DatabaseProvider::Mode mode READ mode NOTIFY journalPathChanged)
-
     Q_PROPERTY(QUrl journalPath READ journalPath NOTIFY journalPathChanged)
 
     /**

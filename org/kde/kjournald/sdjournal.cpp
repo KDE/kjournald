@@ -6,6 +6,7 @@
 #include "sdjournal.h"
 #include "kjournaldlib_log_general.h"
 #include <QDir>
+#include <QDirIterator>
 
 SdJournal::SdJournal(const QString &path, int flags)
 {
@@ -17,8 +18,11 @@ SdJournal::SdJournal(const QString &path, int flags)
         auto expectedJournal = owning_ptr_call<sd_journal>(sd_journal_open_directory, path.toStdString().c_str(), flags);
         if (expectedJournal.ret < 0) {
             qCCritical(KJOURNALDLIB_GENERAL) << "Could not open journal from directory" << path << ":" << strerror(-expectedJournal.ret);
-        } else {
+        } else if (areJournalFilesAvailable(path)) {
             mJournal = std::move(expectedJournal.value);
+        } else {
+            qCritical() << "Plausibility parser did not detect any journald db file at location";
+            return;
         }
     } else if (QFileInfo(path).isFile()) {
         const char **files = new const char *[1];
@@ -74,4 +78,25 @@ void SdJournal::handleFdUpdate()
     file.close();
     qCDebug(KJOURNALDLIB_GENERAL) << "Local journal FD updated";
     Q_EMIT journalUpdated();
+}
+
+bool SdJournal::areJournalFilesAvailable(const QString &path)
+{
+    // this method iterates all files under given path and does plausibility check for available files
+    // even though https://systemd.io/JOURNAL_FILE_FORMAT/ says that data format is not stable,
+    // we expect the very basic setup to not change any time soon; also, no existing sd-journal API provides
+    // information about available journal files
+
+    // TODO sd_journal_open_directory() apparently only goes 2 levels deep
+    QDirIterator it(path, QStringList() << QStringLiteral("*.journal"), QDir::Files, QDirIterator::Subdirectories);
+    while (it.hasNext()) {
+        // first 8 bytes of those journal files must start with ASCII: "LPKSHHRH"
+        QFile file{it.next()};
+        if (file.open(QIODevice::ReadOnly)) {
+            if (file.read(8) == QLatin1StringView{"LPKSHHRH"}) {
+                return true;
+            }
+        }
+    }
+    return false;
 }

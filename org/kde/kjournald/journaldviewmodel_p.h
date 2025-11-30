@@ -79,6 +79,7 @@ public:
 
     IJournalProvider *mJournalProvider{nullptr};
     std::unique_ptr<SdJournal> mJournal;
+    bool mJournalAvailable{false};
     QList<LogEntry> mLog;
     Filter mFilter;
     bool mHeadCursorReached{false};
