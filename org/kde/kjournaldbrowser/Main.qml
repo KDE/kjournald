@@ -298,21 +298,12 @@ StatefulApp.StatefulWindow {
                     console.log("view content copied")
                 }
             }
-            // Once the minimal KF5 version gets increased
-            // it would be great to use Kirigami.PlaceholderMessage instead
-            ColumnLayout {
-                visible: logView.count === 0
+
+            Kirigami.PlaceholderMessage {
                 anchors.centerIn: parent
-                Kirigami.Heading {
-                    Layout.fillWidth: true
-
-                    text: i18n("No log entries apply ")
-                    level: 2
-                    opacity: 0.5
-
-                    horizontalAlignment: Qt.AlignHCenter
-                    wrapMode: Text.WordWrap
-                }
+                width: parent.width - (Kirigami.Units.largeSpacing * 4)
+                visible: logView.count === 0
+                text: i18nc("@info:tooltip", "No log entries apply to selected filters.")
             }
         }
     }
