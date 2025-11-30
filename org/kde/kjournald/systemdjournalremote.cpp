@@ -117,6 +117,12 @@ std::unique_ptr<SdJournal> SystemdJournalRemote::openJournal() const
     return std::make_unique<SdJournal>(d->mTemporyJournalDir.path(), 0);
 }
 
+bool SystemdJournalRemote::isJournalCreated() const
+{
+    QFile file(d->mTemporyJournalDir.path() + QLatin1String("/remote.journal"));
+    return file.exists() && file.size() >= 8; // magic header has 8 bytes
+}
+
 QString SystemdJournalRemote::currentBootId() const
 {
     qCWarning(KJOURNALDLIB_GENERAL) << "Access to remote journal boot ID is not implemented";

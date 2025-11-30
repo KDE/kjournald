@@ -25,7 +25,10 @@ class KJOURNALD_EXPORT JournaldViewModel : public QAbstractItemModel
 {
     Q_OBJECT
     Q_PROPERTY(IJournalProvider *journalProvider READ journalProvider WRITE setJournalProvider NOTIFY journalProviderChanged)
-
+    /**
+     * indicates if journal could be loaded from configured provider
+     */
+    Q_PROPERTY(bool available READ isAvailable NOTIFY availableChanged)
     /**
      * Configure filter for view model
      **/
@@ -81,6 +84,8 @@ public:
     void setJournalProvider(IJournalProvider *provider);
 
     IJournalProvider *journalProvider() const;
+
+    bool isAvailable() const;
 
     /**
      * @copydoc QAbstractItemModel::rolesNames()
@@ -202,6 +207,7 @@ Q_SIGNALS:
      */
     void filterChanged();
     void journalProviderChanged();
+    void availableChanged();
 
 protected:
     void guardedBeginResetModel();

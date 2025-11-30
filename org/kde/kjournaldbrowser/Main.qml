@@ -302,7 +302,18 @@ StatefulApp.StatefulWindow {
             Kirigami.PlaceholderMessage {
                 anchors.centerIn: parent
                 width: parent.width - (Kirigami.Units.largeSpacing * 4)
-                visible: logView.count === 0
+
+                visible: !journalModel.available
+
+                icon.name: "data-error"
+                text: i18nc("@title", "Unable to load journal database from selected location: ") + DatabaseProvider.localJournalPath
+                explanation: i18nc("@info", "Check sub-directories of selected directory to contain files ending with '.journal'.")
+            }
+
+            Kirigami.PlaceholderMessage {
+                anchors.centerIn: parent
+                width: parent.width - (Kirigami.Units.largeSpacing * 4)
+                visible: journalModel.available && logView.count === 0
                 text: i18nc("@info:tooltip", "No log entries apply to selected filters.")
             }
         }

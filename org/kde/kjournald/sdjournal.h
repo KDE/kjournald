@@ -27,6 +27,8 @@ public:
      */
     bool isValid() const;
 
+    static bool areJournalFilesAvailable(const QString &path);
+
 private Q_SLOTS:
     void handleFdUpdate();
 

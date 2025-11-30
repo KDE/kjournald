@@ -261,10 +261,10 @@ void TestRemoteJournal::systemdJournalRemoteJournalFromLocalhost()
     sd_id128_t bootId;
 
     SystemdJournalRemote provider("http://127.0.0.1", "19531");
+    QTRY_COMPARE_WITH_TIMEOUT(provider.isJournalCreated(), true, 5000);
     auto journal = provider.openJournal();
     QVERIFY(journal);
-
-    QTRY_COMPARE_WITH_TIMEOUT(journal->isValid(), true, 5000);
+    QCOMPARE(journal->isValid(), true);
     QCOMPARE(sd_journal_seek_head(journal->get()), 0);
 
     systemdJournalGatwaydProcess.terminate();

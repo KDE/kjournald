@@ -12,7 +12,6 @@
 #include <QProcess>
 #include <QString>
 #include <memory>
-#include <optional>
 
 class SystemdJournalRemotePrivate;
 class QIODevice;
@@ -54,6 +53,15 @@ public:
      * @copydoc IJournalProvider::openJournal()
      */
     std::unique_ptr<SdJournal> openJournal() const override;
+
+    /**
+     * This method can be used to poll if the journal file is available.
+     * Note that openJournal must only be called once the file is created,
+     * because the SdJournal would be invalid otherwise.
+     *
+     * @return true if remote journal process has created a journal file
+     */
+    bool isJournalCreated() const;
 
     /**
      * @copydoc IJournalProvider::currentBootId()
