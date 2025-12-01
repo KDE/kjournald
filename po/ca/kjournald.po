@@ -353,6 +353,3 @@ msgstr "Obre des de la carpeta"
 #, kde-format
 msgid "Open from File"
 msgstr "Obre des del fitxer"
-
-#~ msgid "Highlight:"
-#~ msgstr "Ressaltat:"
