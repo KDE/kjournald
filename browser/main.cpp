@@ -56,7 +56,7 @@ int main(int argc, char *argv[])
     FilterCriteriaModel filterCriteriaModel;
 
     QCommandLineParser parser;
-    parser.setApplicationDescription("Journald Log Viewer");
+    parser.setApplicationDescription(i18n("Journald Log Viewer"));
     parser.addHelpOption();
     parser.addVersionOption();
     const QCommandLineOption pathOption("D", "Path to journald database folder", "path");
