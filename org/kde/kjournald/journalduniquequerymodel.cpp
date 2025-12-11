@@ -222,3 +222,5 @@ bool JournaldUniqueQueryModel::setData(const QModelIndex &index, const QVariant 
     }
     return QAbstractItemModel::setData(index, value, role);
 }
+
+#include "moc_journalduniquequerymodel.cpp"

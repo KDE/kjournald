@@ -86,3 +86,5 @@ void LogEntry::setCursor(const QString &cursor)
 {
     m_cursor = cursor;
 }
+
+#include "moc_logentry.cpp"

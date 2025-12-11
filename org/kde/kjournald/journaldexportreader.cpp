@@ -88,3 +88,5 @@ JournaldExportReader::LogEntry JournaldExportReader::entry() const
 {
     return mCurrentEntry;
 }
+
+#include "moc_journaldexportreader.cpp"

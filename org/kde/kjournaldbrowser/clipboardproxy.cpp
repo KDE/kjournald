@@ -19,3 +19,5 @@ void ClipboardProxy::setText(const QString &text)
         clipboard->setText(text);
     }
 }
+
+#include "moc_clipboardproxy.cpp"

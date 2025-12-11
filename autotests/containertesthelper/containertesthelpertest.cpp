@@ -47,3 +47,5 @@ void ContainerTestHelperTest::testContainerTestChecks()
 }
 
 QTEST_GUILESS_MAIN(ContainerTestHelperTest)
+
+#include "moc_containertesthelpertest.cpp"

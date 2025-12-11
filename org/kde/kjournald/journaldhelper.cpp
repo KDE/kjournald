@@ -145,3 +145,5 @@ QDebug operator<<(QDebug debug, const JournaldHelper::BootInfo &bootInfo)
                     << bootInfo.mUntil.toString(Qt::DateFormat::ISODateWithMs);
     return debug;
 }
+
+#include "moc_journaldhelper.cpp"

@@ -448,3 +448,5 @@ QVector<std::pair<QString, bool>> FilterCriteriaModel::entries(FilterCriteriaMod
     }
     return values;
 }
+
+#include "moc_filtercriteriamodel.cpp"

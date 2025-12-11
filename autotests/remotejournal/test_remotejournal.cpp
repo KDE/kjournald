@@ -277,3 +277,5 @@ void TestRemoteJournal::systemdJournalRemoteJournalFromLocalhost()
 }
 
 QTEST_GUILESS_MAIN(TestRemoteJournal);
+
+#include "moc_test_remotejournal.cpp"

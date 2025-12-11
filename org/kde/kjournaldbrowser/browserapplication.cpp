@@ -68,3 +68,5 @@ BrowserApplication::ViewMode BrowserApplication::viewMode() const
 {
     return mViewMode;
 }
+
+#include "moc_browserapplication.cpp"

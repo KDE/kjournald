@@ -182,3 +182,5 @@ void TestFilterCriteriaModel::standaloneTestPrioritySelectionOptions()
 }
 
 QTEST_GUILESS_MAIN(TestFilterCriteriaModel);
+
+#include "moc_test_filtercriteriamodel.cpp"

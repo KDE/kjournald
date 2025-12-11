@@ -71,3 +71,5 @@ void TestUniqueQuery::systemdUnits()
 }
 
 QTEST_GUILESS_MAIN(TestUniqueQuery);
+
+#include "moc_test_uniquequery.cpp"

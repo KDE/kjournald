@@ -25,3 +25,5 @@ void TestLocalJournal::journalAccess()
 }
 
 QTEST_GUILESS_MAIN(TestLocalJournal);
+
+#include "moc_test_localjournal.cpp"

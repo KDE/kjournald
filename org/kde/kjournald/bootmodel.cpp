@@ -77,3 +77,5 @@ QVariant BootModel::data(const QModelIndex &index, int role) const
 
     return QVariant();
 }
+
+#include "moc_bootmodel.cpp"

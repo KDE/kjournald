@@ -20,3 +20,5 @@ QString Formatter::formatTime(const QDateTime &datetime, bool utc) const
         return datetime.time().toString(QLatin1String("HH:mm:ss.zzz"));
     }
 }
+
+#include "moc_formatter.cpp"

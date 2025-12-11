@@ -103,3 +103,5 @@ void DatabaseProvider::initJournal()
     });
     mJournalProvider = remoteJournal;
 }
+
+#include "moc_databaseprovider.cpp"

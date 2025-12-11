@@ -75,3 +75,5 @@ void SdJournal::handleFdUpdate()
     qCDebug(KJOURNALDLIB_GENERAL) << "Local journal FD updated";
     Q_EMIT journalUpdated();
 }
+
+#include "moc_sdjournal.cpp"

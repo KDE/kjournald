@@ -419,3 +419,5 @@ void TestViewModel::stringSearch()
 }
 
 QTEST_GUILESS_MAIN(TestViewModel);
+
+#include "moc_test_viewmodel.cpp"

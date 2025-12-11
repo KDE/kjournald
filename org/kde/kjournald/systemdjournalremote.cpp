@@ -141,3 +141,5 @@ bool SystemdJournalRemote::isSystemdRemoteAvailable() const
 {
     return d->sanityCheckForSystemdJournalRemoteExec();
 }
+
+#include "moc_systemdjournalremote.cpp"

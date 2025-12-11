@@ -724,3 +724,5 @@ int JournaldViewModel::closestIndexForData(const QDateTime &datetime)
         return index;
     }
 }
+
+#include "moc_journaldviewmodel.cpp"

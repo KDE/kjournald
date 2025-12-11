@@ -98,3 +98,5 @@ QHash<int, QByteArray> FieldFilterProxyModel::roleNames() const
     }
     return QHash<int, QByteArray>();
 }
+
+#include "moc_fieldfilterproxymodel.cpp"

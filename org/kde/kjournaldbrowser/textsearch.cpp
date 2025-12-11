@@ -56,3 +56,5 @@ void TextSearch::setCaseSensitive(bool caseSensitive)
     m_caseSensitive = nextCaseSensitive;
     Q_EMIT caseSensitiveChanged();
 }
+
+#include "moc_textsearch.cpp"

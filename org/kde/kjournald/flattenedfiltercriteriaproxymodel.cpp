@@ -198,3 +198,5 @@ bool FlattenedFilterCriteriaProxyModel::setData(const QModelIndex &index, const 
 
     return false;
 }
+
+#include "moc_flattenedfiltercriteriaproxymodel.cpp"

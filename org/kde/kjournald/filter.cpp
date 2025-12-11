@@ -75,3 +75,5 @@ QDebug operator<<(QDebug debug, const Filter &c)
                     << ", unit: " << c.systemdUnitFilter() << ", kernel: " << c.areKernelMessagesEnabled() << ")";
     return debug.space();
 }
+
+#include "moc_filter.cpp"
