@@ -4,9 +4,13 @@ SPDX-FileCopyrightText: none
 SPDX-License-Identifier: CC0-1.0
 -->
 <component type="desktop">
-  <id>org.kde.kjournaldbrowser.desktop</id>
+  <id>org.kde.kjournaldbrowser</id>
   <metadata_license>CC0-1.0</metadata_license>
+  <launchable type="desktop-id">org.kde.kjournaldbrowser.desktop</launchable>
   <project_license>LGPL-2.1-or-later OR MIT</project_license>
+  <developer id="kde.org">
+    <name translate="no">KDE</name>
+  </developer>
   <name>Journald Browser</name>
   <name xml:lang="ar">متصفح يوميات دي</name>
   <name xml:lang="ca">Navegador de «journald»</name>
@@ -161,6 +165,10 @@ SPDX-License-Identifier: CC0-1.0
   <url type="homepage">https://invent.kde.org/libraries/kjournald</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kjournald</url>
   <url type="donation">https://www.kde.org/community/donations/?app=kjournald&amp;source=appdata</url>
+  <branding>
+    <color type="primary" scheme_preference="light">#4ba2ff</color>
+    <color type="primary" scheme_preference="dark">#1363b3</color>
+  </branding>
   <project_group>KDE</project_group>
   <provides>
     <binary>kjournaldbrowser</binary>
