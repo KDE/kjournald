@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-27 00:46+0000\n"
+"POT-Creation-Date: 2025-12-13 00:47+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -66,6 +66,13 @@ msgstr "Tyson Tan"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "tds00@qq.com"
+
+#: browser/main.cpp:59
+#, fuzzy, kde-format
+#| msgctxt "@title Displayed program name"
+#| msgid "KJournald Browser"
+msgid "Journald Log Viewer"
+msgstr "KJournald 浏览器"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:22
 #, kde-format

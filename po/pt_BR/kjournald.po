@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-27 00:46+0000\n"
+"POT-Creation-Date: 2025-12-13 00:47+0000\n"
 "PO-Revision-Date: 2025-10-07 07:22-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -71,6 +71,13 @@ msgstr "Geraldo Simião, Luiz Fernando Ranghetti"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "geraldosimiao@fedoraproject.org, elchevive@opensuse.org"
+
+#: browser/main.cpp:59
+#, fuzzy, kde-format
+#| msgctxt "@title Displayed program name"
+#| msgid "KJournald Browser"
+msgid "Journald Log Viewer"
+msgstr "Navegador do Kjournald"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:22
 #, kde-format

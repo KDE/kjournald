@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-27 00:46+0000\n"
+"POT-Creation-Date: 2025-12-13 00:47+0000\n"
 "PO-Revision-Date: 2025-10-07 09:35+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -71,6 +71,13 @@ msgstr "Antoni Bella"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "antonibella5@yahoo.com"
+
+#: browser/main.cpp:59
+#, fuzzy, kde-format
+#| msgctxt "@title Displayed program name"
+#| msgid "KJournald Browser"
+msgid "Journald Log Viewer"
+msgstr "Navegador KJournald"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:22
 #, kde-format

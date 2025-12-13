@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-27 00:46+0000\n"
+"POT-Creation-Date: 2025-12-13 00:47+0000\n"
 "PO-Revision-Date: 2025-10-08 23:40+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
@@ -67,6 +67,13 @@ msgstr "Guðmundur Erlingsson"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "gudmundure@gmail.com"
+
+#: browser/main.cpp:59
+#, fuzzy, kde-format
+#| msgctxt "@title Displayed program name"
+#| msgid "KJournald Browser"
+msgid "Journald Log Viewer"
+msgstr "KJournald-vafri"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:22
 #, kde-format

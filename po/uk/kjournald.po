@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-27 00:46+0000\n"
+"POT-Creation-Date: 2025-12-13 00:47+0000\n"
 "PO-Revision-Date: 2025-10-07 16:26+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -69,6 +69,13 @@ msgstr "Юрій Чорноіван"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "yurchor@ukr.net"
+
+#: browser/main.cpp:59
+#, fuzzy, kde-format
+#| msgctxt "@title Displayed program name"
+#| msgid "KJournald Browser"
+msgid "Journald Log Viewer"
+msgstr "Навігатор KJournald"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:22
 #, kde-format
