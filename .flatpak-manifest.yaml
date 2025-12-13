@@ -8,10 +8,14 @@ tags:
   - nightly
 desktop-file-name-suffix: ' (Nightly)'
 finish-args:
+  # X11
   - --share=ipc
+  # Windowing
   - --socket=fallback-x11
   - --socket=wayland
+  # Hardware Acceleration
   - --device=dri
+  # Browse the system journal
   - --filesystem=/var/log/journal:ro
 modules:
   - name: kjournald
