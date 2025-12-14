@@ -68,11 +68,9 @@ msgid "Your emails"
 msgstr "tds00@qq.com"
 
 #: browser/main.cpp:59
-#, fuzzy, kde-format
-#| msgctxt "@title Displayed program name"
-#| msgid "KJournald Browser"
+#, kde-format
 msgid "Journald Log Viewer"
-msgstr "KJournald 浏览器"
+msgstr ""
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:22
 #, kde-format
