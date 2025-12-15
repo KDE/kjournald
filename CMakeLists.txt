@@ -21,13 +21,6 @@ include(FeatureSummary)
 include(GenerateExportHeader)
 include(CMakePackageConfigHelpers)
 
-add_definitions(
-    -DQT_DISABLE_DEPRECATED_BEFORE=0x060800
-    -DQT_DEPRECATED_WARNINGS_SINCE=0x060800
-    -DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x0060800
-    -DKF_DEPRECATED_WARNINGS_SINCE=0x060800
-)
-
 set(KF_VERSION 6.8.0)
 find_package(ECM ${KF_VERSION} NO_MODULE)
 set_package_properties(ECM PROPERTIES
@@ -35,6 +28,14 @@ set_package_properties(ECM PROPERTIES
     DESCRIPTION "Extra CMake Modules."
     URL "https://invent.kde.org/frameworks/extra-cmake-modules")
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
+
+include(ECMDeprecationSettings)
+
+ecm_set_disabled_deprecation_versions(
+    QT 6.8.0
+    KF 6.21.0
+)
+
 include(ECMAddTests)
 include(ECMEnableSanitizers)
 include(ECMCoverageOption)
