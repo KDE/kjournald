@@ -25,7 +25,7 @@ class KJOURNALD_EXPORT FieldFilterProxyModel : public QSortFilterProxyModel, pub
     QML_ELEMENT
 
 public:
-    explicit FieldFilterProxyModel(QObject *parent = 0);
+    explicit FieldFilterProxyModel(QObject *parent = nullptr);
 
     void setField(const QString &field);
 
