@@ -17,7 +17,7 @@ class SystemdJournalRemote;
 class SystemdJournalRemotePrivate
 {
 public:
-    SystemdJournalRemotePrivate(SystemdJournalRemote *q);
+    explicit SystemdJournalRemotePrivate(SystemdJournalRemote *q);
     bool sanityCheckForSystemdJournalRemoteExec() const;
     QString journalFile() const;
 

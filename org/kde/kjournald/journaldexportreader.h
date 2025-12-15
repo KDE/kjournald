@@ -19,7 +19,7 @@ class KJOURNALD_EXPORT JournaldExportReader : public QObject
 public:
     using LogEntry = QHash<QString, QString>;
 
-    JournaldExportReader(QIODevice *device);
+    explicit JournaldExportReader(QIODevice *device);
     bool atEnd() const;
     bool readNext();
     LogEntry entry() const;

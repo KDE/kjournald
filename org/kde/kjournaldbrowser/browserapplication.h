@@ -39,7 +39,7 @@ public:
     };
     Q_ENUM(FilterCriterium);
 
-    BrowserApplication(QObject *parent = nullptr);
+    explicit BrowserApplication(QObject *parent = nullptr);
     ~BrowserApplication() override;
 
     void setTimeDisplay(TimeDisplay format);

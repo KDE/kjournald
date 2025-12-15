@@ -29,7 +29,7 @@ public:
     /**
      * @brief Construct journal object from file containing logs in systemd's journal export format
      */
-    SystemdJournalRemote(const QString &filePath);
+    explicit SystemdJournalRemote(const QString &filePath);
 
     /**
      * @brief Construct journal object from file containing logs in systemd's journal export format
