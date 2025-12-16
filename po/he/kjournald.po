@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-13 00:47+0000\n"
-"PO-Revision-Date: 2025-10-07 08:52+0300\n"
+"PO-Revision-Date: 2025-12-14 10:14+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 25.08.1\n"
+"X-Generator: Lokalize 25.08.3\n"
 
 #: browser/main.cpp:40
 #, kde-format
@@ -69,11 +69,9 @@ msgid "Your emails"
 msgstr "kde-l10n-he@kde.org"
 
 #: browser/main.cpp:59
-#, fuzzy, kde-format
-#| msgctxt "@title Displayed program name"
-#| msgid "KJournald Browser"
+#, kde-format
 msgid "Journald Log Viewer"
-msgstr "דפדפן KJournald"
+msgstr "מציג יומני Journald"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:22
 #, kde-format
