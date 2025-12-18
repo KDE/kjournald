@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-13 00:47+0000\n"
+"POT-Creation-Date: 2025-12-18 00:46+0000\n"
 "PO-Revision-Date: 2025-10-15 19:35+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -317,7 +317,23 @@ msgstr "Kaikki tiedostot (*)"
 
 #: org/kde/kjournaldbrowser/Main.qml:309
 #, kde-format
-msgid "No log entries apply "
+msgctxt "@title"
+msgid "Unable to load journal database from selected location: "
+msgstr ""
+
+#: org/kde/kjournaldbrowser/Main.qml:310
+#, kde-format
+msgctxt "@info"
+msgid ""
+"Check sub-directories of selected directory to contain files ending with '."
+"journal'."
+msgstr ""
+
+#: org/kde/kjournaldbrowser/Main.qml:317
+#, fuzzy, kde-format
+#| msgid "No log entries apply "
+msgctxt "@info:tooltip"
+msgid "No log entries apply to selected filters."
 msgstr "Ei lokimerkintöjä, jotka vastaavat: "
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:16
