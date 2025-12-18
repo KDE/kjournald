@@ -29,6 +29,6 @@ LINK_PRIVATE
     kjournaldbrowser_backing
     kjournaldbrowser_backingplugin
 )
-install(TARGETS kjournaldbrowser DESTINATION bin)
+install(TARGETS kjournaldbrowser DESTINATION ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 install(PROGRAMS org.kde.kjournaldbrowser.desktop  DESTINATION ${KDE_INSTALL_APPDIR})
 install(FILES org.kde.kjournaldbrowser.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
