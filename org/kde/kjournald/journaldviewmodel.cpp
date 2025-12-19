@@ -202,7 +202,7 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
         qCWarning(KJOURNALDLIB_GENERAL) << "Skipping data fetch, no valid journal opened";
         return chunk;
     }
-    if (mLog.size() > 0) {
+    if (!mLog.isEmpty()) {
         const QString cursor = (direction == Direction::TOWARDS_TAIL) ? mLog.last().cursor() : mLog.first().cursor();
         const SeekCursorResult seekResult = seekCursor(cursor);
         switch (seekResult) {
@@ -226,11 +226,11 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
             return {};
             break;
         }
-    } else if (mLog.size() == 0 && direction == Direction::TOWARDS_TAIL) {
+    } else if (mLog.isEmpty() && direction == Direction::TOWARDS_TAIL) {
         if (!seekHeadAndMakeCurrent()) {
             return {};
         }
-    } else if (mLog.size() == 0 && direction == Direction::TOWARDS_HEAD) {
+    } else if (mLog.isEmpty() && direction == Direction::TOWARDS_HEAD) {
         if (!seekTailAndMakeCurrent()) {
             return {};
         }
