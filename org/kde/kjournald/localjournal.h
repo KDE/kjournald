@@ -40,7 +40,7 @@ public:
      * @brief Construct journal object from journald DB at path @p path
      * This path can be a directory or a file.
      */
-    LocalJournal(const QString &path);
+    explicit LocalJournal(const QString &path);
 
     /**
      * @brief Destroys the journal wrapper

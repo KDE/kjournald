@@ -15,9 +15,9 @@ class KJOURNALD_EXPORT SdJournal : public QObject
 {
     Q_OBJECT
 public:
-    SdJournal(const QString &path, int flags = 0);
-    SdJournal(int flags = 0);
-    ~SdJournal();
+    explicit SdJournal(const QString &path, int flags = 0);
+    explicit SdJournal(int flags = 0);
+    ~SdJournal() override;
     sd_journal *get();
 
     /**

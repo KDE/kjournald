@@ -31,7 +31,7 @@ public:
     /**
      * @brief Destroys the journal wrapper
      */
-    virtual ~IJournalProvider() = default;
+    ~IJournalProvider() override = default;
 
     /**
      * @brief Open systemd journal for reading

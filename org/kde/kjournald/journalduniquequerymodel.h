@@ -51,7 +51,7 @@ public:
      * @param journalPath path to the journald database
      * @param parent the QObject parent
      */
-    JournaldUniqueQueryModel(const QString &journalPath, QObject *parent = nullptr);
+    explicit JournaldUniqueQueryModel(const QString &journalPath, QObject *parent = nullptr);
 
     /**
      * @brief Destroys the JournaldUniqueQueryModel object
