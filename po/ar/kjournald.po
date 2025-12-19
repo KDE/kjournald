@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-18 00:46+0000\n"
-"PO-Revision-Date: 2025-10-08 21:32+0400\n"
+"PO-Revision-Date: 2025-12-18 10:15+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -69,11 +69,9 @@ msgid "Your emails"
 msgstr "zayed.alsaidi@gmail.com"
 
 #: browser/main.cpp:59
-#, fuzzy, kde-format
-#| msgctxt "@title Displayed program name"
-#| msgid "KJournald Browser"
+#, kde-format
 msgid "Journald Log Viewer"
-msgstr "متصفح يوميات دي"
+msgstr "عارض سجل يوميات دي"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:22
 #, kde-format

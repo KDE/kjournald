@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-18 00:46+0000\n"
-"PO-Revision-Date: 2025-12-13 04:15-0300\n"
+"PO-Revision-Date: 2025-12-18 06:36-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.08.3\n"
+"X-Generator: Lokalize 25.12.0\n"
 
 #: browser/main.cpp:40
 #, kde-format
@@ -325,6 +325,8 @@ msgstr "Todo tipo de arquivos (*)"
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
 msgstr ""
+"Não foi possível carregar o banco de dados do journal a partir do local "
+"selecionado: "
 
 #: org/kde/kjournaldbrowser/Main.qml:310
 #, kde-format
@@ -333,13 +335,14 @@ msgid ""
 "Check sub-directories of selected directory to contain files ending with '."
 "journal'."
 msgstr ""
+"Verifique se os subdiretórios do diretório selecionado contêm arquivos que "
+"terminam com '.journal'."
 
 #: org/kde/kjournaldbrowser/Main.qml:317
-#, fuzzy, kde-format
-#| msgid "No log entries apply "
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."
-msgstr "Nenhum registro é compatível com o critério"
+msgstr "Nenhuma entrada de registro se aplica aos filtros selecionados."
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:16
 #, kde-format

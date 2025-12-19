@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-18 00:46+0000\n"
-"PO-Revision-Date: 2025-12-13 08:36+0100\n"
+"PO-Revision-Date: 2025-12-18 07:36+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -322,7 +322,7 @@ msgstr "Vse datoteke (*)"
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
-msgstr ""
+msgstr "Ni mogoče naložiti podatkovne baze dnevnika z izbrane lokacije: "
 
 #: org/kde/kjournaldbrowser/Main.qml:310
 #, kde-format
@@ -331,13 +331,14 @@ msgid ""
 "Check sub-directories of selected directory to contain files ending with '."
 "journal'."
 msgstr ""
+"Preverite poddirektorije izbranega imenika, da vsebujejo datoteke, ki se "
+"končajo z '.journal'."
 
 #: org/kde/kjournaldbrowser/Main.qml:317
-#, fuzzy, kde-format
-#| msgid "No log entries apply "
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."
-msgstr "Ni vnosov v dnevniku "
+msgstr "Ni nobenih vnosov v dnevnik za izbrane filtre."
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:16
 #, kde-format

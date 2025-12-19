@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-18 00:46+0000\n"
-"PO-Revision-Date: 2025-12-13 23:06+0200\n"
+"PO-Revision-Date: 2025-12-18 07:53+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -321,7 +321,7 @@ msgstr "усі файли (*)"
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
-msgstr ""
+msgstr "Не вдалося завантажити базу даних журналу з вибраного місця: "
 
 #: org/kde/kjournaldbrowser/Main.qml:310
 #, kde-format
@@ -330,13 +330,14 @@ msgid ""
 "Check sub-directories of selected directory to contain files ending with '."
 "journal'."
 msgstr ""
+"Шукати у підкаталогах вибраного каталогу файли, назви яких завершуються на «."
+"journal»."
 
 #: org/kde/kjournaldbrowser/Main.qml:317
-#, fuzzy, kde-format
-#| msgid "No log entries apply "
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."
-msgstr "Жоден із записів журналу не є відповідним"
+msgstr "Жоден із записів журналу не є відповідним до вибраних фільтрів."
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:16
 #, kde-format

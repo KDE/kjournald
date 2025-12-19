@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-18 00:46+0000\n"
-"PO-Revision-Date: 2025-12-14 12:23+0100\n"
+"PO-Revision-Date: 2025-12-18 10:12+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -324,6 +324,8 @@ msgstr "Tots els fitxers (*)"
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
 msgstr ""
+"No s'ha pogut carregar la base de dades del diari des de la ubicació "
+"seleccionada: "
 
 #: org/kde/kjournaldbrowser/Main.qml:310
 #, kde-format
@@ -332,13 +334,14 @@ msgid ""
 "Check sub-directories of selected directory to contain files ending with '."
 "journal'."
 msgstr ""
+"Comprova els subdirectoris del directori seleccionat que continguen fitxers "
+"que acaben amb «.journal»."
 
 #: org/kde/kjournaldbrowser/Main.qml:317
-#, fuzzy, kde-format
-#| msgid "No log entries apply "
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."
-msgstr "No s'apliquen entrades de registre"
+msgstr "No s'apliquen entrades de registre als fitxers seleccionats."
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:16
 #, kde-format
