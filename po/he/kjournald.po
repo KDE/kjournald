@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-18 00:46+0000\n"
-"PO-Revision-Date: 2025-12-14 10:14+0200\n"
+"PO-Revision-Date: 2025-12-18 11:46+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 25.08.3\n"
+"X-Generator: Lokalize 25.12.0\n"
 
 #: browser/main.cpp:40
 #, kde-format
@@ -318,7 +318,7 @@ msgstr "כל הקבצים (*)"
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
-msgstr ""
+msgstr "לא ניתן לטעון את מסד נתוני יומן הפעילות מהמקום שנבחר: "
 
 #: org/kde/kjournaldbrowser/Main.qml:310
 #, kde-format
@@ -327,13 +327,13 @@ msgid ""
 "Check sub-directories of selected directory to contain files ending with '."
 "journal'."
 msgstr ""
+"לבדוק האם תת־התיקיות של התיקייה הנבחרת מכילות קבצים שמסתיימים ב־‚‎.journal’."
 
 #: org/kde/kjournaldbrowser/Main.qml:317
-#, fuzzy, kde-format
-#| msgid "No log entries apply "
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."
-msgstr "אין רשומות תקפות ביומן"
+msgstr "אין רשומות ביומן שתואמות למסננים שנבחרו."
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:16
 #, kde-format

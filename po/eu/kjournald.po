@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-18 00:46+0000\n"
-"PO-Revision-Date: 2025-12-14 18:45+0100\n"
+"PO-Revision-Date: 2025-12-19 22:10+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.08.3\n"
+"X-Generator: Lokalize 25.12.0\n"
 
 #: browser/main.cpp:40
 #, kde-format
@@ -323,7 +323,7 @@ msgstr "Fitxategi guztiak (*)"
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
-msgstr ""
+msgstr "Hautatutako kokalekutik ezin da egunkarien datu-baserik zamatu: "
 
 #: org/kde/kjournaldbrowser/Main.qml:310
 #, kde-format
@@ -332,13 +332,14 @@ msgid ""
 "Check sub-directories of selected directory to contain files ending with '."
 "journal'."
 msgstr ""
+"Ikuskatu hautatutako direktorioaren azpidirektorioek bukaera '.journal' "
+"duten fitxategiak dituzten."
 
 #: org/kde/kjournaldbrowser/Main.qml:317
-#, fuzzy, kde-format
-#| msgid "No log entries apply "
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."
-msgstr "Ez da eguneroko-sarrerarik aplikatzen"
+msgstr "Ez dago hautatutako iragazkiekin bat datorren egunkari-sarrerarik."
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:16
 #, kde-format
