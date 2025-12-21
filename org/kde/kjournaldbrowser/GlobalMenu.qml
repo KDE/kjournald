@@ -3,6 +3,7 @@
 // SPDX-FileCopyrightText: 2021 Carl Schwan <carl@carlschwan.eu>
 
 import Qt.labs.platform as Labs
+import QtQuick.Dialogs
 import QtQml
 import org.kde.kirigamiaddons.statefulapp.labs as StatefulAppLabs
 import org.kde.kirigamiaddons.statefulapp as StatefulApp
@@ -13,6 +14,10 @@ Labs.MenuBar {
     id: root
 
     property StatefulApp.AbstractKirigamiApplication application: BrowserApplication
+    required property FileDialog fileDialog
+    required property FolderDialog folderDialog
+
+    signal copyViewToClipboard()
 
     Labs.Menu {
         title: KI18n.i18nc("@title:menu", "File")
@@ -35,16 +40,16 @@ Labs.MenuBar {
             text: KI18n.i18nc("@action:inmenu", "Open from folder")
             icon.name: "document-open"
             onTriggered: {
-                folderDialog.folder = DatabaseProvider.localJournalPath
-                folderDialog.open()
+                root.folderDialog.folder = DatabaseProvider.localJournalPath
+                root.folderDialog.open()
             }
         }
         Labs.MenuItem {
             text: KI18n.i18nc("@action:inmenu", "Open from file")
             icon.name: "document-open"
             onTriggered: {
-                fileDialog.folder = DatabaseProvider.localJournalPath
-                fileDialog.open()
+                root.fileDialog.folder = DatabaseProvider.localJournalPath
+                root.fileDialog.open()
             }
         }
 // disable option: it is not yet end-user ready
@@ -69,7 +74,7 @@ Labs.MenuBar {
         Labs.MenuItem {
             text: "Copy current view"
             icon.name: "edit-copy"
-            onTriggered: copyViewToClipboard()
+            onTriggered: root.copyViewToClipboard()
         }
     }
     Labs.Menu {

@@ -42,11 +42,21 @@ StatefulApp.StatefulWindow {
     menuBar: TopMenuBar {
         visible: (Kirigami.Settings.hasPlatformMenuBar === false || Kirigami.Settings.hasPlatformMenuBar === undefined) && !Kirigami.Settings.isMobile
         onCopyViewToClipboard: logView.copyTextFromView()
+        fileDialog: journalFileSelectionDialog
+        folderDialog: journalFolderSelectionDialog
     }
 
     Loader {
+        id: gobalMenuLoader
         active: Kirigami.Settings.hasPlatformMenuBar === true && !Kirigami.Settings.isMobile
-        source: Qt.resolvedUrl("qrc:/GlobalMenu.qml")
+        sourceComponent: GlobalMenu {
+            fileDialog: journalFileSelectionDialog
+            folderDialog: journalFolderSelectionDialog
+        }
+    }
+    Connections {
+        target: gobalMenuLoader.item
+        function onCopyViewToClipboard() { logView.copyTextFromView() }
     }
 
     header: ToolBar {
@@ -226,20 +236,20 @@ StatefulApp.StatefulWindow {
     }
 
     Dialogs.FolderDialog {
-        id: folderDialog
+        id: journalFolderSelectionDialog
         title: KI18n.i18nc("@title", "Select journal folder")
         currentFolder: DatabaseProvider.journalPath
         onAccepted: {
-            DatabaseProvider.setJournalPath(folderDialog.selectedFolder)
+            DatabaseProvider.setJournalPath(journalFolderSelectionDialog.selectedFolder)
         }
     }
 
     Dialogs.FileDialog {
-        id: fileDialog
+        id: journalFileSelectionDialog
         title: KI18n.i18nc("@title", "Select journal file")
         nameFilters: [KI18n.i18nc("@item", "Journal files (*.journal)"), KI18n.i18nc("@item", "All files (*)")]
         onAccepted: {
-            DatabaseProvider.setJournalPath(fileDialog.selectedFile)
+            DatabaseProvider.setJournalPath(journalFileSelectionDialog.selectedFile)
         }
     }
 

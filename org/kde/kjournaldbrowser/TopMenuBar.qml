@@ -3,6 +3,7 @@
 
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Dialogs
 import org.kde.ki18n
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.statefulapp as StatefulApp
@@ -12,6 +13,8 @@ MenuBar {
     id: root
 
     property StatefulApp.AbstractKirigamiApplication application: BrowserApplication
+    required property FileDialog fileDialog
+    required property FolderDialog folderDialog
 
     signal copyViewToClipboard()
 
@@ -36,16 +39,16 @@ MenuBar {
             text: KI18n.i18nc("@action:inmenu", "Open from Folder")
             icon.name: "document-open"
             onTriggered: {
-                folderDialog.currentFolder = DatabaseProvider.localJournalPath
-                folderDialog.open()
+                root.folderDialog.currentFolder = DatabaseProvider.localJournalPath
+                root.folderDialog.open()
             }
         }
         MenuItem {
             text: KI18n.i18nc("@action:inmenu", "Open from File")
             icon.name: "document-open"
             onTriggered: {
-                fileDialog.currentFolder = DatabaseProvider.localJournalPath
-                fileDialog.open()
+                root.fileDialog.currentFolder = DatabaseProvider.localJournalPath
+                root.fileDialog.open()
             }
         }
 // disable feature for end-users until the dialog experience is more polished
