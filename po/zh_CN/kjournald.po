@@ -70,7 +70,7 @@ msgstr "tds00@qq.com"
 #: browser/main.cpp:59
 #, kde-format
 msgid "Journald Log Viewer"
-msgstr ""
+msgstr "Journald 日志查看器"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:22
 #, kde-format
@@ -329,7 +329,6 @@ msgstr ""
 
 #: org/kde/kjournaldbrowser/Main.qml:317
 #, fuzzy, kde-format
-#| msgid "No log entries apply "
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."
 msgstr "没有日志条目应用 "
