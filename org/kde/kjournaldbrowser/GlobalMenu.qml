@@ -3,6 +3,7 @@
 // SPDX-FileCopyrightText: 2021 Carl Schwan <carl@carlschwan.eu>
 
 import Qt.labs.platform as Labs
+import QtQml
 import org.kde.kirigamiaddons.statefulapp.labs as StatefulAppLabs
 import org.kde.kirigamiaddons.statefulapp as StatefulApp
 import org.kde.ki18n
