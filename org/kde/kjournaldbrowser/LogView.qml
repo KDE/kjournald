@@ -1,7 +1,5 @@
-/*
-    SPDX-License-Identifier: LGPL-2.1-or-later OR MIT
-    SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
-*/
+// SPDX-License-Identifier: LGPL-2.1-or-later OR MIT
+// SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 
 pragma ComponentBehavior: Bound
 
@@ -9,6 +7,7 @@ import QtQuick
 import QtQuick.Controls
 import org.kde.kirigami as Kirigami
 import QtQuick.Controls.Material
+import org.kde.ki18n
 import org.kde.kjournaldbrowser
 import org.kde.kjournald
 
@@ -207,7 +206,7 @@ ListView {
                         text: {
                             if (categoryInfoHoverHandler.hovered && coloredLogLineDelegate.entry.unit === "" && coloredLogLineDelegate.entry.exe === "") {
                                 // this is not fully accurate by currently always true and avoids additional _TRANSPORT parameter
-                                return i18n("Kernel")
+                                return KI18n.i18nc("@label", "Kernel")
                             }
                             switch (root.displayRoleRight) {
                             case JournaldViewModel.SYSTEMD_UNIT:

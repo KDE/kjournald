@@ -1,7 +1,5 @@
-/*
-    SPDX-License-Identifier: LGPL-2.1-or-later OR MIT
-    SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
-*/
+// SPDX-License-Identifier: LGPL-2.1-or-later OR MIT
+// SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 
 pragma ComponentBehavior: Bound
 
@@ -9,6 +7,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
+import org.kde.ki18n
 import org.kde.kjournald
 import Qt.labs.qmlmodels
 
@@ -31,7 +30,8 @@ ListView {
                 width: ListView.view.width
                 onClicked: model.expanded = !expandDelegate.expanded
                 Accessible.name: expandDelegate.text
-                Accessible.description: expandDelegate.expanded ? i18n("Expanded") : i18n("Collapsed")
+                Accessible.description: expandDelegate.expanded ? KI18n.i18nc("@info:tooltip", "Expanded")
+                                                                : KI18n.i18nc("@info:tooltip", "Collapsed")
                 contentItem: ColumnLayout {
                     RowLayout {
                         Label {
@@ -57,7 +57,7 @@ ListView {
                         contentItem: RowLayout {
                             Label {
                                 id: clearLabel
-                                text: i18n("Clear")
+                                text: KI18n.i18nc("@label", "Clear")
                                 Layout.fillWidth: true
                             }
                             Kirigami.Icon {

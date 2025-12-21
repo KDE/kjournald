@@ -11,9 +11,10 @@ qt6_add_qml_module(
         org.kde.kjournald
     DEPENDENCIES
         QtQuick
-        org.kde.kjournald
+        org.kde.ki18n
         org.kde.kirigamiaddons.
         org.kde.kirigamiaddons.statefulapp
+        org.kde.kjournald
     SOURCES
         browserapplication.cpp
         browserapplication.h

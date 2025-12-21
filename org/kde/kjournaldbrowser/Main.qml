@@ -14,6 +14,7 @@ import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.statefulapp as StatefulApp
 import org.kde.kjournald
 import org.kde.kjournaldbrowser
+import org.kde.ki18n
 
 StatefulApp.StatefulWindow {
     id: root
@@ -59,7 +60,7 @@ StatefulApp.StatefulWindow {
             focus: true
 
             Label {
-                text: i18n("Boot:")
+                text: KI18n.i18nc("@label", "Boot:")
             }
             ComboBox {
                 id: bootIdComboBox
@@ -171,7 +172,7 @@ StatefulApp.StatefulWindow {
                 id: caseSensitiveOptionButton
                 icon.name: checked ? "format-text-capitalize" : "format-text-lowercase"
                 checkable: true
-                ToolTip.text: i18nc("@info:tooltip", "Switch between case sensitive and case insensitive matching")
+                ToolTip.text: KI18n.i18nc("@info:tooltip", "Switch between case sensitive and case insensitive matching")
                 ToolTip.visible: hovered
                 onCheckedChanged: TextSearch.caseSensitive = caseSensitiveOptionButton.checked
             }
@@ -213,8 +214,8 @@ StatefulApp.StatefulWindow {
                     }
                 }
                 ToolTip.text: BrowserApplication.viewMode === BrowserApplication.BROWSE ?
-                                 i18nc("@info:tooltip", "Switch to browsing mode") :
-                                 i18nc("@info:tooltip", "Switch to selection mode")
+                                 KI18n.i18nc("@info:tooltip", "Switch to browsing mode") :
+                                 KI18n.i18nc("@info:tooltip", "Switch to selection mode")
                 ToolTip.visible: hovered
             }
 
@@ -226,7 +227,7 @@ StatefulApp.StatefulWindow {
 
     Dialogs.FolderDialog {
         id: folderDialog
-        title: i18n("Select journal folder")
+        title: KI18n.i18nc("@title", "Select journal folder")
         currentFolder: DatabaseProvider.journalPath
         onAccepted: {
             DatabaseProvider.setJournalPath(folderDialog.selectedFolder)
@@ -235,8 +236,8 @@ StatefulApp.StatefulWindow {
 
     Dialogs.FileDialog {
         id: fileDialog
-        title: i18n("Select journal file")
-        nameFilters: [i18n("Journal files (*.journal)"), i18n("All files (*)")]
+        title: KI18n.i18nc("@title", "Select journal file")
+        nameFilters: [KI18n.i18nc("@item", "Journal files (*.journal)"), KI18n.i18nc("@item", "All files (*)")]
         onAccepted: {
             DatabaseProvider.setJournalPath(fileDialog.selectedFile)
         }
@@ -306,15 +307,15 @@ StatefulApp.StatefulWindow {
                 visible: !journalModel.available
 
                 icon.name: "data-error"
-                text: i18nc("@title", "Unable to load journal database from selected location: ") + DatabaseProvider.localJournalPath
-                explanation: i18nc("@info", "Check sub-directories of selected directory to contain files ending with '.journal'.")
+                text: KI18n.i18nc("@title", "Unable to load journal database from selected location: ") + DatabaseProvider.localJournalPath
+                explanation: KI18n.i18nc("@info", "Check sub-directories of selected directory to contain files ending with '.journal'.")
             }
 
             Kirigami.PlaceholderMessage {
                 anchors.centerIn: parent
                 width: parent.width - (Kirigami.Units.largeSpacing * 4)
                 visible: journalModel.available && logView.count === 0
-                text: i18nc("@info:tooltip", "No log entries apply to selected filters.")
+                text: KI18n.i18nc("@info:tooltip", "No log entries apply to selected filters.")
             }
         }
     }

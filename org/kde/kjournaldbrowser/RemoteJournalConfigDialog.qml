@@ -1,11 +1,10 @@
-/*
-    SPDX-License-Identifier: LGPL-2.1-or-later OR MIT
-    SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
-*/
+// SPDX-License-Identifier: LGPL-2.1-or-later OR MIT
+// SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import org.kde.ki18n
 
 Dialog {
     id: root
@@ -13,7 +12,7 @@ Dialog {
     readonly property string url : urlTextField.text
     readonly property int port : portSpinbox.value
 
-    title: i18n("Configure Remote Journal Server")
+    title: KI18n.i18nc("@title:window", "Configure Remote Journal Server")
     standardButtons: Dialog.Ok | Dialog.Cancel
     width: 300
     height: 200
@@ -27,7 +26,7 @@ Dialog {
 
         // first line
         Label {
-            text: i18n("URL:")
+            text: KI18n.i18nc("@label", "URL:")
         }
         TextField {
             id: urlTextField
@@ -36,7 +35,7 @@ Dialog {
 
         // second line
         Label {
-            text: i18n("Port:")
+            text: KI18n.i18nc("@label", "Port:")
         }
         SpinBox {
             id: portSpinbox

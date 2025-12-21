@@ -5,6 +5,7 @@
 import Qt.labs.platform as Labs
 import org.kde.kirigamiaddons.statefulapp.labs as StatefulAppLabs
 import org.kde.kirigamiaddons.statefulapp as StatefulApp
+import org.kde.ki18n
 import org.kde.kjournaldbrowser
 
 Labs.MenuBar {
@@ -13,24 +14,24 @@ Labs.MenuBar {
     property StatefulApp.AbstractKirigamiApplication application: BrowserApplication
 
     Labs.Menu {
-        title: i18nc("@action:menu", "File")
+        title: KI18n.i18nc("@title:menu", "File")
 
         Labs.MenuItem {
-            text: i18n("Open system journal")
+            text: KI18n.i18nc("@action:inmenu", "Open system journal")
             icon.name: "document-open"
             onTriggered: {
                 DatabaseProvider.setSystemJournal()
             }
         }
         Labs.MenuItem {
-            text: i18n("Open user journal")
+            text: KI18n.i18nc("@action:inmenu", "Open user journal")
             icon.name: "document-open"
             onTriggered: {
                 DatabaseProvider.setUserJournal()
             }
         }
         Labs.MenuItem {
-            text: i18n("Open from folder")
+            text: KI18n.i18nc("@action:inmenu", "Open from folder")
             icon.name: "document-open"
             onTriggered: {
                 folderDialog.folder = DatabaseProvider.localJournalPath
@@ -38,7 +39,7 @@ Labs.MenuBar {
             }
         }
         Labs.MenuItem {
-            text: i18n("Open from file")
+            text: KI18n.i18nc("@action:inmenu", "Open from file")
             icon.name: "document-open"
             onTriggered: {
                 fileDialog.folder = DatabaseProvider.localJournalPath
@@ -47,7 +48,7 @@ Labs.MenuBar {
         }
 // disable option: it is not yet end-user ready
 //        Labs.MenuItem {
-//            text: i18n("Open remote journal stream")
+//            text: KI18n.i18nc("@action:inmenu", "Open remote journal stream")
 //            icon.name: "document-import"
 //            onTriggered: {
 //                remoteJournalDialog.open()
@@ -57,13 +58,13 @@ Labs.MenuBar {
         Labs.MenuSeparator { }
 
         Labs.MenuItem {
-            text: i18n("Close")
+            text: KI18n.i18nc("@action:inmenu", "Close")
             icon.name: "application-exit"
             onTriggered: Qt.quit()
         }
     }
     Labs.Menu {
-        title: i18n("Current Journal")
+        title: KI18n.i18nc("@title:menu", "Current Journal")
         Labs.MenuItem {
             text: "Copy current view"
             icon.name: "edit-copy"
@@ -71,13 +72,13 @@ Labs.MenuBar {
         }
     }
     Labs.Menu {
-        title: i18n("View")
+        title: KI18n.i18nc("@title:menu", "View")
 
         Labs.Menu {
-            title: i18n("Timestamp Display")
+            title: KI18n.i18nc("@title:menu", "Timestamp Display")
 
             Labs.MenuItem {
-                text: i18n("Localized Realtime")
+                text: KI18n.i18n("@item:inmenu", "Localized Realtime")
                 checkable: true
                 checked: BrowserApplication.timeDisplay === BrowserApplication.LOCALTIME
                 onTriggered: {
@@ -85,7 +86,7 @@ Labs.MenuBar {
                 }
             }
             Labs.MenuItem {
-                text: i18n("UTC Realtime")
+                text: KI18n.i18nc("@item:inmenu", "UTC Realtime")
                 checkable: true
                 checked: BrowserApplication.timeDisplay === BrowserApplication.UTC
                 onTriggered: {
@@ -93,7 +94,7 @@ Labs.MenuBar {
                 }
             }
             Labs.MenuItem {
-                text: i18n("Monotonic Time")
+                text: KI18n.i18nc("@item:inmenu", "Monotonic Time")
                 checkable: true
                 checked: BrowserApplication.timeDisplay === BrowserApplication.MONOTONIC_TIMESTAMP
                 onTriggered: {
@@ -102,10 +103,10 @@ Labs.MenuBar {
             }
         }
         Labs.Menu {
-            title: i18n("Colorize")
+            title: KI18n.i18n("@title:menu", "Colorize")
 
             Labs.MenuItem {
-                text: i18n("Systemd Unit")
+                text: KI18n.i18nc("@item:inmenu", "Systemd Unit")
                 checkable: true
                 checked: BrowserApplication.filterCriterium === BrowserApplication.SYSTEMD_UNIT
                 onTriggered: {
@@ -113,7 +114,7 @@ Labs.MenuBar {
                 }
             }
             Labs.MenuItem {
-                text: i18n("Executable")
+                text: KI18n.i18nc("@item:inmenu", "Executable")
                 checkable: true
                 checked: BrowserApplication.filterCriterium === BrowserApplication.EXECUTABLE
                 onTriggered: {
@@ -123,7 +124,7 @@ Labs.MenuBar {
         }
     }
     Labs.Menu {
-        title: i18nc("@action:menu", "Help")
+        title: KI18n.i18nc("@title:menu", "Help")
 
         StatefulAppLabs.NativeMenuItem {
             actionName: "open_about_page"

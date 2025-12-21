@@ -1,10 +1,9 @@
-/*
-    SPDX-License-Identifier: LGPL-2.1-or-later OR MIT
-    SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
-*/
+// SPDX-License-Identifier: LGPL-2.1-or-later OR MIT
+// SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 
 import QtQuick
 import QtQuick.Controls
+import org.kde.ki18n
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.statefulapp as StatefulApp
 import org.kde.kjournaldbrowser
@@ -18,23 +17,23 @@ MenuBar {
 
     Kirigami.Theme.colorSet: Kirigami.Theme.Header
     Menu {
-        title: i18nc("@action:menu", "File")
+        title: KI18n.i18nc("@title:menu", "File")
         MenuItem {
-            text: i18n("Open System Journal")
+            text: KI18n.i18nc("@action:inmenu", "Open System Journal")
             icon.name: "document-open"
             onTriggered: {
                 DatabaseProvider.setSystemJournal()
             }
         }
         MenuItem {
-            text: i18n("Open User Journal")
+            text: KI18n.i18nc("@action:inmenu", "Open User Journal")
             icon.name: "document-open"
             onTriggered: {
                 DatabaseProvider.setUserJournal()
             }
         }
         MenuItem {
-            text: i18n("Open from Folder")
+            text: KI18n.i18nc("@action:inmenu", "Open from Folder")
             icon.name: "document-open"
             onTriggered: {
                 folderDialog.currentFolder = DatabaseProvider.localJournalPath
@@ -42,7 +41,7 @@ MenuBar {
             }
         }
         MenuItem {
-            text: i18n("Open from File")
+            text: KI18n.i18nc("@action:inmenu", "Open from File")
             icon.name: "document-open"
             onTriggered: {
                 fileDialog.currentFolder = DatabaseProvider.localJournalPath
@@ -51,7 +50,7 @@ MenuBar {
         }
 // disable feature for end-users until the dialog experience is more polished
 //        MenuItem {
-//            text: i18n("Open Remote Journal Stream")
+//            text: KI18n.i18nc("@action:inmenu": "Open Remote Journal Stream")
 //            icon.name: "document-import"
 //            onTriggered: {
 //                remoteJournalDialog.open()
@@ -61,28 +60,28 @@ MenuBar {
         MenuSeparator { }
 
         MenuItem {
-            text: i18n("Close")
+            text: KI18n.i18nc("@action:inmenu", "Close")
             icon.name: "application-exit"
             onTriggered: Qt.quit()
         }
     }
     Menu {
-        title: i18n("Current Journal")
+        title: KI18n.i18nc("@title:menu", "Current Journal")
         MenuItem {
-            text: "Copy Current View"
+            text: KI18n.i18nc("@action:inmenu", "Copy Current View")
             icon.name: "edit-copy"
             onTriggered: root.copyViewToClipboard()
         }
     }
     Menu {
-        title: i18n("View")
+        title: KI18n.i18nc("@title:menu", "View")
 
         Menu {
-            title: i18n("Timestamp Display")
+            title: KI18n.i18nc("@title:menu", "Timestamp Display")
 
             MenuItem {
                 contentItem: RadioButton {
-                    text: i18n("Localized Realtime")
+                    text: KI18n.i18nc("@item:inmenu", "Localized Realtime")
                     checkable: true
                     checked: BrowserApplication.timeDisplay === BrowserApplication.LOCALTIME
                     onToggled: {
@@ -92,7 +91,7 @@ MenuBar {
             }
             MenuItem {
                 contentItem: RadioButton {
-                    text: i18n("UTC Realtime")
+                    text: KI18n.i18nc("@item:inmenu", "UTC Realtime")
                     checkable: true
                     checked: BrowserApplication.timeDisplay === BrowserApplication.UTC
                     onToggled: {
@@ -102,7 +101,7 @@ MenuBar {
             }
             MenuItem {
                 contentItem: RadioButton {
-                    text: i18n("Monotonic Time")
+                    text: KI18n.i18nc("@item:inmenu", "Monotonic Time")
                     checkable: true
                     checked: BrowserApplication.timeDisplay === BrowserApplication.MONOTONIC_TIMESTAMP
                     onToggled: {
@@ -112,11 +111,11 @@ MenuBar {
             }
         }
         Menu {
-            title: i18n("Colorize")
+            title: KI18n.i18nc("@title:menu", "Colorize")
 
             MenuItem {
                 contentItem: RadioButton {
-                    text: i18n("Systemd Unit")
+                    text: KI18n.i18nc("@item:inmenu", "Systemd Unit")
                     checkable: true
                     checked: BrowserApplication.filterCriterium === BrowserApplication.SYSTEMD_UNIT
                     onToggled: {
@@ -126,7 +125,7 @@ MenuBar {
             }
             MenuItem {
                 contentItem: RadioButton {
-                    text: i18n("Executable")
+                    text: KI18n.i18nc("@item:inmenu", "Executable")
                     checkable: true
                     checked: BrowserApplication.filterCriterium === BrowserApplication.EXECUTABLE
                     onToggled: {
@@ -137,7 +136,7 @@ MenuBar {
         }
     }
     Menu {
-        title: i18nc("@action:menu", "Help")
+        title: KI18n.i18nc("@title:menu", "Help")
 
         Kirigami.Action {
             fromQAction: root.application.action('open_about_page')

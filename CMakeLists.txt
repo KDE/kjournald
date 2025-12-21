@@ -22,7 +22,7 @@ include(FeatureSummary)
 include(GenerateExportHeader)
 include(CMakePackageConfigHelpers)
 
-set(KF_VERSION 6.8.0)
+set(KF_VERSION 6.21.0)
 find_package(ECM ${KF_VERSION} NO_MODULE)
 set_package_properties(ECM PROPERTIES
     TYPE REQUIRED
@@ -75,6 +75,7 @@ find_package(Qt6 6.5.0 REQUIRED COMPONENTS
     Test
     Widgets
 )
+qt_policy(SET QTP0005 NEW)
 
 option(INSTALL_EXPERIMENTAL_HEADERS "Install headers for libkjournald (no stable API yet)" OFF)
 
