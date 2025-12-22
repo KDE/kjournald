@@ -328,10 +328,10 @@ msgid ""
 msgstr ""
 
 #: org/kde/kjournaldbrowser/Main.qml:317
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."
-msgstr "没有日志条目应用 "
+msgstr ""
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:16
 #, kde-format
