@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-18 00:46+0000\n"
-"PO-Revision-Date: 2025-10-07 09:17+0200\n"
+"PO-Revision-Date: 2025-12-18 15:08+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.08.1\n"
+"X-Generator: Lokalize 25.12.0\n"
 
 #: browser/main.cpp:40
 #, kde-format
@@ -70,11 +70,9 @@ msgid "Your emails"
 msgstr "smart2128vr@gmail.com"
 
 #: browser/main.cpp:59
-#, fuzzy, kde-format
-#| msgctxt "@title Displayed program name"
-#| msgid "KJournald Browser"
+#, kde-format
 msgid "Journald Log Viewer"
-msgstr "Navigatore KJournald"
+msgstr "Visore log Journald"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:22
 #, kde-format
@@ -324,6 +322,7 @@ msgstr "Tutti i file (*)"
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
 msgstr ""
+"Impossibile caricare la banca dati del giornale dalla posizione selezionata: "
 
 #: org/kde/kjournaldbrowser/Main.qml:310
 #, kde-format
@@ -332,13 +331,14 @@ msgid ""
 "Check sub-directories of selected directory to contain files ending with '."
 "journal'."
 msgstr ""
+"Controlla che le sottocartella della cartella selezionata contengano file "
+"che terminano con'.journal'."
 
 #: org/kde/kjournaldbrowser/Main.qml:317
-#, fuzzy, kde-format
-#| msgid "No log entries apply "
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."
-msgstr "Nessuna voce di registro si applica "
+msgstr "Nessuna voce di registro viene applicata ai filtri selezionati."
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:16
 #, kde-format
