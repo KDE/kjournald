@@ -317,7 +317,7 @@ msgstr "所有文件 (*)"
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
-msgstr ""
+msgstr "无法从所选路径加载日志数据库："
 
 #: org/kde/kjournaldbrowser/Main.qml:310
 #, kde-format
@@ -325,13 +325,13 @@ msgctxt "@info"
 msgid ""
 "Check sub-directories of selected directory to contain files ending with '."
 "journal'."
-msgstr ""
+msgstr "请检查所选目录的子目录是否包含以“.journal”结尾的文件。"
 
 #: org/kde/kjournaldbrowser/Main.qml:317
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."
-msgstr ""
+msgstr "没有适用于所选过滤条件的日志条目。"
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:16
 #, kde-format
