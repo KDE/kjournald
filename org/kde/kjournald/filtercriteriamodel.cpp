@@ -1,6 +1,6 @@
 /*
     SPDX-License-Identifier: LGPL-2.1-or-later OR MIT
-    SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
+    SPDX-FileCopyrightText: 2021-2025 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 */
 
 #include "filtercriteriamodel.h"
@@ -10,6 +10,7 @@
 #include <KLocalizedString>
 #include <QDebug>
 #include <QDir>
+#include <QRegularExpression>
 #include <QString>
 #include <memory>
 
@@ -130,6 +131,7 @@ FilterCriteriaModelPrivate::~FilterCriteriaModelPrivate() = default;
 
 void FilterCriteriaModelPrivate::rebuildModel()
 {
+    qCDebug(KJOURNALDLIB_GENERAL) << "Rebuilding filter criteria model";
     mRootItem = std::make_unique<SelectionEntry>();
     {
         auto parent = std::make_shared<SelectionEntry>(i18nc("Section title for log message source", "Transport"),
@@ -175,7 +177,17 @@ void FilterCriteriaModelPrivate::rebuildModel()
         mRootItem->appendChild(parent);
         if (mJournal) {
             auto criteria = mJournalProvider->isUser() ? JournaldHelper::Field::_SYSTEMD_USER_UNIT : JournaldHelper::Field::_SYSTEMD_UNIT;
-            QVector<QString> units = JournaldHelper::queryUnique(mJournal->get(), criteria);
+            QStringList units = JournaldHelper::queryUnique(mJournal->get(), criteria);
+            mUniqueServiceUnitCache = units;
+
+            if (mGroupTemplatedSystemdUnits) {
+                // systemd templates use '@' as delimiter between service name and the argument
+                for (auto it = units.begin(); it != units.end(); it++) {
+                    static const QRegularExpression templateArgumentExpr(QLatin1String("@.+\\.service"));
+                    it->replace(templateArgumentExpr, FilterCriteriaModelPrivate::GROUPED_SERVICE_SUFFIX);
+                }
+            }
+
             units.erase(std::remove_if(std::begin(units),
                                        std::end(units),
                                        [](const QString &unit) {
@@ -187,6 +199,9 @@ void FilterCriteriaModelPrivate::rebuildModel()
             std::sort(std::begin(units), std::end(units), [](const QString &a, const QString &b) {
                 return QString::compare(a, b, Qt::CaseInsensitive) <= 0;
             });
+            // duplicates might come from template grouping
+            units.erase(std::unique(std::begin(units), std::end(units)), std::end(units));
+
             for (const auto &unit : std::as_const(units)) {
                 // skip any non-service units, because we expect users only be interested in filtering those
                 if (!unit.endsWith(QLatin1String(".service"))) {
@@ -271,10 +286,38 @@ QStringList FilterCriteriaModel::systemdUnitFilter() const
     QStringList entries;
     for (int i = 0; i < parent->childCount(); ++i) {
         if (parent->child(i)->data(FilterCriteriaModel::SELECTED).toBool()) {
-            entries.append(parent->child(i)->data(FilterCriteriaModel::DATA).toString());
+            const QString identifier = parent->child(i)->data(FilterCriteriaModel::DATA).toString();
+            if (d->mGroupTemplatedSystemdUnits && identifier.endsWith(FilterCriteriaModelPrivate::GROUPED_SERVICE_SUFFIX)) {
+                constexpr qsizetype suffixLength = FilterCriteriaModelPrivate::GROUPED_SERVICE_SUFFIX.size();
+                const QString identifierBase = identifier.left(identifier.length() - suffixLength);
+                for (const auto &unit : std::as_const(d->mUniqueServiceUnitCache)) {
+                    if (unit.startsWith(identifierBase)) {
+                        entries.append(unit);
+                    }
+                }
+            } else {
+                entries.append(identifier);
+            }
         }
     }
     return entries;
+}
+
+bool FilterCriteriaModel::groupTemplatedSystemdUnits() const
+{
+    return d->mGroupTemplatedSystemdUnits;
+}
+
+void FilterCriteriaModel::setGroupTemplatedSystemdUnits(bool enabled)
+{
+    if (enabled == d->mGroupTemplatedSystemdUnits) {
+        return;
+    }
+    d->mGroupTemplatedSystemdUnits = enabled;
+    Q_EMIT groupTemplatedSystemdUnitsChanged();
+    beginResetModel();
+    d->rebuildModel();
+    endResetModel();
 }
 
 QStringList FilterCriteriaModel::exeFilter() const

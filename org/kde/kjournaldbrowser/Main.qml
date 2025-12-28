@@ -39,6 +39,10 @@ StatefulApp.StatefulWindow {
         root.filterModel.journalProvider: DatabaseProvider.journalProvider
     }
 
+    Binding {
+        root.filterModel.enableSystemdUnitTemplateGrouping: BrowserApplication.serviceGrouping === BrowserApplication.ServiceGrouping.GROUP_SERVICE_TEMPLATES
+    }
+
     menuBar: TopMenuBar {
         visible: (Kirigami.Settings.hasPlatformMenuBar === false || Kirigami.Settings.hasPlatformMenuBar === undefined) && !Kirigami.Settings.isMobile
         onCopyViewToClipboard: logView.copyTextFromView()
