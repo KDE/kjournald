@@ -57,8 +57,15 @@ public:
 
     IJournalProvider *mJournalProvider{nullptr};
     std::unique_ptr<SdJournal> mJournal;
+    QStringList mUniqueServiceUnitCache; //!< this is used to deduplicate grouped services
     std::shared_ptr<SelectionEntry> mRootItem;
     std::optional<quint8> mPriorityLevel;
+    bool mGroupTemplatedSystemdUnits{true};
+
+    /**
+     * Suffix that is used for grouped template services to replace the argument
+     */
+    static constexpr QLatin1StringView GROUPED_SERVICE_SUFFIX{"@[...].service"};
 };
 
 #endif // FILTERCRITERIAMODEL_P_H

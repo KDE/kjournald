@@ -30,23 +30,26 @@ class FilterCriteriaModelPrivate;
 class KJOURNALD_EXPORT FilterCriteriaModel : public QAbstractItemModel
 {
     Q_OBJECT
-    Q_PROPERTY(IJournalProvider * journalProvider READ journalProvider WRITE setJournalProvider NOTIFY journalProviderChanged)
+    Q_PROPERTY(IJournalProvider *journalProvider READ journalProvider WRITE setJournalProvider NOTIFY journalProviderChanged FINAL)
     /**
      * Filter for message priorities
      */
-    Q_PROPERTY(int priorityFilter READ priorityFilter NOTIFY priorityFilterChanged)
+    Q_PROPERTY(int priorityFilter READ priorityFilter NOTIFY priorityFilterChanged FINAL)
     /**
      * Filter list for systemd units
      **/
-    Q_PROPERTY(QStringList systemdUnitFilter READ systemdUnitFilter NOTIFY systemdUnitFilterChanged)
+    Q_PROPERTY(QStringList systemdUnitFilter READ systemdUnitFilter NOTIFY systemdUnitFilterChanged FINAL)
     /**
      * Filter list for executables (see journald '_EXE' field)
      **/
-    Q_PROPERTY(QStringList exeFilter READ exeFilter NOTIFY exeFilterChanged)
+    Q_PROPERTY(QStringList exeFilter READ exeFilter NOTIFY exeFilterChanged FINAL)
     /**
      * if set to true, Kernel messages are added to the log output
      **/
-    Q_PROPERTY(bool kernelFilter READ isKernelFilterEnabled NOTIFY kernelFilterChanged)
+    Q_PROPERTY(bool kernelFilter READ isKernelFilterEnabled NOTIFY kernelFilterChanged FINAL)
+
+    Q_PROPERTY(bool enableSystemdUnitTemplateGrouping READ groupTemplatedSystemdUnits WRITE setGroupTemplatedSystemdUnits NOTIFY
+                   groupTemplatedSystemdUnitsChanged FINAL)
 
     QML_ELEMENT
 
@@ -87,9 +90,9 @@ public:
      *
      * @param path The path to directory that obtains the journald DB, usually ending with "journal".
      */
-    void setJournalProvider(IJournalProvider * provider);
+    void setJournalProvider(IJournalProvider *provider);
 
-    IJournalProvider * journalProvider() const;
+    IJournalProvider *journalProvider() const;
 
     /**
      * @return the currently selected priority threshold for displayed log entries
@@ -100,6 +103,17 @@ public:
      * @return the list of enabled system units
      */
     QStringList systemdUnitFilter() const;
+
+    /**
+     * @return true of templated systemd units are grouped by template name
+     */
+    bool groupTemplatedSystemdUnits() const;
+
+    /**
+     * Enable or disable grouping of systemd units by their template name by value @p enabled
+     * Whenever the value is changed, the groupTemplatedSystemdUnitsChanged signal is fired.
+     */
+    void setGroupTemplatedSystemdUnits(bool enabled);
 
     /**
      * @return the list of enabled processes
@@ -157,6 +171,7 @@ Q_SIGNALS:
     void exeFilterChanged();
     void kernelFilterChanged();
     void journalProviderChanged();
+    void groupTemplatedSystemdUnitsChanged();
 
 private:
     std::unique_ptr<FilterCriteriaModelPrivate> d;
