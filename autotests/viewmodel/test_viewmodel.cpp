@@ -55,7 +55,7 @@ void TestViewModel::rowAccess()
     QVERIFY(model.rowCount() > 0);
 
     // journalctl -b -2 -D . -o json | head -n2
-    std::vector<LogEntry> expectedData{LogEntry(QDateTime(QDate(2021, 03, 13), QTime(15, 23, 1, 464), Qt::UTC),
+    std::vector<LogEntry> expectedData{LogEntry(QDateTime(QDate(2021, 03, 13), QTime(15, 23, 1, 464), QTimeZone::UTC),
                                                 4050458,
                                                 QString(),
                                                 "System clock time unset or jumped backwards, restoring from recorded timestamp: Sat 2021-03-13 15:23:01 UTC",
@@ -64,7 +64,7 @@ void TestViewModel::rowAccess()
                                                 "/lib/systemd/systemd-timesyncd",
                                                 6,
                                                 QString()),
-                                       LogEntry(QDateTime(QDate(2021, 03, 13), QTime(15, 23, 1, 592), Qt::UTC),
+                                       LogEntry(QDateTime(QDate(2021, 03, 13), QTime(15, 23, 1, 592), QTimeZone::UTC),
                                                 4178254,
                                                 QString(),
                                                 "klogd started: BusyBox v1.31.1 ()",
