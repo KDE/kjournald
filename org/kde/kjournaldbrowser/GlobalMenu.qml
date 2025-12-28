@@ -84,7 +84,7 @@ Labs.MenuBar {
             title: KI18n.i18nc("@title:menu", "Timestamp Display")
 
             Labs.MenuItem {
-                text: KI18n.i18n("@item:inmenu", "Localized Realtime")
+                text: KI18n.i18nc("@item:inmenu", "Localized Realtime")
                 checkable: true
                 checked: BrowserApplication.timeDisplay === BrowserApplication.LOCALTIME
                 onTriggered: {
@@ -109,7 +109,7 @@ Labs.MenuBar {
             }
         }
         Labs.Menu {
-            title: KI18n.i18n("@title:menu", "Colorize")
+            title: KI18n.i18nc("@title:menu", "Colorize")
 
             Labs.MenuItem {
                 text: KI18n.i18nc("@item:inmenu", "Systemd Unit")
