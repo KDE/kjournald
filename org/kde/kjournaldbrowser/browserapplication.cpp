@@ -10,6 +10,7 @@ BrowserApplication::BrowserApplication(QObject *parent)
 {
     mTimeDisplayFormat = mSettings.value("browser/timedisplay").value<TimeDisplay>();
     mFilterCriterium = mSettings.value("browser/filtercriterium").value<FilterCriterium>();
+    mServiceGrouping = mSettings.value("browser/servicegrouping").value<ServiceGrouping>();
 
     BrowserApplication::setupActions();
 }
@@ -67,6 +68,21 @@ void BrowserApplication::setViewMode(ViewMode mode)
 BrowserApplication::ViewMode BrowserApplication::viewMode() const
 {
     return mViewMode;
+}
+
+void BrowserApplication::setServiceGrouping(ServiceGrouping mode)
+{
+    if (mode == mServiceGrouping) {
+        return;
+    }
+    mServiceGrouping = mode;
+    mSettings.setValue("browser/servicegrouping", QVariant::fromValue(static_cast<uint8_t>(mode)));
+    Q_EMIT serviceGroupingChanged();
+}
+
+BrowserApplication::ServiceGrouping BrowserApplication::serviceGrouping() const
+{
+    return mServiceGrouping;
 }
 
 #include "moc_browserapplication.cpp"

@@ -137,6 +137,30 @@ MenuBar {
                 }
             }
         }
+        Menu {
+            title: KI18n.i18nc("@title:menu", "Grouping")
+
+            MenuItem {
+                contentItem: RadioButton {
+                    text: KI18n.i18nc("@item:inmenu", "Group templated services")
+                    checkable: true
+                    checked: BrowserApplication.serviceGrouping === BrowserApplication.GROUP_SERVICE_TEMPLATES
+                    onToggled: {
+                        BrowserApplication.serviceGrouping = BrowserApplication.GROUP_SERVICE_TEMPLATES
+                    }
+                }
+            }
+            MenuItem {
+                contentItem: RadioButton {
+                    text: KI18n.i18nc("@item:inmenu", "Do not group templated service")
+                    checkable: true
+                    checked: BrowserApplication.serviceGrouping === BrowserApplication.UNGROUP_SERVICE_TEMPLATES
+                    onToggled: {
+                        BrowserApplication.serviceGrouping = BrowserApplication.UNGROUP_SERVICE_TEMPLATES
+                    }
+                }
+            }
+        }
     }
     Menu {
         title: KI18n.i18nc("@title:menu", "Help")
