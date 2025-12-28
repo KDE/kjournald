@@ -15,9 +15,10 @@ class BrowserApplication : public AbstractKirigamiApplication
     QML_ELEMENT
     QML_SINGLETON
 
-    Q_PROPERTY(BrowserApplication::TimeDisplay timeDisplay READ timeDisplay WRITE setTimeDisplay NOTIFY timeDisplayChanged)
-    Q_PROPERTY(BrowserApplication::FilterCriterium filterCriterium READ filterCriterium WRITE setFilterCriterium NOTIFY filterCriteriumChanged)
-    Q_PROPERTY(BrowserApplication::ViewMode viewMode READ viewMode WRITE setViewMode NOTIFY viewModeChanged)
+    Q_PROPERTY(BrowserApplication::TimeDisplay timeDisplay READ timeDisplay WRITE setTimeDisplay NOTIFY timeDisplayChanged FINAL)
+    Q_PROPERTY(BrowserApplication::FilterCriterium filterCriterium READ filterCriterium WRITE setFilterCriterium NOTIFY filterCriteriumChanged FINAL)
+    Q_PROPERTY(BrowserApplication::ViewMode viewMode READ viewMode WRITE setViewMode NOTIFY viewModeChanged FINAL)
+    Q_PROPERTY(BrowserApplication::ServiceGrouping serviceGrouping READ serviceGrouping WRITE setServiceGrouping NOTIFY serviceGroupingChanged FINAL)
 
 public:
     enum class ViewMode {
@@ -39,6 +40,12 @@ public:
     };
     Q_ENUM(FilterCriterium);
 
+    enum class ServiceGrouping : uint8_t {
+        GROUP_SERVICE_TEMPLATES, //!< display templated service instances by template name
+        UNGROUP_SERVICE_TEMPLATES, //!< display templated service instances separately
+    };
+    Q_ENUM(ServiceGrouping)
+
     explicit BrowserApplication(QObject *parent = nullptr);
     ~BrowserApplication() override;
 
@@ -54,6 +61,10 @@ public:
 
     ViewMode viewMode() const;
 
+    void setServiceGrouping(ServiceGrouping mode);
+
+    ServiceGrouping serviceGrouping() const;
+
 protected:
     void setupActions() override;
 
@@ -61,11 +72,13 @@ Q_SIGNALS:
     void timeDisplayChanged();
     void filterCriteriumChanged();
     void viewModeChanged();
+    void serviceGroupingChanged();
 
 private:
     TimeDisplay mTimeDisplayFormat{TimeDisplay::UTC};
     FilterCriterium mFilterCriterium{FilterCriterium::SYSTEMD_UNIT};
     ViewMode mViewMode{ViewMode::BROWSE};
+    ServiceGrouping mServiceGrouping{ServiceGrouping::GROUP_SERVICE_TEMPLATES};
     QSettings mSettings;
 };
 
