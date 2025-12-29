@@ -15,6 +15,7 @@
 #include <QDir>
 #include <QMutex>
 #include <QRandomGenerator>
+#include <QRegularExpression>
 #include <QThread>
 #include <algorithm>
 #include <iterator>
@@ -262,7 +263,12 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
         }
         result = sd_journal_get_data(mJournal->get(), mJournalProvider->isUser() ? "_SYSTEMD_USER_UNIT" : "_SYSTEMD_UNIT", (const void **)&data, &length);
         if (result == 0) {
-            entry.setUnit(JournaldHelper::cleanupString(QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1)));
+            QString unit = JournaldHelper::cleanupString(QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1));
+            entry.setUnit(unit);
+            static const QRegularExpression templateArgumentExpr(QLatin1String("@.+\\.service"));
+            // group identifier is only internal identifier for this model
+            unit.replace(templateArgumentExpr, QLatin1String("@.service"));
+            entry.setUnitTemplateGroup(unit);
         }
         result = sd_journal_get_data(mJournal->get(), "_BOOT_ID", (const void **)&data, &length);
         if (result == 0) {
@@ -542,9 +548,17 @@ QVariant JournaldViewModel::data(const QModelIndex &index, int role) const
         return exe;
     }
     case JournaldViewModel::Roles::SYSTEMD_UNIT_COLOR_BACKGROUND:
-        return Colorizer::color(d->mLog.at(index.row()).unit(), Colorizer::COLOR_TYPE::BACKGROUND);
+        if (d->mEnableServiceTemplateGrouping) {
+            return Colorizer::color(d->mLog.at(index.row()).unitTemplateGroup(), Colorizer::COLOR_TYPE::BACKGROUND);
+        } else {
+            return Colorizer::color(d->mLog.at(index.row()).unit(), Colorizer::COLOR_TYPE::BACKGROUND);
+        }
     case JournaldViewModel::Roles::SYSTEMD_UNIT_COLOR_FOREGROUND:
-        return Colorizer::color(d->mLog.at(index.row()).unit(), Colorizer::COLOR_TYPE::FOREGROUND);
+        if (d->mEnableServiceTemplateGrouping) {
+            return Colorizer::color(d->mLog.at(index.row()).unitTemplateGroup(), Colorizer::COLOR_TYPE::FOREGROUND);
+        } else {
+            return Colorizer::color(d->mLog.at(index.row()).unit(), Colorizer::COLOR_TYPE::FOREGROUND);
+        }
     case JournaldViewModel::Roles::EXE_COLOR_BACKGROUND:
         return Colorizer::color(d->mLog.at(index.row()).exe(), Colorizer::COLOR_TYPE::BACKGROUND);
     case JournaldViewModel::Roles::EXE_COLOR_FOREGROUND:
@@ -675,6 +689,22 @@ void JournaldViewModel::resetFilter()
 Filter JournaldViewModel::filter() const
 {
     return d->mFilter;
+}
+
+bool JournaldViewModel::groupTemplatedSystemdUnits()
+{
+    return d->mEnableServiceTemplateGrouping;
+}
+
+void JournaldViewModel::setGroupTemplatedSystemdUnits(bool enabled)
+{
+    if (enabled == d->mEnableServiceTemplateGrouping) {
+        return;
+    }
+    qCDebug(KJOURNALDLIB_FILTERTRACE) << "reset view model due to template group change";
+    d->mEnableServiceTemplateGrouping = enabled;
+    Q_EMIT groupTemplatedSystemdUnitsChanged();
+    Q_EMIT dataChanged(index(0, 0), index(d->mLog.size() - 1, 0), {Roles::SYSTEMD_UNIT_COLOR_BACKGROUND, Roles::SYSTEMD_UNIT_COLOR_FOREGROUND});
 }
 
 int JournaldViewModel::search(const QString &searchString, int startRow, bool caseSensitive, Direction direction)

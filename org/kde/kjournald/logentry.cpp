@@ -77,6 +77,11 @@ void LogEntry::setUnit(const QString &unit)
     m_unit = unit;
 }
 
+void LogEntry::setUnitTemplateGroup(const QString &unit)
+{
+    m_unitTemplateGroup = unit;
+}
+
 void LogEntry::setExe(const QString &exe)
 {
     m_exe = exe;

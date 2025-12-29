@@ -190,12 +190,12 @@ void FilterCriteriaModelPrivate::rebuildModel()
 
             units.erase(std::remove_if(std::begin(units),
                                        std::end(units),
-                                       [](const QString &unit) {
+                                       [](QStringView unit) {
                                            return unit.startsWith(QLatin1String("systemd-coredump@"))
                                                || unit.startsWith(QLatin1String("drkonqi-coredump-processor@"))
                                                || unit.startsWith(QLatin1String("drkonqi-coredump-launcher@"));
                                        }),
-                        std::cend(units));
+                        std::end(units));
             std::sort(std::begin(units), std::end(units), [](const QString &a, const QString &b) {
                 return QString::compare(a, b, Qt::CaseInsensitive) <= 0;
             });

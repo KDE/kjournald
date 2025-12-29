@@ -33,6 +33,11 @@ class KJOURNALD_EXPORT JournaldViewModel : public QAbstractItemModel
      * Configure filter for view model
      **/
     Q_PROPERTY(Filter filter WRITE setFilter READ filter RESET resetFilter NOTIFY filterChanged)
+    /**
+     * if set to true, templated systemd services are grouped together
+     **/
+    Q_PROPERTY(bool enableSystemdUnitTemplateGrouping READ groupTemplatedSystemdUnits WRITE setGroupTemplatedSystemdUnits NOTIFY
+                   groupTemplatedSystemdUnitsChanged FINAL)
 
     QML_ELEMENT
 
@@ -194,6 +199,16 @@ public:
      */
     void setFetchMoreChunkSize(quint32 size);
 
+    /**
+     * @return true of service grouping is enabled
+     */
+    bool groupTemplatedSystemdUnits();
+
+    /**
+     * set systemd service unit grouping behavior to @p enabled
+     */
+    void setGroupTemplatedSystemdUnits(bool enabled);
+
 private Q_SLOTS:
     /**
      * Decoupled fetching for log entries that can enforce sequence of fetching calls.
@@ -208,6 +223,7 @@ Q_SIGNALS:
     void filterChanged();
     void journalProviderChanged();
     void availableChanged();
+    void groupTemplatedSystemdUnitsChanged();
 
 protected:
     void guardedBeginResetModel();

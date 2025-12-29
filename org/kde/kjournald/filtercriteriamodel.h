@@ -47,7 +47,9 @@ class KJOURNALD_EXPORT FilterCriteriaModel : public QAbstractItemModel
      * if set to true, Kernel messages are added to the log output
      **/
     Q_PROPERTY(bool kernelFilter READ isKernelFilterEnabled NOTIFY kernelFilterChanged FINAL)
-
+    /**
+     * if set to true, templated systemd services are grouped together
+     **/
     Q_PROPERTY(bool enableSystemdUnitTemplateGrouping READ groupTemplatedSystemdUnits WRITE setGroupTemplatedSystemdUnits NOTIFY
                    groupTemplatedSystemdUnitsChanged FINAL)
 
