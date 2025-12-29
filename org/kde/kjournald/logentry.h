@@ -76,6 +76,11 @@ public:
         return m_unit;
     }
     void setUnit(const QString &unit);
+    inline QString unitTemplateGroup() const
+    {
+        return m_unitTemplateGroup;
+    }
+    void setUnitTemplateGroup(const QString &unit);
     inline QString exe() const
     {
         return m_exe;
@@ -95,6 +100,7 @@ private:
     int m_priority{0};
     QString m_bootId;
     QString m_unit;
+    QString m_unitTemplateGroup;
     QString m_exe;
     QString m_cursor;
 };

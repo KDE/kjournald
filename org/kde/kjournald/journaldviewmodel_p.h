@@ -82,6 +82,7 @@ public:
     bool mJournalAvailable{false};
     QList<LogEntry> mLog;
     Filter mFilter;
+    bool mEnableServiceTemplateGrouping{true};
     bool mHeadCursorReached{false};
     bool mTailCursorReached{false};
     bool mModelResetActive{false};

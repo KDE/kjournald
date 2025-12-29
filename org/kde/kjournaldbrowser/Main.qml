@@ -342,6 +342,7 @@ StatefulApp.StatefulWindow {
     JournaldViewModel {
         id: journalModel
         journalProvider: DatabaseProvider.journalProvider
+        enableSystemdUnitTemplateGrouping: BrowserApplication.serviceGrouping === BrowserApplication.ServiceGrouping.GROUP_SERVICE_TEMPLATES
         filter.units: root.filterModel.systemdUnitFilter
         filter.exes: root.filterModel.exeFilter
         filter.boots: bootIdComboBox.currentValue
