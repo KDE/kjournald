@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-28 00:45+0000\n"
+"POT-Creation-Date: 2025-12-29 00:46+0000\n"
 "PO-Revision-Date: 2025-12-14 14:26+0100\n"
 "Last-Translator: Alois Spitzbart <spitz234@hotmail.com>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -254,9 +254,12 @@ msgid "Timestamp Display"
 msgstr "Zeitstempel-Anzeige"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:87
-#, kde-format
-msgid "@item:inmenu"
-msgstr ""
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:87
+#, fuzzy, kde-format
+#| msgid "Localized Realtime"
+msgctxt "@item:inmenu"
+msgid "Localized Realtime"
+msgstr "Lokale Echtzeit"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:95
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:97
@@ -275,9 +278,12 @@ msgid "Monotonic Time"
 msgstr "Monotone Zeit"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:112
-#, kde-format
-msgid "@title:menu"
-msgstr ""
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:117
+#, fuzzy, kde-format
+#| msgid "Colorize"
+msgctxt "@title:menu"
+msgid "Colorize"
+msgstr "Einfärben"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:115
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:121
@@ -439,20 +445,6 @@ msgstr "Aus Datei öffnen"
 msgctxt "@action:inmenu"
 msgid "Copy Current View"
 msgstr ""
-
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:87
-#, fuzzy, kde-format
-#| msgid "Localized Realtime"
-msgctxt "@item:inmenu"
-msgid "Localized Realtime"
-msgstr "Lokale Echtzeit"
-
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:117
-#, fuzzy, kde-format
-#| msgid "Colorize"
-msgctxt "@title:menu"
-msgid "Colorize"
-msgstr "Einfärben"
 
 #~ msgid "Highlight:"
 #~ msgstr "Hervorheben:"

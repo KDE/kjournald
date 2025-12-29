@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-28 00:45+0000\n"
-"PO-Revision-Date: 2025-12-18 06:36-0300\n"
+"POT-Creation-Date: 2025-12-29 00:46+0000\n"
+"PO-Revision-Date: 2025-12-28 06:01-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -162,156 +162,139 @@ msgid "Process"
 msgstr "Processo"
 
 #: org/kde/kjournaldbrowser/FilterCriteriaView.qml:33
-#, fuzzy, kde-format
-#| msgid "Expanded"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Expanded"
 msgstr "Expandido"
 
 #: org/kde/kjournaldbrowser/FilterCriteriaView.qml:34
-#, fuzzy, kde-format
-#| msgid "Collapsed"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Collapsed"
 msgstr "Recolhido"
 
 #: org/kde/kjournaldbrowser/FilterCriteriaView.qml:60
-#, fuzzy, kde-format
-#| msgid "Clear"
+#, kde-format
 msgctxt "@label"
 msgid "Clear"
 msgstr "Limpar"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:23
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:23
-#, fuzzy, kde-format
-#| msgctxt "@action:menu"
-#| msgid "File"
+#, kde-format
 msgctxt "@title:menu"
 msgid "File"
 msgstr "Arquivo"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:26
-#, fuzzy, kde-format
-#| msgid "Open system journal"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open system journal"
 msgstr "Abrir a partir do sistema"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:33
-#, fuzzy, kde-format
-#| msgid "Open user journal"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open user journal"
 msgstr "Abrir a partir do usuário"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:40
-#, fuzzy, kde-format
-#| msgid "Open from folder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from folder"
-msgstr "Abrir pasta"
+msgstr "Abrir a partir da pasta"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:48
-#, fuzzy, kde-format
-#| msgid "Open from file"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from file"
-msgstr "Abrir arquivo"
+msgstr "Abrir a partir do arquivo"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:67
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:66
-#, fuzzy, kde-format
-#| msgid "Close"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Close"
 msgstr "Fechar"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:73
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:72
-#, fuzzy, kde-format
-#| msgid "Current Journal"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Current Journal"
 msgstr "Log atual"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:81
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:80
-#, fuzzy, kde-format
-#| msgid "View"
+#, kde-format
 msgctxt "@title:menu"
 msgid "View"
 msgstr "Exibir"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:84
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:83
-#, fuzzy, kde-format
-#| msgid "Timestamp Display"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Timestamp Display"
 msgstr "Visualização de data e hora"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:87
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:87
 #, kde-format
-msgid "@item:inmenu"
-msgstr ""
+msgctxt "@item:inmenu"
+msgid "Localized Realtime"
+msgstr "Horário local"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:95
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:97
-#, fuzzy, kde-format
-#| msgid "UTC Realtime"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "UTC Realtime"
 msgstr "Horário UTC"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:103
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:107
-#, fuzzy, kde-format
-#| msgid "Monotonic Time"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Monotonic Time"
 msgstr "Horário monotônico"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:112
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:117
 #, kde-format
-msgid "@title:menu"
-msgstr ""
+msgctxt "@title:menu"
+msgid "Colorize"
+msgstr "Colorir"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:115
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:121
-#, fuzzy, kde-format
-#| msgid "Systemd Unit"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Systemd Unit"
 msgstr "Unidade do systemd"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:123
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:131
-#, fuzzy, kde-format
-#| msgid "Executable"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Executable"
 msgstr "Executável"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:133
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:142
-#, fuzzy, kde-format
-#| msgctxt "@action:menu"
-#| msgid "Help"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Help"
 msgstr "Ajuda"
 
 #: org/kde/kjournaldbrowser/LogView.qml:209
-#, fuzzy, kde-format
-#| msgid "Kernel"
+#, kde-format
 msgctxt "@label"
 msgid "Kernel"
-msgstr "Versão do kernel"
+msgstr "Kernel"
 
 #: org/kde/kjournaldbrowser/Main.qml:73
-#, fuzzy, kde-format
-#| msgid "Boot:"
+#, kde-format
 msgctxt "@label"
 msgid "Boot:"
 msgstr "Inicialização:"
@@ -337,32 +320,28 @@ msgid "Switch to selection mode"
 msgstr "Mudar para o modo de seleção"
 
 #: org/kde/kjournaldbrowser/Main.qml:240
-#, fuzzy, kde-format
-#| msgid "Select journal folder"
+#, kde-format
 msgctxt "@title"
 msgid "Select journal folder"
 msgstr "Selecionar pasta"
 
 #: org/kde/kjournaldbrowser/Main.qml:249
-#, fuzzy, kde-format
-#| msgid "Select journal file"
+#, kde-format
 msgctxt "@title"
 msgid "Select journal file"
 msgstr "Selecionar arquivo"
 
 #: org/kde/kjournaldbrowser/Main.qml:250
-#, fuzzy, kde-format
-#| msgid "Journal files (*.journal)"
+#, kde-format
 msgctxt "@item"
 msgid "Journal files (*.journal)"
 msgstr "Arquivos de log (*.journal)"
 
 #: org/kde/kjournaldbrowser/Main.qml:250
-#, fuzzy, kde-format
-#| msgid "All files (*)"
+#, kde-format
 msgctxt "@item"
 msgid "All files (*)"
-msgstr "Todo tipo de arquivos (*)"
+msgstr "Todos os arquivos (*)"
 
 #: org/kde/kjournaldbrowser/Main.qml:320
 #, kde-format
@@ -389,73 +368,58 @@ msgid "No log entries apply to selected filters."
 msgstr "Nenhuma entrada de registro se aplica aos filtros selecionados."
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:15
-#, fuzzy, kde-format
-#| msgid "Configure Remote Journal Server"
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Remote Journal Server"
 msgstr "Configurar servidor remoto"
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:29
-#, fuzzy, kde-format
-#| msgid "URL:"
+#, kde-format
 msgctxt "@label"
 msgid "URL:"
 msgstr "URL:"
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:38
-#, fuzzy, kde-format
-#| msgid "Port:"
+#, kde-format
 msgctxt "@label"
 msgid "Port:"
 msgstr "Porta:"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:25
-#, fuzzy, kde-format
-#| msgid "Open System Journal"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open System Journal"
 msgstr "Abrir a partir do sistema"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:32
-#, fuzzy, kde-format
-#| msgid "Open User Journal"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open User Journal"
 msgstr "Abrir a partir do usuário"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:39
-#, fuzzy, kde-format
-#| msgid "Open from Folder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from Folder"
-msgstr "Abrir pasta"
+msgstr "Abrir a partir da pasta"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:47
-#, fuzzy, kde-format
-#| msgid "Open from File"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from File"
-msgstr "Abrir arquivo"
+msgstr "Abrir a partir do arquivo"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:74
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Copy Current View"
-msgstr ""
+msgstr "Copiar visualização atual"
 
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:87
-#, fuzzy, kde-format
-#| msgid "Localized Realtime"
-msgctxt "@item:inmenu"
-msgid "Localized Realtime"
-msgstr "Horário local"
+#~ msgid "@item:inmenu"
+#~ msgstr "@item:inmenu"
 
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:117
-#, fuzzy, kde-format
-#| msgid "Colorize"
-msgctxt "@title:menu"
-msgid "Colorize"
-msgstr "Colorir"
+#~ msgid "@title:menu"
+#~ msgstr "@title:menu"
 
 #~ msgid "Highlight:"
 #~ msgstr "Destaque:"

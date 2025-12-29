@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-12-28 00:45+0000\n"
-"PO-Revision-Date: 2025-12-18 11:46+0200\n"
+"POT-Creation-Date: 2025-12-29 00:46+0000\n"
+"PO-Revision-Date: 2025-12-28 09:45+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -158,156 +158,139 @@ msgid "Process"
 msgstr "תהליך"
 
 #: org/kde/kjournaldbrowser/FilterCriteriaView.qml:33
-#, fuzzy, kde-format
-#| msgid "Expanded"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Expanded"
 msgstr "מורחב"
 
 #: org/kde/kjournaldbrowser/FilterCriteriaView.qml:34
-#, fuzzy, kde-format
-#| msgid "Collapsed"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Collapsed"
 msgstr "מצומצם"
 
 #: org/kde/kjournaldbrowser/FilterCriteriaView.qml:60
-#, fuzzy, kde-format
-#| msgid "Clear"
+#, kde-format
 msgctxt "@label"
 msgid "Clear"
 msgstr "פינוי"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:23
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:23
-#, fuzzy, kde-format
-#| msgctxt "@action:menu"
-#| msgid "File"
+#, kde-format
 msgctxt "@title:menu"
 msgid "File"
 msgstr "קובץ"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:26
-#, fuzzy, kde-format
-#| msgid "Open system journal"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open system journal"
 msgstr "פתיחת יומן (journal) המערכת"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:33
-#, fuzzy, kde-format
-#| msgid "Open user journal"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open user journal"
 msgstr "פתיחת יומן (journal) המשתמש"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:40
-#, fuzzy, kde-format
-#| msgid "Open from folder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from folder"
 msgstr "פתיחה מתיקייה"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:48
-#, fuzzy, kde-format
-#| msgid "Open from file"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from file"
 msgstr "פתיחה מקובץ"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:67
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:66
-#, fuzzy, kde-format
-#| msgid "Close"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Close"
 msgstr "סגירה"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:73
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:72
-#, fuzzy, kde-format
-#| msgid "Current Journal"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Current Journal"
 msgstr "היומן (journal) הנוכחי"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:81
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:80
-#, fuzzy, kde-format
-#| msgid "View"
+#, kde-format
 msgctxt "@title:menu"
 msgid "View"
 msgstr "תצוגה"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:84
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:83
-#, fuzzy, kde-format
-#| msgid "Timestamp Display"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Timestamp Display"
 msgstr "תצוגת חותמות זמן"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:87
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:87
 #, kde-format
-msgid "@item:inmenu"
-msgstr ""
+msgctxt "@item:inmenu"
+msgid "Localized Realtime"
+msgstr "זמן אמת תואם מקום"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:95
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:97
-#, fuzzy, kde-format
-#| msgid "UTC Realtime"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "UTC Realtime"
 msgstr "זמן אמת לפי UTC"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:103
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:107
-#, fuzzy, kde-format
-#| msgid "Monotonic Time"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Monotonic Time"
 msgstr "זמן מונוטוני"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:112
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:117
 #, kde-format
-msgid "@title:menu"
-msgstr ""
+msgctxt "@title:menu"
+msgid "Colorize"
+msgstr "צביעה"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:115
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:121
-#, fuzzy, kde-format
-#| msgid "Systemd Unit"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Systemd Unit"
 msgstr "יחידת Systemd"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:123
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:131
-#, fuzzy, kde-format
-#| msgid "Executable"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Executable"
 msgstr "להפעלה"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:133
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:142
-#, fuzzy, kde-format
-#| msgctxt "@action:menu"
-#| msgid "Help"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Help"
 msgstr "עזרה"
 
 #: org/kde/kjournaldbrowser/LogView.qml:209
-#, fuzzy, kde-format
-#| msgid "Kernel"
+#, kde-format
 msgctxt "@label"
 msgid "Kernel"
 msgstr "ליבה"
 
 #: org/kde/kjournaldbrowser/Main.qml:73
-#, fuzzy, kde-format
-#| msgid "Boot:"
+#, kde-format
 msgctxt "@label"
 msgid "Boot:"
 msgstr "טעינה:"
@@ -331,29 +314,25 @@ msgid "Switch to selection mode"
 msgstr "מעבר למצב בחירה"
 
 #: org/kde/kjournaldbrowser/Main.qml:240
-#, fuzzy, kde-format
-#| msgid "Select journal folder"
+#, kde-format
 msgctxt "@title"
 msgid "Select journal folder"
 msgstr "בחירת תיקיית יומן (journal)"
 
 #: org/kde/kjournaldbrowser/Main.qml:249
-#, fuzzy, kde-format
-#| msgid "Select journal file"
+#, kde-format
 msgctxt "@title"
 msgid "Select journal file"
 msgstr "בחירת קובץ יומן (journal)"
 
 #: org/kde/kjournaldbrowser/Main.qml:250
-#, fuzzy, kde-format
-#| msgid "Journal files (*.journal)"
+#, kde-format
 msgctxt "@item"
 msgid "Journal files (*.journal)"
 msgstr "קובצי Journal‏ (‎*.journal)"
 
 #: org/kde/kjournaldbrowser/Main.qml:250
-#, fuzzy, kde-format
-#| msgid "All files (*)"
+#, kde-format
 msgctxt "@item"
 msgid "All files (*)"
 msgstr "כל הקבצים (*)"
@@ -380,50 +359,43 @@ msgid "No log entries apply to selected filters."
 msgstr "אין רשומות ביומן שתואמות למסננים שנבחרו."
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:15
-#, fuzzy, kde-format
-#| msgid "Configure Remote Journal Server"
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Remote Journal Server"
 msgstr "הגדרת שרת Journal מרוחק"
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:29
-#, fuzzy, kde-format
-#| msgid "URL:"
+#, kde-format
 msgctxt "@label"
 msgid "URL:"
 msgstr "כתובת:"
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:38
-#, fuzzy, kde-format
-#| msgid "Port:"
+#, kde-format
 msgctxt "@label"
 msgid "Port:"
 msgstr "פתחה:"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:25
-#, fuzzy, kde-format
-#| msgid "Open System Journal"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open System Journal"
 msgstr "פתיחת יומן (Journal) המערכת"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:32
-#, fuzzy, kde-format
-#| msgid "Open User Journal"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open User Journal"
 msgstr "פתיחת יומן (Journal) המשתמש"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:39
-#, fuzzy, kde-format
-#| msgid "Open from Folder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from Folder"
 msgstr "פתיחה מתיקייה"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:47
-#, fuzzy, kde-format
-#| msgid "Open from File"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from File"
 msgstr "פתיחה מקובץ"
@@ -432,21 +404,13 @@ msgstr "פתיחה מקובץ"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Copy Current View"
-msgstr ""
+msgstr "העתקת התצוגה הנוכחית"
 
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:87
-#, fuzzy, kde-format
-#| msgid "Localized Realtime"
-msgctxt "@item:inmenu"
-msgid "Localized Realtime"
-msgstr "זמן אמת מקומי"
+#~ msgid "@item:inmenu"
+#~ msgstr "@item:inmenu"
 
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:117
-#, fuzzy, kde-format
-#| msgid "Colorize"
-msgctxt "@title:menu"
-msgid "Colorize"
-msgstr "צביעה"
+#~ msgid "@title:menu"
+#~ msgstr "@title:menu"
 
 #~ msgid "Highlight:"
 #~ msgstr "הדגשה:"
