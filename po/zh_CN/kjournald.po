@@ -160,139 +160,139 @@ msgstr "进程"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Expanded"
-msgstr ""
+msgstr "展开"
 
 #: org/kde/kjournaldbrowser/FilterCriteriaView.qml:34
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Collapsed"
-msgstr ""
+msgstr "折叠"
 
 #: org/kde/kjournaldbrowser/FilterCriteriaView.qml:60
 #, kde-format
 msgctxt "@label"
 msgid "Clear"
-msgstr ""
+msgstr "清除"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:23
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:23
 #, kde-format
 msgctxt "@title:menu"
 msgid "File"
-msgstr ""
+msgstr "文件"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:26
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Open system journal"
-msgstr ""
+msgstr "打开系统日志"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:33
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Open user journal"
-msgstr ""
+msgstr "打开用户日志"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:40
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from folder"
-msgstr ""
+msgstr "从文件夹打开"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:48
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from file"
-msgstr ""
+msgstr "从文件打开"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:67
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:66
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Close"
-msgstr ""
+msgstr "关闭"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:73
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:72
 #, kde-format
 msgctxt "@title:menu"
 msgid "Current Journal"
-msgstr ""
+msgstr "当前日志"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:81
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:80
 #, kde-format
 msgctxt "@title:menu"
 msgid "View"
-msgstr ""
+msgstr "视图"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:84
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:83
 #, kde-format
 msgctxt "@title:menu"
 msgid "Timestamp Display"
-msgstr ""
+msgstr "时间戳显示"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:87
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:87
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Localized Realtime"
-msgstr ""
+msgstr "本地实时时间"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:95
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:97
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "UTC Realtime"
-msgstr ""
+msgstr "UTC 实时时间"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:103
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:107
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Monotonic Time"
-msgstr ""
+msgstr "单向时间"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:112
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:117
 #, kde-format
 msgctxt "@title:menu"
 msgid "Colorize"
-msgstr ""
+msgstr "着色"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:115
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:121
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Systemd Unit"
-msgstr ""
+msgstr "Systemd 单元"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:123
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:131
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Executable"
-msgstr ""
+msgstr "可执行程序"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:133
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:142
 #, kde-format
 msgctxt "@title:menu"
 msgid "Help"
-msgstr ""
+msgstr "帮助"
 
 #: org/kde/kjournaldbrowser/LogView.qml:209
 #, kde-format
 msgctxt "@label"
 msgid "Kernel"
-msgstr ""
+msgstr "内核"
 
 #: org/kde/kjournaldbrowser/Main.qml:73
 #, kde-format
 msgctxt "@label"
 msgid "Boot:"
-msgstr ""
+msgstr "引导："
 
 #: org/kde/kjournaldbrowser/Main.qml:185
 #, kde-format
@@ -316,25 +316,25 @@ msgstr "切换到选择模式"
 #, kde-format
 msgctxt "@title"
 msgid "Select journal folder"
-msgstr ""
+msgstr "选择日志文件夹"
 
 #: org/kde/kjournaldbrowser/Main.qml:249
 #, kde-format
 msgctxt "@title"
 msgid "Select journal file"
-msgstr ""
+msgstr "选择日志文件"
 
 #: org/kde/kjournaldbrowser/Main.qml:250
 #, kde-format
 msgctxt "@item"
 msgid "Journal files (*.journal)"
-msgstr ""
+msgstr "日志文件 (*.journal)"
 
 #: org/kde/kjournaldbrowser/Main.qml:250
 #, kde-format
 msgctxt "@item"
 msgid "All files (*)"
-msgstr ""
+msgstr "所有文件 (*)"
 
 #: org/kde/kjournaldbrowser/Main.qml:320
 #, kde-format
@@ -360,46 +360,46 @@ msgstr "没有适用于所选过滤条件的日志条目。"
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure Remote Journal Server"
-msgstr ""
+msgstr "配置远程日志服务器"
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:29
 #, kde-format
 msgctxt "@label"
 msgid "URL:"
-msgstr ""
+msgstr "URL："
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:38
 #, kde-format
 msgctxt "@label"
 msgid "Port:"
-msgstr ""
+msgstr "端口："
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:25
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Open System Journal"
-msgstr ""
+msgstr "打开系统日志"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:32
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Open User Journal"
-msgstr ""
+msgstr "打开用户日志"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:39
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from Folder"
-msgstr ""
+msgstr "从文件夹打开"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:47
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from File"
-msgstr ""
+msgstr "从文件打开"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:74
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Copy Current View"
-msgstr ""
+msgstr "复制当前视图"
