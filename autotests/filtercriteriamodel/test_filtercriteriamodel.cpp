@@ -1,6 +1,6 @@
 /*
     SPDX-License-Identifier: LGPL-2.1-or-later OR MIT
-    SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
+    SPDX-FileCopyrightText: 2021-2026 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 */
 
 #include "test_filtercriteriamodel.h"
@@ -47,9 +47,10 @@ void TestFilterCriteriaModel::basicTreeModelStructure()
     }
 }
 
-void TestFilterCriteriaModel::standaloneTestSystemdUnitSelectionOptions()
+void TestFilterCriteriaModel::standaloneTestSystemdUnitSelectionOptionsUngrouped()
 {
     FilterCriteriaModel model;
+    model.setGroupTemplatedSystemdUnits(false);
     QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
 
     // use extracted journal
@@ -59,9 +60,43 @@ void TestFilterCriteriaModel::standaloneTestSystemdUnitSelectionOptions()
     QVERIFY(model.entries(FilterCriteriaModel::Category::SYSTEMD_UNIT).count() > 0);
 
     {
-        const auto container = model.entries(FilterCriteriaModel::Category::SYSTEMD_UNIT);
-        QVERIFY(std::any_of(container.cbegin(), container.cend(), [=](std::pair<QString, bool> value) {
+        const auto entries = model.entries(FilterCriteriaModel::Category::SYSTEMD_UNIT);
+        QVERIFY(std::any_of(entries.cbegin(), entries.cend(), [=](std::pair<QString, bool> value) {
             return value.first == "user@1000.service"; // arbitrary service from test journal
+        }));
+    }
+
+    { // QAbstractItemModel interface acccess
+        QModelIndex categoryIndex;
+        for (int i = 0; i < model.rowCount(); ++i) {
+            if (model.data(model.index(i, 0), FilterCriteriaModel::Roles::CATEGORY) == FilterCriteriaModel::Category::SYSTEMD_UNIT) {
+                categoryIndex = model.index(i, 0);
+                break;
+            }
+        }
+        QVERIFY(categoryIndex.isValid());
+        QVERIFY(model.hasChildren(categoryIndex));
+        // value from first position
+        QCOMPARE(model.data(model.index(0, 0, categoryIndex), FilterCriteriaModel::Roles::TEXT).toString(), "busybox-klogd.service");
+    }
+}
+
+void TestFilterCriteriaModel::standaloneTestSystemdUnitSelectionOptionsGrouped()
+{
+    FilterCriteriaModel model;
+    model.setGroupTemplatedSystemdUnits(true);
+    QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
+
+    // use extracted journal
+    auto provider = LocalJournal(JOURNAL_LOCATION);
+    model.setJournalProvider(&provider);
+    QVERIFY(model.rowCount() > 0);
+    QVERIFY(model.entries(FilterCriteriaModel::Category::SYSTEMD_UNIT).count() > 0);
+
+    {
+        const auto entries = model.entries(FilterCriteriaModel::Category::SYSTEMD_UNIT);
+        QVERIFY(std::any_of(entries.cbegin(), entries.cend(), [=](std::pair<QString, bool> value) {
+            return value.first == "user@[...].service"; // template services are abbreviated with "[...]"
         }));
     }
 

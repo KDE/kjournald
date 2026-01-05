@@ -19,7 +19,8 @@ private Q_SLOTS:
     void basicTreeModelStructure();
 
     // check for filter options availability
-    void standaloneTestSystemdUnitSelectionOptions();
+    void standaloneTestSystemdUnitSelectionOptionsUngrouped();
+    void standaloneTestSystemdUnitSelectionOptionsGrouped();
     void standaloneTestExeSelectionOptions();
     void standaloneTestPrioritySelectionOptions();
 
