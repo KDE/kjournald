@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the kjournald package.
 #
-# SPDX-FileCopyrightText: 2023, 2024, 2025 giovanni <g.sora@tiscali.it>
+# SPDX-FileCopyrightText: 2023, 2024, 2025, 2026 giovanni <g.sora@tiscali.it>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-27 02:39+0000\n"
-"PO-Revision-Date: 2025-05-27 11:46+0200\n"
+"PO-Revision-Date: 2026-01-09 16:02+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -181,10 +181,9 @@ msgid "Open system journal"
 msgstr "Jornal de Systema Aperite (Open System Journal)"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:26
-#, fuzzy, kde-format
-#| msgid "Open system journal"
+#, kde-format
 msgid "Open user journal"
-msgstr "Jornal de Systema Aperite (Open System Journal)"
+msgstr "Jornal de Usator Aperite"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:33
 #, kde-format
@@ -236,7 +235,7 @@ msgstr "Tempore real UTC"
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:105
 #, kde-format
 msgid "Monotonic Time"
-msgstr "Termpore Monotone"
+msgstr "Tempore Monotone"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:105
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:115
@@ -337,10 +336,9 @@ msgid "Open System Journal"
 msgstr "Jornal de Systema Aperite"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:30
-#, fuzzy, kde-format
-#| msgid "Open System Journal"
+#, kde-format
 msgid "Open User Journal"
-msgstr "Jornal de Systema Aperite"
+msgstr "Jornal de Usator Aperite"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:37
 #, kde-format
