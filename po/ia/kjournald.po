@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the kjournald package.
 #
-# SPDX-FileCopyrightText: 2023, 2024, 2025 giovanni <g.sora@tiscali.it>
+# SPDX-FileCopyrightText: 2023, 2024, 2025, 2026 giovanni <g.sora@tiscali.it>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-29 00:46+0000\n"
-"PO-Revision-Date: 2025-05-27 11:46+0200\n"
+"PO-Revision-Date: 2026-01-09 15:58+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -70,11 +70,9 @@ msgid "Your emails"
 msgstr "g.sora@tiscali.it"
 
 #: browser/main.cpp:59
-#, fuzzy, kde-format
-#| msgctxt "@title Displayed program name"
-#| msgid "KJournald Browser"
+#, kde-format
 msgid "Journald Log Viewer"
-msgstr "KJournald Browser (Navigator KJournald)"
+msgstr "Visor deRegistro de Journald"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:22
 #, kde-format
@@ -161,162 +159,139 @@ msgid "Process"
 msgstr "Processo"
 
 #: org/kde/kjournaldbrowser/FilterCriteriaView.qml:33
-#, fuzzy, kde-format
-#| msgid "Expanded"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Expanded"
 msgstr "Expandite"
 
 #: org/kde/kjournaldbrowser/FilterCriteriaView.qml:34
-#, fuzzy, kde-format
-#| msgid "Collapsed"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Collapsed"
 msgstr "Plicate"
 
 #: org/kde/kjournaldbrowser/FilterCriteriaView.qml:60
-#, fuzzy, kde-format
-#| msgid "Clear"
+#, kde-format
 msgctxt "@label"
 msgid "Clear"
 msgstr "Netta"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:23
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:23
-#, fuzzy, kde-format
-#| msgctxt "@action:menu"
-#| msgid "File"
+#, kde-format
 msgctxt "@title:menu"
 msgid "File"
 msgstr "File"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:26
-#, fuzzy, kde-format
-#| msgid "Open system journal"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open system journal"
 msgstr "Jornal de Systema Aperite (Open System Journal)"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:33
-#, fuzzy, kde-format
-#| msgid "Open system journal"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open user journal"
-msgstr "Jornal de Systema Aperite (Open System Journal)"
+msgstr "Jornal de Usator Aperite"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:40
-#, fuzzy, kde-format
-#| msgid "Open from folder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from folder"
 msgstr "Aperi ab Dossier"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:48
-#, fuzzy, kde-format
-#| msgid "Open from file"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from file"
 msgstr "Aperi ab File"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:67
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:66
-#, fuzzy, kde-format
-#| msgid "Close"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Close"
 msgstr "Claude"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:73
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:72
-#, fuzzy, kde-format
-#| msgid "Current Journal"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Current Journal"
 msgstr "Jornal currente"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:81
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:80
-#, fuzzy, kde-format
-#| msgid "View"
+#, kde-format
 msgctxt "@title:menu"
 msgid "View"
 msgstr "Vista"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:84
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:83
-#, fuzzy, kde-format
-#| msgid "Timestamp Display"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Timestamp Display"
 msgstr "Monstrator de Marcator de tempore"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:87
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:87
-#, fuzzy, kde-format
-#| msgid "Localized Realtime"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Localized Realtime"
 msgstr "Tempore real localisate"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:95
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:97
-#, fuzzy, kde-format
-#| msgid "UTC Realtime"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "UTC Realtime"
 msgstr "Tempore real UTC"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:103
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:107
-#, fuzzy, kde-format
-#| msgid "Monotonic Time"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Monotonic Time"
-msgstr "Termpore Monotone"
+msgstr "Tempore Monotone"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:112
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:117
-#, fuzzy, kde-format
-#| msgid "Colorize"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Colorize"
 msgstr "Colorize"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:115
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:121
-#, fuzzy, kde-format
-#| msgid "Systemd Unit"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Systemd Unit"
 msgstr "Unitate de Systemd"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:123
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:131
-#, fuzzy, kde-format
-#| msgid "Executable"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Executable"
 msgstr "Executabile"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:133
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:142
-#, fuzzy, kde-format
-#| msgctxt "@action:menu"
-#| msgid "Help"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Help"
 msgstr "Adjuta"
 
 #: org/kde/kjournaldbrowser/LogView.qml:209
-#, fuzzy, kde-format
-#| msgid "Kernel"
+#, kde-format
 msgctxt "@label"
 msgid "Kernel"
 msgstr "Kernel"
 
 #: org/kde/kjournaldbrowser/Main.qml:73
-#, fuzzy, kde-format
-#| msgid "Boot:"
+#, kde-format
 msgctxt "@label"
 msgid "Boot:"
 msgstr "Boot:"
@@ -340,29 +315,25 @@ msgid "Switch to selection mode"
 msgstr "Commuta a modo de selection  "
 
 #: org/kde/kjournaldbrowser/Main.qml:240
-#, fuzzy, kde-format
-#| msgid "Select journal folder"
+#, kde-format
 msgctxt "@title"
 msgid "Select journal folder"
 msgstr "Selige dossier de jornal"
 
 #: org/kde/kjournaldbrowser/Main.qml:249
-#, fuzzy, kde-format
-#| msgid "Select journal file"
+#, kde-format
 msgctxt "@title"
 msgid "Select journal file"
 msgstr "Selige file de Jornal"
 
 #: org/kde/kjournaldbrowser/Main.qml:250
-#, fuzzy, kde-format
-#| msgid "Journal files (*.journal)"
+#, kde-format
 msgctxt "@item"
 msgid "Journal files (*.journal)"
 msgstr "Files de Jornal  (*.journal)"
 
 #: org/kde/kjournaldbrowser/Main.qml:250
-#, fuzzy, kde-format
-#| msgid "All files (*)"
+#, kde-format
 msgctxt "@item"
 msgid "All files (*)"
 msgstr "Omne files (*)"
@@ -371,7 +342,7 @@ msgstr "Omne files (*)"
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
-msgstr ""
+msgstr "Incapace a cargar base de datos de jornal ex location seligite: "
 
 #: org/kde/kjournaldbrowser/Main.qml:321
 #, kde-format
@@ -380,59 +351,53 @@ msgid ""
 "Check sub-directories of selected directory to contain files ending with '."
 "journal'."
 msgstr ""
+"Marca sub-directorios de directorio seligite percontiner files terminante "
+"con 'journal'."
 
 #: org/kde/kjournaldbrowser/Main.qml:328
-#, fuzzy, kde-format
-#| msgid "No log entries apply "
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."
-msgstr "Non applica alcun entratas de Registro (log)"
+msgstr "Non applica alcun entratas de Registro (log)afiltros seligite."
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:15
-#, fuzzy, kde-format
-#| msgid "Configure Remote Journal Server"
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Remote Journal Server"
 msgstr "Configura Servitor de Jornal Remote"
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:29
-#, fuzzy, kde-format
-#| msgid "URL:"
+#, kde-format
 msgctxt "@label"
 msgid "URL:"
 msgstr "URL:"
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:38
-#, fuzzy, kde-format
-#| msgid "Port:"
+#, kde-format
 msgctxt "@label"
 msgid "Port:"
 msgstr "Porto:"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:25
-#, fuzzy, kde-format
-#| msgid "Open System Journal"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open System Journal"
-msgstr "Jornal de Systema Aperite"
+msgstr "Jornal de Systema Aperite (Open System Journal)"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:32
-#, fuzzy, kde-format
-#| msgid "Open System Journal"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open User Journal"
-msgstr "Jornal de Systema Aperite"
+msgstr "Jornal de Usator Aperite"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:39
-#, fuzzy, kde-format
-#| msgid "Open from Folder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from Folder"
 msgstr "Aperi ab Dossier"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:47
-#, fuzzy, kde-format
-#| msgid "Open from File"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from File"
 msgstr "Aperi ab File"
@@ -441,7 +406,7 @@ msgstr "Aperi ab File"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Copy Current View"
-msgstr ""
+msgstr "Copia vista currente"
 
 #~ msgid "Highlight:"
 #~ msgstr "Evidentia:"
