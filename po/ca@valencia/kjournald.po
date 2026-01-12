@@ -1,16 +1,16 @@
 # Translation of kjournald.po to Catalan (Valencian)
-# Copyright (C) 2021-2025 This_file_is_part_of_KDE
+# Copyright (C) 2021-2026 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
 # SPDX-FileCopyrightText: 2021 Antoni Bella Pérez <antonibella5@yahoo.com>
-# SPDX-FileCopyrightText: 2022, 2024, 2025 Josep M. Ferrer <txemaq@gmail.com>
+# SPDX-FileCopyrightText: 2022, 2024, 2025, 2026 Josep M. Ferrer <txemaq@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-11 00:46+0000\n"
-"PO-Revision-Date: 2025-12-28 09:13+0100\n"
+"PO-Revision-Date: 2026-01-11 09:37+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.12.0\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #: browser/main.cpp:40
 #, kde-format
@@ -285,21 +285,21 @@ msgstr "Executable"
 #, kde-format
 msgctxt "@title:menu"
 msgid "Grouping"
-msgstr ""
+msgstr "Agrupament"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:135
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:145
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Group templated services"
-msgstr ""
+msgstr "Agrupa els serveis amb plantilla"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:143
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:155
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Do not group templated service"
-msgstr ""
+msgstr "No agrupes els serveis amb plantilla"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:153
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:166

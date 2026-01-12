@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-11 00:46+0000\n"
-"PO-Revision-Date: 2025-12-28 02:32+0100\n"
+"PO-Revision-Date: 2026-01-11 05:30+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -283,21 +283,21 @@ msgstr "შესრულებადი"
 #, kde-format
 msgctxt "@title:menu"
 msgid "Grouping"
-msgstr ""
+msgstr "დაჯგუფება"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:135
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:145
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Group templated services"
-msgstr ""
+msgstr "შაბლონური სერვისების დაჯგუფება"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:143
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:155
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Do not group templated service"
-msgstr ""
+msgstr "შაბლონური სერვისების არდაჯგუფება"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:153
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:166

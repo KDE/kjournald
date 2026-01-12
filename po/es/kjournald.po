@@ -1,15 +1,15 @@
 # Spanish translations for kjournald.po package.
-# Copyright (C) 2021-2025 This file is copyright:
+# Copyright (C) 2021-2026 This file is copyright:
 # This file is distributed under the same license as the kjournald package.
 # Automatically generated, 2021.
 #
-# SPDX-FileCopyrightText: 2021, 2022, 2024, 2025 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2021, 2022, 2024, 2025, 2026 Eloy Cuadra <ecuadra@eloihr.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-11 00:46+0000\n"
-"PO-Revision-Date: 2025-12-29 00:28+0100\n"
+"PO-Revision-Date: 2026-01-11 11:56+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -284,21 +284,21 @@ msgstr "Ejecutable"
 #, kde-format
 msgctxt "@title:menu"
 msgid "Grouping"
-msgstr ""
+msgstr "Agrupamiento"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:135
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:145
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Group templated services"
-msgstr ""
+msgstr "Agrupar servicios con plantilla"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:143
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:155
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Do not group templated service"
-msgstr ""
+msgstr "No agrupar servicio con plantilla"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:153
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:166
@@ -432,9 +432,3 @@ msgstr "Abrir desde archivo"
 msgctxt "@action:inmenu"
 msgid "Copy Current View"
 msgstr "Copiar vista actual"
-
-#~ msgid "@item:inmenu"
-#~ msgstr "@item:inmenu"
-
-#~ msgid "@title:menu"
-#~ msgstr "@title:menu"

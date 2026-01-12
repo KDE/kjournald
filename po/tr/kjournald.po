@@ -1,14 +1,14 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the kjournald package.
 #
-# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Emir SARI <emir_sari@icloud.com>
+# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025, 2026 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-11 00:46+0000\n"
-"PO-Revision-Date: 2025-12-28 12:41+0300\n"
-"Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
+"PO-Revision-Date: 2026-01-11 13:01+0300\n"
+"Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -282,21 +282,21 @@ msgstr "Yürütülebilir"
 #, kde-format
 msgctxt "@title:menu"
 msgid "Grouping"
-msgstr ""
+msgstr "Gruplama"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:135
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:145
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Group templated services"
-msgstr ""
+msgstr "Şablonlanmış Hizmetleri Grupla"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:143
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:155
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Do not group templated service"
-msgstr ""
+msgstr "Şablonlanmış Hizmetleri Gruplama"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:153
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:166
