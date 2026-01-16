@@ -157,25 +157,22 @@ msgid "Process"
 msgstr "Proces"
 
 #: org/kde/kjournaldbrowser/FilterCriteriaView.qml:33
-#, fuzzy, kde-format
-#| msgid "Expanded"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Expanded"
-msgstr "Rozvinuté"
+msgstr ""
 
 #: org/kde/kjournaldbrowser/FilterCriteriaView.qml:34
-#, fuzzy, kde-format
-#| msgid "Collapsed"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Collapsed"
-msgstr "Svinuté"
+msgstr ""
 
 #: org/kde/kjournaldbrowser/FilterCriteriaView.qml:60
-#, fuzzy, kde-format
-#| msgid "Clear"
+#, kde-format
 msgctxt "@label"
 msgid "Clear"
-msgstr "Vymazat"
+msgstr ""
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:23
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:23
@@ -185,32 +182,28 @@ msgid "File"
 msgstr "Soubor"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:26
-#, fuzzy, kde-format
-#| msgid "Open system journal"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open system journal"
-msgstr "Otevřít žurnál systému"
+msgstr ""
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:33
-#, fuzzy, kde-format
-#| msgid "Open user journal"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open user journal"
-msgstr "Otevřít žurnál uživatele"
+msgstr ""
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:40
-#, fuzzy, kde-format
-#| msgid "Open from folder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from folder"
-msgstr "Otevřít ze složky"
+msgstr ""
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:48
-#, fuzzy, kde-format
-#| msgid "Open from file"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from file"
-msgstr "Otevřít ze souboru"
+msgstr ""
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:67
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:66
@@ -221,11 +214,10 @@ msgstr "Zavřít"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:73
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:72
-#, fuzzy, kde-format
-#| msgid "Current Journal"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Current Journal"
-msgstr "Současný žurnál"
+msgstr ""
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:81
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:80
@@ -264,27 +256,24 @@ msgstr ""
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:112
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:117
-#, fuzzy, kde-format
-#| msgid "Colorize"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Colorize"
-msgstr "Vybarvit"
+msgstr ""
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:115
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:121
-#, fuzzy, kde-format
-#| msgid "Systemd Unit"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Systemd Unit"
-msgstr "Systemd Unit"
+msgstr ""
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:123
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:131
-#, fuzzy, kde-format
-#| msgid "Executable"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Executable"
-msgstr "Program"
+msgstr ""
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:132
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:141
@@ -316,17 +305,17 @@ msgstr "Nápověda"
 
 #: org/kde/kjournaldbrowser/LogView.qml:209
 #, fuzzy, kde-format
+#| msgctxt "Checkbox option for kernel log messages"
 #| msgid "Kernel"
 msgctxt "@label"
 msgid "Kernel"
 msgstr "Jádro"
 
 #: org/kde/kjournaldbrowser/Main.qml:77
-#, fuzzy, kde-format
-#| msgid "Boot:"
+#, kde-format
 msgctxt "@label"
 msgid "Boot:"
-msgstr "Boot:"
+msgstr ""
 
 #: org/kde/kjournaldbrowser/Main.qml:189
 #, kde-format
@@ -365,11 +354,10 @@ msgid "Journal files (*.journal)"
 msgstr ""
 
 #: org/kde/kjournaldbrowser/Main.qml:254
-#, fuzzy, kde-format
-#| msgid "All files (*)"
+#, kde-format
 msgctxt "@item"
 msgid "All files (*)"
-msgstr "Všechny soubory (*)"
+msgstr ""
 
 #: org/kde/kjournaldbrowser/Main.qml:324
 #, kde-format
@@ -398,46 +386,40 @@ msgid "Configure Remote Journal Server"
 msgstr ""
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:29
-#, fuzzy, kde-format
-#| msgid "URL:"
+#, kde-format
 msgctxt "@label"
 msgid "URL:"
-msgstr "URL:"
+msgstr ""
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:38
-#, fuzzy, kde-format
-#| msgid "Port:"
+#, kde-format
 msgctxt "@label"
 msgid "Port:"
-msgstr "Port:"
+msgstr ""
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:25
-#, fuzzy, kde-format
-#| msgid "Open System Journal"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open System Journal"
-msgstr "Otevřít žurnál systému"
+msgstr ""
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:32
-#, fuzzy, kde-format
-#| msgid "Open User Journal"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open User Journal"
-msgstr "Otevřít žurnál uživatele"
+msgstr ""
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:39
-#, fuzzy, kde-format
-#| msgid "Open from Folder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from Folder"
-msgstr "Otevřít ze složky"
+msgstr ""
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:47
-#, fuzzy, kde-format
-#| msgid "Open from File"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from File"
-msgstr "Otevřít ze souboru"
+msgstr ""
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:74
 #, kde-format
