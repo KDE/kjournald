@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the kjournald package.
-# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Tommi Nieminen <translator@legisign.org>
+# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025, 2026 Tommi Nieminen <translator@legisign.org>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-11 00:46+0000\n"
-"PO-Revision-Date: 2025-10-15 19:35+0300\n"
+"PO-Revision-Date: 2026-01-02 12:09+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -68,11 +68,9 @@ msgid "Your emails"
 msgstr "translator@legisign.org"
 
 #: browser/main.cpp:59
-#, fuzzy, kde-format
-#| msgctxt "@title Displayed program name"
-#| msgid "KJournald Browser"
+#, kde-format
 msgid "Journald Log Viewer"
-msgstr "KJournald-selain"
+msgstr "Journald-lokiselain"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:23
 #, kde-format
@@ -390,7 +388,7 @@ msgstr "Kaikki tiedostot (*)"
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
-msgstr ""
+msgstr "Valitusta sijainnista ei voitu ladata lokitietokantaa: "
 
 #: org/kde/kjournaldbrowser/Main.qml:325
 #, kde-format
@@ -398,14 +396,13 @@ msgctxt "@info"
 msgid ""
 "Check sub-directories of selected directory to contain files ending with '."
 "journal'."
-msgstr ""
+msgstr "Etsi valitun kansion alikansioista ”.journal”-päätteiset tiedostot."
 
 #: org/kde/kjournaldbrowser/Main.qml:332
-#, fuzzy, kde-format
-#| msgid "No log entries apply "
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."
-msgstr "Ei lokimerkintöjä, jotka vastaavat: "
+msgstr "Ei valittuja suodattimia vastaavia lokimerkintöjä."
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:15
 #, fuzzy, kde-format
