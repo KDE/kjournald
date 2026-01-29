@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the kjournald package.
 #
 # SPDX-FileCopyrightText: 2023, 2025 Olesya Gerasimenko <translation-team@basealt.ru>
-# SPDX-FileCopyrightText: 2025 Alexander Yavorsky <kekcuha@gmail.com>
+# SPDX-FileCopyrightText: 2025, 2026 Alexander Yavorsky <kekcuha@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-11 00:46+0000\n"
-"PO-Revision-Date: 2025-08-18 11:43+0300\n"
-"Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
+"PO-Revision-Date: 2026-01-28 17:01+0200\n"
+"Last-Translator: Alexander Yavorskiy <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 25.07.90\n"
+"X-Generator: Lokalize 25.12.1\n"
 
 #: browser/main.cpp:40
 #, kde-format
@@ -200,11 +200,10 @@ msgid "Open system journal"
 msgstr "Открыть системный журнал"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:33
-#, fuzzy, kde-format
-#| msgid "Open system journal"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open user journal"
-msgstr "Открыть системный журнал"
+msgstr "Открыть журнал пользователя"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:40
 #, fuzzy, kde-format
@@ -440,11 +439,10 @@ msgid "Open System Journal"
 msgstr "Открыть системный журнал"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:32
-#, fuzzy, kde-format
-#| msgid "Open System Journal"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open User Journal"
-msgstr "Открыть системный журнал"
+msgstr "Открыть журнал пользователя"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:39
 #, fuzzy, kde-format
