@@ -63,9 +63,14 @@ int main(int argc, char *argv[])
     parser.addOption(pathOption);
     parser.process(app);
 
-    QUrl initialJournalPath;
+    QString initialJournalPath;
     if (parser.isSet(pathOption)) {
-        initialJournalPath = QUrl::fromLocalFile(parser.value(pathOption));
+        QDir journalDir(parser.value(pathOption));
+        if (journalDir.exists()) {
+            initialJournalPath = journalDir.absolutePath();
+        } else {
+            qWarning() << "initial directory does not exist, skipping:" << journalDir.absolutePath();
+        }
     }
 
     QQmlApplicationEngine engine;
