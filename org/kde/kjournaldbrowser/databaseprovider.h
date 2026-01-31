@@ -51,8 +51,7 @@ public:
     Q_INVOKABLE void setSystemJournal();
     Q_INVOKABLE void setUserJournal();
     Q_INVOKABLE void setRemoteJournalUrl(const QString &url, quint32 port);
-
-    void setLocalJournalPath(const QString &path);
+    Q_INVOKABLE void setLocalJournalPath(const QString &path);
 
     QUrl journalPath() const;
     QString localJournalPath() const;

@@ -25,12 +25,12 @@ StatefulApp.StatefulWindow {
     application: BrowserApplication
 
     required property FilterCriteriaModel filterModel
-    required property url initialJournalPath
+    required property string initialJournalPath
 
     Component.onCompleted: {
         if (root.initialJournalPath !== "") {
-            console.log(`set initial journald path to ` + root.initialJournalPath)
-            DatabaseProvider.setJournalPath(root.initialJournalPath)
+            console.log(`set initial journal path: ${root.initialJournalPath}`)
+            DatabaseProvider.setLocalJournalPath(root.initialJournalPath)
         }
     }
 
