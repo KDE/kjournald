@@ -78,7 +78,11 @@ find_package(Qt6 6.5.0 REQUIRED COMPONENTS
 )
 qt_policy(SET QTP0005 NEW)
 
+# only needed for potential third-party apps using just the library
 option(INSTALL_EXPERIMENTAL_HEADERS "Install headers for libkjournald (no stable API yet)" OFF)
+
+# conditionally install icons for Linux as they may not be provided by the user theme
+option(INSTALL_ICONS "Install icons" OFF)
 
 enable_testing()
 
@@ -113,6 +117,14 @@ if(INSTALL_EXPERIMENTAL_HEADERS)
     install(EXPORT KJournaldTargets
             DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
             FILE KJournaldTargets.cmake)
+endif()
+
+if(INSTALL_ICONS)
+    include(ECMInstallIcons)
+    ecm_install_icons(
+        ICONS data/icons/sc-apps-utilities-log-viewer.svg
+        DESTINATION ${KDE_INSTALL_ICONDIR}
+    )
 endif()
 
 ki18n_install(po)
