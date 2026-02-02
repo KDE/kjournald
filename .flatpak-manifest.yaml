@@ -25,5 +25,4 @@ modules:
         path: .
     post-install:
       # Icon is included with breeze in runtime
-      - install -D /usr/share/icons/breeze/apps/32/utilities-log-viewer.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
       - desktop-file-edit --set-key=Icon --set-value=${FLATPAK_ID} ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
