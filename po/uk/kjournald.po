@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-11 00:46+0000\n"
+"POT-Creation-Date: 2026-02-03 00:49+0000\n"
 "PO-Revision-Date: 2026-01-12 03:16+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -18,25 +18,25 @@ msgstr ""
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Lokalize 23.04.3\n"
 
-#: browser/main.cpp:40
+#: browser/main.cpp:41
 #, kde-format
 msgctxt "@title Displayed program name"
 msgid "KJournald Browser"
 msgstr "Навігатор KJournald"
 
-#: browser/main.cpp:42
+#: browser/main.cpp:43
 #, kde-format
 msgctxt "@title KAboutData: short program description"
 msgid "Viewer for Journald logs"
 msgstr "Програма для перегляду журналів Journald"
 
-#: browser/main.cpp:44
+#: browser/main.cpp:45
 #, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2025 The KJournald Developers"
 msgstr "© Розробники KJournald, 2021–2025"
 
-#: browser/main.cpp:45
+#: browser/main.cpp:46
 #, kde-format
 msgctxt "@title Short program description"
 msgid ""
@@ -46,31 +46,31 @@ msgstr ""
 "Програма для перегляду баз даних Journald, які було створено засобом ведення "
 "журналу Journald."
 
-#: browser/main.cpp:47
+#: browser/main.cpp:48
 #, kde-format
 msgctxt "@info:credit Developer name"
 msgid "Andreas Cord-Landwehr"
 msgstr "Andreas Cord-Landwehr"
 
-#: browser/main.cpp:48
+#: browser/main.cpp:49
 #, kde-format
 msgctxt "@info:credit Role"
 msgid "Original Author"
 msgstr "Автор початкової версії"
 
-#: browser/main.cpp:50
+#: browser/main.cpp:51
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Юрій Чорноіван"
 
-#: browser/main.cpp:50
+#: browser/main.cpp:51
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "yurchor@ukr.net"
 
-#: browser/main.cpp:59
+#: browser/main.cpp:60
 #, kde-format
 msgid "Journald Log Viewer"
 msgstr "Переглядач журналу Journald"
