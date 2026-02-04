@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the kjournald package.
-# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Shinjo Park <kde@peremen.name>
+# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025, 2026 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-03 00:49+0000\n"
-"PO-Revision-Date: 2025-10-09 01:28+0200\n"
+"PO-Revision-Date: 2026-02-04 00:22+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.08.1\n"
 
 #: browser/main.cpp:41
 #, kde-format
@@ -68,11 +68,9 @@ msgid "Your emails"
 msgstr "kde@peremen.name"
 
 #: browser/main.cpp:60
-#, fuzzy, kde-format
-#| msgctxt "@title Displayed program name"
-#| msgid "KJournald Browser"
+#, kde-format
 msgid "Journald Log Viewer"
-msgstr "KJournald 탐색기"
+msgstr "Journald 로그 뷰어"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:23
 #, kde-format
@@ -159,139 +157,120 @@ msgid "Process"
 msgstr "프로세스"
 
 #: org/kde/kjournaldbrowser/FilterCriteriaView.qml:33
-#, fuzzy, kde-format
-#| msgid "Expanded"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Expanded"
 msgstr "확장됨"
 
 #: org/kde/kjournaldbrowser/FilterCriteriaView.qml:34
-#, fuzzy, kde-format
-#| msgid "Collapsed"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Collapsed"
 msgstr "축소됨"
 
 #: org/kde/kjournaldbrowser/FilterCriteriaView.qml:60
-#, fuzzy, kde-format
-#| msgid "Clear"
+#, kde-format
 msgctxt "@label"
 msgid "Clear"
 msgstr "지우기"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:23
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:23
-#, fuzzy, kde-format
-#| msgctxt "@action:menu"
-#| msgid "File"
+#, kde-format
 msgctxt "@title:menu"
 msgid "File"
 msgstr "파일"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:26
-#, fuzzy, kde-format
-#| msgid "Open system journal"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open system journal"
 msgstr "시스템 저널 열기"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:33
-#, fuzzy, kde-format
-#| msgid "Open user journal"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open user journal"
 msgstr "사용자 저널 열기"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:40
-#, fuzzy, kde-format
-#| msgid "Open from folder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from folder"
 msgstr "폴더에서 열기"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:48
-#, fuzzy, kde-format
-#| msgid "Open from file"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from file"
 msgstr "파일에서 열기"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:67
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:66
-#, fuzzy, kde-format
-#| msgid "Close"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Close"
 msgstr "닫기"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:73
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:72
-#, fuzzy, kde-format
-#| msgid "Current Journal"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Current Journal"
 msgstr "현재 저널"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:81
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:80
-#, fuzzy, kde-format
-#| msgid "View"
+#, kde-format
 msgctxt "@title:menu"
 msgid "View"
 msgstr "보기"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:84
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:83
-#, fuzzy, kde-format
-#| msgid "Timestamp Display"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Timestamp Display"
 msgstr "타임스탬프 표시"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:87
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:87
-#, fuzzy, kde-format
-#| msgid "Localized Realtime"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Localized Realtime"
 msgstr "지역 실시간"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:95
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:97
-#, fuzzy, kde-format
-#| msgid "UTC Realtime"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "UTC Realtime"
 msgstr "UTC 실시간"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:103
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:107
-#, fuzzy, kde-format
-#| msgid "Monotonic Time"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Monotonic Time"
 msgstr "단조 증가 시간"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:112
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:117
-#, fuzzy, kde-format
-#| msgid "Colorize"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Colorize"
 msgstr "색상화"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:115
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:121
-#, fuzzy, kde-format
-#| msgid "Systemd Unit"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Systemd Unit"
 msgstr "Systemd 유닛"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:123
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:131
-#, fuzzy, kde-format
-#| msgid "Executable"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Executable"
 msgstr "실행 파일"
@@ -301,41 +280,37 @@ msgstr "실행 파일"
 #, kde-format
 msgctxt "@title:menu"
 msgid "Grouping"
-msgstr ""
+msgstr "그룹화"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:135
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:145
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Group templated services"
-msgstr ""
+msgstr "템플릿화된 서비스를 그룹화"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:143
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:155
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Do not group templated service"
-msgstr ""
+msgstr "템플릿화된 서비스를 그룹화하지 않음"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:153
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:166
-#, fuzzy, kde-format
-#| msgctxt "@action:menu"
-#| msgid "Help"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Help"
 msgstr "도움말"
 
 #: org/kde/kjournaldbrowser/LogView.qml:209
-#, fuzzy, kde-format
-#| msgid "Kernel"
+#, kde-format
 msgctxt "@label"
 msgid "Kernel"
 msgstr "커널"
 
 #: org/kde/kjournaldbrowser/Main.qml:77
-#, fuzzy, kde-format
-#| msgid "Boot:"
+#, kde-format
 msgctxt "@label"
 msgid "Boot:"
 msgstr "부트:"
@@ -359,29 +334,25 @@ msgid "Switch to selection mode"
 msgstr "선택 모드로 전환"
 
 #: org/kde/kjournaldbrowser/Main.qml:244
-#, fuzzy, kde-format
-#| msgid "Select journal folder"
+#, kde-format
 msgctxt "@title"
 msgid "Select journal folder"
 msgstr "저널 폴더 선택"
 
 #: org/kde/kjournaldbrowser/Main.qml:253
-#, fuzzy, kde-format
-#| msgid "Select journal file"
+#, kde-format
 msgctxt "@title"
 msgid "Select journal file"
 msgstr "저널 파일 선택"
 
 #: org/kde/kjournaldbrowser/Main.qml:254
-#, fuzzy, kde-format
-#| msgid "Journal files (*.journal)"
+#, kde-format
 msgctxt "@item"
 msgid "Journal files (*.journal)"
 msgstr "저널 파일 (*.journal)"
 
 #: org/kde/kjournaldbrowser/Main.qml:254
-#, fuzzy, kde-format
-#| msgid "All files (*)"
+#, kde-format
 msgctxt "@item"
 msgid "All files (*)"
 msgstr "모든 파일 (*)"
@@ -390,7 +361,7 @@ msgstr "모든 파일 (*)"
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
-msgstr ""
+msgstr "선택한 위치에서 저널 데이터베이스를 불러올 수 없음: "
 
 #: org/kde/kjournaldbrowser/Main.qml:325
 #, kde-format
@@ -399,59 +370,53 @@ msgid ""
 "Check sub-directories of selected directory to contain files ending with '."
 "journal'."
 msgstr ""
+"선택한 디렉터리의 하위 디렉터리에서도 '.journal'로 끝나는 파일이 있는지 확인"
+"합니다."
 
 #: org/kde/kjournaldbrowser/Main.qml:332
-#, fuzzy, kde-format
-#| msgid "No log entries apply "
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."
-msgstr "적용된 로그 항목 없음"
+msgstr "선택한 필터와 일치하는 로그 항목이 없습니다."
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:15
-#, fuzzy, kde-format
-#| msgid "Configure Remote Journal Server"
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Remote Journal Server"
 msgstr "원격 저널 서버 설정"
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:29
-#, fuzzy, kde-format
-#| msgid "URL:"
+#, kde-format
 msgctxt "@label"
 msgid "URL:"
 msgstr "URL:"
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:38
-#, fuzzy, kde-format
-#| msgid "Port:"
+#, kde-format
 msgctxt "@label"
 msgid "Port:"
 msgstr "포트:"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:25
-#, fuzzy, kde-format
-#| msgid "Open System Journal"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open System Journal"
 msgstr "시스템 저널 열기"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:32
-#, fuzzy, kde-format
-#| msgid "Open User Journal"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open User Journal"
 msgstr "사용자 저널 열기"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:39
-#, fuzzy, kde-format
-#| msgid "Open from Folder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from Folder"
 msgstr "폴더에서 열기"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:47
-#, fuzzy, kde-format
-#| msgid "Open from File"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from File"
 msgstr "파일에서 열기"
@@ -460,7 +425,7 @@ msgstr "파일에서 열기"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Copy Current View"
-msgstr ""
+msgstr "현재 보기 복사"
 
 #~ msgid "Highlight:"
 #~ msgstr "강조:"
