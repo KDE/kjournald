@@ -8,9 +8,11 @@
 BrowserApplication::BrowserApplication(QObject *parent)
     : AbstractKirigamiApplication(parent)
 {
-    mTimeDisplayFormat = mSettings.value("browser/timedisplay").value<TimeDisplay>();
-    mFilterCriterium = mSettings.value("browser/filtercriterium").value<FilterCriterium>();
-    mServiceGrouping = mSettings.value("browser/servicegrouping").value<ServiceGrouping>();
+    mTimeDisplayFormat = mSettings.value(ID_timeDisplayFormat).value<TimeDisplay>();
+    mFilterCriterium = mSettings.value(ID_filterCriterium).value<FilterCriterium>();
+    mServiceGrouping = mSettings.value(ID_serviceGrouping).value<ServiceGrouping>();
+    mViewMode = mSettings.value(ID_viewMode).value<ViewMode>();
+    mLogViewMode = mSettings.value(ID_logViewMode).value<LogViewMode>();
 
     BrowserApplication::setupActions();
 }
@@ -32,8 +34,8 @@ void BrowserApplication::setTimeDisplay(BrowserApplication::TimeDisplay format)
         return;
     }
     mTimeDisplayFormat = format;
-    mSettings.setValue("browser/timedisplay", QVariant::fromValue(static_cast<uint8_t>(format)));
-    Q_EMIT timeDisplayChanged();
+    mSettings.setValue(ID_timeDisplayFormat, QVariant::fromValue(static_cast<uint8_t>(format)));
+    Q_EMIT timeDisplayChanged(mTimeDisplayFormat);
 }
 
 BrowserApplication::TimeDisplay BrowserApplication::timeDisplay() const
@@ -47,8 +49,8 @@ void BrowserApplication::setFilterCriterium(FilterCriterium criterium)
         return;
     }
     mFilterCriterium = criterium;
-    mSettings.setValue("browser/filtercriterium", QVariant::fromValue(static_cast<uint8_t>(criterium)));
-    Q_EMIT filterCriteriumChanged();
+    mSettings.setValue(ID_filterCriterium, QVariant::fromValue(static_cast<uint8_t>(criterium)));
+    Q_EMIT filterCriteriumChanged(mFilterCriterium);
 }
 
 BrowserApplication::FilterCriterium BrowserApplication::filterCriterium() const
@@ -62,12 +64,28 @@ void BrowserApplication::setViewMode(ViewMode mode)
         return;
     }
     mViewMode = mode;
-    Q_EMIT viewModeChanged();
+    mSettings.setValue(ID_viewMode, QVariant::fromValue(static_cast<uint8_t>(mViewMode)));
+    Q_EMIT viewModeChanged(mViewMode);
 }
 
 BrowserApplication::ViewMode BrowserApplication::viewMode() const
 {
     return mViewMode;
+}
+
+void BrowserApplication::setLogViewMode(LogViewMode mode)
+{
+    if (mode == mLogViewMode) {
+        return;
+    }
+    mLogViewMode = mode;
+    mSettings.setValue(ID_logViewMode, QVariant::fromValue(static_cast<uint8_t>(mode)));
+    Q_EMIT logViewModeChanged(mLogViewMode);
+}
+
+BrowserApplication::LogViewMode BrowserApplication::logViewMode() const
+{
+    return mLogViewMode;
 }
 
 void BrowserApplication::setServiceGrouping(ServiceGrouping mode)
@@ -76,8 +94,8 @@ void BrowserApplication::setServiceGrouping(ServiceGrouping mode)
         return;
     }
     mServiceGrouping = mode;
-    mSettings.setValue("browser/servicegrouping", QVariant::fromValue(static_cast<uint8_t>(mode)));
-    Q_EMIT serviceGroupingChanged();
+    mSettings.setValue(ID_serviceGrouping, QVariant::fromValue(static_cast<uint8_t>(mode)));
+    Q_EMIT serviceGroupingChanged(mServiceGrouping);
 }
 
 BrowserApplication::ServiceGrouping BrowserApplication::serviceGrouping() const

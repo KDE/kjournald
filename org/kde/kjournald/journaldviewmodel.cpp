@@ -81,10 +81,22 @@ void JournaldViewModelPrivate::resetJournal()
         }
     };
 
-    auto addMatchesUnitFilter = [](sd_journal *journal, const QStringList &units, bool isUser) -> void {
+    auto addMatchesUserUnitFilter = [](sd_journal *journal, const QStringList &units) -> void {
         int result{0};
         for (const QString &unit : units) {
-            QString filterExpression = (isUser ? QLatin1String("_SYSTEMD_USER_UNIT=") : QLatin1String("_SYSTEMD_UNIT=")) + unit;
+            QString filterExpression = QLatin1String("_SYSTEMD_USER_UNIT=") + unit;
+            result = sd_journal_add_match(journal, filterExpression.toUtf8().constData(), 0);
+            qCDebug(KJOURNALDLIB_FILTERTRACE).nospace() << "add_match(" << filterExpression << ")";
+            if (result < 0) {
+                qCCritical(KJOURNALDLIB_GENERAL) << "Failed to set journal filter:" << strerror(-result) << filterExpression;
+            }
+        }
+    };
+
+    auto addMatchesSystemUnitFilter = [](sd_journal *journal, const QStringList &units) -> void {
+        int result{0};
+        for (const QString &unit : units) {
+            QString filterExpression = QLatin1String("_SYSTEMD_UNIT=") + unit;
             result = sd_journal_add_match(journal, filterExpression.toUtf8().constData(), 0);
             qCDebug(KJOURNALDLIB_FILTERTRACE).nospace() << "add_match(" << filterExpression << ")";
             if (result < 0) {
@@ -150,25 +162,35 @@ void JournaldViewModelPrivate::resetJournal()
         addMatchesBootFilter(mJournal->get(), mFilter.bootFilter());
         addMatchesPriorityFilter(mJournal->get(), mFilter.priorityFilter());
         QStringList transportFilter = kernelTransports;
-        if (mFilter.systemdUnitFilter().empty() && mFilter.exeFilter().empty()) {
+        if (mFilter.systemdUserUnitFilter().empty() && mFilter.systemdSystemUnitFilter().empty() && mFilter.exeFilter().empty()) {
             transportFilter.append(nonKernelTransports);
         }
         addMatchesTransportFilter(mJournal->get(), transportFilter);
-    } else if (mFilter.systemdUnitFilter().empty() && mFilter.exeFilter().empty()) {
+    } else if (mFilter.systemdUserUnitFilter().empty() && mFilter.systemdSystemUnitFilter().empty() && mFilter.exeFilter().empty()) {
         clauseAdded = true;
         addMatchesBootFilter(mJournal->get(), mFilter.bootFilter());
         addMatchesPriorityFilter(mJournal->get(), mFilter.priorityFilter());
         addMatchesTransportFilter(mJournal->get(), nonKernelTransports);
     }
-    if (clauseAdded && !mFilter.systemdUnitFilter().empty()) {
+    if (clauseAdded && !mFilter.systemdUserUnitFilter().empty()) {
         addDisjunction(mJournal->get());
         clauseAdded = false;
     }
-    if (!mFilter.systemdUnitFilter().empty()) {
+    if (!mFilter.systemdUserUnitFilter().empty()) {
         clauseAdded = true;
         addMatchesBootFilter(mJournal->get(), mFilter.bootFilter());
         addMatchesPriorityFilter(mJournal->get(), mFilter.priorityFilter());
-        addMatchesUnitFilter(mJournal->get(), mFilter.systemdUnitFilter(), mJournalProvider->isUser());
+        addMatchesUserUnitFilter(mJournal->get(), mFilter.systemdUserUnitFilter());
+    }
+    if (clauseAdded && !mFilter.systemdSystemUnitFilter().empty()) {
+        addDisjunction(mJournal->get());
+        clauseAdded = false;
+    }
+    if (!mFilter.systemdSystemUnitFilter().empty()) {
+        clauseAdded = true;
+        addMatchesBootFilter(mJournal->get(), mFilter.bootFilter());
+        addMatchesPriorityFilter(mJournal->get(), mFilter.priorityFilter());
+        addMatchesSystemUnitFilter(mJournal->get(), mFilter.systemdSystemUnitFilter());
     }
     if (clauseAdded && !mFilter.exeFilter().empty()) {
         addDisjunction(mJournal->get());
@@ -261,7 +283,8 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
         if (result == 0) {
             entry.setId(QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1));
         }
-        result = sd_journal_get_data(mJournal->get(), mJournalProvider->isUser() ? "_SYSTEMD_USER_UNIT" : "_SYSTEMD_UNIT", (const void **)&data, &length);
+        // a service can either be a user or a system service, never both
+        result = sd_journal_get_data(mJournal->get(), "_SYSTEMD_USER_UNIT", (const void **)&data, &length);
         if (result == 0) {
             QString unit = JournaldHelper::cleanupString(QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1));
             entry.setUnit(unit);
@@ -269,6 +292,16 @@ QVector<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
             // group identifier is only internal identifier for this model
             unit.replace(templateArgumentExpr, QLatin1String("@.service"));
             entry.setUnitTemplateGroup(unit);
+        } else {
+            result = sd_journal_get_data(mJournal->get(), "_SYSTEMD_UNIT", (const void **)&data, &length);
+            if (result == 0) {
+                QString unit = JournaldHelper::cleanupString(QString::fromUtf8(data, length).section(QChar::fromLatin1('='), 1));
+                entry.setUnit(unit);
+                static const QRegularExpression templateArgumentExpr(QLatin1String("@.+\\.service"));
+                // group identifier is only internal identifier for this model
+                unit.replace(templateArgumentExpr, QLatin1String("@.service"));
+                entry.setUnitTemplateGroup(unit);
+            }
         }
         result = sd_journal_get_data(mJournal->get(), "_BOOT_ID", (const void **)&data, &length);
         if (result == 0) {

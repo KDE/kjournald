@@ -43,6 +43,23 @@ StatefulApp.StatefulWindow {
         root.filterModel.enableSystemdUnitTemplateGrouping: BrowserApplication.serviceGrouping === BrowserApplication.ServiceGrouping.GROUP_SERVICE_TEMPLATES
     }
 
+    Connections {
+        target: BrowserApplication
+        function onLogViewModeChanged(mode) {
+            switch (mode) {
+            case BrowserApplication.ALL_LOGS:
+                DatabaseProvider.setLocalJournal();
+                break;
+            case BrowserApplication.ONLY_USER:
+                DatabaseProvider.restrictToCurrentUserLogs();
+                break;
+            case BrowserApplication.ONLY_SYSTEM:
+                DatabaseProvider.restrictToLocalSystemLogs();
+                break;
+            }
+        }
+    }
+
     menuBar: TopMenuBar {
         visible: (Kirigami.Settings.hasPlatformMenuBar === false || Kirigami.Settings.hasPlatformMenuBar === undefined) && !Kirigami.Settings.isMobile
         onCopyViewToClipboard: logView.copyTextFromView()
@@ -343,7 +360,8 @@ StatefulApp.StatefulWindow {
         id: journalModel
         journalProvider: DatabaseProvider.journalProvider
         enableSystemdUnitTemplateGrouping: BrowserApplication.serviceGrouping === BrowserApplication.ServiceGrouping.GROUP_SERVICE_TEMPLATES
-        filter.units: root.filterModel.systemdUnitFilter
+        filter.userUnits: root.filterModel.systemdUserUnitFilter
+        filter.systemUnits: root.filterModel.systemdSystemUnitFilter
         filter.exes: root.filterModel.exeFilter
         filter.boots: bootIdComboBox.currentValue
         filter.priority: root.filterModel.priorityFilter

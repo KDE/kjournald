@@ -126,6 +126,7 @@ void TestViewModel::bootFilter()
     QVERIFY(secondBootFound);
 }
 
+// TODO implement user unit filtering tests
 void TestViewModel::unitFilter()
 {
     JournaldViewModel model;
@@ -136,7 +137,7 @@ void TestViewModel::unitFilter()
 
     // select single service
 
-    filter.setSystemdUnitFilter({"systemd-networkd.service"});
+    filter.setSystemdSystemUnitFilter({"systemd-networkd.service"});
     model.setFilter(filter);
     QVERIFY(model.rowCount() > 0);
     QCOMPARE(model.data(model.index(0, 0), JournaldViewModel::SYSTEMD_UNIT), "systemd-networkd.service");
@@ -144,7 +145,7 @@ void TestViewModel::unitFilter()
     // test mulitple services
     QStringList testSystemdUnitNames{"init.scope", "dbus.service", "systemd-networkd.service"};
     QStringList notFoundUnits = testSystemdUnitNames;
-    filter.setSystemdUnitFilter(testSystemdUnitNames);
+    filter.setSystemdSystemUnitFilter(testSystemdUnitNames);
     model.setFilter(filter);
 
     while (model.canFetchMore(QModelIndex())) {

@@ -27,9 +27,13 @@ class KJOURNALD_EXPORT Filter
      **/
     Q_PROPERTY(QStringList boots READ bootFilter WRITE setBootFilter)
     /**
-     * filter list for systemd units
+     * filter list for systemd user units
      **/
-    Q_PROPERTY(QStringList units READ systemdUnitFilter WRITE setSystemdUnitFilter)
+    Q_PROPERTY(QStringList userUnits READ systemdUserUnitFilter WRITE setSystemdUserUnitFilter)
+    /**
+     * filter list for systemd system units
+     **/
+    Q_PROPERTY(QStringList systemUnits READ systemdSystemUnitFilter WRITE setSystemdSystemUnitFilter)
     /**
      * filter list for executables (see journald '_EXE' field)
      **/
@@ -82,19 +86,34 @@ public:
     void setBootFilter(const QStringList &bootFilter);
 
     /**
-     * \return the list of enabled system units
+     * \return the list of enabled user units
      */
-    [[nodiscard]] QStringList systemdUnitFilter() const;
+    [[nodiscard]] QStringList systemdUserUnitFilter() const;
 
     /**
-     * \brief Configure for which systemd units messages shall be shown
+     * \brief Configure for which systemd user units messages shall be shown
+     *
+     * If no unit is configured, this filter is deactivated. The given values are compared
+     * to the _SYSTEMD_USER_UNIT journal value.
+     *
+     * \param units list of user units
+     */
+    void setSystemdUserUnitFilter(const QStringList &units);
+
+    /**
+     * \return the list of enabled system units
+     */
+    [[nodiscard]] QStringList systemdSystemUnitFilter() const;
+
+    /**
+     * \brief Configure for which systemd system units messages shall be shown
      *
      * If no unit is configured, this filter is deactivated. The given values are compared
      * to the _SYSTEMD_UNIT journal value.
      *
      * \param units list of system units
      */
-    void setSystemdUnitFilter(const QStringList &units);
+    void setSystemdSystemUnitFilter(const QStringList &units);
 
     /**
      * \return the list of enabled processes
@@ -129,7 +148,8 @@ private:
     std::optional<quint8> mPriority{std::nullopt};
     QStringList mBootFilter;
     QStringList mExeFilter;
-    QStringList mUnitFilter;
+    QStringList mUserUnitFilter;
+    QStringList mSystemUnitFilter;
     bool mEnableKernelMessages{false};
 };
 

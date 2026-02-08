@@ -38,15 +38,21 @@ LocalJournal::~LocalJournal() = default;
 std::unique_ptr<SdJournal> LocalJournal::openJournal() const
 {
     if (!d->mPath.isEmpty()) {
+        // do not filter because local system informations do not help
         qCDebug(KJOURNALDLIB_GENERAL) << "create sd_journal instance from path" << d->mPath;
         return std::make_unique<SdJournal>(d->mPath);
     } else {
+        // restrict journal to machine-id
         int flags = SD_JOURNAL_LOCAL_ONLY;
-        if (d->mMode == Mode::System) {
+        switch (d->mMode) {
+        case Mode::AnyLocal:
+            break;
+        case Mode::LocalSystem:
             flags |= SD_JOURNAL_SYSTEM;
-        } else {
-            d->mIsUser = true;
+            break;
+        case Mode::CurrentUser:
             flags |= SD_JOURNAL_CURRENT_USER;
+            break;
         }
         qCDebug(KJOURNALDLIB_GENERAL) << "create sd_journal instance from system journal" << flags;
         return std::make_unique<SdJournal>(flags);
@@ -70,9 +76,4 @@ uint64_t LocalJournal::usage() const
         qCCritical(KJOURNALDLIB_GENERAL) << "Could not obtain journal size:" << strerror(-res);
     }
     return size;
-}
-
-bool LocalJournal::isUser() const
-{
-    return d->mIsUser;
 }

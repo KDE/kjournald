@@ -16,7 +16,7 @@ class LocalJournalPrivate
 public:
     LocalJournalPrivate();
     QString mPath;
-    LocalJournal::Mode mMode{LocalJournal::Mode::System};
+    LocalJournal::Mode mMode{LocalJournal::Mode::AnyLocal};
     bool mIsUser = false;
     QString mCurrentBootId;
     std::unique_ptr<QSocketNotifier> mJournalSocketNotifier;

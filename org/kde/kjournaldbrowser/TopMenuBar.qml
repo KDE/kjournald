@@ -22,17 +22,10 @@ MenuBar {
     Menu {
         title: KI18n.i18nc("@title:menu", "File")
         MenuItem {
-            text: KI18n.i18nc("@action:inmenu", "Open System Journal")
+            text: KI18n.i18nc("@action:inmenu", "Local Journal")
             icon.name: "document-open"
             onTriggered: {
-                DatabaseProvider.setSystemJournal()
-            }
-        }
-        MenuItem {
-            text: KI18n.i18nc("@action:inmenu", "Open User Journal")
-            icon.name: "document-open"
-            onTriggered: {
-                DatabaseProvider.setUserJournal()
+                DatabaseProvider.setLocalJournal()
             }
         }
         MenuItem {
@@ -74,6 +67,40 @@ MenuBar {
             text: KI18n.i18nc("@action:inmenu", "Copy Current View")
             icon.name: "edit-copy"
             onTriggered: root.copyViewToClipboard()
+        }
+        Menu {
+            title: KI18n.i18nc("@title:menu", "Limit Accessed Logs")
+            icon.name: "view-filter"
+            MenuItem {
+                contentItem: RadioButton {
+                    text: KI18n.i18nc("@item:inmenu", "All logs")
+                    checkable: true
+                    checked: BrowserApplication.logViewMode === BrowserApplication.ALL_LOGS
+                    onToggled: {
+                        BrowserApplication.logViewMode = BrowserApplication.ALL_LOGS
+                    }
+                }
+            }
+            MenuItem {
+                contentItem: RadioButton {
+                    text: KI18n.i18nc("@item:inmenu", "Only current user logs")
+                    checkable: true
+                    checked: BrowserApplication.logViewMode === BrowserApplication.ONLY_USER
+                    onToggled: {
+                        BrowserApplication.logViewMode = BrowserApplication.ONLY_USER
+                    }
+                }
+            }
+            MenuItem {
+                contentItem: RadioButton {
+                    text: KI18n.i18nc("@item:inmenu", "Only system logs")
+                    checkable: true
+                    checked: BrowserApplication.logViewMode === BrowserApplication.ONLY_SYSTEM
+                    onToggled: {
+                        BrowserApplication.logViewMode = BrowserApplication.ONLY_SYSTEM
+                    }
+                }
+            }
         }
     }
     Menu {

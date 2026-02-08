@@ -52,11 +52,6 @@ public:
      * @return ID for the current boot (b0) of the system, empty string if none is current
      */
     virtual QString currentBootId() const = 0;
-
-    virtual bool isUser() const
-    {
-        return false;
-    };
 };
 
 #endif // IJOURNAL_H

@@ -23,17 +23,10 @@ Labs.MenuBar {
         title: KI18n.i18nc("@title:menu", "File")
 
         Labs.MenuItem {
-            text: KI18n.i18nc("@action:inmenu", "Open system journal")
+            text: KI18n.i18nc("@action:inmenu", "Local journal")
             icon.name: "document-open"
             onTriggered: {
-                DatabaseProvider.setSystemJournal()
-            }
-        }
-        Labs.MenuItem {
-            text: KI18n.i18nc("@action:inmenu", "Open user journal")
-            icon.name: "document-open"
-            onTriggered: {
-                DatabaseProvider.setUserJournal()
+                DatabaseProvider.setLocalJournal()
             }
         }
         Labs.MenuItem {
@@ -75,6 +68,34 @@ Labs.MenuBar {
             text: "Copy current view"
             icon.name: "edit-copy"
             onTriggered: root.copyViewToClipboard()
+        }
+        Labs.Menu {
+            title: KI18n.i18nc("@title:menu", "Limit Accessed Logs")
+            icon.name: "view-filter"
+            Labs.MenuItem {
+                text: KI18n.i18nc("@item:inmenu", "All logs")
+                checkable: true
+                checked: BrowserApplication.logViewMode === BrowserApplication.ALL_LOGS
+                onTriggered: {
+                    BrowserApplication.logViewMode = BrowserApplication.ALL_LOGS
+                }
+            }
+            Labs.MenuItem {
+                text: KI18n.i18nc("@item:inmenu", "Only current user logs")
+                checkable: true
+                checked: BrowserApplication.logViewMode === BrowserApplication.ONLY_USER
+                onTriggered: {
+                    BrowserApplication.logViewMode = BrowserApplication.ONLY_USER
+                }
+            }
+            Labs.MenuItem {
+                text: KI18n.i18nc("@item:inmenu", "Only system logs")
+                checkable: true
+                checked: BrowserApplication.logViewMode === BrowserApplication.ONLY_SYSTEM
+                onTriggered: {
+                    BrowserApplication.logViewMode = BrowserApplication.ONLY_SYSTEM
+                }
+            }
         }
     }
     Labs.Menu {

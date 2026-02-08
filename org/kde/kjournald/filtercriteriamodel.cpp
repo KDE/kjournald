@@ -133,6 +133,7 @@ void FilterCriteriaModelPrivate::rebuildModel()
 {
     qCDebug(KJOURNALDLIB_GENERAL) << "Rebuilding filter criteria model";
     mRootItem = std::make_unique<SelectionEntry>();
+    mUniqueServiceUnitCache.clear();
     {
         auto parent = std::make_shared<SelectionEntry>(i18nc("Section title for log message source", "Transport"),
                                                        QVariant(),
@@ -169,16 +170,15 @@ void FilterCriteriaModelPrivate::rebuildModel()
         mPriorityLevel = sDefaultPriorityLevel;
     }
     {
-        auto parent = std::make_shared<SelectionEntry>(i18nc("Section title for systemd unit", "Unit"),
+        auto parent = std::make_shared<SelectionEntry>(i18nc("Section title for systemd user unit", "User Unit"),
                                                        QVariant(),
-                                                       FilterCriteriaModel::Category::SYSTEMD_UNIT,
+                                                       FilterCriteriaModel::Category::SYSTEMD_USER_UNIT,
                                                        false,
                                                        mRootItem);
         mRootItem->appendChild(parent);
         if (mJournal) {
-            auto criteria = mJournalProvider->isUser() ? JournaldHelper::Field::_SYSTEMD_USER_UNIT : JournaldHelper::Field::_SYSTEMD_UNIT;
-            QStringList units = JournaldHelper::queryUnique(mJournal->get(), criteria);
-            mUniqueServiceUnitCache = units;
+            QStringList units = JournaldHelper::queryUnique(mJournal->get(), JournaldHelper::Field::_SYSTEMD_USER_UNIT);
+            mUniqueServiceUnitCache.append(units);
 
             if (mGroupTemplatedSystemdUnits) {
                 // systemd templates use '@' as delimiter between service name and the argument
@@ -207,10 +207,57 @@ void FilterCriteriaModelPrivate::rebuildModel()
                 if (!unit.endsWith(QLatin1String(".service"))) {
                     continue;
                 }
-                mRootItem->child(FilterCriteriaModel::Category::SYSTEMD_UNIT)
+                mRootItem->child(FilterCriteriaModel::Category::SYSTEMD_USER_UNIT)
                     ->appendChild(std::move(std::make_unique<SelectionEntry>(JournaldHelper::cleanupString(unit),
                                                                              unit,
-                                                                             FilterCriteriaModel::Category::SYSTEMD_UNIT,
+                                                                             FilterCriteriaModel::Category::SYSTEMD_USER_UNIT,
+                                                                             false,
+                                                                             parent)));
+            }
+        }
+    }
+    {
+        auto parent = std::make_shared<SelectionEntry>(i18nc("Section title for systemd sytem unit", "System Unit"),
+                                                       QVariant(),
+                                                       FilterCriteriaModel::Category::SYSTEMD_SYSTEM_UNIT,
+                                                       false,
+                                                       mRootItem);
+        mRootItem->appendChild(parent);
+        if (mJournal) {
+            QStringList units = JournaldHelper::queryUnique(mJournal->get(), JournaldHelper::Field::_SYSTEMD_UNIT);
+            mUniqueServiceUnitCache.append(units);
+
+            if (mGroupTemplatedSystemdUnits) {
+                // systemd templates use '@' as delimiter between service name and the argument
+                for (auto it = units.begin(); it != units.end(); it++) {
+                    static const QRegularExpression templateArgumentExpr(QLatin1String("@.+\\.service"));
+                    it->replace(templateArgumentExpr, FilterCriteriaModelPrivate::GROUPED_SERVICE_SUFFIX);
+                }
+            }
+
+            units.erase(std::remove_if(std::begin(units),
+                                       std::end(units),
+                                       [](QStringView unit) {
+                                           return unit.startsWith(QLatin1String("systemd-coredump@"))
+                                               || unit.startsWith(QLatin1String("drkonqi-coredump-processor@"))
+                                               || unit.startsWith(QLatin1String("drkonqi-coredump-launcher@"));
+                                       }),
+                        std::end(units));
+            std::sort(std::begin(units), std::end(units), [](const QString &a, const QString &b) {
+                return QString::compare(a, b, Qt::CaseInsensitive) <= 0;
+            });
+            // duplicates might come from template grouping
+            units.erase(std::unique(std::begin(units), std::end(units)), std::end(units));
+
+            for (const auto &unit : std::as_const(units)) {
+                // skip any non-service units, because we expect users only be interested in filtering those
+                if (!unit.endsWith(QLatin1String(".service"))) {
+                    continue;
+                }
+                mRootItem->child(FilterCriteriaModel::Category::SYSTEMD_SYSTEM_UNIT)
+                    ->appendChild(std::move(std::make_unique<SelectionEntry>(JournaldHelper::cleanupString(unit),
+                                                                             unit,
+                                                                             FilterCriteriaModel::Category::SYSTEMD_SYSTEM_UNIT,
                                                                              false,
                                                                              parent)));
             }
@@ -280,9 +327,32 @@ int FilterCriteriaModel::priorityFilter() const
     return static_cast<qint8>(d->mPriorityLevel.value_or(-1));
 }
 
-QStringList FilterCriteriaModel::systemdUnitFilter() const
+QStringList FilterCriteriaModel::systemdUserUnitFilter() const
 {
-    std::shared_ptr<SelectionEntry> parent = d->mRootItem->child(FilterCriteriaModel::Category::SYSTEMD_UNIT);
+    std::shared_ptr<SelectionEntry> parent = d->mRootItem->child(FilterCriteriaModel::Category::SYSTEMD_USER_UNIT);
+    QStringList entries;
+    for (int i = 0; i < parent->childCount(); ++i) {
+        if (parent->child(i)->data(FilterCriteriaModel::SELECTED).toBool()) {
+            const QString identifier = parent->child(i)->data(FilterCriteriaModel::DATA).toString();
+            if (d->mGroupTemplatedSystemdUnits && identifier.endsWith(FilterCriteriaModelPrivate::GROUPED_SERVICE_SUFFIX)) {
+                constexpr qsizetype suffixLength = FilterCriteriaModelPrivate::GROUPED_SERVICE_SUFFIX.size();
+                const QString identifierBase = identifier.left(identifier.length() - suffixLength);
+                for (const auto &unit : std::as_const(d->mUniqueServiceUnitCache)) {
+                    if (unit.startsWith(identifierBase)) {
+                        entries.append(unit);
+                    }
+                }
+            } else {
+                entries.append(identifier);
+            }
+        }
+    }
+    return entries;
+}
+
+QStringList FilterCriteriaModel::systemdSystemUnitFilter() const
+{
+    std::shared_ptr<SelectionEntry> parent = d->mRootItem->child(FilterCriteriaModel::Category::SYSTEMD_SYSTEM_UNIT);
     QStringList entries;
     for (int i = 0; i < parent->childCount(); ++i) {
         if (parent->child(i)->data(FilterCriteriaModel::SELECTED).toBool()) {
@@ -445,7 +515,7 @@ bool FilterCriteriaModel::setData(const QModelIndex &index, const QVariant &valu
         }
         qCDebug(KJOURNALDLIB_GENERAL) << "set priority level to:" << static_cast<qint8>(d->mPriorityLevel.value_or(-1));
         Q_EMIT priorityFilterChanged(index.row());
-    } else if (result && category == FilterCriteriaModel::Category::SYSTEMD_UNIT) {
+    } else if (result && category == FilterCriteriaModel::Category::SYSTEMD_USER_UNIT) {
         // for checkable entries update parent's selected state
         if (value.toBool() == true) {
             setData(index.parent(), true, FilterCriteriaModel::Roles::SELECTED);
@@ -459,7 +529,22 @@ bool FilterCriteriaModel::setData(const QModelIndex &index, const QVariant &valu
                 setData(index.parent(), hasSelectedSibling, FilterCriteriaModel::Roles::SELECTED);
             }
         }
-        Q_EMIT systemdUnitFilterChanged();
+        Q_EMIT systemdUserUnitFilterChanged();
+    } else if (result && category == FilterCriteriaModel::Category::SYSTEMD_SYSTEM_UNIT) {
+        // for checkable entries update parent's selected state
+        if (value.toBool() == true) {
+            setData(index.parent(), true, FilterCriteriaModel::Roles::SELECTED);
+        } else {
+            const auto parent = static_cast<SelectionEntry *>(index.parent().internalPointer());
+            if (parent) {
+                bool hasSelectedSibling{false};
+                for (int i = 0; i < parent->childCount(); ++i) {
+                    hasSelectedSibling = hasSelectedSibling || parent->child(i)->data(SELECTED).toBool();
+                }
+                setData(index.parent(), hasSelectedSibling, FilterCriteriaModel::Roles::SELECTED);
+            }
+        }
+        Q_EMIT systemdSystemUnitFilterChanged();
     } else if (result && category == FilterCriteriaModel::Category::EXE) {
         // for checkable entries update parent's selected state
         if (value.toBool() == true) {

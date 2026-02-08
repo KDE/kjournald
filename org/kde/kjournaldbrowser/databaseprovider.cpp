@@ -10,7 +10,7 @@
 DatabaseProvider::DatabaseProvider(QObject *parent)
     : QObject(parent)
 {
-    setSystemJournal();
+    setLocalJournal();
 }
 
 DatabaseProvider::~DatabaseProvider() = default;
@@ -20,22 +20,33 @@ DatabaseProvider::Mode DatabaseProvider::mode() const
     return mMode;
 }
 
-void DatabaseProvider::setSystemJournal()
+void DatabaseProvider::setLocalJournal()
 {
     // not setting any path defaults to system journal
     mJournalPath = QString();
-    mMode = Mode::SYSTEM;
-    mJournalProvider = std::make_shared<LocalJournal>(LocalJournal::Mode::System);
+    mMode = Mode::LOCAL_SYSTEM;
+    mJournalProvider = std::make_shared<LocalJournal>(LocalJournal::Mode::AnyLocal);
     Q_EMIT journalPathChanged();
 }
 
-void DatabaseProvider::setUserJournal()
+void DatabaseProvider::restrictToLocalSystemLogs()
 {
-    // not setting any path defaults to system journal
-    mJournalPath = QString();
-    mMode = Mode::USER;
-    mJournalProvider = std::make_shared<LocalJournal>(LocalJournal::Mode::User);
-    Q_EMIT journalPathChanged();
+    if (mMode == Mode::LOCAL_SYSTEM) {
+        mJournalProvider = std::make_shared<LocalJournal>(LocalJournal::Mode::LocalSystem);
+        Q_EMIT journalPathChanged();
+    } else {
+        qCWarning(KJOURNALDLIB_GENERAL) << "Cannot restrict non-system logs to machine-id";
+    }
+}
+
+void DatabaseProvider::restrictToCurrentUserLogs()
+{
+    if (mMode == Mode::LOCAL_SYSTEM) {
+        mJournalProvider = std::make_shared<LocalJournal>(LocalJournal::Mode::LocalSystem);
+        Q_EMIT journalPathChanged();
+    } else {
+        qCWarning(KJOURNALDLIB_GENERAL) << "Cannot restrict non-system logs to current user";
+    }
 }
 
 QUrl DatabaseProvider::journalPath() const
@@ -55,7 +66,7 @@ void DatabaseProvider::setLocalJournalPath(const QString &path)
         return;
     }
     mJournalPath = path;
-    mMode = Mode::LOCALFOLDER;
+    mMode = Mode::FOLDER;
     mJournalProvider = std::make_shared<LocalJournal>(mJournalPath);
     Q_EMIT journalPathChanged();
 }

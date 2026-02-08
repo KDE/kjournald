@@ -1,6 +1,6 @@
 /*
     SPDX-License-Identifier: LGPL-2.1-or-later OR MIT
-    SPDX-FileCopyrightText: 2021-2025 Andreas Cord-Landwehr <cordlandwehr@kde.org>
+    SPDX-FileCopyrightText: 2021-2026 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 */
 
 #ifndef DATABASEPROVIDER_H
@@ -34,9 +34,8 @@ class DatabaseProvider : public QObject
 
 public:
     enum class Mode {
-        LOCALFOLDER, //!< local available journald folder
-        SYSTEM, //!< local system journald database
-        USER, //!< Local user journaldbase
+        FOLDER, //!< arbitrary folder that is not associated with machine-id / current-user
+        LOCAL_SYSTEM, //!< local system journald database
         REMOTE, //!< reading from remote port
     };
     Q_ENUM(Mode);
@@ -47,8 +46,9 @@ public:
     DatabaseProvider::Mode mode() const;
 
     Q_INVOKABLE void setJournalPath(const QUrl &path);
-    Q_INVOKABLE void setSystemJournal();
-    Q_INVOKABLE void setUserJournal();
+    Q_INVOKABLE void setLocalJournal();
+    Q_INVOKABLE void restrictToLocalSystemLogs();
+    Q_INVOKABLE void restrictToCurrentUserLogs();
     Q_INVOKABLE void setRemoteJournalUrl(const QString &url, quint32 port);
     Q_INVOKABLE void setLocalJournalPath(const QString &path);
 
@@ -66,7 +66,7 @@ Q_SIGNALS:
 private:
     void initJournal();
 
-    Mode mMode{Mode::SYSTEM};
+    Mode mMode{Mode::LOCAL_SYSTEM};
     QString mJournalPath;
     QString mRemoteJournalUrl;
     quint32 mRemoteJournalPort{0};

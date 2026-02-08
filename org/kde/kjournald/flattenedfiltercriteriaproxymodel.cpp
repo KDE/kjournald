@@ -1,6 +1,6 @@
 /*
     SPDX-License-Identifier: LGPL-2.1-or-later OR MIT
-    SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
+    SPDX-FileCopyrightText: 2021-2026 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 */
 
 #include "flattenedfiltercriteriaproxymodel.h"
@@ -130,7 +130,9 @@ QVariant FlattenedFilterCriteriaProxyModel::data(const QModelIndex &index, int r
         switch (mSourceModel->data(mMapToSourceIndex.at(index.row()).mSourceIndex, FilterCriteriaModel::Roles::CATEGORY).toInt()) {
         case FilterCriteriaModel::Category::PRIORITY:
             return FlattenedFilterCriteriaProxyModel::DelgateType::RADIOBUTTON;
-        case FilterCriteriaModel::Category::SYSTEMD_UNIT:
+        case FilterCriteriaModel::Category::SYSTEMD_USER_UNIT:
+            return FlattenedFilterCriteriaProxyModel::DelgateType::CHECKBOX;
+        case FilterCriteriaModel::Category::SYSTEMD_SYSTEM_UNIT:
             return FlattenedFilterCriteriaProxyModel::DelgateType::CHECKBOX;
         case FilterCriteriaModel::Category::EXE:
             return FlattenedFilterCriteriaProxyModel::DelgateType::CHECKBOX;
@@ -187,7 +189,9 @@ bool FlattenedFilterCriteriaProxyModel::setData(const QModelIndex &index, const 
         const int childrenCount = mSourceModel->rowCount(sourceIndex);
         const auto category = mSourceModel->data(sourceIndex, FilterCriteriaModel::Roles::CATEGORY).value<FilterCriteriaModel::Category>();
         // detect first level elements and clear selelection if they are unselected
-        if (childrenCount > 0 && value == false && (category == FilterCriteriaModel::SYSTEMD_UNIT || category == FilterCriteriaModel::EXE)) {
+        if (childrenCount > 0 && value == false
+            && (category == FilterCriteriaModel::SYSTEMD_USER_UNIT || category == FilterCriteriaModel::SYSTEMD_SYSTEM_UNIT
+                || category == FilterCriteriaModel::EXE)) {
             for (int i = 0; i < childrenCount; ++i) {
                 mSourceModel->setData(mSourceModel->index(i, 0, sourceIndex), false, FilterCriteriaModel::Roles::SELECTED);
             }

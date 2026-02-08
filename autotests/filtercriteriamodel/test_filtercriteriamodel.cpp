@@ -41,7 +41,8 @@ void TestFilterCriteriaModel::basicTreeModelStructure()
         QVERIFY(model.rowCount() > 0);
 
         // check for all expected categories
-        MODEL_CONTAINS(model, FilterCriteriaModel::Roles::CATEGORY, FilterCriteriaModel::Category::SYSTEMD_UNIT);
+        MODEL_CONTAINS(model, FilterCriteriaModel::Roles::CATEGORY, FilterCriteriaModel::Category::SYSTEMD_USER_UNIT);
+        MODEL_CONTAINS(model, FilterCriteriaModel::Roles::CATEGORY, FilterCriteriaModel::Category::SYSTEMD_SYSTEM_UNIT);
         MODEL_CONTAINS(model, FilterCriteriaModel::Roles::CATEGORY, FilterCriteriaModel::Category::EXE);
         MODEL_CONTAINS(model, FilterCriteriaModel::Roles::CATEGORY, FilterCriteriaModel::Category::PRIORITY);
     }
@@ -57,10 +58,10 @@ void TestFilterCriteriaModel::standaloneTestSystemdUnitSelectionOptionsUngrouped
     auto provider = LocalJournal(JOURNAL_LOCATION);
     model.setJournalProvider(&provider);
     QVERIFY(model.rowCount() > 0);
-    QVERIFY(model.entries(FilterCriteriaModel::Category::SYSTEMD_UNIT).count() > 0);
+    QVERIFY(model.entries(FilterCriteriaModel::Category::SYSTEMD_SYSTEM_UNIT).count() > 0);
 
     {
-        const auto entries = model.entries(FilterCriteriaModel::Category::SYSTEMD_UNIT);
+        const auto entries = model.entries(FilterCriteriaModel::Category::SYSTEMD_SYSTEM_UNIT);
         QVERIFY(std::any_of(entries.cbegin(), entries.cend(), [=](std::pair<QString, bool> value) {
             return value.first == "user@1000.service"; // arbitrary service from test journal
         }));
@@ -69,7 +70,7 @@ void TestFilterCriteriaModel::standaloneTestSystemdUnitSelectionOptionsUngrouped
     { // QAbstractItemModel interface acccess
         QModelIndex categoryIndex;
         for (int i = 0; i < model.rowCount(); ++i) {
-            if (model.data(model.index(i, 0), FilterCriteriaModel::Roles::CATEGORY) == FilterCriteriaModel::Category::SYSTEMD_UNIT) {
+            if (model.data(model.index(i, 0), FilterCriteriaModel::Roles::CATEGORY) == FilterCriteriaModel::Category::SYSTEMD_SYSTEM_UNIT) {
                 categoryIndex = model.index(i, 0);
                 break;
             }
@@ -91,10 +92,10 @@ void TestFilterCriteriaModel::standaloneTestSystemdUnitSelectionOptionsGrouped()
     auto provider = LocalJournal(JOURNAL_LOCATION);
     model.setJournalProvider(&provider);
     QVERIFY(model.rowCount() > 0);
-    QVERIFY(model.entries(FilterCriteriaModel::Category::SYSTEMD_UNIT).count() > 0);
+    QVERIFY(model.entries(FilterCriteriaModel::Category::SYSTEMD_SYSTEM_UNIT).count() > 0);
 
     {
-        const auto entries = model.entries(FilterCriteriaModel::Category::SYSTEMD_UNIT);
+        const auto entries = model.entries(FilterCriteriaModel::Category::SYSTEMD_SYSTEM_UNIT);
         QVERIFY(std::any_of(entries.cbegin(), entries.cend(), [=](std::pair<QString, bool> value) {
             return value.first == "user@[...].service"; // template services are abbreviated with "[...]"
         }));
@@ -103,7 +104,7 @@ void TestFilterCriteriaModel::standaloneTestSystemdUnitSelectionOptionsGrouped()
     { // QAbstractItemModel interface acccess
         QModelIndex categoryIndex;
         for (int i = 0; i < model.rowCount(); ++i) {
-            if (model.data(model.index(i, 0), FilterCriteriaModel::Roles::CATEGORY) == FilterCriteriaModel::Category::SYSTEMD_UNIT) {
+            if (model.data(model.index(i, 0), FilterCriteriaModel::Roles::CATEGORY) == FilterCriteriaModel::Category::SYSTEMD_SYSTEM_UNIT) {
                 categoryIndex = model.index(i, 0);
                 break;
             }

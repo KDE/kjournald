@@ -1,6 +1,6 @@
 /*
     SPDX-License-Identifier: LGPL-2.1-or-later OR MIT
-    SPDX-FileCopyrightText: 2024 Andreas Cord-Landwehr <cordlandwehr@kde.org>
+    SPDX-FileCopyrightText: 2024-2026 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 */
 
 #include "filter.h"
@@ -39,14 +39,24 @@ void Filter::setBootFilter(const QStringList &boots)
     mBootFilter = boots;
 }
 
-QStringList Filter::systemdUnitFilter() const
+QStringList Filter::systemdUserUnitFilter() const
 {
-    return mUnitFilter;
+    return mUserUnitFilter;
 }
 
-void Filter::setSystemdUnitFilter(const QStringList &units)
+void Filter::setSystemdUserUnitFilter(const QStringList &units)
 {
-    mUnitFilter = units;
+    mUserUnitFilter = units;
+}
+
+QStringList Filter::systemdSystemUnitFilter() const
+{
+    return mSystemUnitFilter;
+}
+
+void Filter::setSystemdSystemUnitFilter(const QStringList &units)
+{
+    mSystemUnitFilter = units;
 }
 
 QStringList Filter::exeFilter() const
@@ -72,7 +82,8 @@ void Filter::setKernelMessagesEnabled(bool enabled)
 QDebug operator<<(QDebug debug, const Filter &c)
 {
     debug.nospace() << "filter(priority: " << c.priorityFilterInt() << ", boot: " << c.bootFilter() << ", exe: " << c.exeFilter()
-                    << ", unit: " << c.systemdUnitFilter() << ", kernel: " << c.areKernelMessagesEnabled() << ")";
+                    << ", user-unit: " << c.systemdUserUnitFilter() << ", system-unit: " << c.systemdSystemUnitFilter()
+                    << ", kernel: " << c.areKernelMessagesEnabled() << ")";
     return debug.space();
 }
 

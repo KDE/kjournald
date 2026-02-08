@@ -31,10 +31,11 @@ public:
      * @brief Construct journal object for system journald DB
      */
     enum class Mode {
-        System,
-        User
+        AnyLocal, //!< any logs that match machine-id
+        LocalSystem, //!< any system logs that match machine-id
+        CurrentUser, //!< any current user logs that match machine-id
     };
-    explicit LocalJournal(Mode mode = LocalJournal::Mode::System);
+    explicit LocalJournal(Mode mode = LocalJournal::Mode::AnyLocal);
 
     /**
      * @brief Construct journal object from journald DB at path @p path
@@ -59,8 +60,6 @@ public:
      * @return size of journal in bytes
      */
     uint64_t usage() const;
-
-    virtual bool isUser() const override;
 
 private Q_SLOTS:
     void handleJournalDescriptorUpdate();

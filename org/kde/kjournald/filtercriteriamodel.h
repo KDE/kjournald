@@ -36,9 +36,13 @@ class KJOURNALD_EXPORT FilterCriteriaModel : public QAbstractItemModel
      */
     Q_PROPERTY(int priorityFilter READ priorityFilter NOTIFY priorityFilterChanged FINAL)
     /**
-     * Filter list for systemd units
+     * Filter list for systemd user units
      **/
-    Q_PROPERTY(QStringList systemdUnitFilter READ systemdUnitFilter NOTIFY systemdUnitFilterChanged FINAL)
+    Q_PROPERTY(QStringList systemdUserUnitFilter READ systemdUserUnitFilter NOTIFY systemdUserUnitFilterChanged FINAL)
+    /**
+     * Filter list for systemd system units
+     **/
+    Q_PROPERTY(QStringList systemdSystemUnitFilter READ systemdSystemUnitFilter NOTIFY systemdSystemUnitFilterChanged FINAL)
     /**
      * Filter list for executables (see journald '_EXE' field)
      **/
@@ -59,8 +63,9 @@ public:
     enum Category : quint8 {
         TRANSPORT = 0,
         PRIORITY = 1,
-        SYSTEMD_UNIT = 2,
-        EXE = 3,
+        SYSTEMD_USER_UNIT = 2,
+        SYSTEMD_SYSTEM_UNIT = 3,
+        EXE = 4,
     };
     Q_ENUM(Category)
 
@@ -102,9 +107,14 @@ public:
     int priorityFilter() const;
 
     /**
-     * @return the list of enabled system units
+     * @return the list of enabled user units
      */
-    QStringList systemdUnitFilter() const;
+    QStringList systemdUserUnitFilter() const;
+
+    /**
+     * @return the list of enabled user units
+     */
+    QStringList systemdSystemUnitFilter() const;
 
     /**
      * @return true of templated systemd units are grouped by template name
@@ -169,7 +179,8 @@ public:
 
 Q_SIGNALS:
     void priorityFilterChanged(int priority);
-    void systemdUnitFilterChanged();
+    void systemdUserUnitFilterChanged();
+    void systemdSystemUnitFilterChanged();
     void exeFilterChanged();
     void kernelFilterChanged();
     void journalProviderChanged();

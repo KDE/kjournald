@@ -18,6 +18,7 @@ class BrowserApplication : public AbstractKirigamiApplication
     Q_PROPERTY(BrowserApplication::TimeDisplay timeDisplay READ timeDisplay WRITE setTimeDisplay NOTIFY timeDisplayChanged FINAL)
     Q_PROPERTY(BrowserApplication::FilterCriterium filterCriterium READ filterCriterium WRITE setFilterCriterium NOTIFY filterCriteriumChanged FINAL)
     Q_PROPERTY(BrowserApplication::ViewMode viewMode READ viewMode WRITE setViewMode NOTIFY viewModeChanged FINAL)
+    Q_PROPERTY(BrowserApplication::LogViewMode logViewMode READ logViewMode WRITE setLogViewMode NOTIFY logViewModeChanged FINAL)
     Q_PROPERTY(BrowserApplication::ServiceGrouping serviceGrouping READ serviceGrouping WRITE setServiceGrouping NOTIFY serviceGroupingChanged FINAL)
 
 public:
@@ -26,6 +27,13 @@ public:
         SELECT, //!< interaction with log view leads to text selection
     };
     Q_ENUM(ViewMode);
+
+    enum class LogViewMode {
+        ALL_LOGS, //!< display all logs
+        ONLY_USER, //!< display only user logs
+        ONLY_SYSTEM, //!< display only system logs
+    };
+    Q_ENUM(LogViewMode);
 
     enum class TimeDisplay : uint8_t {
         LOCALTIME, //!< display time as local time
@@ -61,6 +69,10 @@ public:
 
     ViewMode viewMode() const;
 
+    void setLogViewMode(LogViewMode mode);
+
+    LogViewMode logViewMode() const;
+
     void setServiceGrouping(ServiceGrouping mode);
 
     ServiceGrouping serviceGrouping() const;
@@ -69,17 +81,25 @@ protected:
     void setupActions() override;
 
 Q_SIGNALS:
-    void timeDisplayChanged();
-    void filterCriteriumChanged();
-    void viewModeChanged();
-    void serviceGroupingChanged();
+    void timeDisplayChanged(BrowserApplication::TimeDisplay display);
+    void filterCriteriumChanged(BrowserApplication::FilterCriterium criterium);
+    void viewModeChanged(BrowserApplication::ViewMode mode);
+    void logViewModeChanged(BrowserApplication::LogViewMode mode);
+    void serviceGroupingChanged(BrowserApplication::ServiceGrouping mode);
 
 private:
     TimeDisplay mTimeDisplayFormat{TimeDisplay::UTC};
     FilterCriterium mFilterCriterium{FilterCriterium::SYSTEMD_UNIT};
     ViewMode mViewMode{ViewMode::BROWSE};
+    LogViewMode mLogViewMode{LogViewMode::ALL_LOGS};
     ServiceGrouping mServiceGrouping{ServiceGrouping::GROUP_SERVICE_TEMPLATES};
     QSettings mSettings;
+
+    static constexpr QLatin1StringView ID_timeDisplayFormat{"browser/timedisplay"};
+    static constexpr QLatin1StringView ID_filterCriterium{"browser/filtercriterium"};
+    static constexpr QLatin1StringView ID_serviceGrouping{"browser/servicegrouping"};
+    static constexpr QLatin1StringView ID_viewMode{"browser/viewmode"};
+    static constexpr QLatin1StringView ID_logViewMode{"browser/logviewmode"};
 };
 
 #endif // BROWSERAPPLICATION_H
