@@ -16,7 +16,8 @@ private Q_SLOTS:
     void journalAccess();
     void rowAccess();
     void bootFilter();
-    void unitFilter();
+    void systemUnitFilter();
+    void userUnitFilter();
     void showKernelMessages();
     void closestIndexForDateComputation();
     /**

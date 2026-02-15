@@ -126,8 +126,7 @@ void TestViewModel::bootFilter()
     QVERIFY(secondBootFound);
 }
 
-// TODO implement user unit filtering tests
-void TestViewModel::unitFilter()
+void TestViewModel::systemUnitFilter()
 {
     JournaldViewModel model;
     Filter filter = model.filter();
@@ -161,6 +160,20 @@ void TestViewModel::unitFilter()
         QVERIFY(testSystemdUnitNames.contains(unit));
     }
     QVERIFY(notFoundUnits.isEmpty());
+}
+
+void TestViewModel::userUnitFilter()
+{
+    JournaldViewModel model;
+    Filter filter = model.filter();
+    QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
+    auto provider = LocalJournal(JOURNAL_LOCATION);
+    model.setJournalProvider(&provider);
+
+    filter.setSystemdUserUnitFilter({"init.scope"});
+    model.setFilter(filter);
+    QVERIFY(model.rowCount() > 0);
+    QCOMPARE(model.data(model.index(0, 0), JournaldViewModel::SYSTEMD_UNIT), "init.scope");
 }
 
 void TestViewModel::showKernelMessages()
