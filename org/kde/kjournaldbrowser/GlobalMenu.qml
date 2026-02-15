@@ -103,6 +103,7 @@ Labs.MenuBar {
 
         Labs.Menu {
             title: KI18n.i18nc("@title:menu", "Timestamp Display")
+            icon.name: "clock"
 
             Labs.MenuItem {
                 text: KI18n.i18nc("@item:inmenu", "Localized Realtime")
@@ -131,6 +132,7 @@ Labs.MenuBar {
         }
         Labs.Menu {
             title: KI18n.i18nc("@title:menu", "Colorize")
+            icon.name: "fill-color"
 
             Labs.MenuItem {
                 text: KI18n.i18nc("@item:inmenu", "Systemd Unit")
@@ -151,6 +153,7 @@ Labs.MenuBar {
         }
         Labs.Menu {
             title: KI18n.i18nc("@title:menu", "Grouping")
+            icon.name: "view-group"
 
             Labs.MenuItem {
                 text: KI18n.i18nc("@item:inmenu", "Group templated services")

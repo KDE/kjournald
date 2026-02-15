@@ -108,6 +108,7 @@ MenuBar {
 
         Menu {
             title: KI18n.i18nc("@title:menu", "Timestamp Display")
+            icon.name: "clock"
 
             MenuItem {
                 contentItem: RadioButton {
@@ -142,6 +143,7 @@ MenuBar {
         }
         Menu {
             title: KI18n.i18nc("@title:menu", "Colorize")
+            icon.name: "fill-color"
 
             MenuItem {
                 contentItem: RadioButton {
@@ -166,6 +168,7 @@ MenuBar {
         }
         Menu {
             title: KI18n.i18nc("@title:menu", "Grouping")
+            icon.name: "view-group"
 
             MenuItem {
                 contentItem: RadioButton {
