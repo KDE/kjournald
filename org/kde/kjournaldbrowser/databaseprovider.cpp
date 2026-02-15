@@ -5,48 +5,48 @@
 
 #include "databaseprovider.h"
 #include "kjournaldlib_log_general.h"
+#include "localjournal.h"
+#include "systemdjournalremote.h"
 #include <QFileInfo>
 
 DatabaseProvider::DatabaseProvider(QObject *parent)
     : QObject(parent)
 {
     setLocalJournal();
+
+    connect(this, &DatabaseProvider::accessChanged, this, &DatabaseProvider::reloadJournal);
+    connect(this, &DatabaseProvider::journalPathChanged, this, &DatabaseProvider::journalChanged);
 }
 
 DatabaseProvider::~DatabaseProvider() = default;
 
-DatabaseProvider::Mode DatabaseProvider::mode() const
+DatabaseProvider::DatabaseType DatabaseProvider::databaseType() const
 {
-    return mMode;
+    return mDatabaseType;
+}
+
+DatabaseProvider::DatabaseAccessLimit DatabaseProvider::access() const
+{
+    return mAccessLimit;
+}
+
+void DatabaseProvider::setAccess(DatabaseProvider::DatabaseAccessLimit limit)
+{
+    if (limit == mAccessLimit) {
+        return;
+    }
+    qCDebug(KJOURNALDLIB_GENERAL) << "change journal access limit to:" << limit;
+    mAccessLimit = limit;
+    Q_EMIT accessChanged();
 }
 
 void DatabaseProvider::setLocalJournal()
 {
     // not setting any path defaults to system journal
     mJournalPath = QString();
-    mMode = Mode::LOCAL_SYSTEM;
+    mDatabaseType = DatabaseType::LOCAL_SYSTEM;
     mJournalProvider = std::make_shared<LocalJournal>(LocalJournal::Mode::AnyLocal);
     Q_EMIT journalPathChanged();
-}
-
-void DatabaseProvider::restrictToLocalSystemLogs()
-{
-    if (mMode == Mode::LOCAL_SYSTEM) {
-        mJournalProvider = std::make_shared<LocalJournal>(LocalJournal::Mode::LocalSystem);
-        Q_EMIT journalPathChanged();
-    } else {
-        qCWarning(KJOURNALDLIB_GENERAL) << "Cannot restrict non-system logs to machine-id";
-    }
-}
-
-void DatabaseProvider::restrictToCurrentUserLogs()
-{
-    if (mMode == Mode::LOCAL_SYSTEM) {
-        mJournalProvider = std::make_shared<LocalJournal>(LocalJournal::Mode::LocalSystem);
-        Q_EMIT journalPathChanged();
-    } else {
-        qCWarning(KJOURNALDLIB_GENERAL) << "Cannot restrict non-system logs to current user";
-    }
 }
 
 QUrl DatabaseProvider::journalPath() const
@@ -66,7 +66,7 @@ void DatabaseProvider::setLocalJournalPath(const QString &path)
         return;
     }
     mJournalPath = path;
-    mMode = Mode::FOLDER;
+    mDatabaseType = DatabaseType::FOLDER;
     mJournalProvider = std::make_shared<LocalJournal>(mJournalPath);
     Q_EMIT journalPathChanged();
 }
@@ -79,7 +79,7 @@ void DatabaseProvider::setRemoteJournalUrl(const QString &url, quint32 port)
     mRemoteJournalUrl = url;
     mRemoteJournalPort = port;
     initJournal();
-    mMode = Mode::REMOTE;
+    mDatabaseType = DatabaseType::REMOTE;
     Q_EMIT journalPathChanged();
 }
 
@@ -113,6 +113,27 @@ void DatabaseProvider::initJournal()
         setLocalJournalPath(QFileInfo(remoteJournal->journalFile()).absolutePath());
     });
     mJournalProvider = remoteJournal;
+}
+
+void DatabaseProvider::reloadJournal()
+{
+    if (mDatabaseType == DatabaseType::LOCAL_SYSTEM) {
+        switch (mAccessLimit) {
+        case DatabaseAccessLimit::ALL:
+            mJournalProvider = std::make_shared<LocalJournal>(LocalJournal::Mode::AnyLocal);
+            break;
+        case DatabaseAccessLimit::CURRENT_USER:
+            mJournalProvider = std::make_shared<LocalJournal>(LocalJournal::Mode::CurrentUser);
+            break;
+        case DatabaseAccessLimit::LOCAL_SYSTEM:
+            mJournalProvider = std::make_shared<LocalJournal>(LocalJournal::Mode::LocalSystem);
+            break;
+        }
+        qCDebug(KJOURNALDLIB_GENERAL) << "Reloaded local journal with access" << mAccessLimit;
+        Q_EMIT journalChanged();
+    } else {
+        // nothing to do yet: this handler is only connected to access limit changes
+    }
 }
 
 #include "moc_databaseprovider.cpp"

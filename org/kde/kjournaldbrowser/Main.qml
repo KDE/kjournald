@@ -43,19 +43,17 @@ StatefulApp.StatefulWindow {
         root.filterModel.enableSystemdUnitTemplateGrouping: BrowserApplication.serviceGrouping === BrowserApplication.ServiceGrouping.GROUP_SERVICE_TEMPLATES
     }
 
-    Connections {
-        target: BrowserApplication
-        function onLogViewModeChanged(mode) {
-            switch (mode) {
+    Binding {
+        target: DatabaseProvider
+        property: "access"
+        value: {
+            switch (BrowserApplication.logViewMode) {
             case BrowserApplication.ALL_LOGS:
-                DatabaseProvider.setLocalJournal();
-                break;
+                return DatabaseProvider.DatabaseAccessLimit.ALL;
             case BrowserApplication.ONLY_USER:
-                DatabaseProvider.restrictToCurrentUserLogs();
-                break;
+                return DatabaseProvider.DatabaseAccessLimit.CURRENT_USER;
             case BrowserApplication.ONLY_SYSTEM:
-                DatabaseProvider.restrictToLocalSystemLogs();
-                break;
+                return DatabaseProvider.DatabaseAccessLimit.LOCAL_SYSTEM
             }
         }
     }
