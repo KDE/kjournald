@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-03 00:49+0000\n"
+"POT-Creation-Date: 2026-02-16 00:50+0000\n"
 "PO-Revision-Date: 2026-02-14 08:38+0200\n"
 "Last-Translator: Alexander Yavorskiy <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -130,31 +130,41 @@ msgctxt "Radio box option, log priority value"
 msgid "No Filter"
 msgstr "Без фильтра"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:137
+#: org/kde/kjournald/filtercriteriamodel.cpp:138
 #, kde-format
 msgctxt "Section title for log message source"
 msgid "Transport"
 msgstr "Транспорт"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:144
+#: org/kde/kjournald/filtercriteriamodel.cpp:145
 #, kde-format
 msgctxt "Checkbox option for kernel log messages"
 msgid "Kernel"
 msgstr "Ядро"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:151
+#: org/kde/kjournald/filtercriteriamodel.cpp:152
 #, kde-format
 msgctxt "Section title for log message priority"
 msgid "Priority"
 msgstr "Приоритет"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:172
-#, kde-format
-msgctxt "Section title for systemd unit"
-msgid "Unit"
-msgstr "Модуль"
+#: org/kde/kjournald/filtercriteriamodel.cpp:173
+#, fuzzy, kde-format
+#| msgctxt "@item:inmenu"
+#| msgid "Systemd Unit"
+msgctxt "Section title for systemd user unit"
+msgid "User Unit"
+msgstr "Модуль systemd"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:220
+#, fuzzy, kde-format
+#| msgctxt "@item:inmenu"
+#| msgid "Systemd Unit"
+msgctxt "Section title for systemd sytem unit"
+msgid "System Unit"
+msgstr "Модуль systemd"
+
+#: org/kde/kjournald/filtercriteriamodel.cpp:267
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"
@@ -188,120 +198,144 @@ msgstr "Файл"
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:26
 #, kde-format
 msgctxt "@action:inmenu"
-msgid "Open system journal"
-msgstr "Открыть системный журнал"
+msgid "Local journal"
+msgstr ""
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:33
-#, kde-format
-msgctxt "@action:inmenu"
-msgid "Open user journal"
-msgstr "Открыть журнал пользователя"
-
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:40
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from folder"
 msgstr "Открыть из папки"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:48
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:41
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from file"
 msgstr "Открыть из файла"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:67
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:66
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:60
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:59
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Close"
 msgstr "Закрыть"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:73
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:72
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:66
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:65
 #, kde-format
 msgctxt "@title:menu"
 msgid "Current Journal"
 msgstr "Текущий журнал"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:81
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:80
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:73
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:72
+#, kde-format
+msgctxt "@title:menu"
+msgid "Limit Accessed Logs"
+msgstr ""
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:76
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:76
+#, kde-format
+msgctxt "@item:inmenu"
+msgid "All logs"
+msgstr ""
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:84
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:86
+#, kde-format
+msgctxt "@item:inmenu"
+msgid "Only current user logs"
+msgstr ""
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:92
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:96
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "Open system journal"
+msgctxt "@item:inmenu"
+msgid "Only system logs"
+msgstr "Открыть системный журнал"
+
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:102
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:107
 #, kde-format
 msgctxt "@title:menu"
 msgid "View"
 msgstr "Вид"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:84
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:83
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:105
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:110
 #, kde-format
 msgctxt "@title:menu"
 msgid "Timestamp Display"
 msgstr "Показ временной метки"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:87
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:87
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:109
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:115
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Localized Realtime"
 msgstr "Местное реальное время"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:95
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:97
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:117
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:125
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "UTC Realtime"
 msgstr "Реальное время UTC"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:103
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:107
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:125
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:135
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Monotonic Time"
 msgstr "Монотонное время"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:112
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:117
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:134
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:145
 #, kde-format
 msgctxt "@title:menu"
 msgid "Colorize"
 msgstr "Окрасить"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:115
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:121
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:138
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:150
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Systemd Unit"
 msgstr "Модуль systemd"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:123
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:131
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:146
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:160
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Executable"
 msgstr "Исполняемый файл"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:132
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:141
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:155
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:170
 #, kde-format
 msgctxt "@title:menu"
 msgid "Grouping"
 msgstr "Группировка"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:135
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:145
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:159
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:175
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Group templated services"
 msgstr "Группировать шаблонные сервисы"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:143
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:155
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:167
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:185
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Do not group templated service"
 msgstr "Не группировать шаблонные службы"
 
-#: org/kde/kjournaldbrowser/GlobalMenu.qml:153
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:166
+#: org/kde/kjournaldbrowser/GlobalMenu.qml:177
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:196
 #, kde-format
 msgctxt "@title:menu"
 msgid "Help"
@@ -313,61 +347,61 @@ msgctxt "@label"
 msgid "Kernel"
 msgstr "Ядро"
 
-#: org/kde/kjournaldbrowser/Main.qml:77
+#: org/kde/kjournaldbrowser/Main.qml:92
 #, kde-format
 msgctxt "@label"
 msgid "Boot:"
 msgstr "Загрузка:"
 
-#: org/kde/kjournaldbrowser/Main.qml:189
+#: org/kde/kjournaldbrowser/Main.qml:204
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr "Переключение между регистрозависимым и регистронезависимым режимами"
 
-#: org/kde/kjournaldbrowser/Main.qml:231
+#: org/kde/kjournaldbrowser/Main.qml:246
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "Перейти в режим просмотра"
 
-#: org/kde/kjournaldbrowser/Main.qml:232
+#: org/kde/kjournaldbrowser/Main.qml:247
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "Перейти в режим выделения"
 
-#: org/kde/kjournaldbrowser/Main.qml:244
+#: org/kde/kjournaldbrowser/Main.qml:259
 #, kde-format
 msgctxt "@title"
 msgid "Select journal folder"
 msgstr "Выбрать папку журнала"
 
-#: org/kde/kjournaldbrowser/Main.qml:253
+#: org/kde/kjournaldbrowser/Main.qml:268
 #, kde-format
 msgctxt "@title"
 msgid "Select journal file"
 msgstr "Выбрать файл журнала"
 
-#: org/kde/kjournaldbrowser/Main.qml:254
+#: org/kde/kjournaldbrowser/Main.qml:269
 #, kde-format
 msgctxt "@item"
 msgid "Journal files (*.journal)"
 msgstr "Файлы журнала (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:254
+#: org/kde/kjournaldbrowser/Main.qml:269
 #, kde-format
 msgctxt "@item"
 msgid "All files (*)"
 msgstr "Все файлы (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:324
+#: org/kde/kjournaldbrowser/Main.qml:339
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
 msgstr "Не удалось загрузить базу данных журнала из выбранного расположения: "
 
-#: org/kde/kjournaldbrowser/Main.qml:325
+#: org/kde/kjournaldbrowser/Main.qml:340
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -377,7 +411,7 @@ msgstr ""
 "Проверьте вложенные каталоги выбранного каталога на наличие файлов с "
 "расширением '.journal'."
 
-#: org/kde/kjournaldbrowser/Main.qml:332
+#: org/kde/kjournaldbrowser/Main.qml:347
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."
@@ -404,32 +438,42 @@ msgstr "Порт:"
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:25
 #, kde-format
 msgctxt "@action:inmenu"
-msgid "Open System Journal"
-msgstr "Открыть системный журнал"
+msgid "Local Journal"
+msgstr ""
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:32
-#, kde-format
-msgctxt "@action:inmenu"
-msgid "Open User Journal"
-msgstr "Открыть журнал пользователя"
-
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:39
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from Folder"
 msgstr "Открыть из папки"
 
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:47
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:40
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from File"
 msgstr "Открыть из файла"
 
-#: org/kde/kjournaldbrowser/TopMenuBar.qml:74
+#: org/kde/kjournaldbrowser/TopMenuBar.qml:67
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Copy Current View"
 msgstr "Скопировать текущее представление"
+
+#~ msgctxt "Section title for systemd unit"
+#~ msgid "Unit"
+#~ msgstr "Модуль"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Open user journal"
+#~ msgstr "Открыть журнал пользователя"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Open System Journal"
+#~ msgstr "Открыть системный журнал"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Open User Journal"
+#~ msgstr "Открыть журнал пользователя"
 
 #~ msgid "Highlight:"
 #~ msgstr "Подсветка:"
