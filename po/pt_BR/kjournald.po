@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-16 00:50+0000\n"
-"PO-Revision-Date: 2026-01-11 06:55-0300\n"
+"PO-Revision-Date: 2026-02-16 08:57-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.12.0\n"
+"X-Generator: Lokalize 25.12.2\n"
 
 #: browser/main.cpp:41
 #, kde-format
@@ -150,20 +150,16 @@ msgid "Priority"
 msgstr "Prioridade"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:173
-#, fuzzy, kde-format
-#| msgctxt "@item:inmenu"
-#| msgid "Systemd Unit"
+#, kde-format
 msgctxt "Section title for systemd user unit"
 msgid "User Unit"
-msgstr "Unidade do systemd"
+msgstr "Unidade do usuário"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:220
-#, fuzzy, kde-format
-#| msgctxt "@item:inmenu"
-#| msgid "Systemd Unit"
+#, kde-format
 msgctxt "Section title for systemd sytem unit"
 msgid "System Unit"
-msgstr "Unidade do systemd"
+msgstr "Unidade do sistema"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:267
 #, kde-format
@@ -200,7 +196,7 @@ msgstr "Arquivo"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Local journal"
-msgstr ""
+msgstr "Registro de transações local"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:33
 #, kde-format
@@ -233,30 +229,28 @@ msgstr "Log atual"
 #, kde-format
 msgctxt "@title:menu"
 msgid "Limit Accessed Logs"
-msgstr ""
+msgstr "Limitar o acesso aos registros"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:76
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:76
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "All logs"
-msgstr ""
+msgstr "Todos os registros"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:84
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:86
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Only current user logs"
-msgstr ""
+msgstr "Somente registros do usuário atual"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:92
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:96
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Open system journal"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Only system logs"
-msgstr "Abrir a partir do sistema"
+msgstr "Somente registros do sistema"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:102
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:107
@@ -444,7 +438,7 @@ msgstr "Porta:"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Local Journal"
-msgstr ""
+msgstr "Registro de transações local"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:32
 #, kde-format

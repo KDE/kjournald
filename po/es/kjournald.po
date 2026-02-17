@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-16 00:50+0000\n"
-"PO-Revision-Date: 2026-01-11 11:56+0100\n"
+"PO-Revision-Date: 2026-02-17 01:43+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.12.0\n"
+"X-Generator: Lokalize 25.12.2\n"
 
 #: browser/main.cpp:41
 #, kde-format
@@ -149,20 +149,16 @@ msgid "Priority"
 msgstr "Prioridad"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:173
-#, fuzzy, kde-format
-#| msgctxt "@item:inmenu"
-#| msgid "Systemd Unit"
+#, kde-format
 msgctxt "Section title for systemd user unit"
 msgid "User Unit"
-msgstr "Unidad de systemd"
+msgstr "Unidad del usuario"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:220
-#, fuzzy, kde-format
-#| msgctxt "@item:inmenu"
-#| msgid "Systemd Unit"
+#, kde-format
 msgctxt "Section title for systemd sytem unit"
 msgid "System Unit"
-msgstr "Unidad de systemd"
+msgstr "Unidad del sistema"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:267
 #, kde-format
@@ -199,7 +195,7 @@ msgstr "Archivo"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Local journal"
-msgstr ""
+msgstr "Registro local"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:33
 #, kde-format
@@ -232,30 +228,28 @@ msgstr "Registro actual"
 #, kde-format
 msgctxt "@title:menu"
 msgid "Limit Accessed Logs"
-msgstr ""
+msgstr "Limitar los registros accedidos"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:76
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:76
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "All logs"
-msgstr ""
+msgstr "Todos los registros"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:84
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:86
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Only current user logs"
-msgstr ""
+msgstr "Solo registros del usuario actual"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:92
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:96
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Open system journal"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Only system logs"
-msgstr "Abrir el registro del sistema"
+msgstr "Solo registros del sistema"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:102
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:107
@@ -441,7 +435,7 @@ msgstr "Puerto:"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Local Journal"
-msgstr ""
+msgstr "Registro local"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:32
 #, kde-format
@@ -460,19 +454,3 @@ msgstr "Abrir desde archivo"
 msgctxt "@action:inmenu"
 msgid "Copy Current View"
 msgstr "Copiar vista actual"
-
-#~ msgctxt "Section title for systemd unit"
-#~ msgid "Unit"
-#~ msgstr "Unidad"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Open user journal"
-#~ msgstr "Abrir el registro del usuario"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Open System Journal"
-#~ msgstr "Abrir el registro del sistema"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Open User Journal"
-#~ msgstr "Abrir el registro del usuario"

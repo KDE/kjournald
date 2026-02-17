@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-16 00:50+0000\n"
-"PO-Revision-Date: 2026-01-11 14:25+0100\n"
+"PO-Revision-Date: 2026-02-16 10:17+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.12.0\n"
+"X-Generator: Lokalize 25.12.2\n"
 
 #: browser/main.cpp:41
 #, kde-format
@@ -147,20 +147,16 @@ msgid "Priority"
 msgstr "Prioriteit"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:173
-#, fuzzy, kde-format
-#| msgctxt "@item:inmenu"
-#| msgid "Systemd Unit"
+#, kde-format
 msgctxt "Section title for systemd user unit"
 msgid "User Unit"
-msgstr "Systemd-eenheid"
+msgstr "Gebruikerseenheid"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:220
-#, fuzzy, kde-format
-#| msgctxt "@item:inmenu"
-#| msgid "Systemd Unit"
+#, kde-format
 msgctxt "Section title for systemd sytem unit"
 msgid "System Unit"
-msgstr "Systemd-eenheid"
+msgstr "Systeemeenheid"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:267
 #, kde-format
@@ -197,7 +193,7 @@ msgstr "Bestand"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Local journal"
-msgstr ""
+msgstr "Lokaal journaal"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:33
 #, kde-format
@@ -230,30 +226,28 @@ msgstr "Huidige journaal"
 #, kde-format
 msgctxt "@title:menu"
 msgid "Limit Accessed Logs"
-msgstr ""
+msgstr "Logs met beperkte toegang"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:76
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:76
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "All logs"
-msgstr ""
+msgstr "Alle logs"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:84
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:86
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Only current user logs"
-msgstr ""
+msgstr "Alleen de huidige gebruikerlogs"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:92
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:96
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Open system journal"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Only system logs"
-msgstr "Systeemjournaal openen"
+msgstr "Alleen systeemlogs"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:102
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:107
@@ -438,7 +432,7 @@ msgstr "Poort:"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Local Journal"
-msgstr ""
+msgstr "Lokaal journaal"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:32
 #, kde-format

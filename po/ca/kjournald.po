@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-16 00:50+0000\n"
-"PO-Revision-Date: 2026-01-11 09:37+0100\n"
+"PO-Revision-Date: 2026-02-16 10:35+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -150,20 +150,16 @@ msgid "Priority"
 msgstr "Prioritat"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:173
-#, fuzzy, kde-format
-#| msgctxt "@item:inmenu"
-#| msgid "Systemd Unit"
+#, kde-format
 msgctxt "Section title for systemd user unit"
 msgid "User Unit"
-msgstr "Unitat del «systemd»"
+msgstr "Unitat d'usuari"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:220
-#, fuzzy, kde-format
-#| msgctxt "@item:inmenu"
-#| msgid "Systemd Unit"
+#, kde-format
 msgctxt "Section title for systemd sytem unit"
 msgid "System Unit"
-msgstr "Unitat del «systemd»"
+msgstr "Unitat del sistema"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:267
 #, kde-format
@@ -200,7 +196,7 @@ msgstr "Fitxer"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Local journal"
-msgstr ""
+msgstr "Diari local"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:33
 #, kde-format
@@ -233,30 +229,28 @@ msgstr "Diari actual"
 #, kde-format
 msgctxt "@title:menu"
 msgid "Limit Accessed Logs"
-msgstr ""
+msgstr "Limita els registres accedits"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:76
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:76
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "All logs"
-msgstr ""
+msgstr "Tots els registres"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:84
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:86
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Only current user logs"
-msgstr ""
+msgstr "Només registres de l'usuari actual"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:92
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:96
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Open system journal"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Only system logs"
-msgstr "Obre el diari del sistema"
+msgstr "Només registres del sistema"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:102
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:107
@@ -443,7 +437,7 @@ msgstr "Port:"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Local Journal"
-msgstr ""
+msgstr "Diari local"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:32
 #, kde-format

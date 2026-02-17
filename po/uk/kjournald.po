@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-16 00:50+0000\n"
-"PO-Revision-Date: 2026-01-12 03:16+0200\n"
+"PO-Revision-Date: 2026-02-16 08:26+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -148,20 +148,16 @@ msgid "Priority"
 msgstr "Пріоритетність"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:173
-#, fuzzy, kde-format
-#| msgctxt "@item:inmenu"
-#| msgid "Systemd Unit"
+#, kde-format
 msgctxt "Section title for systemd user unit"
 msgid "User Unit"
-msgstr "Одиниця Systemd"
+msgstr "Модуль користувача"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:220
-#, fuzzy, kde-format
-#| msgctxt "@item:inmenu"
-#| msgid "Systemd Unit"
+#, kde-format
 msgctxt "Section title for systemd sytem unit"
 msgid "System Unit"
-msgstr "Одиниця Systemd"
+msgstr "Модуль системи"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:267
 #, kde-format
@@ -198,7 +194,7 @@ msgstr "Файл"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Local journal"
-msgstr ""
+msgstr "Локальний журнал"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:33
 #, kde-format
@@ -231,30 +227,28 @@ msgstr "Поточний журнал"
 #, kde-format
 msgctxt "@title:menu"
 msgid "Limit Accessed Logs"
-msgstr ""
+msgstr "Обмежити доступні журнали"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:76
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:76
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "All logs"
-msgstr ""
+msgstr "Усі журнали"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:84
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:86
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Only current user logs"
-msgstr ""
+msgstr "Лише поточні журнали користувача"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:92
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:96
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Open system journal"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Only system logs"
-msgstr "Відкрити системний журнал"
+msgstr "Лише журнали системи"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:102
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:107
@@ -303,7 +297,7 @@ msgstr "Розфарбувати"
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Systemd Unit"
-msgstr "Одиниця Systemd"
+msgstr "Модуль Systemd"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:146
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:160
@@ -439,7 +433,7 @@ msgstr "Порт:"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Local Journal"
-msgstr ""
+msgstr "Локальний журнал"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:32
 #, kde-format
