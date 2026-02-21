@@ -51,6 +51,7 @@ void TestFilterCriteriaModel::basicTreeModelStructure()
 void TestFilterCriteriaModel::standaloneTestSystemdUnitSelectionOptionsUngrouped()
 {
     FilterCriteriaModel model;
+    model.setBootFilter(mBoots.at(0));
     model.setGroupTemplatedSystemdUnits(false);
     QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
 
@@ -85,6 +86,7 @@ void TestFilterCriteriaModel::standaloneTestSystemdUnitSelectionOptionsUngrouped
 void TestFilterCriteriaModel::standaloneTestSystemdUnitSelectionOptionsGrouped()
 {
     FilterCriteriaModel model;
+    model.setBootFilter(mBoots.at(0));
     model.setGroupTemplatedSystemdUnits(true);
     QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
 
@@ -119,6 +121,7 @@ void TestFilterCriteriaModel::standaloneTestSystemdUnitSelectionOptionsGrouped()
 void TestFilterCriteriaModel::standaloneTestExeSelectionOptions()
 {
     FilterCriteriaModel model;
+    model.setBootFilter(mBoots.at(0));
     QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
 
     // use extracted journal
