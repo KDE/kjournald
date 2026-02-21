@@ -16,5 +16,6 @@ private Q_SLOTS:
     void journalAccess();
     void boots();
     void systemdUnits();
+    void systemdUnitsPerBoot();
 };
 #endif

@@ -6,8 +6,10 @@
 #ifndef TESDATALOCATION_H
 #define TESDATALOCATION_H
 
-static constexpr const char* JOURNAL_LOCATION("@CMAKE_CURRENT_BINARY_DIR@/journal/");
-static constexpr const char* JOURNAL_EXPORT_FORMAT_EXAMPLE("@CMAKE_CURRENT_BINARY_DIR@/journalexportformat_example.export");
-static constexpr const char* JOURNAL_EXPORT_FORMAT_BINARY_EXAMPLE("@CMAKE_CURRENT_BINARY_DIR@/journalexportformat_binary_example.export");
+#include <QLatin1StringView>
+
+static constexpr QLatin1StringView JOURNAL_LOCATION("@CMAKE_CURRENT_BINARY_DIR@/journal/");
+static constexpr QLatin1StringView JOURNAL_EXPORT_FORMAT_EXAMPLE("@CMAKE_CURRENT_BINARY_DIR@/journalexportformat_example.export");
+static constexpr QLatin1StringView JOURNAL_EXPORT_FORMAT_BINARY_EXAMPLE("@CMAKE_CURRENT_BINARY_DIR@/journalexportformat_binary_example.export");
 
 #endif

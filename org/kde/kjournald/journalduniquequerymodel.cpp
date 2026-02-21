@@ -5,7 +5,6 @@
 
 #include "journalduniquequerymodel.h"
 #include "journalduniquequerymodel_p.h"
-#include "kjournald_export.h"
 #include "kjournaldlib_log_general.h"
 #include <QDebug>
 #include <QDir>

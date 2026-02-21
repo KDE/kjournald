@@ -8,8 +8,8 @@
 
 #include "kjournald_export.h"
 #include "sdjournal.h"
-#include <QQmlEngine>
 #include <QString>
+#include <QtQmlIntegration/qqmlintegration.h>
 
 class sd_journal;
 

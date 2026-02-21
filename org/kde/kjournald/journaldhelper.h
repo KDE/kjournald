@@ -71,14 +71,44 @@ public:
      * @param field the requested field
      * @return the list of unique field contents
      */
-    static QVector<QString> queryUnique(sd_journal *journal, Field field);
+    static QList<QString> queryUnique(sd_journal *journal, Field field);
+
+    /**
+     * @brief Collect unique field entries for specified boot
+     *
+     * This method collects all distinct field values for the given boot. Note that the computational
+     * complexity is O(N) with N number of entries in the journal. Also beware, that read pointer and
+     * filter options change of the used sd_journal object.
+     *
+     * @param journal the openend journal
+     * @param bootId the boot ID
+     * @param field the field identifier
+     * @return list of distinct values for field
+     */
+    static QList<QString> queryUnique(sd_journal *journal, QAnyStringView bootId, Field field);
+
+    /**
+     * @brief Collect multiple unique field entries for specified boot
+     *
+     * This method collects all distinct field values for the given boot of multiple fields simultaneously
+     * Note that the computational complexity is O(N) with N number of entries in the journal. Also beware,
+     * that read pointer and filter options change of the used sd_journal object.
+     *
+     * Prefer this method over requesting every field seperately.
+     *
+     * @param journal the openend journal
+     * @param bootId the boot ID
+     * @param field the field identifier
+     * @return list of distinct values for field
+     */
+    static QMap<Field, QStringList> queryUnique(sd_journal *journal, QAnyStringView bootId, QList<Field> fields);
 
     /**
      * @brief Query boot information for @p journal
      *
      * @return ordered list of boots (first is earliest boot in time)
      */
-    static QVector<BootInfo> queryOrderedBootIds(sd_journal *journal);
+    static QList<BootInfo> queryOrderedBootIds(sd_journal *journal);
 
     /**
      * @brief Mapper method that maps from field enum to textual representation
@@ -86,7 +116,7 @@ public:
      * @param field the field enum for which the textual repesentation is requested
      * @return string representation of enum
      */
-    static QString mapField(Field field);
+    static constexpr QLatin1StringView mapField(Field field);
 
     /**
      * @brief Cleanup typical decorations from strings as found in journald databases
@@ -94,6 +124,23 @@ public:
      * @return cleaned string
      */
     static QString cleanupString(const QString &string);
+
+    static constexpr QLatin1String ID_MESSAGE{"MESSAGE"};
+    static constexpr QLatin1String ID_MESSAGE_ID{"MESSAGE_ID"};
+    static constexpr QLatin1String ID_PRIORITY{"PRIORITY"};
+    static constexpr QLatin1String ID_CODE_FILE{"CODE_FILE"};
+    static constexpr QLatin1String ID_CODE_LINE{"CODE_LINE"};
+    static constexpr QLatin1String ID_CODE_FUNC{"CODE_FUNC"};
+    static constexpr QLatin1String ID__BOOT_ID{"_BOOT_ID"};
+    static constexpr QLatin1String ID__EXE{"_EXE"};
+    static constexpr QLatin1String ID__SYSTEMD_CGROUP{"_SYSTEMD_CGROUP"};
+    static constexpr QLatin1String ID__SYSTEMD_SLICE{"_SYSTEMD_SLICE"};
+    static constexpr QLatin1String ID__SYSTEMD_UNIT{"_SYSTEMD_UNIT"};
+    static constexpr QLatin1String ID__SYSTEMD_USER_UNIT{"_SYSTEMD_USER_UNIT"};
+    static constexpr QLatin1String ID__SYSTEMD_USER_SLICE{"_SYSTEMD_USER_SLICE"};
+    static constexpr QLatin1String ID__SYSTEMD_SESSION{"_SYSTEMD_SESSION"};
+    static constexpr QLatin1String ID__SYSTEMD_OWNER_UID{"_SYSTEMD_OWNER_UID"};
+    static constexpr QLatin1String ID__TRANSPORT{"_TRANSPORT"};
 };
 
 QDebug operator<<(QDebug debug, const JournaldHelper::BootInfo &bootInfo);

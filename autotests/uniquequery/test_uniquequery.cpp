@@ -70,6 +70,11 @@ void TestUniqueQuery::systemdUnits()
     QVERIFY(values.contains("systemd-journald.service"));
 }
 
+void TestUniqueQuery::systemdUnitsPerBoot()
+{
+    // JournaldHelper::queryUnique(sd_journal *journal, QLatin1StringView bootId, Field field)
+}
+
 QTEST_GUILESS_MAIN(TestUniqueQuery);
 
 #include "moc_test_uniquequery.cpp"

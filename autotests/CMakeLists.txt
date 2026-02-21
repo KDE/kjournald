@@ -12,6 +12,7 @@ add_custom_target(extract_testdata
 )
 
 add_subdirectory(containertesthelper)
+add_subdirectory(journaldhelper)
 add_subdirectory(localjournal)
 add_subdirectory(uniquequery)
 add_subdirectory(viewmodel)
