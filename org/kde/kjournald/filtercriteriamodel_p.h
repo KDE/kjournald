@@ -60,6 +60,7 @@ public:
     QStringList mUniqueServiceUnitCache; //!< this is used to deduplicate grouped services
     std::shared_ptr<SelectionEntry> mRootItem;
     std::optional<quint8> mPriorityLevel;
+    std::optional<QString> mBootFilter;
     bool mGroupTemplatedSystemdUnits{true};
 
     /**

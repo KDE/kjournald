@@ -1,6 +1,6 @@
 /*
     SPDX-License-Identifier: LGPL-2.1-or-later OR MIT
-    SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
+    SPDX-FileCopyrightText: 2021-2026 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 */
 
 pragma ComponentBehavior: Bound
@@ -38,7 +38,9 @@ StatefulApp.StatefulWindow {
     Binding {
         root.filterModel.journalProvider: DatabaseProvider.journalProvider
     }
-
+    Binding {
+        root.filterModel.bootFilter: bootIdComboBox.currentValue
+    }
     Binding {
         root.filterModel.enableSystemdUnitTemplateGrouping: BrowserApplication.serviceGrouping === BrowserApplication.ServiceGrouping.GROUP_SERVICE_TEMPLATES
     }

@@ -1,6 +1,6 @@
 /*
     SPDX-License-Identifier: LGPL-2.1-or-later OR MIT
-    SPDX-FileCopyrightText: 2021-2025 Andreas Cord-Landwehr <cordlandwehr@kde.org>
+    SPDX-FileCopyrightText: 2021-2026 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 */
 
 #include "filtercriteriamodel.h"
@@ -132,6 +132,14 @@ FilterCriteriaModelPrivate::~FilterCriteriaModelPrivate() = default;
 void FilterCriteriaModelPrivate::rebuildModel()
 {
     qCDebug(KJOURNALDLIB_GENERAL) << "Rebuilding filter criteria model";
+    QMap<JournaldHelper::Field, QStringList> uniqueEntries;
+    if (mJournal) {
+        uniqueEntries =
+            JournaldHelper::queryUnique(mJournal->get(),
+                                        mBootFilter.value_or(QString()),
+                                        {JournaldHelper::Field::_SYSTEMD_UNIT, JournaldHelper::Field::_SYSTEMD_USER_UNIT, JournaldHelper::Field::_EXE});
+    }
+
     mRootItem = std::make_unique<SelectionEntry>();
     mUniqueServiceUnitCache.clear();
     {
@@ -177,7 +185,7 @@ void FilterCriteriaModelPrivate::rebuildModel()
                                                        mRootItem);
         mRootItem->appendChild(parent);
         if (mJournal) {
-            QStringList units = JournaldHelper::queryUnique(mJournal->get(), JournaldHelper::Field::_SYSTEMD_USER_UNIT);
+            QStringList units = uniqueEntries.value(JournaldHelper::Field::_SYSTEMD_USER_UNIT);
             mUniqueServiceUnitCache.append(units);
 
             if (mGroupTemplatedSystemdUnits) {
@@ -224,7 +232,7 @@ void FilterCriteriaModelPrivate::rebuildModel()
                                                        mRootItem);
         mRootItem->appendChild(parent);
         if (mJournal) {
-            QStringList units = JournaldHelper::queryUnique(mJournal->get(), JournaldHelper::Field::_SYSTEMD_UNIT);
+            QStringList units = uniqueEntries.value(JournaldHelper::Field::_SYSTEMD_UNIT);
             mUniqueServiceUnitCache.append(units);
 
             if (mGroupTemplatedSystemdUnits) {
@@ -271,7 +279,7 @@ void FilterCriteriaModelPrivate::rebuildModel()
                                                        mRootItem);
         mRootItem->appendChild(parent);
         if (mJournal) {
-            QVector<QString> exes = JournaldHelper::queryUnique(mJournal->get(), JournaldHelper::Field::_EXE);
+            QStringList exes = uniqueEntries.value(JournaldHelper::Field::_EXE);
             std::sort(std::begin(exes), std::end(exes), [](const QString &a, const QString &b) {
                 return QString::compare(a, b, Qt::CaseInsensitive) <= 0;
             });
@@ -325,6 +333,33 @@ QHash<int, QByteArray> FilterCriteriaModel::roleNames() const
 int FilterCriteriaModel::priorityFilter() const
 {
     return static_cast<qint8>(d->mPriorityLevel.value_or(-1));
+}
+
+QString FilterCriteriaModel::bootFilter() const
+{
+    return d->mBootFilter.value_or(QString());
+}
+
+void FilterCriteriaModel::setBootFilter(const QString &filter)
+{
+    if (d->mBootFilter.value_or(QString()) != filter) {
+        d->mBootFilter = filter;
+        beginResetModel();
+        d->rebuildModel();
+        endResetModel();
+        Q_EMIT bootFilterChanged(filter);
+    }
+}
+
+void FilterCriteriaModel::resetBootFilter()
+{
+    if (d->mBootFilter.has_value()) {
+        d->mBootFilter.reset();
+        beginResetModel();
+        d->rebuildModel();
+        endResetModel();
+        Q_EMIT bootFilterChanged(QString());
+    }
 }
 
 QStringList FilterCriteriaModel::systemdUserUnitFilter() const

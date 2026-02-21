@@ -32,6 +32,10 @@ class KJOURNALD_EXPORT FilterCriteriaModel : public QAbstractItemModel
     Q_OBJECT
     Q_PROPERTY(IJournalProvider *journalProvider READ journalProvider WRITE setJournalProvider NOTIFY journalProviderChanged FINAL)
     /**
+     * if set, this filter will restrict criteria to only those available in the given boot
+     */
+    Q_PROPERTY(QString bootFilter READ bootFilter WRITE setBootFilter RESET resetBootFilter NOTIFY bootFilterChanged FINAL)
+    /**
      * Filter for message priorities
      */
     Q_PROPERTY(int priorityFilter READ priorityFilter NOTIFY priorityFilterChanged FINAL)
@@ -100,6 +104,10 @@ public:
     void setJournalProvider(IJournalProvider *provider);
 
     IJournalProvider *journalProvider() const;
+
+    QString bootFilter() const;
+    void setBootFilter(const QString &filter);
+    void resetBootFilter();
 
     /**
      * @return the currently selected priority threshold for displayed log entries
@@ -179,6 +187,7 @@ public:
 
 Q_SIGNALS:
     void priorityFilterChanged(int priority);
+    void bootFilterChanged(QString filter);
     void systemdUserUnitFilterChanged();
     void systemdSystemUnitFilterChanged();
     void exeFilterChanged();
