@@ -116,7 +116,7 @@ public:
      * @param field the field enum for which the textual repesentation is requested
      * @return string representation of enum
      */
-    static constexpr QLatin1StringView mapField(Field field);
+    static QLatin1StringView mapField(JournaldHelper::Field field);
 
     /**
      * @brief Cleanup typical decorations from strings as found in journald databases

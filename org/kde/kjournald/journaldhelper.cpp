@@ -154,7 +154,7 @@ QMap<JournaldHelper::Field, QStringList> JournaldHelper::queryUnique(sd_journal 
     return entryMap;
 }
 
-constexpr QLatin1StringView JournaldHelper::mapField(Field field)
+QLatin1StringView JournaldHelper::mapField(JournaldHelper::Field field)
 {
     switch (field) {
     case Field::MESSAGE:
@@ -190,6 +190,7 @@ constexpr QLatin1StringView JournaldHelper::mapField(Field field)
     case Field::_TRANSPORT:
         return ID__TRANSPORT;
     }
+    return QLatin1StringView{};
 }
 
 QString JournaldHelper::cleanupString(const QString &string)
