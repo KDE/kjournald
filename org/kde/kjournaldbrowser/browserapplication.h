@@ -26,27 +26,27 @@ public:
         BROWSE, //!< interaction with log view leads to browsing
         SELECT, //!< interaction with log view leads to text selection
     };
-    Q_ENUM(ViewMode);
+    Q_ENUM(ViewMode)
 
     enum class LogViewMode {
         ALL_LOGS, //!< display all logs
         ONLY_USER, //!< display only user logs
         ONLY_SYSTEM, //!< display only system logs
     };
-    Q_ENUM(LogViewMode);
+    Q_ENUM(LogViewMode)
 
     enum class TimeDisplay : uint8_t {
         LOCALTIME, //!< display time as local time
         UTC, //!< display time as UTC time
         MONOTONIC_TIMESTAMP //!< display monotonic timestamp
     };
-    Q_ENUM(TimeDisplay);
+    Q_ENUM(TimeDisplay)
 
     enum class FilterCriterium : uint8_t {
         SYSTEMD_UNIT, //!< filter by systemd unit to which the log belongs
         EXECUTABLE, //!< filter by executable name to which the log belogs
     };
-    Q_ENUM(FilterCriterium);
+    Q_ENUM(FilterCriterium)
 
     enum class ServiceGrouping : uint8_t {
         GROUP_SERVICE_TEMPLATES, //!< display templated service instances by template name
