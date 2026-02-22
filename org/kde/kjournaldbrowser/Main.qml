@@ -44,6 +44,12 @@ StatefulApp.StatefulWindow {
     Binding {
         root.filterModel.enableSystemdUnitTemplateGrouping: BrowserApplication.serviceGrouping === BrowserApplication.ServiceGrouping.GROUP_SERVICE_TEMPLATES
     }
+    Connections {
+        target: root.filterModel
+        function onPriorityFilterUserChanged(priorityIndex){
+            BrowserApplication.logPriority = priorityIndex
+        }
+    }
 
     Binding {
         target: DatabaseProvider

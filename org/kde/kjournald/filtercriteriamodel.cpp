@@ -14,8 +14,6 @@
 #include <QString>
 #include <memory>
 
-constexpr quint8 sDefaultPriorityLevel{5};
-
 QString FilterCriteriaModelPrivate::mapPriorityToString(int priority)
 {
     switch (priority) {
@@ -168,14 +166,17 @@ void FilterCriteriaModelPrivate::rebuildModel()
                 ->appendChild(std::move(std::make_unique<SelectionEntry>(mapPriorityToString(i),
                                                                          QString::number(i),
                                                                          FilterCriteriaModel::Category::PRIORITY,
-                                                                         i == sDefaultPriorityLevel ? true : false,
+                                                                         mPriorityLevel.has_value() && i == mPriorityLevel.value() ? true : false,
                                                                          parent)));
+            // magic number 8 is "unset"
         }
         // add "no filter" option at end
         mRootItem->child(FilterCriteriaModel::Category::PRIORITY)
-            ->appendChild(std::move(
-                std::make_unique<SelectionEntry>(mapPriorityToString(-1), QString::number(-1), FilterCriteriaModel::Category::PRIORITY, false, parent)));
-        mPriorityLevel = sDefaultPriorityLevel;
+            ->appendChild(std::move(std::make_unique<SelectionEntry>(mapPriorityToString(-1),
+                                                                     QString::number(-1),
+                                                                     FilterCriteriaModel::Category::PRIORITY,
+                                                                     !mPriorityLevel.has_value(),
+                                                                     parent)));
     }
     {
         auto parent = std::make_shared<SelectionEntry>(i18nc("Section title for systemd user unit", "User Unit"),
@@ -330,9 +331,14 @@ QHash<int, QByteArray> FilterCriteriaModel::roleNames() const
     return roles;
 }
 
-int FilterCriteriaModel::priorityFilter() const
+qint8 FilterCriteriaModel::priorityFilter() const
 {
     return static_cast<qint8>(d->mPriorityLevel.value_or(-1));
+}
+
+void FilterCriteriaModel::setInitialPriorityFilter(qint8 priorityIndex)
+{
+    d->mPriorityLevel = priorityIndex;
 }
 
 QString FilterCriteriaModel::bootFilter() const
@@ -450,8 +456,9 @@ bool FilterCriteriaModel::isKernelFilterEnabled() const
 
 QModelIndex FilterCriteriaModel::index(int row, int column, const QModelIndex &parent) const
 {
-    if (!hasIndex(row, column, parent))
+    if (!hasIndex(row, column, parent)) {
         return QModelIndex();
+    }
 
     SelectionEntry *parentItem;
 
@@ -550,6 +557,7 @@ bool FilterCriteriaModel::setData(const QModelIndex &index, const QVariant &valu
         }
         qCDebug(KJOURNALDLIB_GENERAL) << "set priority level to:" << static_cast<qint8>(d->mPriorityLevel.value_or(-1));
         Q_EMIT priorityFilterChanged(index.row());
+        Q_EMIT priorityFilterUserChanged(index.row());
     } else if (result && category == FilterCriteriaModel::Category::SYSTEMD_USER_UNIT) {
         // for checkable entries update parent's selected state
         if (value.toBool() == true) {

@@ -3,6 +3,7 @@
     SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 */
 
+#include "browserapplication.h"
 #include "filtercriteriamodel.h"
 #include "kjournald_version.h"
 #include <KAboutData>
@@ -55,6 +56,12 @@ int main(int argc, char *argv[])
     KAboutData::setApplicationData(aboutData);
 
     FilterCriteriaModel filterCriteriaModel;
+    {
+        QSettings settings;
+        if (settings.contains(BrowserApplication::ID_logPriority)) {
+            filterCriteriaModel.setInitialPriorityFilter(settings.value(BrowserApplication::ID_logPriority).toInt());
+        }
+    }
 
     QCommandLineParser parser;
     parser.setApplicationDescription(i18n("Journald Log Viewer"));

@@ -59,7 +59,7 @@ public:
     std::unique_ptr<SdJournal> mJournal;
     QStringList mUniqueServiceUnitCache; //!< this is used to deduplicate grouped services
     std::shared_ptr<SelectionEntry> mRootItem;
-    std::optional<quint8> mPriorityLevel;
+    std::optional<quint8> mPriorityLevel{5}; //!< init priority level with Info
     std::optional<QString> mBootFilter;
     bool mGroupTemplatedSystemdUnits{true};
 

@@ -20,6 +20,7 @@ class BrowserApplication : public AbstractKirigamiApplication
     Q_PROPERTY(BrowserApplication::ViewMode viewMode READ viewMode WRITE setViewMode NOTIFY viewModeChanged FINAL)
     Q_PROPERTY(BrowserApplication::LogViewMode logViewMode READ logViewMode WRITE setLogViewMode NOTIFY logViewModeChanged FINAL)
     Q_PROPERTY(BrowserApplication::ServiceGrouping serviceGrouping READ serviceGrouping WRITE setServiceGrouping NOTIFY serviceGroupingChanged FINAL)
+    Q_PROPERTY(quint8 logPriority READ logPriority WRITE setLogPriority NOTIFY logPriorityChanged FINAL)
 
 public:
     enum class ViewMode {
@@ -54,6 +55,13 @@ public:
     };
     Q_ENUM(ServiceGrouping)
 
+    static constexpr QLatin1StringView ID_timeDisplayFormat{"browser/timedisplay"};
+    static constexpr QLatin1StringView ID_filterCriterium{"browser/filtercriterium"};
+    static constexpr QLatin1StringView ID_serviceGrouping{"browser/servicegrouping"};
+    static constexpr QLatin1StringView ID_viewMode{"browser/viewmode"};
+    static constexpr QLatin1StringView ID_logViewMode{"browser/logviewmode"};
+    static constexpr QLatin1StringView ID_logPriority{"browser/priority"};
+
     explicit BrowserApplication(QObject *parent = nullptr);
     ~BrowserApplication() override;
 
@@ -77,6 +85,10 @@ public:
 
     ServiceGrouping serviceGrouping() const;
 
+    void setLogPriority(qint8 priority);
+
+    qint8 logPriority() const;
+
 protected:
     void setupActions() override;
 
@@ -86,6 +98,7 @@ Q_SIGNALS:
     void viewModeChanged(BrowserApplication::ViewMode mode);
     void logViewModeChanged(BrowserApplication::LogViewMode mode);
     void serviceGroupingChanged(BrowserApplication::ServiceGrouping mode);
+    void logPriorityChanged(quint32 priority);
 
 private:
     TimeDisplay mTimeDisplayFormat{TimeDisplay::UTC};
@@ -93,13 +106,8 @@ private:
     ViewMode mViewMode{ViewMode::BROWSE};
     LogViewMode mLogViewMode{LogViewMode::ALL_LOGS};
     ServiceGrouping mServiceGrouping{ServiceGrouping::GROUP_SERVICE_TEMPLATES};
+    qint32 mLogPriority{-1};
     QSettings mSettings;
-
-    static constexpr QLatin1StringView ID_timeDisplayFormat{"browser/timedisplay"};
-    static constexpr QLatin1StringView ID_filterCriterium{"browser/filtercriterium"};
-    static constexpr QLatin1StringView ID_serviceGrouping{"browser/servicegrouping"};
-    static constexpr QLatin1StringView ID_viewMode{"browser/viewmode"};
-    static constexpr QLatin1StringView ID_logViewMode{"browser/logviewmode"};
 };
 
 #endif // BROWSERAPPLICATION_H

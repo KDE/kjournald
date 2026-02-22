@@ -38,7 +38,7 @@ class KJOURNALD_EXPORT FilterCriteriaModel : public QAbstractItemModel
     /**
      * Filter for message priorities
      */
-    Q_PROPERTY(int priorityFilter READ priorityFilter NOTIFY priorityFilterChanged FINAL)
+    Q_PROPERTY(qint8 priorityFilter READ priorityFilter NOTIFY priorityFilterChanged FINAL)
     /**
      * Filter list for systemd user units
      **/
@@ -112,7 +112,14 @@ public:
     /**
      * @return the currently selected priority threshold for displayed log entries
      */
-    int priorityFilter() const;
+    qint8 priorityFilter() const;
+
+    /**
+     * set the initial priority filter to @p priority
+     *
+     * @note this method must be called before building the model
+     */
+    void setInitialPriorityFilter(qint8 priority);
 
     /**
      * @return the list of enabled user units
@@ -186,7 +193,8 @@ public:
     QVector<std::pair<QString, bool>> entries(FilterCriteriaModel::Category category) const;
 
 Q_SIGNALS:
-    void priorityFilterChanged(int priority);
+    void priorityFilterChanged(qint8 priorityIndex);
+    void priorityFilterUserChanged(qint8 priorityIndex);
     void bootFilterChanged(QString filter);
     void systemdUserUnitFilterChanged();
     void systemdSystemUnitFilterChanged();
