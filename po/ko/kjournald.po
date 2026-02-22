@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-16 00:50+0000\n"
+"POT-Creation-Date: 2026-02-22 00:49+0000\n"
 "PO-Revision-Date: 2026-02-04 00:22+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -126,25 +126,25 @@ msgctxt "Radio box option, log priority value"
 msgid "No Filter"
 msgstr "필터 없음"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:138
+#: org/kde/kjournald/filtercriteriamodel.cpp:146
 #, kde-format
 msgctxt "Section title for log message source"
 msgid "Transport"
 msgstr "전송"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:145
+#: org/kde/kjournald/filtercriteriamodel.cpp:153
 #, kde-format
 msgctxt "Checkbox option for kernel log messages"
 msgid "Kernel"
 msgstr "커널"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:152
+#: org/kde/kjournald/filtercriteriamodel.cpp:160
 #, kde-format
 msgctxt "Section title for log message priority"
 msgid "Priority"
 msgstr "우선 순위"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:173
+#: org/kde/kjournald/filtercriteriamodel.cpp:181
 #, fuzzy, kde-format
 #| msgctxt "@item:inmenu"
 #| msgid "Systemd Unit"
@@ -152,7 +152,7 @@ msgctxt "Section title for systemd user unit"
 msgid "User Unit"
 msgstr "Systemd 유닛"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:220
+#: org/kde/kjournald/filtercriteriamodel.cpp:228
 #, fuzzy, kde-format
 #| msgctxt "@item:inmenu"
 #| msgid "Systemd Unit"
@@ -160,7 +160,7 @@ msgctxt "Section title for systemd sytem unit"
 msgid "System Unit"
 msgstr "Systemd 유닛"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:267
+#: org/kde/kjournald/filtercriteriamodel.cpp:275
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"
@@ -343,61 +343,61 @@ msgctxt "@label"
 msgid "Kernel"
 msgstr "커널"
 
-#: org/kde/kjournaldbrowser/Main.qml:92
+#: org/kde/kjournaldbrowser/Main.qml:94
 #, kde-format
 msgctxt "@label"
 msgid "Boot:"
 msgstr "부트:"
 
-#: org/kde/kjournaldbrowser/Main.qml:204
+#: org/kde/kjournaldbrowser/Main.qml:206
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr "일치 시 대소문자 구분 여부 전환"
 
-#: org/kde/kjournaldbrowser/Main.qml:246
+#: org/kde/kjournaldbrowser/Main.qml:248
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "탐색 모드로 전환"
 
-#: org/kde/kjournaldbrowser/Main.qml:247
+#: org/kde/kjournaldbrowser/Main.qml:249
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "선택 모드로 전환"
 
-#: org/kde/kjournaldbrowser/Main.qml:259
+#: org/kde/kjournaldbrowser/Main.qml:261
 #, kde-format
 msgctxt "@title"
 msgid "Select journal folder"
 msgstr "저널 폴더 선택"
 
-#: org/kde/kjournaldbrowser/Main.qml:268
+#: org/kde/kjournaldbrowser/Main.qml:270
 #, kde-format
 msgctxt "@title"
 msgid "Select journal file"
 msgstr "저널 파일 선택"
 
-#: org/kde/kjournaldbrowser/Main.qml:269
+#: org/kde/kjournaldbrowser/Main.qml:271
 #, kde-format
 msgctxt "@item"
 msgid "Journal files (*.journal)"
 msgstr "저널 파일 (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:269
+#: org/kde/kjournaldbrowser/Main.qml:271
 #, kde-format
 msgctxt "@item"
 msgid "All files (*)"
 msgstr "모든 파일 (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:339
+#: org/kde/kjournaldbrowser/Main.qml:341
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
 msgstr "선택한 위치에서 저널 데이터베이스를 불러올 수 없음: "
 
-#: org/kde/kjournaldbrowser/Main.qml:340
+#: org/kde/kjournaldbrowser/Main.qml:342
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -407,7 +407,7 @@ msgstr ""
 "선택한 디렉터리의 하위 디렉터리에서도 '.journal'로 끝나는 파일이 있는지 확인"
 "합니다."
 
-#: org/kde/kjournaldbrowser/Main.qml:347
+#: org/kde/kjournaldbrowser/Main.qml:349
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."

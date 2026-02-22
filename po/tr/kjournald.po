@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-16 00:50+0000\n"
+"POT-Creation-Date: 2026-02-22 00:49+0000\n"
 "PO-Revision-Date: 2026-02-16 16:38+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-i18n-doc@kde.org>\n"
@@ -128,37 +128,37 @@ msgctxt "Radio box option, log priority value"
 msgid "No Filter"
 msgstr "Süzgeç Yok"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:138
+#: org/kde/kjournald/filtercriteriamodel.cpp:146
 #, kde-format
 msgctxt "Section title for log message source"
 msgid "Transport"
 msgstr "Taşıma"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:145
+#: org/kde/kjournald/filtercriteriamodel.cpp:153
 #, kde-format
 msgctxt "Checkbox option for kernel log messages"
 msgid "Kernel"
 msgstr "Çekirdek"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:152
+#: org/kde/kjournald/filtercriteriamodel.cpp:160
 #, kde-format
 msgctxt "Section title for log message priority"
 msgid "Priority"
 msgstr "Öncelik"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:173
+#: org/kde/kjournald/filtercriteriamodel.cpp:181
 #, kde-format
 msgctxt "Section title for systemd user unit"
 msgid "User Unit"
 msgstr "Kullanıcı Birimi"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:220
+#: org/kde/kjournald/filtercriteriamodel.cpp:228
 #, kde-format
 msgctxt "Section title for systemd sytem unit"
 msgid "System Unit"
 msgstr "System Birimi"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:267
+#: org/kde/kjournald/filtercriteriamodel.cpp:275
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"
@@ -339,61 +339,61 @@ msgctxt "@label"
 msgid "Kernel"
 msgstr "Çekirdek"
 
-#: org/kde/kjournaldbrowser/Main.qml:92
+#: org/kde/kjournaldbrowser/Main.qml:94
 #, kde-format
 msgctxt "@label"
 msgid "Boot:"
 msgstr "Önyükle:"
 
-#: org/kde/kjournaldbrowser/Main.qml:204
+#: org/kde/kjournaldbrowser/Main.qml:206
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr "BÜYÜK/küçük harf duyarlı eşleştirme arasında geçiş yap"
 
-#: org/kde/kjournaldbrowser/Main.qml:246
+#: org/kde/kjournaldbrowser/Main.qml:248
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "Tarama kipine geç"
 
-#: org/kde/kjournaldbrowser/Main.qml:247
+#: org/kde/kjournaldbrowser/Main.qml:249
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "Seçim kipine geç"
 
-#: org/kde/kjournaldbrowser/Main.qml:259
+#: org/kde/kjournaldbrowser/Main.qml:261
 #, kde-format
 msgctxt "@title"
 msgid "Select journal folder"
 msgstr "Günce Klasörü Seç"
 
-#: org/kde/kjournaldbrowser/Main.qml:268
+#: org/kde/kjournaldbrowser/Main.qml:270
 #, kde-format
 msgctxt "@title"
 msgid "Select journal file"
 msgstr "Günce Dosyası Seç"
 
-#: org/kde/kjournaldbrowser/Main.qml:269
+#: org/kde/kjournaldbrowser/Main.qml:271
 #, kde-format
 msgctxt "@item"
 msgid "Journal files (*.journal)"
 msgstr "Günce dosyaları (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:269
+#: org/kde/kjournaldbrowser/Main.qml:271
 #, kde-format
 msgctxt "@item"
 msgid "All files (*)"
 msgstr "Tüm dosyalar (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:339
+#: org/kde/kjournaldbrowser/Main.qml:341
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
 msgstr "Seçili konumdan günce veri tabanı yüklenemiyor: "
 
-#: org/kde/kjournaldbrowser/Main.qml:340
+#: org/kde/kjournaldbrowser/Main.qml:342
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -403,7 +403,7 @@ msgstr ""
 "Seçili dizinin alt dizinlerinde “.journal” ile biten dosyaların olup "
 "olmadığını denetleyin."
 
-#: org/kde/kjournaldbrowser/Main.qml:347
+#: org/kde/kjournaldbrowser/Main.qml:349
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."

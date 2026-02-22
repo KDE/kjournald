@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-16 00:50+0000\n"
+"POT-Creation-Date: 2026-02-22 00:49+0000\n"
 "PO-Revision-Date: 2026-02-16 10:35+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -131,37 +131,37 @@ msgctxt "Radio box option, log priority value"
 msgid "No Filter"
 msgstr "Sense filtre"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:138
+#: org/kde/kjournald/filtercriteriamodel.cpp:146
 #, kde-format
 msgctxt "Section title for log message source"
 msgid "Transport"
 msgstr "Transport"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:145
+#: org/kde/kjournald/filtercriteriamodel.cpp:153
 #, kde-format
 msgctxt "Checkbox option for kernel log messages"
 msgid "Kernel"
 msgstr "Nucli"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:152
+#: org/kde/kjournald/filtercriteriamodel.cpp:160
 #, kde-format
 msgctxt "Section title for log message priority"
 msgid "Priority"
 msgstr "Prioritat"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:173
+#: org/kde/kjournald/filtercriteriamodel.cpp:181
 #, kde-format
 msgctxt "Section title for systemd user unit"
 msgid "User Unit"
 msgstr "Unitat d'usuari"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:220
+#: org/kde/kjournald/filtercriteriamodel.cpp:228
 #, kde-format
 msgctxt "Section title for systemd sytem unit"
 msgid "System Unit"
 msgstr "Unitat del sistema"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:267
+#: org/kde/kjournald/filtercriteriamodel.cpp:275
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"
@@ -342,56 +342,56 @@ msgctxt "@label"
 msgid "Kernel"
 msgstr "Nucli"
 
-#: org/kde/kjournaldbrowser/Main.qml:92
+#: org/kde/kjournaldbrowser/Main.qml:94
 #, kde-format
 msgctxt "@label"
 msgid "Boot:"
 msgstr "Arrencada:"
 
-#: org/kde/kjournaldbrowser/Main.qml:204
+#: org/kde/kjournaldbrowser/Main.qml:206
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr ""
 "Commuta la coincidència distingint entre majúscules i minúscules i sense"
 
-#: org/kde/kjournaldbrowser/Main.qml:246
+#: org/kde/kjournaldbrowser/Main.qml:248
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "Canvia al mode de navegació"
 
-#: org/kde/kjournaldbrowser/Main.qml:247
+#: org/kde/kjournaldbrowser/Main.qml:249
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "Canvia al mode de selecció"
 
-#: org/kde/kjournaldbrowser/Main.qml:259
+#: org/kde/kjournaldbrowser/Main.qml:261
 #, kde-format
 msgctxt "@title"
 msgid "Select journal folder"
 msgstr "Seleccioneu la carpeta de diari"
 
-#: org/kde/kjournaldbrowser/Main.qml:268
+#: org/kde/kjournaldbrowser/Main.qml:270
 #, kde-format
 msgctxt "@title"
 msgid "Select journal file"
 msgstr "Seleccioneu el fitxer de diari"
 
-#: org/kde/kjournaldbrowser/Main.qml:269
+#: org/kde/kjournaldbrowser/Main.qml:271
 #, kde-format
 msgctxt "@item"
 msgid "Journal files (*.journal)"
 msgstr "Fitxers de diari (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:269
+#: org/kde/kjournaldbrowser/Main.qml:271
 #, kde-format
 msgctxt "@item"
 msgid "All files (*)"
 msgstr "Tots els fitxers (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:339
+#: org/kde/kjournaldbrowser/Main.qml:341
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
@@ -399,7 +399,7 @@ msgstr ""
 "No s'ha pogut carregar la base de dades del diari des de la ubicació "
 "seleccionada: "
 
-#: org/kde/kjournaldbrowser/Main.qml:340
+#: org/kde/kjournaldbrowser/Main.qml:342
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -409,7 +409,7 @@ msgstr ""
 "Comprova els subdirectoris del directori seleccionat que continguin fitxers "
 "que acabin amb «.journal»."
 
-#: org/kde/kjournaldbrowser/Main.qml:347
+#: org/kde/kjournaldbrowser/Main.qml:349
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."

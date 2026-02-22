@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-16 00:50+0000\n"
+"POT-Creation-Date: 2026-02-22 00:49+0000\n"
 "PO-Revision-Date: 2025-10-08 23:40+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
@@ -129,39 +129,39 @@ msgctxt "Radio box option, log priority value"
 msgid "No Filter"
 msgstr "Engin sía"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:138
+#: org/kde/kjournald/filtercriteriamodel.cpp:146
 #, kde-format
 msgctxt "Section title for log message source"
 msgid "Transport"
 msgstr "Flutningur"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:145
+#: org/kde/kjournald/filtercriteriamodel.cpp:153
 #, kde-format
 msgctxt "Checkbox option for kernel log messages"
 msgid "Kernel"
 msgstr "Kjarni"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:152
+#: org/kde/kjournald/filtercriteriamodel.cpp:160
 #, kde-format
 msgctxt "Section title for log message priority"
 msgid "Priority"
 msgstr "Forgangur"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:173
+#: org/kde/kjournald/filtercriteriamodel.cpp:181
 #, fuzzy, kde-format
 #| msgid "Systemd Unit"
 msgctxt "Section title for systemd user unit"
 msgid "User Unit"
 msgstr "Systemd-eining"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:220
+#: org/kde/kjournald/filtercriteriamodel.cpp:228
 #, fuzzy, kde-format
 #| msgid "Systemd Unit"
 msgctxt "Section title for systemd sytem unit"
 msgid "System Unit"
 msgstr "Systemd-eining"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:267
+#: org/kde/kjournald/filtercriteriamodel.cpp:275
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"
@@ -363,66 +363,66 @@ msgctxt "@label"
 msgid "Kernel"
 msgstr "Kjarni"
 
-#: org/kde/kjournaldbrowser/Main.qml:92
+#: org/kde/kjournaldbrowser/Main.qml:94
 #, fuzzy, kde-format
 #| msgid "Boot:"
 msgctxt "@label"
 msgid "Boot:"
 msgstr "Ræsing:"
 
-#: org/kde/kjournaldbrowser/Main.qml:204
+#: org/kde/kjournaldbrowser/Main.qml:206
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr "Skipta á milli samsvörunar háð há-/lágstöfum og óháð há-/lágstöfum"
 
-#: org/kde/kjournaldbrowser/Main.qml:246
+#: org/kde/kjournaldbrowser/Main.qml:248
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "Skipta yfir í vafurham"
 
-#: org/kde/kjournaldbrowser/Main.qml:247
+#: org/kde/kjournaldbrowser/Main.qml:249
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "Skipta yfir í valham"
 
-#: org/kde/kjournaldbrowser/Main.qml:259
+#: org/kde/kjournaldbrowser/Main.qml:261
 #, fuzzy, kde-format
 #| msgid "Select journal folder"
 msgctxt "@title"
 msgid "Select journal folder"
 msgstr "Velja færsluskrármöppu"
 
-#: org/kde/kjournaldbrowser/Main.qml:268
+#: org/kde/kjournaldbrowser/Main.qml:270
 #, fuzzy, kde-format
 #| msgid "Select journal file"
 msgctxt "@title"
 msgid "Select journal file"
 msgstr "Velja færsluskrá"
 
-#: org/kde/kjournaldbrowser/Main.qml:269
+#: org/kde/kjournaldbrowser/Main.qml:271
 #, fuzzy, kde-format
 #| msgid "Journal files (*.journal)"
 msgctxt "@item"
 msgid "Journal files (*.journal)"
 msgstr "Færsluskrár (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:269
+#: org/kde/kjournaldbrowser/Main.qml:271
 #, fuzzy, kde-format
 #| msgid "All files (*)"
 msgctxt "@item"
 msgid "All files (*)"
 msgstr "Allar skrár (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:339
+#: org/kde/kjournaldbrowser/Main.qml:341
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:340
+#: org/kde/kjournaldbrowser/Main.qml:342
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -430,7 +430,7 @@ msgid ""
 "journal'."
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:347
+#: org/kde/kjournaldbrowser/Main.qml:349
 #, fuzzy, kde-format
 #| msgid "No log entries apply "
 msgctxt "@info:tooltip"

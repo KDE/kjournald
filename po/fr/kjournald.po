@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-16 00:50+0000\n"
+"POT-Creation-Date: 2026-02-22 00:49+0000\n"
 "PO-Revision-Date: 2026-02-20 17:36+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: \n"
@@ -125,37 +125,37 @@ msgctxt "Radio box option, log priority value"
 msgid "No Filter"
 msgstr "Aucun filtre"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:138
+#: org/kde/kjournald/filtercriteriamodel.cpp:146
 #, kde-format
 msgctxt "Section title for log message source"
 msgid "Transport"
 msgstr "Véhicule"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:145
+#: org/kde/kjournald/filtercriteriamodel.cpp:153
 #, kde-format
 msgctxt "Checkbox option for kernel log messages"
 msgid "Kernel"
 msgstr "Noyau"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:152
+#: org/kde/kjournald/filtercriteriamodel.cpp:160
 #, kde-format
 msgctxt "Section title for log message priority"
 msgid "Priority"
 msgstr "Priorité"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:173
+#: org/kde/kjournald/filtercriteriamodel.cpp:181
 #, kde-format
 msgctxt "Section title for systemd user unit"
 msgid "User Unit"
 msgstr "Unité utilisateur"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:220
+#: org/kde/kjournald/filtercriteriamodel.cpp:228
 #, kde-format
 msgctxt "Section title for systemd sytem unit"
 msgid "System Unit"
 msgstr "Unité système"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:267
+#: org/kde/kjournald/filtercriteriamodel.cpp:275
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"
@@ -336,55 +336,55 @@ msgctxt "@label"
 msgid "Kernel"
 msgstr "Noyau"
 
-#: org/kde/kjournaldbrowser/Main.qml:92
+#: org/kde/kjournaldbrowser/Main.qml:94
 #, kde-format
 msgctxt "@label"
 msgid "Boot:"
 msgstr "Démarrage :"
 
-#: org/kde/kjournaldbrowser/Main.qml:204
+#: org/kde/kjournaldbrowser/Main.qml:206
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr "Basculer entre une correspondance sensible et non sensible à la casse"
 
-#: org/kde/kjournaldbrowser/Main.qml:246
+#: org/kde/kjournaldbrowser/Main.qml:248
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "Basculer en mode « Navigation »"
 
-#: org/kde/kjournaldbrowser/Main.qml:247
+#: org/kde/kjournaldbrowser/Main.qml:249
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "Basculer en mode « Sélection »"
 
-#: org/kde/kjournaldbrowser/Main.qml:259
+#: org/kde/kjournaldbrowser/Main.qml:261
 #, kde-format
 msgctxt "@title"
 msgid "Select journal folder"
 msgstr "Sélectionner un dossier de journal"
 
-#: org/kde/kjournaldbrowser/Main.qml:268
+#: org/kde/kjournaldbrowser/Main.qml:270
 #, kde-format
 msgctxt "@title"
 msgid "Select journal file"
 msgstr "Sélectionner un fichier de journal"
 
-#: org/kde/kjournaldbrowser/Main.qml:269
+#: org/kde/kjournaldbrowser/Main.qml:271
 #, kde-format
 msgctxt "@item"
 msgid "Journal files (*.journal)"
 msgstr "Fichiers de journal (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:269
+#: org/kde/kjournaldbrowser/Main.qml:271
 #, kde-format
 msgctxt "@item"
 msgid "All files (*)"
 msgstr "Tous les fichiers (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:339
+#: org/kde/kjournaldbrowser/Main.qml:341
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
@@ -392,7 +392,7 @@ msgstr ""
 "Impossible de charger la base de données de journal à partir de "
 "l'emplacement sélectionné :"
 
-#: org/kde/kjournaldbrowser/Main.qml:340
+#: org/kde/kjournaldbrowser/Main.qml:342
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -402,7 +402,7 @@ msgstr ""
 "Vérifiez que les sous-dossiers du dossier sélectionné contiennent des "
 "fichiers avec l'extension « .journal »."
 
-#: org/kde/kjournaldbrowser/Main.qml:347
+#: org/kde/kjournaldbrowser/Main.qml:349
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."
