@@ -5,7 +5,7 @@
 
 #include "colorizer.h"
 #include <QMap>
-#include <QRandomGenerator>
+#include <string_view>
 
 struct LineColor {
     QColor foreground;
@@ -15,14 +15,14 @@ struct LineColor {
 QColor Colorizer::color(const QString &key, COLOR_TYPE type)
 {
     QColor color;
-    static QRandomGenerator sFixedSeedGenerator{1}; // used fixed seed to ensure that colors for same units never change
     static QMap<QString, LineColor> sUnitToColorMap;
 
     auto needle = sUnitToColorMap.constFind(key);
     if (needle != sUnitToColorMap.cend()) {
         color = type == COLOR_TYPE::FOREGROUND ? needle->foreground : needle->background;
     } else {
-        int hue = sFixedSeedGenerator.bounded(255);
+        // uniformly project value into size_t area, then map to [0,255]
+        quint32 hue = std::hash<std::string_view>{}(key.toStdString().c_str()) % 256;
         QColor foreground = QColor::fromHsl(hue, 220, 150);
         QColor background = QColor::fromHsl(hue, 200, 220);
         sUnitToColorMap[key] = {foreground, background};
