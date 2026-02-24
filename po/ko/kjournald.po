@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-22 00:49+0000\n"
+"POT-Creation-Date: 2026-02-24 00:49+0000\n"
 "PO-Revision-Date: 2026-02-04 00:22+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -17,25 +17,25 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Lokalize 25.08.1\n"
 
-#: browser/main.cpp:41
+#: browser/main.cpp:42
 #, kde-format
 msgctxt "@title Displayed program name"
 msgid "KJournald Browser"
 msgstr "KJournald 탐색기"
 
-#: browser/main.cpp:43
+#: browser/main.cpp:44
 #, kde-format
 msgctxt "@title KAboutData: short program description"
 msgid "Viewer for Journald logs"
 msgstr "journald 로그 뷰어"
 
-#: browser/main.cpp:45
+#: browser/main.cpp:46
 #, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2025 The KJournald Developers"
 msgstr "(c) 2021-2025 The KJournald Developers"
 
-#: browser/main.cpp:46
+#: browser/main.cpp:47
 #, kde-format
 msgctxt "@title Short program description"
 msgid ""
@@ -43,108 +43,108 @@ msgid ""
 "tool."
 msgstr "journald 로그 도구로 생성되는 journald 데이터베이스 뷰어입니다."
 
-#: browser/main.cpp:48
+#: browser/main.cpp:49
 #, kde-format
 msgctxt "@info:credit Developer name"
 msgid "Andreas Cord-Landwehr"
 msgstr "Andreas Cord-Landwehr"
 
-#: browser/main.cpp:49
+#: browser/main.cpp:50
 #, kde-format
 msgctxt "@info:credit Role"
 msgid "Original Author"
 msgstr "원 작성자"
 
-#: browser/main.cpp:51
+#: browser/main.cpp:52
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "박신조"
 
-#: browser/main.cpp:51
+#: browser/main.cpp:52
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde@peremen.name"
 
-#: browser/main.cpp:60
+#: browser/main.cpp:67
 #, kde-format
 msgid "Journald Log Viewer"
 msgstr "Journald 로그 뷰어"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:23
+#: org/kde/kjournald/filtercriteriamodel.cpp:21
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Emergency"
 msgstr "긴급"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:25
+#: org/kde/kjournald/filtercriteriamodel.cpp:23
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Alert"
 msgstr "알림"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:27
+#: org/kde/kjournald/filtercriteriamodel.cpp:25
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Critical"
 msgstr "치명적"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:29
+#: org/kde/kjournald/filtercriteriamodel.cpp:27
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Error"
 msgstr "오류"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:31
+#: org/kde/kjournald/filtercriteriamodel.cpp:29
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Warning"
 msgstr "경고"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:33
+#: org/kde/kjournald/filtercriteriamodel.cpp:31
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Notice"
 msgstr "공지"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:35
+#: org/kde/kjournald/filtercriteriamodel.cpp:33
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Info"
 msgstr "정보"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:37
+#: org/kde/kjournald/filtercriteriamodel.cpp:35
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Debug"
 msgstr "디버그"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:39
+#: org/kde/kjournald/filtercriteriamodel.cpp:37
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "No Filter"
 msgstr "필터 없음"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:146
+#: org/kde/kjournald/filtercriteriamodel.cpp:144
 #, kde-format
 msgctxt "Section title for log message source"
 msgid "Transport"
 msgstr "전송"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:153
+#: org/kde/kjournald/filtercriteriamodel.cpp:151
 #, kde-format
 msgctxt "Checkbox option for kernel log messages"
 msgid "Kernel"
 msgstr "커널"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:160
+#: org/kde/kjournald/filtercriteriamodel.cpp:158
 #, kde-format
 msgctxt "Section title for log message priority"
 msgid "Priority"
 msgstr "우선 순위"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:181
+#: org/kde/kjournald/filtercriteriamodel.cpp:182
 #, fuzzy, kde-format
 #| msgctxt "@item:inmenu"
 #| msgid "Systemd Unit"
@@ -152,7 +152,7 @@ msgctxt "Section title for systemd user unit"
 msgid "User Unit"
 msgstr "Systemd 유닛"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:228
+#: org/kde/kjournald/filtercriteriamodel.cpp:229
 #, fuzzy, kde-format
 #| msgctxt "@item:inmenu"
 #| msgid "Systemd Unit"
@@ -160,7 +160,7 @@ msgctxt "Section title for systemd sytem unit"
 msgid "System Unit"
 msgstr "Systemd 유닛"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:275
+#: org/kde/kjournald/filtercriteriamodel.cpp:276
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"
@@ -343,61 +343,61 @@ msgctxt "@label"
 msgid "Kernel"
 msgstr "커널"
 
-#: org/kde/kjournaldbrowser/Main.qml:94
+#: org/kde/kjournaldbrowser/Main.qml:100
 #, kde-format
 msgctxt "@label"
 msgid "Boot:"
 msgstr "부트:"
 
-#: org/kde/kjournaldbrowser/Main.qml:206
+#: org/kde/kjournaldbrowser/Main.qml:212
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr "일치 시 대소문자 구분 여부 전환"
 
-#: org/kde/kjournaldbrowser/Main.qml:248
+#: org/kde/kjournaldbrowser/Main.qml:254
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "탐색 모드로 전환"
 
-#: org/kde/kjournaldbrowser/Main.qml:249
+#: org/kde/kjournaldbrowser/Main.qml:255
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "선택 모드로 전환"
 
-#: org/kde/kjournaldbrowser/Main.qml:261
+#: org/kde/kjournaldbrowser/Main.qml:267
 #, kde-format
 msgctxt "@title"
 msgid "Select journal folder"
 msgstr "저널 폴더 선택"
 
-#: org/kde/kjournaldbrowser/Main.qml:270
+#: org/kde/kjournaldbrowser/Main.qml:276
 #, kde-format
 msgctxt "@title"
 msgid "Select journal file"
 msgstr "저널 파일 선택"
 
-#: org/kde/kjournaldbrowser/Main.qml:271
+#: org/kde/kjournaldbrowser/Main.qml:277
 #, kde-format
 msgctxt "@item"
 msgid "Journal files (*.journal)"
 msgstr "저널 파일 (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:271
+#: org/kde/kjournaldbrowser/Main.qml:277
 #, kde-format
 msgctxt "@item"
 msgid "All files (*)"
 msgstr "모든 파일 (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:341
+#: org/kde/kjournaldbrowser/Main.qml:347
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
 msgstr "선택한 위치에서 저널 데이터베이스를 불러올 수 없음: "
 
-#: org/kde/kjournaldbrowser/Main.qml:342
+#: org/kde/kjournaldbrowser/Main.qml:348
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -407,7 +407,7 @@ msgstr ""
 "선택한 디렉터리의 하위 디렉터리에서도 '.journal'로 끝나는 파일이 있는지 확인"
 "합니다."
 
-#: org/kde/kjournaldbrowser/Main.qml:349
+#: org/kde/kjournaldbrowser/Main.qml:355
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."

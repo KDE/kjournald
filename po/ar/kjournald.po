@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-22 00:49+0000\n"
+"POT-Creation-Date: 2026-02-24 00:49+0000\n"
 "PO-Revision-Date: 2026-02-18 17:59+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -18,25 +18,25 @@ msgstr ""
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
 "X-Generator: Lokalize 23.08.5\n"
 
-#: browser/main.cpp:41
+#: browser/main.cpp:42
 #, kde-format
 msgctxt "@title Displayed program name"
 msgid "KJournald Browser"
 msgstr "متصفح يوميات دي"
 
-#: browser/main.cpp:43
+#: browser/main.cpp:44
 #, kde-format
 msgctxt "@title KAboutData: short program description"
 msgid "Viewer for Journald logs"
 msgstr "عارض لسجلات يوميات دي"
 
-#: browser/main.cpp:45
+#: browser/main.cpp:46
 #, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2025 The KJournald Developers"
 msgstr "(c) 2021-2025  مطورو يوميات دي"
 
-#: browser/main.cpp:46
+#: browser/main.cpp:47
 #, kde-format
 msgctxt "@title Short program description"
 msgid ""
@@ -44,120 +44,120 @@ msgid ""
 "tool."
 msgstr "عارض لقواعد بيانات Journald، والتي أنشئت بواسطة أداة تسجيل Journald."
 
-#: browser/main.cpp:48
+#: browser/main.cpp:49
 #, kde-format
 msgctxt "@info:credit Developer name"
 msgid "Andreas Cord-Landwehr"
 msgstr "أندرياس كورد-لاندوير"
 
-#: browser/main.cpp:49
+#: browser/main.cpp:50
 #, kde-format
 msgctxt "@info:credit Role"
 msgid "Original Author"
 msgstr "المؤلف الأصلي"
 
-#: browser/main.cpp:51
+#: browser/main.cpp:52
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "زايد السعيدي"
 
-#: browser/main.cpp:51
+#: browser/main.cpp:52
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "zayed.alsaidi@gmail.com"
 
-#: browser/main.cpp:60
+#: browser/main.cpp:67
 #, kde-format
 msgid "Journald Log Viewer"
 msgstr "عارض سجل يوميات دي"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:23
+#: org/kde/kjournald/filtercriteriamodel.cpp:21
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Emergency"
 msgstr "الطّوارئ"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:25
+#: org/kde/kjournald/filtercriteriamodel.cpp:23
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Alert"
 msgstr "الإنذارات"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:27
+#: org/kde/kjournald/filtercriteriamodel.cpp:25
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Critical"
 msgstr "حرج"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:29
+#: org/kde/kjournald/filtercriteriamodel.cpp:27
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Error"
 msgstr "خطأ"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:31
+#: org/kde/kjournald/filtercriteriamodel.cpp:29
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Warning"
 msgstr "تحذير"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:33
+#: org/kde/kjournald/filtercriteriamodel.cpp:31
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Notice"
 msgstr "0 إخطار"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:35
+#: org/kde/kjournald/filtercriteriamodel.cpp:33
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Info"
 msgstr "معلومات"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:37
+#: org/kde/kjournald/filtercriteriamodel.cpp:35
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Debug"
 msgstr "تنقيح"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:39
+#: org/kde/kjournald/filtercriteriamodel.cpp:37
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "No Filter"
 msgstr "دون مرشّح"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:146
+#: org/kde/kjournald/filtercriteriamodel.cpp:144
 #, kde-format
 msgctxt "Section title for log message source"
 msgid "Transport"
 msgstr "الناقل"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:153
+#: org/kde/kjournald/filtercriteriamodel.cpp:151
 #, kde-format
 msgctxt "Checkbox option for kernel log messages"
 msgid "Kernel"
 msgstr "النواة"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:160
+#: org/kde/kjournald/filtercriteriamodel.cpp:158
 #, kde-format
 msgctxt "Section title for log message priority"
 msgid "Priority"
 msgstr "الأولويّة"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:181
+#: org/kde/kjournald/filtercriteriamodel.cpp:182
 #, kde-format
 msgctxt "Section title for systemd user unit"
 msgid "User Unit"
 msgstr "وحدة مستخدم"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:228
+#: org/kde/kjournald/filtercriteriamodel.cpp:229
 #, kde-format
 msgctxt "Section title for systemd sytem unit"
 msgid "System Unit"
 msgstr "وحدة نظام"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:275
+#: org/kde/kjournald/filtercriteriamodel.cpp:276
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"
@@ -338,61 +338,61 @@ msgctxt "@label"
 msgid "Kernel"
 msgstr "النواة"
 
-#: org/kde/kjournaldbrowser/Main.qml:94
+#: org/kde/kjournaldbrowser/Main.qml:100
 #, kde-format
 msgctxt "@label"
 msgid "Boot:"
 msgstr "الإقلاع:"
 
-#: org/kde/kjournaldbrowser/Main.qml:206
+#: org/kde/kjournaldbrowser/Main.qml:212
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr "التبديل بين المطابقة الحساسة لحالة الأحرف وغير الحساسة لحالة الأحرف"
 
-#: org/kde/kjournaldbrowser/Main.qml:248
+#: org/kde/kjournaldbrowser/Main.qml:254
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "بدّل إلى وضع التصفح"
 
-#: org/kde/kjournaldbrowser/Main.qml:249
+#: org/kde/kjournaldbrowser/Main.qml:255
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "بدّل إلى وضع التّحديد"
 
-#: org/kde/kjournaldbrowser/Main.qml:261
+#: org/kde/kjournaldbrowser/Main.qml:267
 #, kde-format
 msgctxt "@title"
 msgid "Select journal folder"
 msgstr "حدد مجلد اليومية"
 
-#: org/kde/kjournaldbrowser/Main.qml:270
+#: org/kde/kjournaldbrowser/Main.qml:276
 #, kde-format
 msgctxt "@title"
 msgid "Select journal file"
 msgstr "حدد ملف اليومية"
 
-#: org/kde/kjournaldbrowser/Main.qml:271
+#: org/kde/kjournaldbrowser/Main.qml:277
 #, kde-format
 msgctxt "@item"
 msgid "Journal files (*.journal)"
 msgstr "ملفات اليومية (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:271
+#: org/kde/kjournaldbrowser/Main.qml:277
 #, kde-format
 msgctxt "@item"
 msgid "All files (*)"
 msgstr "كلّ الملفّات (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:341
+#: org/kde/kjournaldbrowser/Main.qml:347
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
 msgstr "تعذر تحميل قاعدة بيانات اليوميات من الموقع المحدد: "
 
-#: org/kde/kjournaldbrowser/Main.qml:342
+#: org/kde/kjournaldbrowser/Main.qml:348
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -401,7 +401,7 @@ msgid ""
 msgstr ""
 "تحقق من مجلدات فرعية للمجلد المحدد لتحتوي على ملفات تنتهي بـ ”.journal“."
 
-#: org/kde/kjournaldbrowser/Main.qml:349
+#: org/kde/kjournaldbrowser/Main.qml:355
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."

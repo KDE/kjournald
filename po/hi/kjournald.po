@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-02-22 00:49+0000\n"
+"POT-Creation-Date: 2026-02-24 00:49+0000\n"
 "PO-Revision-Date: 2024-12-15 15:57+0530\n"
 "Last-Translator: Kali <EMAIL@ADDRESS>\n"
 "Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
@@ -17,25 +17,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
-#: browser/main.cpp:41
+#: browser/main.cpp:42
 #, kde-format
 msgctxt "@title Displayed program name"
 msgid "KJournald Browser"
 msgstr ""
 
-#: browser/main.cpp:43
+#: browser/main.cpp:44
 #, kde-format
 msgctxt "@title KAboutData: short program description"
 msgid "Viewer for Journald logs"
 msgstr ""
 
-#: browser/main.cpp:45
+#: browser/main.cpp:46
 #, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2025 The KJournald Developers"
 msgstr ""
 
-#: browser/main.cpp:46
+#: browser/main.cpp:47
 #, kde-format
 msgctxt "@title Short program description"
 msgid ""
@@ -43,120 +43,120 @@ msgid ""
 "tool."
 msgstr ""
 
-#: browser/main.cpp:48
+#: browser/main.cpp:49
 #, kde-format
 msgctxt "@info:credit Developer name"
 msgid "Andreas Cord-Landwehr"
 msgstr ""
 
-#: browser/main.cpp:49
+#: browser/main.cpp:50
 #, kde-format
 msgctxt "@info:credit Role"
 msgid "Original Author"
 msgstr ""
 
-#: browser/main.cpp:51
+#: browser/main.cpp:52
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 
-#: browser/main.cpp:51
+#: browser/main.cpp:52
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 
-#: browser/main.cpp:60
+#: browser/main.cpp:67
 #, kde-format
 msgid "Journald Log Viewer"
 msgstr ""
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:23
+#: org/kde/kjournald/filtercriteriamodel.cpp:21
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Emergency"
 msgstr ""
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:25
+#: org/kde/kjournald/filtercriteriamodel.cpp:23
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Alert"
 msgstr ""
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:27
+#: org/kde/kjournald/filtercriteriamodel.cpp:25
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Critical"
 msgstr ""
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:29
+#: org/kde/kjournald/filtercriteriamodel.cpp:27
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Error"
 msgstr ""
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:31
+#: org/kde/kjournald/filtercriteriamodel.cpp:29
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Warning"
 msgstr ""
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:33
+#: org/kde/kjournald/filtercriteriamodel.cpp:31
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Notice"
 msgstr ""
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:35
+#: org/kde/kjournald/filtercriteriamodel.cpp:33
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Info"
 msgstr ""
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:37
+#: org/kde/kjournald/filtercriteriamodel.cpp:35
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "Debug"
 msgstr ""
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:39
+#: org/kde/kjournald/filtercriteriamodel.cpp:37
 #, kde-format
 msgctxt "Radio box option, log priority value"
 msgid "No Filter"
 msgstr ""
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:146
+#: org/kde/kjournald/filtercriteriamodel.cpp:144
 #, kde-format
 msgctxt "Section title for log message source"
 msgid "Transport"
 msgstr ""
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:153
+#: org/kde/kjournald/filtercriteriamodel.cpp:151
 #, kde-format
 msgctxt "Checkbox option for kernel log messages"
 msgid "Kernel"
 msgstr ""
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:160
+#: org/kde/kjournald/filtercriteriamodel.cpp:158
 #, kde-format
 msgctxt "Section title for log message priority"
 msgid "Priority"
 msgstr ""
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:181
+#: org/kde/kjournald/filtercriteriamodel.cpp:182
 #, kde-format
 msgctxt "Section title for systemd user unit"
 msgid "User Unit"
 msgstr ""
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:228
+#: org/kde/kjournald/filtercriteriamodel.cpp:229
 #, kde-format
 msgctxt "Section title for systemd sytem unit"
 msgid "System Unit"
 msgstr ""
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:275
+#: org/kde/kjournald/filtercriteriamodel.cpp:276
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"
@@ -337,61 +337,61 @@ msgctxt "@label"
 msgid "Kernel"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:94
+#: org/kde/kjournaldbrowser/Main.qml:100
 #, kde-format
 msgctxt "@label"
 msgid "Boot:"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:206
+#: org/kde/kjournaldbrowser/Main.qml:212
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:248
+#: org/kde/kjournaldbrowser/Main.qml:254
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:249
+#: org/kde/kjournaldbrowser/Main.qml:255
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:261
+#: org/kde/kjournaldbrowser/Main.qml:267
 #, kde-format
 msgctxt "@title"
 msgid "Select journal folder"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:270
+#: org/kde/kjournaldbrowser/Main.qml:276
 #, kde-format
 msgctxt "@title"
 msgid "Select journal file"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:271
+#: org/kde/kjournaldbrowser/Main.qml:277
 #, kde-format
 msgctxt "@item"
 msgid "Journal files (*.journal)"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:271
+#: org/kde/kjournaldbrowser/Main.qml:277
 #, kde-format
 msgctxt "@item"
 msgid "All files (*)"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:341
+#: org/kde/kjournaldbrowser/Main.qml:347
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:342
+#: org/kde/kjournaldbrowser/Main.qml:348
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -399,7 +399,7 @@ msgid ""
 "journal'."
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:349
+#: org/kde/kjournaldbrowser/Main.qml:355
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."
