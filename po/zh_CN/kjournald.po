@@ -145,20 +145,16 @@ msgid "Priority"
 msgstr "优先级"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:182
-#, fuzzy, kde-format
-#| msgctxt "@item:inmenu"
-#| msgid "Systemd Unit"
+#, kde-format
 msgctxt "Section title for systemd user unit"
 msgid "User Unit"
-msgstr "Systemd 单元"
+msgstr ""
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:229
-#, fuzzy, kde-format
-#| msgctxt "@item:inmenu"
-#| msgid "Systemd Unit"
+#, kde-format
 msgctxt "Section title for systemd sytem unit"
 msgid "System Unit"
-msgstr "Systemd 单元"
+msgstr ""
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:276
 #, kde-format
@@ -246,12 +242,10 @@ msgstr ""
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:92
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:96
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Open system journal"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Only system logs"
-msgstr "打开系统日志"
+msgstr ""
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:102
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:107
@@ -452,19 +446,3 @@ msgstr "从文件打开"
 msgctxt "@action:inmenu"
 msgid "Copy Current View"
 msgstr "复制当前视图"
-
-#~ msgctxt "Section title for systemd unit"
-#~ msgid "Unit"
-#~ msgstr "单元"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Open user journal"
-#~ msgstr "打开用户日志"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Open System Journal"
-#~ msgstr "打开系统日志"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Open User Journal"
-#~ msgstr "打开用户日志"
