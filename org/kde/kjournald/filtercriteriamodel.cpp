@@ -130,6 +130,9 @@ FilterCriteriaModelPrivate::~FilterCriteriaModelPrivate() = default;
 void FilterCriteriaModelPrivate::rebuildModel()
 {
     qCDebug(KJOURNALDLIB_GENERAL) << "Rebuilding filter criteria model";
+    mIndexMap = {0, 0, 0, 0, 0};
+    quint32 rootIndex{0};
+
     QMap<JournaldHelper::Field, QStringList> uniqueEntries;
     if (!mBootFilter.has_value() || !mUniqueEntriesCache.contains(mBootFilter.value_or(QString()))) {
         if (mJournal) {
@@ -154,12 +157,13 @@ void FilterCriteriaModelPrivate::rebuildModel()
                                                        false,
                                                        mRootItem);
         mRootItem->appendChild(parent);
-        mRootItem->child(FilterCriteriaModel::Category::TRANSPORT)
-            ->appendChild(std::move(std::make_unique<SelectionEntry>(i18nc("Checkbox option for kernel log messages", "Kernel"),
-                                                                     QLatin1String("kernel"),
-                                                                     FilterCriteriaModel::Category::TRANSPORT,
-                                                                     false,
-                                                                     parent)));
+        mRootItem->child(rootIndex)->appendChild(std::move(std::make_unique<SelectionEntry>(i18nc("Checkbox option for kernel log messages", "Kernel"),
+                                                                                            QLatin1String("kernel"),
+                                                                                            FilterCriteriaModel::Category::TRANSPORT,
+                                                                                            false,
+                                                                                            parent)));
+        mIndexMap[FilterCriteriaModel::Category::TRANSPORT] = rootIndex;
+        ++rootIndex;
     }
     {
         auto parent = std::make_shared<SelectionEntry>(i18nc("Section title for log message priority", "Priority"),
@@ -169,23 +173,24 @@ void FilterCriteriaModelPrivate::rebuildModel()
                                                        mRootItem);
         mRootItem->appendChild(parent);
         for (int i = 0; i <= 7; ++i) {
-            mRootItem->child(FilterCriteriaModel::Category::PRIORITY)
-                ->appendChild(std::move(std::make_unique<SelectionEntry>(mapPriorityToString(i),
-                                                                         QString::number(i),
-                                                                         FilterCriteriaModel::Category::PRIORITY,
-                                                                         mPriorityLevel.has_value() && i == mPriorityLevel.value() ? true : false,
-                                                                         parent)));
+            mRootItem->child(rootIndex)->appendChild(
+                std::move(std::make_unique<SelectionEntry>(mapPriorityToString(i),
+                                                           QString::number(i),
+                                                           FilterCriteriaModel::Category::PRIORITY,
+                                                           mPriorityLevel.has_value() && i == mPriorityLevel.value() ? true : false,
+                                                           parent)));
             // magic number 8 is "unset"
         }
         // add "no filter" option at end
-        mRootItem->child(FilterCriteriaModel::Category::PRIORITY)
-            ->appendChild(std::move(std::make_unique<SelectionEntry>(mapPriorityToString(-1),
-                                                                     QString::number(-1),
-                                                                     FilterCriteriaModel::Category::PRIORITY,
-                                                                     !mPriorityLevel.has_value(),
-                                                                     parent)));
+        mRootItem->child(rootIndex)->appendChild(std::move(std::make_unique<SelectionEntry>(mapPriorityToString(-1),
+                                                                                            QString::number(-1),
+                                                                                            FilterCriteriaModel::Category::PRIORITY,
+                                                                                            !mPriorityLevel.has_value(),
+                                                                                            parent)));
+        mIndexMap[FilterCriteriaModel::Category::PRIORITY] = rootIndex;
+        ++rootIndex;
     }
-    {
+    if (mLogViewMode == FilterCriteriaModel::LogViewMode::ALL_LOGS || mLogViewMode == FilterCriteriaModel::LogViewMode::ONLY_USER) {
         auto parent = std::make_shared<SelectionEntry>(i18nc("Section title for systemd user unit", "User Unit"),
                                                        QVariant(),
                                                        FilterCriteriaModel::Category::SYSTEMD_USER_UNIT,
@@ -223,16 +228,19 @@ void FilterCriteriaModelPrivate::rebuildModel()
                 if (!unit.endsWith(QLatin1String(".service"))) {
                     continue;
                 }
-                mRootItem->child(FilterCriteriaModel::Category::SYSTEMD_USER_UNIT)
-                    ->appendChild(std::move(std::make_unique<SelectionEntry>(JournaldHelper::cleanupString(unit),
-                                                                             unit,
-                                                                             FilterCriteriaModel::Category::SYSTEMD_USER_UNIT,
-                                                                             false,
-                                                                             parent)));
+                mRootItem->child(rootIndex)->appendChild(std::move(std::make_unique<SelectionEntry>(JournaldHelper::cleanupString(unit),
+                                                                                                    unit,
+                                                                                                    FilterCriteriaModel::Category::SYSTEMD_USER_UNIT,
+                                                                                                    false,
+                                                                                                    parent)));
             }
         }
+        mIndexMap[FilterCriteriaModel::Category::SYSTEMD_USER_UNIT] = rootIndex;
+        ++rootIndex;
+    } else {
+        mIndexMap[FilterCriteriaModel::Category::SYSTEMD_USER_UNIT] = -1;
     }
-    {
+    if (mLogViewMode == FilterCriteriaModel::LogViewMode::ALL_LOGS || mLogViewMode == FilterCriteriaModel::LogViewMode::ONLY_SYSTEM) {
         auto parent = std::make_shared<SelectionEntry>(i18nc("Section title for systemd sytem unit", "System Unit"),
                                                        QVariant(),
                                                        FilterCriteriaModel::Category::SYSTEMD_SYSTEM_UNIT,
@@ -270,14 +278,17 @@ void FilterCriteriaModelPrivate::rebuildModel()
                 if (!unit.endsWith(QLatin1String(".service"))) {
                     continue;
                 }
-                mRootItem->child(FilterCriteriaModel::Category::SYSTEMD_SYSTEM_UNIT)
-                    ->appendChild(std::move(std::make_unique<SelectionEntry>(JournaldHelper::cleanupString(unit),
-                                                                             unit,
-                                                                             FilterCriteriaModel::Category::SYSTEMD_SYSTEM_UNIT,
-                                                                             false,
-                                                                             parent)));
+                mRootItem->child(rootIndex)->appendChild(std::move(std::make_unique<SelectionEntry>(JournaldHelper::cleanupString(unit),
+                                                                                                    unit,
+                                                                                                    FilterCriteriaModel::Category::SYSTEMD_SYSTEM_UNIT,
+                                                                                                    false,
+                                                                                                    parent)));
             }
         }
+        mIndexMap[FilterCriteriaModel::Category::SYSTEMD_SYSTEM_UNIT] = rootIndex;
+        ++rootIndex;
+    } else {
+        mIndexMap[FilterCriteriaModel::Category::SYSTEMD_SYSTEM_UNIT] = -1;
     }
     {
         auto parent = std::make_shared<SelectionEntry>(i18nc("Section title for process list", "Process"),
@@ -292,11 +303,12 @@ void FilterCriteriaModelPrivate::rebuildModel()
                 return QString::compare(a, b, Qt::CaseInsensitive) <= 0;
             });
             for (const auto &exe : std::as_const(exes)) {
-                mRootItem->child(FilterCriteriaModel::Category::EXE)
-                    ->appendChild(std::move(
-                        std::make_unique<SelectionEntry>(JournaldHelper::cleanupString(exe), exe, FilterCriteriaModel::Category::EXE, false, parent)));
+                mRootItem->child(rootIndex)->appendChild(
+                    std::move(std::make_unique<SelectionEntry>(JournaldHelper::cleanupString(exe), exe, FilterCriteriaModel::Category::EXE, false, parent)));
             }
         }
+        mIndexMap[FilterCriteriaModel::Category::EXE] = rootIndex;
+        ++rootIndex;
     }
 }
 
@@ -379,9 +391,29 @@ void FilterCriteriaModel::resetBootFilter()
     }
 }
 
+void FilterCriteriaModel::setLogViewMode(LogViewMode mode)
+{
+    if (d->mLogViewMode == mode) {
+        return;
+    }
+    d->mLogViewMode = mode;
+    beginResetModel();
+    d->rebuildModel();
+    endResetModel();
+    Q_EMIT logViewModeChanged();
+}
+
+FilterCriteriaModel::LogViewMode FilterCriteriaModel::logViewMode() const
+{
+    return d->mLogViewMode;
+}
+
 QStringList FilterCriteriaModel::systemdUserUnitFilter() const
 {
-    std::shared_ptr<SelectionEntry> parent = d->mRootItem->child(FilterCriteriaModel::Category::SYSTEMD_USER_UNIT);
+    if (d->mIndexMap[FilterCriteriaModel::Category::SYSTEMD_USER_UNIT] < 0) {
+        return {};
+    }
+    std::shared_ptr<SelectionEntry> parent = d->mRootItem->child(d->mIndexMap[FilterCriteriaModel::Category::SYSTEMD_USER_UNIT]);
     QStringList entries;
     for (int i = 0; i < parent->childCount(); ++i) {
         if (parent->child(i)->data(FilterCriteriaModel::SELECTED).toBool()) {
@@ -404,7 +436,10 @@ QStringList FilterCriteriaModel::systemdUserUnitFilter() const
 
 QStringList FilterCriteriaModel::systemdSystemUnitFilter() const
 {
-    std::shared_ptr<SelectionEntry> parent = d->mRootItem->child(FilterCriteriaModel::Category::SYSTEMD_SYSTEM_UNIT);
+    if (d->mIndexMap[FilterCriteriaModel::Category::SYSTEMD_SYSTEM_UNIT] < 0) {
+        return {};
+    }
+    std::shared_ptr<SelectionEntry> parent = d->mRootItem->child(d->mIndexMap[FilterCriteriaModel::Category::SYSTEMD_SYSTEM_UNIT]);
     QStringList entries;
     for (int i = 0; i < parent->childCount(); ++i) {
         if (parent->child(i)->data(FilterCriteriaModel::SELECTED).toBool()) {
@@ -444,7 +479,7 @@ void FilterCriteriaModel::setGroupTemplatedSystemdUnits(bool enabled)
 
 QStringList FilterCriteriaModel::exeFilter() const
 {
-    std::shared_ptr<SelectionEntry> parent = d->mRootItem->child(FilterCriteriaModel::Category::EXE);
+    std::shared_ptr<SelectionEntry> parent = d->mRootItem->child(d->mIndexMap[FilterCriteriaModel::Category::EXE]);
     QStringList entries;
     for (int i = 0; i < parent->childCount(); ++i) {
         if (parent->child(i)->data(FilterCriteriaModel::SELECTED).toBool()) {
@@ -456,7 +491,7 @@ QStringList FilterCriteriaModel::exeFilter() const
 
 bool FilterCriteriaModel::isKernelFilterEnabled() const
 {
-    std::shared_ptr<SelectionEntry> parent = d->mRootItem->child(FilterCriteriaModel::Category::TRANSPORT);
+    std::shared_ptr<SelectionEntry> parent = d->mRootItem->child(d->mIndexMap[FilterCriteriaModel::Category::TRANSPORT]);
     for (int i = 0; i < parent->childCount(); ++i) {
         if (parent->child(i)->data(FilterCriteriaModel::DATA) == QLatin1String("kernel") && parent->child(i)->data(FilterCriteriaModel::SELECTED).toBool()) {
             return true;
@@ -552,7 +587,7 @@ bool FilterCriteriaModel::setData(const QModelIndex &index, const QVariant &valu
 
     if (result && category == FilterCriteriaModel::Category::PRIORITY && static_cast<FilterCriteriaModel::Roles>(role) == SELECTED) {
         // only listen on changes that set entry data to true, because this is considered a selector in the list
-        std::shared_ptr<SelectionEntry> parent = d->mRootItem->child(FilterCriteriaModel::Category::PRIORITY);
+        std::shared_ptr<SelectionEntry> parent = d->mRootItem->child(d->mIndexMap[FilterCriteriaModel::Category::PRIORITY]);
         for (int i = 0; i < parent->childCount(); ++i) {
             const bool selectedValue = (i == index.row());
             parent->child(i)->setData(selectedValue, FilterCriteriaModel::SELECTED);
