@@ -131,11 +131,18 @@ void FilterCriteriaModelPrivate::rebuildModel()
 {
     qCDebug(KJOURNALDLIB_GENERAL) << "Rebuilding filter criteria model";
     QMap<JournaldHelper::Field, QStringList> uniqueEntries;
-    if (mJournal) {
-        uniqueEntries =
-            JournaldHelper::queryUnique(mJournal->get(),
-                                        mBootFilter.value_or(QString()),
-                                        {JournaldHelper::Field::_SYSTEMD_UNIT, JournaldHelper::Field::_SYSTEMD_USER_UNIT, JournaldHelper::Field::_EXE});
+    if (!mBootFilter.has_value() || !mUniqueEntriesCache.contains(mBootFilter.value_or(QString()))) {
+        if (mJournal) {
+            auto iter = mUniqueEntriesCache.insert(
+                mBootFilter.value_or(QString()),
+                JournaldHelper::queryUnique(mJournal->get(),
+                                            mBootFilter.value_or(QString()),
+                                            {JournaldHelper::Field::_SYSTEMD_UNIT, JournaldHelper::Field::_SYSTEMD_USER_UNIT, JournaldHelper::Field::_EXE}));
+            uniqueEntries = *iter;
+        }
+    } else {
+        qCDebug(KJOURNALDLIB_GENERAL) << "Rebuilding filter criteria model from cache";
+        uniqueEntries = mUniqueEntriesCache.value(mBootFilter.value_or(QString()));
     }
 
     mRootItem = std::make_unique<SelectionEntry>();
@@ -308,6 +315,7 @@ void FilterCriteriaModel::setJournalProvider(IJournalProvider *provider)
         d->mJournal.reset();
     }
     Q_EMIT journalProviderChanged();
+    // do not clear unique entry cache here, because boot-ids are unique across journald DBs
     beginResetModel();
     d->rebuildModel();
     endResetModel();
@@ -318,7 +326,10 @@ IJournalProvider *FilterCriteriaModel::journalProvider() const
     return d->mJournalProvider;
 }
 
-FilterCriteriaModel::~FilterCriteriaModel() = default;
+FilterCriteriaModel::~FilterCriteriaModel()
+{
+    qDebug(KJOURNALDLIB_GENERAL) << "deleting unique services for cached boots:" << d->mUniqueEntriesCache.size();
+}
 
 QHash<int, QByteArray> FilterCriteriaModel::roleNames() const
 {
