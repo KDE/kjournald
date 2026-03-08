@@ -8,6 +8,7 @@
 
 #include "filtercriteriamodel.h"
 #include "ijournalprovider.h"
+#include "journaldhelper.h"
 #include <QMap>
 #include <QString>
 #include <QVector>
@@ -57,6 +58,8 @@ public:
 
     IJournalProvider *mJournalProvider{nullptr};
     std::unique_ptr<SdJournal> mJournal;
+    using BootId = QString;
+    QMap<BootId, QMap<JournaldHelper::Field, QStringList>> mUniqueEntriesCache;
     QStringList mUniqueServiceUnitCache; //!< this is used to deduplicate grouped services
     std::shared_ptr<SelectionEntry> mRootItem;
     std::optional<quint8> mPriorityLevel{5}; //!< init priority level with Info
