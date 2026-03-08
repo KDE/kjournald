@@ -299,8 +299,8 @@ ListView {
         if (event.key === Qt.Key_PageDown) {
             if (event.modifiers & Qt.ControlModifier) {
                 root.scrollToEnd()
-            }
-            else {
+            } else {
+                root.forceLayout()
                 if (root.contentHeight - root.originY > root.height) {
                     if (root.contentY - root.originY + 2 * root.height >= root.contentHeight) {
                         // enforce fetching here such that it does not happen implicitly during calculation the new contentY
@@ -315,15 +315,17 @@ ListView {
                 }
             }
         }
+        if (event.key === Qt.Key_Home) {
+            root.positionViewAtBeginning()
+        }
         if (event.key === Qt.Key_End) {
             root.positionViewAtEnd()
         }
-
         if (event.key === Qt.Key_PageUp) {
             if (event.modifiers & Qt.ControlModifier) {
                 root.scrollToBeginning()
-            }
-            else {
+            } else {
+                root.forceLayout()
                 if (root.contentHeight - root.originY > root.height) {
                     if (root.contentY - root.originY <= 3 * root.height) {
                         // enforce fetching here such that it does not happen implictly during calculation the new contentY
