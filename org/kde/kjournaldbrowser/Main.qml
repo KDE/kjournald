@@ -44,6 +44,15 @@ StatefulApp.StatefulWindow {
     Binding {
         root.filterModel.enableSystemdUnitTemplateGrouping: BrowserApplication.serviceGrouping === BrowserApplication.ServiceGrouping.GROUP_SERVICE_TEMPLATES
     }
+    Binding {
+        root.filterModel.logViewMode: {
+            switch (BrowserApplication.logViewMode) {
+                case BrowserApplication.ALL_LOGS: return FilterCriteriaModel.ALL_LOGS;
+                case BrowserApplication.ONLY_USER: return FilterCriteriaModel.ONLY_USER;
+                case BrowserApplication.ONLY_SYSTEM: return FilterCriteriaModel.ONLY_SYSTEM;
+            }
+        }
+    }
     Connections {
         target: root.filterModel
         function onPriorityFilterUserChanged(priorityIndex){

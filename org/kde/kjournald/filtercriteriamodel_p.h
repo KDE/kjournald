@@ -62,8 +62,10 @@ public:
     QMap<BootId, QMap<JournaldHelper::Field, QStringList>> mUniqueEntriesCache;
     QStringList mUniqueServiceUnitCache; //!< this is used to deduplicate grouped services
     std::shared_ptr<SelectionEntry> mRootItem;
+    std::vector<int> mIndexMap; // maps: FilterCriteriaModel::Category -> index in root child
     std::optional<quint8> mPriorityLevel{5}; //!< init priority level with Info
     std::optional<QString> mBootFilter;
+    FilterCriteriaModel::LogViewMode mLogViewMode{FilterCriteriaModel::LogViewMode::ALL_LOGS};
     bool mGroupTemplatedSystemdUnits{true};
 
     /**

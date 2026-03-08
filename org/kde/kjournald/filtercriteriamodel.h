@@ -61,6 +61,8 @@ class KJOURNALD_EXPORT FilterCriteriaModel : public QAbstractItemModel
     Q_PROPERTY(bool enableSystemdUnitTemplateGrouping READ groupTemplatedSystemdUnits WRITE setGroupTemplatedSystemdUnits NOTIFY
                    groupTemplatedSystemdUnitsChanged FINAL)
 
+    Q_PROPERTY(LogViewMode logViewMode READ logViewMode WRITE setLogViewMode NOTIFY logViewModeChanged FINAL)
+
     QML_ELEMENT
 
 public:
@@ -81,6 +83,13 @@ public:
         DATA = Qt::UserRole + 2,
     };
     Q_ENUM(Roles)
+
+    enum class LogViewMode {
+        ALL_LOGS, //!< display all logs
+        ONLY_USER, //!< display only user logs
+        ONLY_SYSTEM, //!< display only system logs
+    };
+    Q_ENUM(LogViewMode)
 
     /**
      * @brief Create filter criteria model
@@ -108,6 +117,9 @@ public:
     QString bootFilter() const;
     void setBootFilter(const QString &filter);
     void resetBootFilter();
+
+    void setLogViewMode(LogViewMode mode);
+    FilterCriteriaModel::LogViewMode logViewMode() const;
 
     /**
      * @return the currently selected priority threshold for displayed log entries
@@ -202,6 +214,7 @@ Q_SIGNALS:
     void kernelFilterChanged();
     void journalProviderChanged();
     void groupTemplatedSystemdUnitsChanged();
+    void logViewModeChanged();
 
 private:
     std::unique_ptr<FilterCriteriaModelPrivate> d;
