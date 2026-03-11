@@ -456,22 +456,3 @@ msgstr "Obre des del fitxer"
 msgctxt "@action:inmenu"
 msgid "Copy Current View"
 msgstr "Copia la vista actual"
-
-#~ msgctxt "Section title for systemd unit"
-#~ msgid "Unit"
-#~ msgstr "Unitat"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Open user journal"
-#~ msgstr "Obre el diari d'usuaris"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Open System Journal"
-#~ msgstr "Obre el diari del sistema"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Open User Journal"
-#~ msgstr "Obre el diari d'usuaris"
-
-#~ msgid "Highlight:"
-#~ msgstr "Ressaltat:"
