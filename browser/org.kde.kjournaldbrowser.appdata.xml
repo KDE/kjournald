@@ -53,6 +53,7 @@ SPDX-License-Identifier: CC0-1.0
   <summary xml:lang="ast">Restola les bases de datos de journald</summary>
   <summary xml:lang="ca">Navegador per a bases de dades de «journald»</summary>
   <summary xml:lang="ca-valencia">Navegador per a bases de dades de «journald»</summary>
+  <summary xml:lang="cs">Prohlížeč databází journald</summary>
   <summary xml:lang="de">Browser für Journald-Datenbanken</summary>
   <summary xml:lang="el">Περιηγητής για τις βάσεις δεδομένων journald</summary>
   <summary xml:lang="en-GB">Browser for journald databases</summary>
@@ -90,6 +91,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="ar">متصفح يوميات دي هو برنامج مرجعي لمكتبة kjournald ويوفر أداة مرنة للتصفح في قواعد بيانات journald المحلية والبعيدة وغير المتصلة بالإنترنت.</p>
     <p xml:lang="ca">El navegador de «journald» és una implementació de referència de la biblioteca kjournald i proporciona una eina flexible per a navegar per les bases de dades de journald locals, remotes i fora de línia.</p>
     <p xml:lang="ca-valencia">El navegador de «journald» és una implementació de referència de la biblioteca kjournald i proporciona una eina flexible per a navegar per les bases de dades de journald locals, remotes i fora de línia.</p>
+    <p xml:lang="cs">Journald-browser je referenční implementace knihovny kjournald a poskytuje flexibilní nástroj pro procházení lokálních, vzdálených a offline databází journald.</p>
     <p xml:lang="de">Journald-Browser ist eine Referenzimplementierung der kjournald-Bibliothek und bietet ein flexibles Werkzeug zum Browsen in lokalen, entfernten und Offline-Journald-Datenbanken.</p>
     <p xml:lang="el">Το journald-browser είναι μια υλοποίηση αναφοράς της βιβλιοθήκης kjournald και παρέχει ένα ευέλικτο εργαλείο περιήγησης σε τοπικές, απομακρυσμένες και εκτός σύνδεσης journald βάσεις δεδομένων.</p>
     <p xml:lang="en-GB">Journald-browser is a reference implementation of the kjournald library and provides a flexible tool to browse in local, remote and offline journald databases.</p>
