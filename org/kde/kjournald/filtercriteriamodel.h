@@ -27,9 +27,11 @@ class FilterCriteriaModelPrivate;
  * system's default journal. Values can either be set by @a setFieldString for arbitrary values or in a
  * typesafe manner via @a setField for most common fields.
  */
-class KJOURNALD_EXPORT FilterCriteriaModel : public QAbstractItemModel
+class KJOURNALD_EXPORT FilterCriteriaModel : public QAbstractItemModel, public QQmlParserStatus
 {
     Q_OBJECT
+    Q_INTERFACES(QQmlParserStatus)
+
     Q_PROPERTY(IJournalProvider *journalProvider READ journalProvider WRITE setJournalProvider NOTIFY journalProviderChanged FINAL)
     /**
      * if set, this filter will restrict criteria to only those available in the given boot
@@ -203,6 +205,9 @@ public:
      * @brief Convenience method for access to list of all entries' data of @p category with their selected states
      */
     QVector<std::pair<QString, bool>> entries(FilterCriteriaModel::Category category) const;
+
+    void classBegin() override;
+    void componentComplete() override;
 
 Q_SIGNALS:
     void priorityFilterChanged(qint8 priorityIndex);
