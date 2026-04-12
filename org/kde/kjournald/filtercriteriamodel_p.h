@@ -53,6 +53,11 @@ public:
      * @brief clear all model data and read units, processes... from currently set journal
      */
     void rebuildModel();
+    /**
+     * @brief check if already filter criteria is populated for boot-id / journal combination
+     * @return true if model needs to be populated
+     */
+    bool isRebuildModelPending() const;
 
     static QString mapPriorityToString(int priority);
 
