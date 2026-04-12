@@ -61,6 +61,7 @@ public:
 
     static QString mapPriorityToString(int priority);
 
+    bool mQmlEngineIncubationActive{false}; // set via QML parser status
     IJournalProvider *mJournalProvider{nullptr};
     std::unique_ptr<SdJournal> mJournal;
     using BootId = QString;

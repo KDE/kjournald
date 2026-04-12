@@ -31,6 +31,7 @@ void TestFilterCriteriaModel::basicTreeModelStructure()
     {
         auto provider = LocalJournal(invalidJournal.fileName());
         model.setJournalProvider(&provider);
+        model.componentComplete(); // forces rebuild model
         QVERIFY(model.rowCount() > 0);
     }
 
@@ -38,6 +39,7 @@ void TestFilterCriteriaModel::basicTreeModelStructure()
         // use extracted journal
         auto provider = LocalJournal(JOURNAL_LOCATION);
         model.setJournalProvider(&provider);
+        model.componentComplete(); // forces rebuild model
         QVERIFY(model.rowCount() > 0);
 
         // check for all expected categories
@@ -53,6 +55,7 @@ void TestFilterCriteriaModel::standaloneTestSystemdUnitSelectionOptionsUngrouped
     FilterCriteriaModel model;
     model.setBootFilter(mBoots.at(0));
     model.setGroupTemplatedSystemdUnits(false);
+    model.componentComplete(); // forces rebuild model
     QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
 
     // use extracted journal
@@ -162,6 +165,7 @@ void TestFilterCriteriaModel::standaloneTestPrioritySelectionOptions()
     // use extracted journal
     auto provider = LocalJournal(JOURNAL_LOCATION);
     model.setJournalProvider(&provider);
+    model.componentComplete(); // forces rebuild model
     QVERIFY(model.rowCount() > 0);
     QVERIFY(model.entries(FilterCriteriaModel::Category::PRIORITY).count() > 0);
 

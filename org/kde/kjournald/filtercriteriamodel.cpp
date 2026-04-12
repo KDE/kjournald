@@ -120,10 +120,7 @@ std::shared_ptr<SelectionEntry> SelectionEntry::parentItem()
     return mParentItem.lock();
 }
 
-FilterCriteriaModelPrivate::FilterCriteriaModelPrivate()
-{
-    rebuildModel();
-}
+FilterCriteriaModelPrivate::FilterCriteriaModelPrivate() = default;
 
 FilterCriteriaModelPrivate::~FilterCriteriaModelPrivate() = default;
 
@@ -134,6 +131,7 @@ bool FilterCriteriaModelPrivate::isRebuildModelPending() const
 
 void FilterCriteriaModelPrivate::rebuildModel()
 {
+    Q_ASSERT(!mQmlEngineIncubationActive);
     qCDebug(KJOURNALDLIB_GENERAL) << "Rebuilding filter criteria model for boot-id:" << mBootFilter.value_or(QString());
     mIndexMap = {0, 0, 0, 0, 0};
     quint32 rootIndex{0};
@@ -336,7 +334,7 @@ void FilterCriteriaModel::setJournalProvider(IJournalProvider *provider)
     }
     Q_EMIT journalProviderChanged();
     // do not clear unique entry cache here, because boot-ids are unique across journald DBs
-    if (d->isRebuildModelPending()) {
+    if (!d->mQmlEngineIncubationActive && d->isRebuildModelPending()) {
         beginResetModel();
         d->rebuildModel();
         endResetModel();
@@ -381,23 +379,29 @@ QString FilterCriteriaModel::bootFilter() const
 
 void FilterCriteriaModel::setBootFilter(const QString &filter)
 {
-    if (d->mBootFilter.value_or(QString()) != filter) {
-        d->mBootFilter = filter;
+    if (d->mBootFilter.value_or(QString()) == filter) {
+        return;
+    }
+    d->mBootFilter = filter;
+    Q_EMIT bootFilterChanged(filter);
+    if (!d->mQmlEngineIncubationActive) {
         beginResetModel();
         d->rebuildModel();
         endResetModel();
-        Q_EMIT bootFilterChanged(filter);
     }
 }
 
 void FilterCriteriaModel::resetBootFilter()
 {
-    if (d->mBootFilter.has_value()) {
-        d->mBootFilter.reset();
+    if (!d->mBootFilter.has_value()) {
+        return;
+    }
+    d->mBootFilter.reset();
+    Q_EMIT bootFilterChanged(QString());
+    if (!d->mQmlEngineIncubationActive) {
         beginResetModel();
         d->rebuildModel();
         endResetModel();
-        Q_EMIT bootFilterChanged(QString());
     }
 }
 
@@ -407,10 +411,12 @@ void FilterCriteriaModel::setLogViewMode(LogViewMode mode)
         return;
     }
     d->mLogViewMode = mode;
-    beginResetModel();
-    d->rebuildModel();
-    endResetModel();
-    Q_EMIT logViewModeChanged();
+    if (!d->mQmlEngineIncubationActive) {
+        beginResetModel();
+        d->rebuildModel();
+        endResetModel();
+        Q_EMIT logViewModeChanged();
+    }
 }
 
 FilterCriteriaModel::LogViewMode FilterCriteriaModel::logViewMode() const
@@ -420,7 +426,7 @@ FilterCriteriaModel::LogViewMode FilterCriteriaModel::logViewMode() const
 
 QStringList FilterCriteriaModel::systemdUserUnitFilter() const
 {
-    if (d->mIndexMap[FilterCriteriaModel::Category::SYSTEMD_USER_UNIT] < 0) {
+    if (d->mIndexMap.empty() || d->mIndexMap[FilterCriteriaModel::Category::SYSTEMD_USER_UNIT] < 0) {
         return {};
     }
     std::shared_ptr<SelectionEntry> parent = d->mRootItem->child(d->mIndexMap[FilterCriteriaModel::Category::SYSTEMD_USER_UNIT]);
@@ -446,7 +452,7 @@ QStringList FilterCriteriaModel::systemdUserUnitFilter() const
 
 QStringList FilterCriteriaModel::systemdSystemUnitFilter() const
 {
-    if (d->mIndexMap[FilterCriteriaModel::Category::SYSTEMD_SYSTEM_UNIT] < 0) {
+    if (d->mIndexMap.empty() || d->mIndexMap[FilterCriteriaModel::Category::SYSTEMD_SYSTEM_UNIT] < 0) {
         return {};
     }
     std::shared_ptr<SelectionEntry> parent = d->mRootItem->child(d->mIndexMap[FilterCriteriaModel::Category::SYSTEMD_SYSTEM_UNIT]);
@@ -482,13 +488,18 @@ void FilterCriteriaModel::setGroupTemplatedSystemdUnits(bool enabled)
     }
     d->mGroupTemplatedSystemdUnits = enabled;
     Q_EMIT groupTemplatedSystemdUnitsChanged();
-    beginResetModel();
-    d->rebuildModel();
-    endResetModel();
+    if (!d->mQmlEngineIncubationActive) {
+        beginResetModel();
+        d->rebuildModel();
+        endResetModel();
+    }
 }
 
 QStringList FilterCriteriaModel::exeFilter() const
 {
+    if (d->mIndexMap.empty()) {
+        return {};
+    }
     std::shared_ptr<SelectionEntry> parent = d->mRootItem->child(d->mIndexMap[FilterCriteriaModel::Category::EXE]);
     QStringList entries;
     for (int i = 0; i < parent->childCount(); ++i) {
@@ -501,6 +512,9 @@ QStringList FilterCriteriaModel::exeFilter() const
 
 bool FilterCriteriaModel::isKernelFilterEnabled() const
 {
+    if (d->mIndexMap.empty()) {
+        return {};
+    }
     std::shared_ptr<SelectionEntry> parent = d->mRootItem->child(d->mIndexMap[FilterCriteriaModel::Category::TRANSPORT]);
     for (int i = 0; i < parent->childCount(); ++i) {
         if (parent->child(i)->data(FilterCriteriaModel::DATA) == QLatin1String("kernel") && parent->child(i)->data(FilterCriteriaModel::SELECTED).toBool()) {
@@ -549,7 +563,9 @@ QModelIndex FilterCriteriaModel::parent(const QModelIndex &index) const
 
 int FilterCriteriaModel::rowCount(const QModelIndex &parent) const
 {
-    if (!parent.isValid()) {
+    if (!d->mRootItem) {
+        return 0;
+    } else if (!parent.isValid()) {
         return d->mRootItem->childCount();
     } else {
         auto parentItem = static_cast<SelectionEntry *>(parent.internalPointer());
@@ -674,6 +690,19 @@ QVector<std::pair<QString, bool>> FilterCriteriaModel::entries(FilterCriteriaMod
             std::make_pair<QString, bool>(d->mRootItem->child(static_cast<int>(category))->child(i)->data(FilterCriteriaModel::DATA).toString(), false));
     }
     return values;
+}
+
+void FilterCriteriaModel::classBegin()
+{
+    d->mQmlEngineIncubationActive = true;
+}
+
+void FilterCriteriaModel::componentComplete()
+{
+    d->mQmlEngineIncubationActive = false;
+    beginResetModel();
+    d->rebuildModel();
+    endResetModel();
 }
 
 #include "moc_filtercriteriamodel.cpp"
