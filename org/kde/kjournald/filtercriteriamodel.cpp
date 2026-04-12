@@ -127,25 +127,33 @@ FilterCriteriaModelPrivate::FilterCriteriaModelPrivate()
 
 FilterCriteriaModelPrivate::~FilterCriteriaModelPrivate() = default;
 
+bool FilterCriteriaModelPrivate::isRebuildModelPending() const
+{
+    return mBootFilter.has_value() && !mUniqueEntriesCache.contains(mBootFilter.value());
+}
+
 void FilterCriteriaModelPrivate::rebuildModel()
 {
-    qCDebug(KJOURNALDLIB_GENERAL) << "Rebuilding filter criteria model";
+    qCDebug(KJOURNALDLIB_GENERAL) << "Rebuilding filter criteria model for boot-id:" << mBootFilter.value_or(QString());
     mIndexMap = {0, 0, 0, 0, 0};
     quint32 rootIndex{0};
 
     QMap<JournaldHelper::Field, QStringList> uniqueEntries;
     if (!mBootFilter.has_value() || !mUniqueEntriesCache.contains(mBootFilter.value_or(QString()))) {
-        if (mJournal) {
+        if (mJournal && JournaldHelper::queryUnique(mJournal->get(), JournaldHelper::Field::_BOOT_ID).contains(mBootFilter.value_or(QString()))) {
             auto iter = mUniqueEntriesCache.insert(
                 mBootFilter.value_or(QString()),
                 JournaldHelper::queryUnique(mJournal->get(),
                                             mBootFilter.value_or(QString()),
                                             {JournaldHelper::Field::_SYSTEMD_UNIT, JournaldHelper::Field::_SYSTEMD_USER_UNIT, JournaldHelper::Field::_EXE}));
+
             uniqueEntries = *iter;
+        } else {
+            qCWarning(KJOURNALDLIB_GENERAL) << "Skip filter criteria model build, boot-id not available:" << mBootFilter.value_or(QString());
         }
     } else {
-        qCDebug(KJOURNALDLIB_GENERAL) << "Rebuilding filter criteria model from cache";
         uniqueEntries = mUniqueEntriesCache.value(mBootFilter.value_or(QString()));
+        qCDebug(KJOURNALDLIB_GENERAL) << "Populate filter criteria model from cache for boot-id:" << mBootFilter.value_or(QString());
     }
 
     mRootItem = std::make_unique<SelectionEntry>();
@@ -328,9 +336,11 @@ void FilterCriteriaModel::setJournalProvider(IJournalProvider *provider)
     }
     Q_EMIT journalProviderChanged();
     // do not clear unique entry cache here, because boot-ids are unique across journald DBs
-    beginResetModel();
-    d->rebuildModel();
-    endResetModel();
+    if (d->isRebuildModelPending()) {
+        beginResetModel();
+        d->rebuildModel();
+        endResetModel();
+    }
 }
 
 IJournalProvider *FilterCriteriaModel::journalProvider() const
