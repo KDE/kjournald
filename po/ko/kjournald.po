@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-09 02:44+0000\n"
+"POT-Creation-Date: 2026-04-13 02:40+0000\n"
 "PO-Revision-Date: 2026-02-04 00:22+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -126,25 +126,25 @@ msgctxt "Radio box option, log priority value"
 msgid "No Filter"
 msgstr "필터 없음"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:154
+#: org/kde/kjournald/filtercriteriamodel.cpp:160
 #, kde-format
 msgctxt "Section title for log message source"
 msgid "Transport"
 msgstr "전송"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:160
+#: org/kde/kjournald/filtercriteriamodel.cpp:166
 #, kde-format
 msgctxt "Checkbox option for kernel log messages"
 msgid "Kernel"
 msgstr "커널"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:169
+#: org/kde/kjournald/filtercriteriamodel.cpp:175
 #, kde-format
 msgctxt "Section title for log message priority"
 msgid "Priority"
 msgstr "우선 순위"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:194
+#: org/kde/kjournald/filtercriteriamodel.cpp:200
 #, fuzzy, kde-format
 #| msgctxt "@item:inmenu"
 #| msgid "Systemd Unit"
@@ -152,7 +152,7 @@ msgctxt "Section title for systemd user unit"
 msgid "User Unit"
 msgstr "Systemd 유닛"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:244
+#: org/kde/kjournald/filtercriteriamodel.cpp:250
 #, fuzzy, kde-format
 #| msgctxt "@item:inmenu"
 #| msgid "Systemd Unit"
@@ -160,7 +160,7 @@ msgctxt "Section title for systemd sytem unit"
 msgid "System Unit"
 msgstr "Systemd 유닛"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:294
+#: org/kde/kjournald/filtercriteriamodel.cpp:300
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-09 02:44+0000\n"
+"POT-Creation-Date: 2026-04-13 02:40+0000\n"
 "PO-Revision-Date: 2022-01-08 11:52+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -126,37 +126,37 @@ msgctxt "Radio box option, log priority value"
 msgid "No Filter"
 msgstr "Bez filtra"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:154
+#: org/kde/kjournald/filtercriteriamodel.cpp:160
 #, kde-format
 msgctxt "Section title for log message source"
 msgid "Transport"
 msgstr "Prenos"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:160
+#: org/kde/kjournald/filtercriteriamodel.cpp:166
 #, kde-format
 msgctxt "Checkbox option for kernel log messages"
 msgid "Kernel"
 msgstr "Jadro"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:169
+#: org/kde/kjournald/filtercriteriamodel.cpp:175
 #, kde-format
 msgctxt "Section title for log message priority"
 msgid "Priority"
 msgstr "Priorita"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:194
+#: org/kde/kjournald/filtercriteriamodel.cpp:200
 #, kde-format
 msgctxt "Section title for systemd user unit"
 msgid "User Unit"
 msgstr "Jednotka systemd"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:244
+#: org/kde/kjournald/filtercriteriamodel.cpp:250
 #, kde-format
 msgctxt "Section title for systemd sytem unit"
 msgid "System Unit"
 msgstr "Jednotka systemd"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:294
+#: org/kde/kjournald/filtercriteriamodel.cpp:300
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"
