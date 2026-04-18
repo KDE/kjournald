@@ -83,6 +83,7 @@ public:
         SELECTED = Qt::CheckStateRole,
         CATEGORY = Qt::UserRole + 1,
         DATA = Qt::UserRole + 2,
+        HAS_CHILDREN = Qt::UserRole + 3,
     };
     Q_ENUM(Roles)
 

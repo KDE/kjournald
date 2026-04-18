@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: LGPL-2.1-or-later OR MIT
-// SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
+// SPDX-FileCopyrightText: 2021-2026 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 
 pragma ComponentBehavior: Bound
 
@@ -29,6 +29,7 @@ ListView {
 
                 width: ListView.view.width
                 onClicked: model.expanded = !expandDelegate.expanded
+                enabled: model.expandable
                 Accessible.name: expandDelegate.text
                 Accessible.description: expandDelegate.expanded ? KI18n.i18nc("@info:tooltip", "Expanded")
                                                                 : KI18n.i18nc("@info:tooltip", "Collapsed")

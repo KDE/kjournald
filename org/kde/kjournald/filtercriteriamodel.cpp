@@ -101,6 +101,8 @@ QVariant SelectionEntry::data(FilterCriteriaModel::Roles role) const
         return QVariant::fromValue(mText);
     case FilterCriteriaModel::Roles::SELECTED:
         return QVariant::fromValue(mSelected);
+    case FilterCriteriaModel::Roles::HAS_CHILDREN:
+        return childCount() > 0;
     }
     return QVariant();
 }

@@ -41,8 +41,9 @@ public:
         SELECTED = Qt::CheckStateRole, //!< boolean role that informs if element is selected
         INDENTATION = Qt::UserRole + 1, //!< provides indentation level based in source model tree structure
         EXPANDED = Qt::UserRole + 2, //!< for expansible nodes, provides state if node is expanded
-        TYPE = Qt::UserRole + 3, //!< provides data type for nodes
-        COLOR = Qt::UserRole + 4, //!< provides color state for node, if present
+        EXPANDABLE = Qt::UserRole + 3, //!< indicates if node has children
+        TYPE = Qt::UserRole + 4, //!< provides data type for nodes
+        COLOR = Qt::UserRole + 5, //!< provides color state for node, if present
     };
     Q_ENUM(Roles)
 
@@ -121,7 +122,7 @@ private:
         int mIndentation{0};
     };
     QAbstractItemModel *mSourceModel{nullptr};
-    QVector<SourceIndex> mMapToSourceIndex;
+    QList<SourceIndex> mMapToSourceIndex;
 };
 
 #endif
