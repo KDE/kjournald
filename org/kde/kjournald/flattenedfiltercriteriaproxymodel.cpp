@@ -17,6 +17,7 @@ QHash<int, QByteArray> FlattenedFilterCriteriaProxyModel::roleNames() const
     roles[FlattenedFilterCriteriaProxyModel::SELECTED] = "selected";
     roles[FlattenedFilterCriteriaProxyModel::INDENTATION] = "indentation";
     roles[FlattenedFilterCriteriaProxyModel::EXPANDED] = "expanded";
+    roles[FlattenedFilterCriteriaProxyModel::EXPANDABLE] = "expandable";
     roles[FlattenedFilterCriteriaProxyModel::TYPE] = "type";
     roles[FlattenedFilterCriteriaProxyModel::COLOR] = "color";
     return roles;
@@ -119,6 +120,8 @@ QVariant FlattenedFilterCriteriaProxyModel::data(const QModelIndex &index, int r
         return mSourceModel->data(mMapToSourceIndex.at(index.row()).mSourceIndex, FilterCriteriaModel::Roles::LONGTEXT);
     case FlattenedFilterCriteriaProxyModel::Roles::EXPANDED:
         return mMapToSourceIndex.at(index.row()).mIsExpanded;
+    case FlattenedFilterCriteriaProxyModel::Roles::EXPANDABLE:
+        return mSourceModel->data(mMapToSourceIndex.at(index.row()).mSourceIndex, FilterCriteriaModel::Roles::HAS_CHILDREN);
     case FlattenedFilterCriteriaProxyModel::Roles::SELECTED:
         return mSourceModel->data(mMapToSourceIndex.at(index.row()).mSourceIndex, FilterCriteriaModel::Roles::SELECTED);
     case FlattenedFilterCriteriaProxyModel::Roles::INDENTATION:

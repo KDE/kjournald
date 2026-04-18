@@ -176,7 +176,7 @@ void TestFilterCriteriaModel::standaloneTestPrioritySelectionOptions()
         }));
     }
 
-    { // QAbstractItemModel interface acccess
+    { // QAbstractItemModel interface access
         QModelIndex categoryIndex;
         for (int i = 0; i < model.rowCount(); ++i) {
             if (model.data(model.index(i, 0), FilterCriteriaModel::Roles::CATEGORY) == FilterCriteriaModel::Category::PRIORITY) {
