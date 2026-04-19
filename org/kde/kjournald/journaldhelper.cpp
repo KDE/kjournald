@@ -10,6 +10,24 @@
 #include <QString>
 #include <systemd/sd-journal.h>
 
+namespace
+{
+constexpr int hexValue(const QChar &c)
+{
+    const ushort u = c.unicode();
+    if (u >= '0' && u <= '9') {
+        return u - '0';
+    }
+    if (u >= 'A' && u <= 'F') {
+        return u - 'A' + 10;
+    }
+    if (u >= 'a' && u <= 'f') {
+        return u - 'a' + 10;
+    }
+    return -1;
+}
+}
+
 QList<QString> JournaldHelper::queryUnique(sd_journal *journal, Field field)
 {
     if (!journal) {
@@ -193,28 +211,35 @@ QLatin1StringView JournaldHelper::mapField(JournaldHelper::Field field)
     return QLatin1StringView{};
 }
 
-QString JournaldHelper::cleanupString(const QString &string)
+QString JournaldHelper::cleanupString(QStringView string)
 {
     QString cleaned;
     cleaned.reserve(string.size());
-    int i = 0;
-    while (i < string.size()) {
-        if (string.at(i) == QLatin1Char('\u0001')) { // skip certain unicode characters
+    const QChar *data = string.constData();
+    const qsizetype size = string.size();
+    qsizetype i = 0;
+    while (i < size) {
+        const ushort c = data[i].unicode();
+        // character skips: \0x01
+        if (c == 0x01) {
             ++i;
-            continue;
-        } else if (i + 3 >= string.size() || string.at(i) != QLatin1Char('\\') || string.at(i + 1) != QLatin1Char('x')) {
-            cleaned.append(string.at(i));
-            ++i;
-            continue;
-        } else {
-            // handle ascii escape sequence, eg. "\x2d" for "-"
-            bool ok;
-            auto character = QChar::fromLatin1(QStringView(string).mid(i + 2, 2).toUInt(&ok, 16));
-            Q_ASSERT(ok);
-            cleaned.append(character);
-            i += 4;
             continue;
         }
+
+        // handle ascii escape sequence, i.e. check for \xHH
+        if (c == '\\' && i + 3 < size && data[i + 1] == QLatin1Char('x')) {
+            const int hi = hexValue(data[i + 2]);
+            const int lo = hexValue(data[i + 3]);
+
+            if (hi >= 0 && lo >= 0) {
+                cleaned.append(QChar::fromLatin1(char((hi << 4) | lo)));
+                i += 4;
+                continue;
+            }
+        }
+
+        cleaned.append(data[i]);
+        ++i;
     }
     return cleaned;
 }
