@@ -69,13 +69,13 @@ public:
      * placed twice into the journal. this means, only call this method after a model
      * reset and then only in the respective direction
      */
-    QVector<LogEntry> readEntries(Direction direction);
+    QList<LogEntry> readEntries(Direction direction);
 
     /**
      * @brief seekCursor in journal an handle issues
      * @return
      */
-    SeekCursorResult seekCursor(const QString &cursor);
+    SeekCursorResult seekCursor(QStringView cursor);
 
     IJournalProvider *mJournalProvider{nullptr};
     std::unique_ptr<SdJournal> mJournal;
