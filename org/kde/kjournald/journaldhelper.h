@@ -123,7 +123,7 @@ public:
      * @param string the string to process
      * @return cleaned string
      */
-    static QString cleanupString(const QString &string);
+    static QString cleanupString(QStringView string);
 
     static constexpr QLatin1String ID_MESSAGE{"MESSAGE"};
     static constexpr QLatin1String ID_MESSAGE_ID{"MESSAGE_ID"};
