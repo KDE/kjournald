@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-13 02:40+0000\n"
+"POT-Creation-Date: 2026-04-19 02:49+0000\n"
 "PO-Revision-Date: 2024-12-27 10:42+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -133,59 +133,59 @@ msgctxt "Radio box option, log priority value"
 msgid "No Filter"
 msgstr "Neniu filtrilo"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:160
+#: org/kde/kjournald/filtercriteriamodel.cpp:162
 #, kde-format
 msgctxt "Section title for log message source"
 msgid "Transport"
 msgstr "Transporto"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:166
+#: org/kde/kjournald/filtercriteriamodel.cpp:168
 #, kde-format
 msgctxt "Checkbox option for kernel log messages"
 msgid "Kernel"
 msgstr "Kerno"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:175
+#: org/kde/kjournald/filtercriteriamodel.cpp:177
 #, kde-format
 msgctxt "Section title for log message priority"
 msgid "Priority"
 msgstr "Prioritato"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:200
+#: org/kde/kjournald/filtercriteriamodel.cpp:202
 #, fuzzy, kde-format
 #| msgid "Systemd Unit"
 msgctxt "Section title for systemd user unit"
 msgid "User Unit"
 msgstr "Sistemd-Unuo"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:250
+#: org/kde/kjournald/filtercriteriamodel.cpp:252
 #, fuzzy, kde-format
 #| msgid "Systemd Unit"
 msgctxt "Section title for systemd sytem unit"
 msgid "System Unit"
 msgstr "Sistemd-Unuo"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:300
+#: org/kde/kjournald/filtercriteriamodel.cpp:302
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"
 msgstr "Procezo"
 
-#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:33
+#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:34
 #, fuzzy, kde-format
 #| msgid "Expanded"
 msgctxt "@info:tooltip"
 msgid "Expanded"
 msgstr "Vastigita"
 
-#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:34
+#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:35
 #, fuzzy, kde-format
 #| msgid "Collapsed"
 msgctxt "@info:tooltip"
 msgid "Collapsed"
 msgstr "Malvastigita"
 
-#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:60
+#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:61
 #, fuzzy, kde-format
 #| msgid "Clear"
 msgctxt "@label"

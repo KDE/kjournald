@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-13 02:40+0000\n"
+"POT-Creation-Date: 2026-04-19 02:49+0000\n"
 "PO-Revision-Date: 2026-03-12 11:19+0100\n"
 "Last-Translator:  Vít Pelčák <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -128,55 +128,55 @@ msgctxt "Radio box option, log priority value"
 msgid "No Filter"
 msgstr "Žádný filtr"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:160
+#: org/kde/kjournald/filtercriteriamodel.cpp:162
 #, kde-format
 msgctxt "Section title for log message source"
 msgid "Transport"
 msgstr "Přenos"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:166
+#: org/kde/kjournald/filtercriteriamodel.cpp:168
 #, kde-format
 msgctxt "Checkbox option for kernel log messages"
 msgid "Kernel"
 msgstr "Jádro"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:175
+#: org/kde/kjournald/filtercriteriamodel.cpp:177
 #, kde-format
 msgctxt "Section title for log message priority"
 msgid "Priority"
 msgstr "Priorita"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:200
+#: org/kde/kjournald/filtercriteriamodel.cpp:202
 #, kde-format
 msgctxt "Section title for systemd user unit"
 msgid "User Unit"
 msgstr "Uživatelská jednotka"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:250
+#: org/kde/kjournald/filtercriteriamodel.cpp:252
 #, kde-format
 msgctxt "Section title for systemd sytem unit"
 msgid "System Unit"
 msgstr "Systémová jednotka"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:300
+#: org/kde/kjournald/filtercriteriamodel.cpp:302
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"
 msgstr "Proces"
 
-#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:33
+#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:34
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Expanded"
 msgstr "Rozvinuté"
 
-#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:34
+#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:35
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Collapsed"
 msgstr "Svinuté"
 
-#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:60
+#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:61
 #, kde-format
 msgctxt "@label"
 msgid "Clear"

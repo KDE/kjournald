@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-13 02:40+0000\n"
+"POT-Creation-Date: 2026-04-19 02:49+0000\n"
 "PO-Revision-Date: 2026-02-19 09:41+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -127,55 +127,55 @@ msgctxt "Radio box option, log priority value"
 msgid "No Filter"
 msgstr "ללא מסנן"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:160
+#: org/kde/kjournald/filtercriteriamodel.cpp:162
 #, kde-format
 msgctxt "Section title for log message source"
 msgid "Transport"
 msgstr "תעבורה"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:166
+#: org/kde/kjournald/filtercriteriamodel.cpp:168
 #, kde-format
 msgctxt "Checkbox option for kernel log messages"
 msgid "Kernel"
 msgstr "ליבה"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:175
+#: org/kde/kjournald/filtercriteriamodel.cpp:177
 #, kde-format
 msgctxt "Section title for log message priority"
 msgid "Priority"
 msgstr "עדיפות"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:200
+#: org/kde/kjournald/filtercriteriamodel.cpp:202
 #, kde-format
 msgctxt "Section title for systemd user unit"
 msgid "User Unit"
 msgstr "יחידת משתמש"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:250
+#: org/kde/kjournald/filtercriteriamodel.cpp:252
 #, kde-format
 msgctxt "Section title for systemd sytem unit"
 msgid "System Unit"
 msgstr "יחידת מערכת"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:300
+#: org/kde/kjournald/filtercriteriamodel.cpp:302
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"
 msgstr "תהליך"
 
-#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:33
+#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:34
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Expanded"
 msgstr "מורחב"
 
-#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:34
+#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:35
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Collapsed"
 msgstr "מצומצם"
 
-#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:60
+#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:61
 #, kde-format
 msgctxt "@label"
 msgid "Clear"
