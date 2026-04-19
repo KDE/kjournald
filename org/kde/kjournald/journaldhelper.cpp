@@ -238,6 +238,21 @@ QString JournaldHelper::cleanupString(QStringView string)
             }
         }
 
+        // remove color codes
+        if (c == 0x1B) { // ESC
+            if (i + 1 < size && data[i + 1] == QLatin1Char('[')) {
+                i += 2;
+                while (i < size) {
+                    ushort c = data[i].unicode();
+                    if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) {
+                        break;
+                    }
+                    ++i;
+                }
+            }
+            continue;
+        }
+
         cleaned.append(data[i]);
         ++i;
     }

@@ -41,10 +41,7 @@ bool LogEntry::matches(const QString &needle, bool caseSensitive) const
 
 void LogEntry::setMessage(const QString &message)
 {
-    // TODO handle cleanup of arbitrary color codes
-    // cleanup color codes
     m_message = message;
-    m_message.remove(QLatin1String("\u001B[96m")).remove(QLatin1String("\u001B[0m")).remove(QLatin1String("\u001B[93m")).remove(QLatin1String("\u001B[31m"));
 }
 
 void LogEntry::setDate(const QDateTime &date)
