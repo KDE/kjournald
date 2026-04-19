@@ -215,21 +215,34 @@ QString JournaldHelper::cleanupString(QStringView string)
 {
     QString cleaned;
     cleaned.reserve(string.size());
+
     const QChar *data = string.constData();
     const qsizetype size = string.size();
+
     qsizetype i = 0;
     while (i < size) {
         const ushort c = data[i].unicode();
-        // character skips: \0x01
+
+        // continue fast with most characters
+        if (c != 0x5C && // '\'
+            c != 0x01 && // SOH
+            c != 0x1B) { // ESC
+            cleaned.append(data[i]);
+            ++i;
+            continue;
+        }
         if (c == 0x01) {
             ++i;
             continue;
         }
 
-        // handle ascii escape sequence, i.e. check for \xHH
-        if (c == '\\' && i + 3 < size && data[i + 1] == QLatin1Char('x')) {
-            const int hi = hexValue(data[i + 2]);
-            const int lo = hexValue(data[i + 3]);
+        // decode \xHH
+        if (c == 0x5C && i + 3 < size && data[i + 1].unicode() == 'x') {
+            const ushort h = data[i + 2].unicode();
+            const ushort l = data[i + 3].unicode();
+
+            const int hi = hexValue(h);
+            const int lo = hexValue(l);
 
             if (hi >= 0 && lo >= 0) {
                 cleaned.append(QChar::fromLatin1(char((hi << 4) | lo)));
@@ -238,24 +251,29 @@ QString JournaldHelper::cleanupString(QStringView string)
             }
         }
 
-        // remove color codes
-        if (c == 0x1B) { // ESC
-            if (i + 1 < size && data[i + 1] == QLatin1Char('[')) {
+        // strip ANSI escape sequences
+        if (c == 0x1B) {
+            if (i + 1 < size && data[i + 1].unicode() == '[') {
                 i += 2;
                 while (i < size) {
-                    ushort c = data[i].unicode();
-                    if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) {
+                    const ushort u = data[i].unicode();
+                    if ((u >= 'A' && u <= 'Z') || (u >= 'a' && u <= 'z')) {
+                        ++i;
                         break;
                     }
                     ++i;
                 }
+                continue;
             }
+            ++i; // skipe alone ESC
             continue;
         }
 
+        // fallback
         cleaned.append(data[i]);
         ++i;
     }
+
     return cleaned;
 }
 
