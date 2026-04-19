@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-13 00:46+0000\n"
+"POT-Creation-Date: 2026-04-19 00:47+0000\n"
 "PO-Revision-Date: 2026-02-16 18:32+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -128,55 +128,55 @@ msgctxt "Radio box option, log priority value"
 msgid "No Filter"
 msgstr "Nessun filtro"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:160
+#: org/kde/kjournald/filtercriteriamodel.cpp:162
 #, kde-format
 msgctxt "Section title for log message source"
 msgid "Transport"
 msgstr "Trasporto"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:166
+#: org/kde/kjournald/filtercriteriamodel.cpp:168
 #, kde-format
 msgctxt "Checkbox option for kernel log messages"
 msgid "Kernel"
 msgstr "Kernel"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:175
+#: org/kde/kjournald/filtercriteriamodel.cpp:177
 #, kde-format
 msgctxt "Section title for log message priority"
 msgid "Priority"
 msgstr "Priorità"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:200
+#: org/kde/kjournald/filtercriteriamodel.cpp:202
 #, kde-format
 msgctxt "Section title for systemd user unit"
 msgid "User Unit"
 msgstr "Unità dell'utente"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:250
+#: org/kde/kjournald/filtercriteriamodel.cpp:252
 #, kde-format
 msgctxt "Section title for systemd sytem unit"
 msgid "System Unit"
 msgstr "Unità di sistema"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:300
+#: org/kde/kjournald/filtercriteriamodel.cpp:302
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"
 msgstr "Processo"
 
-#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:33
+#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:34
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Expanded"
 msgstr "Espanso"
 
-#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:34
+#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:35
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Collapsed"
 msgstr "Contratto"
 
-#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:60
+#: org/kde/kjournaldbrowser/FilterCriteriaView.qml:61
 #, kde-format
 msgctxt "@label"
 msgid "Clear"
