@@ -7,3 +7,8 @@ ecm_add_test(
 LINK_LIBRARIES Qt::Test kjournald
 TEST_NAME test_journaldhelper
 )
+
+qt_add_resources(test_journaldhelper "testdata"
+    PREFIX "/"
+    FILES cleanup_string_rawinput.txt cleanup_string_result.txt
+)

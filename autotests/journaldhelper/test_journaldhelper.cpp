@@ -8,6 +8,7 @@
 #include "journaldhelper.h"
 #include "sdjournal.h"
 #include <QDebug>
+#include <QFile>
 #include <QTest>
 
 // note: this test request several data from a real example journald database
@@ -42,6 +43,37 @@ void TestJournaldHelper::queryUniquePerBoot()
         QCOMPARE(results[JournaldHelper::Field::_EXE].removeDuplicates(), 0);
         QVERIFY(results[JournaldHelper::Field::_EXE].size() > 0);
         QVERIFY(results[JournaldHelper::Field::_EXE].contains("/lib/systemd/systemd-resolved")); // arbitrary entry
+    }
+}
+
+void TestJournaldHelper::cleanupString()
+{
+    QStringList rawInput;
+    QStringList result;
+    {
+        QFile file(":/cleanup_string_rawinput.txt");
+        QVERIFY(file.exists());
+        QVERIFY(file.open(QIODevice::ReadOnly));
+        QTextStream in(&file);
+        while (!in.atEnd()) {
+            rawInput << in.readLine();
+        }
+        file.close();
+    }
+    {
+        QFile file(":/cleanup_string_result.txt");
+        QVERIFY(file.exists());
+        QVERIFY(file.open(QIODevice::ReadOnly));
+        QTextStream in(&file);
+        while (!in.atEnd()) {
+            result << in.readLine();
+        }
+        file.close();
+    }
+    QCOMPARE(rawInput.size(), result.size());
+
+    for (qsizetype i = 0; i < rawInput.size(); ++i) {
+        QCOMPARE(JournaldHelper::cleanupString(rawInput.at(i)), result.at(i));
     }
 }
 
