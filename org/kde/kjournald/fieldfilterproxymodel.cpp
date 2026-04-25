@@ -60,9 +60,7 @@ QJSValue FieldFilterProxyModel::get(int idx) const
     QJSValue value = engine->newObject();
     if (idx >= 0 && idx < rowCount()) {
         QHash<int, QByteArray> roles = roleNames();
-        QHashIterator<int, QByteArray> it(roles);
-        while (it.hasNext()) {
-            it.next();
+        for (auto it = roles.cbegin(), end = roles.cend(); it != end; ++it) {
             value.setProperty(QString::fromUtf8(it.value()), data(index(idx, 0), it.key()).toString());
         }
     }
@@ -82,11 +80,10 @@ void FieldFilterProxyModel::componentComplete()
 int FieldFilterProxyModel::roleKey(const QByteArray &role) const
 {
     QHash<int, QByteArray> roles = roleNames();
-    QHashIterator<int, QByteArray> it(roles);
-    while (it.hasNext()) {
-        it.next();
-        if (it.value() == role)
+    for (auto it = roles.cbegin(), end = roles.cend(); it != end; ++it) {
+        if (it.value() == role) {
             return it.key();
+        }
     }
     return -1;
 }

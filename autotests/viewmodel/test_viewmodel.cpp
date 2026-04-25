@@ -29,7 +29,7 @@ void TestViewModel::journalAccess()
     // test failure handling for invalid journal
     {
         QTemporaryFile invalidJournal; // file is surely invalid
-        invalidJournal.open();
+        QVERIFY(invalidJournal.open());
         auto provider = LocalJournal(invalidJournal.fileName());
         model.setJournalProvider(&provider);
         QCOMPARE(model.rowCount(), 0);

@@ -62,6 +62,7 @@ find_package(KF6 ${KF_VERSION} REQUIRED COMPONENTS
     Kirigami
 )
 add_definitions(-DTRANSLATION_DOMAIN=\"kjournald\")
+add_definitions(-DQT_ENABLE_STRICT_MODE_UP_TO=0x060500)
 
 find_package(KF6KirigamiAddons 1.4.0 REQUIRED)
 
