@@ -26,7 +26,7 @@ Labs.MenuBar {
             text: KI18n.i18nc("@action:inmenu", "Local journal")
             icon.name: "document-open"
             onTriggered: {
-                DatabaseProvider.setLocalJournal()
+                DatabaseProvider.loadSystemJournal()
             }
         }
         Labs.MenuItem {

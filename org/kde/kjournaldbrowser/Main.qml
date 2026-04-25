@@ -31,7 +31,9 @@ StatefulApp.StatefulWindow {
     Component.onCompleted: {
         if (root.initialJournalPath !== "") {
             console.log(`set initial journal path: ${root.initialJournalPath}`)
-            DatabaseProvider.setLocalJournalPath(root.initialJournalPath)
+            DatabaseProvider.loadJournalFromLocalPath(root.initialJournalPath)
+        } else {
+            DatabaseProvider.loadSystemJournal()
         }
     }
 
@@ -124,6 +126,10 @@ StatefulApp.StatefulWindow {
                     text: BrowserApplication.timeDisplay
                           === BrowserApplication.UTC ? bootIdDelegate.displayshort_utc : bootIdDelegate.displayshort_localtime
                     font.weight: bootIdDelegate.index === bootIdComboBox.currentIndex ? Font.Bold : Font.Normal
+                }
+                Connections {
+                    target: bootModel
+                    function onModelReset() { bootIdComboBox.currentIndex = 0 }
                 }
             }
             ToolSeparator {}
@@ -274,9 +280,9 @@ StatefulApp.StatefulWindow {
     Dialogs.FolderDialog {
         id: journalFolderSelectionDialog
         title: KI18n.i18nc("@title", "Select journal folder")
-        currentFolder: DatabaseProvider.journalPath
+        currentFolder: DatabaseProvider.localJournalPath
         onAccepted: {
-            DatabaseProvider.setJournalPath(journalFolderSelectionDialog.selectedFolder)
+            DatabaseProvider.loadJournalFromLocalPath(journalFolderSelectionDialog.selectedFolder)
         }
     }
 
@@ -285,14 +291,14 @@ StatefulApp.StatefulWindow {
         title: KI18n.i18nc("@title", "Select journal file")
         nameFilters: [KI18n.i18nc("@item", "Journal files (*.journal)"), KI18n.i18nc("@item", "All files (*)")]
         onAccepted: {
-            DatabaseProvider.setJournalPath(journalFileSelectionDialog.selectedFile)
+            DatabaseProvider.loadJournalFromLocalPath(journalFileSelectionDialog.selectedFile)
         }
     }
 
     RemoteJournalConfigDialog {
         id: remoteJournalDialog
         onAccepted: {
-            DatabaseProvider.setRemoteJournalUrl(remoteJournalDialog.url, remoteJournalDialog.port)
+            DatabaseProvider.loadJournalFromRemoteAddress(remoteJournalDialog.url, remoteJournalDialog.port)
         }
     }
 
