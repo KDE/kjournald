@@ -13,4 +13,5 @@ class TestJournaldHelper : public QObject
 
 private Q_SLOTS:
     void queryUniquePerBoot();
+    void cleanupString();
 };
