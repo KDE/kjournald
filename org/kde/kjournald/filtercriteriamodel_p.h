@@ -59,7 +59,7 @@ public:
      */
     bool isRebuildModelPending() const;
 
-    static QString mapPriorityToString(int priority);
+    static QString mapPriorityToString(qint32 priority);
 
     bool mQmlEngineIncubationActive{false}; // set via QML parser status
     IJournalProvider *mJournalProvider{nullptr};

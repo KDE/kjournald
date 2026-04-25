@@ -14,7 +14,7 @@
 #include <QString>
 #include <memory>
 
-QString FilterCriteriaModelPrivate::mapPriorityToString(int priority)
+QString FilterCriteriaModelPrivate::mapPriorityToString(qint32 priority)
 {
     switch (priority) {
     case 0:
@@ -187,13 +187,13 @@ void FilterCriteriaModelPrivate::rebuildModel()
                                                            FilterCriteriaModel::Category::PRIORITY,
                                                            mPriorityLevel.has_value() && i == mPriorityLevel.value() ? true : false,
                                                            parent)));
-            // magic number 8 is "unset"
+            // magic index 8 means "unset priority"
         }
         // add "no filter" option at end
         mRootItem->child(rootIndex)->appendChild(std::move(std::make_unique<SelectionEntry>(mapPriorityToString(-1),
                                                                                             QString::number(-1),
                                                                                             FilterCriteriaModel::Category::PRIORITY,
-                                                                                            !mPriorityLevel.has_value(),
+                                                                                            !mPriorityLevel.has_value() || 8 == mPriorityLevel,
                                                                                             parent)));
         mIndexMap[FilterCriteriaModel::Category::PRIORITY] = rootIndex;
         ++rootIndex;
