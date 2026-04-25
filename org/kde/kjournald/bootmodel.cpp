@@ -19,18 +19,22 @@ void BootModel::setJournalProvider(IJournalProvider *provider)
 {
     d->mJournalProvider = provider;
     if (provider) {
+        qCDebug(KJOURNALDLIB_GENERAL) << "rebuild boot model due to journal change";
         d->mJournal = provider->openJournal();
+        Q_ASSERT(d->mJournal);
     } else {
+        qCDebug(KJOURNALDLIB_GENERAL) << "build empty boot model, because no provider set";
         d->mJournal.reset();
     }
     Q_EMIT journalProviderChanged();
+
     beginResetModel();
     d->mBootInfo.clear();
     if (d->mJournal) {
         d->mBootInfo = JournaldHelper::queryOrderedBootIds(d->mJournal->get());
         d->sort(Qt::SortOrder::DescendingOrder);
-        endResetModel();
     }
+    endResetModel();
 }
 
 IJournalProvider *BootModel::journalProvider() const

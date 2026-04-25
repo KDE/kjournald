@@ -18,15 +18,15 @@ class DatabaseProvider : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(DatabaseProvider::DatabaseAccessLimit access READ access WRITE setAccess NOTIFY accessChanged FINAL)
-    Q_PROPERTY(QUrl journalPath READ journalPath NOTIFY journalPathChanged)
 
     /**
      * @note this path can either be a directory or a file
      */
-    Q_PROPERTY(QString localJournalPath READ localJournalPath NOTIFY journalPathChanged)
-    Q_PROPERTY(QString remoteJournalUrl READ remoteJournalUrl NOTIFY journalPathChanged)
-    Q_PROPERTY(quint32 remoteJournalPort READ remoteJournalPort NOTIFY journalPathChanged)
-    Q_PROPERTY(IJournalProvider *journalProvider READ journalProvider NOTIFY journalChanged)
+    Q_PROPERTY(QString localJournalPath READ localJournalPath NOTIFY localJournalPathChanged FINAL)
+    Q_PROPERTY(QString remoteJournalUrl READ remoteJournalUrl NOTIFY remoteJournalUrlChanged FINAL)
+    Q_PROPERTY(quint32 remoteJournalPort READ remoteJournalPort NOTIFY remoteJournalPortChanged FINAL)
+
+    Q_PROPERTY(IJournalProvider *journalProvider READ journalProvider NOTIFY journalChanged FINAL)
 
     QML_ELEMENT
     QML_SINGLETON
@@ -60,10 +60,9 @@ public:
     DatabaseProvider::DatabaseAccessLimit access() const;
     void setAccess(DatabaseProvider::DatabaseAccessLimit limit);
 
-    Q_INVOKABLE void setJournalPath(const QUrl &path);
-    Q_INVOKABLE void setLocalJournal();
-    Q_INVOKABLE void setRemoteJournalUrl(const QString &url, quint32 port);
-    Q_INVOKABLE void setLocalJournalPath(const QString &path);
+    Q_INVOKABLE void loadJournalFromLocalPath(const QUrl &path);
+    Q_INVOKABLE void loadSystemJournal();
+    Q_INVOKABLE void loadJournalFromRemoteAddress(const QString &url, quint32 port);
 
     QUrl journalPath() const;
     QString localJournalPath() const;
@@ -73,9 +72,11 @@ public:
     IJournalProvider *journalProvider();
 
 Q_SIGNALS:
-    void journalPathChanged();
     void journalChanged();
     void accessChanged();
+    void localJournalPathChanged();
+    void remoteJournalUrlChanged();
+    void remoteJournalPortChanged();
 
 private:
     void initJournal();

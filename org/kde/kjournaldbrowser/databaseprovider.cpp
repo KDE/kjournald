@@ -1,6 +1,6 @@
 /*
     SPDX-License-Identifier: LGPL-2.1-or-later OR MIT
-    SPDX-FileCopyrightText: 2021 Andreas Cord-Landwehr <cordlandwehr@kde.org>
+    SPDX-FileCopyrightText: 2021-2026 Andreas Cord-Landwehr <cordlandwehr@kde.org>
 */
 
 #include "databaseprovider.h"
@@ -12,10 +12,7 @@
 DatabaseProvider::DatabaseProvider(QObject *parent)
     : QObject(parent)
 {
-    setLocalJournal();
-
     connect(this, &DatabaseProvider::accessChanged, this, &DatabaseProvider::reloadJournal);
-    connect(this, &DatabaseProvider::journalPathChanged, this, &DatabaseProvider::journalChanged);
 }
 
 DatabaseProvider::~DatabaseProvider() = default;
@@ -40,13 +37,17 @@ void DatabaseProvider::setAccess(DatabaseProvider::DatabaseAccessLimit limit)
     Q_EMIT accessChanged();
 }
 
-void DatabaseProvider::setLocalJournal()
+void DatabaseProvider::loadSystemJournal()
 {
+    qCInfo(KJOURNALDLIB_GENERAL) << "Loading local system journal";
+
     // not setting any path defaults to system journal
     mJournalPath = QString();
+    Q_EMIT localJournalPathChanged();
+
     mDatabaseType = DatabaseType::LOCAL_SYSTEM;
     mJournalProvider = std::make_shared<LocalJournal>(LocalJournal::Mode::AnyLocal);
-    Q_EMIT journalPathChanged();
+    Q_EMIT journalChanged();
 }
 
 QUrl DatabaseProvider::journalPath() const
@@ -54,33 +55,35 @@ QUrl DatabaseProvider::journalPath() const
     return QUrl::fromLocalFile(mJournalPath);
 }
 
-void DatabaseProvider::setJournalPath(const QUrl &path)
+void DatabaseProvider::loadJournalFromLocalPath(const QUrl &url)
 {
-    setLocalJournalPath(path.toLocalFile());
-}
-
-void DatabaseProvider::setLocalJournalPath(const QString &path)
-{
-    qCDebug(KJOURNALDLIB_GENERAL) << "Open path" << path;
+    qCInfo(KJOURNALDLIB_GENERAL) << "Loading journal from:" << url;
+    const QString path = url.toString(QUrl::PreferLocalFile);
+    qCDebug(KJOURNALDLIB_GENERAL) << "Use decoded path:" << path;
     if (path == mJournalPath) {
         return;
     }
     mJournalPath = path;
+    Q_EMIT localJournalPathChanged();
+
     mDatabaseType = DatabaseType::FOLDER;
     mJournalProvider = std::make_shared<LocalJournal>(mJournalPath);
-    Q_EMIT journalPathChanged();
+    Q_EMIT journalChanged();
 }
 
-void DatabaseProvider::setRemoteJournalUrl(const QString &url, quint32 port)
+void DatabaseProvider::loadJournalFromRemoteAddress(const QString &url, quint32 port)
 {
     if (url == mRemoteJournalUrl && port == mRemoteJournalPort) {
         return;
     }
     mRemoteJournalUrl = url;
     mRemoteJournalPort = port;
+    Q_EMIT remoteJournalUrlChanged();
+    Q_EMIT remoteJournalPortChanged();
+
     initJournal();
     mDatabaseType = DatabaseType::REMOTE;
-    Q_EMIT journalPathChanged();
+    Q_EMIT journalChanged();
 }
 
 QString DatabaseProvider::remoteJournalUrl() const
@@ -110,7 +113,10 @@ void DatabaseProvider::initJournal()
     }
     auto remoteJournal = std::make_shared<SystemdJournalRemote>(mRemoteJournalUrl, QString::number(mRemoteJournalPort));
     connect(remoteJournal.get(), &SystemdJournalRemote::journalFileChanged, this, [=]() {
-        setLocalJournalPath(QFileInfo(remoteJournal->journalFile()).absolutePath());
+        mJournalPath = QFileInfo(remoteJournal->journalFile()).absolutePath();
+        Q_EMIT localJournalPathChanged();
+        mJournalProvider = std::make_shared<LocalJournal>(mJournalPath);
+        Q_EMIT journalChanged();
     });
     mJournalProvider = remoteJournal;
 }
