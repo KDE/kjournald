@@ -4,6 +4,7 @@ runtime: org.kde.Platform
 runtime-version: '6.10'
 sdk: org.kde.Sdk
 command: kjournaldbrowser
+rename-icon: "utilities-log-viewer"
 tags:
   - nightly
 desktop-file-name-suffix: ' (Nightly)'
@@ -20,10 +21,7 @@ finish-args:
 modules:
   - name: kjournald
     buildsystem: cmake-ninja
+    config-opts: [ "-DINSTALL_ICONS=ON" ]
     sources:
       - type: dir
         path: .
-    post-install:
-      # Icon is included with breeze in runtime
-      - install -D /usr/share/icons/breeze/apps/32/utilities-log-viewer.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
-      - desktop-file-edit --set-key=Icon --set-value=${FLATPAK_ID} ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
