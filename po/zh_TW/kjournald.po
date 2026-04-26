@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-19 02:49+0000\n"
+"POT-Creation-Date: 2026-04-26 02:40+0000\n"
 "PO-Revision-Date: 2026-03-02 05:29+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -341,61 +341,61 @@ msgctxt "@label"
 msgid "Kernel"
 msgstr "核心"
 
-#: org/kde/kjournaldbrowser/Main.qml:109
+#: org/kde/kjournaldbrowser/Main.qml:111
 #, kde-format
 msgctxt "@label"
 msgid "Boot:"
 msgstr "開機："
 
-#: org/kde/kjournaldbrowser/Main.qml:221
+#: org/kde/kjournaldbrowser/Main.qml:227
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr "切換比對時是否區分大小寫"
 
-#: org/kde/kjournaldbrowser/Main.qml:263
+#: org/kde/kjournaldbrowser/Main.qml:269
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "切換到瀏覽模式"
 
-#: org/kde/kjournaldbrowser/Main.qml:264
+#: org/kde/kjournaldbrowser/Main.qml:270
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "切換到選取模式"
 
-#: org/kde/kjournaldbrowser/Main.qml:276
+#: org/kde/kjournaldbrowser/Main.qml:282
 #, kde-format
 msgctxt "@title"
 msgid "Select journal folder"
 msgstr "選擇日誌資料夾"
 
-#: org/kde/kjournaldbrowser/Main.qml:285
+#: org/kde/kjournaldbrowser/Main.qml:291
 #, kde-format
 msgctxt "@title"
 msgid "Select journal file"
 msgstr "選擇日誌檔案"
 
-#: org/kde/kjournaldbrowser/Main.qml:286
+#: org/kde/kjournaldbrowser/Main.qml:292
 #, kde-format
 msgctxt "@item"
 msgid "Journal files (*.journal)"
 msgstr "日誌檔 (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:286
+#: org/kde/kjournaldbrowser/Main.qml:292
 #, kde-format
 msgctxt "@item"
 msgid "All files (*)"
 msgstr "所有檔案 (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:356
+#: org/kde/kjournaldbrowser/Main.qml:362
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
 msgstr "無法從所選位置讀取日誌資料庫："
 
-#: org/kde/kjournaldbrowser/Main.qml:357
+#: org/kde/kjournaldbrowser/Main.qml:363
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -403,7 +403,7 @@ msgid ""
 "journal'."
 msgstr "檢查所選目錄的子目錄是否包含 \".journal\" 副檔名的檔案。"
 
-#: org/kde/kjournaldbrowser/Main.qml:364
+#: org/kde/kjournaldbrowser/Main.qml:370
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."

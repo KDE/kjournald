@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-19 02:49+0000\n"
+"POT-Creation-Date: 2026-04-26 02:40+0000\n"
 "PO-Revision-Date: 2025-12-24 16:21+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
@@ -363,66 +363,66 @@ msgctxt "@label"
 msgid "Kernel"
 msgstr "Jądro"
 
-#: org/kde/kjournaldbrowser/Main.qml:109
+#: org/kde/kjournaldbrowser/Main.qml:111
 #, fuzzy, kde-format
 #| msgid "Boot:"
 msgctxt "@label"
 msgid "Boot:"
 msgstr "Rozruch:"
 
-#: org/kde/kjournaldbrowser/Main.qml:221
+#: org/kde/kjournaldbrowser/Main.qml:227
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr "Przełącz pomiędzy rozróżnianiem i nierozróżnianiem wielkości liter"
 
-#: org/kde/kjournaldbrowser/Main.qml:263
+#: org/kde/kjournaldbrowser/Main.qml:269
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "Przełącz na tryb przeglądania"
 
-#: org/kde/kjournaldbrowser/Main.qml:264
+#: org/kde/kjournaldbrowser/Main.qml:270
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "Przełącz na tryb zaznaczania"
 
-#: org/kde/kjournaldbrowser/Main.qml:276
+#: org/kde/kjournaldbrowser/Main.qml:282
 #, fuzzy, kde-format
 #| msgid "Select journal folder"
 msgctxt "@title"
 msgid "Select journal folder"
 msgstr "Wybierz katalog dziennika"
 
-#: org/kde/kjournaldbrowser/Main.qml:285
+#: org/kde/kjournaldbrowser/Main.qml:291
 #, fuzzy, kde-format
 #| msgid "Select journal file"
 msgctxt "@title"
 msgid "Select journal file"
 msgstr "Wybierz plik dziennika"
 
-#: org/kde/kjournaldbrowser/Main.qml:286
+#: org/kde/kjournaldbrowser/Main.qml:292
 #, fuzzy, kde-format
 #| msgid "Journal files (*.journal)"
 msgctxt "@item"
 msgid "Journal files (*.journal)"
 msgstr "Pliki dziennika (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:286
+#: org/kde/kjournaldbrowser/Main.qml:292
 #, fuzzy, kde-format
 #| msgid "All files (*)"
 msgctxt "@item"
 msgid "All files (*)"
 msgstr "Wszystkie pliki (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:356
+#: org/kde/kjournaldbrowser/Main.qml:362
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
 msgstr "Nie można wczytać bazy danych dziennika z danego miejsca: "
 
-#: org/kde/kjournaldbrowser/Main.qml:357
+#: org/kde/kjournaldbrowser/Main.qml:363
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -432,7 +432,7 @@ msgstr ""
 "Sprawdź podkatalogi danego katalogu, czy nie zawierają plików zakończonych '."
 "journal'."
 
-#: org/kde/kjournaldbrowser/Main.qml:364
+#: org/kde/kjournaldbrowser/Main.qml:370
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."
