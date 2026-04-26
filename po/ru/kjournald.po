@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-19 00:47+0000\n"
+"POT-Creation-Date: 2026-04-26 00:47+0000\n"
 "PO-Revision-Date: 2026-02-17 20:37+0200\n"
 "Last-Translator: Alexander Yavorskiy <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -341,61 +341,61 @@ msgctxt "@label"
 msgid "Kernel"
 msgstr "Ядро"
 
-#: org/kde/kjournaldbrowser/Main.qml:109
+#: org/kde/kjournaldbrowser/Main.qml:111
 #, kde-format
 msgctxt "@label"
 msgid "Boot:"
 msgstr "Загрузка:"
 
-#: org/kde/kjournaldbrowser/Main.qml:221
+#: org/kde/kjournaldbrowser/Main.qml:227
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr "Переключение между регистрозависимым и регистронезависимым режимами"
 
-#: org/kde/kjournaldbrowser/Main.qml:263
+#: org/kde/kjournaldbrowser/Main.qml:269
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "Перейти в режим просмотра"
 
-#: org/kde/kjournaldbrowser/Main.qml:264
+#: org/kde/kjournaldbrowser/Main.qml:270
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "Перейти в режим выделения"
 
-#: org/kde/kjournaldbrowser/Main.qml:276
+#: org/kde/kjournaldbrowser/Main.qml:282
 #, kde-format
 msgctxt "@title"
 msgid "Select journal folder"
 msgstr "Выбрать папку журнала"
 
-#: org/kde/kjournaldbrowser/Main.qml:285
+#: org/kde/kjournaldbrowser/Main.qml:291
 #, kde-format
 msgctxt "@title"
 msgid "Select journal file"
 msgstr "Выбрать файл журнала"
 
-#: org/kde/kjournaldbrowser/Main.qml:286
+#: org/kde/kjournaldbrowser/Main.qml:292
 #, kde-format
 msgctxt "@item"
 msgid "Journal files (*.journal)"
 msgstr "Файлы журнала (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:286
+#: org/kde/kjournaldbrowser/Main.qml:292
 #, kde-format
 msgctxt "@item"
 msgid "All files (*)"
 msgstr "Все файлы (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:356
+#: org/kde/kjournaldbrowser/Main.qml:362
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
 msgstr "Не удалось загрузить базу данных журнала из выбранного расположения: "
 
-#: org/kde/kjournaldbrowser/Main.qml:357
+#: org/kde/kjournaldbrowser/Main.qml:363
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -405,7 +405,7 @@ msgstr ""
 "Проверьте вложенные каталоги выбранного каталога на наличие файлов с "
 "расширением '.journal'."
 
-#: org/kde/kjournaldbrowser/Main.qml:364
+#: org/kde/kjournaldbrowser/Main.qml:370
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."

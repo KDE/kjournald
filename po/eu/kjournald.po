@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-19 00:47+0000\n"
+"POT-Creation-Date: 2026-04-26 00:47+0000\n"
 "PO-Revision-Date: 2026-01-05 22:06+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -348,62 +348,62 @@ msgctxt "@label"
 msgid "Kernel"
 msgstr "Muina"
 
-#: org/kde/kjournaldbrowser/Main.qml:109
+#: org/kde/kjournaldbrowser/Main.qml:111
 #, kde-format
 msgctxt "@label"
 msgid "Boot:"
 msgstr "Abioa:"
 
-#: org/kde/kjournaldbrowser/Main.qml:221
+#: org/kde/kjournaldbrowser/Main.qml:227
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr ""
 "Aldatu, parekatzean, maiuskulak bereiztearen eta ez bereiztearen artean"
 
-#: org/kde/kjournaldbrowser/Main.qml:263
+#: org/kde/kjournaldbrowser/Main.qml:269
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "Aldatu arakatze modura"
 
-#: org/kde/kjournaldbrowser/Main.qml:264
+#: org/kde/kjournaldbrowser/Main.qml:270
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "Aldatu hautapen modura"
 
-#: org/kde/kjournaldbrowser/Main.qml:276
+#: org/kde/kjournaldbrowser/Main.qml:282
 #, kde-format
 msgctxt "@title"
 msgid "Select journal folder"
 msgstr "Hautatu egunkariaren karpeta"
 
-#: org/kde/kjournaldbrowser/Main.qml:285
+#: org/kde/kjournaldbrowser/Main.qml:291
 #, kde-format
 msgctxt "@title"
 msgid "Select journal file"
 msgstr "Hautatu egunkariaren fitxategia"
 
-#: org/kde/kjournaldbrowser/Main.qml:286
+#: org/kde/kjournaldbrowser/Main.qml:292
 #, kde-format
 msgctxt "@item"
 msgid "Journal files (*.journal)"
 msgstr "Egunkari fitxategiak (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:286
+#: org/kde/kjournaldbrowser/Main.qml:292
 #, kde-format
 msgctxt "@item"
 msgid "All files (*)"
 msgstr "Fitxategi guztiak (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:356
+#: org/kde/kjournaldbrowser/Main.qml:362
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
 msgstr "Hautatutako kokalekutik ezin da egunkarien datu-baserik zamatu: "
 
-#: org/kde/kjournaldbrowser/Main.qml:357
+#: org/kde/kjournaldbrowser/Main.qml:363
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -413,7 +413,7 @@ msgstr ""
 "Ikuskatu hautatutako direktorioaren azpidirektorioek bukaera '.journal' "
 "duten fitxategiak dituzten."
 
-#: org/kde/kjournaldbrowser/Main.qml:364
+#: org/kde/kjournaldbrowser/Main.qml:370
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."

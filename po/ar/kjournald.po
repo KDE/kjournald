@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-19 00:47+0000\n"
+"POT-Creation-Date: 2026-04-26 00:47+0000\n"
 "PO-Revision-Date: 2026-02-18 17:59+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -338,61 +338,61 @@ msgctxt "@label"
 msgid "Kernel"
 msgstr "النواة"
 
-#: org/kde/kjournaldbrowser/Main.qml:109
+#: org/kde/kjournaldbrowser/Main.qml:111
 #, kde-format
 msgctxt "@label"
 msgid "Boot:"
 msgstr "الإقلاع:"
 
-#: org/kde/kjournaldbrowser/Main.qml:221
+#: org/kde/kjournaldbrowser/Main.qml:227
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr "التبديل بين المطابقة الحساسة لحالة الأحرف وغير الحساسة لحالة الأحرف"
 
-#: org/kde/kjournaldbrowser/Main.qml:263
+#: org/kde/kjournaldbrowser/Main.qml:269
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "بدّل إلى وضع التصفح"
 
-#: org/kde/kjournaldbrowser/Main.qml:264
+#: org/kde/kjournaldbrowser/Main.qml:270
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "بدّل إلى وضع التّحديد"
 
-#: org/kde/kjournaldbrowser/Main.qml:276
+#: org/kde/kjournaldbrowser/Main.qml:282
 #, kde-format
 msgctxt "@title"
 msgid "Select journal folder"
 msgstr "حدد مجلد اليومية"
 
-#: org/kde/kjournaldbrowser/Main.qml:285
+#: org/kde/kjournaldbrowser/Main.qml:291
 #, kde-format
 msgctxt "@title"
 msgid "Select journal file"
 msgstr "حدد ملف اليومية"
 
-#: org/kde/kjournaldbrowser/Main.qml:286
+#: org/kde/kjournaldbrowser/Main.qml:292
 #, kde-format
 msgctxt "@item"
 msgid "Journal files (*.journal)"
 msgstr "ملفات اليومية (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:286
+#: org/kde/kjournaldbrowser/Main.qml:292
 #, kde-format
 msgctxt "@item"
 msgid "All files (*)"
 msgstr "كلّ الملفّات (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:356
+#: org/kde/kjournaldbrowser/Main.qml:362
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
 msgstr "تعذر تحميل قاعدة بيانات اليوميات من الموقع المحدد: "
 
-#: org/kde/kjournaldbrowser/Main.qml:357
+#: org/kde/kjournaldbrowser/Main.qml:363
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -401,7 +401,7 @@ msgid ""
 msgstr ""
 "تحقق من مجلدات فرعية للمجلد المحدد لتحتوي على ملفات تنتهي بـ ”.journal“."
 
-#: org/kde/kjournaldbrowser/Main.qml:364
+#: org/kde/kjournaldbrowser/Main.qml:370
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."

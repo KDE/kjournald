@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-19 00:47+0000\n"
+"POT-Creation-Date: 2026-04-26 00:47+0000\n"
 "PO-Revision-Date: 2026-02-16 10:17+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -339,62 +339,62 @@ msgctxt "@label"
 msgid "Kernel"
 msgstr "Kernel"
 
-#: org/kde/kjournaldbrowser/Main.qml:109
+#: org/kde/kjournaldbrowser/Main.qml:111
 #, kde-format
 msgctxt "@label"
 msgid "Boot:"
 msgstr "Boot:"
 
-#: org/kde/kjournaldbrowser/Main.qml:221
+#: org/kde/kjournaldbrowser/Main.qml:227
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr ""
 "Schakel om tussen hoofdlettergevoelig and hoofdletter ongevoelig overeenkomen"
 
-#: org/kde/kjournaldbrowser/Main.qml:263
+#: org/kde/kjournaldbrowser/Main.qml:269
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "Omschakelen naar modus bladeren"
 
-#: org/kde/kjournaldbrowser/Main.qml:264
+#: org/kde/kjournaldbrowser/Main.qml:270
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "Omschakelen naar modus selecteren"
 
-#: org/kde/kjournaldbrowser/Main.qml:276
+#: org/kde/kjournaldbrowser/Main.qml:282
 #, kde-format
 msgctxt "@title"
 msgid "Select journal folder"
 msgstr "Journaalmap selecteren"
 
-#: org/kde/kjournaldbrowser/Main.qml:285
+#: org/kde/kjournaldbrowser/Main.qml:291
 #, kde-format
 msgctxt "@title"
 msgid "Select journal file"
 msgstr "Journaalbestand selecteren"
 
-#: org/kde/kjournaldbrowser/Main.qml:286
+#: org/kde/kjournaldbrowser/Main.qml:292
 #, kde-format
 msgctxt "@item"
 msgid "Journal files (*.journal)"
 msgstr "Journaalbestanden (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:286
+#: org/kde/kjournaldbrowser/Main.qml:292
 #, kde-format
 msgctxt "@item"
 msgid "All files (*)"
 msgstr "Alle bestanden (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:356
+#: org/kde/kjournaldbrowser/Main.qml:362
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
 msgstr "Laden van journal-database lukt niet uit de geselecteerde locatie: "
 
-#: org/kde/kjournaldbrowser/Main.qml:357
+#: org/kde/kjournaldbrowser/Main.qml:363
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -404,7 +404,7 @@ msgstr ""
 "Controleer of de submappen van de geselecteerde map bestanden bevatten die "
 "eindigen op '.journal'."
 
-#: org/kde/kjournaldbrowser/Main.qml:364
+#: org/kde/kjournaldbrowser/Main.qml:370
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."
