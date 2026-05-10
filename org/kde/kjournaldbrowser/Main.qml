@@ -27,11 +27,16 @@ StatefulApp.StatefulWindow {
 
     required property FilterCriteriaModel filterModel
     required property string initialJournalPath
+    required property bool initialJournalPathViaPortal
 
     Component.onCompleted: {
-        if (root.initialJournalPath !== "") {
+        if (root.initialJournalPath !== "" && initialJournalPathViaPortal === false) {
             console.log(`set initial journal path: ${root.initialJournalPath}`)
             DatabaseProvider.loadJournalFromLocalPath(root.initialJournalPath)
+        } else if(root.initialJournalPath !== "" && initialJournalPathViaPortal === true) {
+            console.log(`request initial journal via portal dialog: ${root.initialJournalPath}`)
+            journalFolderSelectionDialog.currentFolder = "file://" + root.initialJournalPath
+            journalFolderSelectionDialog.open()
         } else {
             DatabaseProvider.loadSystemJournal()
         }
@@ -356,11 +361,22 @@ StatefulApp.StatefulWindow {
                 anchors.centerIn: parent
                 width: parent.width - (Kirigami.Units.largeSpacing * 4)
 
-                visible: !journalModel.available
+                visible: !journalModel.available && !(root.initialJournalPathViaPortal && root.initialJournalPath)
 
                 icon.name: "data-error"
                 text: KI18n.i18nc("@title", "Unable to load journal database from selected location: ") + DatabaseProvider.localJournalPath
                 explanation: KI18n.i18nc("@info", "Check sub-directories of selected directory to contain files ending with '.journal'.")
+            }
+
+            Kirigami.PlaceholderMessage {
+                anchors.centerIn: parent
+                width: parent.width - (Kirigami.Units.largeSpacing * 4)
+
+                visible: !journalModel.available && root.initialJournalPathViaPortal && root.initialJournalPath
+
+                icon.name: "data-information"
+                text: KI18n.i18nc("@title", "Selected path is only accessible via file loading dialog")
+                explanation: KI18n.i18nc("@info", "Application is running in sandboxed mode and requires user consent to load the selected path: ") + root.initialJournalPath
             }
 
             Kirigami.PlaceholderMessage {
@@ -384,7 +400,7 @@ StatefulApp.StatefulWindow {
         filter.userUnits: root.filterModel.systemdUserUnitFilter
         filter.systemUnits: root.filterModel.systemdSystemUnitFilter
         filter.exes: root.filterModel.exeFilter
-        filter.boots: bootIdComboBox.currentValue
+        filter.boots: bootIdComboBox.currentValue ?? ""
         filter.priority: root.filterModel.priorityFilter
         filter.kernel: root.filterModel.kernelFilter
     }
