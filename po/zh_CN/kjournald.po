@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-26 00:47+0000\n"
+"POT-Creation-Date: 2026-05-11 00:47+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -17,25 +17,27 @@ msgstr ""
 "X-Crowdin-File: /kf6-trunk/messages/kjournald/kjournald.pot\n"
 "X-Crowdin-File-ID: 48238\n"
 
-#: browser/main.cpp:42
+#: browser/main.cpp:55
 #, kde-format
 msgctxt "@title Displayed program name"
 msgid "KJournald Browser"
 msgstr "KJournald 浏览器"
 
-#: browser/main.cpp:44
+#: browser/main.cpp:57
 #, kde-format
 msgctxt "@title KAboutData: short program description"
 msgid "Viewer for Journald logs"
 msgstr "Journald 日志查看器"
 
-#: browser/main.cpp:46
-#, kde-format
+#: browser/main.cpp:59
+#, fuzzy, kde-format
+#| msgctxt "@info:credit"
+#| msgid "(c) 2021-2025 The KJournald Developers"
 msgctxt "@info:credit"
-msgid "(c) 2021-2025 The KJournald Developers"
+msgid "(c) 2021-2026 The KJournald Developers"
 msgstr "(c) 2021-2025 The KJournald Developers"
 
-#: browser/main.cpp:47
+#: browser/main.cpp:60
 #, kde-format
 msgctxt "@title Short program description"
 msgid ""
@@ -43,31 +45,31 @@ msgid ""
 "tool."
 msgstr "查看由 Journald 日志工具生成的数据库的查看器。"
 
-#: browser/main.cpp:49
+#: browser/main.cpp:62
 #, kde-format
 msgctxt "@info:credit Developer name"
 msgid "Andreas Cord-Landwehr"
 msgstr "Andreas Cord-Landwehr"
 
-#: browser/main.cpp:50
+#: browser/main.cpp:63
 #, kde-format
 msgctxt "@info:credit Role"
 msgid "Original Author"
 msgstr "原始作者"
 
-#: browser/main.cpp:52
+#: browser/main.cpp:65
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Tyson Tan"
 
-#: browser/main.cpp:52
+#: browser/main.cpp:65
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "tds00@qq.com"
 
-#: browser/main.cpp:67
+#: browser/main.cpp:80
 #, kde-format
 msgid "Journald Log Viewer"
 msgstr "Journald 日志查看器"
@@ -337,61 +339,61 @@ msgctxt "@label"
 msgid "Kernel"
 msgstr "内核"
 
-#: org/kde/kjournaldbrowser/Main.qml:111
+#: org/kde/kjournaldbrowser/Main.qml:116
 #, kde-format
 msgctxt "@label"
 msgid "Boot:"
 msgstr "引导："
 
-#: org/kde/kjournaldbrowser/Main.qml:227
+#: org/kde/kjournaldbrowser/Main.qml:232
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr "切换区分/不区分大小写的匹配模式"
 
-#: org/kde/kjournaldbrowser/Main.qml:269
+#: org/kde/kjournaldbrowser/Main.qml:274
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "切换到浏览模式"
 
-#: org/kde/kjournaldbrowser/Main.qml:270
+#: org/kde/kjournaldbrowser/Main.qml:275
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "切换到选择模式"
 
-#: org/kde/kjournaldbrowser/Main.qml:282
+#: org/kde/kjournaldbrowser/Main.qml:287
 #, kde-format
 msgctxt "@title"
 msgid "Select journal folder"
 msgstr "选择日志文件夹"
 
-#: org/kde/kjournaldbrowser/Main.qml:291
+#: org/kde/kjournaldbrowser/Main.qml:296
 #, kde-format
 msgctxt "@title"
 msgid "Select journal file"
 msgstr "选择日志文件"
 
-#: org/kde/kjournaldbrowser/Main.qml:292
+#: org/kde/kjournaldbrowser/Main.qml:297
 #, kde-format
 msgctxt "@item"
 msgid "Journal files (*.journal)"
 msgstr "日志文件 (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:292
+#: org/kde/kjournaldbrowser/Main.qml:297
 #, kde-format
 msgctxt "@item"
 msgid "All files (*)"
 msgstr "所有文件 (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:362
+#: org/kde/kjournaldbrowser/Main.qml:367
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
 msgstr "无法从所选路径加载日志数据库："
 
-#: org/kde/kjournaldbrowser/Main.qml:363
+#: org/kde/kjournaldbrowser/Main.qml:368
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -399,7 +401,21 @@ msgid ""
 "journal'."
 msgstr "请检查所选目录的子目录是否包含以“.journal”结尾的文件。"
 
-#: org/kde/kjournaldbrowser/Main.qml:370
+#: org/kde/kjournaldbrowser/Main.qml:378
+#, kde-format
+msgctxt "@title"
+msgid "Selected path is only accessible via file loading dialog"
+msgstr ""
+
+#: org/kde/kjournaldbrowser/Main.qml:379
+#, kde-format
+msgctxt "@info"
+msgid ""
+"Application is running in sandboxed mode and requires user consent to load "
+"the selected path: "
+msgstr ""
+
+#: org/kde/kjournaldbrowser/Main.qml:386
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."

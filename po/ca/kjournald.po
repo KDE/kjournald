@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-26 00:47+0000\n"
+"POT-Creation-Date: 2026-05-11 00:47+0000\n"
 "PO-Revision-Date: 2026-02-16 10:35+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -20,25 +20,27 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 25.04.0\n"
 
-#: browser/main.cpp:42
+#: browser/main.cpp:55
 #, kde-format
 msgctxt "@title Displayed program name"
 msgid "KJournald Browser"
 msgstr "Navegador KJournald"
 
-#: browser/main.cpp:44
+#: browser/main.cpp:57
 #, kde-format
 msgctxt "@title KAboutData: short program description"
 msgid "Viewer for Journald logs"
 msgstr "Visualitzador per a registres de Journald"
 
-#: browser/main.cpp:46
-#, kde-format
+#: browser/main.cpp:59
+#, fuzzy, kde-format
+#| msgctxt "@info:credit"
+#| msgid "(c) 2021-2025 The KJournald Developers"
 msgctxt "@info:credit"
-msgid "(c) 2021-2025 The KJournald Developers"
+msgid "(c) 2021-2026 The KJournald Developers"
 msgstr "(c) 2021-2025 The KJournald Developers"
 
-#: browser/main.cpp:47
+#: browser/main.cpp:60
 #, kde-format
 msgctxt "@title Short program description"
 msgid ""
@@ -48,31 +50,31 @@ msgstr ""
 "Visualitzador de bases de dades de Journald, les quals són generades per "
 "l'eina de registre Journald."
 
-#: browser/main.cpp:49
+#: browser/main.cpp:62
 #, kde-format
 msgctxt "@info:credit Developer name"
 msgid "Andreas Cord-Landwehr"
 msgstr "Andreas Cord-Landwehr"
 
-#: browser/main.cpp:50
+#: browser/main.cpp:63
 #, kde-format
 msgctxt "@info:credit Role"
 msgid "Original Author"
 msgstr "Autor original"
 
-#: browser/main.cpp:52
+#: browser/main.cpp:65
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Antoni Bella"
 
-#: browser/main.cpp:52
+#: browser/main.cpp:65
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "antonibella5@yahoo.com"
 
-#: browser/main.cpp:67
+#: browser/main.cpp:80
 #, kde-format
 msgid "Journald Log Viewer"
 msgstr "Visualitzador del registre del «journald»"
@@ -342,56 +344,56 @@ msgctxt "@label"
 msgid "Kernel"
 msgstr "Nucli"
 
-#: org/kde/kjournaldbrowser/Main.qml:111
+#: org/kde/kjournaldbrowser/Main.qml:116
 #, kde-format
 msgctxt "@label"
 msgid "Boot:"
 msgstr "Arrencada:"
 
-#: org/kde/kjournaldbrowser/Main.qml:227
+#: org/kde/kjournaldbrowser/Main.qml:232
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr ""
 "Commuta la coincidència distingint entre majúscules i minúscules i sense"
 
-#: org/kde/kjournaldbrowser/Main.qml:269
+#: org/kde/kjournaldbrowser/Main.qml:274
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "Canvia al mode de navegació"
 
-#: org/kde/kjournaldbrowser/Main.qml:270
+#: org/kde/kjournaldbrowser/Main.qml:275
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "Canvia al mode de selecció"
 
-#: org/kde/kjournaldbrowser/Main.qml:282
+#: org/kde/kjournaldbrowser/Main.qml:287
 #, kde-format
 msgctxt "@title"
 msgid "Select journal folder"
 msgstr "Seleccioneu la carpeta de diari"
 
-#: org/kde/kjournaldbrowser/Main.qml:291
+#: org/kde/kjournaldbrowser/Main.qml:296
 #, kde-format
 msgctxt "@title"
 msgid "Select journal file"
 msgstr "Seleccioneu el fitxer de diari"
 
-#: org/kde/kjournaldbrowser/Main.qml:292
+#: org/kde/kjournaldbrowser/Main.qml:297
 #, kde-format
 msgctxt "@item"
 msgid "Journal files (*.journal)"
 msgstr "Fitxers de diari (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:292
+#: org/kde/kjournaldbrowser/Main.qml:297
 #, kde-format
 msgctxt "@item"
 msgid "All files (*)"
 msgstr "Tots els fitxers (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:362
+#: org/kde/kjournaldbrowser/Main.qml:367
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
@@ -399,7 +401,7 @@ msgstr ""
 "No s'ha pogut carregar la base de dades del diari des de la ubicació "
 "seleccionada: "
 
-#: org/kde/kjournaldbrowser/Main.qml:363
+#: org/kde/kjournaldbrowser/Main.qml:368
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -409,7 +411,21 @@ msgstr ""
 "Comprova els subdirectoris del directori seleccionat que continguin fitxers "
 "que acabin amb «.journal»."
 
-#: org/kde/kjournaldbrowser/Main.qml:370
+#: org/kde/kjournaldbrowser/Main.qml:378
+#, kde-format
+msgctxt "@title"
+msgid "Selected path is only accessible via file loading dialog"
+msgstr ""
+
+#: org/kde/kjournaldbrowser/Main.qml:379
+#, kde-format
+msgctxt "@info"
+msgid ""
+"Application is running in sandboxed mode and requires user consent to load "
+"the selected path: "
+msgstr ""
+
+#: org/kde/kjournaldbrowser/Main.qml:386
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."

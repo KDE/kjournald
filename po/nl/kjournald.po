@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-26 00:47+0000\n"
+"POT-Creation-Date: 2026-05-11 00:47+0000\n"
 "PO-Revision-Date: 2026-02-16 10:17+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -17,25 +17,27 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 25.12.2\n"
 
-#: browser/main.cpp:42
+#: browser/main.cpp:55
 #, kde-format
 msgctxt "@title Displayed program name"
 msgid "KJournald Browser"
 msgstr "KJournald-browser"
 
-#: browser/main.cpp:44
+#: browser/main.cpp:57
 #, kde-format
 msgctxt "@title KAboutData: short program description"
 msgid "Viewer for Journald logs"
 msgstr "Viewer voor Journald-logs"
 
-#: browser/main.cpp:46
-#, kde-format
+#: browser/main.cpp:59
+#, fuzzy, kde-format
+#| msgctxt "@info:credit"
+#| msgid "(c) 2021-2025 The KJournald Developers"
 msgctxt "@info:credit"
-msgid "(c) 2021-2025 The KJournald Developers"
+msgid "(c) 2021-2026 The KJournald Developers"
 msgstr "(c) 2021-2025 de ontwikkelaars van KJournald"
 
-#: browser/main.cpp:47
+#: browser/main.cpp:60
 #, kde-format
 msgctxt "@title Short program description"
 msgid ""
@@ -45,31 +47,31 @@ msgstr ""
 "Viewer voor Journald-databases, die gegenereerd zijn door het hulpmiddel "
 "Journald-logging."
 
-#: browser/main.cpp:49
+#: browser/main.cpp:62
 #, kde-format
 msgctxt "@info:credit Developer name"
 msgid "Andreas Cord-Landwehr"
 msgstr "Andreas Cord-Landwehr"
 
-#: browser/main.cpp:50
+#: browser/main.cpp:63
 #, kde-format
 msgctxt "@info:credit Role"
 msgid "Original Author"
 msgstr "Oorspronkelijke auteur"
 
-#: browser/main.cpp:52
+#: browser/main.cpp:65
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Freek de Kruijf - t/m 2022"
 
-#: browser/main.cpp:52
+#: browser/main.cpp:65
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "freekdekruijf@kde.nl"
 
-#: browser/main.cpp:67
+#: browser/main.cpp:80
 #, kde-format
 msgid "Journald Log Viewer"
 msgstr "Journald-logviewer"
@@ -339,62 +341,62 @@ msgctxt "@label"
 msgid "Kernel"
 msgstr "Kernel"
 
-#: org/kde/kjournaldbrowser/Main.qml:111
+#: org/kde/kjournaldbrowser/Main.qml:116
 #, kde-format
 msgctxt "@label"
 msgid "Boot:"
 msgstr "Boot:"
 
-#: org/kde/kjournaldbrowser/Main.qml:227
+#: org/kde/kjournaldbrowser/Main.qml:232
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr ""
 "Schakel om tussen hoofdlettergevoelig and hoofdletter ongevoelig overeenkomen"
 
-#: org/kde/kjournaldbrowser/Main.qml:269
+#: org/kde/kjournaldbrowser/Main.qml:274
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "Omschakelen naar modus bladeren"
 
-#: org/kde/kjournaldbrowser/Main.qml:270
+#: org/kde/kjournaldbrowser/Main.qml:275
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "Omschakelen naar modus selecteren"
 
-#: org/kde/kjournaldbrowser/Main.qml:282
+#: org/kde/kjournaldbrowser/Main.qml:287
 #, kde-format
 msgctxt "@title"
 msgid "Select journal folder"
 msgstr "Journaalmap selecteren"
 
-#: org/kde/kjournaldbrowser/Main.qml:291
+#: org/kde/kjournaldbrowser/Main.qml:296
 #, kde-format
 msgctxt "@title"
 msgid "Select journal file"
 msgstr "Journaalbestand selecteren"
 
-#: org/kde/kjournaldbrowser/Main.qml:292
+#: org/kde/kjournaldbrowser/Main.qml:297
 #, kde-format
 msgctxt "@item"
 msgid "Journal files (*.journal)"
 msgstr "Journaalbestanden (*.journal)"
 
-#: org/kde/kjournaldbrowser/Main.qml:292
+#: org/kde/kjournaldbrowser/Main.qml:297
 #, kde-format
 msgctxt "@item"
 msgid "All files (*)"
 msgstr "Alle bestanden (*)"
 
-#: org/kde/kjournaldbrowser/Main.qml:362
+#: org/kde/kjournaldbrowser/Main.qml:367
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
 msgstr "Laden van journal-database lukt niet uit de geselecteerde locatie: "
 
-#: org/kde/kjournaldbrowser/Main.qml:363
+#: org/kde/kjournaldbrowser/Main.qml:368
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -404,7 +406,21 @@ msgstr ""
 "Controleer of de submappen van de geselecteerde map bestanden bevatten die "
 "eindigen op '.journal'."
 
-#: org/kde/kjournaldbrowser/Main.qml:370
+#: org/kde/kjournaldbrowser/Main.qml:378
+#, kde-format
+msgctxt "@title"
+msgid "Selected path is only accessible via file loading dialog"
+msgstr ""
+
+#: org/kde/kjournaldbrowser/Main.qml:379
+#, kde-format
+msgctxt "@info"
+msgid ""
+"Application is running in sandboxed mode and requires user consent to load "
+"the selected path: "
+msgstr ""
+
+#: org/kde/kjournaldbrowser/Main.qml:386
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."
