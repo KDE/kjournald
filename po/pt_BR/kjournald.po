@@ -4,13 +4,13 @@
 # Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2023.
 # SPDX-FileCopyrightText: 2024, 2025 Geraldo Simiao <geraldosimiao@fedoraproject.org>
 # SPDX-FileCopyrightText: 2025 Guilherme Marçal Silva <guimarcalsilva@gmail.com>
-# SPDX-FileCopyrightText: 2025, 2026 Marcus Gama <marcus.gama@gmail.com>
+# SPDX-FileCopyrightText: 2025-2026 Marcus Gama <marcus.gama@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-11 00:47+0000\n"
-"PO-Revision-Date: 2026-02-16 08:57-0300\n"
+"PO-Revision-Date: 2026-05-11 07:01-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.12.2\n"
+"X-Generator: Lokalize 26.04.1\n"
 
 #: browser/main.cpp:55
 #, kde-format
@@ -33,12 +33,10 @@ msgid "Viewer for Journald logs"
 msgstr "Visualizador de logs do journald"
 
 #: browser/main.cpp:59
-#, fuzzy, kde-format
-#| msgctxt "@info:credit"
-#| msgid "(c) 2021-2025 The KJournald Developers"
+#, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2026 The KJournald Developers"
-msgstr "(c) 2021-2025, os desenvolvedores do KJournald"
+msgstr "(c) 2021-2026, os desenvolvedores do KJournald"
 
 #: browser/main.cpp:60
 #, kde-format
@@ -417,6 +415,8 @@ msgstr ""
 msgctxt "@title"
 msgid "Selected path is only accessible via file loading dialog"
 msgstr ""
+"O caminho selecionado só pode ser acessado através da janela de carregamento "
+"de arquivos"
 
 #: org/kde/kjournaldbrowser/Main.qml:379
 #, kde-format
@@ -425,6 +425,8 @@ msgid ""
 "Application is running in sandboxed mode and requires user consent to load "
 "the selected path: "
 msgstr ""
+"O aplicativo está sendo executado em modo sandbox e requer a permissão do "
+"usuário para carregar o caminho selecionado: "
 
 #: org/kde/kjournaldbrowser/Main.qml:386
 #, kde-format

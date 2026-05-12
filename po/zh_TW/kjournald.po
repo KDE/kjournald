@@ -4,13 +4,13 @@
 # This file is distributed under the same license as the kjournald package.
 # Automatically generated, 2022.
 #
-# SPDX-FileCopyrightText: 2023, 2024, 2025, 2026 Kisaragi Hiu <mail@kisaragi-hiu.com>
+# SPDX-FileCopyrightText: 2023-2026 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-11 00:47+0000\n"
-"PO-Revision-Date: 2026-03-02 05:29+0900\n"
+"PO-Revision-Date: 2026-05-12 04:08+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 25.11.70\n"
+"X-Generator: Lokalize 26.07.70\n"
 
 #: browser/main.cpp:55
 #, kde-format
@@ -33,12 +33,10 @@ msgid "Viewer for Journald logs"
 msgstr "Journald 紀錄的檢視器"
 
 #: browser/main.cpp:59
-#, fuzzy, kde-format
-#| msgctxt "@info:credit"
-#| msgid "(c) 2021-2025 The KJournald Developers"
+#, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2026 The KJournald Developers"
-msgstr "(c) 2021-2025 KJournald 開發團隊"
+msgstr "(c) 2021-2026 KJournald 開發團隊"
 
 #: browser/main.cpp:60
 #, kde-format
@@ -409,7 +407,7 @@ msgstr "檢查所選目錄的子目錄是否包含 \".journal\" 副檔名的檔�
 #, kde-format
 msgctxt "@title"
 msgid "Selected path is only accessible via file loading dialog"
-msgstr ""
+msgstr "所選路徑只能透過檔案載入對話框存取"
 
 #: org/kde/kjournaldbrowser/Main.qml:379
 #, kde-format
@@ -417,7 +415,7 @@ msgctxt "@info"
 msgid ""
 "Application is running in sandboxed mode and requires user consent to load "
 "the selected path: "
-msgstr ""
+msgstr "應用程式目前在沙盒內執行，因此需要使用者明確同意才能載入所選路徑："
 
 #: org/kde/kjournaldbrowser/Main.qml:386
 #, kde-format

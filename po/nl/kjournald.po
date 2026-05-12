@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the kjournald package.
 #
-# SPDX-FileCopyrightText: 2021, 2022, 2024, 2025, 2026 Freek de Kruijf <freekdekruijf@kde.nl>
+# SPDX-FileCopyrightText: 2021-2022, 2024-2026 Freek de Kruijf <freekdekruijf@kde.nl>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-11 00:47+0000\n"
-"PO-Revision-Date: 2026-02-16 10:17+0100\n"
+"PO-Revision-Date: 2026-05-11 12:16+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.12.2\n"
+"X-Generator: Lokalize 26.04.0\n"
 
 #: browser/main.cpp:55
 #, kde-format
@@ -30,12 +30,10 @@ msgid "Viewer for Journald logs"
 msgstr "Viewer voor Journald-logs"
 
 #: browser/main.cpp:59
-#, fuzzy, kde-format
-#| msgctxt "@info:credit"
-#| msgid "(c) 2021-2025 The KJournald Developers"
+#, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2026 The KJournald Developers"
-msgstr "(c) 2021-2025 de ontwikkelaars van KJournald"
+msgstr "(c) 2021-2026 de ontwikkelaars van KJournald"
 
 #: browser/main.cpp:60
 #, kde-format
@@ -411,6 +409,8 @@ msgstr ""
 msgctxt "@title"
 msgid "Selected path is only accessible via file loading dialog"
 msgstr ""
+"Het geselecteerde pad is alleen toegankelijk via het dialoogvenster voor het "
+"laden van bestanden."
 
 #: org/kde/kjournaldbrowser/Main.qml:379
 #, kde-format
@@ -419,6 +419,8 @@ msgid ""
 "Application is running in sandboxed mode and requires user consent to load "
 "the selected path: "
 msgstr ""
+"De toepassing draait in een afgeschermde omgeving en vereist toestemming van "
+"de gebruiker om het geselecteerde pad te laden:"
 
 #: org/kde/kjournaldbrowser/Main.qml:386
 #, kde-format

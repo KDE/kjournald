@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-11 00:47+0000\n"
-"PO-Revision-Date: 2026-02-16 12:30+0100\n"
+"PO-Revision-Date: 2026-05-11 10:32+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #: browser/main.cpp:55
 #, kde-format
@@ -30,12 +30,10 @@ msgid "Viewer for Journald logs"
 msgstr "Visor per registros (logs) de journald"
 
 #: browser/main.cpp:59
-#, fuzzy, kde-format
-#| msgctxt "@info:credit"
-#| msgid "(c) 2021-2025 The KJournald Developers"
+#, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2026 The KJournald Developers"
-msgstr "(c) 2021-2025 Le Disveloppatores de KJournald "
+msgstr "(c) 2021-2026 Le Disveloppatores de KJournald "
 
 #: browser/main.cpp:60
 #, kde-format
@@ -410,6 +408,7 @@ msgstr ""
 msgctxt "@title"
 msgid "Selected path is only accessible via file loading dialog"
 msgstr ""
+"Percurso selectionate es solmente accessibile via le dialogo de cargar file"
 
 #: org/kde/kjournaldbrowser/Main.qml:379
 #, kde-format
@@ -418,6 +417,8 @@ msgid ""
 "Application is running in sandboxed mode and requires user consent to load "
 "the selected path: "
 msgstr ""
+"Application es executante inmodo de sandboxed e require que le usator "
+"consente a cargar le percurso selectionate :"
 
 #: org/kde/kjournaldbrowser/Main.qml:386
 #, kde-format

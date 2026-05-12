@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-11 00:47+0000\n"
-"PO-Revision-Date: 2026-02-16 08:26+0200\n"
+"PO-Revision-Date: 2026-05-11 08:28+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -31,12 +31,10 @@ msgid "Viewer for Journald logs"
 msgstr "Програма для перегляду журналів Journald"
 
 #: browser/main.cpp:59
-#, fuzzy, kde-format
-#| msgctxt "@info:credit"
-#| msgid "(c) 2021-2025 The KJournald Developers"
+#, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2026 The KJournald Developers"
-msgstr "© Розробники KJournald, 2021–2025"
+msgstr "© Розробники KJournald, 2021–2026"
 
 #: browser/main.cpp:60
 #, kde-format
@@ -412,6 +410,8 @@ msgstr ""
 msgctxt "@title"
 msgid "Selected path is only accessible via file loading dialog"
 msgstr ""
+"Доступ до вибраного шляху можливий лише за допомогою вікна завантаження "
+"файлів"
 
 #: org/kde/kjournaldbrowser/Main.qml:379
 #, kde-format
@@ -420,6 +420,8 @@ msgid ""
 "Application is running in sandboxed mode and requires user consent to load "
 "the selected path: "
 msgstr ""
+"Програма працює у режимі пісочниці і потребує згоди користувача на "
+"завантаження даних за вибраним шляхом: "
 
 #: org/kde/kjournaldbrowser/Main.qml:386
 #, kde-format
