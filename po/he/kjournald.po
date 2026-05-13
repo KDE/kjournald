@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the kjournald package.
 #
-# SPDX-FileCopyrightText: 2024, 2025, 2026 Yaron Shahrabani <sh.yaron@gmail.com>
+# SPDX-FileCopyrightText: 2024-2026 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-11 00:47+0000\n"
-"PO-Revision-Date: 2026-02-19 09:41+0200\n"
+"PO-Revision-Date: 2026-05-12 08:30+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 25.12.1\n"
+"X-Generator: Lokalize 26.04.0\n"
 
 #: browser/main.cpp:55
 #, kde-format
@@ -31,12 +31,10 @@ msgid "Viewer for Journald logs"
 msgstr "מציג יומני Journald"
 
 #: browser/main.cpp:59
-#, fuzzy, kde-format
-#| msgctxt "@info:credit"
-#| msgid "(c) 2021-2025 The KJournald Developers"
+#, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2026 The KJournald Developers"
-msgstr "(c) 2021‏-2025 מפתחי KJournald"
+msgstr "(c) 2021-2026 מפתחי KJournald"
 
 #: browser/main.cpp:60
 #, kde-format
@@ -407,7 +405,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title"
 msgid "Selected path is only accessible via file loading dialog"
-msgstr ""
+msgstr "הנתיב הנבחר נגיש רק דרך חלונית טעינת הקבצים"
 
 #: org/kde/kjournaldbrowser/Main.qml:379
 #, kde-format
@@ -415,7 +413,7 @@ msgctxt "@info"
 msgid ""
 "Application is running in sandboxed mode and requires user consent to load "
 "the selected path: "
-msgstr ""
+msgstr "היישום רץ במצב מבודד ודורש את הסכמת המשתמש לטעון את הנתיב הנבחר: "
 
 #: org/kde/kjournaldbrowser/Main.qml:386
 #, kde-format
