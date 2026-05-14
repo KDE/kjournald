@@ -1,21 +1,21 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the kjournald package.
 #
-# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025, 2026 Emir SARI <emir_sari@icloud.com>
+# SPDX-FileCopyrightText: 2022-2026 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-11 00:47+0000\n"
-"PO-Revision-Date: 2026-02-16 16:38+0300\n"
+"PO-Revision-Date: 2026-05-13 12:46+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
-"Language-Team: Turkish <kde-i18n-doc@kde.org>\n"
+"Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.07.70\n"
+"X-Generator: Lokalize 26.04.0\n"
 
 #: browser/main.cpp:55
 #, kde-format
@@ -30,12 +30,10 @@ msgid "Viewer for Journald logs"
 msgstr "Journald günlükleri için görüntüleyici"
 
 #: browser/main.cpp:59
-#, fuzzy, kde-format
-#| msgctxt "@info:credit"
-#| msgid "(c) 2021-2025 The KJournald Developers"
+#, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2026 The KJournald Developers"
-msgstr "© 2021–2025 KJournald Geliştiricileri"
+msgstr "© 2021–2026 KJournald Geliştiricileri"
 
 #: browser/main.cpp:60
 #, kde-format
@@ -409,7 +407,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title"
 msgid "Selected path is only accessible via file loading dialog"
-msgstr ""
+msgstr "Seçili yola yalnızca dosya yükleme iletişim kutusu ile erişilebilir"
 
 #: org/kde/kjournaldbrowser/Main.qml:379
 #, kde-format
@@ -418,6 +416,8 @@ msgid ""
 "Application is running in sandboxed mode and requires user consent to load "
 "the selected path: "
 msgstr ""
+"Uygulama yalıtılmış kipte çalışıyor ve seçili yolu yüklemek için kullanıcı "
+"rızasına gereksinim duyuyor: "
 
 #: org/kde/kjournaldbrowser/Main.qml:386
 #, kde-format
