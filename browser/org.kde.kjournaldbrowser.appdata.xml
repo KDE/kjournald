@@ -187,37 +187,49 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="ca">El sistema i els serveis d'usuari es mostren en una vista conjunta (es poden desactivar)</li>
           <li xml:lang="ca-valencia">El sistema i els serveis d'usuari es mostren en una vista conjunta (es poden desactivar)</li>
           <li xml:lang="es">Los servicios del sistema y del usuario se muestran en una vista unificada (se puede desactivar).</li>
+          <li xml:lang="fr">Les services système et utilisateur sont affichés dans une vue commune (Peuvent être désactivés)</li>
           <li xml:lang="he">שירותי מערכת ומשתמש מוצגים בתצוגה משותפת (אפשר לכבות)</li>
           <li xml:lang="ia">Servicios de systema e de usator es monstrate in un vista conjuncte (pote esser deactivate)</li>
           <li xml:lang="ka">სისტემური და მომხმარებლის სერვისები გაერთიანებულ ხედშია ნაჩვენები (გამორთვა შესაძლებელია)</li>
           <li xml:lang="nl">Systeem- en gebruikersservices worden in één overzicht weergegeven (kan worden gedeactiveerd)</li>
           <li xml:lang="pt-BR">Os serviços do sistema e do usuário são exibidos em uma visualização conjunta (pode ser desativada)</li>
+          <li xml:lang="sk">Systémové a používateľské služby sa zobrazujú v spoločnom pohľade (dá sa deaktivovať)</li>
           <li xml:lang="sl">Sistemske in uporabniške storitve so prikazane v skupnem pogledu (lahko se ga deaktivira)</li>
+          <li xml:lang="tr">Sistem ve kullanıcı hizmetleri, birleşik bir görünümde görüntülenebilir (devre dışı bırakılabilir)</li>
           <li xml:lang="uk">Служби системи і користувача показано у режимі об'єднаного перегляду (можна вимкнути)</li>
+          <li xml:lang="zh-CN">系统和用户服务以联合视图显示 (可关闭)</li>
           <li xml:lang="zh-TW">系統與使用者服務合併顯示（可以關掉）</li>
           <li>Pre-filtering of available services/processes in filter configuration for the selected boot cycle</li>
           <li xml:lang="ca">Prefiltratge dels serveis/processos disponibles en la configuració del filtre del cicle d'arrencada seleccionat</li>
           <li xml:lang="ca-valencia">Prefiltratge dels serveis/processos disponibles en la configuració del filtre del cicle d'arrancada seleccionat</li>
           <li xml:lang="es">Prefiltrado de los servicios/procesos disponibles en la configuración del filtro para el ciclo de arranque seleccionado.</li>
+          <li xml:lang="fr">Pré-filtrage des services / processus disponibles dans la configuration du filtre pour le cycle de démarrage sélectionné</li>
           <li xml:lang="he">סינון קדם של שירותים/תהליכים בהגדרות הסינון לסבב העלייה הנבחר</li>
           <li xml:lang="ia">Pre-filtrar de servicios/processos disponibile in configuration de  filtrar per le cyclo de startar (boot) initial</li>
           <li xml:lang="ka">ხელმისაწვდომი სერვისების/პროცესების პრეფილტრი ფილტრის კონფიგურაციაში არჩეული ჩატვირთვის ციკლისთვის</li>
           <li xml:lang="nl">Voorfiltering van beschikbare services/processen in de filterconfiguratie voor de geselecteerde opstartcyclus</li>
           <li xml:lang="pt-BR">Pré-filtragem de serviços/processos disponíveis na configuração de filtro para o ciclo de inicialização selecionado</li>
+          <li xml:lang="sk">Predfiltrovanie dostupných služieb/procesov v konfigurácii filtra pre vybraný cyklus zavádzania</li>
           <li xml:lang="sl">Predhodno filtriranje razpoložljivih storitev/procesov v konfiguraciji filtra za izbrani zagonski cikel</li>
+          <li xml:lang="tr">Seçili önyükleme çevrimi için süzgeç yapılandırmasında kullanılabilir hizmetlerin/süreçlerin önceden süzülebilmesi</li>
           <li xml:lang="uk">Попереднє фільтрування доступних служб/процесів у налаштуваннях фільтрування для вибраного циклу завантаження</li>
+          <li xml:lang="zh-CN">在所选启动周期的筛选配置中对可用服务/进程进行预筛选</li>
           <li xml:lang="zh-TW">過濾器設定預設為所選當次開機預先過濾可用的服務與程序</li>
           <li>Aggregation option to aggregate templated services by template</li>
           <li xml:lang="ca">Opció d'agregació per a agregar els serveis amb plantilla per plantilla</li>
           <li xml:lang="ca-valencia">Opció d'agregació per a agregar els serveis amb plantilla per plantilla</li>
           <li xml:lang="es">Opción de agregación para agrupar servicios con plantillas por plantilla.</li>
+          <li xml:lang="fr">Option d'agrégation pour agréger les services définis selon un modèle</li>
           <li xml:lang="he">אפשרות צבירה לצבירת שירותים לפי תבנית</li>
           <li xml:lang="ia">Option de aggregationj per aggregar servitios de patronos per patrono</li>
           <li xml:lang="ka">აგრეგაციის არჩევანი ნიმუშით გასაერთიანებლად</li>
           <li xml:lang="nl">Aggregatieoptie om op sjabloon gebaseerde services te aggregeren op basis van het sjabloon.</li>
           <li xml:lang="pt-BR">Opção de agregação para agregar serviços com modelos por modelo</li>
+          <li xml:lang="sk">Možnosť agregácie na agregovanie šablónovaných služieb podľa šablóny</li>
           <li xml:lang="sl">Možnost združevanja za združevanje predlog storitev po predlogi</li>
+          <li xml:lang="tr">Şablonlanmış hizmetlerin şablona göre toplanabilmesi için bir seçenek</li>
           <li xml:lang="uk">Пункт збирання для збирання шаблонних служб за шаблоном</li>
+          <li xml:lang="zh-CN">按模板聚合模板化服务的聚合选项</li>
           <li xml:lang="zh-TW">依所屬模板將模板服務群組化的選項</li>
         </ul>
       </description>
@@ -232,37 +244,49 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="ca">Barra de cerca redissenyada amb un historial de cerca persistent nou</li>
           <li xml:lang="ca-valencia">Barra de busca redissenyada amb un historial de busca persistent nou</li>
           <li xml:lang="es">Barra de búsqueda rediseñada con un nuevo historial de búsqueda persistente.</li>
+          <li xml:lang="fr">Barre de recherche retravaillée avec un nouvel historique de recherche persistant</li>
           <li xml:lang="he">סרגל החיפוש שופץ ועכשיו ההיסטוריה שלו נשמרת</li>
           <li xml:lang="ia">Barra de cerca relaborate con nove chronologia (historia) de cerca persistente</li>
           <li xml:lang="ka">გადამუშავდა ძებნის პანელი ახალი მუდმივი ძებნის ისტორიით</li>
           <li xml:lang="nl">De zoekbalk is vernieuwd en de zoekgeschiedenis blijft behouden</li>
           <li xml:lang="pt-BR">Barra de pesquisa reformulada com novo histórico de pesquisa persistente</li>
+          <li xml:lang="sk">Prepracovaný panel vyhľadávania s novou trvalou históriou vyhľadávania</li>
           <li xml:lang="sl">Predelana iskalna vrstica z novo trajno zgodovino iskanja</li>
+          <li xml:lang="tr">Yeni kalıcı arama geçmişi ile yeniden düzenlenmiş arama çubuğu</li>
           <li xml:lang="uk">Перероблена панель пошуку з новим сталим журналом пошуку</li>
+          <li xml:lang="zh-CN">重新设计的搜索栏，带有新的持久搜索历史记录</li>
           <li xml:lang="zh-TW">大幅修改搜尋列，現在提供永續的搜尋紀錄</li>
           <li>Initial support for user journals</li>
           <li xml:lang="ca">Implementació inicial de diaris d'usuari</li>
           <li xml:lang="ca-valencia">Implementació inicial de diaris d'usuari</li>
           <li xml:lang="es">Compatibilidad inicial para diarios del usuario.</li>
+          <li xml:lang="fr">Prise en charge initiale pour les journaux utilisateurs</li>
           <li xml:lang="he">תמיכה ראשונית ביומני משתמשים</li>
           <li xml:lang="ia">Supporto initial per jornales de usator</li>
           <li xml:lang="ka">მომხმარებლის ჟურნალის საწყისი მხარდაჭერა</li>
           <li xml:lang="nl">Initiële ondersteuning voor gebruikersjournalen</li>
           <li xml:lang="pt-BR">Suporte inicial para journals de usuários</li>
+          <li xml:lang="sk">Počiatočná podpora používateľských denníkov</li>
           <li xml:lang="sl">Začetna podpora za uporabniške dnevnike</li>
+          <li xml:lang="tr">Kullanıcı günceleri için ilk aşamada destek</li>
           <li xml:lang="uk">Початкова підтримка журналів користувача</li>
+          <li xml:lang="zh-CN">用户日志的初步支持</li>
           <li xml:lang="zh-TW">對於使用者日誌的初始支援</li>
           <li>Feedback for journal access issues</li>
           <li xml:lang="ca">Comentaris d'usuari per a problemes d'accés al diari</li>
           <li xml:lang="ca-valencia">Comentaris d'usuari per a problemes d'accés al diari</li>
           <li xml:lang="es">Comentarios para problemas de acceso del diario.</li>
+          <li xml:lang="fr">Retour d'informations sur les problèmes d'accès au journal</li>
           <li xml:lang="he">משוב על תקלות גישה ליומנים</li>
           <li xml:lang="ia">Responsa de retorno (feedback) per emissiones de accesso de jornal</li>
           <li xml:lang="ka">უკუკავშირი ჟურნალთან წვდომის პრობლემებისთვის</li>
           <li xml:lang="nl">Terugkoppeling voor toegangsproblemen tot journalen</li>
           <li xml:lang="pt-BR">Feedback sobre problemas de acesso à journal</li>
+          <li xml:lang="sk">Spätná väzba pri problémoch s prístupom k denníku</li>
           <li xml:lang="sl">Povratne informacije o težavah z dostopom do dnevnika</li>
+          <li xml:lang="tr">Günce erişim sorunları için geri bildirim</li>
           <li xml:lang="uk">Реакція на проблеми з доступом до журналу</li>
+          <li xml:lang="zh-CN">日志访问问题的反馈</li>
           <li xml:lang="zh-TW">日誌存取上有問題時提供回饋</li>
         </ul>
       </description>
