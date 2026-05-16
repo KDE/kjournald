@@ -13,6 +13,7 @@ DatabaseProvider::DatabaseProvider(QObject *parent)
     : QObject(parent)
 {
     connect(this, &DatabaseProvider::accessChanged, this, &DatabaseProvider::reloadJournal);
+    connect(this, &DatabaseProvider::journalChanged, this, &DatabaseProvider::currentJournalInfoTextChanged);
 }
 
 DatabaseProvider::~DatabaseProvider() = default;
@@ -104,6 +105,19 @@ IJournalProvider *DatabaseProvider::journalProvider()
 QString DatabaseProvider::localJournalPath() const
 {
     return mJournalPath;
+}
+
+QString DatabaseProvider::currentJournalInfoText() const
+{
+    switch (mDatabaseType) {
+    case DatabaseType::FOLDER:
+        return QString("%1 [path]").arg(mJournalPath);
+    case DatabaseType::LOCAL_SYSTEM:
+        return QString("[system]");
+    case DatabaseType::REMOTE:
+        return QString("%1:%2 [remote]").arg(mRemoteJournalUrl, mRemoteJournalPort);
+    }
+    return QString();
 }
 
 void DatabaseProvider::initJournal()

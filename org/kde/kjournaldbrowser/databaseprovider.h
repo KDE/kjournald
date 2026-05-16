@@ -26,6 +26,11 @@ class DatabaseProvider : public QObject
     Q_PROPERTY(QString remoteJournalUrl READ remoteJournalUrl NOTIFY remoteJournalUrlChanged FINAL)
     Q_PROPERTY(quint32 remoteJournalPort READ remoteJournalPort NOTIFY remoteJournalPortChanged FINAL)
 
+    /**
+     * provides singe line info to inform user about current journal e.g. in window title
+     */
+    Q_PROPERTY(QString currentJournalInfoText READ currentJournalInfoText NOTIFY currentJournalInfoTextChanged FINAL)
+
     Q_PROPERTY(IJournalProvider *journalProvider READ journalProvider NOTIFY journalChanged FINAL)
 
     QML_ELEMENT
@@ -69,6 +74,8 @@ public:
     QString remoteJournalUrl() const;
     quint32 remoteJournalPort() const;
 
+    QString currentJournalInfoText() const;
+
     IJournalProvider *journalProvider();
 
 Q_SIGNALS:
@@ -77,6 +84,7 @@ Q_SIGNALS:
     void localJournalPathChanged();
     void remoteJournalUrlChanged();
     void remoteJournalPortChanged();
+    void currentJournalInfoTextChanged();
 
 private:
     void initJournal();

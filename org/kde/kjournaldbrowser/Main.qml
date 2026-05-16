@@ -24,6 +24,7 @@ StatefulApp.StatefulWindow {
     visible: true
     windowName: 'kjournaldbrowser'
     application: BrowserApplication
+    title: DatabaseProvider.currentJournalInfoText
 
     required property FilterCriteriaModel filterModel
     required property string initialJournalPath
