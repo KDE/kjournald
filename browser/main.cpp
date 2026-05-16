@@ -10,6 +10,7 @@
 #include <KCrash>
 #include <KLocalizedQmlContext>
 #include <KLocalizedString>
+#include <KSandbox>
 #include <QApplication>
 #include <QCommandLineParser>
 #include <QDebug>
@@ -20,22 +21,6 @@
 #include <QtQml/QQmlExtensionPlugin>
 
 Q_IMPORT_PLUGIN(org_kde_kjournaldbrowserPlugin)
-
-namespace
-{
-// check if app is sandboxed by checking for common variables
-bool runningInsideContainer()
-{
-    if (qEnvironmentVariableIsSet("container")) { // flatpak
-        return true;
-    } else if (qEnvironmentVariableIsSet("APPIMAGE")) { // appimage
-        return true;
-    } else if (qEnvironmentVariableIsSet("SNAP")) { // snap
-        return true;
-    }
-    return false;
-}
-}
 
 int main(int argc, char *argv[])
 {
@@ -87,7 +72,7 @@ int main(int argc, char *argv[])
     QString initialJournalPath;
     bool requestInitialJournalViaPortal{false}; // indicates if a desktop portal must be used to access location
     if (parser.isSet(pathOption)) {
-        const bool sandboxed = runningInsideContainer();
+        const bool sandboxed = KSandbox::isInside();
         QDir journalDir(parser.value(pathOption));
         if (journalDir.exists()) {
             qInfo() << "initial journal: setting path to" << journalDir.absolutePath();
