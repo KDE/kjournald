@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the kjournald package.
-# SPDX-FileCopyrightText: 2021, 2022, 2024, 2025, 2026 Vincenzo Reale <smart2128vr@gmail.com>
+# SPDX-FileCopyrightText: 2021-2022, 2024-2026 Vincenzo Reale <smart2128vr@gmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-11 00:47+0000\n"
-"PO-Revision-Date: 2026-02-16 18:32+0100\n"
+"PO-Revision-Date: 2026-05-13 12:46+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.12.2\n"
+"X-Generator: Lokalize 26.04.1\n"
 
 #: browser/main.cpp:55
 #, kde-format
@@ -30,12 +30,10 @@ msgid "Viewer for Journald logs"
 msgstr "Visore per i registri di Journald"
 
 #: browser/main.cpp:59
-#, fuzzy, kde-format
-#| msgctxt "@info:credit"
-#| msgid "(c) 2021-2025 The KJournald Developers"
+#, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2026 The KJournald Developers"
-msgstr "© 2021-2025, gli sviluppatori di KJournald"
+msgstr "© 2021-2026, gli sviluppatori di KJournald"
 
 #: browser/main.cpp:60
 #, kde-format
@@ -413,6 +411,8 @@ msgstr ""
 msgctxt "@title"
 msgid "Selected path is only accessible via file loading dialog"
 msgstr ""
+"Il percorso selezionato è accessibile solo tramite la finestra di "
+"caricamento dei file."
 
 #: org/kde/kjournaldbrowser/Main.qml:379
 #, kde-format
@@ -421,6 +421,8 @@ msgid ""
 "Application is running in sandboxed mode and requires user consent to load "
 "the selected path: "
 msgstr ""
+"L'applicazione è in esecuzione in modalità sandbox e richiede il consenso "
+"dell'utente per caricare il percorso selezionato:"
 
 #: org/kde/kjournaldbrowser/Main.qml:386
 #, kde-format
