@@ -27,14 +27,16 @@ qt6_add_qml_module(
         textsearch.cpp
         textsearch.h
     QML_FILES
-        Main.qml
-        LogLine.qml
+        ColoredCheckbox.qml
+        FilterCriteriaView.qml
         GlobalMenu.qml
+        JournalFileSelectionDialog.qml
+        JournalFolderSelectionDialog.qml
+        LogLine.qml
+        LogView.qml
+        Main.qml
         RemoteJournalConfigDialog.qml
         TopMenuBar.qml
-        LogView.qml
-        FilterCriteriaView.qml
-        ColoredCheckbox.qml
 )
 
 target_link_libraries(kjournaldbrowser_backing

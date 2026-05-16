@@ -8,7 +8,6 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Window
 import QtQuick.Controls
-import QtQuick.Dialogs as Dialogs
 import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.statefulapp as StatefulApp
@@ -30,14 +29,20 @@ StatefulApp.StatefulWindow {
     required property string initialJournalPath
     required property bool initialJournalPathViaPortal
 
+    JournalFolderSelectionDialog {
+        id: journalFolderSelectionDialog
+    }
+    JournalFileSelectionDialog {
+        id: journalFileSelectionDialog
+    }
+
     Component.onCompleted: {
         if (root.initialJournalPath !== "" && initialJournalPathViaPortal === false) {
             console.log(`set initial journal path: ${root.initialJournalPath}`)
             DatabaseProvider.loadJournalFromLocalPath(root.initialJournalPath)
         } else if(root.initialJournalPath !== "" && initialJournalPathViaPortal === true) {
             console.log(`request initial journal via portal dialog: ${root.initialJournalPath}`)
-            journalFolderSelectionDialog.currentFolder = "file://" + root.initialJournalPath
-            journalFolderSelectionDialog.open()
+            journalFolderSelectionDialog.open(root.initialJournalPath)
         } else {
             DatabaseProvider.loadSystemJournal()
         }
@@ -86,16 +91,16 @@ StatefulApp.StatefulWindow {
     menuBar: TopMenuBar {
         visible: (Kirigami.Settings.hasPlatformMenuBar === false || Kirigami.Settings.hasPlatformMenuBar === undefined) && !Kirigami.Settings.isMobile
         onCopyViewToClipboard: logView.copyTextFromView()
-        fileDialog: journalFileSelectionDialog
-        folderDialog: journalFolderSelectionDialog
+        onOpenJournalFolderSelectionDialog: journalFolderSelectionDialog.open()
+        onOpenJournalFileSelectionDialog: journalFileSelectionDialog.open()
     }
 
     Loader {
         id: gobalMenuLoader
         active: Kirigami.Settings.hasPlatformMenuBar === true && !Kirigami.Settings.isMobile
         sourceComponent: GlobalMenu {
-            fileDialog: journalFileSelectionDialog
-            folderDialog: journalFolderSelectionDialog
+            onOpenJournalFolderSelectionDialog: journalFolderSelectionDialog.open()
+            onOpenJournalFileSelectionDialog: journalFileSelectionDialog.open()
         }
     }
     Connections {
@@ -280,24 +285,6 @@ StatefulApp.StatefulWindow {
             Item {
                 Layout.fillWidth: true
             }
-        }
-    }
-
-    Dialogs.FolderDialog {
-        id: journalFolderSelectionDialog
-        title: KI18n.i18nc("@title", "Select journal folder")
-        currentFolder: "file://" + DatabaseProvider.localJournalPath
-        onAccepted: {
-            DatabaseProvider.loadJournalFromLocalPath(journalFolderSelectionDialog.selectedFolder)
-        }
-    }
-
-    Dialogs.FileDialog {
-        id: journalFileSelectionDialog
-        title: KI18n.i18nc("@title", "Select journal file")
-        nameFilters: [KI18n.i18nc("@item", "Journal files (*.journal)"), KI18n.i18nc("@item", "All files (*)")]
-        onAccepted: {
-            DatabaseProvider.loadJournalFromLocalPath(journalFileSelectionDialog.selectedFile)
         }
     }
 
