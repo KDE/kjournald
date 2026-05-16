@@ -285,7 +285,7 @@ StatefulApp.StatefulWindow {
     Dialogs.FolderDialog {
         id: journalFolderSelectionDialog
         title: KI18n.i18nc("@title", "Select journal folder")
-        currentFolder: DatabaseProvider.localJournalPath
+        currentFolder: "file://" + DatabaseProvider.localJournalPath
         onAccepted: {
             DatabaseProvider.loadJournalFromLocalPath(journalFolderSelectionDialog.selectedFolder)
         }
