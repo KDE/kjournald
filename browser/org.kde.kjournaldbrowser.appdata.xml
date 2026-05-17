@@ -190,6 +190,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="fr">Les services système et utilisateur sont affichés dans une vue commune (Peuvent être désactivés)</li>
           <li xml:lang="he">שירותי מערכת ומשתמש מוצגים בתצוגה משותפת (אפשר לכבות)</li>
           <li xml:lang="ia">Servicios de systema e de usator es monstrate in un vista conjuncte (pote esser deactivate)</li>
+          <li xml:lang="it">I servizi di sistema e quelli utente vengono visualizzati in una vista combinata (può essere disattivato).</li>
           <li xml:lang="ka">სისტემური და მომხმარებლის სერვისები გაერთიანებულ ხედშია ნაჩვენები (გამორთვა შესაძლებელია)</li>
           <li xml:lang="nl">Systeem- en gebruikersservices worden in één overzicht weergegeven (kan worden gedeactiveerd)</li>
           <li xml:lang="pt-BR">Os serviços do sistema e do usuário são exibidos em uma visualização conjunta (pode ser desativada)</li>
@@ -206,6 +207,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="fr">Pré-filtrage des services / processus disponibles dans la configuration du filtre pour le cycle de démarrage sélectionné</li>
           <li xml:lang="he">סינון קדם של שירותים/תהליכים בהגדרות הסינון לסבב העלייה הנבחר</li>
           <li xml:lang="ia">Pre-filtrar de servicios/processos disponibile in configuration de  filtrar per le cyclo de startar (boot) initial</li>
+          <li xml:lang="it">Pre-filtraggio dei servizi/processi disponibili nella configurazione del filtro per il ciclo di avvio selezionato</li>
           <li xml:lang="ka">ხელმისაწვდომი სერვისების/პროცესების პრეფილტრი ფილტრის კონფიგურაციაში არჩეული ჩატვირთვის ციკლისთვის</li>
           <li xml:lang="nl">Voorfiltering van beschikbare services/processen in de filterconfiguratie voor de geselecteerde opstartcyclus</li>
           <li xml:lang="pt-BR">Pré-filtragem de serviços/processos disponíveis na configuração de filtro para o ciclo de inicialização selecionado</li>
@@ -222,6 +224,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="fr">Option d'agrégation pour agréger les services définis selon un modèle</li>
           <li xml:lang="he">אפשרות צבירה לצבירת שירותים לפי תבנית</li>
           <li xml:lang="ia">Option de aggregationj per aggregar servitios de patronos per patrono</li>
+          <li xml:lang="it">Opzione di aggregazione per raggruppare servizi basati su modelli per modello</li>
           <li xml:lang="ka">აგრეგაციის არჩევანი ნიმუშით გასაერთიანებლად</li>
           <li xml:lang="nl">Aggregatieoptie om op sjabloon gebaseerde services te aggregeren op basis van het sjabloon.</li>
           <li xml:lang="pt-BR">Opção de agregação para agregar serviços com modelos por modelo</li>
@@ -247,6 +250,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="fr">Barre de recherche retravaillée avec un nouvel historique de recherche persistant</li>
           <li xml:lang="he">סרגל החיפוש שופץ ועכשיו ההיסטוריה שלו נשמרת</li>
           <li xml:lang="ia">Barra de cerca relaborate con nove chronologia (historia) de cerca persistente</li>
+          <li xml:lang="it">Barra di ricerca riprogettata con nuova cronologia di ricerca persistente.</li>
           <li xml:lang="ka">გადამუშავდა ძებნის პანელი ახალი მუდმივი ძებნის ისტორიით</li>
           <li xml:lang="nl">De zoekbalk is vernieuwd en de zoekgeschiedenis blijft behouden</li>
           <li xml:lang="pt-BR">Barra de pesquisa reformulada com novo histórico de pesquisa persistente</li>
@@ -263,6 +267,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="fr">Prise en charge initiale pour les journaux utilisateurs</li>
           <li xml:lang="he">תמיכה ראשונית ביומני משתמשים</li>
           <li xml:lang="ia">Supporto initial per jornales de usator</li>
+          <li xml:lang="it">Supporto iniziale per i journal degli utenti</li>
           <li xml:lang="ka">მომხმარებლის ჟურნალის საწყისი მხარდაჭერა</li>
           <li xml:lang="nl">Initiële ondersteuning voor gebruikersjournalen</li>
           <li xml:lang="pt-BR">Suporte inicial para journals de usuários</li>
@@ -279,6 +284,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="fr">Retour d'informations sur les problèmes d'accès au journal</li>
           <li xml:lang="he">משוב על תקלות גישה ליומנים</li>
           <li xml:lang="ia">Responsa de retorno (feedback) per emissiones de accesso de jornal</li>
+          <li xml:lang="it">Segnalazione sui problemi di accesso al journal</li>
           <li xml:lang="ka">უკუკავშირი ჟურნალთან წვდომის პრობლემებისთვის</li>
           <li xml:lang="nl">Terugkoppeling voor toegangsproblemen tot journalen</li>
           <li xml:lang="pt-BR">Feedback sobre problemas de acesso à journal</li>
