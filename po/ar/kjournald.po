@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-17 00:46+0000\n"
-"PO-Revision-Date: 2026-02-18 17:59+0400\n"
+"PO-Revision-Date: 2026-05-21 12:11+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -31,12 +31,10 @@ msgid "Viewer for Journald logs"
 msgstr "عارض لسجلات يوميات دي"
 
 #: browser/main.cpp:44
-#, fuzzy, kde-format
-#| msgctxt "@info:credit"
-#| msgid "(c) 2021-2025 The KJournald Developers"
+#, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2026 The KJournald Developers"
-msgstr "(c) 2021-2025  مطورو يوميات دي"
+msgstr "(c) 2021-2026  مطورو يوميات دي"
 
 #: browser/main.cpp:45
 #, kde-format
@@ -407,7 +405,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title"
 msgid "Selected path is only accessible via file loading dialog"
-msgstr ""
+msgstr "المسار المحدد لا يمكن الوصول إليه إلا عبر حوار تحميل الملفات."
 
 #: org/kde/kjournaldbrowser/Main.qml:367
 #, kde-format
@@ -416,6 +414,8 @@ msgid ""
 "Application is running in sandboxed mode and requires user consent to load "
 "the selected path: "
 msgstr ""
+"التطبيق يعمل في وضع الصندوق الرملي ويتطلب موافقة المستخدم لتحميل المسار "
+"المحدد:"
 
 #: org/kde/kjournaldbrowser/Main.qml:374
 #, kde-format
