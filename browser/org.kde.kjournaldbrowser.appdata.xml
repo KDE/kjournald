@@ -184,6 +184,7 @@ SPDX-License-Identifier: CC0-1.0
       <description>
         <ul>
           <li>System and user services are displayed in a joint view (can be deactivated)</li>
+          <li xml:lang="ar">تُعرض خدمات النظام والمستخدم في عرض مشترك (يمكن إبطال تفعيله).</li>
           <li xml:lang="ca">El sistema i els serveis d'usuari es mostren en una vista conjunta (es poden desactivar)</li>
           <li xml:lang="ca-valencia">El sistema i els serveis d'usuari es mostren en una vista conjunta (es poden desactivar)</li>
           <li xml:lang="es">Los servicios del sistema y del usuario se muestran en una vista unificada (se puede desactivar).</li>
@@ -201,6 +202,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="zh-CN">系统和用户服务以联合视图显示 (可关闭)</li>
           <li xml:lang="zh-TW">系統與使用者服務合併顯示（可以關掉）</li>
           <li>Pre-filtering of available services/processes in filter configuration for the selected boot cycle</li>
+          <li xml:lang="ar">تصفية مسبقة للخدمات/العمليات المتاحة في إعدادات المرشح لدورة الإقلاع المحددة.</li>
           <li xml:lang="ca">Prefiltratge dels serveis/processos disponibles en la configuració del filtre del cicle d'arrencada seleccionat</li>
           <li xml:lang="ca-valencia">Prefiltratge dels serveis/processos disponibles en la configuració del filtre del cicle d'arrancada seleccionat</li>
           <li xml:lang="es">Prefiltrado de los servicios/procesos disponibles en la configuración del filtro para el ciclo de arranque seleccionado.</li>
@@ -218,6 +220,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="zh-CN">在所选启动周期的筛选配置中对可用服务/进程进行预筛选</li>
           <li xml:lang="zh-TW">過濾器設定預設為所選當次開機預先過濾可用的服務與程序</li>
           <li>Aggregation option to aggregate templated services by template</li>
+          <li xml:lang="ar">خيار التجميع لتجميع الخدمات المقولبة حسب القالب</li>
           <li xml:lang="ca">Opció d'agregació per a agregar els serveis amb plantilla per plantilla</li>
           <li xml:lang="ca-valencia">Opció d'agregació per a agregar els serveis amb plantilla per plantilla</li>
           <li xml:lang="es">Opción de agregación para agrupar servicios con plantillas por plantilla.</li>
@@ -244,6 +247,7 @@ SPDX-License-Identifier: CC0-1.0
       <description>
         <ul>
           <li>Reworked search bar with new persistent search history</li>
+          <li xml:lang="ar">أُعيد تصميم شريط البحث مع سجل بحث دائم جديد.</li>
           <li xml:lang="ca">Barra de cerca redissenyada amb un historial de cerca persistent nou</li>
           <li xml:lang="ca-valencia">Barra de busca redissenyada amb un historial de busca persistent nou</li>
           <li xml:lang="es">Barra de búsqueda rediseñada con un nuevo historial de búsqueda persistente.</li>
@@ -261,6 +265,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="zh-CN">重新设计的搜索栏，带有新的持久搜索历史记录</li>
           <li xml:lang="zh-TW">大幅修改搜尋列，現在提供永續的搜尋紀錄</li>
           <li>Initial support for user journals</li>
+          <li xml:lang="ar">دعم مبدئي للسجلات اليومية للمستخدم</li>
           <li xml:lang="ca">Implementació inicial de diaris d'usuari</li>
           <li xml:lang="ca-valencia">Implementació inicial de diaris d'usuari</li>
           <li xml:lang="es">Compatibilidad inicial para diarios del usuario.</li>
@@ -278,6 +283,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="zh-CN">用户日志的初步支持</li>
           <li xml:lang="zh-TW">對於使用者日誌的初始支援</li>
           <li>Feedback for journal access issues</li>
+          <li xml:lang="ar">ملاحظات حول مشكلات الوصول إلى اليومية</li>
           <li xml:lang="ca">Comentaris d'usuari per a problemes d'accés al diari</li>
           <li xml:lang="ca-valencia">Comentaris d'usuari per a problemes d'accés al diari</li>
           <li xml:lang="es">Comentarios para problemas de acceso del diario.</li>
