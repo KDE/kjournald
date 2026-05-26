@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-17 00:46+0000\n"
-"PO-Revision-Date: 2026-04-26 22:48+0200\n"
+"PO-Revision-Date: 2026-05-25 21:25+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 25.08.1\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #: browser/main.cpp:40
 #, kde-format
@@ -30,12 +30,10 @@ msgid "Viewer for Journald logs"
 msgstr "journald 로그 뷰어"
 
 #: browser/main.cpp:44
-#, fuzzy, kde-format
-#| msgctxt "@info:credit"
-#| msgid "(c) 2021-2025 The KJournald Developers"
+#, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2026 The KJournald Developers"
-msgstr "(c) 2021-2025 The KJournald Developers"
+msgstr "(c) 2021-2026 The KJournald Developers"
 
 #: browser/main.cpp:45
 #, kde-format
@@ -407,7 +405,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title"
 msgid "Selected path is only accessible via file loading dialog"
-msgstr ""
+msgstr "선택한 경로는 파일 불러오기 대화 상자로만 접근할 수 있음"
 
 #: org/kde/kjournaldbrowser/Main.qml:367
 #, kde-format
@@ -416,6 +414,8 @@ msgid ""
 "Application is running in sandboxed mode and requires user consent to load "
 "the selected path: "
 msgstr ""
+"앱이 샌드박스 모드로 실행 중이며 선택한 경로를 불러오려면 사용자가 동의해야 "
+"함: "
 
 #: org/kde/kjournaldbrowser/Main.qml:374
 #, kde-format
