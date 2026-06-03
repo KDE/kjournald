@@ -45,6 +45,7 @@ SPDX-License-Identifier: CC0-1.0
   <name xml:lang="sl">Brskalnik journald</name>
   <name xml:lang="sv">Journald-bläddrare</name>
   <name xml:lang="tr">Journald Tarayıcısı</name>
+  <name xml:lang="ug">Journald كۆرگۈ</name>
   <name xml:lang="uk">Навігатор для Journald</name>
   <name xml:lang="zh-CN">Journald 浏览器</name>
   <name xml:lang="zh-TW">Journald 日誌瀏覽器</name>
@@ -161,6 +162,7 @@ SPDX-License-Identifier: CC0-1.0
       <caption xml:lang="sl">Brskalnik po dnevniku</caption>
       <caption xml:lang="sv">Loggbläddrare</caption>
       <caption xml:lang="tr">Günlük Tarayıcısı</caption>
+      <caption xml:lang="ug">خاتىرە كۆرگۈ</caption>
       <caption xml:lang="uk">Навігатор журналом</caption>
       <caption xml:lang="zh-CN">日志浏览器</caption>
       <caption xml:lang="zh-TW">日誌瀏覽器</caption>
