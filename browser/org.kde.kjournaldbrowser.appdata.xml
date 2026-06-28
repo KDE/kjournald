@@ -200,6 +200,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="ko">시스템과 사용자 서비스를 같은 보기에서 표시(비활성화 가능)</li>
           <li xml:lang="nl">Systeem- en gebruikersservices worden in één overzicht weergegeven (kan worden gedeactiveerd)</li>
           <li xml:lang="pt-BR">Os serviços do sistema e do usuário são exibidos em uma visualização conjunta (pode ser desativada)</li>
+          <li xml:lang="ru">Системные и пользовательские службы отображаются в едином представлении (можно отключить);</li>
           <li xml:lang="sk">Systémové a používateľské služby sa zobrazujú v spoločnom pohľade (dá sa deaktivovať)</li>
           <li xml:lang="sl">Sistemske in uporabniške storitve so prikazane v skupnem pogledu (lahko se ga deaktivira)</li>
           <li xml:lang="tr">Sistem ve kullanıcı hizmetleri, birleşik bir görünümde görüntülenebilir (devre dışı bırakılabilir)</li>
@@ -219,6 +220,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="ko">선택한 부트 사이클에 대해서 사용 가능한 서비스/프로세스 목록을 필터 설정에서 사전 처리 가능</li>
           <li xml:lang="nl">Voorfiltering van beschikbare services/processen in de filterconfiguratie voor de geselecteerde opstartcyclus</li>
           <li xml:lang="pt-BR">Pré-filtragem de serviços/processos disponíveis na configuração de filtro para o ciclo de inicialização selecionado</li>
+          <li xml:lang="ru">Предварительная фильтрация доступных служб/процессов в настройках фильтра для выбранного цикла загрузки;</li>
           <li xml:lang="sk">Predfiltrovanie dostupných služieb/procesov v konfigurácii filtra pre vybraný cyklus zavádzania</li>
           <li xml:lang="sl">Predhodno filtriranje razpoložljivih storitev/procesov v konfiguraciji filtra za izbrani zagonski cikel</li>
           <li xml:lang="tr">Seçili önyükleme çevrimi için süzgeç yapılandırmasında kullanılabilir hizmetlerin/süreçlerin önceden süzülebilmesi</li>
@@ -238,6 +240,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="ko">templated 서비스를 템플릿별로 모아서 볼 수 있는 옵션</li>
           <li xml:lang="nl">Aggregatieoptie om op sjabloon gebaseerde services te aggregeren op basis van het sjabloon.</li>
           <li xml:lang="pt-BR">Opção de agregação para agregar serviços com modelos por modelo</li>
+          <li xml:lang="ru">Параметр, позволяющий агрегировать шаблонные службы по шаблону;</li>
           <li xml:lang="sk">Možnosť agregácie na agregovanie šablónovaných služieb podľa šablóny</li>
           <li xml:lang="sl">Možnost združevanja za združevanje predlog storitev po predlogi</li>
           <li xml:lang="tr">Şablonlanmış hizmetlerin şablona göre toplanabilmesi için bir seçenek</li>
@@ -266,6 +269,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="ko">검색 기록 저장 기능이 있는 새로운 검색 표시줄</li>
           <li xml:lang="nl">De zoekbalk is vernieuwd en de zoekgeschiedenis blijft behouden</li>
           <li xml:lang="pt-BR">Barra de pesquisa reformulada com novo histórico de pesquisa persistente</li>
+          <li xml:lang="ru">Переработана строка поиска с сохранением истории поиска;</li>
           <li xml:lang="sk">Prepracovaný panel vyhľadávania s novou trvalou históriou vyhľadávania</li>
           <li xml:lang="sl">Predelana iskalna vrstica z novo trajno zgodovino iskanja</li>
           <li xml:lang="tr">Yeni kalıcı arama geçmişi ile yeniden düzenlenmiş arama çubuğu</li>
@@ -285,6 +289,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="ko">사용자 저널 초기 지원</li>
           <li xml:lang="nl">Initiële ondersteuning voor gebruikersjournalen</li>
           <li xml:lang="pt-BR">Suporte inicial para journals de usuários</li>
+          <li xml:lang="ru">Добавлена начальная поддержка пользовательских журналов;</li>
           <li xml:lang="sk">Počiatočná podpora používateľských denníkov</li>
           <li xml:lang="sl">Začetna podpora za uporabniške dnevnike</li>
           <li xml:lang="tr">Kullanıcı günceleri için ilk aşamada destek</li>
@@ -304,6 +309,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="ko">저널 접근 문제 피드백</li>
           <li xml:lang="nl">Terugkoppeling voor toegangsproblemen tot journalen</li>
           <li xml:lang="pt-BR">Feedback sobre problemas de acesso à journal</li>
+          <li xml:lang="ru">Отклик о проблемах доступа к journald;</li>
           <li xml:lang="sk">Spätná väzba pri problémoch s prístupom k denníku</li>
           <li xml:lang="sl">Povratne informacije o težavah z dostopom do dnevnika</li>
           <li xml:lang="tr">Günce erişim sorunları için geri bildirim</li>
