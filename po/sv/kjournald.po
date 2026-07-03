@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the kjournald package.
 #
-# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024, 2025 Stefan Asserhäll <stefan.asserhall@gmail.com>
+# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024, 2025, 2026 Stefan Asserhäll <stefan.asserhall@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-26 02:40+0000\n"
-"PO-Revision-Date: 2025-10-10 21:29+0200\n"
+"PO-Revision-Date: 2026-07-02 14:46+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.08.1\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #: browser/main.cpp:42
 #, kde-format
@@ -69,11 +69,9 @@ msgid "Your emails"
 msgstr "stefan.asserhall@gmail.com"
 
 #: browser/main.cpp:67
-#, fuzzy, kde-format
-#| msgctxt "@title Displayed program name"
-#| msgid "KJournald Browser"
+#, kde-format
 msgid "Journald Log Viewer"
-msgstr "Kjournald-bläddrare"
+msgstr "Journald-loggvisning"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:21
 #, kde-format
@@ -148,18 +146,16 @@ msgid "Priority"
 msgstr "Prioritet"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:202
-#, fuzzy, kde-format
-#| msgid "Systemd Unit"
+#, kde-format
 msgctxt "Section title for systemd user unit"
 msgid "User Unit"
-msgstr "Systemd-enhet"
+msgstr "Användarenhet"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:252
-#, fuzzy, kde-format
-#| msgid "Systemd Unit"
+#, kde-format
 msgctxt "Section title for systemd sytem unit"
 msgid "System Unit"
-msgstr "Systemd-enhet"
+msgstr "Systemenhet"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:302
 #, kde-format
@@ -168,31 +164,26 @@ msgid "Process"
 msgstr "Process"
 
 #: org/kde/kjournaldbrowser/FilterCriteriaView.qml:34
-#, fuzzy, kde-format
-#| msgid "Expanded"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Expanded"
 msgstr "Expanderad"
 
 #: org/kde/kjournaldbrowser/FilterCriteriaView.qml:35
-#, fuzzy, kde-format
-#| msgid "Collapsed"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Collapsed"
 msgstr "Hopdragen"
 
 #: org/kde/kjournaldbrowser/FilterCriteriaView.qml:61
-#, fuzzy, kde-format
-#| msgid "Clear"
+#, kde-format
 msgctxt "@label"
 msgid "Clear"
 msgstr "Rensa"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:23
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:23
-#, fuzzy, kde-format
-#| msgctxt "@action:menu"
-#| msgid "File"
+#, kde-format
 msgctxt "@title:menu"
 msgid "File"
 msgstr "Arkiv"
@@ -201,34 +192,30 @@ msgstr "Arkiv"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Local journal"
-msgstr ""
+msgstr "Lokal journal"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:33
-#, fuzzy, kde-format
-#| msgid "Open from folder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from folder"
 msgstr "Öppna från katalog"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:41
-#, fuzzy, kde-format
-#| msgid "Open from file"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from file"
 msgstr "Öppna från fil"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:60
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:59
-#, fuzzy, kde-format
-#| msgid "Close"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Close"
 msgstr "Stäng"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:66
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:65
-#, fuzzy, kde-format
-#| msgid "Current Journal"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Current Journal"
 msgstr "Aktuell journal"
@@ -238,90 +225,81 @@ msgstr "Aktuell journal"
 #, kde-format
 msgctxt "@title:menu"
 msgid "Limit Accessed Logs"
-msgstr ""
+msgstr "Begränsa loggåtkomst"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:76
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:76
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "All logs"
-msgstr ""
+msgstr "Alla loggar"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:84
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:86
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Only current user logs"
-msgstr ""
+msgstr "Bara nuvarande användarloggar"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:92
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:96
-#, fuzzy, kde-format
-#| msgid "Open system journal"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Only system logs"
-msgstr "Öppna systemjournal"
+msgstr "Bara systemloggar"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:102
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:107
-#, fuzzy, kde-format
-#| msgid "View"
+#, kde-format
 msgctxt "@title:menu"
 msgid "View"
 msgstr "Visa"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:105
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:110
-#, fuzzy, kde-format
-#| msgid "Timestamp Display"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Timestamp Display"
 msgstr "Visa tidsstämpel"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:109
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:115
-#, fuzzy, kde-format
-#| msgid "Localized Realtime"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Localized Realtime"
 msgstr "Lokal realtid"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:117
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:125
-#, fuzzy, kde-format
-#| msgid "UTC Realtime"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "UTC Realtime"
 msgstr "UTC-realtid"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:125
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:135
-#, fuzzy, kde-format
-#| msgid "Monotonic Time"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Monotonic Time"
 msgstr "Monoton tid"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:134
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:145
-#, fuzzy, kde-format
-#| msgid "Colorize"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Colorize"
-msgstr "Färga"
+msgstr "Färglägg"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:138
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:150
-#, fuzzy, kde-format
-#| msgid "Systemd Unit"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Systemd Unit"
 msgstr "Systemd-enhet"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:146
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:160
-#, fuzzy, kde-format
-#| msgid "Executable"
+#, kde-format
 msgctxt "@item:inmenu"
 msgid "Executable"
 msgstr "Körbart program"
@@ -331,41 +309,37 @@ msgstr "Körbart program"
 #, kde-format
 msgctxt "@title:menu"
 msgid "Grouping"
-msgstr ""
+msgstr "Gruppering"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:159
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:175
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Group templated services"
-msgstr ""
+msgstr "Gruppera mallbaserad tjänst"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:167
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:185
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Do not group templated service"
-msgstr ""
+msgstr "Gruppera inte mallbaserad tjänst"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:177
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:196
-#, fuzzy, kde-format
-#| msgctxt "@action:menu"
-#| msgid "Help"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Help"
 msgstr "Hjälp"
 
 #: org/kde/kjournaldbrowser/LogView.qml:209
-#, fuzzy, kde-format
-#| msgid "Kernel"
+#, kde-format
 msgctxt "@label"
 msgid "Kernel"
 msgstr "Kärna"
 
 #: org/kde/kjournaldbrowser/Main.qml:111
-#, fuzzy, kde-format
-#| msgid "Boot:"
+#, kde-format
 msgctxt "@label"
 msgid "Boot:"
 msgstr "Start:"
@@ -389,29 +363,25 @@ msgid "Switch to selection mode"
 msgstr "Byt till markeringsläge"
 
 #: org/kde/kjournaldbrowser/Main.qml:282
-#, fuzzy, kde-format
-#| msgid "Select journal folder"
+#, kde-format
 msgctxt "@title"
 msgid "Select journal folder"
 msgstr "Välj journalkatalog"
 
 #: org/kde/kjournaldbrowser/Main.qml:291
-#, fuzzy, kde-format
-#| msgid "Select journal file"
+#, kde-format
 msgctxt "@title"
 msgid "Select journal file"
 msgstr "Välj journalfil"
 
 #: org/kde/kjournaldbrowser/Main.qml:292
-#, fuzzy, kde-format
-#| msgid "Journal files (*.journal)"
+#, kde-format
 msgctxt "@item"
 msgid "Journal files (*.journal)"
 msgstr "Journalfiler (*.journal)"
 
 #: org/kde/kjournaldbrowser/Main.qml:292
-#, fuzzy, kde-format
-#| msgid "All files (*)"
+#, kde-format
 msgctxt "@item"
 msgid "All files (*)"
 msgstr "Alla filer (*)"
@@ -420,7 +390,7 @@ msgstr "Alla filer (*)"
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
-msgstr ""
+msgstr "Kan inte läsa in journaldatabasen från vald plats:"
 
 #: org/kde/kjournaldbrowser/Main.qml:363
 #, kde-format
@@ -429,31 +399,29 @@ msgid ""
 "Check sub-directories of selected directory to contain files ending with '."
 "journal'."
 msgstr ""
+"Kontrollera att underkataloger i den valda katalogen innehåller filer som "
+"slutar på '.journal'."
 
 #: org/kde/kjournaldbrowser/Main.qml:370
-#, fuzzy, kde-format
-#| msgid "No log entries apply "
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."
-msgstr "Inga loggposter stämmer "
+msgstr "Inga loggposter stämmer med valda filter."
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:15
-#, fuzzy, kde-format
-#| msgid "Configure Remote Journal Server"
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Remote Journal Server"
 msgstr "Anpassa fjärrjournalserver"
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:29
-#, fuzzy, kde-format
-#| msgid "URL:"
+#, kde-format
 msgctxt "@label"
 msgid "URL:"
 msgstr "Webbadress:"
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:38
-#, fuzzy, kde-format
-#| msgid "Port:"
+#, kde-format
 msgctxt "@label"
 msgid "Port:"
 msgstr "Port:"
@@ -462,18 +430,16 @@ msgstr "Port:"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Local Journal"
-msgstr ""
+msgstr "Lokal journal"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:32
-#, fuzzy, kde-format
-#| msgid "Open from Folder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from Folder"
 msgstr "Öppna från katalog"
 
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:40
-#, fuzzy, kde-format
-#| msgid "Open from File"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Open from File"
 msgstr "Öppna från fil"
@@ -482,7 +448,7 @@ msgstr "Öppna från fil"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Copy Current View"
-msgstr ""
+msgstr "Kopiera aktuell vy"
 
 #~ msgctxt "Section title for systemd unit"
 #~ msgid "Unit"
