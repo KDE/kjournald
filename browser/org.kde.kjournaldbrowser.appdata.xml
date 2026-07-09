@@ -203,6 +203,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="ru">Системные и пользовательские службы отображаются в едином представлении (можно отключить);</li>
           <li xml:lang="sk">Systémové a používateľské služby sa zobrazujú v spoločnom pohľade (dá sa deaktivovať)</li>
           <li xml:lang="sl">Sistemske in uporabniške storitve so prikazane v skupnem pogledu (lahko se ga deaktivira)</li>
+          <li xml:lang="sv">System- och användartjänster visas i en gemensam vy (kan inaktiveras)</li>
           <li xml:lang="tr">Sistem ve kullanıcı hizmetleri, birleşik bir görünümde görüntülenebilir (devre dışı bırakılabilir)</li>
           <li xml:lang="uk">Служби системи і користувача показано у режимі об'єднаного перегляду (можна вимкнути)</li>
           <li xml:lang="zh-CN">系统和用户服务以联合视图显示 (可关闭)</li>
@@ -223,6 +224,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="ru">Предварительная фильтрация доступных служб/процессов в настройках фильтра для выбранного цикла загрузки;</li>
           <li xml:lang="sk">Predfiltrovanie dostupných služieb/procesov v konfigurácii filtra pre vybraný cyklus zavádzania</li>
           <li xml:lang="sl">Predhodno filtriranje razpoložljivih storitev/procesov v konfiguraciji filtra za izbrani zagonski cikel</li>
+          <li xml:lang="sv">Förfiltrering av tillgängliga tjänster/processer i filterkonfigurationen för den valda startcykeln</li>
           <li xml:lang="tr">Seçili önyükleme çevrimi için süzgeç yapılandırmasında kullanılabilir hizmetlerin/süreçlerin önceden süzülebilmesi</li>
           <li xml:lang="uk">Попереднє фільтрування доступних служб/процесів у налаштуваннях фільтрування для вибраного циклу завантаження</li>
           <li xml:lang="zh-CN">在所选启动周期的筛选配置中对可用服务/进程进行预筛选</li>
@@ -243,6 +245,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="ru">Параметр, позволяющий агрегировать шаблонные службы по шаблону;</li>
           <li xml:lang="sk">Možnosť agregácie na agregovanie šablónovaných služieb podľa šablóny</li>
           <li xml:lang="sl">Možnost združevanja za združevanje predlog storitev po predlogi</li>
+          <li xml:lang="sv">Aggregeringsalternativ för att aggregera mallbaserade tjänster enligt mall</li>
           <li xml:lang="tr">Şablonlanmış hizmetlerin şablona göre toplanabilmesi için bir seçenek</li>
           <li xml:lang="uk">Пункт збирання для збирання шаблонних служб за шаблоном</li>
           <li xml:lang="zh-CN">按模板聚合模板化服务的聚合选项</li>
@@ -272,6 +275,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="ru">Переработана строка поиска с сохранением истории поиска;</li>
           <li xml:lang="sk">Prepracovaný panel vyhľadávania s novou trvalou históriou vyhľadávania</li>
           <li xml:lang="sl">Predelana iskalna vrstica z novo trajno zgodovino iskanja</li>
+          <li xml:lang="sv">Omarbetad sökfält med ny permanent sökhistorik</li>
           <li xml:lang="tr">Yeni kalıcı arama geçmişi ile yeniden düzenlenmiş arama çubuğu</li>
           <li xml:lang="uk">Перероблена панель пошуку з новим сталим журналом пошуку</li>
           <li xml:lang="zh-CN">重新设计的搜索栏，带有新的持久搜索历史记录</li>
@@ -292,6 +296,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="ru">Добавлена начальная поддержка пользовательских журналов;</li>
           <li xml:lang="sk">Počiatočná podpora používateľských denníkov</li>
           <li xml:lang="sl">Začetna podpora za uporabniške dnevnike</li>
+          <li xml:lang="sv">Initialt stöd för användarjournaler</li>
           <li xml:lang="tr">Kullanıcı günceleri için ilk aşamada destek</li>
           <li xml:lang="uk">Початкова підтримка журналів користувача</li>
           <li xml:lang="zh-CN">用户日志的初步支持</li>
@@ -312,6 +317,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="ru">Отклик о проблемах доступа к journald;</li>
           <li xml:lang="sk">Spätná väzba pri problémoch s prístupom k denníku</li>
           <li xml:lang="sl">Povratne informacije o težavah z dostopom do dnevnika</li>
+          <li xml:lang="sv">Återmatning vid problem med journalåtkomst</li>
           <li xml:lang="tr">Günce erişim sorunları için geri bildirim</li>
           <li xml:lang="uk">Реакція на проблеми з доступом до журналу</li>
           <li xml:lang="zh-CN">日志访问问题的反馈</li>
