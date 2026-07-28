@@ -1,21 +1,22 @@
 # Copyright (C) 2025 This file is copyright:
 # This file is distributed under the same license as the kjournald package.
 # SPDX-FileCopyrightText: 2022, 2023, 2025, 2026 Vit Pelcak <vit@pelcak.org>
+# SPDX-FileCopyrightText: 2026 Libor Filípek <libor.filipek@gmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-17 00:46+0000\n"
-"PO-Revision-Date: 2026-03-12 11:19+0100\n"
-"Last-Translator:  Vít Pelčák <vit@pelcak.org>\n"
+"PO-Revision-Date: 2026-07-27 12:30+0200\n"
+"Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 25.12.3\n"
+"X-Generator: Poedit 3.9\n"
 
 #: browser/main.cpp:40
 #, kde-format
@@ -30,12 +31,10 @@ msgid "Viewer for Journald logs"
 msgstr "Prohlížeč protokolů Journald"
 
 #: browser/main.cpp:44
-#, fuzzy, kde-format
-#| msgctxt "@info:credit"
-#| msgid "(c) 2021-2025 The KJournald Developers"
+#, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2026 The KJournald Developers"
-msgstr "(c) 2021-2025 Vývojáři KJournald"
+msgstr "(c) 2021-2026 Vývojáři KJournald"
 
 #: browser/main.cpp:45
 #, kde-format
@@ -63,18 +62,18 @@ msgstr "Původní autor"
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Vít Pelčák"
+msgstr "Vít Pelčák,Libor Filípek"
 
 #: browser/main.cpp:50
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "vit@pelcak.org"
+msgstr "vit@pelcak.org,libor.filipek@gmail.com"
 
 #: browser/main.cpp:65
 #, kde-format
 msgid "Journald Log Viewer"
-msgstr ""
+msgstr "Prohlížeč záznamu Journald"
 
 #: org/kde/kjournald/filtercriteriamodel.cpp:21
 #, kde-format
@@ -228,7 +227,7 @@ msgstr "Současný žurnál"
 #, kde-format
 msgctxt "@title:menu"
 msgid "Limit Accessed Logs"
-msgstr ""
+msgstr "Omezit přístup k záznamům"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:73
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:73
@@ -319,14 +318,14 @@ msgstr "Seskupování"
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Group templated services"
-msgstr ""
+msgstr "Seskupit služby založené na šablonách"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:164
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:182
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Do not group templated service"
-msgstr ""
+msgstr "Neseskupovat služby založené na šablonách"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:174
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:193
@@ -395,7 +394,7 @@ msgstr "Přepnout do režimu výběru"
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
-msgstr ""
+msgstr "Nelze načíst databázi žurnálu z vybraného umístění: "
 
 #: org/kde/kjournaldbrowser/Main.qml:356
 #, kde-format
@@ -404,12 +403,16 @@ msgid ""
 "Check sub-directories of selected directory to contain files ending with '."
 "journal'."
 msgstr ""
+"Zkontrolujte, zda podadresáře vybraného adresáře obsahují soubory s příponou "
+"'.journal'."
 
 #: org/kde/kjournaldbrowser/Main.qml:366
 #, kde-format
 msgctxt "@title"
 msgid "Selected path is only accessible via file loading dialog"
 msgstr ""
+"K vybrané cestě lze přistupovat pouze prostřednictvím dialogového okna pro "
+"načtení souboru"
 
 #: org/kde/kjournaldbrowser/Main.qml:367
 #, kde-format
@@ -418,12 +421,14 @@ msgid ""
 "Application is running in sandboxed mode and requires user consent to load "
 "the selected path: "
 msgstr ""
+"Aplikace běží v režimu sandboxu a k načtení vybrané cesty vyžaduje souhlas "
+"uživatele: "
 
 #: org/kde/kjournaldbrowser/Main.qml:374
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."
-msgstr ""
+msgstr "Na vybrané filtry se nevztahují žádné záznamy v protokolu."
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:15
 #, kde-format
@@ -465,4 +470,4 @@ msgstr "Otevřít ze souboru"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Copy Current View"
-msgstr ""
+msgstr "Kopírovat aktuální zobrazení"
