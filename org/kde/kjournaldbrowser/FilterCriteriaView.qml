@@ -58,7 +58,7 @@ ListView {
                         contentItem: RowLayout {
                             Label {
                                 id: clearLabel
-                                text: KI18n.i18nc("@label", "Clear")
+                                text: KI18n.i18nc("@action:button", "Clear filters")
                                 Layout.fillWidth: true
                             }
                             Kirigami.Icon {
