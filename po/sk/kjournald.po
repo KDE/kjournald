@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-17 00:46+0000\n"
+"POT-Creation-Date: 2026-08-30 00:50+0000\n"
 "PO-Revision-Date: 2022-01-08 11:52+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -176,9 +176,9 @@ msgstr "Zbalené"
 
 #: org/kde/kjournaldbrowser/FilterCriteriaView.qml:61
 #, kde-format
-msgctxt "@label"
-msgid "Clear"
-msgstr "Vyčistiť"
+msgctxt "@action:button"
+msgid "Clear filters"
+msgstr ""
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:22
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:22
@@ -465,6 +465,10 @@ msgstr "Otvoriť zo súboru"
 msgctxt "@action:inmenu"
 msgid "Copy Current View"
 msgstr "Kopírovať aktuálne zobrazenie"
+
+#~ msgctxt "@label"
+#~ msgid "Clear"
+#~ msgstr "Vyčistiť"
 
 #~ msgid "Highlight:"
 #~ msgstr "Zvýraznenie:"

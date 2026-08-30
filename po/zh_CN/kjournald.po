@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-17 00:46+0000\n"
+"POT-Creation-Date: 2026-08-30 00:50+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -176,9 +176,9 @@ msgstr "折叠"
 
 #: org/kde/kjournaldbrowser/FilterCriteriaView.qml:61
 #, kde-format
-msgctxt "@label"
-msgid "Clear"
-msgstr "清除"
+msgctxt "@action:button"
+msgid "Clear filters"
+msgstr ""
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:22
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:22
@@ -460,3 +460,7 @@ msgstr "从文件打开"
 msgctxt "@action:inmenu"
 msgid "Copy Current View"
 msgstr "复制当前视图"
+
+#~ msgctxt "@label"
+#~ msgid "Clear"
+#~ msgstr "清除"

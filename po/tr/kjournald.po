@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-17 00:46+0000\n"
+"POT-Creation-Date: 2026-08-30 00:50+0000\n"
 "PO-Revision-Date: 2026-05-13 12:46+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -178,9 +178,9 @@ msgstr "Daraltılmış"
 
 #: org/kde/kjournaldbrowser/FilterCriteriaView.qml:61
 #, kde-format
-msgctxt "@label"
-msgid "Clear"
-msgstr "Temizle"
+msgctxt "@action:button"
+msgid "Clear filters"
+msgstr ""
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:22
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:22
@@ -466,6 +466,10 @@ msgstr "Dosyadan Aç"
 msgctxt "@action:inmenu"
 msgid "Copy Current View"
 msgstr "Geçerli Görünümü Kopyala"
+
+#~ msgctxt "@label"
+#~ msgid "Clear"
+#~ msgstr "Temizle"
 
 #~ msgctxt "Section title for systemd unit"
 #~ msgid "Unit"

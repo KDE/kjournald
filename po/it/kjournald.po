@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-17 00:46+0000\n"
+"POT-Creation-Date: 2026-08-30 00:50+0000\n"
 "PO-Revision-Date: 2026-05-13 12:46+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -178,9 +178,9 @@ msgstr "Contratto"
 
 #: org/kde/kjournaldbrowser/FilterCriteriaView.qml:61
 #, kde-format
-msgctxt "@label"
-msgid "Clear"
-msgstr "Pulisci"
+msgctxt "@action:button"
+msgid "Clear filters"
+msgstr ""
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:22
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:22
@@ -471,6 +471,10 @@ msgstr "Apri da file"
 msgctxt "@action:inmenu"
 msgid "Copy Current View"
 msgstr "Copia la vista attuale"
+
+#~ msgctxt "@label"
+#~ msgid "Clear"
+#~ msgstr "Pulisci"
 
 #~ msgctxt "Section title for systemd unit"
 #~ msgid "Unit"
