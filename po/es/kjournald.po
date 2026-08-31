@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-30 00:50+0000\n"
-"PO-Revision-Date: 2026-05-11 17:02+0100\n"
+"PO-Revision-Date: 2026-08-30 15:42+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 26.04.0\n"
+"X-Generator: Lokalize 26.08.0\n"
 
 #: browser/main.cpp:40
 #, kde-format
@@ -182,7 +182,7 @@ msgstr "Plegado"
 #, kde-format
 msgctxt "@action:button"
 msgid "Clear filters"
-msgstr ""
+msgstr "Borrar filtros"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:22
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:22
@@ -470,7 +470,3 @@ msgstr "Abrir desde archivo"
 msgctxt "@action:inmenu"
 msgid "Copy Current View"
 msgstr "Copiar vista actual"
-
-#~ msgctxt "@label"
-#~ msgid "Clear"
-#~ msgstr "Borrar todo"
