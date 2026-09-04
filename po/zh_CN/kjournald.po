@@ -178,7 +178,7 @@ msgstr "折叠"
 #, kde-format
 msgctxt "@action:button"
 msgid "Clear filters"
-msgstr ""
+msgstr "清除过滤条件"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:22
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:22
@@ -460,7 +460,3 @@ msgstr "从文件打开"
 msgctxt "@action:inmenu"
 msgid "Copy Current View"
 msgstr "复制当前视图"
-
-#~ msgctxt "@label"
-#~ msgid "Clear"
-#~ msgstr "清除"
