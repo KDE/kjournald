@@ -407,7 +407,7 @@ msgstr ""
 msgctxt "@title"
 msgid "Selected path is only accessible via file loading dialog"
 msgstr ""
-"L'emplacement sélectionné n’est accessible que grâce à la boîte de dialogue "
+"L'emplacement sélectionné n’est accessible que grâce à la boite de dialogue "
 "de chargement de fichiers"
 
 #: org/kde/kjournaldbrowser/Main.qml:367
