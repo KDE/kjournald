@@ -21,7 +21,7 @@ finish-args:
 modules:
   - name: kjournald
     buildsystem: cmake-ninja
-    config-opts: [ "-DINSTALL_ICONS=ON" ]
+    config-opts: ["-DINSTALL_ICONS=ON"]
     sources:
       - type: dir
         path: .
