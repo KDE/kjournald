@@ -19,6 +19,7 @@ StatefulApp.StatefulWindow {
     id: root
 
     width: 1000
+    minimumWidth: 640
     height: 640
     visible: true
     windowName: 'kjournaldbrowser'
@@ -123,7 +124,8 @@ StatefulApp.StatefulWindow {
             }
             ComboBox {
                 id: bootIdComboBox
-                implicitWidth: Math.max(300, implicitContentWidth)
+                Layout.fillWidth: true
+                Layout.maximumWidth: 300
                 model: bootModel
                 valueRole: "bootid"
                 textRole: BrowserApplication.timeDisplay
