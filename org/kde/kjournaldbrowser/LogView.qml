@@ -239,6 +239,7 @@ ListView {
         required property string section
         width: parent.width
         text: Qt.formatDate(section, "dddd, yyyy-MM-dd")
+        elide: Text.ElideRight
 
         rightPadding: 24
         horizontalAlignment: Text.AlignRight
