@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-30 00:50+0000\n"
+"POT-Creation-Date: 2026-09-19 00:48+0000\n"
 "PO-Revision-Date: 2026-08-30 18:01+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -362,37 +362,37 @@ msgctxt "@label"
 msgid "Kernel"
 msgstr "النواة"
 
-#: org/kde/kjournaldbrowser/Main.qml:122
+#: org/kde/kjournaldbrowser/Main.qml:123
 #, kde-format
 msgctxt "@label"
 msgid "Boot:"
 msgstr "الإقلاع:"
 
-#: org/kde/kjournaldbrowser/Main.qml:238
+#: org/kde/kjournaldbrowser/Main.qml:240
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr "التبديل بين المطابقة الحساسة لحالة الأحرف وغير الحساسة لحالة الأحرف"
 
-#: org/kde/kjournaldbrowser/Main.qml:280
+#: org/kde/kjournaldbrowser/Main.qml:282
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "بدّل إلى وضع التصفح"
 
-#: org/kde/kjournaldbrowser/Main.qml:281
+#: org/kde/kjournaldbrowser/Main.qml:283
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "بدّل إلى وضع التّحديد"
 
-#: org/kde/kjournaldbrowser/Main.qml:355
+#: org/kde/kjournaldbrowser/Main.qml:357
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
 msgstr "تعذر تحميل قاعدة بيانات اليوميات من الموقع المحدد: "
 
-#: org/kde/kjournaldbrowser/Main.qml:356
+#: org/kde/kjournaldbrowser/Main.qml:358
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -401,13 +401,13 @@ msgid ""
 msgstr ""
 "تحقق من مجلدات فرعية للمجلد المحدد لتحتوي على ملفات تنتهي بـ ”.journal“."
 
-#: org/kde/kjournaldbrowser/Main.qml:366
+#: org/kde/kjournaldbrowser/Main.qml:368
 #, kde-format
 msgctxt "@title"
 msgid "Selected path is only accessible via file loading dialog"
 msgstr "المسار المحدد لا يمكن الوصول إليه إلا عبر حوار تحميل الملفات."
 
-#: org/kde/kjournaldbrowser/Main.qml:367
+#: org/kde/kjournaldbrowser/Main.qml:369
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -417,7 +417,7 @@ msgstr ""
 "التطبيق يعمل في وضع الصندوق الرملي ويتطلب موافقة المستخدم لتحميل المسار "
 "المحدد:"
 
-#: org/kde/kjournaldbrowser/Main.qml:374
+#: org/kde/kjournaldbrowser/Main.qml:376
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."

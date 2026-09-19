@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-30 00:50+0000\n"
+"POT-Creation-Date: 2026-09-19 00:48+0000\n"
 "PO-Revision-Date: 2026-08-31 09:30+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
@@ -360,31 +360,31 @@ msgctxt "@label"
 msgid "Kernel"
 msgstr "Noyau"
 
-#: org/kde/kjournaldbrowser/Main.qml:122
+#: org/kde/kjournaldbrowser/Main.qml:123
 #, kde-format
 msgctxt "@label"
 msgid "Boot:"
 msgstr "Démarrage :"
 
-#: org/kde/kjournaldbrowser/Main.qml:238
+#: org/kde/kjournaldbrowser/Main.qml:240
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr "Basculer entre une correspondance sensible et non sensible à la casse"
 
-#: org/kde/kjournaldbrowser/Main.qml:280
+#: org/kde/kjournaldbrowser/Main.qml:282
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "Basculer en mode « Navigation »"
 
-#: org/kde/kjournaldbrowser/Main.qml:281
+#: org/kde/kjournaldbrowser/Main.qml:283
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "Basculer en mode « Sélection »"
 
-#: org/kde/kjournaldbrowser/Main.qml:355
+#: org/kde/kjournaldbrowser/Main.qml:357
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
@@ -392,7 +392,7 @@ msgstr ""
 "Impossible de charger la base de données de journal à partir de "
 "l'emplacement sélectionné :"
 
-#: org/kde/kjournaldbrowser/Main.qml:356
+#: org/kde/kjournaldbrowser/Main.qml:358
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -402,7 +402,7 @@ msgstr ""
 "Vérifiez que les sous-dossiers du dossier sélectionné contiennent des "
 "fichiers avec l'extension « .journal »."
 
-#: org/kde/kjournaldbrowser/Main.qml:366
+#: org/kde/kjournaldbrowser/Main.qml:368
 #, kde-format
 msgctxt "@title"
 msgid "Selected path is only accessible via file loading dialog"
@@ -410,7 +410,7 @@ msgstr ""
 "L'emplacement sélectionné n'est accessible que grâce à la boite de dialogue "
 "de chargement de fichiers"
 
-#: org/kde/kjournaldbrowser/Main.qml:367
+#: org/kde/kjournaldbrowser/Main.qml:369
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -420,7 +420,7 @@ msgstr ""
 "L'application fonctionne en mode « Bac à sable ». Elle nécessite le "
 "consentement de l'utilisateur pour le chargement du chemin sélectionné :"
 
-#: org/kde/kjournaldbrowser/Main.qml:374
+#: org/kde/kjournaldbrowser/Main.qml:376
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."

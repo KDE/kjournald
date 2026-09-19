@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-30 00:50+0000\n"
+"POT-Creation-Date: 2026-09-19 00:48+0000\n"
 "PO-Revision-Date: 2025-05-26 16:44+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -393,38 +393,38 @@ msgctxt "@label"
 msgid "Kernel"
 msgstr "Kodols"
 
-#: org/kde/kjournaldbrowser/Main.qml:122
+#: org/kde/kjournaldbrowser/Main.qml:123
 #, fuzzy, kde-format
 #| msgid "Boot:"
 msgctxt "@label"
 msgid "Boot:"
 msgstr "Sāknējums:"
 
-#: org/kde/kjournaldbrowser/Main.qml:238
+#: org/kde/kjournaldbrowser/Main.qml:240
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr "Ieslēgt vai izslēgt reģistrjutīgu meklēšanu"
 
-#: org/kde/kjournaldbrowser/Main.qml:280
+#: org/kde/kjournaldbrowser/Main.qml:282
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "Pārslēgties uz pārlūkošanas režīmu"
 
-#: org/kde/kjournaldbrowser/Main.qml:281
+#: org/kde/kjournaldbrowser/Main.qml:283
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "Pārslēgties uz atlasīšanas režīmu"
 
-#: org/kde/kjournaldbrowser/Main.qml:355
+#: org/kde/kjournaldbrowser/Main.qml:357
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:356
+#: org/kde/kjournaldbrowser/Main.qml:358
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -432,13 +432,13 @@ msgid ""
 "journal'."
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:366
+#: org/kde/kjournaldbrowser/Main.qml:368
 #, kde-format
 msgctxt "@title"
 msgid "Selected path is only accessible via file loading dialog"
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:367
+#: org/kde/kjournaldbrowser/Main.qml:369
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -446,7 +446,7 @@ msgid ""
 "the selected path: "
 msgstr ""
 
-#: org/kde/kjournaldbrowser/Main.qml:374
+#: org/kde/kjournaldbrowser/Main.qml:376
 #, fuzzy, kde-format
 #| msgid "No log entries apply "
 msgctxt "@info:tooltip"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-30 00:50+0000\n"
+"POT-Creation-Date: 2026-09-19 00:48+0000\n"
 "PO-Revision-Date: 2026-08-30 14:02+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -363,38 +363,38 @@ msgctxt "@label"
 msgid "Kernel"
 msgstr "Kernel"
 
-#: org/kde/kjournaldbrowser/Main.qml:122
+#: org/kde/kjournaldbrowser/Main.qml:123
 #, kde-format
 msgctxt "@label"
 msgid "Boot:"
 msgstr "Boot:"
 
-#: org/kde/kjournaldbrowser/Main.qml:238
+#: org/kde/kjournaldbrowser/Main.qml:240
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr ""
 "Schakel om tussen hoofdlettergevoelig and hoofdletter ongevoelig overeenkomen"
 
-#: org/kde/kjournaldbrowser/Main.qml:280
+#: org/kde/kjournaldbrowser/Main.qml:282
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "Omschakelen naar modus bladeren"
 
-#: org/kde/kjournaldbrowser/Main.qml:281
+#: org/kde/kjournaldbrowser/Main.qml:283
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "Omschakelen naar modus selecteren"
 
-#: org/kde/kjournaldbrowser/Main.qml:355
+#: org/kde/kjournaldbrowser/Main.qml:357
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
 msgstr "Laden van journal-database lukt niet uit de geselecteerde locatie: "
 
-#: org/kde/kjournaldbrowser/Main.qml:356
+#: org/kde/kjournaldbrowser/Main.qml:358
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -404,7 +404,7 @@ msgstr ""
 "Controleer of de submappen van de geselecteerde map bestanden bevatten die "
 "eindigen op '.journal'."
 
-#: org/kde/kjournaldbrowser/Main.qml:366
+#: org/kde/kjournaldbrowser/Main.qml:368
 #, kde-format
 msgctxt "@title"
 msgid "Selected path is only accessible via file loading dialog"
@@ -412,7 +412,7 @@ msgstr ""
 "Het geselecteerde pad is alleen toegankelijk via het dialoogvenster voor het "
 "laden van bestanden."
 
-#: org/kde/kjournaldbrowser/Main.qml:367
+#: org/kde/kjournaldbrowser/Main.qml:369
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -422,7 +422,7 @@ msgstr ""
 "De toepassing draait in een afgeschermde omgeving en vereist toestemming van "
 "de gebruiker om het geselecteerde pad te laden:"
 
-#: org/kde/kjournaldbrowser/Main.qml:374
+#: org/kde/kjournaldbrowser/Main.qml:376
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."

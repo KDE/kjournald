@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-30 00:50+0000\n"
+"POT-Creation-Date: 2026-09-19 00:48+0000\n"
 "PO-Revision-Date: 2026-08-31 18:42+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -362,37 +362,37 @@ msgctxt "@label"
 msgid "Kernel"
 msgstr "Kärna"
 
-#: org/kde/kjournaldbrowser/Main.qml:122
+#: org/kde/kjournaldbrowser/Main.qml:123
 #, kde-format
 msgctxt "@label"
 msgid "Boot:"
 msgstr "Start:"
 
-#: org/kde/kjournaldbrowser/Main.qml:238
+#: org/kde/kjournaldbrowser/Main.qml:240
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch between case sensitive and case insensitive matching"
 msgstr "Byt mellan skiftlägeskänslig och skiftlägesokänslig matchning"
 
-#: org/kde/kjournaldbrowser/Main.qml:280
+#: org/kde/kjournaldbrowser/Main.qml:282
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to browsing mode"
 msgstr "Byt till bläddringsläge"
 
-#: org/kde/kjournaldbrowser/Main.qml:281
+#: org/kde/kjournaldbrowser/Main.qml:283
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to selection mode"
 msgstr "Byt till markeringsläge"
 
-#: org/kde/kjournaldbrowser/Main.qml:355
+#: org/kde/kjournaldbrowser/Main.qml:357
 #, kde-format
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
 msgstr "Kan inte läsa in journaldatabasen från vald plats:"
 
-#: org/kde/kjournaldbrowser/Main.qml:356
+#: org/kde/kjournaldbrowser/Main.qml:358
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -402,13 +402,13 @@ msgstr ""
 "Kontrollera att underkataloger i den valda katalogen innehåller filer som "
 "slutar på '.journal'."
 
-#: org/kde/kjournaldbrowser/Main.qml:366
+#: org/kde/kjournaldbrowser/Main.qml:368
 #, kde-format
 msgctxt "@title"
 msgid "Selected path is only accessible via file loading dialog"
 msgstr "Vald sökväg är endast tillgänglig via fildialogrutan"
 
-#: org/kde/kjournaldbrowser/Main.qml:367
+#: org/kde/kjournaldbrowser/Main.qml:369
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -418,7 +418,7 @@ msgstr ""
 "Programmet körs i sandlådeläge och kräver användarens samtycke för att ladda "
 "den valda sökvägen:"
 
-#: org/kde/kjournaldbrowser/Main.qml:374
+#: org/kde/kjournaldbrowser/Main.qml:376
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "No log entries apply to selected filters."
