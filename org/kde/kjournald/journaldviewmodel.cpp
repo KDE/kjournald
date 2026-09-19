@@ -27,21 +27,10 @@ void JournaldViewModelPrivate::resetJournal()
         return;
     }
 
-    int result{0};
-
     // reset all filters
     sd_journal_flush_matches(mJournal->get());
 
     qCDebug(KJOURNALDLIB_FILTERTRACE) << "flush_matches()";
-
-    auto addConjunction = [](sd_journal *journal) -> void {
-        int result{0};
-        result = sd_journal_add_conjunction(journal);
-        if (result < 0) {
-            qCCritical(KJOURNALDLIB_FILTERTRACE).nospace() << "add_conjunction returned error";
-        }
-        Q_ASSERT(result >= 0);
-    };
 
     auto addDisjunction = [](sd_journal *journal) -> void {
         int result{0};
@@ -248,7 +237,7 @@ QList<LogEntry> JournaldViewModelPrivate::readEntries(Direction direction)
         }
     }
 
-    for (int i = 0; i < mChunkSize; ++i) {
+    for (uint32_t i = 0; i < mChunkSize; ++i) {
         LogEntry entry;
 
         // read timestamps
@@ -447,7 +436,7 @@ void JournaldViewModel::setJournalProvider(IJournalProvider *provider)
     guardedEndResetModel();
     if (d->mJournalAvailable) {
         fetchMoreLogEntries();
-        connect(d->mJournal.get(), &SdJournal::journalUpdated, this, [=]() {
+        connect(d->mJournal.get(), &SdJournal::journalUpdated, this, [this]() {
             if (d->mTailCursorReached) {
                 d->mTailCursorReached = false;
                 fetchMoreLogEntries();
@@ -492,17 +481,22 @@ QHash<int, QByteArray> JournaldViewModel::roleNames() const
 
 QVariant JournaldViewModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
+    Q_UNUSED(section)
+    Q_UNUSED(orientation)
+    Q_UNUSED(role)
     // FIXME: Implement me!
     return QVariant();
 }
 
 QModelIndex JournaldViewModel::index(int row, int column, const QModelIndex &parent) const
 {
+    Q_UNUSED(parent)
     return createIndex(row, column);
 }
 
 QModelIndex JournaldViewModel::parent(const QModelIndex &index) const
 {
+    Q_UNUSED(index)
     // no tree model, thus no parent
     return QModelIndex();
 }
@@ -518,6 +512,7 @@ int JournaldViewModel::rowCount(const QModelIndex &parent) const
 
 int JournaldViewModel::columnCount(const QModelIndex &parent) const
 {
+    Q_UNUSED(parent)
     return 1;
 }
 

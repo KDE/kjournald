@@ -21,6 +21,13 @@
 //       you can check them by using "journalctl -D journal" and requesting the values
 //       that are checked here
 
+using namespace Qt::StringLiterals;
+
+TestViewModel::TestViewModel()
+    : mBoots{"68f2e61d061247d8a8ba0b8d53a97a52"_L1, "27acae2fe35a40ac93f9c7732c0b8e59"_L1, "2dbe99dd855049af8f2865c5da2b8fda"_L1}
+{
+}
+
 void TestViewModel::journalAccess()
 {
     JournaldViewModel model;
@@ -55,26 +62,27 @@ void TestViewModel::rowAccess()
     QVERIFY(model.rowCount() > 0);
 
     // journalctl -b -2 -D . -o json | head -n2
-    std::vector<LogEntry> expectedData{LogEntry(QDateTime(QDate(2021, 03, 13), QTime(15, 23, 1, 464), QTimeZone::UTC),
-                                                4050458,
-                                                QString(),
-                                                "System clock time unset or jumped backwards, restoring from recorded timestamp: Sat 2021-03-13 15:23:01 UTC",
-                                                "systemd-timesyncd.service",
-                                                "68f2e61d061247d8a8ba0b8d53a97a52",
-                                                "/lib/systemd/systemd-timesyncd",
-                                                6,
-                                                QString()),
-                                       LogEntry(QDateTime(QDate(2021, 03, 13), QTime(15, 23, 1, 592), QTimeZone::UTC),
-                                                4178254,
-                                                QString(),
-                                                "klogd started: BusyBox v1.31.1 ()",
-                                                QString("busybox-klogd.service"),
-                                                "68f2e61d061247d8a8ba0b8d53a97a52",
-                                                "/bin/busybox.nosuid",
-                                                5,
-                                                QString())};
+    std::vector<LogEntry> expectedData{
+        LogEntry(QDateTime(QDate(2021, 03, 13), QTime(15, 23, 1, 464), QTimeZone::UTC),
+                 4050458,
+                 QString(),
+                 "System clock time unset or jumped backwards, restoring from recorded timestamp: Sat 2021-03-13 15:23:01 UTC"_L1,
+                 "systemd-timesyncd.service"_L1,
+                 "68f2e61d061247d8a8ba0b8d53a97a52"_L1,
+                 "/lib/systemd/systemd-timesyncd"_L1,
+                 6,
+                 QString()),
+        LogEntry(QDateTime(QDate(2021, 03, 13), QTime(15, 23, 1, 592), QTimeZone::UTC),
+                 4178254,
+                 QString(),
+                 "klogd started: BusyBox v1.31.1 ()"_L1,
+                 "busybox-klogd.service"_L1,
+                 "68f2e61d061247d8a8ba0b8d53a97a52"_L1,
+                 "/bin/busybox.nosuid"_L1,
+                 5,
+                 QString())};
 
-    for (int i = 0; i < expectedData.size(); ++i) {
+    for (size_t i = 0; i < expectedData.size(); ++i) {
         QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::DATETIME).toDateTime(), expectedData.at(i).date());
         QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::MONOTONIC_TIMESTAMP), expectedData.at(i).monotonicTimestamp());
         QCOMPARE(model.data(model.index(i, 0), JournaldViewModel::MESSAGE_ID), expectedData.at(i).id());
@@ -136,13 +144,13 @@ void TestViewModel::systemUnitFilter()
 
     // select single service
 
-    filter.setSystemdSystemUnitFilter({"systemd-networkd.service"});
+    filter.setSystemdSystemUnitFilter({"systemd-networkd.service"_L1});
     model.setFilter(filter);
     QVERIFY(model.rowCount() > 0);
-    QCOMPARE(model.data(model.index(0, 0), JournaldViewModel::SYSTEMD_UNIT), "systemd-networkd.service");
+    QCOMPARE(model.data(model.index(0, 0), JournaldViewModel::SYSTEMD_UNIT), "systemd-networkd.service"_L1);
 
     // test mulitple services
-    QStringList testSystemdUnitNames{"init.scope", "dbus.service", "systemd-networkd.service"};
+    QStringList testSystemdUnitNames{"init.scope"_L1, "dbus.service"_L1, "systemd-networkd.service"_L1};
     QStringList notFoundUnits = testSystemdUnitNames;
     filter.setSystemdSystemUnitFilter(testSystemdUnitNames);
     model.setFilter(filter);
@@ -170,22 +178,22 @@ void TestViewModel::userUnitFilter()
     auto provider = LocalJournal(JOURNAL_LOCATION);
     model.setJournalProvider(&provider);
 
-    filter.setSystemdUserUnitFilter({"init.scope"});
+    filter.setSystemdUserUnitFilter({"init.scope"_L1});
     model.setFilter(filter);
     QVERIFY(model.rowCount() > 0);
-    QCOMPARE(model.data(model.index(0, 0), JournaldViewModel::SYSTEMD_UNIT), "init.scope");
+    QCOMPARE(model.data(model.index(0, 0), JournaldViewModel::SYSTEMD_UNIT), "init.scope"_L1);
 }
 
 void TestViewModel::showKernelMessages()
 {
     // obtained string with:
     // journalctl _TRANSPORT=kernel -b 2dbe99dd855049af8f2865c5da2b8fda -D . -o json|head -1
-    const QString needleCursor = "s=71e0819dabc84edab6c4a3b6f386e57a;i=195;b=2dbe99dd855049af8f2865c5da2b8fda;m=3f55c8;t=5bd6cd5f8b895;x=c3f4327cdb1c3b6f";
-    const QString needleMessage = "brcmfmac: brcmf_fw_alloc_request: using brcm/brcmfmac43455-sdio for chip BCM4345/6";
+    const QString needleCursor = "s=71e0819dabc84edab6c4a3b6f386e57a;i=195;b=2dbe99dd855049af8f2865c5da2b8fda;m=3f55c8;t=5bd6cd5f8b895;x=c3f4327cdb1c3b6f"_L1;
+    const QString needleMessage = "brcmfmac: brcmf_fw_alloc_request: using brcm/brcmfmac43455-sdio for chip BCM4345/6"_L1;
 
     JournaldViewModel model;
     Filter filter = model.filter();
-    filter.setBootFilter({"2dbe99dd855049af8f2865c5da2b8fda"});
+    filter.setBootFilter({"2dbe99dd855049af8f2865c5da2b8fda"_L1});
     QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::QtTest);
     auto provider = LocalJournal(JOURNAL_LOCATION);
     model.setJournalProvider(&provider);
@@ -284,10 +292,10 @@ void TestViewModel::resetModelHeadAndTailCursorTest()
     };
 
     std::vector<Cursors> cursors = {
-        {"s=c485fef5d17c4272a4a539c4e4708f9e;i=191;b=68f2e61d061247d8a8ba0b8d53a97a52;m=3dce1a;t=5bd6c979f361b;x=766655f78763a257",
-         "s=c485fef5d17c4272a4a539c4e4708f9e;i=52b;b=68f2e61d061247d8a8ba0b8d53a97a52;m=312c5fa4;t=5bd6cc9746a62;x=fd8582373d87d313"},
-        {"s=df3342d6d57b442da21c78027d3991f8;i=191;b=27acae2fe35a40ac93f9c7732c0b8e59;m=3e2dc9;t=5bd6cc97083b1;x=d775661eeb273df0",
-         "s=f1a33fced0cb4d2bb629fb2bd70d1326;i=48e;b=27acae2fe35a40ac93f9c7732c0b8e59;m=67f0d79;t=5bd6cd098ce95;x=c20fdd57f02ca4c5"}};
+        {"s=c485fef5d17c4272a4a539c4e4708f9e;i=191;b=68f2e61d061247d8a8ba0b8d53a97a52;m=3dce1a;t=5bd6c979f361b;x=766655f78763a257"_L1,
+         "s=c485fef5d17c4272a4a539c4e4708f9e;i=52b;b=68f2e61d061247d8a8ba0b8d53a97a52;m=312c5fa4;t=5bd6cc9746a62;x=fd8582373d87d313"_L1},
+        {"s=df3342d6d57b442da21c78027d3991f8;i=191;b=27acae2fe35a40ac93f9c7732c0b8e59;m=3e2dc9;t=5bd6cc97083b1;x=d775661eeb273df0"_L1,
+         "s=f1a33fced0cb4d2bb629fb2bd70d1326;i=48e;b=27acae2fe35a40ac93f9c7732c0b8e59;m=67f0d79;t=5bd6cd098ce95;x=c20fdd57f02ca4c5"_L1}};
 
     // use model and set boot 0
     filter.setBootFilter({mBoots.at(0)});
@@ -370,7 +378,7 @@ void TestViewModel::stringSearch()
         int foundLine{-1};
         std::vector<int> results;
         do {
-            foundLine = model.search("Socket", foundLine + 1, true);
+            foundLine = model.search("Socket"_L1, foundLine + 1, true);
             if (foundLine != -1) {
                 results.push_back(foundLine);
             }
@@ -392,7 +400,7 @@ void TestViewModel::stringSearch()
         int foundLine{-1};
         std::vector<int> results;
         do {
-            foundLine = model.search("Socket", foundLine + 1, true);
+            foundLine = model.search("Socket"_L1, foundLine + 1, true);
             if (foundLine != -1) {
                 results.push_back(foundLine);
             }
@@ -421,7 +429,7 @@ void TestViewModel::stringSearch()
         int foundLine = model.rowCount() - 1;
         std::vector<int> results;
         do {
-            foundLine = model.search("Socket", foundLine - 1, true, JournaldViewModel::BACKWARD);
+            foundLine = model.search("Socket"_L1, foundLine - 1, true, JournaldViewModel::BACKWARD);
             if (foundLine != -1) {
                 results.push_back(foundLine);
             }

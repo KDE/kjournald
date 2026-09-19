@@ -15,9 +15,11 @@
 //       you can check them by using "journalctl -D journal" and requesting the values
 //       that are checked here
 
+using namespace Qt::StringLiterals;
+
 void TestJournaldHelper::queryUniquePerBoot()
 {
-    QLatin1StringView boot_0{"2dbe99dd855049af8f2865c5da2b8fda"};
+    constexpr QLatin1StringView boot_0{"2dbe99dd855049af8f2865c5da2b8fda"};
 
     SdJournal journal{JOURNAL_LOCATION};
     QVERIFY(journal.isValid());
@@ -34,15 +36,15 @@ void TestJournaldHelper::queryUniquePerBoot()
                                         {JournaldHelper::Field::_SYSTEMD_UNIT, JournaldHelper::Field::_SYSTEMD_USER_UNIT, JournaldHelper::Field::_EXE});
         QCOMPARE(results[JournaldHelper::Field::_SYSTEMD_UNIT].removeDuplicates(), 0);
         QVERIFY(results[JournaldHelper::Field::_SYSTEMD_UNIT].size() > 0);
-        QVERIFY(results[JournaldHelper::Field::_SYSTEMD_UNIT].contains("user@1000.service")); // arbitrary entry
+        QVERIFY(results[JournaldHelper::Field::_SYSTEMD_UNIT].contains("user@1000.service"_L1)); // arbitrary entry
 
         QCOMPARE(results[JournaldHelper::Field::_SYSTEMD_USER_UNIT].removeDuplicates(), 0);
         QVERIFY(results[JournaldHelper::Field::_SYSTEMD_USER_UNIT].size() > 0);
-        QVERIFY(results[JournaldHelper::Field::_SYSTEMD_USER_UNIT].contains("init.scope")); // arbitrary entry
+        QVERIFY(results[JournaldHelper::Field::_SYSTEMD_USER_UNIT].contains("init.scope"_L1)); // arbitrary entry
 
         QCOMPARE(results[JournaldHelper::Field::_EXE].removeDuplicates(), 0);
         QVERIFY(results[JournaldHelper::Field::_EXE].size() > 0);
-        QVERIFY(results[JournaldHelper::Field::_EXE].contains("/lib/systemd/systemd-resolved")); // arbitrary entry
+        QVERIFY(results[JournaldHelper::Field::_EXE].contains("/lib/systemd/systemd-resolved"_L1)); // arbitrary entry
     }
 }
 
@@ -51,7 +53,7 @@ void TestJournaldHelper::cleanupString()
     QStringList rawInput;
     QStringList result;
     {
-        QFile file(":/cleanup_string_rawinput.txt");
+        QFile file(":/cleanup_string_rawinput.txt"_L1);
         QVERIFY(file.exists());
         QVERIFY(file.open(QIODevice::ReadOnly));
         QTextStream in(&file);
@@ -61,7 +63,7 @@ void TestJournaldHelper::cleanupString()
         file.close();
     }
     {
-        QFile file(":/cleanup_string_result.txt");
+        QFile file(":/cleanup_string_result.txt"_L1);
         QVERIFY(file.exists());
         QVERIFY(file.open(QIODevice::ReadOnly));
         QTextStream in(&file);

@@ -6,10 +6,11 @@
 #ifndef LOGENTRY_H
 #define LOGENTRY_H
 
+#include "kjournald_export.h"
 #include <QObject>
 #include <QQmlEngine>
 
-class LogEntry
+class KJOURNALD_EXPORT LogEntry
 {
     Q_GADGET
 
@@ -97,12 +98,12 @@ private:
     QString m_message;
     QDateTime m_date;
     quint64 m_monotonicTimestamp{0};
-    int m_priority{0};
     QString m_bootId;
     QString m_unit;
-    QString m_unitTemplateGroup;
     QString m_exe;
+    int m_priority{0};
     QString m_cursor;
+    QString m_unitTemplateGroup;
 };
 
 #endif // LOGENTRY_H

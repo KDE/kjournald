@@ -165,11 +165,13 @@ void JournaldUniqueQueryModel::setSystemJournal()
 
 QModelIndex JournaldUniqueQueryModel::index(int row, int column, const QModelIndex &parent) const
 {
+    Q_UNUSED(parent)
     return createIndex(row, column);
 }
 
 QModelIndex JournaldUniqueQueryModel::parent(const QModelIndex &index) const
 {
+    Q_UNUSED(index)
     // no tree model, thus no parent
     return QModelIndex();
 }
@@ -186,6 +188,7 @@ int JournaldUniqueQueryModel::rowCount(const QModelIndex &parent) const
 
 int JournaldUniqueQueryModel::columnCount(const QModelIndex &parent) const
 {
+    Q_UNUSED(parent)
     return 1;
 }
 

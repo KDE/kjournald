@@ -17,8 +17,8 @@ LogEntry::LogEntry(const QDateTime &date,
     : m_id{id}
     , m_date{date}
     , m_monotonicTimestamp{monotonicTimestamp}
-    , m_unit{unit}
     , m_bootId{bootId}
+    , m_unit{unit}
     , m_exe{exe}
     , m_priority{priority}
     , m_cursor{cursor}

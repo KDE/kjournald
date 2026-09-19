@@ -2,8 +2,6 @@
 # SPDX-FileCopyrightText: Andreas Cord-Landwehr <cordlandwehr@kde.org>
 
 include_directories(
-    ${CMAKE_SOURCE_DIR}/lib
-    ${CMAKE_BINARY_DIR}/lib
     ${CMAKE_BINARY_DIR}
 )
 

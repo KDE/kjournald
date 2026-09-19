@@ -65,6 +65,7 @@ void FlattenedFilterCriteriaProxyModel::handleSourceModelDataChanged(const QMode
                                                                      const QModelIndex &sourceBottomRight,
                                                                      const QVector<int> &roles)
 {
+    Q_UNUSED(roles)
     Q_ASSERT(sourceTopLeft.row() <= sourceBottomRight.row());
     Q_ASSERT(sourceTopLeft.model() == sourceBottomRight.model());
     if (sourceTopLeft.row() > sourceBottomRight.row()) {
@@ -89,21 +90,25 @@ void FlattenedFilterCriteriaProxyModel::handleSourceModelDataChanged(const QMode
 
 int FlattenedFilterCriteriaProxyModel::rowCount(const QModelIndex &parent) const
 {
+    Q_UNUSED(parent)
     return mMapToSourceIndex.size();
 }
 
 int FlattenedFilterCriteriaProxyModel::columnCount(const QModelIndex &parent) const
 {
+    Q_UNUSED(parent)
     return 1;
 }
 
 QModelIndex FlattenedFilterCriteriaProxyModel::index(int row, int column, const QModelIndex &parent) const
 {
+    Q_UNUSED(parent)
     return createIndex(row, column);
 }
 
 QModelIndex FlattenedFilterCriteriaProxyModel::parent(const QModelIndex &index) const
 {
+    Q_UNUSED(index)
     // no tree model, thus no parent
     return QModelIndex();
 }

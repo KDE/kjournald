@@ -18,6 +18,8 @@
 //       you can check them by using "journalctl -D journal" and requesting the values
 //       that are checked here
 
+using namespace Qt::StringLiterals;
+
 void TestUniqueQuery::journalAccess()
 {
     JournaldUniqueQueryModel model;
@@ -37,10 +39,10 @@ void TestUniqueQuery::boots()
     QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
     QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
 
-    model.setFieldString("_BOOT_ID");
-    QCOMPARE(model.fieldString(), "_BOOT_ID");
+    model.setFieldString("_BOOT_ID"_L1);
+    QCOMPARE(model.fieldString(), "_BOOT_ID"_L1);
     model.setField(JournaldHelper::Field::_BOOT_ID);
-    QCOMPARE(model.fieldString(), "_BOOT_ID");
+    QCOMPARE(model.fieldString(), "_BOOT_ID"_L1);
     QCOMPARE(model.rowCount(), 3);
 
     // check one example value
@@ -48,7 +50,7 @@ void TestUniqueQuery::boots()
     for (int i = 0; i < model.rowCount(); ++i) {
         values.append(model.data(model.index(i, 0), JournaldUniqueQueryModel::FIELD).toString());
     }
-    QVERIFY(values.contains("2dbe99dd855049af8f2865c5da2b8fda"));
+    QVERIFY(values.contains("2dbe99dd855049af8f2865c5da2b8fda"_L1));
 }
 
 void TestUniqueQuery::systemdUnits()
@@ -57,17 +59,17 @@ void TestUniqueQuery::systemdUnits()
     QAbstractItemModelTester tester(&model, QAbstractItemModelTester::FailureReportingMode::Fatal);
     QCOMPARE(model.setJournaldPath(JOURNAL_LOCATION), true);
 
-    model.setFieldString("_SYSTEMD_UNIT");
-    QCOMPARE(model.fieldString(), "_SYSTEMD_UNIT");
+    model.setFieldString("_SYSTEMD_UNIT"_L1);
+    QCOMPARE(model.fieldString(), "_SYSTEMD_UNIT"_L1);
     model.setField(JournaldHelper::Field::_SYSTEMD_UNIT);
-    QCOMPARE(model.fieldString(), "_SYSTEMD_UNIT");
+    QCOMPARE(model.fieldString(), "_SYSTEMD_UNIT"_L1);
     QCOMPARE(model.rowCount(), 17);
 
     QStringList values;
     for (int i = 0; i < model.rowCount(); ++i) {
         values.append(model.data(model.index(i, 0), JournaldUniqueQueryModel::FIELD).toString());
     }
-    QVERIFY(values.contains("systemd-journald.service"));
+    QVERIFY(values.contains("systemd-journald.service"_L1));
 }
 
 void TestUniqueQuery::systemdUnitsPerBoot()

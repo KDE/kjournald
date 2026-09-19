@@ -22,23 +22,25 @@
 
 Q_IMPORT_PLUGIN(org_kde_kjournaldbrowserPlugin)
 
+using namespace Qt::StringLiterals;
+
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    QGuiApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("utilities-log-viewer")));
-    app.setOrganizationName("KDE");
+    QGuiApplication::setWindowIcon(QIcon::fromTheme("utilities-log-viewer"_L1));
+    app.setOrganizationName("KDE"_L1);
 
     KCrash::initialize();
 
     // use org.kde.desktop style unless another style is forced
     if (qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE")) {
-        QQuickStyle::setStyle(QStringLiteral("org.kde.desktop"));
+        QQuickStyle::setStyle("org.kde.desktop"_L1);
     }
 
     KLocalizedString::setApplicationDomain("kjournald");
-    static KAboutData aboutData(QStringLiteral("kjournald"),
+    static KAboutData aboutData("kjournald"_L1,
                                 i18nc("@title Displayed program name", "KJournald Browser"),
-                                KJOURNALD_VERSION_STRING,
+                                QStringLiteral(KJOURNALD_VERSION_STRING),
                                 i18nc("@title KAboutData: short program description", "Viewer for Journald logs"),
                                 KAboutLicense::LGPL_V2_1,
                                 i18nc("@info:credit", "(c) 2021-2026 The KJournald Developers"),
@@ -46,9 +48,9 @@ int main(int argc, char *argv[])
     aboutData.setProgramLogo(app.windowIcon());
     aboutData.addAuthor(i18nc("@info:credit Developer name", "Andreas Cord-Landwehr"),
                         i18nc("@info:credit Role", "Original Author"),
-                        QStringLiteral("cordlandwehr@kde.org"));
+                        "cordlandwehr@kde.org"_L1);
     aboutData.setTranslator(i18nc("NAME OF TRANSLATORS", "Your names"), i18nc("EMAIL OF TRANSLATORS", "Your emails"));
-    aboutData.setDesktopFileName(QStringLiteral("org.kde.kjournaldbrowser"));
+    aboutData.setDesktopFileName("org.kde.kjournaldbrowser"_L1);
     aboutData.setProductName("kjournald");
     aboutData.setBugAddress("submit@bugs.kde.org");
     KAboutData::setApplicationData(aboutData);
@@ -65,7 +67,7 @@ int main(int argc, char *argv[])
     parser.setApplicationDescription(i18n("Journald Log Viewer"));
     parser.addHelpOption();
     parser.addVersionOption();
-    const QCommandLineOption pathOption("D", "Path to journald database folder", "path");
+    const QCommandLineOption pathOption("D"_L1, "Path to journald database folder"_L1, "path"_L1);
     parser.addOption(pathOption);
     parser.process(app);
 
@@ -86,9 +88,9 @@ int main(int argc, char *argv[])
     }
 
     QQmlApplicationEngine engine;
-    const QVariantMap initialProperties = {{"filterModel", QVariant::fromValue(&filterCriteriaModel)},
-                                           {"initialJournalPath", initialJournalPath},
-                                           {"initialJournalPathViaPortal", QVariant::fromValue(requestInitialJournalViaPortal)}};
+    const QVariantMap initialProperties = {{"filterModel"_L1, QVariant::fromValue(&filterCriteriaModel)},
+                                           {"initialJournalPath"_L1, initialJournalPath},
+                                           {"initialJournalPathViaPortal"_L1, QVariant::fromValue(requestInitialJournalViaPortal)}};
     engine.setInitialProperties(initialProperties);
     KLocalization::setupLocalizedContext(&engine);
     QObject::connect(

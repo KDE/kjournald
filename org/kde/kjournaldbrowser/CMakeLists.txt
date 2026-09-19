@@ -3,6 +3,20 @@
 
 add_library(kjournaldbrowser_backing STATIC)
 
+ecm_qt_declare_logging_category(
+    kjournaldbrowser_backing
+    HEADER kjournaldbrowser_log.h
+    IDENTIFIER "KJOURNALD_APP"
+    CATEGORY_NAME kjournald.app
+    DESCRIPTION "KJournald Application Debug Logs"
+    EXPORT kjournald
+)
+# ecm_qt_install_logging_categories(
+#     EXPORT kjournaldbrowser_backing
+#     FILE kjournald.categories
+#     DESTINATION "${KDE_INSTALL_LOGGINGCATEGORIESDIR}"
+# )
+
 qt6_add_qml_module(
     kjournaldbrowser_backing
     URI org.kde.kjournaldbrowser

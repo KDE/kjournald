@@ -15,9 +15,6 @@ project(kjournald VERSION ${KJOURNALD_VERSION})
 set(QT_QML_GENERATE_QMLLS_INI ON)
 
 set(CMAKE_AUTOUIC ON)
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_SCAN_FOR_MODULES OFF)
 include(FeatureSummary)
 include(GenerateExportHeader)
 include(CMakePackageConfigHelpers)
@@ -44,6 +41,7 @@ include(ECMSetupVersion)
 include(ECMQtDeclareLoggingCategory)
 include(KDEInstallDirs6)
 include(KDECMakeSettings)
+include(KDECompilerSettings NO_POLICY_SCOPE)
 include(KDEClangFormat)
 include(ECMQmlModule)
 
@@ -61,8 +59,8 @@ find_package(KF6 ${KF_VERSION} REQUIRED COMPONENTS
     I18n
     Kirigami
 )
-add_definitions(-DTRANSLATION_DOMAIN=\"kjournald\")
-add_definitions(-DQT_ENABLE_STRICT_MODE_UP_TO=0x060500)
+add_compile_definitions(TRANSLATION_DOMAIN=\"kjournald\")
+add_compile_definitions(QT_ENABLE_STRICT_MODE_UP_TO=0x060C00)
 
 find_package(KF6KirigamiAddons 1.4.0 REQUIRED)
 

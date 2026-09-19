@@ -20,6 +20,13 @@
 //       you can check them by using "journalctl -D journal" and requesting the values
 //       that are checked here
 
+using namespace Qt::StringLiterals;
+
+TestFilterCriteriaModel::TestFilterCriteriaModel()
+    : mBoots{"68f2e61d061247d8a8ba0b8d53a97a52"_L1, "27acae2fe35a40ac93f9c7732c0b8e59"_L1, "2dbe99dd855049af8f2865c5da2b8fda"_L1}
+{
+}
+
 void TestFilterCriteriaModel::basicTreeModelStructure()
 {
     FilterCriteriaModel model;
@@ -67,7 +74,7 @@ void TestFilterCriteriaModel::standaloneTestSystemdUnitSelectionOptionsUngrouped
     {
         const auto entries = model.entries(FilterCriteriaModel::Category::SYSTEMD_SYSTEM_UNIT);
         QVERIFY(std::any_of(entries.cbegin(), entries.cend(), [=](std::pair<QString, bool> value) {
-            return value.first == "user@1000.service"; // arbitrary service from test journal
+            return value.first == "user@1000.service"_L1; // arbitrary service from test journal
         }));
     }
 
@@ -82,7 +89,7 @@ void TestFilterCriteriaModel::standaloneTestSystemdUnitSelectionOptionsUngrouped
         QVERIFY(categoryIndex.isValid());
         QVERIFY(model.hasChildren(categoryIndex));
         // value from first position
-        QCOMPARE(model.data(model.index(0, 0, categoryIndex), FilterCriteriaModel::Roles::TEXT).toString(), "busybox-klogd.service");
+        QCOMPARE(model.data(model.index(0, 0, categoryIndex), FilterCriteriaModel::Roles::TEXT).toString(), "busybox-klogd.service"_L1);
     }
 }
 
@@ -102,7 +109,7 @@ void TestFilterCriteriaModel::standaloneTestSystemdUnitSelectionOptionsGrouped()
     {
         const auto entries = model.entries(FilterCriteriaModel::Category::SYSTEMD_SYSTEM_UNIT);
         QVERIFY(std::any_of(entries.cbegin(), entries.cend(), [=](std::pair<QString, bool> value) {
-            return value.first == "user@[...].service"; // template services are abbreviated with "[...]"
+            return value.first == "user@[...].service"_L1; // template services are abbreviated with "[...]"
         }));
     }
 
@@ -117,7 +124,7 @@ void TestFilterCriteriaModel::standaloneTestSystemdUnitSelectionOptionsGrouped()
         QVERIFY(categoryIndex.isValid());
         QVERIFY(model.hasChildren(categoryIndex));
         // value from first position
-        QCOMPARE(model.data(model.index(0, 0, categoryIndex), FilterCriteriaModel::Roles::TEXT).toString(), "busybox-klogd.service");
+        QCOMPARE(model.data(model.index(0, 0, categoryIndex), FilterCriteriaModel::Roles::TEXT).toString(), "busybox-klogd.service"_L1);
     }
 }
 
@@ -136,7 +143,7 @@ void TestFilterCriteriaModel::standaloneTestExeSelectionOptions()
     {
         const auto container = model.entries(FilterCriteriaModel::Category::EXE);
         QVERIFY(std::any_of(container.cbegin(), container.cend(), [=](std::pair<QString, bool> value) {
-            return value.first == "/lib/systemd/systemd"; // arbitrary service from test journal
+            return value.first == "/lib/systemd/systemd"_L1; // arbitrary service from test journal
         }));
     }
 
@@ -151,7 +158,7 @@ void TestFilterCriteriaModel::standaloneTestExeSelectionOptions()
         QVERIFY(categoryIndex.isValid());
         QVERIFY(model.hasChildren(categoryIndex));
         // value from first position
-        QCOMPARE(model.data(model.index(0, 0, categoryIndex), FilterCriteriaModel::Roles::TEXT).toString(), "/bin/bash.bash");
+        QCOMPARE(model.data(model.index(0, 0, categoryIndex), FilterCriteriaModel::Roles::TEXT).toString(), "/bin/bash.bash"_L1);
         // all elements are disabled initially
         QCOMPARE(model.data(model.index(0, 0, categoryIndex), FilterCriteriaModel::Roles::SELECTED).toBool(), false);
     }
@@ -187,7 +194,7 @@ void TestFilterCriteriaModel::standaloneTestPrioritySelectionOptions()
         QVERIFY(categoryIndex.isValid());
         QVERIFY(model.hasChildren(categoryIndex));
         // at first position expect priority '0' / emergency level
-        QCOMPARE(model.data(model.index(0, 0, categoryIndex), FilterCriteriaModel::Roles::DATA).toString(), "0");
+        QCOMPARE(model.data(model.index(0, 0, categoryIndex), FilterCriteriaModel::Roles::DATA).toString(), "0"_L1);
     }
 
     { // QAbstractItemData::setData operations

@@ -44,11 +44,11 @@ SelectionEntry::SelectionEntry(const QString &text,
                                FilterCriteriaModel::Category category,
                                bool selected,
                                std::shared_ptr<SelectionEntry> parent)
-    : mText(text)
+    : mParentItem(parent)
+    , mText(text)
     , mData(data)
-    , mCategory(category)
     , mSelected(selected)
-    , mParentItem(parent)
+    , mCategory(category)
 {
 }
 
@@ -57,9 +57,9 @@ void SelectionEntry::appendChild(std::shared_ptr<SelectionEntry> item)
     mChildItems.push_back(item);
 }
 
-std::shared_ptr<SelectionEntry> SelectionEntry::child(int row)
+std::shared_ptr<SelectionEntry> SelectionEntry::child(qsizetype row)
 {
-    if (row < 0 || row >= mChildItems.size()) {
+    if (row < 0 || row >= static_cast<qsizetype>(mChildItems.size())) {
         return nullptr;
     }
     return mChildItems.at(row);
@@ -74,7 +74,7 @@ int SelectionEntry::row() const
 {
     auto parent = mParentItem.lock();
     if (parent) {
-        for (int i = 0; i < parent->mChildItems.size(); ++i) {
+        for (size_t i = 0; i < parent->mChildItems.size(); ++i) {
             if (parent->mChildItems.at(i).get() == this) {
                 return i;
             }
@@ -165,11 +165,11 @@ void FilterCriteriaModelPrivate::rebuildModel()
                                                        false,
                                                        mRootItem);
         mRootItem->appendChild(parent);
-        mRootItem->child(rootIndex)->appendChild(std::move(std::make_unique<SelectionEntry>(i18nc("Checkbox option for kernel log messages", "Kernel"),
-                                                                                            QLatin1String("kernel"),
-                                                                                            FilterCriteriaModel::Category::TRANSPORT,
-                                                                                            false,
-                                                                                            parent)));
+        mRootItem->child(rootIndex)->appendChild(std::make_unique<SelectionEntry>(i18nc("Checkbox option for kernel log messages", "Kernel"),
+                                                                                  QLatin1String("kernel"),
+                                                                                  FilterCriteriaModel::Category::TRANSPORT,
+                                                                                  false,
+                                                                                  parent));
         mIndexMap[FilterCriteriaModel::Category::TRANSPORT] = rootIndex;
         ++rootIndex;
     }
@@ -181,20 +181,19 @@ void FilterCriteriaModelPrivate::rebuildModel()
                                                        mRootItem);
         mRootItem->appendChild(parent);
         for (int i = 0; i <= 7; ++i) {
-            mRootItem->child(rootIndex)->appendChild(
-                std::move(std::make_unique<SelectionEntry>(mapPriorityToString(i),
-                                                           QString::number(i),
-                                                           FilterCriteriaModel::Category::PRIORITY,
-                                                           mPriorityLevel.has_value() && i == mPriorityLevel.value() ? true : false,
-                                                           parent)));
+            mRootItem->child(rootIndex)->appendChild(std::make_unique<SelectionEntry>(mapPriorityToString(i),
+                                                                                      QString::number(i),
+                                                                                      FilterCriteriaModel::Category::PRIORITY,
+                                                                                      mPriorityLevel.has_value() && i == mPriorityLevel.value() ? true : false,
+                                                                                      parent));
             // magic index 8 means "unset priority"
         }
         // add "no filter" option at end
-        mRootItem->child(rootIndex)->appendChild(std::move(std::make_unique<SelectionEntry>(mapPriorityToString(-1),
-                                                                                            QString::number(-1),
-                                                                                            FilterCriteriaModel::Category::PRIORITY,
-                                                                                            !mPriorityLevel.has_value() || 8 == mPriorityLevel,
-                                                                                            parent)));
+        mRootItem->child(rootIndex)->appendChild(std::make_unique<SelectionEntry>(mapPriorityToString(-1),
+                                                                                  QString::number(-1),
+                                                                                  FilterCriteriaModel::Category::PRIORITY,
+                                                                                  !mPriorityLevel.has_value() || 8 == mPriorityLevel,
+                                                                                  parent));
         mIndexMap[FilterCriteriaModel::Category::PRIORITY] = rootIndex;
         ++rootIndex;
     }
@@ -236,11 +235,11 @@ void FilterCriteriaModelPrivate::rebuildModel()
                 if (!unit.endsWith(QLatin1String(".service"))) {
                     continue;
                 }
-                mRootItem->child(rootIndex)->appendChild(std::move(std::make_unique<SelectionEntry>(JournaldHelper::cleanupString(unit),
-                                                                                                    unit,
-                                                                                                    FilterCriteriaModel::Category::SYSTEMD_USER_UNIT,
-                                                                                                    false,
-                                                                                                    parent)));
+                mRootItem->child(rootIndex)->appendChild(std::make_unique<SelectionEntry>(JournaldHelper::cleanupString(unit),
+                                                                                          unit,
+                                                                                          FilterCriteriaModel::Category::SYSTEMD_USER_UNIT,
+                                                                                          false,
+                                                                                          parent));
             }
         }
         mIndexMap[FilterCriteriaModel::Category::SYSTEMD_USER_UNIT] = rootIndex;
@@ -286,11 +285,11 @@ void FilterCriteriaModelPrivate::rebuildModel()
                 if (!unit.endsWith(QLatin1String(".service"))) {
                     continue;
                 }
-                mRootItem->child(rootIndex)->appendChild(std::move(std::make_unique<SelectionEntry>(JournaldHelper::cleanupString(unit),
-                                                                                                    unit,
-                                                                                                    FilterCriteriaModel::Category::SYSTEMD_SYSTEM_UNIT,
-                                                                                                    false,
-                                                                                                    parent)));
+                mRootItem->child(rootIndex)->appendChild(std::make_unique<SelectionEntry>(JournaldHelper::cleanupString(unit),
+                                                                                          unit,
+                                                                                          FilterCriteriaModel::Category::SYSTEMD_SYSTEM_UNIT,
+                                                                                          false,
+                                                                                          parent));
             }
         }
         mIndexMap[FilterCriteriaModel::Category::SYSTEMD_SYSTEM_UNIT] = rootIndex;
@@ -578,6 +577,7 @@ int FilterCriteriaModel::rowCount(const QModelIndex &parent) const
 
 int FilterCriteriaModel::columnCount(const QModelIndex &parent) const
 {
+    Q_UNUSED(parent)
     return 1;
 }
 

@@ -56,6 +56,7 @@ QHash<int, QByteArray> BootModel::roleNames() const
 
 int BootModel::rowCount(const QModelIndex &parent) const
 {
+    Q_UNUSED(parent)
     return d->mBootInfo.size();
 }
 

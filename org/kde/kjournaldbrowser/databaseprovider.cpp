@@ -4,7 +4,7 @@
 */
 
 #include "databaseprovider.h"
-#include "kjournaldlib_log_general.h"
+#include "kjournaldbrowser_log.h"
 #include "localjournal.h"
 #include "systemdjournalremote.h"
 #include <QFileInfo>
@@ -33,14 +33,14 @@ void DatabaseProvider::setAccess(DatabaseProvider::DatabaseAccessLimit limit)
     if (limit == mAccessLimit) {
         return;
     }
-    qCDebug(KJOURNALDLIB_GENERAL) << "change journal access limit to:" << limit;
+    qCDebug(KJOURNALD_APP) << "change journal access limit to:" << limit;
     mAccessLimit = limit;
     Q_EMIT accessChanged();
 }
 
 void DatabaseProvider::loadSystemJournal()
 {
-    qCInfo(KJOURNALDLIB_GENERAL) << "Loading local system journal";
+    qCInfo(KJOURNALD_APP) << "Loading local system journal";
 
     // not setting any path defaults to system journal
     mJournalPath = QString();
@@ -58,9 +58,9 @@ QUrl DatabaseProvider::journalPath() const
 
 void DatabaseProvider::loadJournalFromLocalPath(const QUrl &url)
 {
-    qCInfo(KJOURNALDLIB_GENERAL) << "Loading journal from:" << url;
+    qCInfo(KJOURNALD_APP) << "Loading journal from:" << url;
     const QString path = url.toString(QUrl::PreferLocalFile);
-    qCDebug(KJOURNALDLIB_GENERAL) << "Use decoded path:" << path;
+    qCDebug(KJOURNALD_APP) << "Use decoded path:" << path;
     if (path == mJournalPath) {
         return;
     }
@@ -111,11 +111,11 @@ QString DatabaseProvider::currentJournalInfoText() const
 {
     switch (mDatabaseType) {
     case DatabaseType::FOLDER:
-        return QString("%1 [path]").arg(mJournalPath);
+        return QStringLiteral("%1 [path]").arg(mJournalPath);
     case DatabaseType::LOCAL_SYSTEM:
-        return QString("[system]");
+        return QStringLiteral("[system]");
     case DatabaseType::REMOTE:
-        return QString("%1:%2 [remote]").arg(mRemoteJournalUrl, mRemoteJournalPort);
+        return QStringLiteral("%1:%2 [remote]").arg(mRemoteJournalUrl, mRemoteJournalPort);
     }
     return QString();
 }
@@ -126,7 +126,7 @@ void DatabaseProvider::initJournal()
         return;
     }
     auto remoteJournal = std::make_shared<SystemdJournalRemote>(mRemoteJournalUrl, QString::number(mRemoteJournalPort));
-    connect(remoteJournal.get(), &SystemdJournalRemote::journalFileChanged, this, [=]() {
+    connect(remoteJournal.get(), &SystemdJournalRemote::journalFileChanged, this, [this, remoteJournal]() {
         mJournalPath = QFileInfo(remoteJournal->journalFile()).absolutePath();
         Q_EMIT localJournalPathChanged();
         mJournalProvider = std::make_shared<LocalJournal>(mJournalPath);
@@ -149,7 +149,7 @@ void DatabaseProvider::reloadJournal()
             mJournalProvider = std::make_shared<LocalJournal>(LocalJournal::Mode::LocalSystem);
             break;
         }
-        qCDebug(KJOURNALDLIB_GENERAL) << "Reloaded local journal with access" << mAccessLimit;
+        qCDebug(KJOURNALD_APP) << "Reloaded local journal with access" << mAccessLimit;
         Q_EMIT journalChanged();
     } else {
         // nothing to do yet: this handler is only connected to access limit changes

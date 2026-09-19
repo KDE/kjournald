@@ -27,7 +27,7 @@ public:
 
     void appendChild(std::shared_ptr<SelectionEntry> child);
 
-    std::shared_ptr<SelectionEntry> child(int row);
+    std::shared_ptr<SelectionEntry> child(qsizetype row);
     int childCount() const;
     int columnCount() const;
     QVariant data(FilterCriteriaModel::Roles role) const;
