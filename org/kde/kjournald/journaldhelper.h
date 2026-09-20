@@ -9,6 +9,7 @@
 #include "kjournald_export.h"
 #include <QDateTime>
 #include <QDebugStateSaver>
+#include <QMap>
 #include <QObject>
 #include <QVector>
 #include <ijournalprovider.h>

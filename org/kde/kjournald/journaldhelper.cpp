@@ -7,7 +7,9 @@
 #include "kjournaldlib_log_general.h"
 #include <QDebug>
 #include <QMetaEnum>
+#include <QSet>
 #include <QString>
+#include <QVarLengthArray>
 #include <systemd/sd-journal.h>
 
 namespace
