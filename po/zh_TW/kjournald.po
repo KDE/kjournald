@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-19 00:48+0000\n"
+"POT-Creation-Date: 2026-09-20 12:56+0000\n"
 "PO-Revision-Date: 2026-09-15 14:12+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -20,25 +20,25 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Lokalize 26.11.70\n"
 
-#: browser/main.cpp:40
+#: browser/main.cpp:42
 #, kde-format
 msgctxt "@title Displayed program name"
 msgid "KJournald Browser"
 msgstr "KJournald 瀏覽器"
 
-#: browser/main.cpp:42
+#: browser/main.cpp:44
 #, kde-format
 msgctxt "@title KAboutData: short program description"
 msgid "Viewer for Journald logs"
 msgstr "Journald 紀錄的檢視器"
 
-#: browser/main.cpp:44
+#: browser/main.cpp:46
 #, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2026 The KJournald Developers"
 msgstr "(c) 2021-2026 KJournald 開發團隊"
 
-#: browser/main.cpp:45
+#: browser/main.cpp:47
 #, kde-format
 msgctxt "@title Short program description"
 msgid ""
@@ -47,31 +47,31 @@ msgid ""
 msgstr ""
 "Journald 資料庫的瀏覽器；Journald 資料庫是由 Journald 紀錄工具所產生的。"
 
-#: browser/main.cpp:47
+#: browser/main.cpp:49
 #, kde-format
 msgctxt "@info:credit Developer name"
 msgid "Andreas Cord-Landwehr"
 msgstr "Andreas Cord-Landwehr"
 
-#: browser/main.cpp:48
+#: browser/main.cpp:50
 #, kde-format
 msgctxt "@info:credit Role"
 msgid "Original Author"
 msgstr "原始作者"
 
-#: browser/main.cpp:50
+#: browser/main.cpp:52
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Kisaragi Hiu"
 
-#: browser/main.cpp:50
+#: browser/main.cpp:52
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "mail@kisaragi-hiu.com"
 
-#: browser/main.cpp:65
+#: browser/main.cpp:67
 #, kde-format
 msgid "Journald Log Viewer"
 msgstr "Journald 日誌紀錄檢視器"
@@ -148,19 +148,19 @@ msgctxt "Section title for log message priority"
 msgid "Priority"
 msgstr "優先權"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:202
+#: org/kde/kjournald/filtercriteriamodel.cpp:201
 #, kde-format
 msgctxt "Section title for systemd user unit"
 msgid "User Unit"
 msgstr "使用者單元"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:252
+#: org/kde/kjournald/filtercriteriamodel.cpp:251
 #, kde-format
 msgctxt "Section title for systemd sytem unit"
 msgid "System Unit"
 msgstr "系統單元"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:302
+#: org/kde/kjournald/filtercriteriamodel.cpp:301
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"

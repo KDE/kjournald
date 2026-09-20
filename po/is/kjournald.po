@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-19 00:48+0000\n"
+"POT-Creation-Date: 2026-09-20 12:56+0000\n"
 "PO-Revision-Date: 2025-10-08 23:40+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
@@ -18,19 +18,19 @@ msgstr ""
 "Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 23.08.5\n"
 
-#: browser/main.cpp:40
+#: browser/main.cpp:42
 #, kde-format
 msgctxt "@title Displayed program name"
 msgid "KJournald Browser"
 msgstr "KJournald-vafri"
 
-#: browser/main.cpp:42
+#: browser/main.cpp:44
 #, kde-format
 msgctxt "@title KAboutData: short program description"
 msgid "Viewer for Journald logs"
 msgstr "Skoðari fyrir Journald-annála"
 
-#: browser/main.cpp:44
+#: browser/main.cpp:46
 #, fuzzy, kde-format
 #| msgctxt "@info:credit"
 #| msgid "(c) 2021-2025 The KJournald Developers"
@@ -38,7 +38,7 @@ msgctxt "@info:credit"
 msgid "(c) 2021-2026 The KJournald Developers"
 msgstr "(c) 2021-2025 KJournald forritararnir"
 
-#: browser/main.cpp:45
+#: browser/main.cpp:47
 #, kde-format
 msgctxt "@title Short program description"
 msgid ""
@@ -46,31 +46,31 @@ msgid ""
 "tool."
 msgstr "Skoðari fyrir Journald-gagnagrunna, sem annálaverkfæri Journald útbýr."
 
-#: browser/main.cpp:47
+#: browser/main.cpp:49
 #, kde-format
 msgctxt "@info:credit Developer name"
 msgid "Andreas Cord-Landwehr"
 msgstr "Andreas Cord-Landwehr"
 
-#: browser/main.cpp:48
+#: browser/main.cpp:50
 #, kde-format
 msgctxt "@info:credit Role"
 msgid "Original Author"
 msgstr "Upprunalegur höfundur"
 
-#: browser/main.cpp:50
+#: browser/main.cpp:52
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Guðmundur Erlingsson"
 
-#: browser/main.cpp:50
+#: browser/main.cpp:52
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "gudmundure@gmail.com"
 
-#: browser/main.cpp:65
+#: browser/main.cpp:67
 #, fuzzy, kde-format
 #| msgctxt "@title Displayed program name"
 #| msgid "KJournald Browser"
@@ -149,21 +149,21 @@ msgctxt "Section title for log message priority"
 msgid "Priority"
 msgstr "Forgangur"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:202
+#: org/kde/kjournald/filtercriteriamodel.cpp:201
 #, fuzzy, kde-format
 #| msgid "Systemd Unit"
 msgctxt "Section title for systemd user unit"
 msgid "User Unit"
 msgstr "Systemd-eining"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:252
+#: org/kde/kjournald/filtercriteriamodel.cpp:251
 #, fuzzy, kde-format
 #| msgid "Systemd Unit"
 msgctxt "Section title for systemd sytem unit"
 msgid "System Unit"
 msgstr "Systemd-eining"
 
-#: org/kde/kjournald/filtercriteriamodel.cpp:302
+#: org/kde/kjournald/filtercriteriamodel.cpp:301
 #, kde-format
 msgctxt "Section title for process list"
 msgid "Process"
