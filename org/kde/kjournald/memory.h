@@ -22,8 +22,8 @@ struct default_delete<sd_journal> {
 
 template<typename T>
 struct Expected {
-    const int ret; // return value of call
-    const int error; // errno immediately after the call
+    const int ret{0}; // return value of call
+    const int error{0}; // errno immediately after the call
     std::unique_ptr<T> value; // the newly owned object (may be null)
 };
 
