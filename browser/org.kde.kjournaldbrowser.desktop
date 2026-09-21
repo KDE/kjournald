@@ -3,7 +3,7 @@
 [Desktop Entry]
 Type=Application
 Exec=kjournaldbrowser %u
-Icon=utilities-log-viewer
+Icon=org.kde.kjournaldbrowser
 GenericName=Journald Browser
 GenericName[ar]=متصفح يوميات دي
 GenericName[ca]=Navegador de «journald»
