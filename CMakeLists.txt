@@ -120,7 +120,7 @@ endif()
 if(INSTALL_ICONS)
     include(ECMInstallIcons)
     ecm_install_icons(
-        ICONS data/icons/sc-apps-utilities-log-viewer.svg
+        ICONS data/icons/sc-apps-org.kde.kjournaldbrowser.svg
         DESTINATION ${KDE_INSTALL_ICONDIR}
     )
 endif()
