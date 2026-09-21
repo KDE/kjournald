@@ -4,7 +4,6 @@ runtime: org.kde.Platform
 runtime-version: 6.11
 sdk: org.kde.Sdk
 command: kjournaldbrowser
-rename-icon: "utilities-log-viewer"
 tags:
   - nightly
 desktop-file-name-suffix: ' (Nightly)'
