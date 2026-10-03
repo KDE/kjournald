@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-20 12:56+0000\n"
-"PO-Revision-Date: 2026-02-25 15:53+0200\n"
+"PO-Revision-Date: 2026-09-03 19:19+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -30,12 +30,10 @@ msgid "Viewer for Journald logs"
 msgstr "Journald-lokikatselin"
 
 #: browser/main.cpp:46
-#, fuzzy, kde-format
-#| msgctxt "@info:credit"
-#| msgid "(c) 2021-2025 The KJournald Developers"
+#, kde-format
 msgctxt "@info:credit"
 msgid "(c) 2021-2026 The KJournald Developers"
-msgstr "© 2021–2025 KJournald:n kehittäjät"
+msgstr "© 2021–2026 KJournald:n kehittäjät"
 
 #: browser/main.cpp:47
 #, kde-format
@@ -405,7 +403,7 @@ msgstr "Etsi valitun kansion alikansioista ”.journal”-päätteiset tiedostot
 #, kde-format
 msgctxt "@title"
 msgid "Selected path is only accessible via file loading dialog"
-msgstr ""
+msgstr "Valittu sijainti on käytettävissä vain tiedostonlatausikkunasta"
 
 #: org/kde/kjournaldbrowser/Main.qml:369
 #, kde-format
@@ -414,6 +412,8 @@ msgid ""
 "Application is running in sandboxed mode and requires user consent to load "
 "the selected path: "
 msgstr ""
+"Sovellus on käynnissä hiekkalaatikkotilassa ja vaatii valitun sijainnin "
+"ladatakseen käyttäjän hyväksynnän: "
 
 #: org/kde/kjournaldbrowser/Main.qml:376
 #, kde-format
