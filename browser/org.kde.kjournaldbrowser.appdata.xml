@@ -197,6 +197,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="ca-valencia">El sistema i els serveis d'usuari es mostren en una vista conjunta (es poden desactivar)</li>
           <li xml:lang="cs">Systémové a uživatelské služby se zobrazují ve společném zobrazení (lze deaktivovat)</li>
           <li xml:lang="es">Los servicios del sistema y del usuario se muestran en una vista unificada (se puede desactivar).</li>
+          <li xml:lang="fi">Järjestelmä- ja käyttäjäpalvelut esitetään yhteisnäkymässä (voi passivoida)</li>
           <li xml:lang="fr">Les services système et utilisateur sont affichés dans une vue commune (Peuvent être désactivés)</li>
           <li xml:lang="he">שירותי מערכת ומשתמש מוצגים בתצוגה משותפת (אפשר לכבות)</li>
           <li xml:lang="ia">Servicios de systema e de usator es monstrate in un vista conjuncte (pote esser deactivate)</li>
@@ -219,6 +220,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="ca-valencia">Prefiltratge dels serveis/processos disponibles en la configuració del filtre del cicle d'arrancada seleccionat</li>
           <li xml:lang="cs">Předběžné filtrování dostupných služeb/procesů v nastavení filtru pro vybraný spouštěcí cyklus</li>
           <li xml:lang="es">Prefiltrado de los servicios/procesos disponibles en la configuración del filtro para el ciclo de arranque seleccionado.</li>
+          <li xml:lang="fi">Saatavilla olevien palvelujen tai prosessien esisuodatus suodatusasetuksissa valitulle käynnistyskerralle</li>
           <li xml:lang="fr">Pré-filtrage des services / processus disponibles dans la configuration du filtre pour le cycle de démarrage sélectionné</li>
           <li xml:lang="he">סינון קדם של שירותים/תהליכים בהגדרות הסינון לסבב העלייה הנבחר</li>
           <li xml:lang="ia">Pre-filtrar de servicios/processos disponibile in configuration de  filtrar per le cyclo de startar (boot) initial</li>
@@ -241,6 +243,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="ca-valencia">Opció d'agregació per a agregar els serveis amb plantilla per plantilla</li>
           <li xml:lang="cs">Možnost agregace podle šablony umožňující agregovat služby založené na šablonách</li>
           <li xml:lang="es">Opción de agregación para agrupar servicios con plantillas por plantilla.</li>
+          <li xml:lang="fi">Koontavalinta mallipohjaan perustuvien palvleujen kokoamiseksi mallipohjittain</li>
           <li xml:lang="fr">Option d'agrégation pour agréger les services définis selon un modèle</li>
           <li xml:lang="he">אפשרות צבירה לצבירת שירותים לפי תבנית</li>
           <li xml:lang="ia">Option de aggregationj per aggregar servitios de patronos per patrono</li>
@@ -272,6 +275,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="ca-valencia">Barra de busca redissenyada amb un historial de busca persistent nou</li>
           <li xml:lang="cs">Vylepšené vyhledávací pole s novou trvalou historií vyhledávání</li>
           <li xml:lang="es">Barra de búsqueda rediseñada con un nuevo historial de búsqueda persistente.</li>
+          <li xml:lang="fi">Uudelleen työstetty hakurivi pysyvällä hakuhistorialla</li>
           <li xml:lang="fr">Barre de recherche retravaillée avec un nouvel historique de recherche persistant</li>
           <li xml:lang="he">סרגל החיפוש שופץ ועכשיו ההיסטוריה שלו נשמרת</li>
           <li xml:lang="ia">Barra de cerca relaborate con nove chronologia (historia) de cerca persistente</li>
@@ -294,6 +298,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="ca-valencia">Implementació inicial de diaris d'usuari</li>
           <li xml:lang="cs">Základní podpora pro uživatelské žurnály</li>
           <li xml:lang="es">Compatibilidad inicial para diarios del usuario.</li>
+          <li xml:lang="fi">Alustava käyttäjälokituki</li>
           <li xml:lang="fr">Prise en charge initiale pour les journaux utilisateurs</li>
           <li xml:lang="he">תמיכה ראשונית ביומני משתמשים</li>
           <li xml:lang="ia">Supporto initial per jornales de usator</li>
@@ -316,6 +321,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="ca-valencia">Comentaris d'usuari per a problemes d'accés al diari</li>
           <li xml:lang="cs">Zpětná vazba ohledně problémů s přístupem k žurnálům</li>
           <li xml:lang="es">Comentarios para problemas de acceso del diario.</li>
+          <li xml:lang="fi">Palaute lokisaantiongelmista</li>
           <li xml:lang="fr">Retour d'informations sur les problèmes d'accès au journal</li>
           <li xml:lang="he">משוב על תקלות גישה ליומנים</li>
           <li xml:lang="ia">Responsa de retorno (feedback) per emissiones de accesso de jornal</li>
