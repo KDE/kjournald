@@ -6,20 +6,21 @@
 # SPDX-FileCopyrightText: 2022, 2025 Alois Spitzbart <spitz234@hotmail.com>
 # SPDX-FileCopyrightText: 2024 Johannes Obermayr <johannesobermayr@gmx.de>
 # SPDX-FileCopyrightText: 2026 Philipp Kiemle <l10n.daphipz@fastmail.de>
+# SPDX-FileCopyrightText: 2026 Ewald Müller <EMuede@netscape.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: kjournald\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-20 12:56+0000\n"
-"PO-Revision-Date: 2026-08-29 16:39+0200\n"
-"Last-Translator: Philipp Kiemle <l10n.daphipz@fastmail.de>\n"
+"PO-Revision-Date: 2026-10-18 19:52+0200\n"
+"Last-Translator: Ewald Müller <EMuede@netscape.net>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 26.08.0\n"
+"X-Generator: Lokalize 26.04.3\n"
 
 #: browser/main.cpp:42
 #, kde-format
@@ -184,7 +185,7 @@ msgstr "Eingeklappt"
 #, kde-format
 msgctxt "@action:button"
 msgid "Clear filters"
-msgstr ""
+msgstr "Filter zurücksetzen"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:22
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:22
@@ -230,7 +231,7 @@ msgstr "Aktuelles Journal"
 #, kde-format
 msgctxt "@title:menu"
 msgid "Limit Accessed Logs"
-msgstr ""
+msgstr "Angezeigte Protokolle eingrenzen"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:73
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:73
@@ -321,14 +322,14 @@ msgstr "Gruppierung"
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Group templated services"
-msgstr ""
+msgstr "Dienste-Vorlagen gruppieren"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:164
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:182
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Do not group templated service"
-msgstr ""
+msgstr "Dienste-Vorlagen nicht gruppieren"
 
 #: org/kde/kjournaldbrowser/GlobalMenu.qml:174
 #: org/kde/kjournaldbrowser/TopMenuBar.qml:193
@@ -396,6 +397,7 @@ msgstr "Wechselt zum Auswahlmodus"
 msgctxt "@title"
 msgid "Unable to load journal database from selected location: "
 msgstr ""
+"Das Laden der Journal-Datenbank vom ausgewählten Ort ist nicht möglich: "
 
 #: org/kde/kjournaldbrowser/Main.qml:358
 #, kde-format
@@ -411,7 +413,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title"
 msgid "Selected path is only accessible via file loading dialog"
-msgstr ""
+msgstr "Ausgewählter Pfad ist nur über den Datei-Ladedialog erreichbar"
 
 #: org/kde/kjournaldbrowser/Main.qml:369
 #, kde-format
@@ -420,6 +422,8 @@ msgid ""
 "Application is running in sandboxed mode and requires user consent to load "
 "the selected path: "
 msgstr ""
+"Die Anwendung läuft im Sandbox-Modus und erfordert die Zustimmung des "
+"Benutzers, um den ausgewählten Pfad zu laden: "
 
 #: org/kde/kjournaldbrowser/Main.qml:376
 #, kde-format
@@ -437,7 +441,7 @@ msgstr "Entfernten Journalserver einrichten"
 #, kde-format
 msgctxt "@label"
 msgid "URL:"
-msgstr "Adresse:"
+msgstr "Adresse (URL):"
 
 #: org/kde/kjournaldbrowser/RemoteJournalConfigDialog.qml:38
 #, kde-format
