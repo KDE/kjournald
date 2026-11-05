@@ -92,6 +92,7 @@ SPDX-License-Identifier: CC0-1.0
   <summary xml:lang="sr-ijekavianlatin">Pregledač baza journald‑a</summary>
   <summary xml:lang="sv">Bläddrare för journald-databaser</summary>
   <summary xml:lang="tr">journald veritabanları için tarayıcı</summary>
+  <summary xml:lang="ug">journald ساندان كۆرگۈ</summary>
   <summary xml:lang="uk">Навігатор для баз даних journald</summary>
   <summary xml:lang="zh-CN">journald 数据库浏览器</summary>
   <summary xml:lang="zh-TW">Journald 資料庫的瀏覽器</summary>
@@ -134,6 +135,7 @@ SPDX-License-Identifier: CC0-1.0
     <p xml:lang="sr-ijekavianlatin">Pregledač journald‑a je referentna implementacija biblioteke kjournald i pruža prilagodljivu alatku za pregledanje baza journald‑a: lokalnih, udaljenih i onih van veze.</p>
     <p xml:lang="sv">Journald-bläddraren är en referensimplementering av kjournald-biblioteket och tillhandahåller ett flexibelt verktyg för att bläddra i lokala databaser, fjärrdatabaser, och nedkopplade databaser.</p>
     <p xml:lang="tr">Journald-browser, kjournald kitaplığının bir başvuru uygulamasıdır ve yerel, uzak ve çevrim dışı journald veritabanlarına göz atmak için esnek bir araç sağlar.</p>
+    <p xml:lang="ug">journald كۆرگۈ journald ئامبىرىنىڭ پايدىلانمىسىنى ئەمەلىيلەشتۈرىدىغان پىروگرامما، ئۇ يەرلىك، يىراقتىكى ۋە تورسىز journald ساندانىغا كۆز يۈگۈرتىدىغان جانلىق قورال.</p>
     <p xml:lang="uk">«Навігатор для Journald» — еталонна реалізація бібліотеки kjournald. Він надає у ваше розпорядження гнучкий інструмент для навігації локальними, віддаленими та автономними базами даних journald.</p>
     <p xml:lang="zh-CN">Journald-browser 是 kjournald 程序库的参考实现程序，它提供了一套灵活浏览本地、远程和离线 journald 数据库的工具。</p>
     <p xml:lang="zh-TW">Journald 日誌瀏覽器 (journald-browser) 是 kjournald 函式庫的參考實作，提供一個瀏覽本機、遠端及離線 journald 資料庫的靈活工具。</p>
@@ -232,6 +234,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="sr-ijekavianlatin">Sistemski i korisnički servisi prikazuju se u zajedničkom prikazu (može se isključiti)</li>
           <li xml:lang="sv">System- och användartjänster visas i en gemensam vy (kan inaktiveras)</li>
           <li xml:lang="tr">Sistem ve kullanıcı hizmetleri, birleşik bir görünümde görüntülenebilir (devre dışı bırakılabilir)</li>
+          <li xml:lang="ug">سىستېما ۋە ئىشلەتكۈچى مۇلازىمىتى بىرلەشمە كۆرۈنۈشتە كۆرۈنىدۇ (تاقىۋەتكىلى بولىدۇ)</li>
           <li xml:lang="uk">Служби системи і користувача показано у режимі об'єднаного перегляду (можна вимкнути)</li>
           <li xml:lang="zh-CN">系统和用户服务以联合视图显示 (可关闭)</li>
           <li xml:lang="zh-TW">系統與使用者服務合併顯示（可以關掉）</li>
@@ -260,6 +263,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="sr-ijekavianlatin">Prethodno filtriranje dostupnih servisa/procesa u postavi filtera za izabrani ciklus podizanja</li>
           <li xml:lang="sv">Förfiltrering av tillgängliga tjänster/processer i filterkonfigurationen för den valda startcykeln</li>
           <li xml:lang="tr">Seçili önyükleme çevrimi için süzgeç yapılandırmasında kullanılabilir hizmetlerin/süreçlerin önceden süzülebilmesi</li>
+          <li xml:lang="ug">تاللانغان قوزغىلىش دەۋرىيلىكىدىكى سۈزگۈچ سەپلىمىسىدە ئىشلەتكىلى بولىدىغان مۇلازىمەت/جەريانغا نىسبەتەن ئالدىن سۈزۈش ئېلىپ بارىدۇ</li>
           <li xml:lang="uk">Попереднє фільтрування доступних служб/процесів у налаштуваннях фільтрування для вибраного циклу завантаження</li>
           <li xml:lang="zh-CN">在所选启动周期的筛选配置中对可用服务/进程进行预筛选</li>
           <li xml:lang="zh-TW">過濾器設定預設為所選當次開機預先過濾可用的服務與程序</li>
@@ -288,6 +292,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="sr-ijekavianlatin">Opcija za objedinjavanje šablonskih servisa po šablonu</li>
           <li xml:lang="sv">Aggregeringsalternativ för att aggregera mallbaserade tjänster enligt mall</li>
           <li xml:lang="tr">Şablonlanmış hizmetlerin şablona göre toplanabilmesi için bir seçenek</li>
+          <li xml:lang="ug">قېلىپ توپلىمىغا ئاساسەن قېلىپلاشقان مۇلازىمەتنى گۇرۇپپىلاشنىڭ توپلاشتۇرۇلغان تاللانمىسى</li>
           <li xml:lang="uk">Пункт збирання для збирання шаблонних служб за шаблоном</li>
           <li xml:lang="zh-CN">按模板聚合模板化服务的聚合选项</li>
           <li xml:lang="zh-TW">依所屬模板將模板服務群組化的選項</li>
@@ -325,6 +330,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="sr-ijekavianlatin">Prerađena traka pretrage sa novim trajnim istorijatom pretrage</li>
           <li xml:lang="sv">Omarbetad sökfält med ny permanent sökhistorik</li>
           <li xml:lang="tr">Yeni kalıcı arama geçmişi ile yeniden düzenlenmiş arama çubuğu</li>
+          <li xml:lang="ug">يېڭى ئۈزلۈكسىز ئىزدەش تارىخى بار قايتا ئىشلەنگەن ئىزدەش بالدىقى</li>
           <li xml:lang="uk">Перероблена панель пошуку з новим сталим журналом пошуку</li>
           <li xml:lang="zh-CN">重新设计的搜索栏，带有新的持久搜索历史记录</li>
           <li xml:lang="zh-TW">大幅修改搜尋列，現在提供永續的搜尋紀錄</li>
@@ -353,6 +359,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="sr-ijekavianlatin">Početna podrška za korisničke dnevnike</li>
           <li xml:lang="sv">Initialt stöd för användarjournaler</li>
           <li xml:lang="tr">Kullanıcı günceleri için ilk aşamada destek</li>
+          <li xml:lang="ug">ئىشلەتكۈچى خاتىرىسىنىڭ دەسلەپكى قوللىشى</li>
           <li xml:lang="uk">Початкова підтримка журналів користувача</li>
           <li xml:lang="zh-CN">用户日志的初步支持</li>
           <li xml:lang="zh-TW">對於使用者日誌的初始支援</li>
@@ -381,6 +388,7 @@ SPDX-License-Identifier: CC0-1.0
           <li xml:lang="sr-ijekavianlatin">Obavještenja o problemima pri pristupu dnevnicima</li>
           <li xml:lang="sv">Återmatning vid problem med journalåtkomst</li>
           <li xml:lang="tr">Günce erişim sorunları için geri bildirim</li>
+          <li xml:lang="ug">خاتىرە زىيارەت مەسىلىسىنىڭ قايتۇرما ئىنكاسى</li>
           <li xml:lang="uk">Реакція на проблеми з доступом до журналу</li>
           <li xml:lang="zh-CN">日志访问问题的反馈</li>
           <li xml:lang="zh-TW">日誌存取上有問題時提供回饋</li>
